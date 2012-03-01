@@ -1,0 +1,600 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - CSS für Layout</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">CSS für Layout</h2>
+                          </div>
+			
+			
+			<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden (wie in Kapitel 1.4.6 schon erläutert). In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
+
+<pre><code>p { background-color:#CCCCCC; }
+em { background-color:#FFFF66; }
+</code></pre>
+
+<p>Bei der Darstellung im Browser kann der nicht-blockbildender Tag em dabei auf mehrere Zeilen verteilt werden und nimmt dann mehrere rechteckige Bereiche ein, der blockbildende Tag p wird immer als ein Rechteck dargestellt:</p>
+
+<p><img  alt="Abbildung 33: Darstellung von blockbildenden und nicht-blockbildenden Tags" src="/images/image128.png" /></p>
+
+<p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert.  Wenn Sie das Bild wie in Abbildung 34 mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout. </p>
+
+<p><img  alt="Abbildung 34: Bild mitten im Absatz" src="/images/image130.png" /></p>
+
+<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“ konnte dadurch die Breite eines Elemets überschreiten. Verschiedene Browser verhalten sich hier unterschiedlich. In Abbildung 35 können Sie sehen, dass Microsoft Internet Explorer 7.0 URLs nicht umbricht. Firefox 3.0 hingegen tut es schon.</p>
+
+<p><img  alt="Abbildung 35: Darstellung eines Absatzes mit Rahmen und fixer Breite, der lange Wörter enthält, in MSIE 7.0" src="/images/image132.png" /></p>
+
+<h2 id="width-und-auto">Width und Auto</h2>
+<p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit width kann eine Andere Breite eines Blocks definiert werden:</p>
+
+<pre><code>div#main {  width:500px; }
+</code></pre>
+
+<p>Je nach box-sizing müssen Sie die Werte von padding, border, margin dazu addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht:</p>
+
+<pre><code>{
+   width: 200px; 
+   padding: 10px; 
+   border-width: 10px; 
+   margin: 32px 0px
+}
+</code></pre>
+
+<p>Gesamtbreite = 0px + 10px + 10px + 200px + 10px + 10px + 0px = 240px</p>
+
+<p><img  alt="Abbildung 36: width im Box-Model mit box-sizing: content-box" src="/images/image134.png" /></p>
+
+<p>Um einen Inhalt zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt. </p>
+
+<pre><code>div#main {
+    width:500px; 
+    margin-left:  auto;
+    margin-right: auto;
+}
+</code></pre>
+
+<h2 id="float">Float</h2>
+<p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen bietet die Deklaration float mit den Werten left und right. Damit wird ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts „rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“). </p>
+
+<p>In Abbildung 4 sind drei Absätze zu sehen die jeweils als erstes ein Bild enthalten. Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts, der Text rutscht links davon nach oben. Im dritten Absatz „floated“ das Bild nach links, der Text rutscht rechts davon nach oben. </p>
+
+<p><img  alt="Abbildung 37: Bilder mit float" src="/images/image136.png" /></p>
+
+<p>Bei Bildern funktioniert float besonders einfach, weil das Bild schon eine fixe Breite hat. Wird ein anderer HTML-Tag mit float versehen muß man auch die Breite des Tags setzen um einen sichtbaren Effekt zu erzielen. In Abbildung 38 soll der zweite Absatz nach rechts gehen. Er hat die ID edvard. </p>
+
+<p><img  alt="Abbildung 38: Ein Absatz mit float" src="/images/image138.png" /></p>
+
+<p>Wenn viele Elemente mit float positioniert werden die die gleiche Höhe haben entsteht ein besonders flexibles Layout: in Abbildung 39 werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinander dargestellt:</p>
+
+<p><img  alt="Abbildung 39: Zwei Darstellungen der Bildergalerie mit float" src="/images/image140.png" /></p>
+
+<h2 id="absolute-positionierung">Absolute Positionierung</h2>
+<p>Mit der Deklaration position:absolute wird ein Tag aus der normalen Darstellung herausgenommen und über dem restlichen Inhalt der Seite platziert. Mit top und left kann die linke obere Ecke des Elements positioniert werden. (oder mit bottom und right die rechte unter Ecke)</p>
+
+<pre><code>#navi {
+       position: absolute;
+       width: 80px;
+       top:    0px;
+       left:   0px;
+}
+</code></pre>
+
+<p>In Kombination mit einem Inhalt mit margin-left ergibt das folgendes Layout:</p>
+
+<p><img  alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" src="/images/image142.png" /></p>
+
+<p>Die Koordinaten (top und left) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster. </p>
+
+<p>Ein Tag mit position:absolute oder position:relative bildet für seine untergeordneten Tags ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert. </p>
+
+<pre><code>&lt;div id="main"&gt;
+    &lt;div id="content"&gt;
+        &lt;h1&gt;Inhalt&lt;/h1&gt;
+        &lt;p&gt;Hier ist der Inhalt[. . . ]&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="navi"&gt;
+    [. . . ]
+    &lt;/div&gt;
+&lt;/div&gt;
+
+#main {
+   border: 1px red solid;
+   position:relative;
+   width: 700px;
+   margin: 0px auto;
+} 
+#content {
+   margin-left: 120px;
+   background-color: #ddd;
+}
+#navi {
+   position: absolute;
+   width: 80px;
+   top:0px;
+   left:0px;
+}
+</code></pre>
+
+<h2 id="navigationsmen-mit-css">Navigationsmenü mit CSS</h2>
+<p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
+
+<p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:</p>
+
+<pre><code>&lt;div class="navi"&gt;
+   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
+   &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="ort.html"&gt;ort&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Ohne CSS wird die Liste ganz normal dargestellt. Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit list-style-type:none der Listenpunkt zu einem normalen Tag. </p>
+
+<pre><code>.unsichtbar {display:none;}
+
+div.navi li {
+   list-style-type:none;
+   margin-bottom:1px; 
+   background:#6C6;
+   width:6em;
+   padding: 0.2em;
+}
+
+div.navi li a:link {
+   text-decoration: none;
+   font-weight: bold;
+   color: black;
+}
+</code></pre>
+
+<p>Mit Hilfe von Float kann man das Menü auch horizontal darstellen, dazu muß nur ein float eingefügt und der margin anders gesetzt werden:</p>
+
+<pre><code>div.navi li {
+   float:left;
+   list-style-type:none;
+   margin-right:1px; 
+   background:#6C6;
+   width:6em;
+   padding: 0.2em; 
+}
+
+div.navi li a:link {
+   text-decoration: none;
+   font-weight: bold;
+   color: black;
+}
+</code></pre>
+
+<h2 id="navigationsmen-wiederverwerten-mit-php">Navigationsmenü wiederverwerten mit PHP</h2>
+<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
+
+<p>Deswegen bietet es sich an bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
+
+<p>Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:</p>
+
+<pre><code>&lt;div id="navi"&gt;
+   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
+   &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.php"&gt;home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="ort.php"&gt;ort&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Links die auf Ordner verweisen sind hier besonders praktisch: Sie ersetzen die Datei index.html durch index.php, der Link bleibt gleich.</p>
+
+<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, z.B. navi.php.  In den einzelnen Seiten wird das Menü dann mit include eingebunden:</p>
+
+<pre><code>&lt;body&gt;
+&lt;?php include "navi.php" ?&gt;
+&lt;h1&gt;News&lt;/h1&gt;
+</code></pre>
+
+<p>Achtung: Das Einfügen der inkuldierten Datei erfolgt auf dem Server. Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
+
+<p><img  alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" src="/images/image145.png" /></p>
+
+<p>Damit ist nun das Einfügen eines neuen Menü-Punkts ins Navigationsmenü ganz einfach: nur die Datei navi.php muss editiert werden.</p>
+
+<h2 id="hover-und-focus">:hover und :focus</h2>
+<p>Mit dem Selektor :hover wird eine CSS-Regel nur angewandt wenn die Maus über dem Tag ist. (:focus hat eine ähnliche Bedeutung bei der Steuerung mit der Tastatur.)</p>
+
+<pre><code>div       { background-color: #ddd; }
+
+div:hover { background-color: red; }
+
+Mit Hilfe von Hintergrundbildern kann man so zum Beispiel einen kitschigen 3d-Button darstellen, der beim hovern „hineingedrückt“ wird. 
+
+div       { background-image: url(button-up.png);   }
+
+div:hover { background-image: url(button-down.png); }
+</code></pre>
+
+<p>Beim Laden des zweiten Hintergrundbildes kann es dabei zu einer Verzögerung kommen. Um das zu verhindern kann man die beiden Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechseln:</p>
+
+<pre><code>div {
+   height:115px;
+   width:240px;
+   background-image: url(pix/rolloverButton.gif);
+   overflow:hidden;
+}
+
+div:hover {
+   background-position: 0 -120px;
+}
+</code></pre>
+
+<p>Eine extreme Anwendung dieses Prinzips nennt man CSS-Sprites: dabei werden möglichst viele Bilder in einer Bild-Datei zusammengefaßt. Falls viele kleine Icons verwendet werden, kann das die Darstellung der Webseite erheblich beschleunigen. </p>
+
+<p><img  alt="Abbildung 42: CSS Sprites von Yahoo" src="/images/image147.png" /></p>
+
+<p>So könnte der CSS Code aussehen7:</p>
+
+<pre><code>.icon{
+  display:block;
+  padding:8px 0 9px 40px;
+  background:url(http://us.i1.yimg.com/pa-icons2.gif) 5px 3px no-repeat;
+}
+
+#messenger .icon{
+   padding-left:31px;
+   background-position:2px -497px;
+}
+#music .icon{
+   background-position:5px -197px;
+}
+</code></pre>
+
+<p>Achtung: auf Touch-Geräten wie Tables und Smartphones gibt es kein :hover! Deswegen sollte man :hover nur zur Dekoration, nicht aber für wichtige Funktionen verwenden!</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/css-layout/rahmenbedingungen/">← <span class="article">Rahmenbedingungen für Layout</a></li>
+    
+    
+      <li><a href="/css-layout/selektoren/">CSS Selektoren →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        
+        <h2>Kapitel</h2>
+        <hr>
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Geschichte der Cascading Style Sheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/css-layout">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/16/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/17/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/19/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/21/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/22/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/23/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/24/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/25/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/26/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">Copyright &copy; 2011 by <a href="#">Brigitte Jellinek</a>.<br /><span class="sponsor-line"></p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    $('ul.nav ul.sub').hide();
+    $('ul.nav li.active ul.sub').show();
+  });
+</script>
+</body> 
+</html>
+

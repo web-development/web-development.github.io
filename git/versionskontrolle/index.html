@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Versionskontrolle</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,42 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Versionskontrolle</h2>
+                          </div>
+			
+			
+			<p>Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die naive Lösung: wer das Dokument ändert speichert es unter einen neuen Verisonsnummer:</p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<p><img  alt="Abbildung 139: Dateien ohne Versionskontrollsystem - viele Kopien" src="/images/image354.png" /></p>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<p>Diese Methode funktioniert aber nicht mehr, sobald zwei Personen gleichzeitig unabhängig voneinander Änderungen durchführen.</p>
+
+<p>Die professionelle Lösung ist ein Versionskontrollsystem. Die englische Wikipedia enthält einen Überblick über verschiedene Systeme (siehe Abbildung 136).</p>
+
+<p><img  alt="Abbildung 140: Überblick über Versionskontrollsysteme aus der Wikipedia13" src="/images/image355.png" /></p>
+
+<p>Aktueller Stand der Technik ist die Verwendung eines verteilten Versionskontrollsystems wie git oder Mercurial, ältere Projekte verwenden noch Subversion (SVN). Bei MMT wird im Fachbereich Web hauptsächlich git, im Fachbereich game teilweise auch SVN verwendet.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/git/">← <span class="article">GIT</a></li>
+    
+    
+      <li><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -326,7 +310,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/git">GIT</a>
+            <li class="active"><a href="/git">GIT</a>
               <ul class="sub">
                 
                   
@@ -334,7 +318,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      <li class="active"><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
                       
                     
                       
@@ -356,8 +340,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

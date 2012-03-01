@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Graceful Degradation</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,105 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Graceful Degradation</h2>
+                          </div>
+			
+			
+			<p>Der englische Begriff ‚graceful degradation’ könnte man als „allmähliche Funktionsminderung“ übersetzen, er bedeutet ungefähr: „funktioniert auch ohne … gut.“</p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<p>Das dahinter stehende Prinzip lautet: für die verschiedenen Ausgabemedien sollen nicht verschiedene Versionen einer Webseite erstellt werden, sondern alle Ausgabemedien werden mit einem Dokument bedient. </p>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<p>Wenn der Browser Javascript, Flash, CSS unterstützt, dann soll die Website besonders schön, interaktiv, praktisch sein. Wenn der Browser etwas nicht unterstützt, dann soll die Website immer noch lesbar und benutzbar bleiben. </p>
+
+<p>Schlechtes Beispiel: Bild als Überschrift</p>
+
+<p>Als Überschrift einer Seite soll nicht blos ein Text sondern eine komplexe Grafik angezeigt werden:</p>
+
+<pre><code>&lt;img src="mmtlogo-400.png"&gt;
+</code></pre>
+
+<p>Das sieht zwar wie eine Überschrift aus – wenn das Bild geladen wird – die Information ist aber für eine Suchmaschine oder ein Braille-Ausgabegerät nicht lesbar. </p>
+
+<p>Besser wäre:</p>
+
+<pre><code>&lt;h1&gt;&lt;img src="mmtlogo-400.png" alt="MultiMediaTechnology"&gt;&lt;/h1&gt;
+</code></pre>
+
+<p>In manchen Situation hat man aber nur folgenden Code im HTML, und will das Bild nur über CSS darstellen:</p>
+
+<pre><code>&lt;h1&gt;MultiMediaTechnology&lt;/h1&gt;
+</code></pre>
+
+<p>Ein Beispiel für so eine Situation ist z.B: ein Wordpress Theme. In der H1 wird er Titel des Blogs angezeit, die Gestaltung der Darstellung erfolgt nur mit CSS.</p>
+
+<p>Gutes Beispiel: Image Replacement</p>
+
+<p>Der Text wird normal im HTML-Code eingegeben. Es wird aber auch ein Bild in der richtigen Schriftart erstellt.  Bei CSS-fähigen Browsern wird der Text versteckt und das Bild angezeigt. Browser ohne CSS und Suchmaschinen verwenden einfach den Text:</p>
+
+<pre><code>&lt;style&gt;
+h1#bildStattText {
+
+   /* schiebt den "echten text" extrem weit nach links */
+   text-indent:-10000px;
+   overflow:hidden;
+   background: url(mmtlogo-400.png);
+   /* hoehe und breite der grafik angeben! */
+   height:140px;
+   width:400px;
+}
+&lt;/style&gt;
+
+&lt;h1 id="bildStattText"&gt;MultiMediaTechnology&lt;/h1&gt;
+</code></pre>
+
+<p>Das Bild kann ausgetauscht werden indem man das Stylesheet ändert, ohne Eingriff in den HTML-Code.</p>
+
+<p>Schlechtes Beispiel: Navigationsmenü mit Bildern</p>
+
+<p>Ein Navigationsmenü wird mit Tabellen und Bildern aufgebaut:</p>
+
+<pre><code>&lt;table cellspacing="1"&gt;
+   &lt;tr&gt;
+      &lt;td&gt;&lt;a href="home.html"&gt;&lt;img src="1.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="news.html"&gt;&lt;img src="2.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="portfotdo.html"&gt;&lt;img src="3.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="contact.html"&gt;&lt;img src="4.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>Wieder gilt: die Information ist für eine Suchmaschine oder ein Braille Ausgabegerät nicht lesbar. Für diese „Kunden“ wären Links mit normalen Texten besser. </p>
+
+<pre><code> &lt;ul&gt;
+    &lt;li&gt;&lt;a href="home.html"&gt;home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="news.html"&gt;news&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="portfolio.html"&gt;portfolio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;contact&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+</code></pre>
+
+<p>Im nächsten Kapitel lernen Sie eine Methode kennen wie Sie aus dieser Liste ein horizontales Menü machen.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/css/css/">← <span class="article">Geschichte der Cascading Style Sheets</a></li>
+    
+    
+      <li><a href="/css-layout/">CSS - Layout →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -138,7 +185,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/css">CSS</a>
+            <li class="active"><a href="/css">CSS</a>
               <ul class="sub">
                 
                   
@@ -154,7 +201,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      <li class="active"><a href="/css/graceful/">Graceful Degradation</a></li>
                       
                     
                   
@@ -356,8 +403,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

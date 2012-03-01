@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Formular und PHP</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,55 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Formular und PHP</h2>
+                          </div>
+			
+			
+			<p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur Verfügung gestellt. </p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<p>$_GET</p>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<p>Dieses Array enthält die Parameter einer GET-Anfrage. </p>
+
+<p>„Superglobal“ bedeutet, dass das Array in jedem Teil des PHP-Programmes sichtbar ist. Ein Array in PHP kann nicht nur Integers als Index haben (z.B. $a[0]) sondern auch Strings (z.B. $a[‘salzburg’])
+Um die Bestellung aus dem Formular in Abbildung 49 (Seite 76) zu verarbeiten, könnte folgendes Programm verwendet werden:</p>
+
+<?php
+          $anzahl  = $_GET['anzahl'];
+          $adresse = $_GET['adresse'];
+
+          echo("<p>Ihre Bestellung über $anzahl Flugzeuge ist eingelangt</p>");
+          echo("<p>Die Flugzeuge werden binnen 1 Monat an $adresse geliefert</p>");
+?>
+<p>Dabei wird aber die Eingabe noch gar nicht geprüft.  In dieser minimalen Version des Bestellprogramms senden wir die Daten einfach vom Server per E-Mail weiter:</p>
+
+<p>mail(  </p>
+
+<pre><code>     "ich@fh-salzburg.ac.at",                                // To:
+     "Bestellung von $anzahl Flugzeugen",                    // Subject:
+     "Lieferung von $anzahl Flugzeugen an Adresse $adresse"  // Text der E-Mail ); Im Sommersemester lernen Sie mehr über PHP.
+</code></pre>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/formulare/17/">← <span class="article">Daten absenden</a></li>
+    
+    
+      <li><a href="/formulare/19/">Formular und Javascript →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -210,7 +207,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/formulare">FORMULARE</a>
+            <li class="active"><a href="/formulare">FORMULARE</a>
               <ul class="sub">
                 
                   
@@ -226,7 +223,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      <li class="active"><a href="/formulare/18/">Formular und PHP</a></li>
                       
                     
                       
@@ -356,8 +353,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

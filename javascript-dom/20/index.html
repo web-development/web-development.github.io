@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Hintergründe</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,149 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Hintergründe</h2>
+                          </div>
+			
+			
+			<p>Javascript ist eine Programmiersprache die in HTML eingebettet und vom Browser interpretiert wird. Im Browser ist der Wirkungsbereich von Javascript auf das Fenster und das aktuelle Dokument beschränkt – es kann nicht die Festplatte formatieren oder Excel starten. </p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<p>Neben der Verwendung für kleine Effekte im Browser hat Javascript noch weitere wichtige Anwendungsgebiete:</p>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<ul>
+  <li>
+    <p>Als „AJAX“ zum Nachladen von Daten – das macht das Web viel interaktiver und angenehmer in der Benutzung. </p>
+  </li>
+  <li>
+    <p>Mit Javascript können Webseiten auch „offline“ – also ohne Verbindung zum Internet und dem Webserver – im Browser weiterarbieten. </p>
+  </li>
+  <li>
+    <p>Der Server Node JS ist ein (Web)Server, den man mit Javascript programmieren kann. Er wird besonders für realtime-applikationen im Web eingesetzt, z.B. für Spiele.</p>
+  </li>
+  <li>
+    <p>Javascript wird in einigen Programmen als Makro-Sprache verwendet, z.B. seit 2003 in Indesign und Illustrator.</p>
+  </li>
+  <li>
+    <p>Die No-SQL Datenbanken CouchDB und MongoDB verwendet Javascript als Abfragesprache.</p>
+  </li>
+  <li>
+    <p>Unter dem Namen Actionscript wird eine Variante von Javascript in Flash verwendet. </p>
+  </li>
+</ul>
+
+<h2 id="javascript-und-java">Javascript und Java</h2>
+<p>Es gibt noch eine zweite Programmiersprache mit sehr ähnlichem Namen: Java. Die beiden zu verwechseln ist recht peinlich. Die Verwechslung ist übrigens beabsichtigt: Im Jahr 1995 gab es einen großen Hype rund um Java, Netscape wollte davon profitieren und nannte die neue Skriptsprache im Browser „Javascript“. </p>
+
+<p>Javascript</p>
+
+<p>Java</p>
+
+<p>Wer hat’s erfunden?</p>
+
+<p>Netscape / Brendan Eich</p>
+
+<p>Sun / James Gosling</p>
+
+<p>Interpretiert Sprache</p>
+
+<p>Kompilierte Sprache</p>
+
+<p>Typbindung</p>
+
+<p>Wenige Datentypen, Probleme werden erst zur Laufzeit erkannt</p>
+
+<p>Datentypen und Klassen werden streng unterschieden und zur Compilezeit geprüft</p>
+
+<p>Verwendung</p>
+
+<p>Im Webbrowser, am Webserver, in Flash, in Illustrator und Indesign</p>
+
+<p>Überall (Chipkarten, am Server, im Browser, im Handy)</p>
+
+<p>Projekte</p>
+
+<p>Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc. </p>
+
+<p>Alle, auch Großprojekte mit vielen „Mannjahren“</p>
+
+<p>ProgrammiererInnen</p>
+
+<p>Auch Web-DesignerInnen</p>
+
+<p>Nur InformatikerInnen</p>
+
+<p>Objektorientierung</p>
+
+<p>Objekte und Prototypen</p>
+
+<p>Objekte und Klassen</p>
+
+<h2 id="geschichte-von-javascript">Geschichte von Javascript</h2>
+
+<p>Javascript wurde ursprünglich bei Netscape von Brendan Eich erfunden, und dann von verschiedenen Herstellern weiterentwickelt. Es war eines der Schlachtfelder im Browser-War: Microsoft und Netscape versuchten durch verschiedene Implementierungen die Position des eigenen Browsers zu verbessern und Webseiten im gegnerischen Browser unbrauchbar zu machen. </p>
+
+<p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Mit dem „Document Object Model“ (DOM) wurde der Zugriff auf die Webseite vereinheitlicht. Libraries wie Prototype oder jQuery ebenen die letzten Unterschiede noch aus. </p>
+
+<p>Lange Zeit waren kleine Javascript-Programme eine relative unabhängige Ergänzung für Web-Applikationen. Ein Beispiel dafür wäre ein Javascript-Kalender der die Eingabe eines Datums in ein Eingabefeld erleichtert. </p>
+
+<p>Seit 2005 wir unter dem Schlagwort AJAX Javascript eng mit der serverseitigen Webapplikation verzahnt: AJAX steht für asynchrones Nachladen von Teilen der Webseite über Javascript. </p>
+
+<p>Seit ca. 2008 sind offline-fähige Javascript-Applikationen möglich: Der Browser speichert alle notwendigen Teil der Website permanent ab, und kann die Applikation auch benutzen wenn keine Internetverbindung (mehr) besteht. Dies Applikationen haben z.B: auf dem iPad eine große Bedeutung.</p>
+
+<p>Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint. </p>
+
+<p><img  alt="Abbildung 56: Offline Applikation everytimezone.com" src="/images/image252.png" /></p>
+
+<h2 id="document-object-model">Document Object Model</h2>
+
+<p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (die Webseite oder auch ein XML- Dokument) von einer objektorientierten Skriptsprache aus manipuliert werden kann. Am 1. Oktober 1998 wurde das DOM eine offizielle W3-Empfehlung (recommendation) in der Version 1. 0. </p>
+
+<p>Das DOM einer Webseite kann man sich als Baum vorstellen, ähnlich der Ordnerstruktur im Dateisystem.  Sie kennen diese Idee schon von CSS und den CSS-Selektoren.</p>
+
+<p>In folgendem Beispiel ist der markierte &lt;li&gt;-Tag innerhalb des &lt;ol&gt;-Tags, der &lt;li&gt;-Tag enthält wiederum einen &lt;a&gt;-Tag. </p>
+
+<pre><code>  &lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;Navigation&lt;/p&gt;
+    &lt;h1&gt;Überschrift&lt;/h1&gt;
+    &lt;div class="intro"&gt;
+    &lt;h2&gt;Dies und Das&lt;/h2&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href="#bla"&gt;erster Link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#bla"&gt;zweiter Link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;/div&gt; ... Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:
+</code></pre>
+
+<ul>
+  <li>Mache ein beliebiges Element des DOM unsichtbar </li>
+</ul>
+
+<p>(z. B. die ganze Liste)
+* Ändere den Style eines beliebigen Elements </p>
+
+<p>(z. B. die Schriftart der Überschrift)
+* Füge neue Elemente ein (z. B. drei zusätzliche Listenpunkte)</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/javascript-dom/">← <span class="article">Javascript und das Document Object Model (DOM)</a></li>
+    
+    
+      <li><a href="/javascript-dom/21/">Basic Javascript →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -238,7 +329,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/javascript-dom">JAVASCRIPT DOM</a>
+            <li class="active"><a href="/javascript-dom">JAVASCRIPT DOM</a>
               <ul class="sub">
                 
                   
@@ -246,7 +337,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      <li class="active"><a href="/javascript-dom/20/">Hintergründe</a></li>
                       
                     
                       
@@ -356,8 +447,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

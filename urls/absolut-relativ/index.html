@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Absolute und relative URLs</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,96 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Absolute und relative URLs</h2>
+                          </div>
+			
+			
+			<p>URLs werden in CSS und HTML an vielen Stellen verwendet: bei Links und Bilder, beim Verweis auf externe Stylesheets, externe Javascript-Dateien, etc.  An all diesen Stellen können Sie URLs in den hier beschriebenen Schreibweisen verwenden.</p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<p>(Die „absolute“ und „relative“ Schreibweise wurde von den Pfadangaben im UNIX-Dateisystem übernommen; auch die Pfadangaben von DOS/Windows und von CD-ROMs funktionieren ähnlich.)
+Nehmen wir an, in der Datei http://mediacube.at/pix/weg.html seien folgende drei URLs enthalten:</p>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<p>absolut</p>
+
+<p>beginnt mit Protokoll
+http://mediacube.at/pix/weg-zur-saline.jpg
+relativ zum Webserver</p>
+
+<p>beginnt mit /
+/pix/weg-zur-saline.jpg
+relativ zur Datei
+weg-zur-saline.jpg
+Bei den relativen URLs muss man die URL des enthaltenden Dokuments und die relative URLs zusammen—addieren, um zu einer absoluten URL zu kommen.</p>
+
+<p>http://mediacube.at/pix/weg.html   +     /pix/weg-zur-saline.jpg  = </p>
+
+<p>http://mediacube.at/pix/weg-zur-saline.jpg  </p>
+
+<p>und</p>
+
+<p>http://mediacube.at/pix/weg.html   +     weg-zur-saline.jpg  = </p>
+
+<p>http://mediacube.at/pix/weg-zur-saline.jpg  </p>
+
+<p>Mit einer anderen Ausgangs-URL ist das Ergebnis natürlich anders:</p>
+
+<p>http://multimediatechnology.at/2008/09/22/weg.html </p>
+
+<pre><code>                    +     /pix/weg-zur-saline.jpg  =  http://multimediatechnology.at/pix/weg-zur-saline.jpg  
+</code></pre>
+
+<p>und:</p>
+
+<p>http://multimediatechnology.at/2008/09/22/weg.html  </p>
+
+<pre><code>                                +     weg-zur-saline.jpg  =  http://multimediatechnology.at/2008/09/22/weg-zur-saline.jpg  
+</code></pre>
+
+<p>Relativen URLs können selbst wieder Ordnernamen enthalten:</p>
+
+<p>http://multimediatechnology.at/showcase-2008.html </p>
+
+<pre><code>                        +  2008/07/31/mmt-auf-facebook.html  =  http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+</code></pre>
+
+<p>Zwei Punkte als Ordnernamen bedeuten dabei: „raus aus dem aktuellen Ordner“:</p>
+
+<p>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html </p>
+
+<pre><code>                                +     ../../mmt-auf-facebook.html  =  http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+</code></pre>
+
+<p>Mit dieser Schreibweise kann man auch Unsinn machen:</p>
+
+<p>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html </p>
+
+<ul>
+  <li>../../05/../04/17/rattenscharfes-computergame.html  = 
+http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
+</ul>
+
+<p>All diese Berechnungen finden im Webbrowser statt, und sind völlig unabhängig davon, wie der Webserver die URL interpretiert. So könnte z.B die letzten URL „in Wirklichkeit“ gar nicht auf Ordner mit Namen 2008, 04, 17 verweisen, sondern eine Datenbanksuche nach „2008-04-17“ nach sich ziehen – das ist Sache des Servers.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/urls/">← <span class="article">URLs</a></li>
+    
+    
+      <li><a href="/urls/konfiguration/">Konfiguration →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -186,7 +224,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/urls">URLS</a>
+            <li class="active"><a href="/urls">URLS</a>
               <ul class="sub">
                 
                   
@@ -194,7 +232,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      <li class="active"><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
                       
                     
                       
@@ -356,8 +394,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

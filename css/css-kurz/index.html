@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Development</title>
+  <title>Lehrbuch Web-Development - Kurzvorstellung von Stylesheets</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -48,58 +48,76 @@
 
 
 
-	<article class="row">
+	<!-- body -->
+	<article id="body" class="row">
 		
 		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Kurzvorstellung von Stylesheets</h2>
+                          </div>
+			
+			
+			<p>Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:</p>
 
-			
-				<h2 class="title">Web Development</h2>
-			
-			
-			<p>Softwareentwicklung für das World Wide Web <br />
-für das Informatik- oder Medieninformatik-Studium.</p>
+<pre><code>&lt;style type="text/css"&gt;
+p {
+    font-family: Calibri, Helvetica, Arial, sans-serif; 
+    font-size: 13px;
+}
+h1,h2 {
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+body { background-color: green; }
+&lt;/style&gt; Listing 1:  Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen
+</code></pre>
 
-<div class="alert alert-error">
-Diese Site ist erst im Aufbau, die Daten sind noch nicht fertig
-konvertiert, einige Abbildungen fehlen noch.
+<p>An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völig anders als die von HTML. </p>
+
+<h2 id="schriftart">Schriftart</h2>
+<p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er. (Man kann Schriften auch verlinken - aber das ist mehr ein Thema für MMA).</p>
+
+<p>In Zeile 2 bis 5 werden zwei Anweisungen für Fließtext gegeben (HTML-Tag &lt;p&gt;): die Schriftfamilie in Zeile 3 und die Schriftgröße in Zeile 4. </p>
+
+<p>In Zeile 3 Vergleichen Sie Zeile 3 mit Zeile 7: Schriftnamen die ein Leerzeichen enthalten müssen in Anführungszeichen gesetzt werden, wie “Trebuchet MS” in Zeile 6. </p>
+
+<p>Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:</p>
+
+<p>sans-serif serif cursive fantasy monospace. </p>
+
+<h2 id="schriftgre">Schriftgröße</h2>
+<p>Die Schriftgrößen-Angabe in Zeile 4 verwendet Pixel als Maßeinheit. Diese Maßeinheit macht bei der Darstellung am Screen,besonders in Kombination mit Pixel-Bildern Sinn. </p>
+
+<h2 id="abstze">Absätze</h2>
+<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:</p>
+
+<p><img  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" src="/images/image066.png" /></p>
+
+<p>Mit text-align können Sie die Ausrichtung des Texts im Absatz festlegen: left, right, center oder justify (Blocksatz). Blocksatz wird aber am Web bis jetzt sehr wenig verwendet,da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei  im Blocksatz oft häßliche Löcher. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird justify besser verwendbar.</p>
+
+<p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit text-indent festlegen. Die Zeilenhöhe wird mit line-height festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. 1.5em – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. </p>
+
+<h2 id="css-erforschen-mit-firebug">CSS erforschen mit Firebug</h2>
+<p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS hilft das Firefox Add-On „Firebug“.</p>
+
+<p><img  alt="Abbildung 19: Firefox Add-On Firebug" src="/images/image072.png" /></p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/css/">← <span class="article">CSS - Einstieg</a></li>
+    
+    
+      <li><a href="/css/css/">Geschichte der Cascading Style Sheets →</a></li>
+    
+  </ul>
 </div>
 
-<p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
-zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
-unter der CC-NC-SA Lizenz auf github publiziert. </p>
-
-<h3 id="aufbau">Aufbau</h3>
-
-<p>Teil 1 (die ersten 7 Kapitel) entsprechen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
-
-<h3 id="lernergebnisse">Lernergebnisse</h3>
-
-<p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
-
-<ul>
-  <li>Ich kann statische Webseiten erstellen, und habe auch schon eine kleine Web-Site vollständig umgesetzt.</li>
-  <li>Ich verstehe wie das Web funktioniert, kann das beschreiben, dabei die Fachwörter Browser, Webserver, HTTP, URL, HTML, CSS, Javascript, PHP richtig verwenden</li>
-  <li>Ich kann HTML5, CSS3, Javascript und PHP Code erkennen und lesen, weiss welche Aspekte der Website von welchem Code beeinflusst werden</li>
-  <li>Ich kann im HTML, CSS und einfachem Javscript Code Fehler suchen, finden und beheben.</li>
-  <li>Ich verstehe wie Ereignisse in Javascript verwendet werden, kann einfache User-Interaktion mit Clicks programmieren* Ich kenne die Problemstellung der Browserkompatiblität und verschiedener Ausgabegeräte für Webseiten, und kann meine Webseiten so gestalten, dass sie auf allen Browsern verwendbar sind * Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil beitragen. Ich kann das von DesignerInnen von AutorInnen gelieferte Material einbinden.</li>
-  <li>In meinem Portfolio - einer statischen Website - zeige ich mehrere kleine Übungs-Seiten und ein oder zwei Projekte</li>
-</ul>
-
-<p>Das Ergebnis von Teil 2 sollte sein:</p>
-
-<ul>
-  <li>Ich kann Webapplikationen bestehend aus Frontend und Backend erstellen, und habe auch schon eine kleine Applikation inklusive Datenbank vollständig umgesetzt.</li>
-  <li>Ich kenne die Arbeitsteilung in einem Web-Projekt und kann meinen (technischen) Teil mit Javascript, PHP und MySQL beitragen.</li>
-  <li>Ich kann die Qualität einer Webseite beurteilen. Ich kann mehere Qualitäts-Kriterien benennen und kann sie bei einem spezifirschen Projekt gegeneinander abwägen.</li>
-  <li>Ich kenne die REST-Prinzip, ich kenne Sicherheitsprobleme und Lösungsansätze, ich kann AJAX einsetzen.</li>
-  <li>In meinem Blog zeige ich mehrere Artikel über Aspekte einer Web-Applikation inklusive Code-Beispielen und Demos.</li>
-</ul>
-
-
-                </div>
+		</div>
 		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
@@ -138,7 +156,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
               </ul>
             </li>
           
-            <li ><a href="/css">CSS</a>
+            <li class="active"><a href="/css">CSS</a>
               <ul class="sub">
                 
                   
@@ -146,7 +164,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      <li class="active"><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
                       
                     
                       
@@ -356,8 +374,9 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div>
 <!-- sidebar -->
 
-			
+		
 	</article>
+	<!-- /body -->
 
 
   <div class="row">

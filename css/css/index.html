@@ -1,0 +1,591 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Geschichte der Cascading Style Sheets</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Geschichte der Cascading Style Sheets</h2>
+                          </div>
+			
+			
+			<p>Von Anfang an sollte eine HTML-Datei keine Information darüber enthalten, wie der Text dargestellt werden soll - keine Schriftart oder Schriftgröße. HTML sollte nur strukturelle Information enthalten („das ist eine Überschrift“ aber nicht „Helvetica 24pt“). Die Formatierungs-Information sollte in sogenannten „Stylesheets“ gespeichert werden, das Format für die Stylesheets war aber noch nicht definiert. Im Jahre 1993 sah eine typische Webseite so aus</p>
+
+<pre><code>&lt;html&gt;&lt;body&gt;
+&lt;h1&gt;Das Studium&lt;/h1&gt;
+&lt;p&gt;Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>Da es keine Stylesheets gab „erfand“ Netscape ab 1994 zusätzliche HTML-Tags, die die Darstellung der Webseite festlegen. Andere Browser übernahmen diese Tags von Netscape. </p>
+
+<pre><code>&lt;html&gt;&lt;body&gt;
+&lt;h1&gt;&lt;font face="Arial" color="blue"&gt;Das Studium&lt;/font&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;font size="+1"&gt;S&lt;/font&gt;tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...&lt;/p&gt;
+&lt;p&gt;&lt;font size="+1"&gt;P&lt;/font&gt;rojekte und Praxissemster stellen schon während des Studiums die Verbindung...&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code komplizierter und unübersichtlicher. Erst ab ab 1995 wurde endlich an den Standards für Stylesheets gearbeitet, seit den frühen 2000ern ist die Unterstützung in den gängigen Browsern vorhanden. So sieht nun eine HTML-Seite mit separatem Stylesheet aus:</p>
+
+<p>Die html-Datei</p>
+
+<pre><code>&lt;link rel="stylesheet"
+      type="text/css"
+      href="fh.css"&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Das Studium&lt;/h1&gt;
+&lt;p&gt;Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>Die Datei fh. css</p>
+
+<pre><code>h1 { 
+    font-family: Arial;
+    color: blue; 
+}
+p:first-letter {
+
+    font-size: large;
+}
+</code></pre>
+
+<p>Mit der Trennung von Stylesheet und HTML wurde HTML wieder einfacher und übersichtlicher. Besonders das nachträgliche Verändern der Gestaltung wurde vereinfacht. 
+Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
+
+<ul>
+  <li>Zusätzliche Gestaltungsmöglichkeiten</li>
+  <li>Einheitliche Gestaltung von mehreren Webseiten</li>
+  <li>Arbeitsteilung zwischen DesignerInnen (die CSS erstellen) und RedakteuerInnen (die Inhalte erstellen)</li>
+</ul>
+
+<p>Aber Achtung: CSS ist nicht die Lösung jedes Problems:</p>
+
+<ul>
+  <li>Mit Stylesheets können Sie nur Elemente verändern, die schon in der HTML-Datei vorhanden sind. Es können keine neuen Elemente eingefügt werden. </li>
+  <li>Um ein Stylesheet zu erstellen, muss die DesignerIn die HTML-Tags kennen, z. B. wissen, dass h1, h2, h3 für die Überschriften stehen. </li>
+  <li>Damit das Stylesheet wirkt, muss die RedakteurIn, die das HTML-Dokument erstellt, die richtigen HTML-Tags verwenden, z. B. Überschriften wirklich mit h1, h2, h3 formatieren, und nicht mit b, i, font. </li>
+</ul>
+
+<h2 id="stylesheet-syntax">Stylesheet Syntax</h2>
+
+<p>Beispiel</p>
+
+<pre><code>h1,h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: lightblue;
+}
+body {
+  margin-left: 150px;
+  background-color: white;
+} 
+p {
+  text-align: justify;
+}
+</code></pre>
+
+<p>Eine Stylesheet-Regel („Rule“)  besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann. </p>
+
+<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Sie können auch mehrere Elemente durch ein Komma trennen. In diesem Falle werden für alle Elemente die selben Style -Angaben definiert, (siehe h1,h2 in obigem Beispiel). </p>
+
+<p>Sie können beliebig Zeilenumbrüche einfügen, diese werden ignoriert. </p>
+
+<p>Style für mehrere Seiten</p>
+
+<p>Die Seiten einer gesamten Website haben meist ein einheitliches Aussehen. Dies können Sie erreichen, wenn Sie für jede Webseite dieselbe CSS Datei verwenden. Dazu müssen Sie in jede HTML-Datei die CSS Datei mittels folgender Anweisung einbinden:</p>
+
+<link rel="stylesheet" href="mystyle.css" />
+
+<p>Diese Zeile sollte innerhalb des head Bereiches der HTML-Datei stehen (da sonst die Darstellung der Seite verzögert werden kann5). mysyle.css könnte etwa so aussehen wie im vorigen Beispiel. </p>
+
+<p>Style für eine Seite</p>
+
+<p>Wenn Sie einen Style  nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches. </p>
+
+<pre><code>&lt;style&gt;
+    h1,h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      color: lightblue
+    }
+&lt;/style&gt;
+</code></pre>
+
+<p>Style für einen Tag</p>
+
+<p>Style Angaben können auch direkt in einen einzelnen HTML-Tag geschrieben werden. In diesem Fall gilt die Angabe nur für diesen ganz speziellen Tag. </p>
+
+<p>Um einen style für einen einzelnen Tag zu definieren, müssen Sie innerhalb des Tags das Attribut style verwenden. </p>
+
+<pre><code>&lt;h1 style="color:red; text-align:center;"&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
+</code></pre>
+
+<p>Gültigkeitsbereich einer Style Angabe</p>
+
+<p>Sie können innerhalb einer HTML-Datei sowohl eine externe Style Sheet Datei verwenden (eingebunden durch eine entsprechende Anweisung im head Bereich) als auch eine lokale Definition im head Bereich angeben, als auch spezielle Angaben für einzelne Tags erstellen. </p>
+
+<p>Was passiert nun, wenn die verschiedenen Style-Deklarationen sich widersprechen? Die Angaben bei einem einzelnen Tag haben immer Vorrang. danach folgen die lokalen Angabe im head Bereich und erst zum Schluß die externe Datei. „Je näher beim Tag desto stärker wirkt es.“</p>
+
+<h2 id="klassen-ids-spans-und-divs">Klassen, IDs, SPANs und DIVs</h2>
+<p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite. Oft möchten Sie aber ein oder zwei Absätze anders formatieren als die anderen Absätze. Zu diesem Zweck können Sie sich im Stylesheet noch weitere Formatvorlagen - sogenannte “Klassen” - definieren:</p>
+
+<pre><code>.wichtig { color: red; }
+</code></pre>
+
+<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt. Jedem normalen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class. </p>
+
+<pre><code>&lt;p&gt;Eine &lt;b class="wichtig"&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+&lt;p class="wichtig"&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
+&lt;p&gt;Ein ganz normaler Absatz&lt;/p&gt;
+</code></pre>
+
+<p>Zur „normalen“ Wirkung des HTML-Tags kommt nun die Formatierung durch die Klasse hinzu: der Text „ganz wichtige“ und „Ein ganz wichtiger Absatz“ ist in diesem Beispiel also rot. Eine Klasse kann also mehrmals in einem Dokument verwendet werden. Ein Tag kann mehrere Klassen erhalten, diese werden durch Leerzeichen getrennt im class-Attribut angeführt.</p>
+
+<pre><code>&lt;p class="wichtig eilmeldung"&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
+</code></pre>
+
+<p>Zur eindeutigen Kennzeichnung von Tags wird das Attribut id verwendet:</p>
+
+<pre><code>&lt;p&gt;Eine &lt;b class="wichtig"&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+&lt;p class="wichtig"&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
+&lt;p id="impressum"&gt;Das einzige Impressum dieser Seite&lt;/p&gt;
+</code></pre>
+
+<p>Auf diese eindeutigen IDs kann in CSS mit der Raute (englisch: „hash sign“) referenziert werden:</p>
+
+<pre><code>#impressum { background-color: #DDD; }
+</code></pre>
+
+<p>Sowohl Klassen als auch IDs können mit Tags kombiniert werden um einen komplexen Selektor zu bilden, aber das macht nur bei Klassen wirklich Sinn:</p>
+
+<pre><code>.wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
+p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
+
+b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
+
+#impressum { background-color:#ddd; }   /* nur der Tag mit der id #impressum */
+p#impressum { background-color:#ddd; } /* == nur der p-Tag mit der id #impressum */
+
+b#impressum { background-color:#ddd; }   /* nix! */
+</code></pre>
+
+<p>Die Firefox-Erweiterung Firebug zeigt Tags, Klassen und IDs in dieser Schreibweise an:</p>
+
+<p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die  beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
+
+<pre><code>&lt;p&gt;Es gibt hier ganz &lt;span class="wichtig"&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
+</code></pre>
+
+<p>Die Worte „besonders interessante“ erscheinen rot. </p>
+
+<h2 id="maeinheiten-in-stylesheets">Maßeinheiten in Stylesheets</h2>
+
+<p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten: px (Pixel) , em (=Breite des Buchstaben M) , ex (Höhe des Buchstaben X),  % (Prozent), cm (Zentimeter), in (Inch).   Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.</p>
+
+<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil (jeweils werte von 0 bis 255) in verschiedenen Schreibweisen: Dezimal rgb(16,0,255), hexadezimal #10F oder zweistellig hexadezimal #1000FF. Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt: rgba(153, 134, 117, 0.2);</p>
+
+<p>Tool-Tipp: Mit dem Firefox AddOn Colorzilla kann man die Farben einer Webseite auslesen und in verschiedenen Schreibweisen kopieren:</p>
+
+<p><img  alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" src="/images/image073.png" /></p>
+
+<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise url(http://absolute.com/bild.gif) oder url(relativ/bild.gif) zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
+
+<p>Klassisches Box Model</p>
+
+<p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus. </p>
+
+<p><img  alt="Abbildung 21: Darstellung des Box Models von hicksdesign.co.uk" src="/images/image083.png" /></p>
+
+<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt. </p>
+
+<p><img  alt="Abbildung 22: margin, border, padding in Firebug" src="/images/image085.png" /></p>
+
+<p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt. </p>
+
+<p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) bezieht auf den Inhalt, padding, border und margin muss man erst dazu zählen, um den Gesamt-Platzbedarf zu errechnen. Mit der Deklaration box-sizing: border-box kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.  </p>
+
+<p>Die Standard-Darstellung von Absätzen erklärt sich über den margin-top und margin-bottom des &lt;p&gt;-Tags:</p>
+
+<p><img  alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" src="/images/image086.png" /></p>
+
+<p>Farben, Hintergrundfarben, Hintergrundbilder</p>
+
+<p>Die Farbe des Textes wird mit color, die Hintergrundfarbe mit background-color gesetzt.  </p>
+
+<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (background-image). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (background-repeat). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
+
+<p><img  alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" src="/images/image088.png" /></p>
+
+<p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar. </p>
+
+<p>Links formatieren</p>
+
+<p>Der &lt;a&gt;-Tag wird in HTML für zwei sehr unterschiedliche Dinge verwendet: zum Setzen von Links und zum Setzen von Textmarken (auch ‚Anker’ genannt):</p>
+
+<pre><code>&lt;h1&gt;&lt;a name="unis"&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;   
+&lt;a href="http://www.uni-salzburg.at/"&gt;Uni Salzburg&lt;/a&gt;
+Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen. 
+</code></pre>
+
+<p>Um die Darstellung von Links zu verändern muss man in CSS :link oder :visited als Selektoren verwenden. Der Browser unterscheidet dabei zwischen Links die schon einmal besucht wurden (visited) und neuen Links. </p>
+
+<pre><code>a:link, a:visited { text-decoration: none; }
+
+a:link    {color:blue}
+
+a:visited {color:#FF00FF }
+</code></pre>
+
+<p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
+
+<pre><code>a:link, a:visited { 
+   background-image:    url(icon-link.gif);
+   background-position: center right;
+   background-repeat:   no-repeat;
+   padding-right:       9px; 
+}
+</code></pre>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/css/css-kurz/">← <span class="article">Kurzvorstellung von Stylesheets</a></li>
+    
+    
+      <li><a href="/css/graceful/">Graceful Degradation →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        
+        <h2>Kapitel</h2>
+        <hr>
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/css">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/css/css/">Geschichte der Cascading Style Sheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/16/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/17/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/19/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/21/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/22/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/23/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/24/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/25/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/26/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">Copyright &copy; 2011 by <a href="#">Brigitte Jellinek</a>.<br /><span class="sponsor-line"></p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    $('ul.nav ul.sub').hide();
+    $('ul.nav li.active ul.sub').show();
+  });
+</script>
+</body> 
+</html>
+
