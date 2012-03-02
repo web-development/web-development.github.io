@@ -62,67 +62,65 @@
 			
 			<p>URLs werden in CSS und HTML an vielen Stellen verwendet: bei Links und Bilder, beim Verweis auf externe Stylesheets, externe Javascript-Dateien, etc.  An all diesen Stellen können Sie URLs in den hier beschriebenen Schreibweisen verwenden.</p>
 
-<p>(Die „absolute“ und „relative“ Schreibweise wurde von den Pfadangaben im UNIX-Dateisystem übernommen; auch die Pfadangaben von DOS/Windows und von CD-ROMs funktionieren ähnlich.)
-Nehmen wir an, in der Datei http://mediacube.at/pix/weg.html seien folgende drei URLs enthalten:</p>
+<p>Die „absolute“ und „relative“ Schreibweise wurde von den Pfadangaben im UNIX-Dateisystem übernommen; auch die Pfadangaben von DOS/Windows und von CD-ROMs funktionieren ähnlich.
+Nehmen wir an, in der Datei <code>http://mediacube.at/pix/weg.html</code> seien folgende drei URLs enthalten:</p>
 
-<p>absolut</p>
+<dl>
+  <dt>absolut</dt>
+  <dd>beginnt mit Protokoll <code>http://mediacube.at/pix/weg-zur-saline.jpg</code></dd>
+  <dt>relativ zum Webserver</dt>
+  <dd>beginnt mit einem Schrägstrich (Slash) <code>/pix/weg-zur-saline.jpg</code></dd>
+  <dt>relativ zur Datei</dt>
+  <dd><code>weg-zur-saline.jpg</code></dd>
+</dl>
 
-<p>beginnt mit Protokoll
-http://mediacube.at/pix/weg-zur-saline.jpg
-relativ zum Webserver</p>
+<p>Bei den relativen URLs muss man die URL des enthaltenden Dokuments und die relative URLs zusammen—addieren, um zu einer absoluten URL zu kommen.</p>
 
-<p>beginnt mit /
-/pix/weg-zur-saline.jpg
-relativ zur Datei
-weg-zur-saline.jpg
-Bei den relativen URLs muss man die URL des enthaltenden Dokuments und die relative URLs zusammen—addieren, um zu einer absoluten URL zu kommen.</p>
-
-<p>http://mediacube.at/pix/weg.html   +     /pix/weg-zur-saline.jpg  = </p>
-
-<p>http://mediacube.at/pix/weg-zur-saline.jpg  </p>
+<pre><code>http://mediacube.at/pix/weg.html   
+             +     /pix/weg-zur-saline.jpg  = 
+http://mediacube.at/pix/weg-zur-saline.jpg  
+</code></pre>
 
 <p>und</p>
 
-<p>http://mediacube.at/pix/weg.html   +     weg-zur-saline.jpg  = </p>
-
-<p>http://mediacube.at/pix/weg-zur-saline.jpg  </p>
+<pre><code>http://mediacube.at/pix/weg.html   +     weg-zur-saline.jpg  = 
+http://mediacube.at/pix/weg-zur-saline.jpg  
+</code></pre>
 
 <p>Mit einer anderen Ausgangs-URL ist das Ergebnis natürlich anders:</p>
 
-<p>http://multimediatechnology.at/2008/09/22/weg.html </p>
-
-<pre><code>                    +     /pix/weg-zur-saline.jpg  =  http://multimediatechnology.at/pix/weg-zur-saline.jpg  
+<pre><code>http://multimediatechnology.at/2008/09/22/weg.html 
+                        +     /pix/weg-zur-saline.jpg  = 
+http://multimediatechnology.at/pix/weg-zur-saline.jpg  
 </code></pre>
 
 <p>und:</p>
 
-<p>http://multimediatechnology.at/2008/09/22/weg.html  </p>
-
-<pre><code>                                +     weg-zur-saline.jpg  =  http://multimediatechnology.at/2008/09/22/weg-zur-saline.jpg  
+<pre><code>http://multimediatechnology.at/2008/09/22/weg.html  
+                                    +     weg-zur-saline.jpg  = 
+http://multimediatechnology.at/2008/09/22/weg-zur-saline.jpg  
 </code></pre>
 
 <p>Relativen URLs können selbst wieder Ordnernamen enthalten:</p>
 
-<p>http://multimediatechnology.at/showcase-2008.html </p>
-
-<pre><code>                        +  2008/07/31/mmt-auf-facebook.html  =  http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+<pre><code>http://multimediatechnology.at/showcase-2008.html 
+                            +  2008/07/31/mmt-auf-facebook.html  = 
+http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
 </code></pre>
 
 <p>Zwei Punkte als Ordnernamen bedeuten dabei: „raus aus dem aktuellen Ordner“:</p>
 
-<p>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html </p>
-
-<pre><code>                                +     ../../mmt-auf-facebook.html  =  http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+<pre><code>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html 
+                                    +     ../../mmt-auf-facebook.html  = 
+http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
 </code></pre>
 
-<p>Mit dieser Schreibweise kann man auch Unsinn machen:</p>
+<p>Dieser Schreibweise erlaubt auch sehr umständliche Formulierungen:</p>
 
-<p>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html </p>
-
-<ul>
-  <li>../../05/../04/17/rattenscharfes-computergame.html  = 
-http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
-</ul>
+<pre><code>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html 
++     ../../05/../04/17/rattenscharfes-computergame.html  = 
+http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  
+</code></pre>
 
 <p>All diese Berechnungen finden im Webbrowser statt, und sind völlig unabhängig davon, wie der Webserver die URL interpretiert. So könnte z.B die letzten URL „in Wirklichkeit“ gar nicht auf Ordner mit Namen 2008, 04, 17 verweisen, sondern eine Datenbanksuche nach „2008-04-17“ nach sich ziehen – das ist Sache des Servers.</p>
 
@@ -190,7 +188,11 @@ http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
                       
                     
                       
-                      <li ><a href="/css/css/">Geschichte der Cascading Style Sheets</a></li>
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
@@ -218,7 +220,15 @@ http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
                       
                     
                       
-                      <li ><a href="/css-layout/selektoren/">CSS Selektoren</a></li>
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
                       
                     
                   
@@ -258,19 +268,23 @@ http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
                       
                     
                       
-                      <li ><a href="/formulare/16/">Formulare</a></li>
+                      <li ><a href="/formulare/form/">Formulare</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/17/">Daten absenden</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/19/">Formular und Javascript</a></li>
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
                       
                     
                   
@@ -286,11 +300,11 @@ http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
                       
                     
                       
-                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
                       
                     
                       
-                      <li ><a href="/javascript-dom/21/">Basic Javascript</a></li>
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
                       
                     
                   
@@ -306,23 +320,23 @@ http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  </li>
                       
                     
                       
-                      <li ><a href="/jquery/22/">Unobstrusive Javascript</a></li>
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/23/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/24/">Selektieren und Manipulieren mit jQuery</a></li>
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/25/">Interaktion mit jQuery</a></li>
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/26/">Formulardaten Prüfen mit jQuery</a></li>
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
                       
                     
                   

@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - CSS Selektoren</title>
+  <title>Lehrbuch Web-Development - CSS Selektoren im Detail</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -56,11 +56,11 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">CSS Selektoren</h2>
+				<h2 class="title">CSS Selektoren im Detail</h2>
                           </div>
 			
 			
-			<p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (die Webseite oder auch ein XML- Dokument) als Baum (im mathematische Sinne) angesehen werden kann. Mit dieser Vorstellung ergeben sich neue Fachwörter:</p>
+			<p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (HTML oder auch ein XML) als Baum (im mathematische Sinne) angesehen werden kann. Mit dieser Vorstellung ergeben sich neue Fachwörter:</p>
 
 <p>Die Tags werden als Elemente bezeichnet. So ist in folgendem Beispiel das erste li-Element innerhalb des ol-Elements. Das li Element enthält wiederum ein a Element, und dieses einen Text „erster Link“. </p>
 
@@ -77,117 +77,133 @@
     &lt;/div&gt; ...
 </code></pre>
 
-<p>Elemente und Tags undwerden als Nodes oder Knoten bezeichnet. Für die Beziehungen zwischen Nodes werden die Begriffe Eltern, Kind, Nachkommen, Vorfahren verwedent: h1 ist ein Kind von body, „Überschrift“ ist das erste Kind von h1. „Überschrift“ ist damit ein Nachkomme von body.</p>
+<p>Aus der Mathematik (Graphentheorie) ergeben sich die Fachwörter für dei Teile des Baums: Ein Elemente werden als Nodes oder Knoten bezeichnet. Für die Beziehungen zwischen Nodes werden die Begriffe Eltern, Kind, Nachkommen, Vorfahren verwedent: <code>h1</code> ist ein Kind von <code>body</code>, „Überschrift“ ist das erste Kind von <code>h1</code>. „Überschrift“ ist damit ein Nachkomme von <code>body</code>.</p>
 
 <p>Damit haben wir das Vokabular um auch kompliziertere CSS-Selektoren zu verstehen.</p>
 
 <p>In Kapitel 2.2.2 haben Sie CSS Selektoren für Klassen und IDs kennen gelernt. In der CSS 2.1 Spezifikation werden u.a. folgende Schreibweisen für Selektoren beschrieben8:</p>
 
-<table border="1">
-<tr><td>Name
-Muster 
-Beschreibung</td></tr>
-<tr><td>Universal selector
-*
-Stimmt mit jedem Element überein.</td></tr>
-<tr><td>Type selectors
-E
-Stimmt mit jedem E-Element überein</td></tr>
-<tr><td>Grouping
-E, F, G
-Stimmt mit jedem E-, sowie jedem F-, sowie jedem G-Element überein. E, F und G könnten auch komplexere Selektoren sein!</td></tr>
-<tr><td>Descendant selectors
-E F
-Stimmt mit jedem F-Element überein, das ein Nachfahre eines E-Elements ist, also z.B. &lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;.</td></tr>
-<tr><td>Child selectors
-E &gt; F
-Stimmt mit allen F-Elementen überein, die Kindelemente eines Elements E sind, also z.B. &lt;E&gt;bla &lt;span&gt;bla&lt;/span&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/E&gt;.</td></tr>
-<tr><td>The link pseudo-classes
-:link :visited
-Stimmt mit Links überein, deren Ziel noch nicht besucht wurde (:link), oder deren Ziel bereits besucht wurde (:visited).
-The dynamic pseudo-classes
-:active :hover</td></tr>
-:focus
-Stimmt während bestimmter Benutzeraktionen überein.
-<tr><td>Adjacent selectors
-E + F
-Stimmt mit jedem F-Element überein, dem unmittelbar ein Element E vorausgeht, also &lt;E&gt;dies&lt;/E&gt; &lt;F&gt;das&lt;/F&gt;</td></tr>
-<tr><td>Class selectors
-E.warning
-(Nur in HTML, nicht in XML) Stimmt mit jedem E-Element überein, dessen CLASS gleich „mwarning“ ist.</td></tr>
-<tr><td>ID selectors
-E#myid
-Stimmt mit jedem E-Element überein, dessen ID gleich „myid“ ist.
-</td></tr>
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Muster</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Universal selector</td>
+      <td>*</td>
+      <td>Stimmt mit jedem Element überein.</td>
+    </tr>
+    <tr>
+      <td>Type selectors</td>
+      <td>E</td>
+      <td>Stimmt mit jedem E-Element überein</td>
+    </tr>
+    <tr>
+      <td>Grouping</td>
+      <td>E, F, G</td>
+      <td>Stimmt mit jedem E-, sowie jedem F-, sowie jedem G-Element überein. E, F und G könnten auch komplexere Selektoren sein!</td>
+    </tr>
+    <tr>
+      <td>Descendant selectors</td>
+      <td>E F</td>
+      <td>Stimmt mit jedem F-Element überein, das ein Nachfahre eines E-Elements ist, also z.B. <code>&lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>Child selectors</td>
+      <td>E &gt; F</td>
+      <td>Stimmt mit allen F-Elementen überein, die Kindelemente eines Elements E sind, also z.B. <code>&lt;E&gt;bla &lt;span&gt;bla&lt;/span&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/E&gt;</code> .</td>
+    </tr>
+    <tr>
+      <td>The link pseudo-classes</td>
+      <td>:link :visited</td>
+      <td>Stimmt mit Links überein, deren Ziel noch nicht besucht wurde (<code>:link</code>), oder deren Ziel bereits besucht wurde (<code>:visited</code>).</td>
+    </tr>
+    <tr>
+      <td>The dynamic pseudo-classes</td>
+      <td>:active :hover :focus</td>
+      <td>Stimmt während bestimmter Interaktionen überein: auswahl, Maus-Cursor,….</td>
+    </tr>
+    <tr>
+      <td>Adjacent selectors</td>
+      <td>E + F</td>
+      <td>Stimmt mit jedem F-Element überein, dem unmittelbar ein Element E vorausgeht, also <code>&lt;E&gt;dies&lt;/E&gt; &lt;F&gt;das&lt;/F&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Class selectors</td>
+      <td>E.warning</td>
+      <td>(Nur in HTML, nicht in XML) Stimmt mit jedem E-Element überein, dessen CLASS gleich „mwarning“ ist.</td>
+    </tr>
+    <tr>
+      <td>ID selectors</td>
+      <td>E#myid</td>
+      <td>Stimmt mit jedem E-Element überein, dessen ID gleich „myid“ ist.</td>
+    </tr>
+  </tbody>
 </table>
 
 <p>Mit CSS3 kommen u.a. folgende Selektoren dazu:</p>
 
-<table border="1">
-<tr><td>
-Name
-Muster  / Beispiel
-Beschreibung
-Attribute Selector: Begins with
-E[attr^="string"]
-
-a[href^="mailto:"]
-Stimmt mit jedem Element überein, bei dem der Wert des Attributs mit dem geforderten String beginnt.
-The Target 
-
-pseudo-class
-:target
-Stimmt mit dem Element überein, dessen ID mit dem Anker in der URL übereinstimmt. Z.B. bei URL http://at.at/index.html#kontakt stimmt  :target mit &lt;div id="kontakt"&gt; überein
-The UI element states pseudo-classes
-
-
-:enabled
-:disabled
-:checked
-Diese Selektoren beziehen sich auf mögliche Zustände von Eingabefeldern – die werden aber erst im nächsten Kapitel erklärt. 
-Root pseudo-class
-:root
-Stimmt mit der Wurzel des DOM überein, immer <html>
-:nth-child() pseudo-class
-
-:first-child
-:nth-child(13)
-:nth-child(odd)
-:nth-child(even)
-:nth-child(3n+1)
-:last-child
-Zählt die Geschwister des Elements, stimmt mit dem Element überein wenn die Zahl bestimmte Bedingungen erfüllt: erstes Geschwister, 13., ungerade Zahl, gerade Zahl, ….(auch Moduleo 3, 4, n)… letztes.
-:nth-of-type() pseudo-class
-
-img:nth-of-type(odd) 
-    { float: right; }
-img:nth-of-type(even) 
-
-    { float: left; }
-
-Zählt die Elemente dieses Typs, die bis zu dieser Stelle in der DOM vorkamen, …. Im Beispiel also die geraden / ungeraden Bilder.
-Empty pseudo-class
-:empty
- 
-Element ist ganz leer – enthält weder Kinder-Knoten noch Text.
-Pseudo-Element
-E::first-letter
-E::first-line
-
-
-p::first-letter
-
-
-Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nicht explizit drinnen ist: Obwohl im Abstz der erste Buchstabe nicht extra in einen Tag eingeschlossen ist kann man ihn mit p::first-letter auswählen.
-
-
-</html></td></tr></table>
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Muster  / Beispiel</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attribute Selector: Begins with</td>
+      <td>E[attr^=”string”] a[href^=”mailto:”]</td>
+      <td>Stimmt mit jedem Element überein, bei dem der Wert des Attributs mit dem geforderten String beginnt.</td>
+    </tr>
+    <tr>
+      <td>The Target pseudo-class</td>
+      <td>:target</td>
+      <td>Stimmt mit dem Element überein, dessen ID mit dem Anker in der URL übereinstimmt. Z.B. bei URL http://at.at/index.html#kontakt stimmt  :target mit &lt;div id=”kontakt”&gt; überein</td>
+    </tr>
+    <tr>
+      <td>The UI element states pseudo-classes</td>
+      <td>:enabled :disabled :checked</td>
+      <td>Diese Selektoren beziehen sich auf mögliche Zustände von Eingabefeldern – die werden aber erst im nächsten Kapitel erklärt.</td>
+    </tr>
+    <tr>
+      <td>Root pseudo-class</td>
+      <td>:root</td>
+      <td>Stimmt mit der Wurzel des DOM überein, immer &lt;html&gt;</td>
+    </tr>
+    <tr>
+      <td>:nth-child() pseudo-class</td>
+      <td>:first-child :nth-child(13) :nth-child(odd) :nth-child(even) :nth-child(3n+1) :last-child</td>
+      <td>Zählt die Geschwister des Elements, stimmt mit dem Element überein wenn die Zahl bestimmte Bedingungen erfüllt: erstes Geschwister, 13., ungerade Zahl, gerade Zahl, ….(auch Moduleo 3, 4, n)… letztes.</td>
+    </tr>
+    <tr>
+      <td>:nth-of-type() pseudo-class</td>
+      <td>img:nth-of-type(odd) { float: right; } img:nth-of-type(even) { float: left; }</td>
+      <td>Zählt die Elemente dieses Typs, die bis zu dieser Stelle in der DOM vorkamen, …. Im Beispiel also die geraden / ungeraden Bilder.</td>
+    </tr>
+    <tr>
+      <td>Empty pseudo-class</td>
+      <td>:empty</td>
+      <td>Element ist ganz leer – enthält weder Kinder-Knoten noch Text.</td>
+    </tr>
+    <tr>
+      <td>Pseudo-Element</td>
+      <td>E::first-letter E::first-line p::first-letter</td>
+      <td>Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nicht explizit drinnen ist: Obwohl im Abstz der erste Buchstabe nicht extra in einen Tag eingeschlossen ist kann man ihn mit p::first-letter auswählen.</td>
+    </tr>
+  </tbody>
+</table>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/css-layout/layout/">← <span class="article">CSS für Layout</a></li>
+      <li><a href="/css-layout/interaktion/">← <span class="article">CSS für Interaktion</a></li>
     
     
       <li><a href="/urls/">URLs →</a></li>
@@ -247,7 +263,11 @@ Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nich
                       
                     
                       
-                      <li ><a href="/css/css/">Geschichte der Cascading Style Sheets</a></li>
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
@@ -275,7 +295,15 @@ Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nich
                       
                     
                       
-                      <li class="active"><a href="/css-layout/selektoren/">CSS Selektoren</a></li>
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
                       
                     
                   
@@ -315,19 +343,23 @@ Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nich
                       
                     
                       
-                      <li ><a href="/formulare/16/">Formulare</a></li>
+                      <li ><a href="/formulare/form/">Formulare</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/17/">Daten absenden</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/19/">Formular und Javascript</a></li>
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
                       
                     
                   
@@ -343,11 +375,11 @@ Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nich
                       
                     
                       
-                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
                       
                     
                       
-                      <li ><a href="/javascript-dom/21/">Basic Javascript</a></li>
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
                       
                     
                   
@@ -363,23 +395,23 @@ Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nich
                       
                     
                       
-                      <li ><a href="/jquery/22/">Unobstrusive Javascript</a></li>
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/23/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/24/">Selektieren und Manipulieren mit jQuery</a></li>
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/25/">Interaktion mit jQuery</a></li>
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/26/">Formulardaten Prüfen mit jQuery</a></li>
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
                       
                     
                   

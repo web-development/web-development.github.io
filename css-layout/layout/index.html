@@ -60,7 +60,9 @@
                           </div>
 			
 			
-			<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden (wie in Kapitel 1.4.6 schon erläutert). In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
+			<h3 id="text">Text</h3>
+
+<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
 
 <pre><code>p { background-color:#CCCCCC; }
 em { background-color:#FFFF66; }
@@ -74,9 +76,13 @@ em { background-color:#FFFF66; }
 
 <p><img  alt="Abbildung 34: Bild mitten im Absatz" src="/images/image130.png" /></p>
 
-<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“ konnte dadurch die Breite eines Elemets überschreiten. Verschiedene Browser verhalten sich hier unterschiedlich. In Abbildung 35 können Sie sehen, dass Microsoft Internet Explorer 7.0 URLs nicht umbricht. Firefox 3.0 hingegen tut es schon.</p>
+<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“ konnte dadurch die Breite eines Elemets überschreiten. In Abbildung 35 können Sie sehen, wie Microsoft Internet Explorer 7.0 eine lange URL nicht umbricht. </p>
 
 <p><img  alt="Abbildung 35: Darstellung eines Absatzes mit Rahmen und fixer Breite, der lange Wörter enthält, in MSIE 7.0" src="/images/image132.png" /></p>
+
+<p>CSS bietet ab Version 3 verschiedene Möglichkeiten diese Fälle zu behandeln, z.b mit der Eigenschaft <code>text-overflow</code> <a href="http://css3clickchart.com/#text-overflow">→</a></p>
+
+<p>Derzeit ist es immer noch notwendig im Text die Soll-Bruchstellen als <code>&amp;amp;shy;</code> einzutragen, damit der Browser dann den Zeilenumbruch korrekt durchführen kann. Die Library <a href="https://code.google.com/p/hyphenator/">hyphenator.js</a> bietet den Umbruch u.a. für englische und deutsche Texte an.</p>
 
 <h2 id="width-und-auto">Width und Auto</h2>
 <p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit width kann eine Andere Breite eines Blocks definiert werden:</p>
@@ -139,172 +145,40 @@ em { background-color:#FFFF66; }
 
 <p>Die Koordinaten (top und left) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster. </p>
 
-<p>Ein Tag mit position:absolute oder position:relative bildet für seine untergeordneten Tags ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert. </p>
+<p>Ein Element mit der Eigenschaft <code>position: absolute</code> oder <code>position: relative</code> bildet für seine untergeordneten Elemente ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert. </p>
 
-<pre><code>&lt;div id="main"&gt;
-    &lt;div id="content"&gt;
-        &lt;h1&gt;Inhalt&lt;/h1&gt;
-        &lt;p&gt;Hier ist der Inhalt[. . . ]&lt;/p&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+    &lt;div id=&quot;main&quot;&gt;
+        &lt;div id=&quot;content&quot;&gt;
+            &lt;h1&gt;Inhalt&lt;/h1&gt;
+            &lt;p&gt;Hier ist der Inhalt[. . . ]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;navi&quot;&gt;
+        [. . . ]
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div id="navi"&gt;
-    [. . . ]
-    &lt;/div&gt;
-&lt;/div&gt;
+</pre></div>
 
-#main {
-   border: 1px red solid;
-   position:relative;
-   width: 700px;
-   margin: 0px auto;
-} 
-#content {
-   margin-left: 120px;
-   background-color: #ddd;
-}
-#navi {
-   position: absolute;
-   width: 80px;
-   top:0px;
-   left:0px;
-}
-</code></pre>
-
-<h2 id="navigationsmen-mit-css">Navigationsmenü mit CSS</h2>
-<p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
-
-<p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:</p>
-
-<pre><code>&lt;div class="navi"&gt;
-   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
-   &lt;ul&gt;
-      &lt;li&gt;&lt;a href="index.html"&gt;home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="ort.html"&gt;ort&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
-   &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>Ohne CSS wird die Liste ganz normal dargestellt. Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit list-style-type:none der Listenpunkt zu einem normalen Tag. </p>
-
-<pre><code>.unsichtbar {display:none;}
-
-div.navi li {
-   list-style-type:none;
-   margin-bottom:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em;
-}
-
-div.navi li a:link {
-   text-decoration: none;
-   font-weight: bold;
-   color: black;
-}
-</code></pre>
-
-<p>Mit Hilfe von Float kann man das Menü auch horizontal darstellen, dazu muß nur ein float eingefügt und der margin anders gesetzt werden:</p>
-
-<pre><code>div.navi li {
-   float:left;
-   list-style-type:none;
-   margin-right:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em; 
-}
-
-div.navi li a:link {
-   text-decoration: none;
-   font-weight: bold;
-   color: black;
-}
-</code></pre>
-
-<h2 id="navigationsmen-wiederverwerten-mit-php">Navigationsmenü wiederverwerten mit PHP</h2>
-<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
-
-<p>Deswegen bietet es sich an bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
-
-<p>Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:</p>
-
-<pre><code>&lt;div id="navi"&gt;
-   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
-   &lt;ul&gt;
-      &lt;li&gt;&lt;a href="index.php"&gt;home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="ort.php"&gt;ort&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
-   &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>Links die auf Ordner verweisen sind hier besonders praktisch: Sie ersetzen die Datei index.html durch index.php, der Link bleibt gleich.</p>
-
-<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, z.B. navi.php.  In den einzelnen Seiten wird das Menü dann mit include eingebunden:</p>
-
-<pre><code>&lt;body&gt;
-&lt;?php include "navi.php" ?&gt;
-&lt;h1&gt;News&lt;/h1&gt;
-</code></pre>
-
-<p>Achtung: Das Einfügen der inkuldierten Datei erfolgt auf dem Server. Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
-
-<p><img  alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" src="/images/image145.png" /></p>
-
-<p>Damit ist nun das Einfügen eines neuen Menü-Punkts ins Navigationsmenü ganz einfach: nur die Datei navi.php muss editiert werden.</p>
-
-<h2 id="hover-und-focus">:hover und :focus</h2>
-<p>Mit dem Selektor :hover wird eine CSS-Regel nur angewandt wenn die Maus über dem Tag ist. (:focus hat eine ähnliche Bedeutung bei der Steuerung mit der Tastatur.)</p>
-
-<pre><code>div       { background-color: #ddd; }
-
-div:hover { background-color: red; }
-
-Mit Hilfe von Hintergrundbildern kann man so zum Beispiel einen kitschigen 3d-Button darstellen, der beim hovern „hineingedrückt“ wird. 
-
-div       { background-image: url(button-up.png);   }
-
-div:hover { background-image: url(button-down.png); }
-</code></pre>
-
-<p>Beim Laden des zweiten Hintergrundbildes kann es dabei zu einer Verzögerung kommen. Um das zu verhindern kann man die beiden Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechseln:</p>
-
-<pre><code>div {
-   height:115px;
-   width:240px;
-   background-image: url(pix/rolloverButton.gif);
-   overflow:hidden;
-}
-
-div:hover {
-   background-position: 0 -120px;
-}
-</code></pre>
-
-<p>Eine extreme Anwendung dieses Prinzips nennt man CSS-Sprites: dabei werden möglichst viele Bilder in einer Bild-Datei zusammengefaßt. Falls viele kleine Icons verwendet werden, kann das die Darstellung der Webseite erheblich beschleunigen. </p>
-
-<p><img  alt="Abbildung 42: CSS Sprites von Yahoo" src="/images/image147.png" /></p>
-
-<p>So könnte der CSS Code aussehen7:</p>
-
-<pre><code>.icon{
-  display:block;
-  padding:8px 0 9px 40px;
-  background:url(http://us.i1.yimg.com/pa-icons2.gif) 5px 3px no-repeat;
-}
-
-#messenger .icon{
-   padding-left:31px;
-   background-position:2px -497px;
-}
-#music .icon{
-   background-position:5px -197px;
-}
-</code></pre>
-
-<p>Achtung: auf Touch-Geräten wie Tables und Smartphones gibt es kein :hover! Deswegen sollte man :hover nur zur Dekoration, nicht aber für wichtige Funktionen verwenden!</p>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+    #main {
+       border: 1px red solid;
+       position:relative;
+       width: 700px;
+       margin: 0px auto;
+    } 
+    #content {
+       margin-left: 120px;
+       background-color: #ddd;
+    }
+    #navi {
+       position: absolute;
+       width: 80px;
+       top:0px;
+       left:0px;
+    }
+</pre></div>
 
 		
 			<div class="pagination">
@@ -313,7 +187,7 @@ div:hover {
       <li><a href="/css-layout/rahmenbedingungen/">← <span class="article">Rahmenbedingungen für Layout</a></li>
     
     
-      <li><a href="/css-layout/selektoren/">CSS Selektoren →</a></li>
+      <li><a href="/css-layout/navigation/">Navigationsmenü →</a></li>
     
   </ul>
 </div>
@@ -370,7 +244,11 @@ div:hover {
                       
                     
                       
-                      <li ><a href="/css/css/">Geschichte der Cascading Style Sheets</a></li>
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
@@ -398,7 +276,15 @@ div:hover {
                       
                     
                       
-                      <li ><a href="/css-layout/selektoren/">CSS Selektoren</a></li>
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
                       
                     
                   
@@ -438,19 +324,23 @@ div:hover {
                       
                     
                       
-                      <li ><a href="/formulare/16/">Formulare</a></li>
+                      <li ><a href="/formulare/form/">Formulare</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/17/">Daten absenden</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/18/">Formular und PHP</a></li>
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/19/">Formular und Javascript</a></li>
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
                       
                     
                   
@@ -466,11 +356,11 @@ div:hover {
                       
                     
                       
-                      <li ><a href="/javascript-dom/20/">Hintergründe</a></li>
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
                       
                     
                       
-                      <li ><a href="/javascript-dom/21/">Basic Javascript</a></li>
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
                       
                     
                   
@@ -486,23 +376,23 @@ div:hover {
                       
                     
                       
-                      <li ><a href="/jquery/22/">Unobstrusive Javascript</a></li>
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/23/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/24/">Selektieren und Manipulieren mit jQuery</a></li>
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/25/">Interaktion mit jQuery</a></li>
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
                       
                     
                       
-                      <li ><a href="/jquery/26/">Formulardaten Prüfen mit jQuery</a></li>
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
                       
                     
                   
