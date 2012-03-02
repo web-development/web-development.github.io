@@ -63,23 +63,32 @@
 			
 			<p>Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt. Andere Webserver (z.B: Internet Information Server von Microsoft) verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.</p>
 
-<p>Die Apache-Konfiguration müssen Sie noch nicht anwenden können, sie ist hier nur zur Information angeführt. Eventuell können Sie im Fach „Operations &amp; IT“ diese Information in diesem Semester anwenden, auf jeden Fall im nächsten Semester in „Webprogrammierung 2“.</p>
-
 <h3 id="betriebssystem-des-webservers">Betriebssystem des Webservers</h3>
-<p>Die Webserver der FH sind ausnahmslos UNIX-Server. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie die Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.</p>
+<p>Viele Webserver werden auf einem UNIX-Betriebssystem betrieben. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.</p>
 
-<p>Ein Link auf die Datei bild.JPG funktioniert unter Windows oder MacOS auch, wenn er bild.jpg geschreiben wird.</p>
+<p>Ein Link auf die Datei <code>bild.JPG</code> funktioniert unter Windows oder MacOS auch, wenn er <code>bild.jpg</code> geschreiben wird.</p>
 
-<p>Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr! bild.jpg und bild.JPG sind zwei unterschiedliche Dateien!</p>
+<p>Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr! <code>bild.jpg</code> und <code>bild.JPG</code> sind zwei unterschiedliche Dateien!</p>
 
 <h3 id="webspace-und-ordner">Webspace und Ordner</h3>
-<p>Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient. Für den Webserver mediacube.at ist dies der Ordner /var/www/virthosts/mediacube.at/</p>
+<p>Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient.</p>
 
-<p>URL
-http://mediacube.at/pix/weg-zur-saline.jpg 
-Dateisystem 
-/var/www/virthosts/mediacube.at/pix/weg-zur-saline.jpg
-Die Apache-Konfiguration dazu sieht so aus:</p>
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Pfad im Dateisystem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>http://mediacube.at/pix/weg-zur-saline.jpg</td>
+      <td>/var/www/virthosts/mediacube.at/pix/weg-zur-saline.jpg</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Die Apache-Konfiguration dazu sieht so aus:</p>
 
 <pre><code>&lt;VirtualHost mediacube.at&gt;
 DocumentRoot /var/www/virthosts/mediacube.at/
