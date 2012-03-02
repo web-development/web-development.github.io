@@ -31,6 +31,7 @@
   </style>
 
   <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/jquery.cookie.js"></script>
   <script src="/assets/js/bootstrap.js?v=1"></script>
   <script src="/assets/js/prettify.js?v=1"></script>
   <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
@@ -61,45 +62,55 @@
 			
 			<p>Von Anfang an sollte eine HTML-Datei keine Information darüber enthalten, wie der Text dargestellt werden soll - keine Schriftart oder Schriftgröße. HTML sollte nur strukturelle Information enthalten („das ist eine Überschrift“ aber nicht „Helvetica 24pt“). Die Formatierungs-Information sollte in sogenannten „Stylesheets“ gespeichert werden, das Format für die Stylesheets war aber noch nicht definiert. Im Jahre 1993 sah eine typische Webseite so aus</p>
 
-<pre><code>&lt;html&gt;&lt;body&gt;
-&lt;h1&gt;Das Studium&lt;/h1&gt;
-&lt;p&gt;Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
+<div class="example">
+<h4 class="caption">Html Code <small>typische Webseite von 1993 - HTML-Code stellt nur die Struktur dar</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;html&gt;&lt;body&gt;
+  &lt;h1&gt;Das Studium&lt;/h1&gt;
+  &lt;p&gt;Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
+  &lt;/body&gt;&lt;/html&gt;
+</pre></div>
 
 <p>Da es keine Stylesheets gab „erfand“ Netscape ab 1994 zusätzliche HTML-Tags, die die Darstellung der Webseite festlegen. Andere Browser übernahmen diese Tags von Netscape. </p>
 
-<pre><code>&lt;html&gt;&lt;body&gt;
-&lt;h1&gt;&lt;font face="Arial" color="blue"&gt;Das Studium&lt;/font&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;font size="+1"&gt;S&lt;/font&gt;tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...&lt;/p&gt;
-&lt;p&gt;&lt;font size="+1"&gt;P&lt;/font&gt;rojekte und Praxissemster stellen schon während des Studiums die Verbindung...&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
+<div class="example">
+<h4 class="caption">Html Code <small>typische Webseite von 1995 - Neue HTML-Tags für visuelle Darstellung</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;html&gt;&lt;body&gt;
+  &lt;h1&gt;&lt;font face=&quot;Arial&quot; color=&quot;blue&quot;&gt;Das Studium&lt;/font&gt;&lt;/h1&gt;
+  &lt;p&gt;&lt;font size=&quot;+1&quot;&gt;S&lt;/font&gt;tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...&lt;/p&gt;
+  &lt;p&gt;&lt;font size=&quot;+1&quot;&gt;P&lt;/font&gt;rojekte und Praxissemster stellen schon während des Studiums die Verbindung...&lt;/p&gt;
+  &lt;/body&gt;&lt;/html&gt;
+</pre></div>
 
 <p>Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code komplizierter und unübersichtlicher. Erst ab ab 1995 wurde endlich an den Standards für Stylesheets gearbeitet, seit den frühen 2000ern ist die Unterstützung in den gängigen Browsern vorhanden. So sieht nun eine HTML-Seite mit separatem Stylesheet aus:</p>
 
 <p>Die html-Datei</p>
 
-<pre><code>&lt;link rel="stylesheet"
-      type="text/css"
-      href="fh.css"&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Das Studium&lt;/h1&gt;
-&lt;p&gt;Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
-&lt;/body&gt;&lt;/html&gt;
-</code></pre>
+<div class="example">
+<h4 class="caption">Html Code <small>typische Webseite von 2001 - HTML-Tags für Struktur, Verweis auf CSS</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;link rel=&quot;stylesheet&quot;
+        type=&quot;text/css&quot;
+        href=&quot;fh.css&quot;&gt;
+  &lt;/head&gt;&lt;body&gt;
+  &lt;h1&gt;Das Studium&lt;/h1&gt;
+  &lt;p&gt;Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
+  &lt;/body&gt;&lt;/html&gt;
+</pre></div>
 
-<p>Die Datei fh. css</p>
+<div class="example">
+<h4 class="caption">Css Code <small>Die Datei fh.css</small></h4>
+<pre class="lang-css prettyprint linenums">
+  h1 { 
+      font-family: Arial;
+      color: blue; 
+  }
+  p:first-letter {
 
-<pre><code>h1 { 
-    font-family: Arial;
-    color: blue; 
-}
-p:first-letter {
-
-    font-size: large;
-}
-</code></pre>
+      font-size: large;
+  }
+</pre></div>
 
 <p>Mit der Trennung von Stylesheet und HTML wurde HTML wieder einfacher und übersichtlicher. Besonders das nachträgliche Verändern der Gestaltung wurde vereinfacht. 
 Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
@@ -122,18 +133,21 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 
 <p>Beispiel</p>
 
-<pre><code>h1,h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: lightblue;
-}
-body {
-  margin-left: 150px;
-  background-color: white;
-} 
-p {
-  text-align: justify;
-}
-</code></pre>
+<div class="example">
+<h4 class="caption">Css Code <small>Die Datei fh.css</small></h4>
+<pre class="lang-css prettyprint linenums">
+  h1,h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightblue;
+  }
+  body {
+    margin-left: 150px;
+    background-color: white;
+  } 
+  p {
+    text-align: justify;
+  }
+</pre></div>
 
 <p>Eine Stylesheet-Regel („Rule“)  besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann. </p>
 
@@ -141,25 +155,30 @@ p {
 
 <p>Sie können beliebig Zeilenumbrüche einfügen, diese werden ignoriert. </p>
 
-<p>Style für mehrere Seiten</p>
+<h3 id="style-fr-mehrere-seiten">Style für mehrere Seiten</h3>
 
 <p>Die Seiten einer gesamten Website haben meist ein einheitliches Aussehen. Dies können Sie erreichen, wenn Sie für jede Webseite dieselbe CSS Datei verwenden. Dazu müssen Sie in jede HTML-Datei die CSS Datei mittels folgender Anweisung einbinden:</p>
 
-<link rel="stylesheet" href="mystyle.css" />
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;mystyle.css&quot;&gt;
+</pre></div>
 
 <p>Diese Zeile sollte innerhalb des head Bereiches der HTML-Datei stehen (da sonst die Darstellung der Seite verzögert werden kann5). mysyle.css könnte etwa so aussehen wie im vorigen Beispiel. </p>
 
-<p>Style für eine Seite</p>
+<h3 id="style-fr-eine-seite">Style für eine Seite</h3>
 
 <p>Wenn Sie einen Style  nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches. </p>
 
-<pre><code>&lt;style&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;style&gt;
     h1,h2 {
       font-family: Arial, Helvetica, sans-serif;
       color: lightblue
     }
-&lt;/style&gt;
-</code></pre>
+  &lt;/style&gt;
+</pre></div>
 
 <p>Style für einen Tag</p>
 
@@ -167,8 +186,10 @@ p {
 
 <p>Um einen style für einen einzelnen Tag zu definieren, müssen Sie innerhalb des Tags das Attribut style verwenden. </p>
 
-<pre><code>&lt;h1 style="color:red; text-align:center;"&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h1 style=&quot;color:red; text-align:center;&quot;&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
+</pre></div>
 
 <p>Gültigkeitsbereich einer Style Angabe</p>
 
@@ -179,52 +200,66 @@ p {
 <h2 id="klassen-ids-spans-und-divs">Klassen, IDs, SPANs und DIVs</h2>
 <p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite. Oft möchten Sie aber ein oder zwei Absätze anders formatieren als die anderen Absätze. Zu diesem Zweck können Sie sich im Stylesheet noch weitere Formatvorlagen - sogenannte “Klassen” - definieren:</p>
 
-<pre><code>.wichtig { color: red; }
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  .wichtig { color: red; }
+</pre></div>
 
 <p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt. Jedem normalen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class. </p>
 
-<pre><code>&lt;p&gt;Eine &lt;b class="wichtig"&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
-&lt;p class="wichtig"&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
-&lt;p&gt;Ein ganz normaler Absatz&lt;/p&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+  &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
+  &lt;p&gt;Ein ganz normaler Absatz&lt;/p&gt;
+</pre></div>
 
 <p>Zur „normalen“ Wirkung des HTML-Tags kommt nun die Formatierung durch die Klasse hinzu: der Text „ganz wichtige“ und „Ein ganz wichtiger Absatz“ ist in diesem Beispiel also rot. Eine Klasse kann also mehrmals in einem Dokument verwendet werden. Ein Tag kann mehrere Klassen erhalten, diese werden durch Leerzeichen getrennt im class-Attribut angeführt.</p>
 
-<pre><code>&lt;p class="wichtig eilmeldung"&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;p class=&quot;wichtig eilmeldung&quot;&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
+</pre></div>
 
 <p>Zur eindeutigen Kennzeichnung von Tags wird das Attribut id verwendet:</p>
 
-<pre><code>&lt;p&gt;Eine &lt;b class="wichtig"&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
-&lt;p class="wichtig"&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
-&lt;p id="impressum"&gt;Das einzige Impressum dieser Seite&lt;/p&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+  &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
+  &lt;p id=&quot;impressum&quot;&gt;Das einzige Impressum dieser Seite&lt;/p&gt;
+</pre></div>
 
 <p>Auf diese eindeutigen IDs kann in CSS mit der Raute (englisch: „hash sign“) referenziert werden:</p>
 
-<pre><code>#impressum { background-color: #DDD; }
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  #impressum { background-color: #DDD; }
+</pre></div>
 
 <p>Sowohl Klassen als auch IDs können mit Tags kombiniert werden um einen komplexen Selektor zu bilden, aber das macht nur bei Klassen wirklich Sinn:</p>
 
-<pre><code>.wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
-p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  .wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
+  p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
 
-b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
+  b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
 
-#impressum { background-color:#ddd; }   /* nur der Tag mit der id #impressum */
-p#impressum { background-color:#ddd; } /* == nur der p-Tag mit der id #impressum */
+  #impressum { background-color:#ddd; }   /* nur der Tag mit der id #impressum */
+  p#impressum { background-color:#ddd; } /* == nur der p-Tag mit der id #impressum */
 
-b#impressum { background-color:#ddd; }   /* nix! */
-</code></pre>
+  b#impressum { background-color:#ddd; }   /* nix! */
+</pre></div>
 
 <p>Die Firefox-Erweiterung Firebug zeigt Tags, Klassen und IDs in dieser Schreibweise an:</p>
 
 <p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die  beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
 
-<pre><code>&lt;p&gt;Es gibt hier ganz &lt;span class="wichtig"&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;p&gt;Es gibt hier ganz &lt;span class=&quot;wichtig&quot;&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
+</pre></div>
 
 <p>Die Worte „besonders interessante“ erscheinen rot. </p>
 
@@ -232,15 +267,15 @@ b#impressum { background-color:#ddd; }   /* nix! */
 
 <p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten: px (Pixel) , em (=Breite des Buchstaben M) , ex (Höhe des Buchstaben X),  % (Prozent), cm (Zentimeter), in (Inch).   Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.</p>
 
-<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil (jeweils werte von 0 bis 255) in verschiedenen Schreibweisen: Dezimal rgb(16,0,255), hexadezimal #10F oder zweistellig hexadezimal #1000FF. Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt: rgba(153, 134, 117, 0.2);</p>
+<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil (jeweils werte von 0 bis 255) in verschiedenen Schreibweisen: Dezimal <code>rgb(16,0,255)</code>, hexadezimal <code>#10F</code> oder zweistellig hexadezimal <code>#1000FF</code>. Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt: <code>rgba(153, 134, 117, 0.2);</code></p>
 
 <p>Tool-Tipp: Mit dem Firefox AddOn Colorzilla kann man die Farben einer Webseite auslesen und in verschiedenen Schreibweisen kopieren:</p>
 
 <p><img  alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" src="/images/image073.png" /></p>
 
-<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise url(http://absolute.com/bild.gif) oder url(relativ/bild.gif) zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
+<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise <code>url(http://absolute.com/bild.gif)</code> oder <code>url(relativ/bild.gif)</code> zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
 
-<p>Klassisches Box Model</p>
+<h3 id="klassisches-box-model">Klassisches Box Model</h3>
 
 <p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus. </p>
 
@@ -258,43 +293,48 @@ b#impressum { background-color:#ddd; }   /* nix! */
 
 <p><img  alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" src="/images/image086.png" /></p>
 
-<p>Farben, Hintergrundfarben, Hintergrundbilder</p>
+<h3 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h3>
 
-<p>Die Farbe des Textes wird mit color, die Hintergrundfarbe mit background-color gesetzt.  </p>
+<p>Die Farbe des Textes wird mit color, die Hintergrundfarbe mit <code>background-color</code> gesetzt.  </p>
 
-<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (background-image). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (background-repeat). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
+<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
 
 <p><img  alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" src="/images/image088.png" /></p>
 
 <p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar. </p>
 
-<p>Links formatieren</p>
+<h3 id="links-formatieren">Links formatieren</h3>
 
 <p>Der &lt;a&gt;-Tag wird in HTML für zwei sehr unterschiedliche Dinge verwendet: zum Setzen von Links und zum Setzen von Textmarken (auch ‚Anker’ genannt):</p>
 
-<pre><code>&lt;h1&gt;&lt;a name="unis"&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;   
-&lt;a href="http://www.uni-salzburg.at/"&gt;Uni Salzburg&lt;/a&gt;
-Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen. 
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h1&gt;&lt;a name=&quot;unis&quot;&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;   
+  &lt;a href=&quot;http://www.uni-salzburg.at/&quot;&gt;Uni Salzburg&lt;/a&gt;
+</pre></div>
+
+<p>Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen. </p>
 
 <p>Um die Darstellung von Links zu verändern muss man in CSS :link oder :visited als Selektoren verwenden. Der Browser unterscheidet dabei zwischen Links die schon einmal besucht wurden (visited) und neuen Links. </p>
 
-<pre><code>a:link, a:visited { text-decoration: none; }
-
-a:link    {color:blue}
-
-a:visited {color:#FF00FF }
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  a:link, a:visited { text-decoration: none; }
+  a:link    {color:blue}
+  a:visited {color:#FF00FF }
+</pre></div>
 
 <p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
 
-<pre><code>a:link, a:visited { 
-   background-image:    url(icon-link.gif);
-   background-position: center right;
-   background-repeat:   no-repeat;
-   padding-right:       9px; 
-}
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  a:link, a:visited { 
+     background-image:    url(icon-link.gif);
+     background-position: center right;
+     background-repeat:   no-repeat;
+     padding-right:       9px; 
+  } 
+</pre></div>
 
 		
 			<div class="pagination">
@@ -590,7 +630,7 @@ a:visited {color:#FF00FF }
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blame/master/content/css/css.md">kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/css/css.md">kommentar zu dieser seite</a></p>
 
 </p>
     </div>
@@ -602,8 +642,44 @@ a:visited {color:#FF00FF }
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
 <script>
   $(document).ready(function(){
-    $('ul.nav ul.sub').hide();
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
     $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
   });
 </script>
 </body> 
