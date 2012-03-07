@@ -31,7 +31,6 @@
   </style>
 
   <script src="/assets/js/jquery.js?v=1.7.1"></script>
-  <script src="/assets/js/jquery.cookie.js"></script>
   <script src="/assets/js/bootstrap.js?v=1"></script>
   <script src="/assets/js/prettify.js?v=1"></script>
   <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
@@ -124,20 +123,23 @@
           // und hier die Ausgabe
           include &quot;footer.php&quot;;
     ?&gt;
-&lt;php&gt;
+</pre></div>
 
-Viele Datensätze aus der Datenbank lesen
-------------------------------------------
-In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:
+<h2 id="viele-datenstze-aus-der-datenbank-lesen">Viele Datensätze aus der Datenbank lesen</h2>
+<p>In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:</p>
 
-&lt;php caption=&quot;personen.php&quot;&gt;
+<div class="example">
+<h4 class="caption">Php Code <small>personen.php</small></h4>
+<pre class="lang-php prettyprint linenums">
     $query = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible=1 ORDER BY RAND() LIMIT 1,10&quot;);
     $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-&lt;php&gt;
+</pre></div>
 
-Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):
+<p>Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):</p>
 
-&lt;php caption=&quot;Output von print_r($personen)&quot;&gt;
+<div class="example">
+<h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
+<pre class="lang-php prettyprint linenums">
     Array ( 
 
           [0] =&gt; stdClass Object
