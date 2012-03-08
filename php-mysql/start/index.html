@@ -81,27 +81,33 @@
 
 <p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: </p>
 
+<p><code>mysql –u username –p datenbankname &lt; portfolio.sandbox.sql</code></p>
+
+<p>Show Tables zeigt alle Tabellen in der aktuellen Datenbank:</p>
+
 <div class="example">
-<h4 class="caption">Plain Code <small>Daten aus Datei in Datenbank laden</small></h4>
-<pre class="lang-plain prettyprint linenums">
-    &gt; mysql –u username –p datenbankname &lt; portfolio.sandbox.sql
-Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
+<h4 class="caption">Sql Code <small>Tabellen in der Datenbank anzeigen</small></h4>
+<pre class="lang-sql prettyprint linenums">
+mysql&gt; show tables;
 
-    mysql&gt; show tables;
-
-    +-----------------------------+
-    | Tables_in_portfolio_sandbox |
-    +-----------------------------+
-    | macht                       | 
-    | media                       | 
-    | media_werk                  | 
-    | person                      | 
-    | rollen                      | 
-    | student                     | 
-    ...
-    | werk                        | 
-    +-----------------------------+
-    16 rows in set (0.00 sec)
++------------------------------------------+
+| Tables_in_portfolio_sandbox              |
++------------------------------------------+
+| agegroups                                |
+| agegroups_studycourses_departments_users |
+| assets                                   |
+| awardyears                               |
+| departments                              |
+| projects                                 |
+| projects_roles_users                     |
+| projects_tags                            |
+| roles                                    |
+| studycourses                             |
+| tags                                     |
+| urls                                     |
+| users                                    |
++------------------------------------------+
+13 rows in set (0.01 sec)
 </pre></div>
 
 <p>Describe zeigt den Aufbau einer bestimmten Tabelle:</p>
@@ -109,27 +115,22 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 <div class="example">
 <h4 class="caption">Sql Code <small>Tabelle beschreiben mit describe</small></h4>
 <pre class="lang-sql prettyprint linenums">
-    mysql&gt; describe person;
-
-    +------------+--------------+------+-----+---------+----------------+
-    | Field      | Type         | Null | Key | Default | Extra          |
-    +------------+--------------+------+-----+---------+----------------+
-    | pid        | bigint(20)   |      | PRI | NULL    | auto_increment |
-    | uid        | varchar(8)   | YES  | MUL | NULL    |                |
-    | vorname    | varchar(40)  |      |     |         |                |
-    | nachname   | varchar(50)  |      |     |         |                |
-    | profil     | text         |      |     |         |                |
-    | mail       | varchar(40)  | YES  | MUL | NULL    |                |
-    | web        | varchar(200) | YES  |     | NULL    |                |
-    | blog       | varchar(200) | YES  |     | NULL    |                |
-    | feed       | varchar(200) | YES  |     | NULL    |                |
-    | title      | varchar(10)  | YES  |     | NULL    |                |
-    | isfemale   | tinyint(4)   |      |     | 0       |                |
-    | bildpfad   | varchar(250) | YES  | MUL | NULL    |                |
-    | ifshow     | tinyint(4)   |      |     | 0       |                |
-    | facebookid | bigint(20)   | YES  |     | NULL    |                |
-    +------------+--------------+------+-----+---------+----------------+
-    14 rows in set (0.00 sec)
+mysql&gt; describe users;
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| id              | int(11)      | NO   | PRI | NULL    | auto_increment |
+| firstname       | varchar(255) | YES  |     | NULL    |                |
+| surname         | varchar(255) | YES  |     | NULL    |                |
+| email           | varchar(255) | YES  | UNI | NULL    |                |
+| isfemale        | tinyint(1)   | YES  |     | NULL    |                |
+| profile_visible | tinyint(1)   | YES  |     | NULL    |                |
+| created_at      | datetime     | YES  |     | NULL    |                |
+| updated_at      | datetime     | YES  |     | NULL    |                |
+| avatar          | varchar(255) | YES  |     | NULL    |                |
+| fullname        | varchar(255) | YES  | MUL | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
 </pre></div>
 
 <p>Select und Join funktionieren wie erwartet:</p>
@@ -137,21 +138,26 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 <div class="example">
 <h4 class="caption">Sql Code <small>SQL-Befehle absetzten in der MySQL-Shell</small></h4>
 <pre class="lang-sql prettyprint linenums">
-    mysql&gt; select pid,vorname from person limit 1,8;
+mysql&gt; select id,firstname from users limit 0,5;
++----+-----------+
+| id | firstname |
++----+-----------+
+|  1 | Brigitte  |
+|  2 | Lea       |
+|  3 | Stefan    |
+|  4 | Karin     |
+|  5 | Katharina |
++----+-----------+
+5 rows in set (0.00 sec)
 
-    +-----+-------------+
-    | pid | vorname     |
-    +-----+-------------+
-    |   2 | Paul        |
-    |   3 | Edvard Paul |
-    |   4 | Sandra      |
-    |   5 | Philipp     |
-    |   6 | Antal       |
-    |   7 | Sebastian   |
-    |   8 | Johannes    |
-    |   9 | Ivan        |
-    +-----+-------------+
-    10 rows in set (0.00 sec)
+mysql&gt; select projects.id,projects.title,urls.url from projects left join urls on projects.id=urls.project_id where projects.id=101;
++-----+---------------------+---------------------------------------------------------+
+| id  | title               | url                                                     |
++-----+---------------------+---------------------------------------------------------+
+| 101 | Every step you take | http://www.everystepyoutake.org/                        |
+| 101 | Every step you take | https://mediacube.at/wiki/index.php/Every_step_you_take |
++-----+---------------------+---------------------------------------------------------+
+2 rows in set (0.01 sec)
 </pre></div>
 
 <p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der <a href="http://dev.mysql.com/">→Dokumentation</a> entnehmen.</p>
@@ -253,11 +259,11 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 <h4 class="caption">Php Code <small>Daten mit SELECT lesen</small></h4>
 <pre class="lang-php prettyprint linenums">
     $query =$dbh-&gt;query(
-         &quot;SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10&quot;
+         &quot;SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10&quot;
     );
     $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
     foreach($personen as $person) {
-          echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
+          echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
     }
 </pre></div>
 
@@ -271,11 +277,11 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 <h4 class="caption">Php Code <small>Ineffizientes Lesen aus der Datenbank</small></h4>
 <pre class="lang-php prettyprint linenums">
     // FALSCH !!!
-    $query =$dbh-&gt;query(&quot;SELECT * FROM person&quot;);
+    $query =$dbh-&gt;query(&quot;SELECT * FROM users&quot;);
     $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
     foreach($personen as $person ) {
-        if($person-&gt;ifshow) {
-          echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
+        if($person-&gt;profile_visible) {
+          echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
         }
     }
     // FALSCH !!!
@@ -286,23 +292,23 @@ Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
 <div class="example">
 <h4 class="caption">Php Code <small>Effizientes Lesen aus der Datenbank</small></h4>
 <pre class="lang-php prettyprint linenums">
-    $query =$dbh-&gt;query(&quot;SELECT * FROM person WHERE ifshow&quot;);
+    $query =$dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible&quot;);
     $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-    foreach($personen as $person ) {
-          echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
+    foreach($personen as $person) {
+          echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
     }
 </pre></div>
 
-<p>Zu diesem Prinzip gehört auch die konsequente Verwendung der richtigen Datentypen in der Datenbank:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“</p>
+<p>Zu diesem Prinzip gehört auch die konsequente Verwendung der richtigen Datentypen in der Datenbank:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum älter als 300 Tage ist“</p>
 
 <div class="example">
 <h4 class="caption">Sql Code <small>select mit verwendung von Datums-Angaben</small></h4>
 <pre class="lang-sql prettyprint linenums">
-    select titel,pub_datum from werk 
-    where datediff( curdate( ) , pub_datum ) &lt;= 100; 
+    select title,publicationdate from projects
+    where datediff( curdate( ) , publicationdate ) &gt; 300; 
 </pre></div>
 
-<p>Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.</p>
+<p>Zeigt Titel und Publikations-Datum aller Werke die vor mehr als 300 Tagen publiziert wurden.</p>
 
 		
 			<div class="pagination">
