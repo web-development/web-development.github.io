@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Selektieren und Manipulieren mit jQuery</title>
+  <title>Lehrbuch Web-Development - Login, Sessions und Datenbank verändern</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -49,55 +49,66 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
+<!-- body -->
+	<article class="row">
+
 		<div class="span8">
-		
+
 			
                           <div class="page-header">
-				<h2 class="title">Selektieren und Manipulieren mit jQuery</h2>
+                                <h2 class="title">Login, Sessions und Datenbank verändern</h2>
                           </div>
 			
-			
-			<p>jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:</p>
 
-<pre><code>$("a")        /* alle A-Tags ... als jQuery objekte */
-$("h1")       /* alle Überschriften h1 ... als jQuery objekte */
-$("p.extra")  /* alle p-tags mit klasse extra ... als jQuery objekte  */
-</code></pre>
+			<p>Mit Sessions wird ein Login ermöglicht. Der Zugriff von PHP auf die Datenbank MySQL wird erweitert: Löschen von Daten, Einfügen von Daten, Bearbeiten von Daten.</p>
 
-<p>jQuery definiert noch ein paar zusätzliche Selektoren13, die es in CSS (noch) nicht gibt:</p>
+<p>Was Sie alle wissen sollten</p>
 
-<pre><code>$("tr:even")                 /* Alle geraden Zeilen der Tabelle */
-$("p:contains('Warnung')")   /* Absätze die die Zeichenkette Warnung enthalten */
-$(":checkbox")               /* Alle input-Tags vom typ checkbox */
-</code></pre>
+<ul>
+  <li>Das HTTP ohne Cookies stateless ist. Wie Cookies funktionieren.</li>
+  <li>Wie Login / Logout mit Hilfe der Session realisiert werden kann</li>
+  <li>Welche Sicherheitsprobleme bei der Verwendung von User-Input in einem SQL-Statement auftreten.</li>
+  <li>Wie Daten vom Web für SQL escaped werden müssen.</li>
+  <li>Wie Daten aus der Datenbank für HTML escaped werden müssen.</li>
+</ul>
 
-<p>Die Selektion allein verändert die Webseite noch nicht. Dafür bietet jQuery eine Reihe von Manipulations-Funktionen an. Diese können direkt an die Selektions-Funktion geschreiben werden: die Selektions-Funktion gibt ein Objekt mit entsprechenden Methoden zurück:</p>
+<p>Was Sie können sollten</p>
 
-<pre><code>$("a").addClass("wichtig"); /* alle A-Tags erhalten die Klasse wichtig */
-$("h1").append(":");        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
-$("h1").prepend("Titel:");  /*  --||-- wird vorne ‚titel:’ eingefügt */
-$("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
-</code></pre>
+<ul>
+  <li>Mit Prepared Statements (prepare und execute) arbeiten</li>
+</ul>
 
-<p>Hinweis: hier versteckt sich eine Schleife: der Selektor liefert ein ganzes Array von Objekten, die Manipulations-Funktion wird für jedes Objekt aufgerufen.</p>
 
-		
-			<div class="pagination">
+                        <h3>In diesem Kapitel</h3>
+
+                        <ul class="sub">
+  
+    
+      
+    
+      
+      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+      
+    
+  
+</ul>
+
+
+                        <div class="pagination">
   <ul>
     
-      <li><a href="/jquery/schreibweise/">← <span class="article">Besondere Javascript-Schreibwesen in jQuery</a></li>
+      <li><a href="/php-mysql/datenbank-lesen/">← <span class="article">Eine lesende Web-Applikation</a></li>
     
     
-      <li><a href="/jquery/interaktion/">Interaktion mit jQuery →</a></li>
+      <li><a href="/session/session-und-login/">Session und Login →</a></li>
     
   </ul>
 </div>
 
+
+
 		</div>
-		
+
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
@@ -272,7 +283,7 @@ $("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
               </ul>
             </li>
           
-            <li class="active"><a href="/jquery/">JQUERY</a>
+            <li ><a href="/jquery/">JQUERY</a>
               <ul class="sub">
                 
                   
@@ -288,7 +299,7 @@ $("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
                       
                     
                       
-                      <li class="active"><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
                       
                     
                       
@@ -472,7 +483,7 @@ $("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
               </ul>
             </li>
           
-            <li ><a href="/session/">SESSION</a>
+            <li class="active"><a href="/session/">SESSION</a>
               <ul class="sub">
                 
                   
@@ -510,15 +521,15 @@ $("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
 </div>
 <!-- sidebar -->
 
-		
+
 	</article>
-	<!-- /body -->
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/jquery/selektieren-manipulieren.md">kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/session/dex.md">kommentar zu dieser seite</a></p>
 
 </p>
     </div>

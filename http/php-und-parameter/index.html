@@ -80,99 +80,49 @@
 
 <p>Um einen GET-Request zu verarbeiten haben wir bisher ein sehr simples Programm verwendet:</p>
 
-<pre><code>  &lt;?php
-          $anzahl  = $_GET['anzahl'];
-          $adresse = $_GET['adresse'];
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+      &lt;?php
+              $anzahl  = $_GET['anzahl'];
+              $adresse = $_GET['adresse'];
 
-          echo("&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;");
-          echo("&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;");
-  ?&gt; Dabei wird aber die Eingabe nicht geprüft. Eine bessere Version des Programmes prüft vorher jede Eingabe und gibt entsprechende Fehlermeldungen aus:
+              echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
+              echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
+      ?&gt;
+</pre></div>
 
-  &lt;?php
-          $anzahl  = $_GET['anzahl'];
-          $adresse = $_GET['adresse'];
-          $ok = true;        // zeigt ob alle Eingaben ok sind
-          $fehler = array(); // sammelt alle Fehlermeldungen
-          if( (int) $anzahl != $anzahl or $anzahl &lt; 1) {
-              $ok = false;
-              $fehler[] = "Bitte geben Sie die Anzahl der Flugzeuge ein!";
-          }
-          if( strlen( $adresse ) &lt; 5 ) {
-              $ok = false;
-              $fehler[] = "Bitte geben Sie die vollständige Lieferadresse an!";
-          }
-          if ( ! $ok ) {
-              echo("&lt;p&gt;Ihre Bestellung kann derzeit nicht bearbeitet werden:&lt;/p&gt;");
-              echo("&lt;ol&gt;");
-              foreach( $fehler as $fehler_text ) {
-                  echo("&lt;li&gt;$fehler_text&lt;/li&gt;");
+<p>Dabei wird aber die Eingabe nicht geprüft. Eine bessere Version des Programmes prüft vorher jede Eingabe und gibt entsprechende Fehlermeldungen aus:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+      &lt;?php
+              $anzahl  = $_GET['anzahl'];
+              $adresse = $_GET['adresse'];
+              $ok = true;        // zeigt ob alle Eingaben ok sind
+              $fehler = array(); // sammelt alle Fehlermeldungen
+              if( (int) $anzahl != $anzahl or $anzahl &lt; 1) {
+                  $ok = false;
+                  $fehler[] = &quot;Bitte geben Sie die Anzahl der Flugzeuge ein!&quot;;
               }
-              echo("&lt;/ol&gt;");
-              echo("&lt;p&gt;Bitte gehen Sie zurück und bessern Sie die Bestellung aus.");
-          }
-          else {
-              echo("&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;");
-              echo("&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;");
-          }
-  ?&gt;
-</code></pre>
-
-<h2 id="datei-upload">Datei Upload</h2>
-<p>POST ermöglicht das Senden beliebig langer Daten, und damit das Hochladen von ganzen Dateien. Dabei muss auch noch das enctype Attribut des Form-Tags gesetzt werden:</p>
-
-<pre><code>  &lt;form action="upload.php" method="post" enctype="multipart/form-data"&gt; Neues Bild zum hochladen in den Ordner 
-
-  &lt;a href='upload/'&gt;upload&lt;/a&gt;: &lt;input type="file" name="bild"&gt;
-  &lt;input type="submit" value="hinaufladen"&gt;
-  &lt;/form&gt; Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.
-</code></pre>
-
-<p><img  alt="Abbildung 136: Webformular mit Datei-Upload" src="/images/image345.png" /></p>
-
-<p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
-
-<p>Die Details zu den Hochgeladenen Dateien sind im Array $_FILES gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“: </p>
-
-<dl>
-  <dt>$_FILES[‘bild’][‘name’]</dt>
-  <dd>Der Originalname der Datei am Client. </dd>
-  <dt>$_FILES[‘bild’][‘type’]</dt>
-  <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig! </dd>
-  <dt>$_FILES[‘bild’][‘size’]</dt>
-  <dd>Größe der hochgeladenen Datei in Byte. </dd>
-  <dt>$_FILES[‘bild’][‘tmp_name’]</dt>
-  <dd>Der Dateiname der temporären Datei. </dd>
-  <dt>$_FILES[‘bild’][‘error’]</dt>
-  <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.
-
-    <pre><code>&lt;?php
-$uploaddir = dirname( $_SERVER["SCRIPT_FILENAME"] ) . "/upload/";
-
-$filename = basename($_FILES['bild']['name']);
-$ext = substr($filename, -4);
-
-if( $ext != '.jpg' ) {
-   die("ich darf nur jpg-Dateien hochladen, nicht " . substr($filename, -3) );
-}
-
-$uploadfile = $uploaddir . $filename;
-
-if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
-    echo "Datei erfolgreich hochgeladen nach &lt;a href='upload/'&gt;upload/&lt;/a&gt;\n";
-} else {
-    echo "Problem beim Speichern der Datei.\n";
-}
-
-echo '&lt;pre&gt;debugging info:';
-print_r($_FILES);
-print '&lt;/pre&gt;';
-
-?&gt;
-</code></pre>
-  </dd>
-</dl>
-
-<p>Achtung: Sie müssen den Ordner upload erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver (= ein anderer Account) hineinschreiben darf!</p>
+              if( strlen( $adresse ) &lt; 5 ) {
+                  $ok = false;
+                  $fehler[] = &quot;Bitte geben Sie die vollständige Lieferadresse an!&quot;;
+              }
+              if ( ! $ok ) {
+                  echo(&quot;&lt;p&gt;Ihre Bestellung kann derzeit nicht bearbeitet werden:&lt;/p&gt;&quot;);
+                  echo(&quot;&lt;ol&gt;&quot;);
+                  foreach( $fehler as $fehler_text ) {
+                      echo(&quot;&lt;li&gt;$fehler_text&lt;/li&gt;&quot;);
+                  }
+                  echo(&quot;&lt;/ol&gt;&quot;);
+                  echo(&quot;&lt;p&gt;Bitte gehen Sie zurück und bessern Sie die Bestellung aus.&quot;);
+              }
+              else {
+                  echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
+                  echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
+              }
+      ?&gt;
+</pre></div>
 
 		
 			<div class="pagination">
@@ -181,7 +131,7 @@ print '&lt;/pre&gt;';
       <li><a href="/http/php-erzeugt/">← <span class="article">PHP erzeugt nicht nur HTML</a></li>
     
     
-      <li><a href="/git/">GIT →</a></li>
+      <li><a href="/http/datei-upload/">Datei Upload →</a></li>
     
   </ul>
 </div>
@@ -441,6 +391,10 @@ print '&lt;/pre&gt;';
                       <li class="active"><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
                       
                     
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -551,6 +505,38 @@ print '&lt;/pre&gt;';
                     
                       
                       <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
                       
                     
                   
