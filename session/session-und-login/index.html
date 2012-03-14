@@ -62,9 +62,9 @@
 			
 			<p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage abrufen oder ob eine Person die Seite 10mal lädt.</p>
 
-<p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (im Gegensatz zu „statefull“).</p>
+<p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
 
-<p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“ schaffen. Um zu wissen, dass ein User eingeloggt ist müsste er ja „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
+<p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
 
 <h2 id="cookies">Cookies</h2>
 <p>Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten, die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver wieder mitsendet. Der Browser sendet nie ein Cookie an einen anderen Webserver als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von verschiedenen Servern speichern (In einem Cookie-Jar).</p>
@@ -73,21 +73,25 @@
 
 <p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
 
-<pre><code>  Set-Cookie: style=gelb
-  Set-Cookie: style=gelb; path=/admin/
-  Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+Set-Cookie: style=gelb
+Set-Cookie: style=gelb; path=/admin/
+Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
+</pre></div>
 
 <p>Die einzige Art ein Cookie zu löschen ist ein Cookie mit gleichem Namen und Ablaufdatum in der Vergangenheit zu setzen:</p>
 
-<pre><code>  Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
+</pre></div>
 
-<p>Cookies in PHP</p>
+<h3 id="cookies-in-php">Cookies in PHP</h3>
 
 <p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet wurden im Array $_COOKIES (und — zusammen mit GET und POST-Parametern — in $_REQUEST). Neue Cookies können Sie mit setcookie() setzen. </p>
 
-<p>Cookies in Javascript</p>
+<h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
 <p>Im Client können Cookies mit Javascript gelesen und geschrieben werden. Dies funktioniert über eine Zuweisung an die Eigenschaft document.cookie.</p>
 
@@ -95,13 +99,17 @@
 
 <p>Zum Setzen von neuen Cookies wird auf die Eigenschaft zugewiesen. Zum Setzen mehrere Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluß auf den Wert den man aus document.cookie auslesen kann:</p>
 
-<p>alert(document.cookie);  // Zeigt die gültigen Cookies</p>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+alert(document.cookie);  // Zeigt die gültigen Cookies
 
-<pre><code>      document.cookie = "farbe:grün";
-      document.cookie = "anzahl: 3";
-      document.cookie = "passwort: total super geheimes aber recht langes passwort";
-      alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!! Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!
-</code></pre>
+document.cookie = &quot;farbe:grün&quot;;
+document.cookie = &quot;anzahl: 3&quot;;
+document.cookie = &quot;passwort: total super geheimes aber recht langes passwort&quot;;
+alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
+</pre></div>
+
+<p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!</p>
 
 <h2 id="session">Session</h2>
 <p>PHP kann das Setzen des Cookies automatisch erledigen, und geht sogar noch einen Schritt weiter:</p>
@@ -116,31 +124,43 @@ Für unsere Applikation werden wir das verwenden, um den Usernamen des angemelde
 
 <p><img  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" src="/images/image364.png" /></p>
 
-<p>Das Login-Formular (Dateiname login.php) sieht ganz einfach aus und sendet die Daten mit POST wieder an login.php:</p>
+<p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
 <p><img  alt="Abbildung 147: Login-Formular der Applikation" src="/images/image365.png" /></p>
 
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl header(“Location: index.php”) wird der Browser dann automatisch an die Hauptseite weitergeleitet. </p>
 
-<pre><code>  if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
-$_SESSION['USER'] = $username;
-header("Location: index.php");
-exit;
-  } Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array $_SESSION der Username gespeichert sein. So kann er z.B. in der Navigation angezeigt werden wie in Abbildung 142 gezeigt.
-</code></pre>
+<div class="example">
+<h4 class="caption">Php Code <small>Überprüfung von username und passwort</small></h4>
+<pre class="lang-php prettyprint linenums">
+if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
+    $_SESSION['USER'] = $username;
+    header(&quot;Location: index.php&quot;);
+    exit;
+}
+</pre></div>
+
+<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigation angezeigt werden wie in Abbildung 142 gezeigt.</p>
 
 <p>Das Logout erfolgt ebenfalls mit der Methode POST:</p>
 
-<pre><code>  &lt;form action="logout.php" method="post"&gt;
-  &lt;input type="submit" value="Logout" /&gt;
-  &lt;/form&gt; Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form action=&quot;logout.php&quot; method=&quot;post&quot;&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Logout&quot; /&gt;
+  &lt;/form&gt;
+</pre></div>
 
+<p>Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
   // Löschen aller Session-Variablen.
   $_SESSION = array();
 
   // Löscht das Session-Cookie.
   if (isset($_COOKIE[session_name()])) {
-setcookie(
+    setcookie(
          session_name(),  // Cookie-Name war gleich Name der Session 
          '',             // Cookie-Daten. Achtung! Leerer String hier hilft nicht!
          time()-42000,  // Ablaufdatum in der Vergangenheit. Erst das führt zur Löschung!
@@ -148,62 +168,63 @@ setcookie(
      );
   }
   session_destroy();
-  header("Location: index.php") Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung wie hier mit Location: sinnvoll. 
-</code></pre>
+  header(&quot;Location: index.php&quot;)
+</pre></div>
+
+<p>Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung wie hier mit Location: sinnvoll. </p>
 
 <p>Achtung: die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:</p>
 
-<pre><code>  &lt;?php
-      $pagetitle = "Login";
-      include "functions.php";
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+&lt;?php
+    $pagetitle = &quot;Login&quot;;
+    include &quot;functions.php&quot;;
 
-      $username = $_POST['username'];
-      $passwort = $_POST['passwort'];
+    $username = $_POST['username'];
+    $passwort = $_POST['passwort'];
 
-      if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
-          $_SESSION['USER'] = $username;	
-          header("Location: index.php");
-          exit;
-      } 
+    if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
+        $_SESSION['USER'] = $username;	
+        header(&quot;Location: index.php&quot;);
+        exit;
+    } 
 
-      include "header.php"; Hier noch mal die Dateien:
-</code></pre>
+    include &quot;header.php&quot;;
+</pre></div>
 
-<p>Titel</p>
+<p>Hier noch mal die Dateien:</p>
 
-<p>Dateiname</p>
-
-<p>Request/</p>
-
-<p>Parameter</p>
-
-<p>Beschreibung</p>
-
-<p>Login</p>
-
-<p>login.php</p>
-
-<p>GET</p>
-
-<p>Zeigt Login-Formular</p>
-
-<p>Login</p>
-
-<p>Login.php</p>
-
-<p>POST</p>
-
-<p>username, passwort</p>
-
-<p>Prüft Login + setzt Session. → Leitet weiter an index.php</p>
-
-<p>Logout </p>
-
-<p>logout.php</p>
-
-<p>POST</p>
-
-<p>Löscht die Session. Leitet weiter an index.php</p>
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Dateiname</th>
+      <th>Method/Parameter</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Login</td>
+      <td>login.php</td>
+      <td>GET</td>
+      <td>Zeigt Login-Formular</td>
+    </tr>
+    <tr>
+      <td>Login</td>
+      <td>login.php</td>
+      <td>POST username, passwort</td>
+      <td>Prüft Login + setzt Session. → Leitet weiter an index.php</td>
+    </tr>
+    <tr>
+      <td>Logout</td>
+      <td>logout.php</td>
+      <td>POST</td>
+      <td>Löscht die Session. Leitet weiter an index.php</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
@@ -216,7 +237,7 @@ setcookie(
       <li><a href="/session/">← <span class="article">Login, Sessions und Datenbank verändern</a></li>
     
     
-      <li><a href="/php-mysql-2/">Schreiben in die DAtenbank →</a></li>
+      <li><a href="/php-mysql-2/">Schreiben in die Datenbank →</a></li>
     
   </ul>
 </div>
