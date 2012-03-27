@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - CSS - Einstieg</title>
+  <title>Lehrbuch Web-Development - Löschen</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -49,77 +49,90 @@
 
 
 
-<!-- body -->
-	<article class="row">
-
+	<!-- body -->
+	<article id="body" class="row">
+		
 		<div class="span8">
-
+		
 			
                           <div class="page-header">
-                                <h2 class="title">CSS - Einstieg</h2>
+				<h2 class="title">Löschen</h2>
                           </div>
 			
+			
+			<p>Das Löschen könnte so einfach sein: Ein Programm mit namen person_delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
 
-			<h3 id="was-sie-wissen-sollten">Was Sie wissen sollten</h3>
+<div class="example">
+<h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
+<pre class="lang-php prettyprint linenums">
+$pid   = $_POST['pid'];
+$dbh-&gt;query(&quot;DELETE FROM person WHERE pid=$pid&quot; );  // NICHT so implementieren!
+</pre></div>
 
-<ul>
-  <li>Ich weiss, wie HTML und CSS zusammen hängen. Wie CSS Selektoren aufgebaut sind. Welche Schreibweisen und Maßeinheiten es in CSS für Farben, URLs und Größenangaben gibt.</li>
-  <li>Ich weiss, wie das CSS Box Model funktioniert, wie der Zusammenhang zwischen margin, border und padding ist.</li>
-  <li>Ich weiss, welche Möglichkeiten zur Darstellung von Schrift, Absatz, Rahmen, Hintergrundfarbe und Hintergrundbilder CSS ungefähr bietet. Ich kann die genaue Schreibweise der dafür notwendigen CSS-Deklarationen nachschlagen.</li>
-</ul>
+<p>Dieses Programm ist anfällig für folgende Attacke. Alyssa P. Hacker (eine fiktive Hackerin) 
+benützt nicht das HTML-Formular unserer Applikation, sondern schreibt selbst ein Formular.
+In dem Formular setzt sie den Parameter pid auf Wert <code>9 OR 1=1</code>.</p>
 
-<h3 id="was-sie-knnen-sollten">Was Sie können sollten</h3>
-<ul>
-  <li>Ich kann ein einfaches Stylesheet für ein HTML-Dokument erstellen. </li>
-  <li>Ich kann Bei Vorgabe einer bestimmten visuellen Darstellung und eines HTML-Dokuments ein geeignetes Stylesheet erstellen, das zu dieser Darstellung führt</li>
-  <li>Ich kann mit Hilfe von Firebug oder durch Lesen des Codes herausfinden welche CSS-Regeln zu einer bestimmten Darstellung in einer (fremden) Webseite führen</li>
-  <li>Ich kann die Korrektheit des CSS-Codes mit dem CSS-Validator des World Wide Web Consortium überprüfen. </li>
-  <li>Ich kann Fehler in einem CSS-Dokument ausbessern bis es valide ist.</li>
-</ul>
+<div class="example">
+<h4 class="caption">Html Code <small>Formular für die Attacke auf das Skript person_delete.php</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;form method=&quot;post&quot; action=&quot;person_delete.php&quot; &gt;
+    &lt;input type=&quot;hidden&quot; value=&quot;9 OR 1=1&quot; name=&quot;pid&quot;/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;del all&quot;/&gt;
+&lt;/form&gt;
+</pre></div>
 
+<p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
 
-                        <h3>In diesem Kapitel</h3>
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+DELETE FROM person WHERE pid=9 OR 1=1
+</pre></div>
 
-                        <ul class="sub">
-  
-    
-      
-    
-      
-      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
-      
-    
-      
-      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
-      
-    
-      
-      <li ><a href="/css/css/">Syntax von CSS</a></li>
-      
-    
-      
-      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
-      
-    
-  
-</ul>
+<p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“.</p>
 
+<h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
+<p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem Beispiel also: nur wenn es sich bei pid um eine ganze Zahl handelt, darf sie verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht verstehen müssen) überprüft:</p>
 
-                        <div class="pagination">
+<div class="example">
+<h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
+<pre class="lang-php prettyprint linenums">
+if( ! preg_match( '/^\d+$/', $pid ) ) {
+    error_log(&quot;hack: $pid statt id in person_delete.php.&quot;);
+    echo(&quot;Hack detected. Please stay at you computer until the police arrive.&quot;);
+    exit;
+}
+</pre></div>
+
+<p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank. Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
+
+<p>Als erster Schritt wird mit <code>prepare</code> ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. Dieses SQL-Statement kann vom Datenbank-Server sofort geparset und compiliert werden. Mit <code>execute</code> wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten ersetzt.  Das Schöne daran: es wird nie ein SQL-Statement als String gebaut, sondern die einzufügenden Daten werden binär an den Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden anrichten.</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(&quot;DELETE FROM person WHERE pid = ?&quot;);
+$sth-&gt;execute(array($pid));
+</pre></div>
+
+<p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine normales query zu wiederholen.</p>
+
+<h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
+<p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
+
+		
+			<div class="pagination">
   <ul>
     
-      <li><a href="/das-web-und-html/upload/">← <span class="article">Upload und Tools</a></li>
+      <li><a href="/php-mysql-2/datenbank-schreiben/">← <span class="article">Web-Applikation mit Schreibrecht</a></li>
     
     
-      <li><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets →</a></li>
+      <li><a href="/php-mysql-2/daten-einfuegen/">Einfügen →</a></li>
     
   </ul>
 </div>
 
-
-
 		</div>
-
+		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
@@ -158,7 +171,7 @@
               </ul>
             </li>
           
-            <li class="active"><a href="/css/">CSS</a>
+            <li ><a href="/css/">CSS</a>
               <ul class="sub">
                 
                   
@@ -510,7 +523,7 @@
               </ul>
             </li>
           
-            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+            <li class="active"><a href="/php-mysql-2/">PHP MYSQL 2</a>
               <ul class="sub">
                 
                   
@@ -522,7 +535,7 @@
                       
                     
                       
-                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      <li class="active"><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
                       
                     
                       
@@ -544,15 +557,15 @@
 </div>
 <!-- sidebar -->
 
-
+		
 	</article>
-<!-- /body -->
+	<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/css/dex.md">kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql-2/daten-loeschen.md">kommentar zu dieser seite</a></p>
 
 </p>
     </div>

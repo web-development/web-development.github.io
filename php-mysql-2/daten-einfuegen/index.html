@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - CSS - Einstieg</title>
+  <title>Lehrbuch Web-Development - Einfügen</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -49,77 +49,120 @@
 
 
 
-<!-- body -->
-	<article class="row">
-
+	<!-- body -->
+	<article id="body" class="row">
+		
 		<div class="span8">
-
+		
 			
                           <div class="page-header">
-                                <h2 class="title">CSS - Einstieg</h2>
+				<h2 class="title">Einfügen</h2>
                           </div>
 			
+			
+			<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
 
-			<h3 id="was-sie-wissen-sollten">Was Sie wissen sollten</h3>
+<div class="example">
+<h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
+<pre class="lang-php prettyprint linenums">
+$t = $_POST['title'];
+$dbh-&gt;query( &quot;INSERT INTO projects (title) VALUES ('$t')&quot; );
+</pre></div>
 
-<ul>
-  <li>Ich weiss, wie HTML und CSS zusammen hängen. Wie CSS Selektoren aufgebaut sind. Welche Schreibweisen und Maßeinheiten es in CSS für Farben, URLs und Größenangaben gibt.</li>
-  <li>Ich weiss, wie das CSS Box Model funktioniert, wie der Zusammenhang zwischen margin, border und padding ist.</li>
-  <li>Ich weiss, welche Möglichkeiten zur Darstellung von Schrift, Absatz, Rahmen, Hintergrundfarbe und Hintergrundbilder CSS ungefähr bietet. Ich kann die genaue Schreibweise der dafür notwendigen CSS-Deklarationen nachschlagen.</li>
-</ul>
+<p>Das funktioniert für viele Eingaben, aber was passiert wenn ein Werk den Titel „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
 
-<h3 id="was-sie-knnen-sollten">Was Sie können sollten</h3>
-<ul>
-  <li>Ich kann ein einfaches Stylesheet für ein HTML-Dokument erstellen. </li>
-  <li>Ich kann Bei Vorgabe einer bestimmten visuellen Darstellung und eines HTML-Dokuments ein geeignetes Stylesheet erstellen, das zu dieser Darstellung führt</li>
-  <li>Ich kann mit Hilfe von Firebug oder durch Lesen des Codes herausfinden welche CSS-Regeln zu einer bestimmten Darstellung in einer (fremden) Webseite führen</li>
-  <li>Ich kann die Korrektheit des CSS-Codes mit dem CSS-Validator des World Wide Web Consortium überprüfen. </li>
-  <li>Ich kann Fehler in einem CSS-Dokument ausbessern bis es valide ist.</li>
-</ul>
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+INSERT INTO projects (titel) VALUES ('That's it')
+</pre></div>
 
+<p>Das kann nicht funktionieren, das einfache Anführungszeichen beendet den String und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 
-                        <h3>In diesem Kapitel</h3>
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's it')' at line 1
+</pre></div>
 
-                        <ul class="sub">
-  
-    
-      
-    
-      
-      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
-      
-    
-      
-      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
-      
-    
-      
-      <li ><a href="/css/css/">Syntax von CSS</a></li>
-      
-    
-      
-      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
-      
-    
-  
-</ul>
+<p>Für dieses Problem gibt es in PHP eine <strong>einfache</strong> und <strong>falsche</strong> Lösung:</p>
 
+<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.  Aus „That’s it“ wird also automatisch „That\’s it“ , das SQL-Statement funktioniert wieder:</p>
 
-                        <div class="pagination">
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+INSERT INTO werk (titel) VALUES ('That\'s it')
+</pre></div>
+
+<p>Diese Automatik ist unter dem Namen <code>magic_quotes</code> bekannt und kann in der Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer ausschalten!</p>
+
+<p><code caption="In der Apache Konfiguration: magic quotes abschalten">
+php_flag magic_quotes_gpc off
+</code></p>
+
+<p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
+<pre class="lang-php prettyprint linenums">
+echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
+echo(&quot;&lt;pre&gt;&quot;);
+print_r($_POST);
+echo(&quot;&lt;/pre&gt;&quot;);
+</pre></div>
+
+<p>In Wirklichkeit kann man Sie nicht ganz abschalten, wie man in der PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>. Das Problem betrifft allerdings nur Array-Parameter.</p>
+
+<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(
+  &quot;INSERT INTO users
+    (id,  firstname,surname,email,profile_visible,created_at,updated_at,slug)
+      VALUES
+    (NULL,        ?,      ?,    ?,              ?,     NOW(),     NOW(),   ?)&quot;);
+
+$sth-&gt;execute(
+        array(
+          $_POST['firstname'],
+          $_POST['surname'],
+          $_POST['email'],
+          $_POST['profile_visible'],
+          str_replace(&quot; &quot;, &quot;-&quot;, $_POST['firstname'] . &quot; &quot; .  $_POST['surname'])
+        )
+); 
+
+// noch ohne Fehlerbehandlung
+</pre></div>
+
+<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man hier einfach nichts eingibt gibt das einen Fehler.</p>
+
+<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige, deutsche Fehlermeldungen ausgeben.</p>
+
+<p><img  alt="Abbildung 149: Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" src="/images/image367.png" /></p>
+
+<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des Schlüssels im neuen Datensatz auslesen und weiter verwenden:</p>
+
+<pre><code>  $pid = $dbh-&gt;lastInsertId(); 
+  header("Location: person.php?pid=$pid");
+</code></pre>
+
+<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+
+		
+			<div class="pagination">
   <ul>
     
-      <li><a href="/das-web-und-html/upload/">← <span class="article">Upload und Tools</a></li>
+      <li><a href="/php-mysql-2/daten-loeschen/">← <span class="article">Löschen</a></li>
     
     
-      <li><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets →</a></li>
+      <li><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten →</a></li>
     
   </ul>
 </div>
 
-
-
 		</div>
-
+		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
@@ -158,7 +201,7 @@
               </ul>
             </li>
           
-            <li class="active"><a href="/css/">CSS</a>
+            <li ><a href="/css/">CSS</a>
               <ul class="sub">
                 
                   
@@ -510,7 +553,7 @@
               </ul>
             </li>
           
-            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+            <li class="active"><a href="/php-mysql-2/">PHP MYSQL 2</a>
               <ul class="sub">
                 
                   
@@ -526,7 +569,7 @@
                       
                     
                       
-                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      <li class="active"><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
                       
                     
                       
@@ -544,15 +587,15 @@
 </div>
 <!-- sidebar -->
 
-
+		
 	</article>
-<!-- /body -->
+	<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/css/dex.md">kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql-2/daten-einfuegen.md">kommentar zu dieser seite</a></p>
 
 </p>
     </div>
