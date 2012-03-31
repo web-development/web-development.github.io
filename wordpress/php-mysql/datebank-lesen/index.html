@@ -1,0 +1,753 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Eine lesende Web-Applikation</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Eine lesende Web-Applikation</h2>
+                          </div>
+			
+			
+			<p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus dem Portfolio von MMA und MMT anzeigen:</p>
+
+<p><img  alt="Abbildung 144: Homepage der Mini-Applikation" src="/images/image362.png" /></p>
+
+<p>Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick. Zu jeder Seite wird der Titel angeführt (wird auf der Seite angezeigt), der Dateiname der PHP-Datei (wichtig für die Verlinkung), eventuell notwendige Parameter und eine Beschreibung was die Seite anzeigt.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Titel</td>
+      <td>Dateiname</td>
+      <td>Parameter</td>
+      <td>Beschreibung</td>
+    </tr>
+    <tr>
+      <td>Home</td>
+      <td>index.php</td>
+      <td> </td>
+      <td>Zeigt Gesamtzahl der Personen und Werke an.</td>
+    </tr>
+    <tr>
+      <td>Personen</td>
+      <td>personen.php</td>
+      <td> </td>
+      <td>Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php</td>
+    </tr>
+    <tr>
+      <td>Details zu einer Person</td>
+      <td>person.php</td>
+      <td>pid (Schlüssel der Person)</td>
+      <td>Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username</td>
+    </tr>
+    <tr>
+      <td>Werke</td>
+      <td>werke.php</td>
+      <td> </td>
+      <td>Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php</td>
+    </tr>
+    <tr>
+      <td>Details zu einem Werk</td>
+      <td>werk.php</td>
+      <td>wid (Schlüssel des Werks)</td>
+      <td>Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sie können die Applikation online ausprobieren unter https://multimediatechnology.at/wp2/mini/index.php</p>
+
+<p>Eine ZIP-Datei mit der (fast) vollständigen Applikation finden Sie unter der Adresse</p>
+
+<pre><code>https://multimediatechnology.at/wp2/mini.zip
+</code></pre>
+
+<p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die Dateien functions.php (mit der Datenbank-Verbindung) header.php und footer.php inkluidert.</p>
+
+<pre><code>&lt;?
+      $pagetitle = "Titel der Seite";
+      include "functions.php";
+
+      // hier passiert die eigentliche Arbeit
+      
+      include "header.php";
+      // und hier die Ausgabe
+      include "footer.php";
+?&gt;
+</code></pre>
+
+<h2 id="viele-datenstze-aus-der-datenbank-lesen">Viele Datensätze aus der Datenbank lesen</h2>
+<p>In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:</p>
+
+<pre><code>$query = $dbh-&gt;query("SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10");
+$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
+</code></pre>
+
+<p>Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):</p>
+
+<pre><code>Array ( 
+
+      [0] =&gt; stdClass Object
+          (   
+              [pid] =&gt; 948
+              [uid] =&gt; fhs30410
+              [vorname] =&gt; Thomas
+              [nachname] =&gt; Czernik
+              [isfemale] =&gt; 0
+              [ifshow] =&gt; 1
+          )
+
+      [1] =&gt; stdClass Object
+          (   
+              [pid] =&gt; 151
+              [uid] =&gt; yzachari
+              [vorname] =&gt; Yvonne
+              [nachname] =&gt; Zacharias
+              [isfemale] =&gt; 1
+              [ifshow] =&gt; 1
+          )
+      ...
+)
+</code></pre>
+
+<h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
+<p>In der Datei home.php finden Sie zwei Beispiele für das Lesen einzelner Daten. Mit der SQL-Funktion COUNT() wir die Anzahl der Werke in der Datenbank bestimmt. </p>
+
+<pre><code>$ergebnis = $dbh-&gt;query( 
+       "SELECT COUNT(*) AS anzahl FROM person WHERE ifshow=1" )-&gt;fetch();
+$anz_personen = $ergebnis['anzahl'];
+</code></pre>
+
+<h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
+<p>Wenn Sie die Datei person.php mit einem Parameter aufrufen person.php?pid=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem $_GET – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.</p>
+
+<p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit ifshow=0 gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil ifshow=0 ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.</p>
+
+<pre><code>$pid = 0 + $_GET['pid'];
+$stm = $dbh-&gt;query ( "SELECT * FROM person WHERE ifshow=1 AND pid=$pid" );
+$person = $stm-&gt;fetch(PDO::FETCH_OBJ);
+if( $person === FALSE ) {
+          die("&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;");
+}
+</code></pre>
+
+<p>Die Darstellung der einzelnen Person ist noch nicht fertig programmiert: der Username wird zwar angezeigt, aber nicht die Anzahl der Werke der Person. Das müssen Sie selbst ausprogrammieren. </p>
+
+<pre><code>  if( $person-&gt;isfemale ) {
+      $anrede = "Frau";
+      $ersie = "Sie";
+  } else {
+      $anrede = "Herr";
+      $ersie = "Er";
+  }
+
+  // ====================== Ausgabe ===================
+  include "header.php";
+?&gt;
+  &lt;p&gt; 
+      &lt;?= $anrede ?&gt;
+      &lt;?= $person-&gt;vorname ?&gt;
+      &lt;?= $person-&gt;nachname ?&gt;
+      hat insgesamt x Werke in dieser Datenbank.
+      &lt;?= $ersie ?&gt;
+      hat den Usernamen &lt;?= $person-&gt;uid ?&gt;.
+  &lt;/p&gt;
+</code></pre>
+
+<p>In der Datei personen.php wird zu jeder Person ein passender Link zu person.php angezeigt:</p>
+
+<pre><code>&lt;li&gt;
+  &lt;b&gt;&lt;?= $person-&gt;vorname ?&gt; &lt;?= $person-&gt;nachname?&gt;&lt;/b&gt;
+  &lt;a href="person.php?pid=&lt;?= $person-&gt;pid ?&gt;"&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
+
+<p>Achtung: diese Verlinkung schützt nicht davor, dass böse User einfach eine URL mit ganz andere pid „von Hand“ eingeben!</p>
+
+<pre><code>http://multimediatechnology.at/wp2/mini/person.php?pid=666 
+</code></pre>
+
+<p>In der Datei werke.php fehlt eine entsprechende Verlinkung zu werk.php. Diese Verlinkung und die Implementierung von werk.php müssen Sie selbst noch ergänzen.</p>
+
+<h2 id="datenstze-suchen">Datensätze suchen</h2>
+<p>In der Datei psuche.php wird ein Formular zur Suche nach Vornamen angezeigt:</p>
+
+<pre><code>  &lt;form action="psuche.php" method="get"&gt;
+    Suche nach einer Person mit dem Vornamen &lt;input name="suchwort"&gt; 
+    &lt;input type="submit"&gt;
+  &lt;/form&gt;
+</code></pre>
+
+<p>Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:</p>
+
+<pre><code>  ... WHERE ifshow=1 AND vorname LIKE '$suchwort'
+</code></pre>
+
+<p>Wir werden uns später noch genauer mit der Sicherheitsproblematik von SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren wir die Problematik und schreiben einfach:</p>
+
+<pre><code>if( $suchwort ) {
+
+          $personen = $dbh-&gt;query (
+              "SELECT * FROM person WHERE ifshow=1 AND vorname LIKE '$suchwort' "
+              )-&gt;fetchAll(PDO::FETCH_OBJ);
+          $found = count($personen);
+}
+if ( $suchwort ) : ?&amp;gt;
+
+          &lt;p&gt;Suche nach '&lt;?= $suchwort ?&gt;' hat &lt;?= $found ?&gt; Ergebnisse geliefert:&lt;/p&gt;
+          &lt;ol&gt;
+          &lt;?php foreach ($personen as $person) : ?&gt;
+                  &lt;li&gt;
+                      &lt;b&gt;&lt;?=$person-&gt;vorname ?&gt;   &lt;?= $person-&gt;nachname ?&gt;&lt;/b&gt;
+                      &lt;a href="person.php?pid=&lt;?= $person-&gt;pid ?&gt;"&gt;mehr&lt;/a&gt;
+                  &lt;/li&gt;
+          &lt;?php endforeach ; ?&gt;
+          &lt;/ol&gt;
+&lt;? endif ?&gt;
+</code></pre>
+
+<p>Achtung: hier verwenden wir die count-Funktion von PHP um die Datensätze zu zählen. Wenn wir die Datensätze alle brauchen ist das auch legitim. Wenn wir nur die Anzahl der Datensätze bräuchten würden wir ein COUNT in SQL verwenden, wie auf Seite 74  gezeigt.</p>
+
+<p>Eine entsprechende Suche nach Werken unter dem Titel wsuche.php müssen Sie erst selbst implementieren.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/php-mysql/datenbank-lesen/">← <span class="article">Eine lesende Web-Applikation</a></li>
+    
+    
+      <li><a href="/session/">Login, Sessions und Datenbank verändern →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/php-mysql/datebank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/53/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql/datebank-lesen.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+

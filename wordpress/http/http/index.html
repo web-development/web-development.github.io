@@ -1,0 +1,842 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - HTTP</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">HTTP</h2>
+                          </div>
+			
+			
+			<p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. Im ersten Semester wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
+
+<h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
+<p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich. </p>
+
+<ol>
+  <li>Der Browser analysiert die URL: falls Sie eine IP-Adresse enthält geht’s weiter zum nächsten Schritt. Falls sie einen Domain Namen enthält wird dieser mittels DNS-Lookup in die entsprechende IP-Adresse übersetzt.</li>
+  <li>Der Browser baut eine TCP-Verbindung zum Server auf (Default: Port 80)</li>
+  <li>Der Browser sendet über die TCP-Verbindung einen HTTP-Request; dieser besteht aus einer ersten Zeile (Request-Line), mehreren Header-Zeilen und manchmal einem Body.</li>
+  <li>Der Webserver nimmt den Request entgegen und analysiert ihn. Der Webserver entscheidet, ob er zur Beantwortung der Anfrage nur eine bestimmte Datei aus dem Dateisystem zu liest, oder ein Programm aufruft.</li>
+  <li>Der Webserver schickt über die TCP-Verbindung einen HTTP-Response an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource. </li>
+  <li>Der Browser nimmt das Dokument in Empfang, stellt es geeignet dar, und beendet die TCP-Verbindung.</li>
+</ol>
+
+<p>Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.</p>
+
+<h2 id="aufbau-von-request-und-response">Aufbau von Request und Response</h2>
+<p>Jede Anfrage des Clients und jede Antwort des Servers besteht aus einer ersten Zeile mit besonderer Bedeutung, einem Header und einem Body. Header und Body funktionieren ähnlich wie bei einer E-Mail:</p>
+
+<p>Hier ein Beispiel für einen Request:</p>
+
+<p>Erste Zeile („Request-Line“)</p>
+
+<pre><code>  GET /rezensionen/list.php3?no=20 HTTP/1.1 Beliebig viele Header-Zeilen
+
+  Host: www.biblio.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+</code></pre>
+
+<p>Die erste Zeile einer Client-Anfrage besteht aus: Methode, URL-Fragement und HTTP-Versionsnummer. Die meist-verwendete Methode ist GET. Sie erinnern sich an das erste Semester: bei Web-Formularen muss man die Methode angeben, mit der die Daten an den Server übertragen werden sollen. Das ist diese Methode.</p>
+
+<p>Hier ein Beispiel für eine Server-Antwort:</p>
+
+<p>Erste Zeile („Response-Line“)</p>
+
+<pre><code>  HTTP/1.0 200 OK Beliebig viele Header-Zeilen
+
+  Date: Sat, 27 Apr 2002 05:52:57 GMT
+  Server: Apache/1.3.9 (Unix) Debian/GNU
+  Content-Type: text/html Eine leere Zeile trennt Header und Body (\n\n, hier unsichtbar)
+
+  &amp;nbsp; Body des HTTP-Response enthält das gesamte Dokument
+
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;&lt;head&gt;&lt;title&gt;Rezensionsdatenbank des &amp;Ouml;sterreichischen BibliotheksWerkes&lt;/title&gt;
+  &lt;link rel="Stylesheet" href="rezensionen.css" /&gt;
+  &lt;/head&gt;&lt;body&gt;nix&lt;/body&gt;&lt;/html&gt; Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.
+</code></pre>
+
+<p>Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).</p>
+
+<p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet. </p>
+
+<p>Request</p>
+
+<pre><code>  Host: www.biblio.at Wichtig wenn der Server unter mehreren Domain Names (aber nur einer IP-Adresse) erreichbar ist. 
+</code></pre>
+
+<p>Request</p>
+
+<pre><code>  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90) Selbstdarstellung des Clients: welcher Browser, welche Version. Die meisten Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe. 
+</code></pre>
+
+<p>Request</p>
+
+<pre><code>  Referer: http://my.app.at/form.html Woher kommt der Client? URL der vorigen Seite—falls von dort ein Link hierher verfolgt wurde oder ein FORM. Kann deaktiviert werden!
+</code></pre>
+
+<p>Response</p>
+
+<pre><code>  Date: Sat, 27 Apr 2002 05:52:57 GMT
+</code></pre>
+
+<p>Datum und Uhrzeit am Server</p>
+
+<p>Response</p>
+
+<pre><code>  Server: Apache/1.3.9 (Unix) Debian/GNU
+</code></pre>
+
+<p>Selbstdarstellung des Servers</p>
+
+<p>Response</p>
+
+<pre><code>  Content-Type: text/html
+</code></pre>
+
+<p>MIME-Type des im Body gelieferten Dokuments</p>
+
+<h2 id="http-abhren">HTTP abhören</h2>
+<p>Wie können Sie HTTP beobachten?  Entweder mit einem allgemeinen Netzwerk-Sniffer wie Ethereal/Wireshark9 oder mit der Firefox-Extension Live HTTP Headers10. </p>
+
+<p><img  alt="Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)" src="/images/image334.png" /></p>
+
+<p>Die folgenden Anwendungsbeispiele wurden mit Live HTTP Headers mitgeschnitten.</p>
+
+<h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
+<p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten. </p>
+
+<p>Request = Client an Server</p>
+
+<pre><code>  GET /rezensionen/list.php3?no=20 HTTP/1.1
+  Host: www.biblio.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+</code></pre>
+
+<p>Response = Server an Client</p>
+
+<pre><code>  HTTP/1.0 200 OK
+  Date: Sat, 27 Apr 2002 05:52:57 GMT
+  Server: Apache/1.3.9 (Unix) Debian/GNU
+  Content-Type: text/html
+
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+     &lt;title&gt;Rezensionsdatenbank&lt;/title&gt;
+     &lt;link rel="stylesheet" href="rezensionen.css"&gt;
+  &lt;/head&gt;
+</code></pre>
+
+<p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post. </p>
+
+<p>Die Header, die mit Accept beginnen, können (laut Standard) dem Aushandeln von Sprache, Datentyp, Encoding dienen; werden aber von Servern und Clients nur teilweise beachtet.</p>
+
+<pre><code>  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1  bedeutet laut Standard, daß der Client das Dokument lieber als HTML als als Plain Text erhalten würde. Im realen Web wird aber unter einer URL immer nur ein Dokumententyp angeboten. Wenn man eine PDF-Version der gleichen Information anbietet, dann geschieht dies unter einer anderen URL.
+</code></pre>
+
+<p>Accept-Language würde dem Aushandeln der Sprache dienen. Dazu müssten die UserInnen aber im Browser die Sprach-Präferenz konfigurieren:</p>
+
+<p><img  alt="Abbildung 132: Festlegen der Sprach-Präferenz im Browser Firefox" src="/images/image335.png" /></p>
+
+<p>Da aber kaum jemand diese Konfiguration vornimmt wird die Sprach-Aushandlung kaum verwendet. Einziges mir bekanntes Beispiel einer Webseite die unter der gleichen URL in verschiedenen Sprachen erhältlich ist ist die Homepage von Debian:</p>
+
+<p><img  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" src="/images/image336.png" /></p>
+
+<h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
+<p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
+
+<p>Request = Client an Server</p>
+
+<pre><code>  POST /rezensionen/list.php3 HTTP/1.1
+  Host: www.biblio.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Referer: http://www.biblio.at/rezensionen/formular.htm
+  Content-Type: application/x-www-form-urlencoded
+  Content-Length: 129
+
+  no=20&amp;limit=1&amp;katalog=all&amp;isbn=&amp;nachname=Jellinek&amp;vornam
+  e=&amp;titel=&amp;schlagwort1=&amp;schlagwort2=&amp;Bool=AND&amp;verl=&amp;von=&amp;
+  bis=&amp;submit=SUCHE
+</code></pre>
+
+<p>Die Antwort des Servers unterscheidet sich nicht zwischen GET und POST (außer Sie haben das in PHP absichtlich so programmiert).</p>
+
+<h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
+<p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht. </p>
+
+<p>(Wie auf Seite Fehler! Textmarke nicht definiert. beschrieben, können Sie diese Umleitung von PHP aus mit dem header-Befehl auslösen)
+Client an Server</p>
+
+<p>Server an Client</p>
+
+<pre><code>  GET / HTTP/1.1
+  Host: www.rezensionen.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+
+
+
+  HTTP/1.0 301 Moved Permanently
+  Date: Sat, 27 Apr 2002 05:52:26 GMT
+  Server: Apache/1.3.9 (Unix) Debian/GNU
+  Location: http://www.biblio.at/rezensionen/
+  Content-Type: text/html; charset=iso-8859-1
+
+  &lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+  &lt;HTML&gt;&lt;HEAD&gt;
+  &lt;TITLE&gt;301 Moved Permanently&lt;/TITLE&gt;
+  &lt;/HEAD&gt;&lt;BODY&gt;
+  &lt;H1&gt;Moved Permanently&lt;/H1&gt;
+  The document has moved &lt;A HREF="http://www.biblio.at/rezensionen/"&gt;here&lt;/A&gt;.&lt;P&gt;
+  &lt;/BODY&gt;&lt;/HTML&gt;
+  GET /rezensionen/ HTTP/1.1
+  Host: www.biblo.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+</code></pre>
+
+<p>und so weiter.</p>
+
+<h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
+<p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
+
+<p><img  alt="Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern" src="/images/image337.png" /></p>
+
+<p>Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable $_SERVER[‘PHP_AUTH_USER’].</p>
+
+<p>Auf Ebene des HTTP-Protokolls betrachtet funktioniert diese Authentisierung wie folgt: bei der ersten Anfrage des Clients schickt der Server einen Status-Code 401 (nicht autorisiert). </p>
+
+<p>Client an Server</p>
+
+<p>Server an Client</p>
+
+<pre><code>  GET /pr/ HTTP/1.1
+  Host: www.sbg.ac.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+
+
+  HTTP/1.0 401 Unauthorized
+  Date: Sat, 27 Apr 2002 06:05:08 GMT
+  Server: Apache/1.3.22 (Unix)
+  WWW-Authenticate: Basic realm="unineu"
+  Content-Type: text/html; charset=iso-8859-1
+
+  &lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+  &lt;HTML&gt;&lt;HEAD&gt;
+  &lt;TITLE&gt;401 Authorization Required&lt;/TITLE&gt;
+  Daraufhin zeigt der Browser das Passwort-Eingabefenster an. Nach Eingabe von Username und Passwort schickt der Browser die gleiche Anfrage erneut, diesmal aber mit der zusätzlichen Header-Zeile Authorization. In dieser Zeile werden Username und Passwort (leicht verschlüsselt) mitgeschickt. 
+  Wenn Username und Passwort stimmen, schickt der Server eine positive Antwort und das Dokument. 
+  Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Authorization-Zeile mitschicken. 
+  GET /pr/ HTTP/1.1
+  Host: www.sbg.ac.at
+  User-Agent: Mozilla/5.0 (Win98; de-AT) Gecko/20020311
+  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1
+  Accept-Language: de-at, de;q=0.66, en-us;q=0.33
+  Accept-Encoding: gzip, deflate, compress;q=0.9
+  Accept-Charset: ISO-8859-15, utf-8;q=0.66, *;q=0.66
+  Authorization: Basic dHI6cHJyMDBy
+
+
+  HTTP/1.0 200 OK
+  Date: Sat, 27 Apr 2002 06:05:11 GMT
+  Server: Apache/1.3.22 (Unix)
+  Content-Type: text/html; charset=iso-8859-1
+
+  &lt;html lang="de"&gt;
+  &lt;head&gt;
+  &lt;title&gt;Universit&amp;auml;t Salzburg - B&amp;uuml;ro f&amp;uuml;r Public Relations&lt;/title&gt; HTTPS ------ HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen. 
+</code></pre>
+
+<p>Ob HTTPS oder HTTP verwendet wird, hängt von der Konfiguration des Server ab. Wenn Sie nur Webspace in „Untermiete“ benutzen (wie auf multimediatechnology.at), können Sie HTTPS nicht aktivieren.</p>
+
+<p>Die Verschlüsselung und Entschlüsselung des gesamten Verkehrs braucht CPU-Zeit — der Webserver kann also weniger Anfragen bedienen als mit HTTP. Eine Möglichkeit diese Belastung vom Webserver „fernzuhalten“ ist die Terminierung von SSL auf einem anderen Rechner. </p>
+
+<p>Die Electronic Frontier Foundation hat eine Kampagne11 gestartet um KonsumentInnen und Website-BetreiberInnen zu überzeugen, dass https immer verwendet werden sollte: „HTTPS Everywhere“.</p>
+
+<p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.  </p>
+
+<h2 id="proxies">Proxies</h2>
+<p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
+
+<p><img  alt="Abbildung 135: Proxy-Konfiguration in Firefox: Extras - Einstellungen - Erweitert - Netzwerk – Verbindung" src="/images/image343.png" /></p>
+
+<p>Ist ein Proxy konfiguriert dann baut der Browser die HTTP-Verbindung nicht direkt zum Zielrechner auf, sondern zum Proxy, und verändert die Form der ersten Zeile der HTTP-Anfrage: die vollständige URL wird angegebe:</p>
+
+<p>GET http://www.sbg.ac.at/pr/ HTTP/1.1</p>
+
+<p>Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/http/tcpip-und-dns/">← <span class="article">TCP/IP und DNS</a></li>
+    
+    
+      <li><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/http/http.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+
