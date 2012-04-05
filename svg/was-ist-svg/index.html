@@ -86,7 +86,8 @@ definiert: HTML und XML.  </p>
 <h2 id="svg">SVG</h2>
 
 <svg width="200" height="200" style="float:left;">
-<circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="yellow" />
+    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
 
 <p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
@@ -105,9 +106,16 @@ im Browser nativ dargestellt.</p>
 <h4 class="caption">Html Code <small>Einbindung von SVG in HTML</small></h4>
 <pre class="lang-html prettyprint linenums">
   &lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
-    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;yellow&quot; /&gt;
+    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
+    &lt;rect    x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
   &lt;/svg&gt;
 </pre></div>
+
+<p>Mit SVG kann man zweidimensional zeichnen, die grafischen Objekte werden
+- wie bei HTML - in einem DOM gespeichert und können Manipuliert werden. Zur
+Darstellung im Browser werden sie mit dem <a href="http://de.wikipedia.org/wiki/Painter%27s_Algorithmus">Painters Algorithm</a> gezeichnet:
+“spätere” Objekte übermalen “frühere” Objekte. Deswegen überdeckt das blaue Rechteck
+im Beispiel den grünen Kreis.</p>
 
 		
 			<div class="pagination">
@@ -290,6 +298,14 @@ im Browser nativ dargestellt.</p>
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   

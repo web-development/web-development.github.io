@@ -62,25 +62,27 @@
 			
 			<p>In Kapitel 4.5.6 (Seite 85) haben Sie gelernt wie Sie mit Javascript die Daten eines Webformulars prüfen können bevor das Formular abgesendet wird. Mit jQuery können wir dieses Programm noch verfeinern: Jeweils beim betroffenen Eingabefeld wird direkt eine Fehlermeldung angezeigt:</p>
 
-<pre><code>  &lt;script src="jquery-1.2.3.min.js"&gt;&lt;/script&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script src=&quot;jquery-1.2.3.min.js&quot;&gt;&lt;/script&gt;
   &lt;script&gt;
 
     $(document).ready(function(){
-          $("form").submit(function(){
+          $(&quot;form&quot;).submit(function(){
               var ok = true;
              var $i = null;
               
-              $("span.error").remove();
+              $(&quot;span.error&quot;).remove();
 
-              $i = $("input[name=liefername]");
-              if($i.val() == "") {
-                  $i.after('&lt;span class="error"&gt;den Empfänger angeben&lt;/span&gt;');
+              $i = $(&quot;input[name=liefername]&quot;);
+              if($i.val() == &quot;&quot;) {
+                  $i.after('&lt;span class=&quot;error&quot;&gt;den Empfänger angeben&lt;/span&gt;');
                    ok = false;
               } 
 
-              $i = $("input[name=adresse]");
-              if($i.val() == "") {
-                  $i.after('&lt;span class="error"&gt;Lieferadresse angeben&lt;/span&gt;');
+              $i = $(&quot;input[name=adresse]&quot;);
+              if($i.val() == &quot;&quot;) {
+                  $i.after('&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;');
                   ok = false;
               }
 
@@ -91,15 +93,15 @@
   &lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
-  &lt;form action = "bestell.php"&gt;
+  &lt;form action = &quot;bestell.php&quot;&gt;
 
-  &lt;label&gt;Empfänger: &lt;input type="text" name="liefername"&gt; &lt;/label&gt;
-  &lt;label&gt;Adresse: &lt;input type="text" name="adresse"&gt; &lt;/label&gt;
-  &lt;label&gt;Telefon/Handy: &lt;input type="text" name="tel"&gt; &lt;/label&gt;
+  &lt;label&gt;Empfänger: &lt;input type=&quot;text&quot; name=&quot;liefername&quot;&gt; &lt;/label&gt;
+  &lt;label&gt;Adresse: &lt;input type=&quot;text&quot; name=&quot;adresse&quot;&gt; &lt;/label&gt;
+  &lt;label&gt;Telefon/Handy: &lt;input type=&quot;text&quot; name=&quot;tel&quot;&gt; &lt;/label&gt;
 
-  &lt;input name="" type="submit"&gt;
+  &lt;input name=&quot;&quot; type=&quot;submit&quot;&gt;
   &lt;/form&gt;
-</code></pre>
+</pre></div>
 
 		
 			<div class="pagination">
@@ -282,6 +284,14 @@
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   

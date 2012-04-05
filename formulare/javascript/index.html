@@ -86,7 +86,7 @@
 <p><img  alt="Abbildung 53: Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" src="/images/image240.png" /></p>
 
 <h2 id="popup-fenster">Popup-Fenster</h2>
-<p>Mit den Befehlen alert, confirm und prompt können Sie kleine Popup-Fenster öffnen:</p>
+<p>Mit den Befehlen <code>alert</code>, <code>confirm</code> und <code>prompt</code> können Sie kleine Popup-Fenster öffnen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Popup-Fenster</small></h4>
@@ -104,16 +104,18 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 
 <p>Mit der Konsole von Firebug können Sie auch Formulare genauer untersuchen. Achtung! Wir geben ab jetzt allen Formular-Eingabefeldern nicht nur einen name, sondern auch eine id, das erleichtert die Handhabung in Javascript!</p>
 
-<pre><code>  &lt;form method="get" action="mail.php"&gt; 
-  &lt;label for="mail"&gt;E-Mail:
-     &lt;input type="text" name="mail" id="mail" placeholder="e-mail adresse"&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form method=&quot;get&quot; action=&quot;mail.php&quot;&gt; 
+  &lt;label for=&quot;mail&quot;&gt;E-Mail:
+     &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
   &lt;/label&gt;
   &lt;label&gt;Hochschule:   
-      &lt;input type="text" name="hochschule" id="hochschule" value="FH Salzburg"&gt; 
+      &lt;input type=&quot;text&quot; name=&quot;hochschule&quot; id=&quot;hochschule&quot; value=&quot;FH Salzburg&quot;&gt; 
   &lt;/label&gt; 
-  &lt;input type="submit" value="speichern"&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;speichern&quot;&gt;
   &lt;/form&gt;
-</code></pre>
+</pre></div>
 
 <p><img  alt="Abbildung 54: Mit Firebug Formulare und Eingabefelder auslesen" src="/images/image242.png" /></p>
 
@@ -145,8 +147,10 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 
 <p>Ein Anwendungsbeispiel dieses Befehls: Ich will ein Dropdown-Menü mit vielen Einträgen, bin aber zu faul um alle <code>option</code>-Tags einzutippen.</p>
 
-<pre><code>  &lt;form&gt;
-     &lt;select name="Anzahl" id="Anzahl"&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form&gt;
+     &lt;select name=&quot;Anzahl&quot; id=&quot;Anzahl&quot;&gt;
          &lt;option&gt;1&lt;/option&gt;
          &lt;option&gt;2&lt;/option&gt;
          &lt;option&gt;3&lt;/option&gt;
@@ -156,25 +160,27 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
          &lt;option&gt;7&lt;/option&gt;
          ...
      &lt;/select&gt;
-     &lt;input type="submit"&gt;
+     &lt;input type=&quot;submit&quot;&gt;
   &lt;/form&gt;
-</code></pre>
+</pre></div>
 
 <p>Ich ersetze also die option-Tags durch eine Schleife in Javascript:</p>
 
-<pre><code>  &lt;form&gt;
-     &lt;select name="Anzahl" id="Anzahl"&gt;
-         &lt;script language="javascript"&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form&gt;
+     &lt;select name=&quot;Anzahl&quot; id=&quot;Anzahl&quot;&gt;
+         &lt;script language=&quot;javascript&quot;&gt;
             var i=0;
             while(i &lt;= 50) {
-                document.write("&lt;option&gt;" + i + "&lt;/option&gt;");
+                document.write(&quot;&lt;option&gt;&quot; + i + &quot;&lt;/option&gt;&quot;);
                 i++;
             }
          &lt;/script&gt;
      &lt;/select&gt;
-     &lt;input type="submit"&gt;
+     &lt;input type=&quot;submit&quot;&gt;
   &lt;/form&gt;
-</code></pre>
+</pre></div>
 
 <p>Mit Ansicht → Quelltext sieht man den Javascript-Code, In Firebug sieht man das Ergebnis:</p>
 
@@ -202,22 +208,28 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 
 <p>Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis multipliziert werden und in die rechte Spalte geschrieben werden. Betrachten wir zuerst diesen Schritt alleine an einem vereinfachten Formular mit einem Eingabefeld und einem span-tag für die Ausgabe</p>
 
-<pre><code>&lt;input value="0" name="in"&gt;
-&lt;span id="out"&gt;&lt;/span&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;
+</pre></div>
 
 <p>Für die Formulierung „Wenn in das Feld in ein neuer Wert eingegeben wird, dann…“  gibt es ein passendes Event in HTML/Javascript: onchange. Die wird als Attribut in den HTML-Code des Eingabefeldes geschrieben:</p>
 
-<pre><code>&lt;input value="0" name="in"  onchange="hier Javascript"&gt;
-&lt;span id="out"&gt;&lt;/span&gt;   
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;  onchange=&quot;hier Javascript&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;   
+</pre></div>
 
 <p>In das Attribut kann nun Javascript-Code eingefügt werden der die richtige Berechnung vornimmt und das Ergebnis in das richtige Element schreibt:</p>
 
-<pre><code>&lt;input value="0" name="in"  
-         onchange="document.getElementById('out').innerHTML = this.value * 100"&gt;
-&lt;span id="out"&gt;&lt;/span&gt;   
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;  
+           onchange=&quot;document.getElementById('out').innerHTML = this.value * 100&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;   
+</pre></div>
 
 <p>Betrachten wir die Javascript-Befehl im Detail: Es handelt sich um eine Zuweisung mit =.</p>
 
@@ -229,60 +241,72 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 
 <p>Nun wäre es natürlich unpraktisch in das onchange-Attribut ein längeres Javascript-Programm zu schreiben. Dafür kann man in Javascript Funktionen definieren, die dann nur noch aufgerufen werden. Z.B. um die Gesamtsumme im Bestellformular zu berechnen ist eine Funktion praktisch:</p>
 
-<pre><code>&lt;head&gt;
-&lt;script language="javascript"&gt;
-function compute() { 	
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;head&gt;
+  &lt;script language=&quot;javascript&quot;&gt;
+  function compute() { 	
 
-document.getElementById('outtotal').innerHTML =  	      
+  document.getElementById('outtotal').innerHTML =  	      
 
-        document.getElementById('in1').value * 100 		
-      + document.getElementById('in2').value * 200 		
-      + document.getElementById('in3').value * 0 		
-      + document.getElementById('in4').value * 1000 		
-      + document.getElementById('in5').value * 10 		
-      + document.getElementById('in6').value * 5 
-}
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt; Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.
-</code></pre>
+          document.getElementById('in1').value * 100 		
+        + document.getElementById('in2').value * 200 		
+        + document.getElementById('in3').value * 0 		
+        + document.getElementById('in4').value * 1000 		
+        + document.getElementById('in5').value * 10 		
+        + document.getElementById('in6').value * 5 
+  }
+  &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+</pre></div>
+
+<p>Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.</p>
 
 <p>Achtung: beim „rechnen“ mit Eingabefelder von Javascript tritt häufig folgender Fehler auf: in Javascript werden die Datentypen int, float, char, zwar unterschieden, aber nicht deklariert. Es kann in einer Variable einmal ein String und einmal eine Zahl gespeichert sein:</p>
 
-<pre><code>var a,b,c;
-a = 10;
-document.write("&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? ");
-document.write(a + 20);
-a = "zehn";
-document.write("&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? ");
-document.write(a + 20);
-a = "10";
-document.write("&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? ");
-document.write(a + 20);
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  var a,b,c;
+  a = 10;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+  a = &quot;zehn&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+  a = &quot;10&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+</pre></div>
 
 <p>Hier der Output des Programms:</p>
 
-<pre><code>wie viel ist 10 plus 20? 30
-wie viel ist 10 plus 20? zehn20
-wie viel ist 10 plus 20? 1020
-</code></pre>
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+  wie viel ist 10 plus 20? 30
+  wie viel ist 10 plus 20? zehn20
+  wie viel ist 10 plus 20? 1020
+</pre></div>
 
-<p>Der + Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.</p>
+<p>Der <code>+</code> Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.</p>
 
-<p>Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. 100 + 200 + 0 + 0 + 0 + 0 wäre 1002000000. Bei der Multiplikation mit * tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. </p>
+<p>Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. <code>100 + 200 + 0 + 0 + 0 + 0</code> wäre <code>1002000000</code>. Bei der Multiplikation mit <code>*</code> tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. </p>
 
 <p>Mit der Funktion parseInt() können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.</p>
 
-<pre><code>a = "10";
-document.write("&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? ");
-document.write(parseInt(a) + 20);
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  a = &quot;10&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(parseInt(a) + 20);
+</pre></div>
 
 <p>gibt das erwartete ergebnis</p>
 
-<pre><code>wie viel ist 10 plus 20? 30
-</code></pre>
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+  wie viel ist 10 plus 20? 30
+</pre></div>
 
 <h2 id="formular-prfen">Formular prüfen</h2>
 <p>Mit Javascript kann man schon vor dem Absenden des Formulares prüfen ob wichtige Daten eingegeben wurden, und das Einsenden des Formulares verhindern falls dem nicht so ist. </p>
@@ -294,8 +318,12 @@ document.write(parseInt(a) + 20);
   &lt;form name=&quot;pizzaformular&quot; 
         action=&quot;http://webwelt.horus.at/html/form/echo.cgi&quot;
         onsubmit= &quot;wert=formularok(); return wert;&quot;&gt;
-Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. Entsprechend kann man eine Funktion schreiben:
+</pre></div>
 
+<p>Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. Entsprechend kann man eine Funktion schreiben:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
   &lt;script&gt;
       function formularok() {
 	    var ok, fehler;
@@ -522,6 +550,14 @@ Telefon/Handy: &amp;lt;input type=&quot;text&quot; name=&quot;tel&quot; id=&quot
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   

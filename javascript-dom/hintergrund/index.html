@@ -147,9 +147,9 @@
 
 <p>Seit ca. 2008 sind offline-fähige Javascript-Applikationen möglich: Der Browser speichert alle notwendigen Teil der Website permanent ab, und kann die Applikation auch benutzen wenn keine Internetverbindung (mehr) besteht. Dies Applikationen haben z.B: auf dem iPad eine große Bedeutung.</p>
 
-<p>Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint. </p>
-
 <p><img  alt="Abbildung 56: Offline Applikation everytimezone.com" src="/images/image252.png" /></p>
+
+<p>Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, …</p>
 
 <h2 id="document-object-model">Document Object Model</h2>
 
@@ -157,7 +157,9 @@
 
 <p>Das DOM einer Webseite kann man sich als Baum vorstellen, ähnlich der Ordnerstruktur im Dateisystem.  Sie kennen diese Idee schon von CSS und den CSS-Selektoren.</p>
 
-<p>In folgendem Beispiel ist der markierte &lt;li&gt;-Tag innerhalb des &lt;ol&gt;-Tags, der &lt;li&gt;-Tag enthält wiederum einen &lt;a&gt;-Tag. </p>
+<p>In folgendem Beispiel ist der markierte <code>li</code>-Tag innerhalb des <code>ol</code>-Tags, der <code>li</code>-Tag enthält wiederum einen <code>a</code>-Tag. </p>
+
+<p><img  alt="Abbildung: Bild des DOM, erzeugt mit dem DOM Inspektor von Mozilla" src="/images/dom.png" /></p>
 
 <pre><code>  &lt;html&gt;
   &lt;body&gt;
@@ -169,8 +171,10 @@
       &lt;li&gt;&lt;a href="#bla"&gt;erster Link&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#bla"&gt;zweiter Link&lt;/a&gt;&lt;/li&gt;
     &lt;/ol&gt;
-    &lt;/div&gt; ... Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:
+    &lt;/div&gt; ...
 </code></pre>
+
+<p>Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:</p>
 
 <ul>
   <li>Mache ein beliebiges Element des DOM unsichtbar (z. B. die ganze Liste)</li>
@@ -359,6 +363,14 @@
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   

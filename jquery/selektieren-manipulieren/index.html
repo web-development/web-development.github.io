@@ -62,25 +62,31 @@
 			
 			<p>jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:</p>
 
-<pre><code>$("a")        /* alle A-Tags ... als jQuery objekte */
-$("h1")       /* alle Überschriften h1 ... als jQuery objekte */
-$("p.extra")  /* alle p-tags mit klasse extra ... als jQuery objekte  */
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;a&quot;)        /* alle A-Tags ... als jQuery objekte */
+  $(&quot;h1&quot;)       /* alle Überschriften h1 ... als jQuery objekte */
+  $(&quot;p.extra&quot;)  /* alle p-tags mit klasse extra ... als jQuery objekte  */
+</pre></div>
 
-<p>jQuery definiert noch ein paar zusätzliche Selektoren13, die es in CSS (noch) nicht gibt:</p>
+<p>jQuery definiert noch ein paar zusätzliche Selektoren, die es in CSS (noch) nicht gibt:</p>
 
-<pre><code>$("tr:even")                 /* Alle geraden Zeilen der Tabelle */
-$("p:contains('Warnung')")   /* Absätze die die Zeichenkette Warnung enthalten */
-$(":checkbox")               /* Alle input-Tags vom typ checkbox */
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
+  $(&quot;p:contains('Warnung')&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
+  $(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
+</pre></div>
 
 <p>Die Selektion allein verändert die Webseite noch nicht. Dafür bietet jQuery eine Reihe von Manipulations-Funktionen an. Diese können direkt an die Selektions-Funktion geschreiben werden: die Selektions-Funktion gibt ein Objekt mit entsprechenden Methoden zurück:</p>
 
-<pre><code>$("a").addClass("wichtig"); /* alle A-Tags erhalten die Klasse wichtig */
-$("h1").append(":");        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
-$("h1").prepend("Titel:");  /*  --||-- wird vorne ‚titel:’ eingefügt */
-$("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
-</code></pre>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;a&quot;).addClass(&quot;wichtig&quot;); /* alle A-Tags erhalten die Klasse wichtig */
+  $(&quot;h1&quot;).append(&quot;:&quot;);        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
+  $(&quot;h1&quot;).prepend(&quot;Titel:&quot;);  /*  --||-- wird vorne ‚titel:’ eingefügt */
+  $(&quot;p.extra&quot;).hide();        /* alle p-tags mit klasse extra werden versteckt */
+</pre></div>
 
 <p>Hinweis: hier versteckt sich eine Schleife: der Selektor liefert ein ganzes Array von Objekten, die Manipulations-Funktion wird für jedes Objekt aufgerufen.</p>
 
@@ -265,6 +271,14 @@ $("p.extra").hide();        /* alle p-tags mit klasse extra werden versteckt */
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   

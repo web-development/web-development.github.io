@@ -62,43 +62,51 @@
 			
 			<p>jQuery bietet eine etwas kürzere Schriebweise statt addEventListener an. Z.B. die Methode click: als Argument wird nur eine Funktion übergeben, die aufgerufen werden soll wenn das Event feuert. Hier kommen meist anonyme Funktionen zum Einsatz:</p>
 
-<pre><code>  $("h1").click(function() {
-      alert("ein h1 wurde geklickt");
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;h1&quot;).click(function() {
+      alert(&quot;ein h1 wurde geklickt&quot;);
   });
-</code></pre>
+</pre></div>
 
 <p>Innerhalb der Funktion steht die Variable this zu Verfügung um den angeklickten Tag als jQuery Objekt zu erhalten:</p>
 
-<pre><code>  $("h1").click(function() {
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;h1&quot;).click(function() {
       $(this).hide();   /* versteckt den angeklickten h1 tag */
   });
-</code></pre>
+</pre></div>
 
 <p>Dazu ein vollständiges Beispiel: zu mehreren Überschriften gibt es Text, der bei Klick auf die Überschrift versteckt bzw. angezeigt werden soll:</p>
 
-<pre><code>  &lt;h2 class="more"&gt;Vertiefendes Studium&lt;/h2&gt;
-  &lt;div class="extra"&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h2 class=&quot;more&quot;&gt;Vertiefendes Studium&lt;/h2&gt;
+  &lt;div class=&quot;extra&quot;&gt;
   &lt;p&gt;Das Schwerpunktstudium Vertiefung ermöglicht den Erwerb hoch spezialisierter Qualifikationen in einer gestalterischen Fachdisziplin. &lt;/p&gt;&lt;/div&gt; 
-  &lt;h2 class="more"&gt;Steuerung&lt;/h2&gt;
-  &lt;div class="extra"&gt;
+  &lt;h2 class=&quot;more&quot;&gt;Steuerung&lt;/h2&gt;
+  &lt;div class=&quot;extra&quot;&gt;
   &lt;p&gt;Das Schwerpunktstudium Steuerung zielt auf die Ausbildung von Führungskräften der Kreativwirtschaft.&lt;/p&gt; 
   &lt;/div&gt;
-</code></pre>
+</pre></div>
 
 <p>Dazu das vollständige Javascript-Programm mit jQuery:</p>
 
-<pre><code>  &lt;script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script type=&quot;text/javascript&quot; src=&quot;http://code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
   &lt;script&gt; 
   $(document).ready(function(){ 
-      $(".extra").hide();
-      $(".more").click(function(){
-          $(this).next(".extra").toggle();
+      $(&quot;.extra&quot;).hide();
+      $(&quot;.more&quot;).click(function(){
+          $(this).next(&quot;.extra&quot;).toggle();
       });
   }); 
   &lt;/script&gt;
-</code></pre>
+</pre></div>
 
-<p>this ist innerhalb der Funktion der angeklickte Tag. Mit dem jQuery-Befehl next() wird nach dem nächsten Tag im HTML-Code gesucht, hier nach dem nächsten Tag mit der Klasse extra. Auf den gefundenen Tag wird der befehl toggle() angewandt, der zwishcen sichtbar und unsichtbar hin und her schlatet (mit display:none)</p>
+<p><code>this</code>  ist innerhalb der Funktion der angeklickte Tag. Mit dem jQuery-Befehl <code>next()</code> wird nach dem nächsten Tag im HTML-Code gesucht, hier nach dem nächsten Tag mit der Klasse extra. Auf den gefundenen Tag wird der befehl <code>toggle()</code> angewandt, der zwishcen sichtbar und unsichtbar hin und her schlatet (er setzt dafür die CSS Eigenschaft <code>display:none</code>)</p>
 
 		
 			<div class="pagination">
@@ -281,6 +289,14 @@
                     
                       
                       <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
                       
                     
                   
