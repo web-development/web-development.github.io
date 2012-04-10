@@ -1,0 +1,789 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Objekte + Prototypen</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <style>
+    body {  padding-top: 90px; }
+    article {  padding-top: 40px; }
+    body, p, li, dt, dd {  
+      font-size: 15px; 
+      line-height: 1.5 ;
+    }
+  </style>
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+<div class="container">
+
+  <header class="jumbotron sub-header">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Objekte + Prototypen</h2>
+                          </div>
+			
+			
+			<h2 id="objekt-mit-objekten">Objekt mit Objekten</h2>
+
+<p>In folgendem Beispiel hat der Konstruktur drei Argumente. Als
+drittes Argument wird ein Objekt übergeben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Objekt mit Objekt</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  var hochschule = {
+    name: &quot;FH Salzburg&quot;,
+    typ: &quot;Fachhochschule&quot;,
+    seit: 1995
+  };
+
+  function Studiengang(name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
+  }
+
+  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
+  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+</pre></div>
+
+<p>Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
+beiden Studiengangs-Objekten <code>mmtb</code> und <code>mmtb</code> auf das gleiche Objekt im
+Speicher verwiesen:</p>
+
+<p><img  alt="Abbildung: Objekt mit Objekt" src="/images/objekt-mit-objekt.png" /></p>
+
+<h2 id="objekt-und-konstruktor">Objekt und Konstruktor</h2>
+
+<p>Jedes Objekt enthält auch einen Verweis auf die Konstruktor-Funktion - falls
+keine verwendet wurde auf die Funktion <code>Object()</code>.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Fortsetzung: Konstruktor-Funktionen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+// folgende Ausdrücke sind true:
+mmtb.constructor === Studiengang;
+hochschule.constructor === Object;
+</pre></div>
+
+<p>Dieser Konstruktor wird auch verwendet, um die Fragen <code>instanceof</code> zu beantworten:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Fortsetzung: Operator instanceof</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+mmtb instanceof Studiengang;
+hochschule instanceof Object;
+mmtb instanceof Object;
+</pre></div>
+
+<p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-objekt-und-constructor.png" /></p>
+
+<h2 id="objekt-und-konstruktor-und-prototyp">Objekt und Konstruktor und Prototyp</h2>
+
+<p>Wie im vorigen Kapitel kurz erläutert ist jede Funktion in Javascript auch ein Objekt.
+Man kann zur Funktion Attribute speichern.  Es gibt ein Attribut mit einer speziellen Bedeutung
+bei einer Konstruktor-Funktion: das Attribut <code>prototype</code>: prototype verweist auf ein Objekt,
+in dem weitere Methoden und Attribute für alle Objekte die mit diesem Konstruktor erzeugt wurden
+gespeichert werden.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // Konstruktor
+  function Studiengang(name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
+  }
+  // Zwei Attribute am prototyp des Konstruktors
+  Studiengang.prototype.min = 2;
+  Studiengang.prototype.max = 42;
+  // Eine Methode am prototyp des Konstruktors
+  Studiengang.prototype.toString = function () {
+    return &quot;Studiengang &quot; + this.name + &quot; (seit &quot; + this.seit + &quot; @ &quot; + this.hs.name + &quot;)&quot;;
+  }
+
+  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
+  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+
+  mmtb.toString();  // findet toString Methode des Prototypen und ruft sie auf
+
+  mmtb.min    // findet min Attribut des Prototypen, gibt Wert 2 
+  mmtb.min=5  // speichert Wert 2 im Objekt selbst
+  mmtb.min    // gibt jetzt Wert 5
+  mmtm.min    // findet min Attribut des Prototypen, gibt Wert 2 
+</pre></div>
+
+<p>Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
+kann direkt am Objekt nicht gefunden werden, dann durchsucht
+der Javascript-Interpreter als nächstes den Prototypen des Konstruktors.</p>
+
+<p>Attribute direkt im Objekt überschreiben die Attribute des Prototypen: im Beispiel
+wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugriff auf den Protypen nötig.</p>
+
+<p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-prototyp.png" /></p>
+
+<h2 id="vererbung">Vererbung</h2>
+
+<p>Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Prototypen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = &quot;sleeping&quot;;
+  }
+  Pet.prototype.log = function() {
+    console.log(&quot;i am &quot; + this.status.get() + &quot;. &quot; + this.word + &quot;!&quot;);
+  }
+
+  // ----- Mammal ---------
+  function Mammal() {
+    this.legs = 4;
+  }
+  Mammal.prototype = new Pet();
+
+  // ----- Dog --------
+  function Dog( b ) {
+    this.breed = b;
+    this.word = &quot;wau! &quot;;
+  }
+  Dog.prototype = new Mammal();
+
+  Dog.prototype.sit = function() {
+    this.status.set(&quot;sitting&quot;);
+  }
+
+  d = new Dog(&quot;beagle&quot;);
+  d.word    // ist direkt im Objekt gespeichert
+  d.legs    // ist im Prototyp von Dog gespeichert (einem Mammal-Objekt)
+  d.status  // ist im Prototyp von mammal gespeichert (einem Pet-Objekt)
+</pre></div>
+
+<p>Diese Vererbungs-Kette über die Prototypen nenn man auf english “prototype chain”. </p>
+
+<p>Achtung: die Konstruktoren der übergeordenten Objekte werden nur einmal aufgerufen,
+das kann zu unerwarteten Effekten führen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = new Status();
+  }
+  // ....
+  Mammal.prototype = new Pet();
+  // ....
+  d1 = new Dog(&quot;Beagle&quot;);
+  d2 = new Dog(&quot;Schnauzer&quot;);
+  
+  d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
+</pre></div>
+
+<h2 id="verteifung">Verteifung</h2>
+
+<p>Dies war nur ein erster Einstieg in die objektorientierte Programmierung mit Javascript.
+Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
+</ul>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/javascript/funktionen/">← <span class="article">Funktionen und this</a></li>
+    
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/javascript/">JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/javascript/objekte.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+
