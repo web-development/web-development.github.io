@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Datei Upload - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Datei Upload</h1>
+          <p><a href="/http/datei-upload/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>POST ermöglicht das Senden beliebig langer Daten, und damit das Hochladen von ganzen Dateien. Dabei muss auch noch das enctype Attribut des Form-Tags gesetzt werden:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+      &lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+Neues Bild zum hochladen in den Ordner 
+
+      &lt;a href='upload/'&gt;upload&lt;/a&gt;: &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
+      &lt;/form&gt;
+</pre></div>
+
+<p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
+
+<p><img  alt="Abbildung 136: Webformular mit Datei-Upload" src="/images/image345.png" /></p>
+
+<p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
+
+<p>Die Details zu den Hochgeladenen Dateien sind im Array $_FILES gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“: </p>
+
+<dl>
+  <dt>$_FILES[‘bild’][‘name’]</dt>
+  <dd>Der Originalname der Datei am Client. </dd>
+  <dt>$_FILES[‘bild’][‘type’]</dt>
+  <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig! </dd>
+  <dt>$_FILES[‘bild’][‘size’]</dt>
+  <dd>Größe der hochgeladenen Datei in Byte. </dd>
+  <dt>$_FILES[‘bild’][‘tmp_name’]</dt>
+  <dd>Der Dateiname der temporären Datei. </dd>
+  <dt>$_FILES[‘bild’][‘error’]</dt>
+  <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.</dd>
+</dl>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+      &lt;?php
+      $uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/upload/&quot;;
+
+      $filename = basename($_FILES['bild']['name']);
+      $ext = substr($filename, -4);
+
+      if( $ext != '.jpg' ) {
+         die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . substr($filename, -3) );
+      }
+
+      $uploadfile = $uploaddir . $filename;
+
+      if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
+          echo &quot;Datei erfolgreich hochgeladen nach &lt;a href='upload/'&gt;upload/&lt;/a&gt;\n&quot;;
+      } else {
+          echo &quot;Problem beim Speichern der Datei.\n&quot;;
+      }
+
+      echo '&lt;pre&gt;debugging info:';
+      print_r($_FILES);
+      print '&lt;/pre&gt;';
+
+      ?&gt;
+</pre></div>
+
+<p>Achtung: Sie müssen den Ordner upload erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver (= ein anderer Account) hineinschreiben darf!</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/http/datei-upload/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

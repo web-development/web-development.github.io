@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Interaktion mit jQuery - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Interaktion mit jQuery</h1>
+          <p><a href="/jquery/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>jQuery bietet eine etwas kürzere Schriebweise statt addEventListener an. Z.B. die Methode click: als Argument wird nur eine Funktion übergeben, die aufgerufen werden soll wenn das Event feuert. Hier kommen meist anonyme Funktionen zum Einsatz:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;h1&quot;).click(function() {
+      alert(&quot;ein h1 wurde geklickt&quot;);
+  });
+</pre></div>
+
+<p>Innerhalb der Funktion steht die Variable this zu Verfügung um den angeklickten Tag als jQuery Objekt zu erhalten:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;h1&quot;).click(function() {
+      $(this).hide();   /* versteckt den angeklickten h1 tag */
+  });
+</pre></div>
+
+<p>Dazu ein vollständiges Beispiel: zu mehreren Überschriften gibt es Text, der bei Klick auf die Überschrift versteckt bzw. angezeigt werden soll:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h2 class=&quot;more&quot;&gt;Vertiefendes Studium&lt;/h2&gt;
+  &lt;div class=&quot;extra&quot;&gt;
+  &lt;p&gt;Das Schwerpunktstudium Vertiefung ermöglicht den Erwerb hoch spezialisierter Qualifikationen in einer gestalterischen Fachdisziplin. &lt;/p&gt;&lt;/div&gt; 
+  &lt;h2 class=&quot;more&quot;&gt;Steuerung&lt;/h2&gt;
+  &lt;div class=&quot;extra&quot;&gt;
+  &lt;p&gt;Das Schwerpunktstudium Steuerung zielt auf die Ausbildung von Führungskräften der Kreativwirtschaft.&lt;/p&gt; 
+  &lt;/div&gt;
+</pre></div>
+
+<p>Dazu das vollständige Javascript-Programm mit jQuery:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script type=&quot;text/javascript&quot; src=&quot;http://code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt; 
+  $(document).ready(function(){ 
+      $(&quot;.extra&quot;).hide();
+      $(&quot;.more&quot;).click(function(){
+          $(this).next(&quot;.extra&quot;).toggle();
+      });
+  }); 
+  &lt;/script&gt;
+</pre></div>
+
+<p><code>this</code>  ist innerhalb der Funktion der angeklickte Tag. Mit dem jQuery-Befehl <code>next()</code> wird nach dem nächsten Tag im HTML-Code gesucht, hier nach dem nächsten Tag mit der Klasse extra. Auf den gefundenen Tag wird der befehl <code>toggle()</code> angewandt, der zwishcen sichtbar und unsichtbar hin und her schlatet (er setzt dafür die CSS Eigenschaft <code>display:none</code>)</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/jquery/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

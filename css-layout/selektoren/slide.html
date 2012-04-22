@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Selektoren im Detail - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>CSS Selektoren im Detail</h1>
+          <p><a href="/css-layout/selektoren/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (HTML oder auch ein XML) als Baum (im mathematische Sinne) angesehen werden kann. Mit dieser Vorstellung ergeben sich neue Fachwörter:</p>
+
+<p>Die Tags werden als Elemente bezeichnet. So ist in folgendem Beispiel das erste li-Element innerhalb des ol-Elements. Das li Element enthält wiederum ein a Element, und dieses einen Text „erster Link“. </p>
+
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+    &lt;p&gt;Navigation&lt;/p&gt;
+    &lt;h1&gt;Überschrift&lt;/h1&gt;
+    &lt;div class="intro"&gt;
+      &lt;h2&gt;Dies und Das&lt;/h2&gt;
+      &lt;ol&gt;
+        &lt;li&gt;&lt;a href="#bla"&gt;erster Link&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#bla"&gt;zweiter Link&lt;/a&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/div&gt; ...
+</code></pre>
+
+<p>Aus der Mathematik (Graphentheorie) ergeben sich die Fachwörter für dei Teile des Baums: Ein Elemente werden als Nodes oder Knoten bezeichnet. Für die Beziehungen zwischen Nodes werden die Begriffe Eltern, Kind, Nachkommen, Vorfahren verwedent: <code>h1</code> ist ein Kind von <code>body</code>, „Überschrift“ ist das erste Kind von <code>h1</code>. „Überschrift“ ist damit ein Nachkomme von <code>body</code>.</p>
+
+<p>Damit haben wir das Vokabular um auch kompliziertere CSS-Selektoren zu verstehen.</p>
+
+<p>In Kapitel 2.2.2 haben Sie CSS Selektoren für Klassen und IDs kennen gelernt. In der CSS 2.1 Spezifikation werden u.a. folgende Schreibweisen für Selektoren beschrieben8:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Muster</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Universal selector</td>
+      <td>*</td>
+      <td>Stimmt mit jedem Element überein.</td>
+    </tr>
+    <tr>
+      <td>Type selectors</td>
+      <td>E</td>
+      <td>Stimmt mit jedem E-Element überein</td>
+    </tr>
+    <tr>
+      <td>Grouping</td>
+      <td>E, F, G</td>
+      <td>Stimmt mit jedem E-, sowie jedem F-, sowie jedem G-Element überein. E, F und G könnten auch komplexere Selektoren sein!</td>
+    </tr>
+    <tr>
+      <td>Descendant selectors</td>
+      <td>E F</td>
+      <td>Stimmt mit jedem F-Element überein, das ein Nachfahre eines E-Elements ist, also z.B. <code>&lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>Child selectors</td>
+      <td>E &gt; F</td>
+      <td>Stimmt mit allen F-Elementen überein, die Kindelemente eines Elements E sind, also z.B. <code>&lt;E&gt;bla &lt;span&gt;bla&lt;/span&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/E&gt;</code> .</td>
+    </tr>
+    <tr>
+      <td>The link pseudo-classes</td>
+      <td>:link :visited</td>
+      <td>Stimmt mit Links überein, deren Ziel noch nicht besucht wurde (<code>:link</code>), oder deren Ziel bereits besucht wurde (<code>:visited</code>).</td>
+    </tr>
+    <tr>
+      <td>The dynamic pseudo-classes</td>
+      <td>:active :hover :focus</td>
+      <td>Stimmt während bestimmter Interaktionen überein: auswahl, Maus-Cursor,….</td>
+    </tr>
+    <tr>
+      <td>Adjacent selectors</td>
+      <td>E + F</td>
+      <td>Stimmt mit jedem F-Element überein, dem unmittelbar ein Element E vorausgeht, also <code>&lt;E&gt;dies&lt;/E&gt; &lt;F&gt;das&lt;/F&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Class selectors</td>
+      <td>E.warning</td>
+      <td>(Nur in HTML, nicht in XML) Stimmt mit jedem E-Element überein, dessen CLASS gleich „mwarning“ ist.</td>
+    </tr>
+    <tr>
+      <td>ID selectors</td>
+      <td>E#myid</td>
+      <td>Stimmt mit jedem E-Element überein, dessen ID gleich „myid“ ist.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mit CSS3 kommen u.a. folgende Selektoren dazu:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Muster  / Beispiel</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attribute Selector: Begins with</td>
+      <td>E[attr^=”string”] a[href^=”mailto:”]</td>
+      <td>Stimmt mit jedem Element überein, bei dem der Wert des Attributs mit dem geforderten String beginnt.</td>
+    </tr>
+    <tr>
+      <td>The Target pseudo-class</td>
+      <td>:target</td>
+      <td>Stimmt mit dem Element überein, dessen ID mit dem Anker in der URL übereinstimmt. Z.B. bei URL http://at.at/index.html#kontakt stimmt  :target mit &lt;div id=”kontakt”&gt; überein</td>
+    </tr>
+    <tr>
+      <td>The UI element states pseudo-classes</td>
+      <td>:enabled :disabled :checked</td>
+      <td>Diese Selektoren beziehen sich auf mögliche Zustände von Eingabefeldern – die werden aber erst im nächsten Kapitel erklärt.</td>
+    </tr>
+    <tr>
+      <td>Root pseudo-class</td>
+      <td>:root</td>
+      <td>Stimmt mit der Wurzel des DOM überein, immer &lt;html&gt;</td>
+    </tr>
+    <tr>
+      <td>:nth-child() pseudo-class</td>
+      <td>:first-child :nth-child(13) :nth-child(odd) :nth-child(even) :nth-child(3n+1) :last-child</td>
+      <td>Zählt die Geschwister des Elements, stimmt mit dem Element überein wenn die Zahl bestimmte Bedingungen erfüllt: erstes Geschwister, 13., ungerade Zahl, gerade Zahl, ….(auch Moduleo 3, 4, n)… letztes.</td>
+    </tr>
+    <tr>
+      <td>:nth-of-type() pseudo-class</td>
+      <td>img:nth-of-type(odd) { float: right; } img:nth-of-type(even) { float: left; }</td>
+      <td>Zählt die Elemente dieses Typs, die bis zu dieser Stelle in der DOM vorkamen, …. Im Beispiel also die geraden / ungeraden Bilder.</td>
+    </tr>
+    <tr>
+      <td>Empty pseudo-class</td>
+      <td>:empty</td>
+      <td>Element ist ganz leer – enthält weder Kinder-Knoten noch Text.</td>
+    </tr>
+    <tr>
+      <td>Pseudo-Element</td>
+      <td>E::first-letter E::first-line p::first-letter</td>
+      <td>Achtung: mit diesem Pseudo-Element kann man etwas aus HTML herausholen, was nicht explizit drinnen ist: Obwohl im Abstz der erste Buchstabe nicht extra in einen Tag eingeschlossen ist kann man ihn mit p::first-letter auswählen.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css-layout/selektoren/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

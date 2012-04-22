@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kurzvorstellung von Stylesheets - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Kurzvorstellung von Stylesheets</h1>
+          <p><a href="/css/css-kurz/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:</p>
+
+<pre><code>&lt;style type="text/css"&gt;
+p {
+    font-family: Calibri, Helvetica, Arial, sans-serif; 
+    font-size: 13px;
+}
+h1,h2 {
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+body { background-color: green; }
+&lt;/style&gt; Listing 1:  Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen
+</code></pre>
+
+<p>An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völig anders als die von HTML. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="schriftart">Schriftart</h2>
+<p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er. (Man kann Schriften auch verlinken - aber das ist mehr ein Thema für MMA).</p>
+
+<p>In Zeile 2 bis 5 werden zwei Anweisungen für Fließtext gegeben (HTML-Tag &lt;p&gt;): die Schriftfamilie in Zeile 3 und die Schriftgröße in Zeile 4. </p>
+
+<p>In Zeile 3 Vergleichen Sie Zeile 3 mit Zeile 7: Schriftnamen die ein Leerzeichen enthalten müssen in Anführungszeichen gesetzt werden, wie “Trebuchet MS” in Zeile 6. </p>
+
+<p>Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:</p>
+
+<p>sans-serif serif cursive fantasy monospace. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="schriftgre">Schriftgröße</h2>
+<p>Die Schriftgrößen-Angabe in Zeile 4 verwendet Pixel als Maßeinheit. Diese Maßeinheit macht bei der Darstellung am Screen,besonders in Kombination mit Pixel-Bildern Sinn. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="abstze">Absätze</h2>
+<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:</p>
+
+<p><img  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" src="/images/image066.png" /></p>
+
+<p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
+
+<p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="css-erforschen-mit-firebug">CSS erforschen mit Firebug</h2>
+<p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS hilft das Firefox Add-On „Firebug“.</p>
+
+<p><img  alt="Abbildung 19: Firefox Add-On Firebug" src="/images/image072.png" /></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css/css-kurz/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

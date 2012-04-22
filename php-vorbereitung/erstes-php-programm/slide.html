@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Das erste PHP-Programm - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Das erste PHP-Programm</h1>
+          <p><a href="/php-vorbereitung/erstes-php-programm/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Beachten Sie, dass das Programm die richtige Dateiendung (.php) haben muss und nicht direkt im Browser angezeigt werden kann:</p>
+
+<p><img  alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" src="/images/image327.png" /></p>
+
+<p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm speichern wird es nicht vom Webserver interpretiert, sondern direkt an den Browser gesandt. Der Browser zeigt den Code aber nicht an, erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
+
+<p><img  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" src="/images/image328.png" /></p>
+
+<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
+
+<p><img  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" src="/images/image329.png" /></p>
+
+<p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden Testlauf:</p>
+
+<p><img  alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" src="/images/image330.png" /></p>
+
+<p>Mit Ansicht-&gt;Quelltext kann man nun im Browser nur noch den HTML-Code sehen, niemals aber den PHP-Quellcode!</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="php-versionen">PHP Versionen</h2>
+<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In Abbildung 124 sehen Sie z.B. dass PHP in der Version 5.0.5 installiert ist.</p>
+
+<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, PHP ist nicht aufwärts-kompatibel. Wenn ihr Webspace-Vermieter auf eine neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes anpassen.</p>
+
+<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: </p>
+
+<p>(PHP 4 &gt;= 4.2.0, PHP 5)
+Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
+
+<p>Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!</p>
+
+<p>Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: viele Webspace-Provider bieten nur veraltete PHP-Versionen an. Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen!</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="dokumentation">Dokumentation</h2>
+<p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
+
+<p><img  alt="Abbildung 129: Eine Funktion in der Doku auf php. net nachschlagen" src="/images/image331.png" /></p>
+
+<p>Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation ‚vergessen’ wurden, oder Anwendungsbeispiele:</p>
+
+<p><img  alt="Abbildung 130: Kommentare von UserInnen in der Doku auf php. Net" src="/images/image332.png" /></p>
+
+<p>Die Dokumentation kann man auch herunterladen und lokal installieren, dann enthält sie aber nicht die Kommentare.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/php-vorbereitung/erstes-php-programm/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

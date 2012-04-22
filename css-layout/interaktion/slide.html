@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS für Interaktion - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>CSS für Interaktion</h1>
+          <p><a href="/css-layout/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Mit dem Selektor <code>:hover</code> wird eine CSS-Regel nur angewandt wenn sich der Maus-Cursor über dem Element befindet. <code>:focus</code> hat eine ähnliche Bedeutung bei der Steuerung mit der Tastatur.</p>
+
+<p>Achtung: auf Touch-Geräten wie Tables und Smartphones gibt es kein <code>:hover</code>! Deswegen sollte man <code>:hover</code> nur zur Dekoration, nicht aber für wichtige Funktionen verwenden!</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div       { background-color: #ddd; }
+  div:hover { background-color: red; }
+</pre></div>
+
+<p>Mit Hilfe von Hintergrundbildern kann man so zum Beispiel einen kitschigen 3d-Button darstellen, der beim hovern „hineingedrückt“ wird. </p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div       { background-image: url(button-up.png);   }
+  div:hover { background-image: url(button-down.png); }
+</pre></div>
+
+<p>Beim Laden des zweiten Hintergrundbildes kann es dabei zu einer Verzögerung kommen. Um das zu verhindern kann man die beiden Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechseln:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div {
+     height:115px;
+     width:240px;
+     background-image: url(pix/rolloverButton.gif);
+     overflow:hidden;
+  }
+
+  div:hover {
+     background-position: 0 -120px;
+  }
+</pre></div>
+
+<p>Eine extreme Anwendung dieses Prinzips nennt man CSS-Sprites: dabei werden möglichst viele Bilder in einer Bild-Datei zusammengefaßt. Falls viele kleine Icons verwendet werden, kann das die Darstellung der Webseite erheblich beschleunigen. </p>
+
+<p><img  alt="Abbildung 42: CSS Sprites von Yahoo" src="/images/yahoo-spritemap.png" /></p>
+
+<p>So könnte der CSS Code aussehen:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  .icon{
+    display:block;
+    padding:8px 0 9px 40px;
+    background:url(http://us.i1.yimg.com/pa-icons2.gif) 5px 3px no-repeat;
+  }
+
+  #messenger .icon{
+     padding-left:31px;
+     background-position:2px -497px;
+  }
+  #music .icon{
+     background-position:5px -197px;
+  }
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css-layout/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

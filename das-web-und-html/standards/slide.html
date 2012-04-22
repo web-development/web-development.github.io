@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Drei Standards definieren das Web - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Drei Standards definieren das Web</h1>
+          <p><a href="/das-web-und-html/standards/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Für diese Lehrbuch ist eine technische Sicht auf das World Wide Web die relevante. 
+Das World Wide Web ist also ein verteiltes (Client/Server) Informationssystem, 
+das durch folgende drei Standards in der jeweils aktuellen Form definiert wird:</p>
+
+<ul>
+  <li>URL  <!-- XE "URL" -->   (Uniform Resource Locators) nach <a href="http://www.w3.org/Addressing/rfc1738.txt">RFC 1738</a></li>
+  <li>HTTP  <!-- XE "HTTP" -->   (Hypertext Transfer Protocol) nach <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616</a></li>
+  <li>HTML  <!-- XE "HTML" -->    <!-- XE "XHTML" -->   (Hypertext Markup Language) </li>
+</ul>
+
+<p>Wir befinden uns gerade im Übergang von XHTML auf HTML 5. Noch gibt es 
+keinen endgültigen Standard von HTML 5, sondern nur einen <a href="http://www.w3.org/TR/html5/">Working Draft</a> – der wird aber 
+schon von den gängigen Browsern umgetzt.  Die entsprechenden Dokumente finden Sie auf der Website
+des World Wide Web Consortiums. </p>
+
+<p>Rund um diese drei Standards ordnen sich weitere wichtige Begriffe an:</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="clientserver">Client/Server</h2>
+
+<p>Das Client  <!-- XE "Client" -->  /Server  <!-- XE "Server" -->   Prinzip ist ein allgemeines Prinzip wie 
+Dienste in einem Computernetzwerk aufgebaut sein können: Ein Server ist ein Computer der 
+einen bestimmten Dienst anbietet, ein Client ist der „Kunde“, also der Computer der den 
+Dienst in Anspruch nimmt.
+Nach diesem Prinzip funktionieren Web, E-Mail, FTP:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th style="text-align: left">Dienst</th>
+      <th style="text-align: left">Client</th>
+      <th style="text-align: left">Server</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Web</td>
+      <td style="text-align: left">Webbrowser  <!-- XE "Webbrowser" --> - lädt Webseiten vom Server und stellt sie dar</td>
+      <td style="text-align: left">Webserver  <!-- XE "Webserver" -->   – liefert auf Anfrage die Webseiten</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">E-Mail</td>
+      <td style="text-align: left">E-Mail  <!-- XE "E-Mail" --> Programm – lädt E-Mails vom Server, zeigt sie an, kann neue E-Mails an einen Server schicken der sie zustellt, …</td>
+      <td style="text-align: left">Mailserver – speichert E-Mail in verschiedenen Postfächern, leitet E- Mail weiter (an den Server der EmpfängerIn)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FTP</td>
+      <td style="text-align: left">FTP-Client  <!-- XE "FTP" -->   – lädt Dateien von einem Server herunter oder auf einen Server hinauf</td>
+      <td style="text-align: left">FTP-Server – speichert Dateien</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Eine Alternative zu Client/Server ist Peer-zu-Peer  <!-- XE "Peer-zu-Peer" -->  . Dabei sind alle 
+beteiligten Computer gleichberechtigt, es gibt keine verschiedenen Rollen. Nach diesem 
+Prinzip funktionieren Datei-Tauschbörsen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="webbrowser">Webbrowser</h2>
+
+<p>Ein Webbrowser, oder kurz Browser  <!-- XE "Browser" -->  , ist ein Programm, das bei Eingabe 
+einer URL über HTTP eine HTML-Webseite laden und anzeigen kann, es ist also der Client 
+zum World Wide Web. 
+Es gibt sehr viele verschiedene Webbrowser. Abbildung 4 zeigt drei davon: den Browser 
+„Mosaic“ <!-- XE "Mosaic" -->    <!-- XE "Browser:Mosaic" -->  , der im Jahre 1993 als zweiter Webbrowser 
+mit grafischer Oberflächen stark zur Verbreitung des World Wide Web beigetragen hat,  und 
+die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->   und Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" -->  in den Versionen, die im Jahre 2004 verwendet wurden. </p>
+
+<p><img  alt="Abbildung 4: Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)" src="/images/browsers.png" /></p>
+
+<p>Alle eben erwähnten Browser haben gemeinsam, dass sie auf einem typischen „Büro-
+Computer“ eingesetzt werden, einem Computer mit grafischer Oberfläche und einem Farb-
+Monitor. 
+Es gibt aber auch „exotischere“ Browser. Abbildung 5 zeigt den Browser lynx  <!-- XE "lynx" -->  <br />
+<!-- XE "Browser:lynx" -->  , der nur Text darstellt, aber keine Bilder. Daneben sehen Sie eine 
+„Braille  <!-- XE "Braille" -->   Ausgabezeile“, ein Gerät, das eine Zeile Text in eine Zeile 
+Blindenschrift übersetzt. Mit diesem Webbrowser und diesem Ausgabegerät können Blinde 
+im Web surfen. </p>
+
+<p><img  alt="Abbildung 5: Text-Only Browser &quot;links&quot; und Braille Ausgabegerät" src="/images/anderebrowser.png" /></p>
+
+<p>In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutzung 
+zugenommen: Smartphones und Tablets. Abbildung 6 zeigt Browser auf verschiedenen 
+mobilen Geräten:</p>
+
+<p><img  alt="Abbildung 6: Browser auf mobilen Geräten: Handys und iPad, 2010" src="/images/image031.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="webseite">Webseite</h2>
+
+<p>Die Dokumente, die im Webbrowser dargestellt werden nennt man Webseiten. Eine Webseite  <!-- XE "Webseite" -->    <!-- XE "Seite" -->   ist – technisch gesehen – ein Dokument im HTML-Format. </p>
+
+<p>Eine Webseite kann – im Gegensatz zu einer Seite in einem Buch – beliebig lang sein. Ist 
+die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scrollbalken  <!-- XE "Scrollen" -->  mit dem man den Rest der Seite erreichen kann, wie in Abbildung 7 gezeigt.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="website">Website</h2>
+
+<p>Als Webseite wird also ein Dokument bezeichnet. Verwechseln Sie diesen Begriff nicht mit 
+dem englischen Wort Website  <!-- XE "Website" -->  . Eine Website besteht aus mehreren 
+Webseiten, die zusammen gehören und untereinander verlinkt sind. Achtung: es gibt kein Wort <strike>Webside</strike>. </p>
+
+<p><img  alt="Abbildung 7: Ein Browser zeigt eine lange Webseite an" src="/images/image033.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="url">URL</h2>
+<p>Eine URL  <!-- XE "URL" -->   ist die Adresse eines Dokuments am Web oder in einem anderen 
+Online-Informationssystem. Ein Beispiel:</p>
+
+<pre><code>http://multimediatechnology.at:80/web-communities/#master
+</code></pre>
+
+<p>Diese URL zerfällt in 4 Teile:</p>
+
+<dl>
+  <dt>“http”</dt>
+  <dd>Übertragungsprotokoll </dd>
+  <dt>“multimediatechnology.at”</dt>
+  <dd>Domain Name des Webservers</dd>
+  <dt>“80”</dt>
+  <dd>Port am Server. Wenn es  Port 80 ist kann man :80 weglassen. </dd>
+  <dt>/web-communities/</dt>
+  <dd>Wird vom Webserver interpretiert, meist eine Pfad-Angabe. In diesem Fall aber nicht, da die Seite von einem Content-Management-System (Wordpress) erstellt wird.</dd>
+  <dt>“master”</dt>
+  <dd>Textmarke innerhalb des Dokuments – wird vom Browser interpretiert wenn das Dokument dargestellt wird</dd>
+</dl>
+
+<p>Im Zusammenhang mit Web-Formularen werden wir oft mit URLs zu tun haben die 
+Parameter enthalten:</p>
+
+<pre><code>http://www.google.com/search?q=schokolade&amp;ie=utf-8&amp;oe=utf-8
+</code></pre>
+
+<p>Mit den Frage-Zeichen, dem kaufmännischen Und und dem Ist-Gleich-Zeichen werden hier Parameter  <!-- XE "Parameter" -->   an die URL angefügt.  </p>
+
+<p>HTTP-URLs sind nicht die einzigen URLs, ein Beispiel mit einem anderen 
+Übertragungsprotokoll:  </p>
+
+<pre><code>mailto:brigitte.jellinek@fh-salzburg.ac.at
+</code></pre>
+
+</div>
+<div class='slide'>
+
+<h2 id="http">HTTP</h2>
+
+<p>Das Hypertext Transfer Protocol  <!-- XE "Hypertext Transfer Protocol" -->    <!-- XE "HTTP" -->   ist ein 
+relativ simples Protokoll, das immer TCP  <!-- XE "TCP" -->   -Verbindungen verwendet. Alle 
+Aktivität wird vom Client (=Browser)initiiert.  In der einfachsten Form sieht HTTP so aus (hier 
+am Beispiel der URL <code>http://multimediatechnology.at/web-communities/#master</code>):</p>
+
+<ol>
+  <li>Eine URL wird in den Browser eingetippt, oder ein Link wird im Browser angeklickt</li>
+  <li>Der Browser analysiert die URL und ermittelt daraus den Domain Namen des Webservers (<code>multimediatechnology.at</code>), löst diese über DNS zur IP-Adresse auf, das Ergebnis lautet <code>193.170.119.85</code></li>
+  <li>Der Browser baut eine TCP-Verbindung zu <code>193.170.119.85</code>, Port 80 auf</li>
+  <li>Er sendet einen HTTP-Request:  <code>GET /web-communities/ HTTP/1.0\n\n</code></li>
+  <li>Der Webserver nimmt die Anfrage entgegen und analysiert sie. Meistens interpretiert er sie als Aufforderung, eine bestimmte Datei von der Platte zu lesen. In diesem Fall aber wird ein PHP Programm gestartet, dass Daten aus einer MySQL Datenbank abfragt und als HTML aufbereitet.</li>
+  <li>Der Webserver schickt einen HTTP-Response an den Browser, diese enthält einen Statuscode, z. B. <code>200 OK</code>, einige Zusatzinformationen und dann die eigentlichen Daten des Dokuments (den erzeugten HTML-Code)</li>
+  <li>Der Browser nimmt das Dokument in Empfang und stellt es dar</li>
+  <li>Der Browser scrollt das Dokument bis zur Textmarke “master”</li>
+  <li>Der Browser beendet die TCP-Verbindung</li>
+</ol>
+
+<p>Die nächste Anfrage des Clients kann sich an einen anderen Server, oder wieder an 
+denselben Server richten. Die nächste Anfrage, die der Server beantwortet, kann vom selben 
+Client kommen, oder von einem anderen Client. Keiner der beiden (Client und Server) muß 
+speichern mit wem er gerade Daten ausgetauscht hat, um die nächste Anfrage 
+durchführen/beantworten zu können. Ein Protokoll mit dieser Eigenschafft nennt man 
+“zustandslos” (“stateless”).  <!-- XE "stateless" -->    <!-- XE "zustandslos" -->  Dadurch ist es sehr einfach einen Server zu programmieren. </p>
+
+<p>Das war ein sehr einfachs Beispiel, wie das Protokoll ablaufen kann. Einen tieferne Einblick in HTTP erhalten Sie im Kapitel <a href="/http/">http</a>.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/das-web-und-html/standards/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

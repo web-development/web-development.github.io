@@ -22,8 +22,13 @@
   <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
   <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
   <style>
-    body {  padding-top: 90px; }
-    article {  padding-top: 40px; }
+    #booktitle {  border-bottom: 1px solid #EEEEEE; }
+    header {  
+      position: fixed;
+      background-color: white;
+      z-index: 1;
+    }
+    article {  padding-top: 80px; }
     body, p, li, dt, dd {  
       font-size: 15px; 
       line-height: 1.5 ;
@@ -38,12 +43,14 @@
 </head>
 <body>
 
-<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
 <div class="container">
 
-  <header class="jumbotron sub-header">
+      <a href="http://github.com/bjelline/web-development-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
       <h1><a href="/" title="Web Development">Web Development</a></h1>
       <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
   </header>
     
 
@@ -57,6 +64,7 @@
 			
                           <div class="page-header">
 				<h2 class="title">Funktionen und this</h2>
+                                <a href="/javascript/funktionen/slide.html">als Präsentation</a>
                           </div>
 			
 			
@@ -86,6 +94,8 @@
   }
 </pre></div>
 
+<p>§</p>
+
 <p>Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
 Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
 Teile von Objekten oder Arrays definieren:</p>
@@ -99,6 +109,8 @@ Teile von Objekten oder Arrays definieren:</p>
     method1 : function () {  console.log( &quot;method 1&quot; ) }
   }
 </pre></div>
+
+<p>§</p>
 
 <p>Es gibt auch mehrere Arten eine (schon definierte) Funktion aufzurufen: neben
 der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
@@ -157,6 +169,8 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
   // this = [object Window]
 </pre></div>
 
+<p>§</p>
+
 <p>Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist <code>this</code> auf das Objekt:</p>
 
 <div class="example">
@@ -178,7 +192,9 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
   // this.prop2 = 42
 </pre></div>
 
-<p>Eigentlich ist der erste Fall ein Spezialfall dieses zweiten.Falles: wird eine Funktion ohne Objekt aufgerufen <code>f()</code>,
+<p>§</p>
+
+<p>Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen <code>f()</code>,
 dann nimmt Javascript ein implizites Objekt an:</p>
 
 <div class="example">
@@ -194,16 +210,20 @@ dann nimmt Javascript ein implizites Objekt an:</p>
   // this = [object Window]
 </pre></div>
 
+<p>§</p>
+
 <p>Nun macht auch das erste Argument der Funktionen <code>call</code> und <code>apply</code> Sinn: das erste
-Argument gibt das Objekt an, auf dem die Methode aufgeruft werden soll: </p>
+Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Verschiedene Arten eine Methode aufzurufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   objekt.f(&quot;hallo &quot;, 10);
-  f.call(objekt, &quot;hallo &quot;, 10);
-  f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
+  objekt.f.call(objekt, &quot;hallo &quot;, 10);
+  objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
+
+<p>§</p>
 
 <p>Bei Event-Handlern wird <code>this</code> anders gesetzt:</p>
 
@@ -219,6 +239,8 @@ Argument gibt das Objekt an, auf dem die Methode aufgeruft werden soll: </p>
 
 <p>Der Event Handler wird also als Methode auf dem jeweils betroffenen
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
+
+<p>§</p>
 
 <p>Die Funktion erhält aber noch mehr Informationen zum Event,
 und zwar als Argument:</p>
@@ -239,12 +261,16 @@ und zwar als Argument:</p>
   // ev = [object MouseEvent]
 </pre></div>
 
+<p>§</p>
+
 <p>Das Event-Objekt beinhaltet Informationen wie z.B. die Koordinaten
 an denen geklickt wurde, ob dazu noch Shift, Alt und/oder Ctrl gedrückt wurden,
 und noch einmal einen Verweis auf den Button.  Hier ein Screenshot aus Chrome der 
 die Eigenschaften des MouseEvents zeigt:</p>
 
 <p><img  alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" src="/images/chrome-mouse-event.png" /></p>
+
+<p>§</p>
 
 <p>Es gibt noch eine besondere Art eine Funktion in Javascript aufzurufen: mit <code>new</code>.
 Damit wird die Funktion als Konstruktor für ein Objekt verwendet. Es ist üblich

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formular und Javascript - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Formular und Javascript</h1>
+          <p><a href="/formulare/javascript/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Die Details von Javascript werden in den nächsten Kaptieln, hier geht es nur um ein erstes Kennenlernen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="javascript-einbetten">Javascript Einbetten</h2>
+<p>Javascript kann innerhalb des &lt;script&gt;-Tags irgendwo in den HTML-Code eingefügt werden.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Berechnungen in Javascript, in einem script-Tag</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;h1&gt;Hallo Welt&lt;/h1&gt;
+&lt;script&gt;
+      var pi,r,a;
+      pi = 3.141;
+      r = 2;
+      a = r * r * pi;
+&lt;/script&gt;
+</pre></div>
+
+<p>Ohne Output merkt man aber gar nichts davon: In Firefox kann man mit der Konsole von Firebug die Variablen auslesen wie in Abbildung 52 gezeigt.</p>
+
+<p><img  alt="Abbildung 52: Mit firebug den Wert einzelnen Javascript-Variablen  auslesen" src="/images/image239.png" /></p>
+
+<p>In Google Chrome gibt es ebenfalls eine Console wie in Abbildung gezeigt, das entsprechende Fenster wird geöffnet wenn Sie irgendwo in der Webseite mit der rechten Maustaste klicken, und „Element überprüfen“ auswählen:</p>
+
+<p><img  alt="Abbildung 53: Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" src="/images/image240.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="popup-fenster">Popup-Fenster</h2>
+<p>Mit den Befehlen <code>alert</code>, <code>confirm</code> und <code>prompt</code> können Sie kleine Popup-Fenster öffnen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Popup-Fenster</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+alert(&quot;peng, du bist tot!&quot;);
+var ja_nein = confirm(&quot;sollen die daten nicht gelöscht werden?&quot;);
+var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe löscht alles&quot;);
+</pre></div>
+
+<p><img  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" src="/images/popups.png" /></p>
+
+<p>Achtung: So können Sie zwar bei gutgläubigen Menschen Herzinfarkte auslösen, aber Sie können mit Javascript nicht wirklich Dateien löschen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="formulare">Formulare</h2>
+
+<p>Mit der Konsole von Firebug können Sie auch Formulare genauer untersuchen. Achtung! Wir geben ab jetzt allen Formular-Eingabefeldern nicht nur einen name, sondern auch eine id, das erleichtert die Handhabung in Javascript!</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form method=&quot;get&quot; action=&quot;mail.php&quot;&gt; 
+  &lt;label for=&quot;mail&quot;&gt;E-Mail:
+     &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
+  &lt;/label&gt;
+  &lt;label&gt;Hochschule:   
+      &lt;input type=&quot;text&quot; name=&quot;hochschule&quot; id=&quot;hochschule&quot; value=&quot;FH Salzburg&quot;&gt; 
+  &lt;/label&gt; 
+  &lt;input type=&quot;submit&quot; value=&quot;speichern&quot;&gt;
+  &lt;/form&gt;
+</pre></div>
+
+<p><img  alt="Abbildung 54: Mit Firebug Formulare und Eingabefelder auslesen" src="/images/image242.png" /></p>
+
+<p>Mit <code>document.getElementById</code> kann man also das einen bestimmten Tag  ansprechen, wenn man die id kennt.</p>
+
+<p>Jedes Eingabefeld bietet mit value den aktuell eingegeben Wert (als String) an, hier z.B. <code>document.getElementById("hochschule").value</code>.  Die letzten beiden Zeilen in der Konsole zeigen, dass es auch umgekehrt funktioniert: man kann auch Werte ins Eingabefeld hineinschreiben, der neue Werte wird sofort im Browser angezeigt.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="documentwrite">document.write</h2>
+
+<p>Mit dem Befehl <code>document.write()</code> kann Text/Code in den HTML-Code eingefügt werden.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;h1&gt;Hallo Welt&lt;/h1&gt;
+&lt;script&gt;
+    document.write(&quot;&lt;p&gt;Hallo Javscript&lt;/p&gt;&quot;);
+&lt;/script&gt;
+&lt;p&gt;Hallo HTML&lt;/p&gt;
+</pre></div>
+
+<p>Der Browser interpretiert das Javascript und fügt das Ergebnis zu einem HTML-Dokument zusammen. Achtung: Dieses resultierende HTML-Dokument existiert nur im Haupt-Speicher des einen Computers auf dem der Browser gerade läuft, es wird nie abgespeichert! Mit Firebug kann man es aber sehen:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;h1&gt;Hallo Welt&lt;/h1&gt;
+&lt;p&gt;Hallo Javscript&lt;/p&gt;
+&lt;p&gt;Hallo HTML&lt;/p&gt;
+</pre></div>
+
+<p>Ein Anwendungsbeispiel dieses Befehls: Ich will ein Dropdown-Menü mit vielen Einträgen, bin aber zu faul um alle <code>option</code>-Tags einzutippen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form&gt;
+     &lt;select name=&quot;Anzahl&quot; id=&quot;Anzahl&quot;&gt;
+         &lt;option&gt;1&lt;/option&gt;
+         &lt;option&gt;2&lt;/option&gt;
+         &lt;option&gt;3&lt;/option&gt;
+         &lt;option&gt;4&lt;/option&gt;
+         &lt;option&gt;5&lt;/option&gt;
+         &lt;option&gt;6&lt;/option&gt;
+         &lt;option&gt;7&lt;/option&gt;
+         ...
+     &lt;/select&gt;
+     &lt;input type=&quot;submit&quot;&gt;
+  &lt;/form&gt;
+</pre></div>
+
+<p>Ich ersetze also die option-Tags durch eine Schleife in Javascript:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form&gt;
+     &lt;select name=&quot;Anzahl&quot; id=&quot;Anzahl&quot;&gt;
+         &lt;script language=&quot;javascript&quot;&gt;
+            var i=0;
+            while(i &lt;= 50) {
+                document.write(&quot;&lt;option&gt;&quot; + i + &quot;&lt;/option&gt;&quot;);
+                i++;
+            }
+         &lt;/script&gt;
+     &lt;/select&gt;
+     &lt;input type=&quot;submit&quot;&gt;
+  &lt;/form&gt;
+</pre></div>
+
+<p>Mit Ansicht → Quelltext sieht man den Javascript-Code, In Firebug sieht man das Ergebnis:</p>
+
+<p>Sollte man diese Möglichkeit nutzen?  Der Nachteil: Falls Javascript nicht funktioniert, hat mein Eingabefeld keine Optionen. Deswegen wäre es wahrscheinlich besser, die Optionen als HTML anzugeben.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="ereignisse-und-ereignisgesteuerte-programmierung">Ereignisse und Ereignisgesteuerte Programmierung</h2>
+<p>Javascript ist hauptsächlich eine Programmiersprache für das „Frontend“, für die Gestaltung von Benutzerschnittstellen. Für grafische Benutzerschnittstellen hat sich ein besonderer Programmierstil entwickelt: die ereignisgesteuerte Programmierung. Dieser Stil kommt auch in Actionscript (in Flash), in Visual Basic, u.s.w. zum Einsatz.</p>
+
+<p>Dabei lösen Ereignis, die die BenutzerIn setzt, bestimmte Programmteile aus.</p>
+
+<p>Im Webbrowser sind solche Ereignisse z.B.: </p>
+
+<ul>
+  <li>Klicken auf einen Link</li>
+  <li>Eintippen in ein Textfeld</li>
+  <li>Anklicken einer Checkbox</li>
+  <li>Absenden eines Formulares</li>
+</ul>
+
+<p>Eine Liste der wichtigsten Events bzw. on-Attributen für HTML-Tags finden Sie in der <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-eventgroupings-htmlevents-h3">DOM Level 2 Event Specification</a>.</p>
+
+<p>Ein Beispiel für ereignisgesteuerte Programmierung mit einem Web-Formular: Das Bestellformular für Bücher soll automatisch den Gesamtpreis berechnen.</p>
+
+<p><img  alt="Abbildung 55: Bestellformular für Bücher mit Berechnung" src="/images/image248.png" /></p>
+
+<p>Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis multipliziert werden und in die rechte Spalte geschrieben werden. Betrachten wir zuerst diesen Schritt alleine an einem vereinfachten Formular mit einem Eingabefeld und einem span-tag für die Ausgabe</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;
+</pre></div>
+
+<p>Für die Formulierung „Wenn in das Feld in ein neuer Wert eingegeben wird, dann…“  gibt es ein passendes Event in HTML/Javascript: onchange. Die wird als Attribut in den HTML-Code des Eingabefeldes geschrieben:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;  onchange=&quot;hier Javascript&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;   
+</pre></div>
+
+<p>In das Attribut kann nun Javascript-Code eingefügt werden der die richtige Berechnung vornimmt und das Ergebnis in das richtige Element schreibt:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input value=&quot;0&quot; name=&quot;in&quot;  
+           onchange=&quot;document.getElementById('out').innerHTML = this.value * 100&quot;&gt;
+  &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;   
+</pre></div>
+
+<p>Betrachten wir die Javascript-Befehl im Detail: Es handelt sich um eine Zuweisung mit =.</p>
+
+<p>Auf der rechten Seite der Zuweisung befindet sich die Variable „this“, diese verweist auf das Element, das das Event ausgelöst hat, in diesem Fall also das Eingabefeld. Mit this.value kann aus dem Eingabefeld der eingegebene Wert (als String) ausgelesen werden.</p>
+
+<p>Dieser Wert wird nun mit 100 multipliziert. In Javascript ist dabei keine explizite Typ-Umwandlung von String zu Zahl nötig, das erledigt der Javascript-Compiler automatisch. Das Ergebnis auf der rechten Seite ist also eine Zahl, z.B. 300.</p>
+
+<p>Auf der linken Seite der Zuweisung wird zuerst mit document.getElementById(‘out’) ein bestimmter HTML-Tag ausgewählt, hier ist es der span-Tag. Diesem Tag wird dann als „inneres HTML“ das Ergebnis der Multiplikation zugewisen. Dabei wir die Zahl (z.B. 300) wieder in einen String zurückverwandelt (z.B. “300”).</p>
+
+<p>Nun wäre es natürlich unpraktisch in das onchange-Attribut ein längeres Javascript-Programm zu schreiben. Dafür kann man in Javascript Funktionen definieren, die dann nur noch aufgerufen werden. Z.B. um die Gesamtsumme im Bestellformular zu berechnen ist eine Funktion praktisch:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;head&gt;
+  &lt;script language=&quot;javascript&quot;&gt;
+  function compute() { 	
+
+  document.getElementById('outtotal').innerHTML =  	      
+
+          document.getElementById('in1').value * 100 		
+        + document.getElementById('in2').value * 200 		
+        + document.getElementById('in3').value * 0 		
+        + document.getElementById('in4').value * 1000 		
+        + document.getElementById('in5').value * 10 		
+        + document.getElementById('in6').value * 5 
+  }
+  &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+</pre></div>
+
+<p>Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.</p>
+
+<p>Achtung: beim „rechnen“ mit Eingabefelder von Javascript tritt häufig folgender Fehler auf: in Javascript werden die Datentypen int, float, char, zwar unterschieden, aber nicht deklariert. Es kann in einer Variable einmal ein String und einmal eine Zahl gespeichert sein:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  var a,b,c;
+  a = 10;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+  a = &quot;zehn&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+  a = &quot;10&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(a + 20);
+</pre></div>
+
+<p>Hier der Output des Programms:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+  wie viel ist 10 plus 20? 30
+  wie viel ist 10 plus 20? zehn20
+  wie viel ist 10 plus 20? 1020
+</pre></div>
+
+<p>Der <code>+</code> Operator verhält sich also je nach Datentype des ersten Arguments verschieden: steht links des Plus-Zeichens eine Zahl, dann erfolgt eine Addition. Steht links des Plus-Zeichens ein String, dann erfolgt eine String-Konkatenation; ein Aneinanderfügen von Text.</p>
+
+<p>Eingabefelder in Web-Formularen liefern immer einen String. Deswegen ist es falsch, sie einfach zu addieren. <code>100 + 200 + 0 + 0 + 0 + 0</code> wäre <code>1002000000</code>. Bei der Multiplikation mit <code>*</code> tritt dieses Problem nicht auf, da der Stern keine zweite Bedeutung hat. </p>
+
+<p>Mit der Funktion parseInt() können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  a = &quot;10&quot;;
+  document.write(&quot;&amp;lt;br /&amp;gt;wie viel ist 10 plus 20? &quot;);
+  document.write(parseInt(a) + 20);
+</pre></div>
+
+<p>gibt das erwartete ergebnis</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+  wie viel ist 10 plus 20? 30
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="formular-prfen">Formular prüfen</h2>
+<p>Mit Javascript kann man schon vor dem Absenden des Formulares prüfen ob wichtige Daten eingegeben wurden, und das Einsenden des Formulares verhindern falls dem nicht so ist. </p>
+
+<p>Dafür gibt es das Event „onsubmit“ im form-Tag. </p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form name=&quot;pizzaformular&quot; 
+        action=&quot;http://webwelt.horus.at/html/form/echo.cgi&quot;
+        onsubmit= &quot;wert=formularok(); return wert;&quot;&gt;
+</pre></div>
+
+<p>Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten. Entsprechend kann man eine Funktion schreiben:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script&gt;
+      function formularok() {
+	    var ok, fehler;
+	    ok = true;
+		fehler = &quot;&quot;;
+		
+		if ( document.getElementById('liefername').value == &quot;&quot; ) {
+		    fehler += &quot;Sie müssen den Empfänger angeben\n&quot;;
+			ok = false;
+		}
+		if ( document.getElementById('adresse')..value == &quot;&quot; ) {
+		    fehler += &quot;Sie müssen eine Lieferadresse angeben\n&quot;;
+			ok = false;
+		}		
+		
+		// weitere Überprüfungen
+
+		
+	    if ( ok ) {
+			return true;
+		} else {
+			alert(&quot;Das Formular ist nicht ok:\n&quot;  + fehler );
+			return false;
+		}
+	}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;form name     = &quot;pizzaformular&quot; 
+        action   = &quot;http://webwelt.horus.at/html/form/echo.cgi&quot;
+        onsubmit = &quot;wert=formularok(); return wert;&quot;&gt;
+
+Empfänger: &amp;lt;input type=&quot;text&quot; name=&quot;liefername&quot; id=&quot;liefername&quot; /&amp;gt; &amp;lt;br /&amp;gt;
+
+Adresse: &amp;lt;input type=&quot;text&quot; name=&quot;adresse&quot; id=&quot;adresse&quot; /&amp;gt; in 5020 Salzburg&amp;lt;br /&amp;gt;
+
+Telefon/Handy: &amp;lt;input type=&quot;text&quot; name=&quot;tel&quot; id=&quot;tel&quot; /&amp;gt; in 5020 Salzburg&amp;lt;br /&amp;gt;
+
+
+&lt;input name=&quot;&quot; type=&quot;submit&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/formulare/javascript/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

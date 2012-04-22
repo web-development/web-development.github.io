@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formular als Interaktion - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Formular als Interaktion</h1>
+          <p><a href="/formulare/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Bei der Verwendung von Checkboxen, Radiobuttons, Menüs und Listen geben Sie genau vor, welche Möglichkeiten die LeserIn hat.  Wenn Sie beim Entwurf des Formulars eine Möglichkeit vergessen, kann die LeserIn nichts mehr daran ändern. Deswegen ist hier besondere Sorgfalt geboten. Eine besonders häufige Auslassung zeigt folgender Vergleich:</p>
+
+<p><img  alt="Zwei Entwürfe für ein Bier-Bestell-Formular" src="/images/bier.png" /></p>
+
+<p>Der linke Entwurf läßt keine Bestellung nur einer Sorte Bier zu. Die „Mindestbestellmenge“ für jede Sorte ist jeweils eine Kiste.  Durch das Einfügen einer „Leer“-Option in die Menüs wird diese Einschränkung aufgehoben.</p>
+
+<p>Im Folgenden sehen Sie eine Reihe von Entwürfen eines Reservierungs-Formulars für ein Hotel.</p>
+
+<p><img  alt="Zwei Entwürfe für ein Formular zur Zimmer-Reservierung" src="/images/zimmer.png" /></p>
+
+<p>Version 1: Ein Menü ermöglicht die Auswahl aus vorgegebenen Elementen.  Mit diesem Formular kann man nur ein, nicht aber zwei oder mehr Zimmer reservieren.  Version 2: Ein Text-Eingabefeld ermöglicht hier die Eingabe der Anzahl der Zimmer.  Es ist aber nicht möglich ein Einzel- plus ein Doppel-Zimmer zu reservieren.</p>
+
+<p><img  alt="Zwei weitere Entwürfe für ein Formular zur Zimmer-Reservierung" src="/images/zimmer-2.png" /></p>
+
+<p>Version 3 ermöglicht durch die Eingabe der Anzahl die Reservierung jeder Kombination von Einzel- und Doppelzimmer. Version 4: Durch ein zusätzliches Textfeld können alle weiteren Probleme abgefangen werden</p>
+
+<p>Achtung: wenn Sie zu viele Eingabemöglichkeiten bieten entsteht Redundanz, dann können Sie die Bedeutung der Eingabe nicht mehr eindeutig erkennen.</p>
+
+<p><img  alt="Abbildung 47: Redundanz im Formular" src="/images/image221.png" /></p>
+
+<p>Im linken Formular wird die Anzahl der bestellten Pizzas auf zwei Arten festgelegt: durch eine Checkbox und eine Text-Eingabe. In der obersten Zeile stimmen diese beiden Eingabefelder in Ihrer Aussage überein: Ja, 1 Stück Carbonara. Aber es ist auch möglich eine in sich Widersprüchliche Bestellung abzugeben:  Ja, Null Stück Margaritha bzw. Nein, 1 Stück 4-Käse.</p>
+
+<p>Im rechten Formular wird diese Redundanz vermieden.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/formulare/interaktion/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

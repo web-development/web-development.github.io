@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Navigationsmenü - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Navigationsmenü</h1>
+          <p><a href="/css-layout/navigation/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
+
+<p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:</p>
+
+<pre><code>&lt;div class="navi"&gt;
+   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
+   &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="ort.html"&gt;ort&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Ohne CSS wird die Liste ganz normal dargestellt. Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit list-style-type:none der Listenpunkt zu einem normalen Tag. </p>
+
+<pre><code>.unsichtbar {display:none;}
+
+div.navi li {
+   list-style-type:none;
+   margin-bottom:1px; 
+   background:#6C6;
+   width:6em;
+   padding: 0.2em;
+}
+
+div.navi li a:link {
+   text-decoration: none;
+   font-weight: bold;
+   color: black;
+}
+</code></pre>
+
+<p>Mit Hilfe von Float kann man das Menü auch horizontal darstellen, dazu muß nur ein float eingefügt und der margin anders gesetzt werden:</p>
+
+<pre><code>div.navi li {
+   float:left;
+   list-style-type:none;
+   margin-right:1px; 
+   background:#6C6;
+   width:6em;
+   padding: 0.2em; 
+}
+
+div.navi li a:link {
+   text-decoration: none;
+   font-weight: bold;
+   color: black;
+}
+</code></pre>
+
+</div>
+<div class='slide'>
+
+<h2 id="navigationsmen-wiederverwerten-mit-php">Navigationsmenü wiederverwerten mit PHP</h2>
+<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
+
+<p>Deswegen bietet es sich an bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
+
+<p>Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:</p>
+
+<pre><code>&lt;div id="navi"&gt;
+   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
+   &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.php"&gt;home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="ort.php"&gt;ort&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Links die auf Ordner verweisen sind hier besonders praktisch: Sie ersetzen die Datei index.html durch index.php, der Link bleibt gleich.</p>
+
+<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, z.B. navi.php.  In den einzelnen Seiten wird das Menü dann mit include eingebunden:</p>
+
+<pre><code>&lt;body&gt;
+&lt;?php include "navi.php" ?&gt;
+&lt;h1&gt;News&lt;/h1&gt;
+</code></pre>
+
+<p>Achtung: Das Einfügen der inkuldierten Datei erfolgt auf dem Server. Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
+
+<p><img  alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" src="/images/image145.png" /></p>
+
+<p>Damit ist nun das Einfügen eines neuen Menü-Punkts ins Navigationsmenü ganz einfach: nur die Datei navi.php muss editiert werden.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css-layout/navigation/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

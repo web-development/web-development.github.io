@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Basic Javascript - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Basic Javascript</h1>
+          <p><a href="/javascript-dom/basic-javascript/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;head&gt;
+&lt;script&gt;
+function setcolor( c ) {
+        b = document.getElementById('farbfeld');
+        b.style.backgroundColor = c
+}
+&lt;/script&gt;
+&lt;body id=&quot;farbfeld&quot;&gt;
+&lt;h1&gt;Farbwahl&lt;/h1&gt;
+&lt;form&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor('red')&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor('#0F0')&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor('blue')&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+</pre></div>
+
+<p>In dieser Webseite ist an vier Stellen Javascript zu finden. Im <code>script</code> Tag im Head, und dreimal in einem Attribut des <code>input</code>-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. </p>
+
+<p>Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen brauchen ein Grundverständnis von Javascript.</p>
+
+<p>Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
+
+</div>
+<div class='slide'>
+
+<h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
+
+<p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem <code>script</code>-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: </p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script src=&quot;jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre></div>
+
+<p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
+<p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h1&gt;Selbstzerstörung&lt;/h1&gt;
+  &lt;script&gt;
+      i=10;
+      while (i&gt;0) {
+          document.write(&quot;&lt;br&gt;in &quot; + i + &quot; Millisekunden&quot;);
+          i--;
+      }
+  &lt;/script&gt;
+  &lt;p&gt;&lt;strong&gt;Peng!&lt;/strong&gt;
+</pre></div>
+
+<p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
+
+<p>Als URL kann man auch ein kleines Javascript-Programm angeben, z. B. bei einem Link:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;javascript:location='http://www.google.at/'&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
+</pre></div>
+
+<p>Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.  </p>
+
+<p>Hier eine Version die dem Prinzip der „graceful degradation“ entspricht. Sie funktioniert mit und ohne Javascript sinnvoll:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm('go?'); return ok;&quot;&gt;google&lt;/a&gt;
+</pre></div>
+
+<p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>
+
+<p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="die-onevent---attribute">Die onevent - Attribute</h2>
+
+<p>Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.</p>
+
+<p>Ein paar typische Events mit ihren typischen HTML-Tags:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;body onload=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;...&quot; onmouseover=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: onmouseout). (Achtung: funktioniert nicht auf Touch-Devices – so wie :hover)</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input type=&quot;button&quot; onclick=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll. </p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;form onsubmit=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden. Falls der Javascript-Code false zurückgibt werden die Daten aber nicht versandt! </p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;...&quot; onclick=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascript-Code false zurückgibt wird der Link aber nicht aktiviert!</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;input onchange=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="syntax-von-javascript">Syntax von Javascript</h2>
+
+<p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Anweisung wird mit einem Strichpunkt (Semikolon) getrennt, Blöcke werden mit geschwungenen Klammern gebildet. </p>
+
+<p>Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Funktionen existieren können, die zu diesem Objekt gehören.</p>
+
+<p>Zum Beispiel das Objekt <code>document</code> ist bei Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  // document.location          
+  // diese Eigenschaft speichert die aktuelle URL
+  document.location = &quot;http://io9.com&quot;;  
+ // wenn man einen neuen Wert in location speichert surft der Browser hin
+
+  document.alert(&quot;hi&quot;);  // die Methode alert zeigt ein Popup-Fenster an
+
+  document.alert(&quot;meine URL ist &quot; + document.location);
+</pre></div>
+
+<p>Es gibt in Javascript aber auch „normale“ Variablen und Funktionen, nicht nur Objekte, Eigenschaften und Methoden. Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes <code>div</code> in der Webseite auszuwählen. </p>
+
+<p><img  alt="Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/" src="/images/image254.png" /></p>
+
+<p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. </p>
+
+<p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. </p>
+
+<p><img  alt="Abbildung 58: Javascript Console in Firebug" src="/images/image264.png" /></p>
+
+<p>Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – der Interpreter trennt Variablen nicht nach verschiedenen Datentypen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  a = 10;               // typeof(a) == &quot;number&quot;
+  a = 3.141;           // typeof(a) == &quot;number&quot;
+  a = &quot;ein text&quot;;     // typeof(a) == &quot;string&quot;
+  a = true;          // typeof(a) == &quot;boolean&quot;
+  a = undefined;    // typeof(a) == &quot;undefined&quot;
+</pre></div>
+
+<p>Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden: 
+bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
+darüber nur noch floats.  Die Details
+können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>, …  Aber eigentlich sind Arrays schon Objekte. </p>
+
+<p>Für das Erzeugen des Arrays gibt es zwei Schreibweisen</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  var b;
+  b = [&quot;eins&quot;, 2, 3.141, true];           // JSON-Schreibweise
+  b = new Array(&quot;eins&quot;, 2, 3.141, true);  // Objekt-Schreibweise  
+  // typeof(b) == &quot;object&quot;
+</pre></div>
+
+<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  var i,t;
+  i = 0;
+  t = &quot;Das Array:\n&quot;;
+  while( i &lt; b.length ) {
+      t += &quot;Index = &quot; + i + &quot;, Wert = &quot; + b[i] + &quot;\n&quot;;
+      i++;
+  }   
+  alert(t);
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="objekte">Objekte</h3>
+
+<p>Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise mit geschwungenen Klammern eignet sich gut für einmalige Objekte. Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Construktor-Funktion besser geeignet.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  var c;
+  c = {&quot;farbe&quot; : &quot;rot&quot;, &quot;beschriftung&quot;: &quot;int pi == 3&quot;, &quot;verkauft&quot;: true};  
+
+  // Construktor-Funktion
+  function Shirt( f, b, v ) {
+      this.farbe        = f;
+      this.beschriftung = b;
+      this.verkauft     = v;
+  }
+  c = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
+
+  alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”
+
+  // typeof c === &quot;object&quot;
+  // c.constructor === Shirt
+</pre></div>
+
+<p>Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen finden werden) ist, dass Eigenschaften eines Objekts nicht nur über die Punkt-Schreibweise, sondern auch über eckige Klammern – also wie ein Array – angesprochen werden können:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  alert(&quot;Das Shirt ist &quot; + c.farbe ); 
+  alert(&quot;Das Shirt ist &quot; + c[&quot;farbe&quot;] );
+</pre></div>
+
+<p>In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Variable gespeichert sein:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  e = &quot;beschriftung&quot;;
+  alert(&quot;Die Beschriftung lautet &quot; + c[e] );
+</pre></div>
+
+<p>Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  var i,t;
+  t = &quot;Das Objekt:\n&quot;;
+  for( i in c ) {
+      t += &quot;Eigenschaft = &quot; + i + &quot;, Wert = &quot; + c[i] + &quot;\n&quot;;
+  }   
+  alert(t);
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript-dom/basic-javascript/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

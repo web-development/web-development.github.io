@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Was ist SVG - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Was ist SVG</h1>
+          <p><a href="/svg/was-ist-svg/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'></div>
+<div class='slide'>
+
+<h2 id="geschichte-der-auszeichnungssprachen">Geschichte der Auszeichnungssprachen</h2>
+
+<p>Tim Berners-Lee hat HTML nicht “aus dem Nichts” erfunden. Er basierte
+die Sprache auf SGML (Standard Generalized Markup Language). </p>
+
+<p>SGML ist eine Metasprache, mit deren Hilfe man verschiedene Auszeichnungssprachen 
+(englisch: Markup Languages) definieren kann. SGML ist ein ISO-Standard: ISO 8879:1986 Information Processing — Text and Office Systems — Standard Generalized Markup Language (SGML) und  ist in der Europäischen Norm EN 28879:1990 und der DIN EN 28879:1991 beschrieben.</p>
+
+<p>Um ein gültiges (engl. valid) Dokument in SGML zu beschreiben, wird die Dokumenttypdefinition verwendet (DTD), 
+die den strukturellen Aufbau von Dokumenten beschreibt.  In frühen Versionen von HTML, wie z.B. HTML 3.2,
+wurde diese DTD auch wirklich in der <a href="http://www.w3.org/TR/REC-html32-19970114#dtd">HTML Skezifikation</a> angegeben.</p>
+
+<p>Im Jahr 1998 veröffentlichte das World Wide Web Consortium <a href="http://www.w3.org/TR/xml/">XML</a>, eine neue
+Meta-Sprache, als Teilmenge von SGML.  Sprachen auf Basis von XML sind
+zum Beispiel RSS, SVG, oder XHTML.</p>
+
+<p><img  alt="SGML, HTML, XML und XHTML - eine Sprach-Familie" src="/images/SGML.png" /></p>
+
+<p>Mit HTML5 hat sich HTML von diesem Stammbaum emanzipiert: HTML5 ist
+nicht mehr eine Sprache, sondern zuerst das DOM als “in momory representation” im Browesr,
+und einige APIS für das DOM. Ausgehend davon werden zwei Darstellungsweisen
+definiert: HTML und XML.  </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="svg">SVG</h2>
+
+<svg width="200" height="200" style="float:left;">
+    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
+</svg>
+
+<p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
+World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
+zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML. </p>
+
+<p>SVG wurde erstmals im September 2001 veröffentlicht, die aktuelle Version
+ist <a href="http://www.w3.org/TR/SVG11/">Version 1.2</a>, die seit Dezember 2008 vom W3C empfohlen wird, aktuell.</p>
+
+<p>SVG hat eine lange und wechselvolle Geschichte hinter sich: es wurde bereits im Jahr 2001 veröffentlicht.
+Für die Darstellung im Browser war aber damals die Installation eines Plugins notwendig. 
+Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer) wird SVG
+im Browser nativ dargestellt.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Einbindung von SVG in HTML</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
+    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
+    &lt;rect    x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
+  &lt;/svg&gt;
+</pre></div>
+
+<p>Mit SVG kann man zweidimensional zeichnen, die grafischen Objekte werden
+- wie bei HTML - in einem DOM gespeichert und können Manipuliert werden. Zur
+Darstellung im Browser werden sie mit dem <a href="http://de.wikipedia.org/wiki/Painter%27s_Algorithmus">Painters Algorithm</a> gezeichnet:
+“spätere” Objekte übermalen “frühere” Objekte. Deswegen überdeckt das blaue Rechteck
+im Beispiel den grünen Kreis.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/svg/was-ist-svg/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

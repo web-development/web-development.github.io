@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Upload und Tools - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Upload und Tools</h1>
+          <p><a href="/das-web-und-html/upload/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Der HTML-Code ist fertig, aber damit ist die Arbeit noch lange nicht vorbei.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="validator">Validator</h2>
+
+<!-- XE "Validator" -->
+<p>Um Fehler im HTML-Code zu finden reicht ein Webbrowser nicht aus. Wie oben beschrieben 
+sind Webbrowser sehr tolerant, was kaputten Code  <!-- XE "Code" -->   betrifft. Eine strenge 
+Prüfung  <!-- XE "Prüfung:von HTML Code" -->   des HTML-Codes macht der Validator des W3C: . 
+http://validator.w3.org/</p>
+
+<p><img  alt="Abbildung 11:  Der HTML-Validator des World Wide Web Consortiums" src="/images/image050.png" /></p>
+
+<p>Die Fehlermeldungen des Validators muss man sorgfältig lesen, von oben nach unten 
+durcharbeiten und reparieren. Mit etwas Glück repariert man das erste Problem und viele 
+Folge-Fehler fallen damit auch weg.</p>
+
+<p><img  alt="Abbildung 12:  Fehlermeldung des Validators" src="/images/image052.png" /></p>
+
+<p>Die Fehlermeldung in Abbildung 12 geht auf einen Tippfehler zurück: der schließende Tag 
+wurde falsch geschreiben. Wenn der Code dem HTML-Standard entspricht erscheint eine 
+Erfolgsmeldung:</p>
+
+<p><img  alt="Abbildung 13:   Erfolgsmeldung des Validators" src="/images/image053.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="upload">Upload</h2>
+
+<!-- XE "Upload" -->
+<p>Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH steht Ihnen 
+zwei Webserver zur Verfügung: www.users.fh-salzburg.ac.at und 
+multimediatechnology.at. Zweiteren werden wir in dieser Lehrveranstlatung verwenden.
+Um die Daten vom eigenen Computer auf den Webserver zu laden gibt es verschiedene 
+Methoden, die wichtigsten sind FTP  <!-- XE "FTP" -->  , WebDAV  <!-- XE "WebDAV" -->  , SFTP  XE 
+“SFTP”  . </p>
+
+<p>Bei jeder Upload-
+Methode brauchen Sie folgende Informationen: den Namen des Servers, Usernamen, 
+Passwort, in welchen Ordner Sie die Daten speichern, unter welcher URL die Daten im Web 
+sichtbar sind.</p>
+
+<p>Ein hypothetisches Beispiel: Auf dem Server meinhoster.at ist auch ihre
+Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähnlich:</p>
+
+<ul>
+  <li>Name des SFTP- Servers: meinhoster.at</li>
+  <li>Port für SFTP 4711</li>
+  <li>Username + Passwort</li>
+  <li>Ordner bei Upload public_html/</li>
+  <li>URL http://meinefirma.at</li>
+</ul>
+
+<p>Ein paar Programme zum Upload, die Sie selbst installieren können</p>
+
+<ul>
+  <li>Secure File Transfer Client  <!-- XE "Secure File Transfer Client" -->  : nur für SFTP, nur auf Windows.</li>
+  <li>FireFox  <!-- XE "FireFTP" -->    <!-- XE "Firefox AddOn:FireFTP" -->  : AddOn von Firefox, freie Software, können Sie selbst installieren, auf Windows und Mac.</li>
+  <li>Dreamweaver  <!-- XE "Dreamweaver" -->  :  Upload ist nach der Definition einer „Site“ mög- lich, auf Windows und Mac.</li>
+</ul>
+
+<p>Achten Sie beim Upload darauf, dass die Ordnerstruktur  <!-- XE "Ordnerstruktur" -->   und die relative 
+Position der Dateien beibehalten wird; nur dann funktionieren die relativen Links!  XE “re-
+lativer Link”    <!-- XE "Link:relativ" -->  </p>
+
+<p>Dreamweaver und FireFTP bieten Hilfe beim Erhalt der Struktur. In Abbildung 14 wurde recht 
+(am lokalen Computer) eine Datei ausgewählt und dann der Button „Datei 
+bereitstellen“ gedrückt. Dreamweaver beachtet, dass die Datei lokal im Ordner html-ue1 
+liegt, und lädt Sie in den entsprechenden Ordner am Webserver hoch.</p>
+
+<p><img  alt="Abbildung 14: Site-Fenster von Dreamweaver – Upload einer Datei automatisch in den richtigen Ordner" src="/images/dreamweaver-upload.png" /></p>
+
+<p>Abbildung 15 zeigt, was Sie nicht tun sollten: die Datei mit Drag-and-Drop in den falschen 
+Ordner am Webserver hinaufladen.  Dann funktionieren die relativen Links nicht mehr.</p>
+
+<p><img  alt="Abbildung 15:  Upload mit Dreamweaver in den falschen Ordner" src="/images/dreamweaver-upload-falsch.png" />
+Bevor Sie FTP im Dreamweaver Site-Fenster benutzen können müssen Sie 
+(Unter SITE → SITES VERWALTEN → BEARBEITEN → ERWEITERT → REMOTE-INFORMATIONEN) die richtige 
+Konfiguration eintragen, wie in Abbildung 16 gezeigt.</p>
+
+<p><img  alt="Abbildung 16: Bearbeiten der FTP-Information in Dreamweaver" src="/images/dreamweaver-upload-config.png" /></p>
+
+<p><img  alt="Abbildung 17: Dateien-Fenster in Dreamweaver: Umschalten zwischen 2 Ansichten + Upload" src="/images/image064.png" /></p>
+
+<p>Die anderen erwähnten Programme funktionieren sehr ähnlich.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/das-web-und-html/upload/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

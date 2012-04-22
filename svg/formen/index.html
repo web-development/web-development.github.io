@@ -22,8 +22,13 @@
   <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
   <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
   <style>
-    body {  padding-top: 90px; }
-    article {  padding-top: 40px; }
+    #booktitle {  border-bottom: 1px solid #EEEEEE; }
+    header {  
+      position: fixed;
+      background-color: white;
+      z-index: 1;
+    }
+    article {  padding-top: 80px; }
     body, p, li, dt, dd {  
       font-size: 15px; 
       line-height: 1.5 ;
@@ -38,12 +43,14 @@
 </head>
 <body>
 
-<a href="http://github.com/bjelline/web-development-textbook/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
 <div class="container">
 
-  <header class="jumbotron sub-header">
+      <a href="http://github.com/bjelline/web-development-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
       <h1><a href="/" title="Web Development">Web Development</a></h1>
       <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
   </header>
     
 
@@ -57,6 +64,7 @@
 			
                           <div class="page-header">
 				<h2 class="title">Grundformen in SVG</h2>
+                                <a href="/svg/formen/slide.html">als Präsentation</a>
                           </div>
 			
 			
@@ -95,6 +103,8 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
           fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
 </pre></div>
 
+<p>§</p>
+
 <p>Viele Attribute kann man alternativ auch über CSS definieren.</p>
 
 <div class="example">
@@ -117,6 +127,8 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
     &lt;path d=&quot;M 149,109 L 149,127 L 127 144    L 140,172    L 188,167 L 191,119 L 149,109 z&quot;
           fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
 </pre></div>
+
+<p>§</p>
 
 <p>Wird der Befehl als Großbuchstaben geschrieben, dann werden die Koordinaten
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
@@ -158,6 +170,8 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
     </tr>
   </tbody>
 </table>
+
+<p>§</p>
 
 <p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
@@ -216,6 +230,8 @@ an und für sich noch nicht sehr spannend:</p>
     &lt;text x=&quot;122&quot; y=&quot;81&quot;&gt;Kreis + Ellipse&lt;/text&gt;
 </pre></div>
 
+<p>§</p>
+
 <p>Mit dem Tag <code>textpath</code> kann der Text entlang eines
 beliebigen Pfades gesetzt werden.</p>
 
@@ -236,6 +252,19 @@ beliebigen Pfades gesetzt werden.</p>
     </text>
   </g>
 </svg>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;defs&gt;
+&lt;path id=&quot;my_path&quot; d=&quot;M 100,200 C 200,100 300,  0 400,100
+      C 500,200 600,300 700,200 C 800,100 900,100 900,100&quot; /&gt;
+&lt;/defs&gt;
+&lt;text font-family=&quot;Verdana&quot; font-size=&quot;42.5&quot; fill=&quot;red&quot; &gt;
+  &lt;textPath xlink:href=&quot;#my_path&quot;&gt;
+    Es geht hinauf, und hinunter, und wieder...
+  &lt;/textPath&gt;
+&lt;/text&gt;
+</pre></div>
 
 		
 			<div class="pagination">

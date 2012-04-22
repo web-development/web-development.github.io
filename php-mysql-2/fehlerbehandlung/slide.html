@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Fehlerbehandlung - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Fehlerbehandlung</h1>
+          <p><a href="/php-mysql-2/fehlerbehandlung/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
+könnte.  Zum Beispiel könnte beim Einfügen in die Datenbank ein Constraint verletzt werden
+und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="exceptions-in-php">Exceptions in PHP</h2>
+
+<p>Folgende Beschreibung ist aus dem <a href="http://www.php.net/manual/de/language.exceptions.php">PHP Handbuch</a> übernommen:</p>
+
+<p>PHP 5 hat ein Exceptionmodell ähnlich dem anderer Programmiersprachen. Eine Exception kann in PHP 
+geworfen (<code>throw</code>) und abgefangen (<code>catch</code>) werden. Um das Fangen potentieller Exceptions zu 
+ermöglichen, wird der jeweilige Code mit einem <code>try</code>-Block umschlossen. </p>
+
+<p>Jeder <code>try</code>-Block muss mindestens einen zugehörigen <code>catch</code> Block besitzen. 
+Mehrere <code>catch</code>-Blöcke können verwendet werden, um verschiedene Klassen von Exceptions abzufangen. 
+Die normale Programmausführung (wenn keine Exception innerhalb des <code>try</code>-Blockes geworfen wird 
+oder keine zur Klasse der geworfenen Exception passendes <code>catch</code> vorhanden ist) 
+wird nach dem letzten <code>catch</code>-Block fortgesetzt. 
+Exceptions können innerhalb eines <code>catch</code>-Blockes geworfen (oder weitergeworfen) werden.</p>
+
+<p>Wenn eine Exception geworfen wird, wird der Programmcode der auslösenden Anweisung nicht ausgeführt, 
+und PHP versucht, den ersten passenden <code>catch</code>-Block zu finden. Falls eine Exception gar
+nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception …“-Nachricht ausgegeben</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP: Division durch Null</small></h4>
+<pre class="lang-php prettyprint linenums">
+  &lt;?php
+  function inverse($x) {
+      if ($x == 0) {
+         throw new Exception('Division durch Null.');
+      }
+      return 1 / $x;
+  }
+
+  try {
+      echo inverse(5) . &quot;\n&quot;;
+      echo inverse(0) . &quot;\n&quot;;
+  } catch (Exception $e) {
+      echo 'Exception abgefangen: ',  $e-&gt;getMessage(), &quot;\n&quot;;
+  }
+
+  // output:
+  // 0.2
+  // Exception abgefangen: Division durch Null
+  ?&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="verwendung-von-exceptions-fr-die-datenbank">Verwendung von Exceptions für die Datenbank</h2>
+
+<p>In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
+Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftreten,
+oder bei einzelnen Abfragen.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
+<pre class="lang-php prettyprint linenums">
+   $get_pid   = $_GET['pid'];
+   try{
+      include &quot;config.php&quot;;
+
+      if( ! $DB_NAME ) throw (new Exception( &quot;Datenbank-Verbindung ist nicht konfiguriert. Bitte die Datei config.php anlegen!&quot; ));
+
+      $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
+      $dbh-&gt;exec('SET CHARACTER SET utf8') ;
+
+      $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM `users` WHERE id=?&quot; );
+      $sth-&gt;setFetchMode(PDO::FETCH_OBJ);
+      $sth-&gt;execute(array($get_pid));
+      $p = $sth-&gt;fetch();
+
+      // wirklich nicht in der Datenbank
+      if( $p === false )          throw (new Exception( &quot;Konnte Person Nr. $get_pid in der Datenbank nicht finden.&quot; ));
+
+      // Profil verborgen
+      if( !$p-&gt;profile_visible  ) throw (new Exception( &quot;Konnte Person Nr. $get_pid in der Datenbank nicht finden.&quot; ));
+
+      $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
+      $sth-&gt;execute(array($get_pid));
+      $projects = $sth-&gt;fetchAll(PDO::FETCH_OBJ);
+
+    } catch( Exception $e ) {
+      include &quot;header.php&quot;;
+      echo &quot;&lt;h1&gt;Error&lt;/h1&gt;&quot; ;
+      echo &quot;&lt;p&gt;&quot; . $e-&gt;getMessage() . &quot;&lt;/p&gt;&quot;;
+      include &quot;footer.php&quot;;
+      exit;
+    }
+
+/* hier folgt die normale Ausgabe der Seite */
+</pre></div>
+
+<p>In diesem Beispiel erfolgt die ganze Arbeit mit der Datenbank
+bevor die Ausgabe beginnt.  Im <code>catch</code>-Block wird eine Webseite
+erzeugt, die gar nichts mit der “normalen” Ausgabe der Seite zu
+tun hat.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
+
+<p>Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
+(siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
+
+<div class="example">
+<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
+<pre class="lang-sql prettyprint linenums">
+START TRANSACTION;
+INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+COMMIT;
+</pre></div>
+
+<div class="example">
+<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
+<pre class="lang-sql prettyprint linenums">
+START TRANSACTION;
+INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+ROLLBACK;
+-- nichts ist passiert!
+</pre></div>
+
+<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die 
+Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.</p>
+
+<p>Und einen besonderen Service: Wenn die Datenbank-Verbindung
+geschlossen wird obwohl noch eine Transaktion offen ist, dann löst PDO selbst
+das Rollback aus.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
+<pre class="lang-php prettyprint linenums">
+try {
+  $dbh-&gt;beginTransaction();
+  $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker')&quot;);
+  $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
+  $dbh-&gt;commit();
+  
+} catch (Exception $e) {
+  $dbh-&gt;rollBack();
+  echo &quot;Error: &quot; . $e-&gt;getMessage();
+}
+</pre></div>
+
+<p>Bei einem realen Beispiel würde man nicht die <code>exec</code> Methode verwenden,
+sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
+bleibt gleich.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="exceptions-in-javascript">Exceptions in Javascript</h2>
+
+<p>Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
+gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/php-mysql-2/fehlerbehandlung/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

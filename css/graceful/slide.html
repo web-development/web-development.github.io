@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Graceful Degradation - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Graceful Degradation</h1>
+          <p><a href="/css/graceful/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Der englische Begriff ‚graceful degradation’ könnte man als „allmähliche Funktionsminderung“ übersetzen, er bedeutet ungefähr: „funktioniert auch ohne … gut.“</p>
+
+<p>Das dahinter stehende Prinzip lautet: für die verschiedenen Ausgabemedien sollen nicht verschiedene Versionen einer Webseite erstellt werden, sondern alle Ausgabemedien werden mit einem Dokument bedient. </p>
+
+<p>Wenn der Browser Javascript, Flash, CSS unterstützt, dann soll die Website besonders schön, interaktiv, praktisch sein. Wenn der Browser etwas nicht unterstützt, dann soll die Website immer noch lesbar und benutzbar bleiben. </p>
+
+<p>Schlechtes Beispiel: Bild als Überschrift</p>
+
+<p>Als Überschrift einer Seite soll nicht blos ein Text sondern eine komplexe Grafik angezeigt werden:</p>
+
+<pre><code>&lt;img src="mmtlogo-400.png"&gt;
+</code></pre>
+
+<p>Das sieht zwar wie eine Überschrift aus – wenn das Bild geladen wird – die Information ist aber für eine Suchmaschine oder ein Braille-Ausgabegerät nicht lesbar. </p>
+
+<p>Besser wäre:</p>
+
+<pre><code>&lt;h1&gt;&lt;img src="mmtlogo-400.png" alt="MultiMediaTechnology"&gt;&lt;/h1&gt;
+</code></pre>
+
+<p>In manchen Situation hat man aber nur folgenden Code im HTML, und will das Bild nur über CSS darstellen:</p>
+
+<pre><code>&lt;h1&gt;MultiMediaTechnology&lt;/h1&gt;
+</code></pre>
+
+<p>Ein Beispiel für so eine Situation ist z.B: ein Wordpress Theme. In der H1 wird er Titel des Blogs angezeit, die Gestaltung der Darstellung erfolgt nur mit CSS.</p>
+
+<p>Gutes Beispiel: Image Replacement</p>
+
+<p>Der Text wird normal im HTML-Code eingegeben. Es wird aber auch ein Bild in der richtigen Schriftart erstellt.  Bei CSS-fähigen Browsern wird der Text versteckt und das Bild angezeigt. Browser ohne CSS und Suchmaschinen verwenden einfach den Text:</p>
+
+<pre><code>&lt;style&gt;
+h1#bildStattText {
+
+   /* schiebt den "echten text" extrem weit nach links */
+   text-indent:-10000px;
+   overflow:hidden;
+   background: url(mmtlogo-400.png);
+   /* hoehe und breite der grafik angeben! */
+   height:140px;
+   width:400px;
+}
+&lt;/style&gt;
+
+&lt;h1 id="bildStattText"&gt;MultiMediaTechnology&lt;/h1&gt;
+</code></pre>
+
+<p>Das Bild kann ausgetauscht werden indem man das Stylesheet ändert, ohne Eingriff in den HTML-Code.</p>
+
+<p>Schlechtes Beispiel: Navigationsmenü mit Bildern</p>
+
+<p>Ein Navigationsmenü wird mit Tabellen und Bildern aufgebaut:</p>
+
+<pre><code>&lt;table cellspacing="1"&gt;
+   &lt;tr&gt;
+      &lt;td&gt;&lt;a href="home.html"&gt;&lt;img src="1.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="news.html"&gt;&lt;img src="2.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="portfotdo.html"&gt;&lt;img src="3.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href="contact.html"&gt;&lt;img src="4.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>Wieder gilt: die Information ist für eine Suchmaschine oder ein Braille Ausgabegerät nicht lesbar. Für diese „Kunden“ wären Links mit normalen Texten besser. </p>
+
+<pre><code> &lt;ul&gt;
+    &lt;li&gt;&lt;a href="home.html"&gt;home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="news.html"&gt;news&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="portfolio.html"&gt;portfolio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;contact&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+</code></pre>
+
+<p>Im nächsten Kapitel lernen Sie eine Methode kennen wie Sie aus dieser Liste ein horizontales Menü machen.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css/graceful/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

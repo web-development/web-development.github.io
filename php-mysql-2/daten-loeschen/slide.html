@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Löschen - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Löschen</h1>
+          <p><a href="/php-mysql-2/daten-loeschen/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Das Löschen könnte so einfach sein: Ein Programm mit namen person_delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
+<pre class="lang-php prettyprint linenums">
+$pid   = $_POST['pid'];
+$dbh-&gt;query(&quot;DELETE FROM person WHERE pid=$pid&quot; );  // NICHT so implementieren!
+</pre></div>
+
+<p>Dieses Programm ist anfällig für folgende Attacke. Alyssa P. Hacker (eine fiktive Hackerin) 
+benützt nicht das HTML-Formular unserer Applikation, sondern schreibt selbst ein Formular.
+In dem Formular setzt sie den Parameter pid auf Wert <code>9 OR 1=1</code>.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Formular für die Attacke auf das Skript person_delete.php</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;form method=&quot;post&quot; action=&quot;person_delete.php&quot; &gt;
+    &lt;input type=&quot;hidden&quot; value=&quot;9 OR 1=1&quot; name=&quot;pid&quot;/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;del all&quot;/&gt;
+&lt;/form&gt;
+</pre></div>
+
+<p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+DELETE FROM person WHERE pid=9 OR 1=1
+</pre></div>
+
+<p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
+<p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem Beispiel also: nur wenn es sich bei pid um eine ganze Zahl handelt, darf sie verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht verstehen müssen) überprüft:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
+<pre class="lang-php prettyprint linenums">
+if( ! preg_match( '/^\d+$/', $pid ) ) {
+    error_log(&quot;hack: $pid statt id in person_delete.php.&quot;);
+    echo(&quot;Hack detected. Please stay at you computer until the police arrive.&quot;);
+    exit;
+}
+</pre></div>
+
+<p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank. Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
+
+<p>Als erster Schritt wird mit <code>prepare</code> ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. Dieses SQL-Statement kann vom Datenbank-Server sofort geparset und compiliert werden. Mit <code>execute</code> wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten ersetzt.  Das Schöne daran: es wird nie ein SQL-Statement als String gebaut, sondern die einzufügenden Daten werden binär an den Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden anrichten.</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(&quot;DELETE FROM person WHERE pid = ?&quot;);
+$sth-&gt;execute(array($pid));
+</pre></div>
+
+<p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine normales query zu wiederholen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
+<p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/php-mysql-2/daten-loeschen/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

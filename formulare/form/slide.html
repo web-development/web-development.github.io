@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formulare - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Formulare</h1>
+          <p><a href="/formulare/form/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer noch in einem sehr strengen, sehr strukturierten Rahmen. Abbildung 44 zeigt zwei typische Anwendungsgebiete für Web-Formulare: das Eingabeformular der Suchmaschine Google und ein Bestellformular.</p>
+
+<p><img  alt="Abbildung 44: Formulare in Webseiten" src="/images/image173.png" /></p>
+
+<p>Mit den  HTML-Tags <code>form</code>, <code>input /</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden Formulare aufgebaut. Hier ein einfaches Beispiel:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+      Bitte schicken Sie den Newsletter an die E-Mail Adresse:
+      &lt;input type=&quot;text&quot;   name=&quot;email&quot;&gt;
+      &lt;input type=&quot;submit&quot; value=&quot;Ja, ich will!&quot;&gt;
+    &lt;/form&gt;
+</pre></div>
+
+<p>Der <code>form</code>-Tag ist „unsichtbar“ und dient nur dazu, die anderen Eingabefelder zu bündeln. Im action-Attribut des <code>form</code>-tag wird angegeben, an welche URL die Daten zur Verarbeitung geschickt werden. </p>
+
+<p>Im Browser sieht das oben gezeigte Formular so aus:</p>
+
+<p><img  alt="Abbildung 45: Darstellung eines Web-Formulars im Browser" src="/images/image176.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="eingabefelder">Eingabefelder</h2>
+<p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf. Tabelle 2 zeigt die verschiedenen Arten von Text-Eingabefeldern.</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <tbody>
+    <tr>
+      <td>Textfeld</td>
+      <td>&lt;input type=”text” name=”mail”&gt;</td>
+      <td><input type="text" name="mail" /></td>
+    </tr>
+    <tr>
+      <td>Textfeld mit default-Wert</td>
+      <td>&lt;input type=”text” name=”hochschule” value=”FH Salzburg”&gt;</td>
+      <td><input type="text" name="hochschule" value="FH Salzburg" /></td>
+    </tr>
+    <tr>
+      <td>Passwort-Feld:</td>
+      <td>&lt;input type=”password” name=”meinpasswort”&gt;</td>
+      <td><input type="password" name="meinpasswort" /></td>
+    </tr>
+    <tr>
+      <td>mehrzeiliges Textfeld</td>
+      <td>&lt;textarea name=”zitat”&gt; In a hole in the ground there lived a Hobbit.  &lt;/textarea&gt;</td>
+      <td><textarea name="zitat"> In a hole in the ground there lived a Hobbit.  </textarea></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Für einzelne Fragen die mit Ja oder Nein zu beantworten sind wird das Eingabe-Element „checkbox“ verwendet</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Checkbox für Ja/Nein Frage</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image186.png" /></p>
+
+<p>Für Fragen, bei denen eine von mehreren vorgegebenen Antworten möglich sein soll gibt es verschiedene Eingabeelemente.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Radiobuttons</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt; XL
+    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt;   L
+    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt;   M
+    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt; S
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image188.png" /></p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;select name=&quot;size2&quot;&gt;
+          &lt;option&gt;XL&lt;/option&gt;
+          &lt;option selected&gt;L&lt;/option&gt;
+          &lt;option&gt;M&lt;/option&gt;
+          &lt;option&gt;S&lt;/option&gt;
+    &lt;/select&gt;
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image190.png" /></p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Menü mit „leer“- Auswahl</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;select name=&quot;size3&quot;&gt;
+          &lt;option&gt;---Bitte Auswählen---&lt;/option&gt;
+          &lt;option&gt;XL&lt;/option&gt;
+          &lt;option&gt;L&lt;/option&gt;
+          &lt;option&gt;M&lt;/option&gt;
+          &lt;option&gt;S&lt;/option&gt;
+    &lt;/select&gt;
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image192.png" /></p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Liste - ermöglicht Mehrfach-Auswahl</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;select name=&quot;html&quot; size=&quot;4&quot; multiple=&quot;multiple&quot;&gt;
+          &lt;option&gt;im Code&lt;/option&gt;
+          &lt;option&gt;Dreamweaver&lt;/option&gt;
+          &lt;option&gt;GoLive&lt;/option&gt;
+          &lt;option&gt;Frontpage&lt;/option&gt;
+    &lt;/select&gt;
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image194.png" /></p>
+
+<p>Radiobuttons, die zu einer Frage gehören, müssen den selben Namen tragen. der Wert ist unterschiedlich (im Code: Attribut name ist gleich, value unterschiedlich).  Nur bei einer Liste besteht die Möglichkeit mehrere Antworten auszuwählen. Für alle Eingabefelder gibt: falls auch “keine Antwort” möglich sein soll müssen Sie dafür eine eigene Option einbauen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="absenden">Absenden</h3>
+
+<p>Jedes Formular braucht einen Absende-Button</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Absende-Button</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;input type=&quot;submit&quot; value=&quot;drück mich!&quot;&gt;
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image196.png" /></p>
+
+<p>Neben dem Absende-Button gibt es noch andere Methoden wie ein Formular „abgesendet“ werden kann: Falls das Formular nur ein einziges Text-Eingabefeld hat, kann man in diesem Feld auf ENTER drücken um das Formular zu senden. Wenn das Formular ein Bild-Feld enthält (siehe unten) veranlasst ein Klick auf das Bild das Einsenden. </p>
+
+</div>
+<div class='slide'>
+
+<h3 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h3>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Zurück: bitte nicht verwenden</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;input type=&quot;reset&quot;  value=&quot;Zurücksetzen&quot;&gt;
+</pre></div>
+
+<p><img  alt="screenshot" src="/images/image198.png" /></p>
+
+<p>Den Zurücksetzen Button sollten Sie nur sehr selten einsetzen. Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="label">Label</h3>
+
+<p>Bisher haben wir nur die Eingabefelder selbst betrachtet. „Rundherum“ verwendet man auch alle bisher gelernten HTML-Elemente. So wäre es z.B. möglich, die Beschriftung einfach als Text neben das Eingabefeld zu stellen:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Formularfeld ohne Label</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;p&gt;E-Mail:&lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/p&gt;
+</pre></div>
+
+<p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört. Dass dieser Zusammenhang klar ist (auch für screen reader etc) stellt man mit dem <code>label</code>-Tag sicher:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Formularfeld mit Label</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;p&gt;&lt;label&gt;E-Mail:&lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/label&gt;&lt;/p&gt;
+</pre></div>
+
+<p>Falls der Beschriftungs-Tag weiter entfernt ist kann der label auf die ID des Eingabefeldes verweisen:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Formularfeld mit entferntem Label</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;label for=&quot;mail&quot;&gt;E-Mail:&lt;/label&gt; 
+....
+&lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="weitere-eingabefelder">Weitere Eingabefelder</h3>
+
+<p>Noch mehr Eingabefelder, die eher selten gebraucht werden.</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <tbody>
+    <tr>
+      <td>Unsichtbares = Verstecktes Feld</td>
+      <td>&lt;input type=”hidden” name=”webseite” value=”www.students”&gt;</td>
+    </tr>
+    <tr>
+      <td>Button ohne Auftrag, für Javascript-Programme</td>
+      <td>&lt;input type=”button” value=”Extrafenster” onclick=”…”&gt;</td>
+    </tr>
+    <tr>
+      <td>Bildfeld, liefert angeklickte x+y Koordinaten.</td>
+      <td>&lt;input type=”image” name=”position” src=”austria.gif”&gt;</td>
+    </tr>
+    <tr>
+      <td>Datei-Upload, funktioniert nur wenn die Formular-Daten mit Methode POST und speziellem enctype an den Webserver geschickt werden</td>
+      <td>Wählen Sie ein Bild aus: &lt;input type=”file” name=”bilddatei”&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Visuelle Zusammenfassung mehrer Felder: fieldset + legend</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;fieldset&gt; 
+&lt;legend&gt;Kreditkarte&lt;/legend&gt;
+     &lt;input name=&quot;nr&quot; /&gt;&lt;br&gt;
+     &lt;input type=&quot;radio&quot; name=&quot;kk&quot; 
+            value=&quot;Master&quot; /&gt; Master 
+     &lt;input type=&quot;radio&quot; name=&quot;kk&quot; 
+            value=&quot;Visa&quot; /&gt; Visa &lt;br&gt;
+&lt;/fieldset&gt;
+</pre></div>
+
+<p>Aus diesen Eingabeelementen ist jedes Web-Formular aufgebaut. Die Problematik der Formulare liegt nicht in der Kenntnis der Eingabefelder, sondern im Entwurf der Interaktionsmöglichkeiten.</p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/formulare/form/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

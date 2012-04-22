@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formular und PHP - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Formular und PHP</h1>
+          <p><a href="/formulare/php/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur Verfügung gestellt.  Das Array <code>$_GET</code> enthält die Parameter einer GET-Anfrage. </p>
+
+<p>„Superglobal“ bedeutet, dass das Array in jedem Teil des PHP-Programmes sichtbar ist. Ein Array in PHP kann nicht nur Integers als Index haben (z.B. <code>$a[0]</code>) sondern auch Strings (z.B. <code>$a['salzburg']</code>)</p>
+
+<p>Um die Bestellung aus dem Formular zu verarbeiten, könnte folgendes Programm verwendet werden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Programm zur Verarbeitung der Daten aus dem Bestell-Formular</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;?php
+    $anzahl  = $_GET['anzahl'];
+    $adresse = $_GET['adresse'];
+
+    echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
+    echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
+?&gt;
+</pre></div>
+
+<p>Dabei wird aber die Eingabe noch gar nicht geprüft.  In dieser minimalen Version des Bestellprogramms senden wir die Daten einfach vom Server per E-Mail weiter:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>PHP-Befehl zum Versenden einer E-Mail</small></h4>
+<pre class="lang-php prettyprint linenums">
+mail(  
+         &quot;ich@fh-salzburg.ac.at&quot;,                                // To:
+         &quot;Bestellung von $anzahl Flugzeugen&quot;,                    // Subject:
+         &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;  // Text der E-Mail
+);
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/formulare/php/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

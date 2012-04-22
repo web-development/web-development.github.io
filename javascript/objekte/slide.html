@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Objekte + Prototypen - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Objekte + Prototypen</h1>
+          <p><a href="/javascript/objekte/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
+Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
+z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in Javascript oder .. oder .. nicht der Fall.</p>
+
+<p>Trotzdem gibt es in Javascript Mechanismen wie Vererbung und Komposition.</p>
+
+<p>In diesem Kapitel lernen wir diese Mechanismen kennen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="objekt-mit-objekten">Objekt mit Objekten</h2>
+
+<p>In folgendem Beispiel hat der Konstruktor <code>Studiengang</code> drei Argumente. Als
+drittes Argument wird ein Objekt übergeben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Objekt mit Objekt</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  var hochschule = {
+    name: &quot;FH Salzburg&quot;,
+    typ: &quot;Fachhochschule&quot;,
+    seit: 1995
+  };
+
+  function Studiengang(name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
+  }
+
+  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
+  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
+beiden Studiengangs-Objekten <code>mmtb</code> und <code>mmtb</code> auf das gleiche Objekt 
+verwiesen:</p>
+
+<p><img  alt="Abbildung: Objekt mit Objekt" src="/images/objekt-mit-objekt.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="objekt-und-konstruktor">Objekt und Konstruktor</h2>
+
+<p>Jedes Objekt enthält auch einen Verweis auf die Konstruktor-Funktion - falls
+keine verwendet wurde auf die Funktion <code>Object()</code>.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Fortsetzung: Konstruktor-Funktionen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+// folgende Ausdrücke sind true:
+mmtb.constructor === Studiengang;
+hochschule.constructor === Object;
+</pre></div>
+
+<p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-objekt-und-constructor.png" /></p>
+
+<p>Dieser Konstruktor wird auch verwendet, um die Fragen <code>instanceof</code> zu beantworten:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Fortsetzung: Operator instanceof</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+mmtb instanceof Studiengang;
+hochschule instanceof Object;
+mmtb instanceof Object;
+</pre></div>
+
+<p><code>mmtb</code> ist auch eine Instanz von <code>Object</code>! Es muss also eine Art Vererbungs-Hierarchie
+geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <code>Object</code> geführt wird.
+Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="objekt-und-konstruktor-und-prototyp">Objekt und Konstruktor und Prototyp</h2>
+
+<p>Wie im vorigen Kapitel kurz erläutert ist jede Funktion in Javascript auch ein Objekt.
+Man kann zur Funktion Attribute speichern.  Es gibt ein Attribut mit einer speziellen Bedeutung
+bei einer Konstruktor-Funktion: das Attribut <code>prototype</code>: prototype verweist auf ein Objekt,
+in dem weitere Methoden und Attribute für alle Objekte die mit diesem Konstruktor erzeugt wurden
+gespeichert werden.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // Konstruktor
+  function Studiengang(name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
+  }
+  // Zwei Attribute am prototyp des Konstruktors
+  Studiengang.prototype.min = 2;
+  Studiengang.prototype.max = 42;
+  // Eine Methode am prototyp des Konstruktors
+  Studiengang.prototype.toString = function () {
+    return &quot;Studiengang &quot; + this.name + &quot; (seit &quot; + this.seit + &quot; @ &quot; + this.hs.name + &quot;)&quot;;
+  }
+
+  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
+  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+
+  mmtb.toString();  // findet toString Methode des Prototypen und ruft sie auf
+
+  mmtb.min    // findet min Attribut des Prototypen, gibt Wert 2 
+  mmtb.min=5  // speichert Wert 2 im Objekt selbst
+  mmtb.min    // gibt jetzt Wert 5
+  mmtm.min    // findet min Attribut des Prototypen, gibt Wert 2 
+</pre></div>
+
+<p>Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
+kann direkt am Objekt nicht gefunden werden, dann durchsucht
+der Javascript-Interpreter als nächstes den Prototypen des Konstruktors.</p>
+
+<p>Attribute direkt im Objekt überschreiben die Attribute des Prototypen: im Beispiel
+wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugriff auf den Protypen nötig.</p>
+
+<p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-prototyp.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="vererbung">Vererbung</h2>
+
+<p>Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Prototypen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = &quot;sleeping&quot;;
+  }
+  Pet.prototype.log = function() {
+    console.log(&quot;i am &quot; + this.status.get() + &quot;. &quot; + this.word + &quot;!&quot;);
+  }
+
+  // ----- Mammal ---------
+  function Mammal() {
+    this.legs = 4;
+  }
+  Mammal.prototype = new Pet();
+
+  // ----- Dog --------
+  function Dog( b ) {
+    this.breed = b;
+    this.word = &quot;wau! &quot;;
+  }
+  Dog.prototype = new Mammal();
+
+  Dog.prototype.sit = function() {
+    this.status.set(&quot;sitting&quot;);
+  }
+
+  d = new Dog(&quot;beagle&quot;);
+  d.word    // ist direkt im Objekt gespeichert
+  d.legs    // ist im Prototyp von Dog gespeichert (einem Mammal-Objekt)
+  d.status  // ist im Prototyp von mammal gespeichert (einem Pet-Objekt)
+</pre></div>
+
+<p>Diese Vererbungs-Kette über die Prototypen nenn man auf english “prototype chain”. </p>
+
+<p>Achtung: die Konstruktoren der übergeordenten Objekte werden nur einmal aufgerufen,
+das kann zu unerwarteten Effekten führen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = new Status();
+  }
+  // ....
+  Mammal.prototype = new Pet();
+  // ....
+  d1 = new Dog(&quot;Beagle&quot;);
+  d2 = new Dog(&quot;Schnauzer&quot;);
+  
+  d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="verteifung">Verteifung</h2>
+
+<p>Dies war nur ein erster Einstieg in die objektorientierte Programmierung mit Javascript.
+Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
+</ul>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript/objekte/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TCP/IP und DNS - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>TCP/IP und DNS</h1>
+          <p><a href="/http/tcpip-und-dns/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Um das Protokoll des Web zu verstehen erst ein paar Grundsätzliche Informationen zur Funktionsweise des Internet. Genaueres erfahren Sie in einer seperaten Lehrveranstaltung zum Thema Computer-Netwerke.</p>
+
+<p>Das Internet ist ein weltweites Computernetzwerk, oder besser: ein Netzwerk von Netzwerken.  Es sind verschiedene Computer daran angeschlossen: PCs mit Betriebssystem Windows oder Linux, Macs, UNIX-Workstations, und noch viele mehr. Die einzelnen Netze sind sehr unterschiedlich: Kupferleitungen, Glasfaserleitungen, Satelliten-Verbindungen, Ethernet, Funkstrecken. Die Besitzverhältnisse sind kompliziert: die Leitungen und Computer gehören verschiedenen Firmen, Universitäten, Schulen, Vereinen, Privatpersonen.  </p>
+
+<p>Was hält das Internet dann zusammen? Das Internet Protokoll. Aufbauend auf die Grund-Netze (z.B. Ethernet) muss jeder Computer am Internet (genannt „Host“) diese Protokoll-Familie implementieren. Zwischen den Netzen vermitteln Router die Pakete von einem Netz zum nächsten.</p>
+
+<dl>
+  <dt>IP-Adressen</dt>
+  <dd>Die eindeutigen Adressen für Hosts am Internet werden zentral verwaltet. Die Internet Assigned Numbers Authority (IANA) hat diese Aufgabe an Organisationen auf den verschiedenen Kontinenten verteilt, in Europa an aas Réseaux IP Européens Network Coordination Centre (RIPE NCC). RIPE vergibt die Adressen an die Internet-Provider in Europa. In der Whois-Datenbank7 von RIPE kann man die „Besitzer“ von IP-Adressen herausfinden.</dd>
+  <dt>IP – das Internetprotokoll</dt>
+  <dd>Der Host teilt die zu sendenden Daten in einzelne Pakete und versieht jedes Pakt mit der Absender- und Zieladresse (IP-Adressen, 4 Byte). Der Host selbst kennt nur sein Standard-Gateway (= der nächste Router) und das eigene Netzwerk. Über das eigene Netzwerk schickt er das Paket an das Standard-Gateway. Der Router nimmt das Paket auf dem einen Netzwerk entgegen und entscheidet auf Grund der Adressen auf welchem Netzwerk und an welchen Router er das Paket weiterleitet.  Beim Ziel-Host langen die Pakete ein – es gibt aber keine Garantie, dass alle ankommen oder dass sie in der richtigen Reihenfolge ankommen.</dd>
+  <dt>TCP - Transmission Control Protocol</dt>
+  <dd>TCP bietet zusätzlich zur Datenübertragung die Sicherheit, dass Pakete nicht unterkannt verloren gehen und dass sie – falls sie ankommen – in der richtigen Reihenfolge ankommen. Dazu wird der Datenstrom wieder in IP-Pakete zerlegt, diese werden aber nummeriert bevor sie abgesendet werden. Die Adressierung erfolgt über IP-Adresse plus Port-Nummer. Der Ziel-Host prüft die Reihenfolge der Pakete und meldet zurück falls Pakete fehlen. Aus Programmier-Sicht erhält man also entweder die Daten in richtiger Reihenfolge oder eine Fehlermeldung.</dd>
+  <dt>DNS – Domain Name System</dt>
+  <dd>Das Domain Name System ist eine verteilte Datenbank die „hübsche Namen“ für Hosts speichert. Z.B. ist dort zu multimediatechnology.at die IP-Adresse 193.170.119.79 gespeichert. Viele Namen verweisen übrigens auf die gleiche IP-Adresse. Auf jedem Host ist die IP-Adresse des nächsten Domain Name Servers gespeichert. So kann der Host einen „domain name lookup“ machen: er fragt seinen DNS-Server „was ist die IP-Adresse von x.y.z“ und erhält als Antwort die IP-Adresse. Der DNS-Server übernimmt dabei die Arbeit eventuell bei mehreren anderen DNS-Servern nachzufragen. Auch die Top-Level-Domains (.com, .at, .de, …) werden von IANA verwaltet und können über Whois abgefragt werden. Für die Domain .at ist die Firma nic.at zuständig.</dd>
+</dl>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/http/tcpip-und-dns/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
