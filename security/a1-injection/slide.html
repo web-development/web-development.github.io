@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Injection - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Injection</h1>
+          <p><a href="/security/a1-injection/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+
+<blockquote>
+  <p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection Schwachstellen sind weit verbreitet, besonders in altem Code; sie finden sich in SQL-, LDAP- und XPath-Anfragen, Systembefehlen, Programm-parametern usw.</p>
+</blockquote>
+
+<p>Wir haben im Kapitel <a href="/php-mysql-2/daten-loeschen/">PHP MYSQL 2 → Löschen</a> schon die SQL Injection behandelt.
+Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur Verfügung:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Prepared Statements verhindern SQL Injection</small></h4>
+<pre class="lang-php prettyprint linenums">
+  $query = $dbh-&gt;prepare(&quot;SELECT * FROM users WHERE id=?&quot;);
+  $query-&gt;execute(array( $_GET['pid'] ) );
+</pre></div>
+
+<p>Mit dem <code>prepare</code> wird das SQL-Statement bereits vor-kompiliert. Die Daten,
+die als Input vom User/der Userin kommen werden mit <code>execute</code> an die Datenbank
+übergeben, können aber nicht mehr als SQL interpretiert werden.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="prepared-statement-mit-benannten-platzhaltern">Prepared Statement mit benannten Platzhaltern</h2>
+
+<p>Eine zweite Schreibweise für prepared Statement ist noch besser lesbar: dabei
+werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Prepared Statements mit benanntem </small></h4>
+<pre class="lang-php prettyprint linenums">
+    $stm = $dbh-&gt;prepare ( &quot;SELECT * FROM USERS WHERE USERNAME LIKE :name&quot; );
+    $stm-&gt;bindParam(&quot;:name&quot;, $_POST['name'] );
+    $stm-&gt;execute();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="owasp-empfehlungen">OWASP Empfehlungen</h2>
+
+<p>Die OWASP empfiehlt:</p>
+
+<ol>
+  <li>Den Interpreter gänzlich vermeiden, oder</li>
+  <li>Eine Schnittstelle benutzen es dem Interpreter erlaubt zwischen Code und Daten zu unterscheiden (z.B., prepared statements, stored procedures in der Datenbank), oder</li>
+  <li>Den Input von der Userin/dem User geeignet codieren bevor er an den Interpreter weiter gegeben wird</li>
+</ol>
+
+<p>Im dritten und schlechtesten Fall ist weiter zu beachten:</p>
+
+<ul>
+  <li>Bei der Validierung des Inputs immer ein ‘white list’ verwenden, also nur Zeichen erlauben die harmlos sind (auf der “weissen Liste” stehen), alle anderen verwerfen</li>
+</ul>
+
+<p>Unabhängig von den oben genannten Punkt gilt noch die Empfehlung:
+* Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungen Injection minimiert werden.</p>
+
+<p>Siehe auch <a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet">SQL Injection Prevention Cheat Sheet</a></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/security/a1-injection/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

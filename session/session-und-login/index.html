@@ -68,18 +68,24 @@
                           </div>
 			
 			
-			<p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage abrufen oder ob eine Person die Seite 10mal lädt.</p>
+			<div class='slide'><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage abrufen oder ob eine Person die Seite 10mal lädt.</p>
 
 <p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
 
 <p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="cookies">Cookies</h2>
 <p>Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten, die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver wieder mitsendet. Der Browser sendet nie ein Cookie an einen anderen Webserver als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
 <p><img  alt="Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet" src="/images/image363.png" /></p>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
 
@@ -97,9 +103,15 @@ Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
 Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h3 id="cookies-in-php">Cookies in PHP</h3>
 
 <p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet wurden im Array $_COOKIES (und — zusammen mit GET und POST-Parametern — in $_REQUEST). Neue Cookies können Sie mit setcookie() setzen. </p>
+
+</div>
+<div class='slide'>
 
 <h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
@@ -121,6 +133,9 @@ alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
 
 <p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="session">Session</h2>
 <p>PHP kann das Setzen des Cookies automatisch erledigen, und geht sogar noch einen Schritt weiter:</p>
 
@@ -134,7 +149,10 @@ Für unsere Applikation werden wir das verwenden, um den Usernamen des angemelde
 
 <p><img  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" src="/images/image364.png" /></p>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
@@ -163,7 +181,10 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
   &lt;/form&gt;
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.</p>
 
@@ -185,7 +206,10 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
   header(&quot;Location: index.php&quot;)
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung wie hier mit Location: sinnvoll. </p>
 
@@ -209,7 +233,10 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
     include &quot;header.php&quot;;
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Hier noch mal die Dateien:</p>
 
@@ -247,7 +274,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
 <p><img  alt="Abbildung 148: Login mit einer Weiterleitung" src="/images/image366.png" /></p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -692,6 +719,58 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -729,6 +808,10 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

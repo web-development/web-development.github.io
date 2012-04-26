@@ -68,7 +68,10 @@
                           </div>
 			
 			
-			<h3 id="text">Text</h3>
+			<div class='slide'></div>
+<div class='slide'>
+
+<h3 id="text">Text</h3>
 
 <p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
 
@@ -91,6 +94,9 @@ em { background-color:#FFFF66; }
 <p>CSS bietet ab Version 3 verschiedene Möglichkeiten diese Fälle zu behandeln, z.b mit der Eigenschaft <code>text-overflow</code> <a href="http://css3clickchart.com/#text-overflow">→</a></p>
 
 <p>Derzeit ist es immer noch notwendig im Text die Soll-Bruchstellen als <code>&amp;amp;shy;</code> einzutragen, damit der Browser dann den Zeilenumbruch korrekt durchführen kann. Die Library <a href="https://code.google.com/p/hyphenator/">hyphenator.js</a> bietet den Umbruch u.a. für englische und deutsche Texte an.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="width-und-auto">Width und Auto</h2>
 <p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit width kann eine Andere Breite eines Blocks definiert werden:</p>
@@ -121,6 +127,9 @@ em { background-color:#FFFF66; }
 }
 </code></pre>
 
+</div>
+<div class='slide'>
+
 <h2 id="float">Float</h2>
 <p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen bietet die Deklaration float mit den Werten left und right. Damit wird ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts „rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“). </p>
 
@@ -135,6 +144,9 @@ em { background-color:#FFFF66; }
 <p>Wenn viele Elemente mit float positioniert werden die die gleiche Höhe haben entsteht ein besonders flexibles Layout: in Abbildung 39 werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinander dargestellt:</p>
 
 <p><img  alt="Abbildung 39: Zwei Darstellungen der Bildergalerie mit float" src="/images/image140.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="absolute-positionierung">Absolute Positionierung</h2>
 <p>Mit der Deklaration position:absolute wird ein Tag aus der normalen Darstellung herausgenommen und über dem restlichen Inhalt der Seite platziert. Mit top und left kann die linke obere Ecke des Elements positioniert werden. (oder mit bottom und right die rechte unter Ecke)</p>
@@ -187,7 +199,7 @@ em { background-color:#FFFF66; }
        left:0px;
     }
 </pre></div>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -632,6 +644,58 @@ em { background-color:#FFFF66; }
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -669,6 +733,10 @@ em { background-color:#FFFF66; }
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

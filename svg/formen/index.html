@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
+			<div class='slide'><p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
 simple geometrische Elemente definiert.</p>
 
 <svg width="700" height="200">
@@ -87,6 +87,9 @@ simple geometrische Elemente definiert.</p>
   </g>
 </svg>
 
+</div>
+<div class='slide'>
+
 <h3 id="kreis-ellipse-rechteck">Kreis, Ellipse, Rechteck</h3>
 
 <p>Das Rechteck wird die Position seiner oberen linken Ecke, seiner Breite und seiner Höhe definiert. Der
@@ -103,7 +106,10 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
           fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Viele Attribute kann man alternativ auch über CSS definieren.</p>
 
@@ -114,6 +120,9 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
  &lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
           style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
 
 <h3 id="pfad-und-polygon">Pfad und Polygon</h3>
 
@@ -128,7 +137,10 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
           fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Wird der Befehl als Großbuchstaben geschrieben, dann werden die Koordinaten
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
@@ -171,7 +183,10 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
   </tbody>
 </table>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
@@ -219,6 +234,9 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
   </tbody>
 </table>
 
+</div>
+<div class='slide'>
+
 <h3 id="text">Text</h3>
 
 <p>Mit dem Tag <code>text</code> kann Text in SVG gesetzt werden. Das ist
@@ -230,7 +248,10 @@ an und für sich noch nicht sehr spannend:</p>
     &lt;text x=&quot;122&quot; y=&quot;81&quot;&gt;Kreis + Ellipse&lt;/text&gt;
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Mit dem Tag <code>textpath</code> kann der Text entlang eines
 beliebigen Pfades gesetzt werden.</p>
@@ -265,7 +286,7 @@ beliebigen Pfades gesetzt werden.</p>
   &lt;/textPath&gt;
 &lt;/text&gt;
 </pre></div>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -710,6 +731,58 @@ beliebigen Pfades gesetzt werden.</p>
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li class="active"><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -747,6 +820,10 @@ beliebigen Pfades gesetzt werden.</p>
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

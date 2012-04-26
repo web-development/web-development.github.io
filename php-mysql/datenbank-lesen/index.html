@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
+			<div class='slide'><p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
 
 <p><img  alt="Abbildung 144: Homepage der Mini-Applikation" src="/images/dbapp-home.png" /></p>
 
@@ -133,6 +133,9 @@
     ?&gt;
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="viele-datenstze-aus-der-datenbank-lesen">Viele Datensätze aus der Datenbank lesen</h2>
 <p>In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:</p>
 
@@ -180,6 +183,9 @@ Array
 )
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>In der Datei <code>home.php</code> finden Sie zwei Beispiele für das Lesen einzelner Daten. Mit der SQL-Funktion COUNT() wir die Anzahl der Werke in der Datenbank bestimmt. </p>
 
@@ -190,6 +196,9 @@ Array
            &quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot; )-&gt;fetch();
     $anz_personen = $ergebnis['anzahl'];
 </pre></div>
+
+</div>
+<div class='slide'>
 
 <h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
 <p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen person.php?pid=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem <code>$_GET</code> – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.</p>
@@ -248,6 +257,9 @@ Array
 
 <p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder behandelt werden muss.</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 <p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
 
@@ -292,7 +304,7 @@ Array
 </pre></div>
 
 <p>Achtung: hier verwenden wir die count-Funktion von PHP um die Datensätze zu zählen. Wenn wir die Datensätze alle brauchen ist das auch legitim. Wenn wir nur die Anzahl der Datensätze bräuchten würden wir ein <code>COUNT</code> in SQL verwenden, wie auf Seite 74  gezeigt.</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -737,6 +749,58 @@ Array
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -774,6 +838,10 @@ Array
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

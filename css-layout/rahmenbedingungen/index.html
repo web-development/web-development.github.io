@@ -68,7 +68,10 @@
                           </div>
 			
 			
-			<p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle. </p>
+			<div class='slide'><p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle. </p>
+
+</div>
+<div class='slide'>
 
 <h2 id="auflsung">Auflösung</h2>
 <p>Zuerst stellt sich die Frage: woher weiß ich, wie hoch die Auflösung am Computer meiner LeserIn ist?  Woher weiß ich, wie viel Platz im Browserfenster zur Verfügung steht?</p>
@@ -168,10 +171,16 @@
 
 <p>http://www.w3schools.com/browsers/browsers_display.asp</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="brutto-flche-vs-netto-flche">Brutto-Fläche vs. Netto-Fläche</h2>
 <p>Von diesen „Brutto-Angaben“ über die Größe der zur Verfügung stehenden Fläche sind nun noch der Platz für den Fensterrahmen des Browsers, für Scrollbalken, Symbolleisten, und eventuell eingeblendete Favoritenleisten abzuziehen, um den „netto“ verbleibenden Raum für die Gestaltung der Webseite zu erhalten. Abbildung 27 zeigt diese Problematik am Beispiel von Firefox. </p>
 
 <p><img  alt="Abbildung 27: Platzbedarf von Browser-Elementen: firefox ohne Sidebar, Internet Explorer mit Favoriten" src="/images/image100.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="entwurf-fr-mehrere-auflsungen">Entwurf für mehrere Auflösungen</h2>
 <p>Wie gehen WebdesignerInnen mit den verschiedenen Auflösungen um? Ein paar Varianten:</p>
@@ -198,6 +207,9 @@
 <p>2) Zeigt schon ein Minimum an Wissen über das Web, ignoriert aber die gestalterische Herausforderung des Mediums. Weil solch ein Entwurf auf einem Bildschirm mit hoher Auflösung sehr klein auf einer großen leeren Fläche erscheint wird es spöttisch „Briefmarkenlayout“ genannt.</p>
 
 <p>3) +  4)  Nur das verdient wirklich die Bezeichnung „Webdesign“.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="technische-umsetzung">Technische Umsetzung</h2>
 
@@ -234,8 +246,14 @@
   /* allgemein gültige Regeln */
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="bilder">Bilder</h2>
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist im Jahr 2011 anders.</p>
+
+</div>
+<div class='slide'>
 
 <h3 id="pixel">Pixel</h3>
 <p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
@@ -245,6 +263,9 @@
 <p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern. </p>
 
 <p><img  alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" src="/images/image119.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h3 id="vektor">Vektor</h3>
 
@@ -275,9 +296,15 @@
 
 <p>Das Attribut <code>preserveAspectRatio</code> im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.</p>
 
+</div>
+<div class='slide'>
+
 <h3 id="canvas">Canvas</h3>
 
 <p>Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 <p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG – </p>
@@ -287,7 +314,7 @@
 <p><img  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" src="/images/zeilenumbruch.png" /></p>
 
 <p>Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und verkleinert, oder nur der Text wird verändern, die Bilder aber bleiben gleich. Häufiger ist die erste Variante (Default-Einstellung der meisten Browser). Abbildung 32 zeigt das entsprechnde Menü in Firefox.</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -732,6 +759,58 @@
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -769,6 +848,10 @@
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

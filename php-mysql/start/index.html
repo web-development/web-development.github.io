@@ -68,7 +68,10 @@
                           </div>
 			
 			
-			<p>MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.</p>
+			<div class='slide'><p>MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="mysql-installation-wiederholung-dokumentation">MySQL Installation, Wiederholung, Dokumentation</h2>
 <p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. Die MySQL-Shell wird wie folgt gestartet:</p>
@@ -169,6 +172,9 @@ Erster Schritt: Name der Tabelle:</p>
 <p>Dritter Schritt: Tabelle wird angelegt und dazugehörendes SQL-Statement angezeigt:</p>
 
 <p><img  alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - der SQL Befehl" src="/images/image360.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="mysql-von-php-aus">MySQL von PHP aus</h2>
 <p>Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. Hier werden die „PHP Database Objects“ (PDO) vorgestellt.</p>
@@ -283,7 +289,7 @@ where datediff( curdate( ) , pub_datum ) &amp;lt;= 100;
 </code></pre>
 
 <p>Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -728,6 +734,58 @@ where datediff( curdate( ) , pub_datum ) &amp;lt;= 100;
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -765,6 +823,10 @@ where datediff( curdate( ) , pub_datum ) &amp;lt;= 100;
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
+			<div class='slide'><p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
 Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie Intenet 
 nachschlagen. </p>
 
@@ -89,6 +89,9 @@ Windows Notpad / Editor gesetzt wird: ISO 8859-1 wird hier als ANSI bezeichnet. 
 <p><img  alt="Abbildung 8: Auswahl des Charactersets „Unicode“  " src="/images/image037.jpg" /></p>
 
 <p>beim Speichern mit dem Windows Notepad / Editor und dem Mac TextWrangler</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="sonderzeichen">Sonderzeichen</h2>
 
@@ -146,6 +149,9 @@ verwenden:</p>
   </tbody>
 </table>
 
+</div>
+<div class='slide'>
+
 <h2 id="html-tags">HTML-Tags</h2>
 
 <p>Die gewünschte Formatierung des Textes wird mit HTML-Tag  <!-- XE "Tag" -->  s angegeben</p>
@@ -185,6 +191,9 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 – dies ist aber nur selten sinnvoll, da der Browser einen automatischen Zeilenumbruch 
 durchführt. </p>
 
+</div>
+<div class='slide'>
+
 <h2 id="attribute">Attribute</h2>
 
 <p>Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag &lt;img  <!-- XE "img" -->  &gt; der ein 
@@ -221,6 +230,9 @@ width=50 height=15&gt;
 
 <pre><code>&lt;img alt="Das ist neu!" src="neu.gif &gt;
 </code></pre>
+
+</div>
+<div class='slide'>
 
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
@@ -282,6 +294,9 @@ auch mit älteren Browsern der gesamte Inhalt lesbar ist. </p>
 
 <p>Hinweis: Der &lt;jump&gt;–Tag ist ein Scherz, den gibt es nicht wirklich, und wird es hoffentlich 
 nie geben. </p>
+
+</div>
+<div class='slide'>
 
 <h2 id="text-formatieren">Text formatieren</h2>
 
@@ -408,6 +423,9 @@ in „alten“ Dokumenten noch finden):</p>
   </tbody>
 </table>
 
+</div>
+<div class='slide'>
+
 <h2 id="bilder">Bilder</h2>
 
 <p>Bilder werden in separaten Dateien gespeichert, in der HTML-Datei erfolgt nur ein Verweis 
@@ -476,6 +494,9 @@ Dateigröße möglichst gering ist. </p>
 <p>Weitere Arten Bilder zu erstellen werden wir später genauer betrachten: Mit dem 
 canvas-Tag und Javascript kann man Bilder zeichnen. </p>
 
+</div>
+<div class='slide'>
+
 <h2 id="links">Links</h2>
 <p>Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  skönnen Sie eine absolute oder relative 
 URL angeben:
@@ -487,6 +508,9 @@ Link zu E-Mail Adresse
     <a href="mailto:aa@bb.cc">Mail</a>
 Bild als Link
     <a href="seite2.htm">&lt;img src=”mehr.gif”alt=”zur Seite 2”&gt;</a></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
@@ -533,6 +557,9 @@ Charactersets ist ebenfalls komplizierter.</p>
 
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="listen">Listen</h2>
 
 <p>Listen  <!-- XE "Liste" -->    <!-- XE "ul" -->    <!-- XE "ol" -->    <!-- XE "li" -->   werden mit zwei verschachtelten Tags 
@@ -550,6 +577,9 @@ Liste. </p>
   &lt;li&gt;drei&lt;/li&gt; 
 &lt;/ol&gt;
 </code></pre>
+
+</div>
+<div class='slide'>
 
 <h2 id="tabellen">Tabellen</h2>
 
@@ -582,7 +612,7 @@ gespeichert sein, nicht innerhalb des &lt;body&gt; !</p>
 Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu finden. Moderne 
 Webseiten werden mit CSS-Layouts gestaltet.
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -1027,6 +1057,58 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -1064,6 +1146,10 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

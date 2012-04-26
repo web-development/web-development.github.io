@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Authentifizierung und Session-Management - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Authentifizierung und Session-Management</h1>
+          <p><a href="/security/a3-auth/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="keine-information-in-fehlermeldungen-preisgeben">Keine Information in Fehlermeldungen preisgeben</h2>
+
+<p>Authentisierung kann aus vielen Gründen fehl schlagen: 
+* der Username existiert gar nicht
+* dieser Account ist gesperrt
+* das Passwort passt nicht</p>
+
+<p>Egal was die Gründe sind: die Rückmeldung an die UserIn muss immer genau gleich ausfallen:</p>
+
+<p>“Login Fehlgeschlagen - Falscher Username oder Falsches Passwort”</p>
+
+<p>Warum? Die Information, ob ein bestimmter Username im System exisitiert ist wertvoll! Es
+ist ja bereits die Hälfte der nötigen Information für ein Login. Deswegen soll man die Existenz
+von Usernamen genau so geheim halten wie die Passwörter.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
+
+<p>Das Protokoll HTTP ist stateless.  Wenn man trotzdem UserInnen Authentifizieren
+will, dann muss bei jedem Request eine Authentifizierende Information, zum Beispiel eine Session-ID,
+mitgeschickt werden.  Dies geschieht zum Beispiel in einem Cookie.  Wenn es gelingt diese Information abzuhören und wieder
+zu verwenden, dann erhält man den gleichen Zugang wie die eigentliche UserIn.</p>
+
+<p>Deswegen ist es notwendig jeden Request über SSL/TLS zu verschlüsseln!</p>
+
+<p>Nicht nur Passwörter, sondern auch Session Ids sind überall vor dem Abhören zu schützen - auch in Logfiles.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="nicht-selbst-implementieren">Nicht selbst implementieren</h2>
+
+<p>Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management zu implementieren. Man sollte nicht auf eigene Lösungen setzen - Diese haben dann oft Fehler bei Abmeldung und Passwortmanagement, bei der Wiedererkennung der BenutzerInnen, bei Timeouts, Sicherheitsabfragen usw. Das Auffinden dieser Fehler kann sehr schwierig sein, besonders wenn es sich um individuelle Implementierungen handelt.</p>
+
+<p>PHP liefert bereits ein fertiges Session-System.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="neue-session-wenn-bei-login--logout--neuen-rechten">Neue Session wenn bei Login / Logout / neuen Rechten</h2>
+
+<p>Bei der “Session Fixation” Attacke versucht die HackerIn eine Session-ID für eine andere BenutzerIn  der
+attackierten Site vorzugeben.  Wenn das gelingt, und sich die andere BenutzerIn später einloggt, kann die HackerIn
+mit der bekannten Session ID die Session der anderen BenutzerIn (inklusive Rechte) übernehmen.</p>
+
+<p>Um diese Art der Attacke zu vermeiden muss man beim Login und Logout jeweils eine neue Session starten.</p>
+
+<p>In PHP geht das mit den befehlen:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>neue Session starten nach erfolgreichem Login</small></h4>
+<pre class="lang-php prettyprint linenums">
+  session_start();
+  session_regenerate_id();
+  session_destroy();
+  unset($_SESSION);
+  session_start();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="mehr">Mehr</h2>
+
+<p>Siehe <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">Authentication Cheat Sheet</a></p>
+
+<p>Siehe <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">Session Management Cheat Sheet</a></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/security/a3-auth/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

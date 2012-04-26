@@ -68,10 +68,13 @@
                           </div>
 			
 			
-			<p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt. Diese action wird direkt im &lt;form&gt;-Tag angegeben.</p>
+			<div class='slide'><p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt. Diese action wird direkt im &lt;form&gt;-Tag angegeben.</p>
 
 <pre><code>  &lt;form action="http://multimediatechnology.at/~fhs666/pizza/bestellung.php"&gt;
 </code></pre>
+
+</div>
+<div class='slide'>
 
 <h2 id="daten-an-e-mail-senden">Daten an E-Mail senden</h2>
 
@@ -85,6 +88,9 @@
 <p><img  alt="Abbildung 48: Formular per E-Mail oder über den Webserver senden" src="/images/image225.png" /></p>
 
 <p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über den Webserver senden!</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="daten-senden-mit-methode-get">Daten senden mit Methode GET</h2>
 
@@ -118,6 +124,9 @@
 </ul>
 
 <p>Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute, Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein % gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396). Diese Codierung nennt man URL-Encoding.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="url-als-programm-schnittstelle">URL als Programm-Schnittstelle</h2>
 
@@ -159,7 +168,7 @@
 <p>Wenn nun das Programm <code>order.php</code> einfach den Preis aus der URL übernimmt und auf die Rechnung schreibt, wird der Airbus recht günstig (für die KundIn) verkauft.</p>
 
 <p>Merke: Alle Eingaben die eine Web-Applikation erhält sind mit extremer Skepsis zu betrachten!</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -604,6 +613,58 @@
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -641,6 +702,10 @@
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

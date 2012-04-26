@@ -68,13 +68,16 @@
                           </div>
 			
 			
-			<p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
+			<div class='slide'><p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
 Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
 z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in Javascript oder .. oder .. nicht der Fall.</p>
 
 <p>Trotzdem gibt es in Javascript Mechanismen wie Vererbung und Komposition.</p>
 
 <p>In diesem Kapitel lernen wir diese Mechanismen kennen.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="objekt-mit-objekten">Objekt mit Objekten</h2>
 
@@ -100,13 +103,19 @@ drittes Argument wird ein Objekt übergeben:</p>
   mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
 </pre></div>
 
-<p>§</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
 beiden Studiengangs-Objekten <code>mmtb</code> und <code>mmtb</code> auf das gleiche Objekt 
 verwiesen:</p>
 
 <p><img  alt="Abbildung: Objekt mit Objekt" src="/images/objekt-mit-objekt.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="objekt-und-konstruktor">Objekt und Konstruktor</h2>
 
@@ -136,6 +145,9 @@ mmtb instanceof Object;
 <p><code>mmtb</code> ist auch eine Instanz von <code>Object</code>! Es muss also eine Art Vererbungs-Hierarchie
 geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <code>Object</code> geführt wird.
 Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="objekt-und-konstruktor-und-prototyp">Objekt und Konstruktor und Prototyp</h2>
 
@@ -181,6 +193,9 @@ der Javascript-Interpreter als nächstes den Prototypen des Konstruktors.</p>
 wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugriff auf den Protypen nötig.</p>
 
 <p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-prototyp.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="vererbung">Vererbung</h2>
 
@@ -241,6 +256,9 @@ das kann zu unerwarteten Effekten führen:</p>
   d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="verteifung">Verteifung</h2>
 
 <p>Dies war nur ein erster Einstieg in die objektorientierte Programmierung mit Javascript.
@@ -249,12 +267,12 @@ Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p
 <ul>
   <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
 </ul>
-
+</div>
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/javascript/funktionen/">← <span class="article">Funktionen und this</a></li>
+      <li><a href="/javascript/closures/">← <span class="article">Funktionen und Closures</a></li>
     
     
   </ul>
@@ -692,6 +710,58 @@ Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -729,6 +799,10 @@ Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

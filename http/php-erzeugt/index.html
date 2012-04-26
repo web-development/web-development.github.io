@@ -68,7 +68,10 @@
                           </div>
 			
 			
-			<p>Ein PHP-Programm gibt normalerweise HTML aus. Entsprechend liefert der PHP-Interpreter einen http-Header „Content-Type: text/html“. Mit dem Befehl header() kann dies verändert werden.</p>
+			<div class='slide'><p>Ein PHP-Programm gibt normalerweise HTML aus. Entsprechend liefert der PHP-Interpreter einen http-Header „Content-Type: text/html“. Mit dem Befehl header() kann dies verändert werden.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="php-erzeugt-css">PHP erzeugt CSS</h2>
 <p>Eine externes Stylesheet kann auch Output eines PHP-Programmes sein:</p>
@@ -115,6 +118,9 @@
   ENDE;
   ?&gt;
 </code></pre>
+
+</div>
+<div class='slide'>
 
 <h2 id="php-erzeugt-bild">PHP erzeugt Bild</h2>
 <p>Das PHP-Programm kann auch Bilddaten ausgeben, diese können dann auf die bekannten Arten im Web verwendet werden:</p>
@@ -164,6 +170,9 @@
   ?&gt; 
 </code></pre>
 
+</div>
+<div class='slide'>
+
 <h2 id="php-erzeugt-variablen-fr-flash">PHP erzeugt Variablen für Flash</h2>
 
 <p>Wenn PHP als „Backend“ für Flash verwendet wird kommt eine sehr einfache Form der Ausgabe zum Einsatz:  die Variablennamen und Werte werden wie für eine URL encodiert und ausgegeben. So könnte der Output eines Counters so aussehen:</p>
@@ -171,6 +180,9 @@
 <p>count=25856&amp;date=2.Mai+2008&amp;time=10:15</p>
 
 <p>Unter dem Stichwort „URL Funktionen“ finden Sie in der PHP-Doku die Funktion <code>http_build_query()</code> die hier weiterhilft.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="php-erzeugt-xml">PHP erzeugt XML</h2>
 
@@ -198,6 +210,9 @@
   ?&gt;
 </code></pre>
 
+</div>
+<div class='slide'>
+
 <h2 id="php-leitet-weiter">PHP leitet weiter</h2>
 <p>Ein PHP-Programm kann den Browser zu einer anderen URL weiterleiten. So kann zum Beispiel die Verarbeitung einer Bestellung (im ersten PHP-Programm) von der Darstellung des Bestellstatus (im zweiten PHP-Programm) getrennt werden:</p>
 
@@ -207,7 +222,7 @@ header("Location: status.php");
 exit; /* fertig, nichts weiter ausgeben! */ 
 ?&gt;
 </code></pre>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -652,6 +667,58 @@ exit; /* fertig, nichts weiter ausgeben! */
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -689,6 +756,10 @@ exit; /* fertig, nichts weiter ausgeben! */
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

@@ -68,7 +68,10 @@
                           </div>
 			
 			
-			<h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
+			<div class='slide'></div>
+<div class='slide'>
+
+<h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
 <p>Die wichstigsten Befehle zur Manipulation des DOM finden Sie in selfhtml unter „document“ und „node“. Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. Die Attribute des HTML-Tags sind über getAttribute / setAttribute / … zugänglich und manipulierbar.</p>
 
 <p>Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:</p>
@@ -162,6 +165,9 @@
 
 <p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="manipulation-des-dom">Manipulation des DOM</h2>
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
 
@@ -220,6 +226,9 @@
   first_pizza.insertBefore(new_pizza, null);
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
 <p>Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:</p>
 
@@ -256,7 +265,7 @@
   }
   document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quot;, removeMe, false); 
 </pre></div>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -701,6 +710,58 @@
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -738,6 +799,10 @@
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

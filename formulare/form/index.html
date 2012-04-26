@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer noch in einem sehr strengen, sehr strukturierten Rahmen. Abbildung 44 zeigt zwei typische Anwendungsgebiete für Web-Formulare: das Eingabeformular der Suchmaschine Google und ein Bestellformular.</p>
+			<div class='slide'><p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer noch in einem sehr strengen, sehr strukturierten Rahmen. Abbildung 44 zeigt zwei typische Anwendungsgebiete für Web-Formulare: das Eingabeformular der Suchmaschine Google und ein Bestellformular.</p>
 
 <p><img  alt="Abbildung 44: Formulare in Webseiten" src="/images/image173.png" /></p>
 
@@ -89,6 +89,9 @@
 <p>Im Browser sieht das oben gezeigte Formular so aus:</p>
 
 <p><img  alt="Abbildung 45: Darstellung eines Web-Formulars im Browser" src="/images/image176.png" /></p>
+
+</div>
+<div class='slide'>
 
 <h2 id="eingabefelder">Eingabefelder</h2>
 <p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf. Tabelle 2 zeigt die verschiedenen Arten von Text-Eingabefeldern.</p>
@@ -183,6 +186,9 @@
 
 <p>Radiobuttons, die zu einer Frage gehören, müssen den selben Namen tragen. der Wert ist unterschiedlich (im Code: Attribut name ist gleich, value unterschiedlich).  Nur bei einer Liste besteht die Möglichkeit mehrere Antworten auszuwählen. Für alle Eingabefelder gibt: falls auch “keine Antwort” möglich sein soll müssen Sie dafür eine eigene Option einbauen.</p>
 
+</div>
+<div class='slide'>
+
 <h3 id="absenden">Absenden</h3>
 
 <p>Jedes Formular braucht einen Absende-Button</p>
@@ -197,6 +203,9 @@
 
 <p>Neben dem Absende-Button gibt es noch andere Methoden wie ein Formular „abgesendet“ werden kann: Falls das Formular nur ein einziges Text-Eingabefeld hat, kann man in diesem Feld auf ENTER drücken um das Formular zu senden. Wenn das Formular ein Bild-Feld enthält (siehe unten) veranlasst ein Klick auf das Bild das Einsenden. </p>
 
+</div>
+<div class='slide'>
+
 <h3 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h3>
 
 <div class="example">
@@ -208,6 +217,9 @@
 <p><img  alt="screenshot" src="/images/image198.png" /></p>
 
 <p>Den Zurücksetzen Button sollten Sie nur sehr selten einsetzen. Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
+
+</div>
+<div class='slide'>
 
 <h3 id="label">Label</h3>
 
@@ -236,6 +248,9 @@
 ....
 &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
 
 <h3 id="weitere-eingabefelder">Weitere Eingabefelder</h3>
 
@@ -276,7 +291,7 @@
 </pre></div>
 
 <p>Aus diesen Eingabeelementen ist jedes Web-Formular aufgebaut. Die Problematik der Formulare liegt nicht in der Kenntnis der Eingabefelder, sondern im Entwurf der Interaktionsmöglichkeiten.</p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -721,6 +736,58 @@
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -758,6 +825,10 @@
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

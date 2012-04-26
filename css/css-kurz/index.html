@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:</p>
+			<div class='slide'><p>Die einfachste Art die visuelle Darstellung einer Webseite zu definieren ist die Einbettung eines Stylsheets. Das Stylesheet definiert für die einzelnen HTML-Tags wie sie dargestellt werden sollen. In Listing 1 werden Formatierungen für die Tags body, p, h1 und h2 vorgenommen, der gezeigte &lt;style&gt;-Tag wird im Head des HTML-Dokument eingebunden:</p>
 
 <pre><code>&lt;style type="text/css"&gt;
 p {
@@ -86,6 +86,9 @@ body { background-color: green; }
 
 <p>An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völig anders als die von HTML. </p>
 
+</div>
+<div class='slide'>
+
 <h2 id="schriftart">Schriftart</h2>
 <p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er. (Man kann Schriften auch verlinken - aber das ist mehr ein Thema für MMA).</p>
 
@@ -97,8 +100,14 @@ body { background-color: green; }
 
 <p>sans-serif serif cursive fantasy monospace. </p>
 
+</div>
+<div class='slide'>
+
 <h2 id="schriftgre">Schriftgröße</h2>
 <p>Die Schriftgrößen-Angabe in Zeile 4 verwendet Pixel als Maßeinheit. Diese Maßeinheit macht bei der Darstellung am Screen,besonders in Kombination mit Pixel-Bildern Sinn. </p>
+
+</div>
+<div class='slide'>
 
 <h2 id="abstze">Absätze</h2>
 <p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:</p>
@@ -109,11 +118,14 @@ body { background-color: green; }
 
 <p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. </p>
 
+</div>
+<div class='slide'>
+
 <h2 id="css-erforschen-mit-firebug">CSS erforschen mit Firebug</h2>
 <p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS hilft das Firefox Add-On „Firebug“.</p>
 
 <p><img  alt="Abbildung 19: Firefox Add-On Firebug" src="/images/image072.png" /></p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -558,6 +570,58 @@ body { background-color: green; }
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -595,6 +659,10 @@ body { background-color: green; }
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

@@ -68,9 +68,12 @@
                           </div>
 			
 			
-			<p>Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
+			<div class='slide'><p>Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
 könnte.  Zum Beispiel könnte beim Einfügen in die Datenbank ein Constraint verletzt werden
 und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="exceptions-in-php">Exceptions in PHP</h2>
 
@@ -114,6 +117,9 @@ nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception �
   // Exception abgefangen: Division durch Null
   ?&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
 
 <h2 id="verwendung-von-exceptions-fr-die-datenbank">Verwendung von Exceptions für die Datenbank</h2>
 
@@ -163,6 +169,9 @@ oder bei einzelnen Abfragen.</p>
 bevor die Ausgabe beginnt.  Im <code>catch</code>-Block wird eine Webseite
 erzeugt, die gar nichts mit der “normalen” Ausgabe der Seite zu
 tun hat.</p>
+
+</div>
+<div class='slide'>
 
 <h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
 
@@ -214,11 +223,14 @@ try {
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
 bleibt gleich.</p>
 
+</div>
+<div class='slide'>
+
 <h2 id="exceptions-in-javascript">Exceptions in Javascript</h2>
 
 <p>Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
 gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -226,7 +238,7 @@ gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/201
       <li><a href="/php-mysql-2/daten-editieren/">← <span class="article">Daten Bearbeiten</a></li>
     
     
-      <li><a href="/svg/">SVG →</a></li>
+      <li><a href="/security/">Web Security →</a></li>
     
   </ul>
 </div>
@@ -663,6 +675,58 @@ gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/201
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -700,6 +764,10 @@ gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/201
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       

