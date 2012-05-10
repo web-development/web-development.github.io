@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Stil + Tipps - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Stil + Tipps</h1>
+          <p><a href="/javascript/style/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Dieses Kapitel richtet sich speziell an Personen mit wenig Programmier-Erfahrung.
+Viele hier erwähnten Punkte sind nicht spezifisch für Javascascript.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="menschenfreundliche-programmierung">Menschenfreundliche Programmierung</h2>
+
+<p>Aus Sicht des Javascript Interpreters gibt es viele, viele Arten dasselbe
+Programm zu schreiben - der Javascript-Interpreter wird es immer gleich verstehen.
+Aus Sicht eines Menschen, der das Programm liest, sind manche Versionen leichter
+verständlich und manche weniger leicht.</p>
+
+<p>Besonders deutlich wird das beim Vergleich der folgenden beiden Programme:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Countdown mit Closures - menschenfreundliche Version</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+ function create_countdown( max ) {
+    var i = max+1;
+    return function() {
+      i--;
+      return i;
+    }
+  } 
+  var top10 = create_countdown(10);
+  var i;
+  while( i = top10() ) {
+    console.log(&quot;und auf Platz &quot; + i + &quot; .... &quot;);
+  }
+</pre></div>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Countdown mit Closures - andere Version</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function create_countdown(b){var a=b+1;return function(){a--;return a}}
+  for(var top10=create_countdown(10),i;i=top10();)console.log(&quot;und auf Platz &quot;+i+&quot; .... &quot;);
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="refactoring">Refactoring</h2>
+
+<p>Manchmal schafft man es, auf Anhieb ein schönes, lesbares, funktionierendes Programm zu schreiben.
+Aber das ist eher der Ausnahmefall.</p>
+
+<p>Ein Programm wieder und wieder zu verändert, bis es endlich funktionert, nennt man <strong>Debugging</strong>.
+Oft ist hier Schluss - das Programm funktioniert ja schliesslich! Aber auch wenn die Funktionalität
+fertig gestellt ist kann man das Programm weiter bessern: besser lesbar, besser veränderbar, besser wartbar.</p>
+
+<p>Eine Veränderung am Programm, die die Funktionalität unverändert lässt, und andere Aspekte
+des Programmes verbessert, nennt man <strong>Refactoring</strong>. Dabei geht man in kleinen Schritten vor:
+zum Beispiel in einem Schritt einen Variablennamen verändern, im nächsten Schritt Code in
+eine Funktion zusammen fassen, im nächsten Schritt einen Funktionsnamen ändern, … nach jedem
+einzelnen Schritt ist das Programm wieder funktionstüchtig.</p>
+
+<p>Wenn man ein Versionskontrollsystem verwendet kann man nach jedem Schritt ein commit mit einer
+passenden log-message machen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="variablen">Variablen</h2>
+
+<p>Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. </p>
+
+<p>Aus der Mathematik wurde Konventionen übernommen, z.B. dass i,j,k als Zähler für Schleifen
+verwendet werden; x,y,z für Koordinaten. Diese Konvention muss man nicht einhalten,
+aber man sollte nicht gegen sie arbeiten:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Kurze Variablennamen und Konventionen aus der Mathematik</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+// gegen die Konvention          //     // mit der Konvention
+var x=0;                         //     var i=0;
+var i,k;                         //     var x,y;
+while( x &lt; 10 ) {                //     while( i &lt; 10 ) {
+  i = rand(0,100);               //       x = rand(0,100);
+  k = rand(0,200);               //       y = rand(0,200);
+  drawStarAt( i,k );             //       drawStarAt( x,y );
+  x++;                           //       i++;
+}                                //     }
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="fixe-werte-durch-variablen-ersetzen">Fixe Werte durch Variablen ersetzen.</h2>
+
+<p>Nebenbemerkung: In Javascript gibt es keine Konstanten im Sinne von C/C++/Java: Der Wert jeder Variable kann
+im Lauf des Programms verändert werden.  </p>
+
+<div class="alert"><strong>ToDo</strong> mehr Beispiele</div>
+
+</div>
+<div class='slide'>
+
+<h2 id="quellen">Quellen</h2>
+
+<p>Dieses Kapitel beschreibt u.a. einen Teil der Coding Conventions von Douglas Crockford.</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/instanceof">Code Conventions for the JavaScript Programming Language</a></li>
+  <li><a href="http://www.amazon.de/JavaScript-Parts-Working-Shallow-Grain/dp/0596517742/">Crockford, Douglas(2008): Javascript, the good parts. O’Reilly.</a></li>
+  <li><a href="http://www.amazon.de/Das-Beste-JavaScript-Douglas-Crockford/dp/3897218763/">Crockford, Douglas(2008): Das Beste an JavaScript. O’Reilly.</a></li>
+</ul>
+
+<p>Das Beispiel für nicht-lesbaren Code wurde mit dem Google Closure Compiler erzeugt.
+(achtung: “Closure” ist hier ein Eigenname - ein sehr verwirrender Eigenname. Stellen
+Sie sich vor man würde ein Auto nach einem Bauteil benennen, z.B. ‘Opel Kurbelwell’, ‘VW Fensterheber’, ‘Fiat Zündkerze’.)</p>
+
+<ul>
+  <li><a href="http://closure-compiler.appspot.com/home">Google Closure Compiler</a></li>
+</ul>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript/style/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

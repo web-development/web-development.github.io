@@ -71,29 +71,10 @@
 			<div class='slide'><p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
 
 <blockquote>
-  <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. Anwendungen prüfen dabei nicht immer, ob die BenutzerIn für den Zugriff auf diese autorisiert ist. Dies führt zu unsicheren direkten Objektreferenzen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
+  <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
 </blockquote>
 
-</div>
-<div class='slide'>
-
-<h2 id="nur-was-serverseitig-geprft-wird-ist-sicher">Nur was serverseitig geprüft wird ist sicher</h2>
-
-<p>Bei der Programmierung von Web-Applikationen muss man sich immer bewusst sein,
-dass Alles was im Client passiert, bzw vom Client geschickt wird, manipuliert werden kann.
-Meine Serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
-sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist.</p>
-
-<p>Gängige Fehleinschätzungen dieser Art sind:</p>
-
-<ul>
-  <li>Wenn ich keinen Link dazu machen findet das eh niemand.
-** Das ist falsch!</li>
-  <li>Wenn ich die Daten in ein hidden-field im Formular schreibe können sie nicht verändert werden
-** Das ist falsch!</li>
-  <li>Wenn die Daten des Formulars per POST übertragen werden können sie nicht manipuliert werden
-** Das ist falsch!</li>
-</ul>
+<p>Dieser Punkt hängt eng mit <a href="A8 - Mangelhafter URL-Zugriffsschutz">/security/a8-url/</a> zusammen.</p>
 
 </div>
 <div class='slide'>
@@ -144,8 +125,8 @@ statt IDs verwendet. Sie sind auch unter dem namen “friendly urls” und (z.B.
 
 <ol>
   <li>Das erraten eines weiteren Keys ist nicht so leicht wie bei Zahlen</li>
-  <li>URLs werden dadurch leichter lesbar und sind leichter zu merken</li>
-  <li>Auch Suchmaschinen lesen den Text des Slugs, er gilt genauso wie der Text der Seite</li>
+  <li>URLs werden dadurch leichter lesbar und sind leichter zu erinnern</li>
+  <li>Auch Suchmaschinen lesen den Text des Slugs, die Seite kann auch unter den Stichwörtern des Slugs gefunden werden</li>
 </ol>
 
 <p>Mit folgender Konfigurations-Datei <code>.htaccess</code> wir der Apache-Webserver angewiesen
@@ -174,12 +155,14 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 
 <p>Eine denkbar schlechte Implementiereung dieser Galerie wäre:</p>
 
-<html caption="Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!">
-  <img src="&lt;?= $_GET['img'] ?&gt;" />
-  <?php
+<div class="example">
+<h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;img src=&quot;&lt;?= $_GET['img'] ?&gt;&quot;&gt;
+  &lt;?php
   include $_GET['text'];  // nicht so programmieren!!!
-  ?>
-</html>
+  ?&gt;
+</pre></div>
 
 <p>Mit diesem Programm kann man durch einfaches ändern der URL beliebige
 Dateien am Server “erforschen”. </p>
@@ -552,6 +535,10 @@ Dateien am Server “erforschen”. </p>
                       
                     
                       
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
                       <li ><a href="/php/syntax/">Syntax von PHP</a></li>
                       
                     
@@ -733,6 +720,14 @@ Dateien am Server “erforschen”. </p>
                     
                       
                       <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
                       
                     
                   

@@ -70,9 +70,63 @@
 			
 			<div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
-<p>In Anwendungen wird der Zugriff auf Seiten nicht immer verlässlich abgesichert. Manchmal wird Zugriffsschutz durch Konfiguration realisiert, die ggf. auch fehlerhaft sein kann. Manchmal vergessen die Entwickler auch nur, die notwendige Prüfung zu implementieren.</p>
+<blockquote>
+  <p>In Anwendungen wird der Zugriff auf Seiten nicht immer verlässlich abgesichert. Manchmal wird Zugriffsschutz durch Konfiguration realisiert, die ggf. auch fehlerhaft sein kann. Manchmal vergessen die Entwickler auch nur, die notwendige Prüfung zu implementieren.</p>
+</blockquote>
 
-<div class="alert"><strong>ToDo</strong> hier fehlt noch eine Beispiel Implementierung in PHP</div>
+</div>
+<div class='slide'>
+
+<h2 id="nur-was-serverseitig-geprft-wird-ist-sicher">Nur was serverseitig geprüft wird ist sicher</h2>
+
+<p>Bei der Programmierung von Web-Applikationen muss man sich immer bewusst sein,
+dass Alles was im Client passiert, bzw vom Client geschickt wird, manipuliert werden kann.
+Meine Serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
+sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist.</p>
+
+<p>Gängige Fehleinschätzungen dieser Art sind:</p>
+
+<ul>
+  <li>Wenn ich keinen Link zu dieser Seite hin setzte, dann findet die Seite eh niemand.
+** Das ist falsch! </li>
+  <li>Wenn ich die Daten in ein hidden-field im Formular schreibe, können sie nicht verändert werden
+** Das ist falsch! </li>
+  <li>Wenn die Daten des Formulars per POST übertragen werden, können sie nicht manipuliert werden
+** Das ist falsch!</li>
+</ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="jede-php-datei-ist-ein-einstiegspunkt">Jede PHP-Datei ist ein Einstiegspunkt</h2>
+
+<p>Jede einzelne PHP-Datei die im Webspace liegt kann auch direkt
+über HTTP aufgerufen werden. Es bietet sich deswegen an in jeder
+PHP-Datei zuerst die Zugriffsrechte zu prüfen.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Prüfung der Zugriffsrechte am Anfang jeder PHP-Datei</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;?php
+  include &quot;functions.php&quot;;
+  check_permissions();
+  // .... 
+</pre></div>
+
+<p>Mit der Funktion <code>check_permissions</code> haben wir hier eine zentrale
+Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="mehr">Mehr</h2>
+
+<p>Die OWASP bietet noch vertiefende Informationen zu diesem Thema an:</p>
+
+<ul>
+  <li><a href="http://www.owasp.org/index.php/Guide_to_Authorization">OWASP Development Guide: Chapter on Authorization</a></li>
+  <li><a href="http://www.owasp.org/index.php/Testing_for_Path_Traversal">OWASP Testing Guide: Testing for Path Traversal</a></li>
+</ul>
 </div>
 		
 			<div class="pagination">
@@ -434,6 +488,10 @@
                       
                     
                       
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
                       <li ><a href="/php/syntax/">Syntax von PHP</a></li>
                       
                     
@@ -615,6 +673,14 @@
                     
                       
                       <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
                       
                     
                   

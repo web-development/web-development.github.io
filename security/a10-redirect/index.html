@@ -70,9 +70,90 @@
 			
 			<div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
-<p>Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.</p>
+<blockquote>
+  <p>Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.</p>
+</blockquote>
 
-<div class="alert"><strong>ToDo</strong> hier fehlt noch eine Beispiel Implementierung in PHP</div>
+<p>Konkret beschreibt sie zwei Angriffs-Szenarien (hier auf PHP umformuliert)</p>
+
+<p><strong>Szenario 1:</strong></p>
+
+<p>Die Anwendung enthält eine Seite namens “redirect.php”, die einen einzigen Parameter “url” verwendet. 
+Ein Angreifer setzt eine URL als Parameterwert ein, die BenutzerInnen auf eine Website führt, 
+die Schadcode installiert oder Phishing ermöglicht. </p>
+
+<p>http://www.example.com/redirect.php?url=evil.com </p>
+
+<p><strong>Szenario 2:</strong></p>
+
+<p>Die Anwendung verwendet interne Umleitungen, um Anfragen auf unterschiedliche Bereiche der Website 
+weiterzureichen. Um dies zu erleichtern, können Parameter verwendet werden, um festzulegen, 
+auf welchen Bereich im Erfolgsfall umgeleitet wird. In diesem Fall schleust eine
+Angreiferin eine URL als Parameter ein, die die Zugangskontrollen der Anwendung umgeht 
+und den Browser der Angreiferin auf einen administrativen Bereich leitet, auf den sie 
+normalerweise keinen Zugriff hätte. </p>
+
+<p>http://www.example.com/boring.php?fwd=admin.jsp</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="weiterleitung-in-php">Weiterleitung in PHP</h2>
+
+<p>Wie in Kapitel <a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a> gezeigt,
+werden Weiterleitungen in PHP mit der Funktion <code>header</code> implmenentiert:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Weiterleitung in PHP</small></h4>
+<pre class="lang-php prettyprint linenums">
+    &lt;?php
+    // hier passieren wichtige Dinge ...
+    header(&quot;Location: status.php&quot;);
+    exit; /* fertig, nichts weiter ausgeben! */
+    ?&gt;
+</pre></div>
+
+<p>Auf keinen Fall sollte ein Parameter direkt in der Konstruktion der URL verwendet werden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Ungeprüfte Weiterleitung in PHP - so nicht programmieren!</small></h4>
+<pre class="lang-php prettyprint linenums">
+    &lt;?php
+    // hier passieren wichtige Dinge ...
+    header(&quot;Location: &quot; + $_GET['url'] ); // so nicht programmieren!
+    ?&gt;
+</pre></div>
+
+<p>Die sicherste Variante ist die verwendung einer Whitelist. Hier
+wird sicher gestellt dass nur and die vorgegebenen URLs weitergeleitet wird:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Weiterleitung in PHP - mit Whitelist</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;?php
+// whitelist der erlaubten urls
+
+$urls = array(
+  &quot;enzyklopaedie&quot; =&gt; &quot;http://de.wikipedia.org&quot;,
+  &quot;landkarte&quot;     =&gt; &quot;http://openstreetmap.org&quot;,
+  &quot;uni&quot;           =&gt; &quot;http://ocw.mit.edu/&quot;,
+  &quot;wissenschaft&quot;  =&gt; &quot;http://www.plosone.org/&quot;
+);
+
+if ( array_key_exists( $_GET['url'], $urls ) ) {
+  header(&quot;Location: &quot; . $urls[  $_GET['url'] ]  );
+} else {
+  header(&quot;Location: ich-lass-mich-nicht-hacken.php&quot;);
+}
+?&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="mehr">Mehr</h2>
+
+<p>Informationen von Google über <a href="http://googlewebmastercentral.blogspot.com/2009/01/open-redirect-urls-is-your-site-being.html">Open Redirects</a>.</p>
 </div>
 		
 			<div class="pagination">
@@ -434,6 +515,10 @@
                       
                     
                       
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
                       <li ><a href="/php/syntax/">Syntax von PHP</a></li>
                       
                     
@@ -615,6 +700,14 @@
                     
                       
                       <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
                       
                     
                   

@@ -31,9 +31,117 @@
           </div>
 	  <div class='slide'><p>Die CSRF ist ein Angriff “über die Bande”:  Um Site C zu attackieren, wird auf Site B Code hinterlegt. Wenn Userin Alice mit Site B interagiert wird ohne ihr Wissen eine HTTP-Request an Site C geschickt. Da Alice bei C schon eingeloggt ist wird dieser Request “erfolgreich” durchgeführt.</p>
 
-<p><a href="http://shiflett.org/articles/cross-site-request-forgeries">Shiflett, Chris(2004): Cross-Site Request Forgeries. In: PHP Architect.</a></p>
+<p>Das Problem tritt also potentiell bei allen Sites auf, bei denen
+man auf Dauer eingeloggt bleibt.</p>
 
-<div class="alert"><strong>ToDo</strong> hier fehlt die Aufbereitung von Shifletts Text.</div>
+</div>
+<div class='slide'>
+
+
+
+<p>Ein hypothetisches Beispiel: Die verwundbare Web-Applikation (“Site C”) sei
+eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Verwundbarer Web-Applikation</small></h4>
+<pre class="lang-html prettyprint linenums">
+   &lt;form action=&quot;spende.php&quot; method=&quot;...&quot;&gt;
+      &lt;input name=&quot;betrag&quot;&gt;
+      &lt;select name=&quot;kontonummer&quot;&gt;
+        &lt;option value=&quot;23456789&quot;&gt;Greenpeace&lt;/option&gt;
+        &lt;option value=&quot;34567890&quot;&gt;Amnesty International&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;input type=&quot;submit&quot;&gt;
+   &lt;form&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Je nachdem ob <code>GET</code> oder <code>POST</code>  verwendet wird, sieht der Code
+der Attacke verschieden aus. </p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Attacke auf das Formular</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;!-- Attacke auf GET --&gt;
+  &lt;img src=&quot;http://spendenportal.ch/spende.php?betrag=1000&amp;kontonummer=6666666&quot; alt=&quot;i can has cheezburger&quot;&gt;
+
+  &lt;!-- Attacke auf POST --&gt;
+  &lt;form action=&quot;http://spendenportal.ch/spende.php&quot; method=&quot;POST&quot;&gt;
+    &lt;input name=&quot;betrag&quot;      value=&quot;1000&quot; type=&quot;hidden&quot;&gt;
+    &lt;input name=&quot;kontonummer&quot; value=&quot;6666&quot; type=&quot;hidden&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Like this on Facebook&quot;&gt;
+  &lt;/form&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="verteidigung-gegen-csrf">Verteidigung gegen CSRF</h2>
+
+<p>Auf meiner Site sollen die UserInnen auf Dauer eingeloggt bleiben können,
+aber gleichzeitig sicher sein, dass nicht in ihrem Namen unerwartete Aktionen
+vorgenommen werden.  Wie kann ich das sicher stellen?</p>
+
+<p>Die OWASP schlägt als Verteidigungsstrategie einen “Synchronizer Token” vor:
+Im Source-Code aller Web-Formulare wird ein Token eingefügt, das zu einer konkreten
+Session gehört und nur eine beschränkte Zeit lang gültig ist.</p>
+
+<p>Bei der Behandlung jeder Anfrage wird überprüft ob dieses Token vorhanden ist,
+zur Session passt und noch gültig ist.  Ein Request der auf Grund eine CSRF-Attacke
+gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Chris Shiflett schlägt folgenden PHP-Code zur Erzeugung des Tokens vor:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Erzeugung des Tokens</small></h4>
+<pre class="lang-php prettyprint linenums">
+  if (!isset($_SESSION['token'])) {
+    $token = md5(uniqid(rand(), TRUE));
+    $_SESSION['token']      = $token;
+    $_SESSION['token_time'] = time();
+  }
+  ...
+  &lt;form action=&quot;spende.php&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;&lt;?php echo $token; ?&gt;&quot;&gt;
+    &lt;input name=&quot;betrag&quot;&gt;
+    ...
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn ein Request verarbeitet wird, wird überprüft ob das Token vorhanden
+ist und noch gültig ist:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Check des Tokens</small></h4>
+<pre class="lang-php prettyprint linenums">
+  if (!isset($_SESSION['token']))            raise TokenException;
+  if ($_POST['token'] != $_SESSION['token']) raise TokenExeption;
+
+  $token_age = time() - $_SESSION['token_time'];
+   
+  if ($token_age &gt; 300)                      raise TokenException;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="quellen">Quellen</h2>
+
+<p>Die hier vorgeschlagene Lösung ist eine Variante von
+<a href="http://shiflett.org/articles/cross-site-request-forgeries">Shiflett, Chris(2004): Cross-Site Request Forgeries. In: PHP Architect.</a></p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/security/a5-csrf/">zurück zum Buch-Kapitel</a></p>
