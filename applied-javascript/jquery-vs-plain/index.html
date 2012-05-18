@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Kryptografisch unsichere Speicherung</title>
+  <title>Lehrbuch Web-Development - jQuery und reines Javascript</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -51,27 +51,281 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Kryptografisch unsichere Speicherung</h2>
-                                <a href="/security/a7-krypto/slide.html">als Präsentation</a>
+				<h2 class="title">jQuery und reines Javascript</h2>
+                                <a href="/applied-javascript/jquery-vs-plain/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<div class='slide'><p>Im ersten Teil des Buches, in den Kapiteln <a href="/formulare/javascript/">Formular und Javascript</a>,
+<a href="/javascript-dom/">Javascript DOM</a> und <a href="/jQuery/">jQuery</a> wurde Javascript und jQuery bereits vorgestellt.</p>
 
-<blockquote>
-  <p>Fehlende Verschlüsselung vertraulicher Daten ist die häufigste Schwachstelle, gefolgt von unsicherer Schlüsselerzeugung, der Speicherung statischer Schlüssel und die Nutzung schwacher Algorithmen. Schwache Hashwerte ohne Salt kommen zum Passwortschutz oft vor. Ein eingeschränkter Zugriff lässt externe Angreifer solche Probleme i.d.R. nicht leicht entdecken. Den nötigen Zugriff müssen sie vorher auf andere Weise erlangen.</p>
-</blockquote>
+<p>Nun wollen wir dieselben Themen nocheinmal genauer betrachten.</p>
 
-<div class="alert"><strong>ToDo</strong> hier fehlt noch eine Beispiel Implementierung in PHP</div>
+</div>
+<div class='slide'>
+
+<h2 id="das-jquery-objekt">das jQuery Objekt</h2>
+
+<p>Alle Funktionen die wir hier disskutieren werden geben immer
+ein jQuery Objekt zurück, dass eine Liste von Nodes anhalten
+kann.  Manchmal ist diese Liste leer, manchmal enthält sie nur ein
+Element, manchmal mehrere.  </p>
+
+<p>Wenn man mit einem jQuery Objekt arbeitet muss man sich also
+bewusst sein, arbeitet man immer in der Mehrzahl, nie in der Einzahl.</p>
+
+<p>Um die jQuery Objekte besser von anderen Javascript Variablen 
+unterscheiden zu können werden wir ihre Variablennamen immer mit
+einem Dollar beginnen.</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>von jQuery zu DOM und umgekehrt: Eine Node</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// von jQuery nach Javascript
+
+// Eine Node mit ID auswählen 
+$q = $(&quot;#idname&quot;);
+
+// DOM-Node extrahieren:
+node = $q.get(0);
+node = $q[0];
+</pre><pre class="lang-javascript prettyprint linenums right">
+// von Javascript zu jQuery
+
+// Eine Node nach ID auswählen 
+node = document.getElementById(&quot;id&quot;);
+
+// jQuery Objekt konstruieren
+$q = $(node);
+
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn mehrere Nodes gefunden werden muss das in jQuery nicht
+besonders behandelt werden, in reinem Javascript schon:</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>von jQuery zu DOM und umgekehrt: mehrere Nodes</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// Nodes mit CSS-Selektor auswählen
+$q = $(&quot;.class&quot;);
+
+
+// wie viele sind es?
+if( $q.length &gt; 1 ) {
+  console.log(&quot;mehrere&quot;);
+}
+
+// extrahieren
+var i=0, arr=Array();
+while( i &lt; $q.length ) {
+  arr[i] = $q.get(i);
+}
+</pre><pre class="lang-javascript prettyprint linenums right">
+// Nodes mit CSS-Selektor auswählen
+arr = document
+        .querySelectorAll(&quot;class&quot;);
+
+// wie viele sind es?
+if( node_array.length &gt; 1 ) {
+  console.log(&quot;mehrere&quot;);
+}
+
+// in jQuery-Objekt
+$q = $(node_array);
+
+
+
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="selektieren">Selektieren</h2>
+
+<p>Wie wählt man Nodes aus der DOM aus?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>DOM Selektieren</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+
+// Eine Node nach ID auswählen
+node = document.getElementById(&quot;id&quot;);
+
+// Erste Node mit CSS-Selektor auswählen
+node = document.querySelector(&quot;h2&quot;);
+
+
+// Alle Nodes mit CSS-Selektor auswählen
+arr = document.querySelectorAll(&quot;h2&quot;);
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+
+// Eine Node nach ID auswählen 
+$q = $(&quot;id&quot;);
+
+// Erste Node mit CSS-Selektor auswählen
+$q = $(&quot;h2:first&quot;);
+$q = $(&quot;h2&quot;).first();
+
+// Alle Nodes mit CSS-Selektor auswählen
+$q = $(&quot;h2&quot;);
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="traversieren">Traversieren</h2>
+
+<p>Wie wandert man durch den DOM-Baum?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>DOM Traversieren</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+
+// hinauf zur Eltern-Node
+p = node.parentNode;
+
+// Kinder sind im Array children
+var i = 0;
+while( i &lt; node.children.length ) {
+  node.children[0];
+}
+
+
+
+
+
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+
+// hinauf zur Eltern-Node (Mehrzahl!)
+$p = $q.parent();
+
+// Kinder 
+$c = $q.children();
+$c = $q.children(':selected');
+
+// Nachfahren
+$n = $q.find();
+$n = $q.find(':selected');
+
+// Geschwister
+$n = $q.next('p');
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="attribute">Attribute</h2>
+
+<p>Wie liest man Attribute aus, wie setzt man sie?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Attribute lesen und setzen</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+// todo
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+// todo
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="einfgen">Einfügen</h2>
+
+<p>Wie fügt man eine Node in die DOM ein?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Node in die DOM einfügen</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+
+// Text einfügen
+t = document.createTextNode(&quot;Hello&quot;); 
+node.appendChild(t);
+
+// Tag einfügen
+l = document.createElement(&quot;a&quot;); 
+l.setAttribute('href', 'page.html');
+l.appendChild(t);
+node.appendChild(t);
+
+
+// hack
+node.innerHTML = 
+  &quot;&lt;a href='page.html'&gt;Hallo&lt;/a&gt;&quot;;
+
+
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+
+// Text einfügen
+$n.append(&quot;Hallo&quot;);
+
+
+// Tag einfügen
+$l = $(
+  &quot;&lt;a href='page.html'&gt;Hallo&lt;/a&gt;&quot;
+);
+$n.append($l);
+
+
+// oder
+$l = $(&quot;&lt;a&gt;&quot;)
+       .attr('href', 'page.html')
+       .text('Hallo');
+$n.append($l);
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="clonen">Clonen</h2>
+
+<p>Wie kopiert oder verschiebt man eine vorhandene Node?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Node clonen</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+// todo
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+// todo
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="event-listener">Event-Listener</h2>
+
+<p>Wie fügt man einen Event-Handler ein?</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Events</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// plain Javascript
+node.addEventListener(&quot;click&quot;, f);
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery 
+$n.on(&quot;click&quot;, f);
+</pre><div class="clearfix"></div></div>
 </div>
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/security/a6-konfiguration/">← <span class="article">Sicherheitsrelevante Fehlkonfiguration</a></li>
+      <li><a href="/applied-javascript/">← <span class="article">Javascript im Browser</a></li>
     
-    
-      <li><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz →</a></li>
     
   </ul>
 </div>
@@ -512,7 +766,7 @@
               </ul>
             </li>
           
-            <li class="active"><a href="/security/">SECURITY</a>
+            <li ><a href="/security/">SECURITY</a>
               <ul class="sub">
                 
                   
@@ -544,7 +798,7 @@
                       
                     
                       
-                      <li class="active"><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
                       
                     
                       
@@ -624,7 +878,7 @@
               </ul>
             </li>
           
-            <li ><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
+            <li class="active"><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
               <ul class="sub">
                 
                   
@@ -632,7 +886,7 @@
                       
                     
                       
-                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      <li class="active"><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
                       
                     
                   
@@ -654,7 +908,7 @@
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/security/a7-krypto.md">kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/applied-javascript/jquery-vs-plain.md">kommentar zu dieser seite</a></p>
 
 </p>
     </div>
