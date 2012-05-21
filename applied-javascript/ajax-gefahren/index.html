@@ -1,0 +1,1057 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - AJAX</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1">
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+      <a href="http://github.com/bjelline/web-development-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">AJAX</h2>
+                                <a href="/applied-javascript/ajax-gefahren/slide.html">als Präsentation</a>
+                          </div>
+			
+			
+			<div class='slide'><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
+wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
+(URL eintippen, Link anklicken), oder um Ressourcen nachzuladen
+die zu einem HTML-Dokument gehören.</p>
+
+<p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
+verwerndet werden: Asynchrone Requests.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="was-ist-ajax">Was ist AJAX?</h2>
+
+<p>AJAX ist die englische Abkürzung für „Asynchrones Javascript und XML“. In
+diesem Kapitel lernen Sie was das genau bedeutet, und dass sich hinter dem X
+zum Schluss  auch andere Format verbergen können</p>
+
+<p>Ein Beispiel für die Verwendung von AJAX ist das in Abbildung 50 gezeigte Eingabefeld: 
+schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserver 
+geschickt.  Dieser antwortet mit einer Liste von vorgeschlagenen Namen.  Diese Liste 
+wird mit Javascript in einer &lt;div&gt; unterhalb des Eingabefelds angezeigt:</p>
+
+<p><img  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" src="/images/image375.png" /></p>
+
+<p>Mit AJAX wird hier eine HTTP-Anfrage gesendet. Der Unterschied zu einer 
+„normalen“ HTTP-Anfrage:  Bei einer „normalen“ HTTP-Anfrage schaltet der Browser auf 
+„Warten“, eine neue vollständige Webseite wird geladen und angezeigt.
+Asynchron heisst: der Request wird abgesetzt, das Javascript-Programm läuft sofort 
+weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort 
+des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen und ein 
+Javascript-Programm fügt die Daten in die Seite ein. </p>
+
+</div>
+<div class='slide'>
+
+<h3 id="im-javascript-programm">Im Javascript Programm</h3>
+
+<p>Auf der Ebene des Javascript Programm-Codes sieht der Unterschied zwischen 
+synchron und asynchron so aus:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>synchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+Befehl1();
+Befehl2();
+Antwort = synchron_laden(url);   // dauert ewig 
+Befehl3();                      // viel später
+Befehl4();
+</pre></div>
+
+<p>Bevor <code>Befehl3</code> ausgeführt werden kann muss erst die Antwort des Servers vorliegen – 
+hier kann also eine Wartezeit von mehreren Sekunden entstehen. </p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function handle_data(Antwort) {  
+   ... 
+} 
+ 
+Befehl1();
+Befehl2();
+asynchron_laden(url, handle_data);  // dauert kurz 
+Befehl3();                         // kurz darauf
+Befehl4();
+</pre></div>
+
+<p><code>Befehl3</code> kann sofort ausgeführt werden, egal ob und wie schnell der Server antwortet. 
+Wenn die Daten vom Server schließlich einlangen wird die Funktion handle_data 
+aufgerufen und die Daten zu verarbeiten. Das kann z.B. gleichzeitig mit <code>Befehl4</code>
+erfolgen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="http">HTTP</h3>
+
+<p>Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
+wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
+<img  alt="Sequenz Diagramm" src="http://de.wikipedia.org/wiki/Sequenzdiagramm" />, die Zeit
+läuft von oben nach unten.</p>
+
+<p>Zuerst wird die Webseite mit dem Formular geladen: der Browser schickt die
+Anfrage an den Server und erhält eine Antwort. Was immer zuvor im Browser
+angezeigt wurde wird - nach Ankunft des HTTP Response - gelöscht, die neue
+Seite wird im Browser dargestellt.  Diese Verhalten des Browsers ist uns
+schon bekannt.</p>
+
+<p>Nun kommt der neue Teil:  das Eintippten des ersten Buchstabens ins
+Eingabefeld löst ein Javascript-Programm aus, das einen AJAX-Request absetzt.
+Am Netzwerk ist das ein ganz normaler HTTP Request, für den Server gibt
+es keinen Unterschied zu jedem anderen Request.  </p>
+
+<p>Was anders ist, ist das Verhalten des Browsers: Wenn die Daten des Response
+einlangen wird <strong>nicht</strong> die Seite gelöscht, sondern es wird eine
+Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
+Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
+die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
+
+<p><img  alt="AJAX Ablauf" src="/images/ajax.png" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
+
+<p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server 
+können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner 
+Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.
+Das wichtigste Javascript-Konstrukt für AJAX ist das XMLHTTPRequestObject., das der 
+Javascript-Interpreter des Browsers zur Verfügungs stellt. Leider gibt es bei diesem 
+Objekt Unterschiede zwischen den Browsern. Um diese Unannehmlichkeiten zu 
+vermeiden, sollte man fertige Libraries verwenden, die die Browser-Unterschiede 
+verbergen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="simples-jquery-beispiel">Simples jQuery Beispiel</h2>
+
+<p>Im ersten AJAX Beispiel wird der Output eines PHP-Counters in eine HTML-Seite 
+eingebunden. Das gibt noch keine besonderen Effekte für die LeserIn, sondern macht 
+nur den Einbau des Counters in eine bestehende Webseite einfacher.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;AJAX counter&lt;/title&gt;
+    &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt; 
+    $(document).ready(function(){ 
+        $(&quot;p#counter_zeile&quot;).show();
+        $(&quot;#counter_zahl&quot;).load(&quot;counter_ajax.php&quot;);
+    });
+    &lt;/script&gt;
+    &lt;style&gt;
+        p#counter_zeile { display: none; }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Das ist eine statische Webseite&lt;/h1&gt;
+
+    &lt;p&gt;hier ist total viel Inhalt&lt;/p&gt;
+
+    &lt;p id=&quot;counter_zeile&quot;&gt;Counter: &lt;span id=&quot;counter_zahl&quot;&gt;?&lt;/span&gt;&lt;/p&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+</pre></div>
+
+<p>Die ganze Arbeit macht hier jQuery in der Zeile</p>
+
+<p><code>$("#counter_zahl").load("counter_ajax.php");</code></p>
+
+<p>Das Element mit der ID counter_zahl wird ausgewählt. Mit dem Load-Befehl wird eine 
+http-Anfrage an die angegebene URL abgesetzt. Wenn der Output des PHP-Programm 
+beim Browser ankommt, wird er in das ausgewählte Element eingefügt. Der Output 
+sollte also reiner Text oder HTML sein.</p>
+
+<p>Die load-Methode von jQuery ist besonders einfach zu verwenden: was passiert wenn 
+Die Daten vom Server inlangen muss man nicht mehr programmieren, das erledigt 
+jQuery schon.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
+
+<p>In diesem Beispiel werden die Daten des Yahoo-Wetterberichts auf mehrere Arten in 
+einer Webseite angezeigt. Achtung: Dieses Beispiel benutzt zwar öffentlich zugänglich 
+Daten von der Yahoo-Webseite, diese können aber nicht direkt in Javascript geladen 
+werden! Wenn man es doch versucht erhält man in Firebug die Fehlermeldung „Access to restricted URI denied“:</p>
+
+<p>Man braucht am eigenen Server ein PHP-Programm das die Daten lädt und wiedergibt:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>backend um von yahoo den Wetterbericht zu laden</small></h4>
+<pre class="lang-php prettyprint linenums">
+  &lt;?php 
+    // Datei getweather.php
+    header (&quot;content-type: text/xml&quot;);
+    $url = &quot;http://weather.yahooapis.com/forecastrss?w=2502265&amp;u=c&quot;;
+    $xml=file_get_contents( $url );
+    if ( $xml == false ) {
+        echo &quot;&lt;error&gt;Could not read weather data from yahoo&lt;/error&gt;&quot;;
+    } else {
+        echo &quot;$xml&quot;;
+    }
+  ?&gt;
+</pre></div>
+
+<p>Der Aufruf der lokalen url <code>getweather.php</code> liefert jetzt die gleichen Daten wie die Yahoo 
+Wetterseite. Es handelt sich um Daten im XML-Format, hier ein Auszug:</p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Yahoo Wetterbericht als XML</small></h4>
+<pre class="lang-xml prettyprint linenums">
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;
+  &lt;rss version=&quot;2.0&quot; xmlns:yweather=&quot;http://xml.weather.yahoo.com/ns/rss/1.0&quot;  
+                     xmlns:geo=&quot;http://www.w3.org/2003/01/geo/wgs84_pos#&quot;&gt;
+  &lt;channel&gt;
+  &lt;description&gt;Yahoo! Weather for San Francisco, CA&lt;/description&gt;
+  &lt;geo:lat&gt;37.77&lt;/geo:lat&gt;
+  &lt;geo:long&gt;-122.42&lt;/geo:long&gt;
+  &lt;pubDate&gt;Mon, 19 Jan 2009 12:56 pm PST&lt;/pubDate&gt;
+  &lt;yweather:condition  text=&quot;Fair&quot;  code=&quot;34&quot;  temp=&quot;17&quot;  /&gt;
+  &lt;/rss&gt;
+&lt;!-- api3.weather.ac4.yahoo.com uncompressed Mon Jan 19 13:23:31 PST 2009 --&gt;
+</pre></div>
+
+<p>Im Tag <code>&lt;yweater:condition&gt;</code> ist die Temperatur gespeichert und ein Code der die 
+Wetterlage angibt. Unter diesem Code kann man bei Yahoo auch ein Bild zur Wetterlage 
+erhalten, z.B: zu den Codes 27, 33, 32 (mostly cloudy at night, fair at night, sunny) die 
+URLs</p>
+
+<ul>
+  <li><code>http://l.yimg.com/a/i/us/we/52/27.gif</code>  </li>
+  <li><code>http://l.yimg.com/a/i/us/we/52/33.gif</code>  </li>
+  <li><code>http://l.yimg.com/a/i/us/we/52/34.gif</code></li>
+</ul>
+
+<p>und die Bilder</p>
+
+<p>Dies wiederspricht dem 2.REST-Prinzip (siehe nächstes Kapitel): dass nämlich direkt 
+URLs angegeben werden sollen, nicht so wie hier ein code, von dem man erst wieder 
+wissen muss, wie man ihn interpretiert.</p>
+
+<p>In der Webseite werden die Daten per AJAX geladen, dabei wird eine callback-funktion angegeben:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+$.get(&quot;getweather.php&quot;, handle_the_weather);
+
+function handle_the_weather(data){
+   ...
+}
+</pre></div>
+
+<p>Die Callback-Funktion erhält die geladenen Daten als Argument. Wenn die Daten im 
+XML oder HTML-Format sind kann man sie wieder mit jQuery behandeln: den Tag 
+<code>&lt;yweather:condition&gt;</code> auswählen und aus dem Tag die Attribute temp und code aus-
+lesen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  cond =  $(&quot;yweather\\:condition&quot;, data);
+  temp = cond.attr(&quot;temp&quot;);
+  code = cond.attr(&quot;code&quot;);
+</pre></div>
+
+<p>Der Code wird zum Anzeigen des Bildes von Yahoo verwendet:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  cond =  $(&quot;yweather\\:condition&quot;, data);
+  $(&quot;#dasbild&quot;).attr(&quot;src&quot;, &quot;http://l.yimg.com/a/i/us/we/52/&quot; + code + &quot;.gif&quot;);
+</pre></div>
+
+<p>Die Temperatur wird doppelt verwendet: einmal wird sie einfach angezeigt:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&quot;#temp&quot;).text( temp + &quot;°&quot; );
+</pre></div>
+
+<p>Und zweitens wird je nach Temperatur die Hintergrundfarbe der Webseite passend ge-
+  setzt:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  if( temp &lt; 0 ) {
+      color=&quot;blue&quot;;
+  } else if ( temp &lt; 10 ) {
+      color=&quot;green&quot;;
+  …
+  } else {
+      color=&quot;red&quot;;
+  }
+  $(&quot;body&quot;).css(&quot;background-color&quot;,color);
+</pre></div>
+
+<p>Hier der vollständige Javascript Code:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $.get(&quot;getweather.php&quot;, handle_the_weather);
+
+  function handle_the_weather(data){
+      var cond, temp, code, color;
+      var cond =  $(&quot;yweather\\:condition&quot;, data);
+      temp = cond.attr(&quot;temp&quot;);
+      code = cond.attr(&quot;code&quot;);
+      $(&quot;#dasbild&quot;).attr(&quot;src&quot;, &quot;http://l.yimg.com/a/i/us/we/52/&quot; + code + 
+  &quot;.gif&quot;);
+      $(&quot;#temp&quot;).text( temp + &quot;°&quot; );
+      if( temp &lt; 0 ) {
+          color=&quot;blue&quot;;
+      } else if ( temp &lt; 10 ) {
+          color=&quot;green&quot;;
+      } else if ( temp &lt; 20 ) {
+          color=&quot;yellow&quot;;
+      } else if ( temp &lt; 30 ) {
+          color=&quot;orange&quot;;
+      } else {
+          color=&quot;red&quot;;
+      }
+      $(&quot;body&quot;).css(&quot;background-color&quot;,color);
+  }
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="hinter-den-kulissen-von-jquery">Hinter den Kulissen von jQuery</h2>
+
+<p>jQuery bietet vereinfachte Methoden für den Umgang mit AJAX-Request an.
+Was steckt dahinter?  Bei den meisten Browsern (ausser Internet Explorer)
+ist es das <code>XMLHttpRequest</code>-Objekt.</p>
+
+<p>Das Objekt kann einen HTTP Request vorbereiten (<code>open</code>) und abschicken
+(<code>send</code>).  Am Objekt kann man eine Funktion definieren (<code>onreadystatechange</code>)
+die aufgerufen wird wenn der HTTP-Response einlangt.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Verwendung des XMLHttpRequest</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+my_ajax = new XMLHttpRequest();
+my_ajax.onreadystatechange = function() {
+  console.log(&quot;readyState &quot;      + this.readyState);
+  console.log(&quot;HTTP status code&quot; + this.status);
+  console.log(&quot;responseText &quot;    + this.responseText);
+  console.log(&quot;responseXML &quot;     + this.responseXML);
+
+  if( this.readyState == 4 ) {
+    console.log(this.responseText);
+    console.log(this.responseXML);
+  }
+};
+my_ajax.open(&quot;GET&quot;,&quot;getweather.php&quot;,true);
+my_ajax.send(null);
+</pre></div>
+
+<p>Ein <code>readyState</code> von <code>4</code> bedeutet: alle Daten des Response wurden erfolgreich
+empfangen.  Das <code>XMLHttpRequest</code>-Objekt kann einen XML-Response gleich
+verarbeiteten und als XML-DOM zurückliefern (<code>responseXML</code>), oder die
+puren Daten als <code>responseText</code>.</p>
+</div>
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/applied-javascript/ajax/">← <span class="article">AJAX</a></li>
+    
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript/">JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/applied-javascript/ajax-gefahren/">AJAX</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/applied-javascript/ajax-gefahren.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+

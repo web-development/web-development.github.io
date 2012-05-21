@@ -128,15 +128,15 @@ while( i &lt; $q.length ) {
 </pre><pre class="lang-javascript prettyprint linenums right">
 // Nodes mit CSS-Selektor auswählen
 arr = document
-        .querySelectorAll(&quot;class&quot;);
+        .querySelectorAll(&quot;.class&quot;);
 
 // wie viele sind es?
-if( node_array.length &gt; 1 ) {
+if( arr.length &gt; 1 ) {
   console.log(&quot;mehrere&quot;);
 }
 
 // in jQuery-Objekt
-$q = $(node_array);
+$q = $(arr);
 
 
 
@@ -167,7 +167,7 @@ arr = document.querySelectorAll(&quot;h2&quot;);
 // jQuery 
 
 // Eine Node nach ID auswählen 
-$q = $(&quot;id&quot;);
+$q = $(&quot;#id&quot;);
 
 // Erste Node mit CSS-Selektor auswählen
 $q = $(&quot;h2:first&quot;);
@@ -326,6 +326,8 @@ $n.on(&quot;click&quot;, f);
     
       <li><a href="/applied-javascript/">← <span class="article">Javascript im Browser</a></li>
     
+    
+      <li><a href="/applied-javascript/ajax/">AJAX →</a></li>
     
   </ul>
 </div>
@@ -887,6 +889,14 @@ $n.on(&quot;click&quot;, f);
                     
                       
                       <li class="active"><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax-irrwege/">AJAX Irrwege</a></li>
                       
                     
                   

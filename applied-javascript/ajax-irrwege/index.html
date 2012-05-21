@@ -1,0 +1,1025 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - AJAX Irrwege</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1">
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+      <a href="http://github.com/bjelline/web-development-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">AJAX Irrwege</h2>
+                                <a href="/applied-javascript/ajax-irrwege/slide.html">als Präsentation</a>
+                          </div>
+			
+			
+			<div class='slide'><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
+Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber 
+auch verschlechtern.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="schlechte-verwendung-von-ajax">Schlechte Verwendung von AJAX</h2>
+
+<p>Stellen Sie sich vor Sie haben eine Website mit 8 statischen HTML-Seiten, die
+durch einfache Links verbunden sind. Wenn man AJAX kennen lernt, kommt man vielleicht
+auf die Idee: statt normaler Links verwendet man nur noch <code>load()</code>  Was spricht
+dafür?</p>
+
+<ul>
+  <li>Man zeigt seine fortgeschrittenen Programmierkenntnisse (und kommt sich ent- sprechend cool vor)</li>
+  <li>Das Laden der einzelnen Seite geht schneller, da nur der Inhalt, nicht aber z.B. der HTML <code>&lt;head&gt;</code> geladen werden muß. Das spart dutzende Byte.</li>
+</ul>
+
+<p>Nun  surfen wir durch diese Site und beobachten in Firebug welche http-Requests
+gemacht werden </p>
+
+<p><img  alt="AJAX statt normaler Links - eine schlechte Idee" src="/images/ajax-bad.png" /></p>
+
+<p>Beim Anklicken des „Links“ wird jeweils ein GET 
+Request abgesetzt. Aber: die URL in der Adresszeile des Browsers bleibt immer
+gleich.  Keine der „Seiten“ hat eine eigene URL.
+Das hat viele Auswirkungen, unter anderem:</p>
+
+<ul>
+  <li>Man kann keinen Link zu einer bestimmten Seite setzen – nur zur „Startseite“</li>
+  <li>Man kann kein Lesezeichen (Bookmark, Favoriten) auf eine bestimmte Seite setzen</li>
+  <li>Google „sieht“ den Text der einzelnen Seite nicht </li>
+</ul>
+
+<p>Vergleicht man Vor- und Nachteile sieht man schnell, dass in diesem Fall die
+Version ohne AJAX (ganz normale Links) besser wäre.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wann ist der Einsatz von AJAX sinnvoll? Wann sollte man darauf verzichten? Um
+diese Frage zu beantworten brauchen wir eine Idealvorstellung wie eine Web-Site oder
+Web-Applikation funktionieren soll. Ein Prinzip haben wir schon kennen 
+gelernt, in diesem Kapitel kommt ein zweites, technischeres dazu:</p>
+
+</div>
+<div class='slide'>
+
+<h1 id="progressive-enhancement--graceful-degradation">Progressive Enhancement / Graceful Degradation</h1>
+<p># REST</p>
+
+<p><strong>Progressive Enhancement</strong> wurde im Kapitel 
+<a href="/jquery/unobstrusive/">jQuery</a> bereits vorgestellt: Eine Webseite sollte
+auch im primitivsten Ausgabegerät noch funktionieren, also z.B. ohne Javascript.
+Was Javascript an zusätzlichen Features bringt soll nicht auf Kosten der
+Grundfunktion geben, sondern nur die vorhandene Funktion erweitern.</p>
+
+<p>9.2.2 REST – Representational State Transfer
+Der Begriff “REST” wurde von Roy Fielding 2000 in seiner Dissertation definiert
+.
+Fielding hat unter anderem an der HTTP-Spezifikation und an WebDAV
+mitgearbeitet. In 
+seiner Dissertation stellt er grundlegende Überlegungen zur Architektur von
+verteilten 
+Systemen an. Die Grundfrage könnte man so stellen: das Web ist ein sehr
+erfolgreiches 
+verteiltes System, viele Hersteller entwickeln dafür Software (Microsoft,
+Mozilla, IBM, …) 
+und die Zusammenarbeit funktioniert. Es gibt viele Komponenten die erfolgreich
+zu-
+sammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen, 
+…). Welche Eigenschaften des Webs führen dazu, dass es zu diesem erfolgreichen
+Zu-
+sammenspiel kommen kann?
+REST ist – nach der Analyse von Fielding – die zugrundeliegende Architektur des
+Webs. 
+Wenn man versucht, beim Bau einer Web-Applikation die Prinzipien von REST
+einzuhal-
+ten dann wird diese Applikation sich besonders gut in die vorhandene
+Infrastruktur des 
+Web (Server, Browser, Proxies, Caches, etc.) einpassen und davon profitieren.
+Wenn 
+man REST missachtet wird die Infrastruktur nicht funktionieren.
+In der REST-Terminologie ist das Web ist eine Ansammlung von „Ressourcen“. In
+die-
+sem Skriptum wird für Ressourcen auch der Begriff „Dokumente“ verwendet. Wir
+gehen 
+hier nicht direkt von Fieldings Dissertation aus, sondern von der vereinfachten
+Darstel-
+lung in Tilkov(2007). Die REST-Prinzipien sind (vereinfacht):
+1.  Gib jedem Dokument eine eindeutige URL.
+2.  Dokumente sollen Links auf andere Dokumente enthalten.
+3.  Verwende die HTTP-Methoden GET, POST, PUT, DELETE;<br />
+Verwende sie ihrer Bedeutung entsprechend.
+4.  Ein Dokument kann auf verschiedene Arten repräsentiert werden (kann in ver-
+schiedenen Datentypen geliefert werden: HTML, XML, JSON, …).
+5.  Zustandslosigkeit = Statelessness.
+Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung. 
+9.2.3 Jedes Dokument soll eine eindeutige URL haben
+Wenn jedes Dokument eine URL hat, dann ist es verlinkbar, kann in Lesezeichen
+ge-
+speichert werden, kann von Google gefunden und verlinkt werden, etc.
+Wenn Sie eine statische Webseite bauen erzeugen Sie die URLs beim Festlegen der 
+Dateinamen. Bei einer PHP-Applikation sind es die Dateinamen und die GET-
+Parameter, die die URL ausmachen. In der Datenbank-Applikation, die wir in den
+letzten 
+Kapiteln gebaut haben, waren die URLs:
+http://ich.multimediatechnology.at/mini/index.php 
+http://ich.multimediatechnology.at/mini/personen.php<br />
+http://ich.multimediatechnology.at/mini/person.php?pid=1 
+http://ich.multimediatechnology.at/mini/person.php?pid=2 
+http://ich.multimediatechnology.at/mini/person.php?pid=3
+und so weiter. Das ist schon sehr nahe am REST Ideal.
+http://ich.multimediatechnology.at/mini/
+http://ich.multimediatechnology.at/mini/personen
+http://ich.multimediatechnology.at/mini/person/1 
+http://ich.multimediatechnology.at/mini/person/2 
+http://ich.multimediatechnology.at/mini/person/3 
+Diese Schreibweise kann man (auf einem Apache Webserver) mit Hilfe des Rewrite
+Mo-
+duls konfigurieren. Damit werden die URLs am Server „übersetzt“. Im Konkreten
+Beispiel 
+müsste man in die Datei .htaccess im Ordner mini schreiben:
+RewriteEngine On</p>
+
+<p>RewriteRule ^personen$     personen.php  [L]
+RewriteRule ^person/(.*)   person.php?pid=$1  [L]
+Umsetzung: die Umstellung auf diese URLs hat Auswirkungen falls sie relative
+Links 
+verwendet haben, um z.B. auf Stylesheets zu verweisen. Deswegen rate ich von
+einer 
+nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit als man
+denkt. 
+9.2.4 Dokumente sollen Links auf andere Dokument enthalten
+Dieses Prinzip haben wir in allen bisher gezeigten Beispielen erfüllt.
+Umsetzung: dieses Prinzip müssen Ihre Web-Applikationen auf jeden Fall erfüllen.
+9.2.5 HTTP-Methoden GET, POST, PUT, DELETE
+Wie sollen diese Methoden verwendet werden? Jede Methode hat eine Bedeutung:
+GET
+Eine Repräsentation einer Ressource soll geholt werden. Das verändert 
+nichts an der Ressource, diese Methode ist also harmlos.
+POST
+Eine Ressource (die bisher noch keine URL hatte) soll neu erzeugt 
+werden. Z.b. könnte ein POST auf /dings/ eine neue Ressource mit der 
+URL /dings/17 erzeugen
+PUT
+Diese Methode dient zum Speichern einer Ressource unter der  ange-
+gebenen URL. Diese Methode steht bei normalen Web-Formularen 
+aber nicht zur Verfügung. Deswegen wird statt dessen meist ein POST 
+auf eine übergeordnete Ressource verwendet. 
+DELETE
+Diese Methode dient zum Löschen einer Ressource. Auch diese Me-
+thode steht bei normalen Web-Formularen nicht zur Verfügung.
+Umsetzung: in diesem Semester ist wichtig, dass Sie GET und POST korrekt
+einsetzen. 
+Erst im Schwerpunkt-Unterricht werden wir die anderen Methoden verwenden. 
+9.2.6 Ein Dokument – mehrere Repräsentationen
+Ein Dokument kann auf verschiedene Arten repräsentiert werden: z.B. kann die
+Darstel-
+lung einer Person in HTML, XML und JSON erfolgen. Die HTML-Variante kennen Sie 
+schon:</p>
+</div>
+<div class='slide'>
+
+<h1>Details zu einer Person</h1>
+<p><img src="http://multimediaart.at/media/profil/edvard_1_2.jpg" />
+Herr Edvard Paul Beisteiner hat insgesamt 4 Werke in dieser Datenbank.
+Er hat den Usernamen fhs14287.</p>
+<ul>
+<li><a href="werk/24">The Thin Red Line</a></li>
+<li><a href="werk/50">Der böse Wolf</a></li>
+<li><a href="werk/83">nimm zwei, schatz</a></li>
+<li><a href="werk/303">the neighbour.</a></li>
+</ul>
+<p>Dieselbe Person könnte man auch als XML darstellen, z.B. als:</p>
+<person>
+<image ref="http://multimediaart.at/media/profil/edvard_1_2.jpg" />
+<vorname>Edvard</vorname>
+<nachname>Beisteiner</nachname>
+<username>fhs14287</username>
+<werke>
+<werk ref="http://ich.multimediatechnology.at/mini/werk/24">The Thin Red 
+Line</werk>
+<werk ref="http://ich.multimediatechnology.at/mini/werk/50">Der böse Wolf</werk>
+<werk ref="http://ich.multimediatechnology.at/mini/werk/83">nimm zwei, 
+schatz</werk>
+<werk ref="http://ich.multimediatechnology.at/mini/werk/303">the neigh-
+bour.</werk>
+</werke>
+</person>
+<p>Dieselbe Person als JSON:
+{“image”:”http://multimediaart.at/media/profil/edvard<em>1</em>2.jpg”,
+ “vorname”:”Eduard”,
+ “nachname”:”Beisteiner”,
+ “werk”:[
+    {“titel”:”The Thin Red Line”,
+     “url”:”http://ich.multimediatechnology.at/mini/werk/24”},
+    {“titel”:”Der böse Wolf”,
+     “url”:”http://ich.multimediatechnology.at/mini/werk/50”},
+    {“titel”:”nimm zwei, schatz”,
+     “url”:”http://ich.multimediatechnology.at/mini/werk/83”},
+    {“titel”:”the neighbour.”,
+     “url”:”http://ich.multimediatechnology.at/mini/werk/303”}]}
+Besonders praktisch ist das, wenn ich Teile meiner Applikation später
+AJAXifizieren will: 
+ich kann die schon vorhandenen Ressourcen weiter nutzen, aber einfach die XML-
+oder 
+JSON-Repräsentation abfragen.
+Ob die Repräsentation als Teil der URL, als URL-Parameter oder nur als
+http-Header 
+spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur die Abfrage
+im http-
+Header:
+GET /mini/person/3 HTTP/1.1
+Host: ich.multimediatechnology.at 
+Accept: text/html
+Bzw.
+GET /mini/person/3 HTTP/1.1
+Host: ich.multimediatechnology.at 
+Accept: application/xml
+Eine beliebte Vereinfachung ist die Verwendung von Endungen in der URL:
+http://ich.multimediatechnology.at/mini/person/83.html 
+http://ich.multimediatechnology.at/mini/person/83.xml 
+http://ich.multimediatechnology.at/mini/person/83.json
+Umsetzung: Diesen Aspekt von REST werden wir erst im Schwerpunkt-Unterricht um-
+setzen. 
+9.2.7 Zustandslosigkeit = Statlessness.
+Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
+man am 
+einfachsten an einem Gegenbeispiel: Wenn ich im Katalog der FH-Bibliotek 
+(http://alephino.fh-salzburg.ac.at/) nach Büchern suche (hier mit dem Suchwort
+„Web“) 
+erhalte ich folgende URL:
+http://alephino.fh-salzburg.ac.at/alipac/PUETBNRDHSZGNYLBXVFF-00020/find-
+simple?C1=(&amp;V1=Web&amp;C2=)&amp;F1=TIT&amp;A1=N&amp;x=0&amp;y=0
+Wenn ich diese URL zwei Tage später wieder verwende erhalte ich keine Antwort
+mehr, 
+sondern die Fehlermeldung:</p>
+
+<p>Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State
+Warum ist das so?  Auch zwei Tage später sollte die Ressource „Liste der Bücher
+mit 
+dem Wort ‚Web’ im Titel“ noch vorhanden sein!
+Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
+Session.
+Nach dem REST-Prinzip sollte man also den Zustand der Session nur dann
+verwenden, 
+wenn er unbedingt notwendig ist. Z.B. könnte man denken „Liste meiner
+ausgeliehenen 
+Bücher“ sei von der Session abhängig. Aber selbst hier könnte man eine fixe URL
+ver-
+wenden:
+http://alephino.fh-salzburg.ac.at/alipac/entlehnte/fhs007
+Auf diese URL muß es nun Zugriffsbeschränkungen geben: nur ich und die
+Bibliotheka-
+rIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den Statuscode
+403 
+Access Denied. Die BibliothekarIn hat aber Zugriff auf alle URLs dieser Form.
+Umsetzung: Diesen Aspekt von REST können und sollen Sie voll umsetzten. Verwen-
+den Sie nur die php-SESSION um den Zustand der Applikation zu speichern, und
+gehen 
+Sie möglichst sparsam damit um.
+9.3 Daten aus Web-Formularen verarbeiten
+9.3.1 Clientseitige Datenprüfung mit AJAX-Nachfrage beim Server
+In der Webapplikation soll bei Eingabe eines Usernamens sofort am Server
+nachgefragt 
+werden ob dieser Username schon in Verwendung ist. Falls ja soll eine
+Fehlermeldung 
+angezeigt werden:</p>
+
+<p>Abbildung 53: Clientseitige Datenprüfung mit AJAX-Nachfrage beim Server
+Als Auslöser der Prüfung wird das change-Event des Eingabefeldes verwendet:
+$(“input[name=uid]”).change(function(){
+    …
+});
+Das Programm am Server ist sehr simpel: der Aufruf erfolgt über die URL
+username_free.php?uid=hansi
+Die Antwort ist plaintext: entweder 1 für wahr (Username ist frei) oder 0 für
+falsch 
+(Username schon vergeben).
+Die Anfrage vom Client an den Server wird über die get-Funktion von jQuery
+gesendet. 
+Dabei muß eine Callback-Funktion angegeben werden, die aufgerufen wird sobald
+die 
+Antwort des Servers vorliegt:
+$.get(‘username_free.php’, { ‘uid’: ‘hansi’ }, handle_data);
+Die Callback-Funktion hat nur ein Argument, über dieses erhält sie die gesamten
+Daten 
+vom Server:
+function handle_data(data) {
+   …
+}
+Aus diesen Einzelteilen können Sie nun die Applikation bauen.
+9.3.2 Autocomplete
+Mit dem jQuery-Plugin autocomplete  können Sie für ein Eingabefeld Vorschläge
+vom 
+Server laden. Das Programm am Server soll einen Parameter q verarbeiten und eine 
+Liste in Plaintext ausgeben.</p>
+
+<p>Abbildung 54: Mit dem jQuery-Plugin autocomplete werden Vorschläge für die
+Eingabe über AJAX geladen
+9.4 Quellenverzeichnis
+Fielding, Roy(2000): Architectural Styles and the Design of Network-based
+Software 
+Architectures. Dissertation. University of California/Irvine, USA.
+Fielding, Roy / Taylor, Richard(2002): Principled design of the modern Web
+architecture. 
+In: ACM Transactions on Internet Technology (TOIT), Vol. 2, No. 2, May 2002.
+Seite 
+115–150.
+Tilkov, Stefan(2007): A Brief Introduction to REST. In: InfoQ. 
+http://www.infoq.com/articles/rest-introduction. Abgerufen am 24.7.2008.</p>
+</div>
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/applied-javascript/ajax/">← <span class="article">AJAX</a></li>
+    
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript/">JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/applied-javascript/ajax-irrwege/">AJAX Irrwege</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/applied-javascript/ajax-irrwege.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+
