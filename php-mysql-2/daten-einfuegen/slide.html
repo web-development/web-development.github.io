@@ -33,6 +33,9 @@
 	  <div class='slide'><p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
 <pre class="lang-php prettyprint linenums">
 $t = $_POST['title'];
@@ -71,6 +74,9 @@ php_flag magic_quotes_gpc off
 <p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
 <pre class="lang-php prettyprint linenums">
 echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
@@ -84,6 +90,9 @@ echo(&quot;&lt;/pre&gt;&quot;);
 <p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(

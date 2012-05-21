@@ -63,6 +63,9 @@
 <p>Ein erstes längeres Beispiel zeigt wie eng HTML und PHP vermischt werden:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>HTML und PHP - der Sourcecode</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;!DOCTYPE html&gt;
@@ -90,6 +93,9 @@
 <p>Der Quellcode besteht hier aus einem HTML-Dokument, in dem in Zeile 09 bis 19 PHP eingebettet ist. In den Zeilen 10 bis 14 werden nur Berechnungen durchgeführt, diese Zeilen haben keine Auswirkung auf das resultierende HTML-Dokument. In den Zeile 15 und 17 wird mit der echo() – Funktion ein Output erstellt. Der PHP-Interpreter fügt diesen Output an der Stelle ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>HTML und PHP - der Output</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;!DOCTYPE html&gt;
@@ -109,6 +115,9 @@
 <p>Ein PHP-Dokument kann mehrere Einbettungen enthalten, dabei können sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>HTML und PHP - mehrere PHP-Abschnitte in einem HTML-Dokument</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;!DOCTYPE html&gt;
@@ -144,6 +153,9 @@
 <p>In PHP wird diese Schreibweise oft verwendet, es gibt aber eine alternative Schreibweise für die Kontrollstrukturen, die besser zu unseren Lesegewohnheiten passt: Statt der öffnenden geschwungenen Klammer wird ein Doppelpunkt geschrieben, das Ende der Schleife wird mit einem eigenen Schlüsselwort (endwhile, endif, endfor) markiert:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>HTML und PHP - While-Schleife ohne geschungene Klammern</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;h1&gt;Wilde Mischung&lt;/h1&gt;
@@ -168,6 +180,9 @@
 <p>Welcher Teil schon als Ausgabe zählt und in das HTML-Dokument eingebettet wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>HTML und PHP - Erst Berechnung, dann Ausgabe</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;?php   // Berechnung zuerst
@@ -202,6 +217,9 @@
 <p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die Verwendung von include um Duplizierung von Code zu verhindern. PHP-Code, der mehrmals verwendet wird, kann als Funktionen in eine Datei phpfunctions.php ausgelagert werden: </p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>Datei phpfunction.php enthält eine Funktion in PHP</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;?php
@@ -218,6 +236,9 @@
 <p>Der Anfang und das Ende der HTML-Datei (inklusive Titel, Navigation, Headline) können in Dateien header.php und footer.php ausgelagert werden. Im Header wird PHP (statt statischem HTML) verwendet, um den Titel der Seite und später eventuell die Navigation dynamisch generieren zu können:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>Datei header.php</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;!DOCTYPE html&gt;
@@ -240,6 +261,9 @@
 <p>Der Footer könnte auch eine statische HTML-Datei sein, da hier keine Variablen oder PHP-Code verwendet warden:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>Datei header.php</small></h4>
 <pre class="lang-html prettyprint linenums">
         &lt;footer&gt;copy; 2012 Brigitte&lt;/footer&gt;
@@ -250,6 +274,9 @@
 <p>In der “Haupt-Datei” index.php werden alle diese Einzelteile zusammengefügt:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>Datei index.php</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;?php   
@@ -318,6 +345,9 @@
 <p>Arrays in PHP können auf ähnliche Art verwendet werden wie in C++ (und C, und Java, und Perl,…) und verhalten sich auf den ersten Blick auch wie erwartet:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Array in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
       $foo[2] = 2008;
@@ -335,6 +365,9 @@
 <p>Mit der foreach Schleife kann man Schlüssel und Wert auslesen. Dabei wird offenbar, dass die Reihenfolge des Einfügens ins Array erhalten geblieben ist: Die Schlüssel-Wert-Paare sind im Array weiterhin geordnet!</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Array in PHP ist auch ein assoziatives Array (Hashmap)</small></h4>
 <pre class="lang-php prettyprint linenums">
       $foo[2] = 2008;
@@ -350,6 +383,9 @@
 <p>Mit der Schreibweise <code>$foo[]</code> kann ein Wert unter der kleinsten (noch nicht verwendet) Integer-Zahl als Schlüssel gespeichert werden:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Einfügen in ein Array in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
       $foo[2] = 2008;
@@ -371,6 +407,9 @@
 <h2 id="funktionen-und-scope">Funktionen und Scope</h2>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Funktion in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
       function foo($arg_1, $arg_2 = &quot;Euro&quot;)
@@ -385,6 +424,9 @@
 <p>Die Schreibweise von Funktionen inklusive Argumentliste und Rückgabewert ist leicht verständlich. Eine Falle für erfahrene ProgrammiererInnen ist das Scoping von globalen Variablen:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Globale Variablen und Funktionen in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
       $pi = 3.141;
@@ -406,6 +448,9 @@
 <p>Mit dem Keyword global wird die Variable „in die Funktion eingeladen“ und ist dann auch innerhalb der Funktion sichtbar, lesbar und veränderbar.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Globale Variablen und Funktionen in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
       $pi = 3.141;

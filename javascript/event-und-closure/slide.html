@@ -84,6 +84,9 @@ erzeugt werden können.</p>
 
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Konstruktor</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function Editor( css_selector, w, h ) {
@@ -163,6 +166,9 @@ ein.</p>
 
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Konstruktor für Kreis</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 var nextCircleId = idGenerator( &quot;cicle&quot; );
@@ -215,6 +221,9 @@ Circle.prototype.setPosition = function ( position ) {
 Hier eine Implementierung die in allen Browsern funktionieren sollte:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>auslesen der Maus-Position aus einem Event-Objekt</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function cursorPoint(e) {
@@ -248,6 +257,9 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <p>Also zum Beispiel:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Event Listener</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function onMouseDown(e) {
@@ -278,6 +290,9 @@ Tag / Element beliebige neue Attribute dazu erfinden, solange der
 Name des Attributs mit “data-“ beginnt.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Html Code <small>data-Attribute in HTML5</small></h4>
 <pre class="lang-html prettyprint linenums">
   &lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
@@ -293,6 +308,9 @@ Name des Attributs mit “data-“ beginnt.</p>
 <p>Ein Data-Attribut könnte man mit Javascript setzen. Hier ein Versuch:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   c = document.getElementById(&quot;circle_1&quot;);
@@ -317,6 +335,9 @@ und nur der String wurde gespeichert.  </p>
 ist eine Closure, die das Javascript-Objekt kennt, und deswegen darauf Zugriff hat.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Event-Listener-Funktion als Closure</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {
@@ -351,6 +372,9 @@ addDragability( other_jsobj, other_element );
 <p>und das nun in Event-Listener umsetzen will kommt man zu folgender Struktur</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Struktur der Event-Listener für Drag-and-Drop</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {

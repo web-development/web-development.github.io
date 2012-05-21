@@ -63,6 +63,9 @@
 <p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>laden des Datensatzes, der editiert werden soll</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
@@ -118,6 +121,9 @@ htmlspecialchars( $person-&gt;firstname  );
 <p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
 &lt;p&gt;&lt;label for=&quot;firstname&quot;&gt;Vorname&lt;/label&gt; 
@@ -127,6 +133,9 @@ htmlspecialchars( $person-&gt;firstname  );
 <p>Die veränderten Daten werden mit POST an person_edit.php geschickt. Aus den Daten wird ein UPDATE-Statement erstellt:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Update der Daten von PHP aus</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(
@@ -158,6 +167,9 @@ exit;
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank ohne html-escaping</small></h4>
 <pre class="lang-php prettyprint linenums">
 &lt;?= $person-&gt;firstname ?&gt;
@@ -169,6 +181,9 @@ hat insgesamt  &lt;?= $no ?&gt; Werke in dieser Datenbank.
 <p>Wenn hier in der Description „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
 <pre class="lang-php prettyprint linenums">
 $username    = htmlspecialchars( $person-&gt;username     );

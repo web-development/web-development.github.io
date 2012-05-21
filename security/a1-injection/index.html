@@ -66,6 +66,9 @@
 Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur Verfügung:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Prepared Statements verhindern SQL Injection</small></h4>
 <pre class="lang-php prettyprint linenums">
   $query = $dbh-&gt;prepare(&quot;SELECT * FROM users WHERE id=?&quot;);
@@ -85,6 +88,9 @@ die als Input vom User/der Userin kommen werden mit <code>execute</code> an die 
 werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Prepared Statements mit benanntem </small></h4>
 <pre class="lang-php prettyprint linenums">
     $stm = $dbh-&gt;prepare ( &quot;SELECT * FROM USERS WHERE USERNAME LIKE :name&quot; );

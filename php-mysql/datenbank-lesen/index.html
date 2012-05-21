@@ -128,6 +128,9 @@
 <p>In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>personen.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $query = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10&quot;);
@@ -137,6 +140,9 @@
 <p>Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
 <pre class="lang-php prettyprint linenums">
 Array
@@ -178,6 +184,9 @@ Array
 <p>In der Datei <code>home.php</code> finden Sie zwei Beispiele für das Lesen einzelner Daten. Mit der SQL-Funktion COUNT() wir die Anzahl der Werke in der Datenbank bestimmt. </p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Beispiel aus home.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $ergebnis = $dbh-&gt;query( 
@@ -194,6 +203,9 @@ Array
 <p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit <code>profile_visible=0</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil <code>profile_visible=0</code> ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Php Code <small>Beispiel aus home.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $pid = $_GET['pid'];

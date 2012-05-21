@@ -64,6 +64,9 @@
 <p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function r1( s, x ) {
@@ -95,6 +98,9 @@ Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktione
 Teile von Objekten oder Arrays definieren:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Funktionen in JSON</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   var objekt = {
@@ -114,6 +120,9 @@ der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
 <code>call</code> und <code>apply</code>:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Funktion aufrufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   repeat(&quot;hallo &quot;, 10);
@@ -130,6 +139,9 @@ der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
 die man mit der ganz normalen Schreibweise setzten kann:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function repeat( s, x ) {
@@ -160,6 +172,9 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
 Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>this in einer normalen Funktion</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function f() {
@@ -180,6 +195,9 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 <p>Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist <code>this</code> auf das Objekt:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>this in einer Methode</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   var objekt = {
@@ -207,6 +225,9 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 dann nimmt Javascript ein implizites Objekt an:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite schreibweise)</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   window.f = function() {
@@ -228,6 +249,9 @@ dann nimmt Javascript ein implizites Objekt an:</p>
 Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Verschiedene Arten eine Methode aufzurufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   objekt.f(&quot;hallo &quot;, 10);
@@ -243,6 +267,9 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 <p>Bei Event-Handlern wird <code>this</code> anders gesetzt:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   document.getElementById(&quot;the_button&quot;).addEventListener(&quot;click&quot;, f);
@@ -264,6 +291,9 @@ HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den But
 und zwar als Argument:</p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function f( ev ) {
@@ -301,6 +331,9 @@ Damit wird die Funktion als Konstruktor für ein Objekt verwendet. Es ist üblic
 Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen. </p>
 
 <div class="example">
+</div>
+<div class='slide'>
+
 <h4 class="caption">Javascript Code <small>Objekte mit einer Konstruktor-Funktion</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function Studiengang(name, seit) {
