@@ -56,12 +56,9 @@
                           </div>
 			
 			
-			<div class='slide'><p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:</p>
+			<p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;head&gt;
@@ -87,13 +84,7 @@ function setcolor( c ) {
 
 <p>Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird. </p>
 
-</div>
-<div class='slide'>
-
 <h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
-
-</div>
-<div class='slide'>
 
 <h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
 
@@ -105,9 +96,6 @@ function setcolor( c ) {
 </pre></div>
 
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
 <p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:</p>
@@ -126,9 +114,6 @@ function setcolor( c ) {
 </pre></div>
 
 <p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
 
@@ -151,9 +136,6 @@ function setcolor( c ) {
 <p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>
 
 <p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="die-onevent---attribute">Die onevent - Attribute</h2>
 
@@ -203,9 +185,6 @@ function setcolor( c ) {
 
 <p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="syntax-von-javascript">Syntax von Javascript</h2>
 
 <p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Anweisung wird mit einem Strichpunkt (Semikolon) getrennt, Blöcke werden mit geschwungenen Klammern gebildet. </p>
@@ -252,9 +231,6 @@ bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werde
 darüber nur noch floats.  Die Details
 können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
 
-</div>
-<div class='slide'>
-
 <h3 id="arrays">Arrays</h3>
 
 <p>Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>, …  Aber eigentlich sind Arrays schon Objekte. </p>
@@ -282,9 +258,6 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   }   
   alert(t);
 </pre></div>
-
-</div>
-<div class='slide'>
 
 <h3 id="objekte">Objekte</h3>
 
@@ -336,7 +309,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   }   
   alert(t);
 </pre></div>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -886,6 +859,10 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

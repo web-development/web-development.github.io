@@ -57,9 +57,6 @@ und PHP versucht, den ersten passenden <code>catch</code>-Block zu finden. Falls
 nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception …“-Nachricht ausgegeben</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP: Division durch Null</small></h4>
 <pre class="lang-php prettyprint linenums">
   &lt;?php
@@ -93,9 +90,6 @@ Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftrete
 oder bei einzelnen Abfragen.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
    $get_pid   = $_GET['pid'];
@@ -147,9 +141,6 @@ tun hat.</p>
 (siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
@@ -159,9 +150,6 @@ COMMIT;
 </pre></div>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
@@ -179,9 +167,6 @@ geschlossen wird obwohl noch eine Transaktion offen ist, dann löst PDO selbst
 das Rollback aus.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
 try {

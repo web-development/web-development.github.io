@@ -88,9 +88,6 @@ Navigationsmenü mit <code>position:fixed</code> kann man diese Ankerpunkte anst
 Das ist völlig problemloses HTML</p>
 
 <div class="example twopane">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>webseite mit Anker-Punkten, fixe Navigation</small></h4>
 <pre class="lang-html prettyprint linenums left">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -133,9 +130,6 @@ Das ist völlig problemloses HTML</p>
 Links durch den Aufruf einer Javascript-Funktion:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Version 2</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -158,9 +152,6 @@ die das Ziel ganz oben im Fenster anzeigt.</p>
 <p>Mit <code>return false</code> wird die “normale” Funktion des Links deaktiviert.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Javascript für Version 1</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(id) {
@@ -204,9 +195,6 @@ programmieren:</p>
 <p>Die Navigation wird wieder zurück-gestellt auf normale HTML-Links:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Version 3</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -226,9 +214,6 @@ des Links zu unterbinden.</p>
 die Funktion <code>scrollToMe</code> als Eventhandler für <code>click</code> angefügt.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 3</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 $(document).ready( function () {
@@ -297,9 +282,6 @@ die globale Variable <code>can_scroll</code> auf <code>true</code> gesetzt,
 andernfalls auf <code>false</code>.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 4</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 // try out scrollTop,
@@ -316,6 +298,19 @@ if ( window.can_scroll ) $('#navigation a').on('click', scrollToMe);
 die im weiteren Code verwendet werden können - wird von der Library
 <a href="http://modernizr.com/">modernizr</a> für eine lange Liste von Features
 angeboten.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>In ganz seltenen Fällen muss man doch Browser Detection machen.
+Eine Gute Library dafür ist <a href="http://api.html5please.com/">HTML5 please</a>.
+Damit kann man eine Liste von Features angeben die erfüllt sein
+müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
+wird eine entsprechende Meldung angezeigt</p>
+
+<p><img  alt="HTML5 please Fehlermeldung" src="/images/html5please.png" /></p>
 
 </div>
 <div class='slide'>
@@ -371,9 +366,6 @@ aber nur das letzte Argument wird derzeit benutzt. Es ist ein String mit der
 URL die geladen werden soll.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 4</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(event) {

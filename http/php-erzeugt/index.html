@@ -56,18 +56,12 @@
                           </div>
 			
 			
-			<div class='slide'><p>Ein PHP-Programm gibt normalerweise HTML aus. Entsprechend liefert der PHP-Interpreter einen http-Header „Content-Type: text/html“. Mit dem Befehl header() kann dies verändert werden.</p>
-
-</div>
-<div class='slide'>
+			<p>Ein PHP-Programm gibt normalerweise HTML aus. Entsprechend liefert der PHP-Interpreter einen http-Header „Content-Type: text/html“. Mit dem Befehl header() kann dies verändert werden.</p>
 
 <h2 id="php-erzeugt-css">PHP erzeugt CSS</h2>
 <p>Eine externes Stylesheet kann auch Output eines PHP-Programmes sein:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Dieses HTML-Dokument referenziert ein Stylesheet das von PHP erzeugt wird</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;! DOCTYPE html&gt;
@@ -110,16 +104,10 @@
   ?&gt;
 </code></pre>
 
-</div>
-<div class='slide'>
-
 <h2 id="php-erzeugt-bild">PHP erzeugt Bild</h2>
 <p>Das PHP-Programm kann auch Bilddaten ausgeben, diese können dann auf die bekannten Arten im Web verwendet werden:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Dieses HTML-Dokument referenziert ein Hintergrundbild das von PHP erzeugt wird</small></h4>
 <pre class="lang-html prettyprint linenums">
       &lt;! DOCTYPE html&gt;
@@ -164,9 +152,6 @@
   ?&gt; 
 </code></pre>
 
-</div>
-<div class='slide'>
-
 <h2 id="php-erzeugt-variablen-fr-flash">PHP erzeugt Variablen für Flash</h2>
 
 <p>Wenn PHP als „Backend“ für Flash verwendet wird kommt eine sehr einfache Form der Ausgabe zum Einsatz:  die Variablennamen und Werte werden wie für eine URL encodiert und ausgegeben. So könnte der Output eines Counters so aussehen:</p>
@@ -174,9 +159,6 @@
 <p>count=25856&amp;date=2.Mai+2008&amp;time=10:15</p>
 
 <p>Unter dem Stichwort „URL Funktionen“ finden Sie in der PHP-Doku die Funktion <code>http_build_query()</code> die hier weiterhilft.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="php-erzeugt-xml">PHP erzeugt XML</h2>
 
@@ -204,9 +186,6 @@
   ?&gt;
 </code></pre>
 
-</div>
-<div class='slide'>
-
 <h2 id="php-leitet-weiter">PHP leitet weiter</h2>
 <p>Ein PHP-Programm kann den Browser zu einer anderen URL weiterleiten. So kann zum Beispiel die Verarbeitung einer Bestellung (im ersten PHP-Programm) von der Darstellung des Bestellstatus (im zweiten PHP-Programm) getrennt werden:</p>
 
@@ -216,7 +195,7 @@ header("Location: status.php");
 exit; /* fertig, nichts weiter ausgeben! */ 
 ?&gt;
 </code></pre>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -766,6 +745,10 @@ exit; /* fertig, nichts weiter ausgeben! */
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

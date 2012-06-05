@@ -56,7 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.</p>
@@ -83,18 +83,12 @@ normalerweise keinen Zugriff hätte. </p>
 
 <p>http://www.example.com/boring.php?fwd=admin.jsp</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="weiterleitung-in-php">Weiterleitung in PHP</h2>
 
 <p>Wie in Kapitel <a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a> gezeigt,
 werden Weiterleitungen in PHP mit der Funktion <code>header</code> implmenentiert:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Weiterleitung in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
     &lt;?php
@@ -107,9 +101,6 @@ werden Weiterleitungen in PHP mit der Funktion <code>header</code> implmenentier
 <p>Auf keinen Fall sollte ein Parameter direkt in der Konstruktion der URL verwendet werden:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Ungeprüfte Weiterleitung in PHP - so nicht programmieren!</small></h4>
 <pre class="lang-php prettyprint linenums">
     &lt;?php
@@ -122,9 +113,6 @@ werden Weiterleitungen in PHP mit der Funktion <code>header</code> implmenentier
 wird sicher gestellt dass nur and die vorgegebenen URLs weitergeleitet wird:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Weiterleitung in PHP - mit Whitelist</small></h4>
 <pre class="lang-php prettyprint linenums">
 &lt;?php
@@ -145,13 +133,10 @@ if ( array_key_exists( $_GET['url'], $urls ) ) {
 ?&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="mehr">Mehr</h2>
 
 <p>Informationen von Google über <a href="http://googlewebmastercentral.blogspot.com/2009/01/open-redirect-urls-is-your-site-being.html">Open Redirects</a>.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -701,6 +686,10 @@ if ( array_key_exists( $_GET['url'], $urls ) ) {
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

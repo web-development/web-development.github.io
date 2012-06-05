@@ -56,12 +56,9 @@
                           </div>
 			
 			
-			<div class='slide'><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
+			<p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
 Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber 
 auch verschlechtern.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="schlechte-verwendung-von-ajax">Schlechte Verwendung von AJAX</h2>
 
@@ -94,11 +91,6 @@ Das hat viele Auswirkungen, unter anderem:</p>
 <p>Vergleicht man Vor- und Nachteile sieht man schnell, dass in diesem Fall die
 Version ohne AJAX (ganz normale Links) besser wäre.</p>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Wann ist der Einsatz von AJAX sinnvoll? Wann sollte man darauf verzichten? Um
 diese Frage zu beantworten brauchen wir eine Idealvorstellung wie eine Web-Site oder
 Web-Applikation funktionieren soll. Ein Prinzip haben wir schon kennen 
@@ -114,9 +106,6 @@ gelernt, in diesem Kapitel kommt ein zweites, technischeres dazu:</p>
 auch im primitivsten Ausgabegerät noch funktionieren, also z.B. ohne Javascript.
 Was Javascript an zusätzlichen Features bringt soll nicht auf Kosten der
 Grundfunktion geben, sondern nur die vorhandene Funktion erweitern.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="rest--representational-state-transfer">REST – Representational State Transfer</h2>
 
@@ -134,22 +123,12 @@ zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen,
 <p><strong>Welche Eigenschaften des Webs führen dazu, dass dieses
 Zusammenspiel funktioniert?</strong></p>
 
-</div>
-<div class='slide'>
-
-
-
 <p>REST ist – nach der Analyse von Fielding – die zugrundeliegende <strong>Architektur</strong> des
 Webs.  Wenn man versucht, beim Bau einer Web-Applikation die Prinzipien von REST
 einzuhalten dann wird diese Applikation sich besonders gut in die vorhandene
 Infrastruktur des Web (Server, Browser, Proxies, Caches, etc.) einpassen und davon profitieren.</p>
 
 <p>Wenn man REST missachtet wird die Infrastruktur nicht funktionieren.</p>
-
-</div>
-<div class='slide'>
-
-
 
 <p>In der REST-Terminologie ist das Web ist eine Ansammlung von „<strong>Ressourcen</strong>“. In
 diesem Skriptum wird für Ressourcen auch der Begriff „<strong>Dokumente</strong>“ verwendet. Wir
@@ -168,9 +147,6 @@ Darstellung in
 </ol>
 
 <p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung. </p>
-
-</div>
-<div class='slide'>
 
 <h3 id="jedes-dokument-soll-eine-eindeutige-url-haben">Jedes Dokument soll eine eindeutige URL haben</h3>
 
@@ -193,11 +169,6 @@ waren die URLs:</p>
 </ul>
 
 <p>und so weiter. Das erfüllt schon das REST-Prinzip.</p>
-
-</div>
-<div class='slide'>
-
-
 
 <p>In Kapitel <a href="/security/a4-referenz/">SECURITY - Unsichere direkte Objektreferenz</a>
 haben wir erfahren, wie man mit der RewriteEngine von Apache und der
@@ -222,9 +193,6 @@ RewriteRule ^personen$     personen.php  [L]
 RewriteRule ^person/(.*)   person.php?slug=$1  [L]
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h4 id="umsetzung">Umsetzung</h4>
 
 <p>die Umstellung einer bestehenden Applikation 
@@ -232,9 +200,6 @@ auf diese URLs hat Auswirkungen falls sie relative Links
 verwendet haben, um z.B. auf Stylesheets zu verweisen. Deswegen rate ich von
 einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit als man
 denkt. </p>
-
-</div>
-<div class='slide'>
 
 <h3 id="dokumente-sollen-links-auf-andere-dokument-enthalten">Dokumente sollen Links auf andere Dokument enthalten</h3>
 
@@ -244,15 +209,9 @@ Wetter-Service von Yahoo liefert nicht Links auf die dazugehörigen Bilder,
 sondern nur IDs, aus denen man dann (mit zusätzlichem Hintergrundwissen) die
 URLs konstruieren muss.</p>
 
-</div>
-<div class='slide'>
-
 <h4 id="umsetzung-1">Umsetzung</h4>
 
 <p>dieses Prinzip müssen Ihre Web-Applikationen auf jeden Fall erfüllen.</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="http-methoden-get-post-put-delete">HTTP-Methoden GET, POST, PUT, DELETE</h3>
 
@@ -271,17 +230,11 @@ wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet. </
 steht bei normalen Web-Formularen nicht zur Verfügung.  </li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h4 id="umsetzung-2">Umsetzung</h4>
 
 <p>Bei der Programmeirung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
 einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden. </p>
-
-</div>
-<div class='slide'>
 
 <h3 id="ein-dokument--mehrere-reprsentationen">Ein Dokument – mehrere Repräsentationen</h3>
 
@@ -303,17 +256,9 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;/ul&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Dieselbe Person könnte man auch als XML darstellen, z.B. als:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>Daten einer Person als XML</small></h4>
 <pre class="lang-plain prettyprint linenums">
 &lt;person&gt;
@@ -330,17 +275,9 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;/person&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Dieselbe Person als JSON:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>Daten einer Person als JSON</small></h4>
 <pre class="lang-plain prettyprint linenums">
 {&quot;image&quot;:&quot;http://multimediaart.at/media/profil/edvard_1_2.jpg&quot;,
@@ -357,11 +294,6 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
      &quot;url&quot;:&quot;http://ich.multimediatechnology.at/projekt-1/werk/303&quot;}]}
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Besonders praktisch ist das, wenn ich Teile meiner Applikation später
 AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, aber einfach die XML-
 oder JSON-Repräsentation abfragen.</p>
@@ -373,9 +305,6 @@ http-Header spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur
 im http-Header:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt html als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
@@ -386,9 +315,6 @@ Accept: text/html
 <p>Bzw.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt xml als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
@@ -406,16 +332,10 @@ Accept: application/xml
   <li>http://ich.multimediatechnology.at/projekt-1/person/83.json</li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h4 id="umsetzung-3">Umsetzung</h4>
 
 <p>Diesen Aspekt von REST werden sie wahrscheinlich erst
 bei der Verwendung von Frameworks umsetzten.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
@@ -427,38 +347,18 @@ erhalte ich zum Beispiel folgende URL:</p>
 
 <p><code>http://alephino.fh-salzburg.ac.at/alipac/GYOJPQZTMURYQVHVWMND-00021/find-simple?C1=%28&amp;V1=web&amp;C2=%29&amp;F1=ALL&amp;A1=N&amp;x=0&amp;y=0</code></p>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Wenn ich diese URL zwei Tage später wieder verwende erhalte ich keine Antwort
 mehr, sondern die Fehlermeldung:</p>
 
 <p><img  alt="Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State" src="/images/session-timeout-error.png" /></p>
-
-</div>
-<div class='slide'>
-
-
 
 <p>Warum ist das so?  Auch zwei Tage später sollte die Ressource „Liste der Bücher
 mit dem Wort ‚Web’ im Titel“ noch vorhanden sein!
 Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
 Session.</p>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Nach dem REST-Prinzip sollte man also den Zustand der Session nur dann
 verwenden, wenn er unbedingt notwendig ist. </p>
-
-</div>
-<div class='slide'>
-
-
 
 <p>z.B. könnte man denken „Liste meiner ausgeliehenen Bücher“ sei von der Session abhängig. 
 Aber selbst hier könnte man eine fixe URL
@@ -470,28 +370,20 @@ verwenden:</p>
 BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den Statuscode
 <code>403 Access Denied</code>. Die BibliothekarIn hat aber Zugriff auf alle URLs dieser Form.</p>
 
-</div>
-<div class='slide'>
-
-
-
 <p><strong>Achtung</strong>: wir haben schon ein Szenario kennen gelernt, wo die
 Zeitbeschränkung von Sessions einen Sinn macht: Zum Verhindern von
 <a href="/security/a5-csrf/">Cross Site Request Forgeries - CSRF</a>.  Das
 ist aber nur bei Operationen sinnvoll, die etwas am Server ändern,
-bzw. die Daten abfragen die besonder geschützt werden müssen.</p>
+bzw. die Daten abfragen die besonders geschützt werden müssen.</p>
 
 <p>Die “Liste der Bücher mit dem Wert <code>Web</code> im Titel” ist nicht schützenswert.</p>
-
-</div>
-<div class='slide'>
 
 <h4 id="umsetzung-4">Umsetzung</h4>
 
 <p>Diesen Aspekt von REST können und sollen Sie voll umsetzten. 
 Verwenden Sie nur die php-SESSION um den Zustand der Applikation zu speichern, und
 gehen Sie möglichst sparsam damit um.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -1039,6 +931,10 @@ gehen Sie möglichst sparsam damit um.</p>
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

@@ -56,18 +56,12 @@
                           </div>
 			
 			
-			<div class='slide'><p>Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Die Details von Javascript werden in den nächsten Kaptieln, hier geht es nur um ein erstes Kennenlernen.</p>
-
-</div>
-<div class='slide'>
+			<p>Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Die Details von Javascript werden in den nächsten Kaptieln, hier geht es nur um ein erstes Kennenlernen.</p>
 
 <h2 id="javascript-einbetten">Javascript Einbetten</h2>
 <p>Javascript kann innerhalb des &lt;script&gt;-Tags irgendwo in den HTML-Code eingefügt werden.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Berechnungen in Javascript, in einem script-Tag</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;h1&gt;Hallo Welt&lt;/h1&gt;
@@ -87,16 +81,10 @@
 
 <p><img  alt="Abbildung 53: Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" src="/images/image240.png" /></p>
 
-</div>
-<div class='slide'>
-
 <h2 id="popup-fenster">Popup-Fenster</h2>
 <p>Mit den Befehlen <code>alert</code>, <code>confirm</code> und <code>prompt</code> können Sie kleine Popup-Fenster öffnen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Popup-Fenster</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 alert(&quot;peng, du bist tot!&quot;);
@@ -107,9 +95,6 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 <p><img  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" src="/images/popups.png" /></p>
 
 <p>Achtung: So können Sie zwar bei gutgläubigen Menschen Herzinfarkte auslösen, aber Sie können mit Javascript nicht wirklich Dateien löschen.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="formulare">Formulare</h2>
 
@@ -133,9 +118,6 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 <p>Mit <code>document.getElementById</code> kann man also das einen bestimmten Tag  ansprechen, wenn man die id kennt.</p>
 
 <p>Jedes Eingabefeld bietet mit value den aktuell eingegeben Wert (als String) an, hier z.B. <code>document.getElementById("hochschule").value</code>.  Die letzten beiden Zeilen in der Konsole zeigen, dass es auch umgekehrt funktioniert: man kann auch Werte ins Eingabefeld hineinschreiben, der neue Werte wird sofort im Browser angezeigt.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="documentwrite">document.write</h2>
 
@@ -199,9 +181,6 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 <p>Mit Ansicht → Quelltext sieht man den Javascript-Code, In Firebug sieht man das Ergebnis:</p>
 
 <p>Sollte man diese Möglichkeit nutzen?  Der Nachteil: Falls Javascript nicht funktioniert, hat mein Eingabefeld keine Optionen. Deswegen wäre es wahrscheinlich besser, die Optionen als HTML anzugeben.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="ereignisse-und-ereignisgesteuerte-programmierung">Ereignisse und Ereignisgesteuerte Programmierung</h2>
 <p>Javascript ist hauptsächlich eine Programmiersprache für das „Frontend“, für die Gestaltung von Benutzerschnittstellen. Für grafische Benutzerschnittstellen hat sich ein besonderer Programmierstil entwickelt: die ereignisgesteuerte Programmierung. Dieser Stil kommt auch in Actionscript (in Flash), in Visual Basic, u.s.w. zum Einsatz.</p>
@@ -325,9 +304,6 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
   wie viel ist 10 plus 20? 30
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="formular-prfen">Formular prüfen</h2>
 <p>Mit Javascript kann man schon vor dem Absenden des Formulares prüfen ob wichtige Daten eingegeben wurden, und das Einsenden des Formulares verhindern falls dem nicht so ist. </p>
 
@@ -388,7 +364,7 @@ Telefon/Handy: &amp;lt;input type=&quot;text&quot; name=&quot;tel&quot; id=&quot
 &lt;input name=&quot;&quot; type=&quot;submit&quot; /&gt;
 &lt;/form&gt;
 </pre></div>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -938,6 +914,10 @@ Telefon/Handy: &amp;lt;input type=&quot;text&quot; name=&quot;tel&quot; id=&quot
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

@@ -56,12 +56,9 @@
                           </div>
 			
 			
-			<div class='slide'><p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
+			<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
 <pre class="lang-php prettyprint linenums">
 $t = $_POST['title'];
@@ -100,9 +97,6 @@ php_flag magic_quotes_gpc off
 <p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
 <pre class="lang-php prettyprint linenums">
 echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
@@ -116,9 +110,6 @@ echo(&quot;&lt;/pre&gt;&quot;);
 <p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(
@@ -153,7 +144,7 @@ $sth-&gt;execute(
 </code></pre>
 
 <p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -703,6 +694,10 @@ $sth-&gt;execute(
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

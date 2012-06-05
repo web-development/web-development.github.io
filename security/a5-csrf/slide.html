@@ -44,9 +44,6 @@ man auf Dauer eingeloggt bleibt.</p>
 eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Verwundbarer Web-Applikation</small></h4>
 <pre class="lang-html prettyprint linenums">
    &lt;form action=&quot;spende.php&quot; method=&quot;...&quot;&gt;
@@ -68,9 +65,6 @@ eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
 der Attacke verschieden aus. </p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Attacke auf das Formular</small></h4>
 <pre class="lang-html prettyprint linenums">
   &lt;!-- Attacke auf GET --&gt;
@@ -109,9 +103,6 @@ gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
 <p>Chris Shiflett schlägt folgenden PHP-Code zur Erzeugung des Tokens vor:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Erzeugung des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
   if (!isset($_SESSION['token'])) {
@@ -135,9 +126,6 @@ gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
 ist und noch gültig ist:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Check des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
   if (!isset($_SESSION['token']))            throw TokenException;

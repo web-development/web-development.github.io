@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Module - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Module</h1>
+          <p><a href="/javascript/module/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Wie kann man Javascript-Code in größere Einheiten
+organisieren?  Wo doch die Sprache keine Unterstütztung
+für Namespaces oder Kapselung bietet?</p>
+
+<p>Eine Lösung für diese Fragestellung ist der Modul-Pattern,
+hier beschrieben nach 
+<a href="http://shop.oreilly.com/product/9780596806767.do">Stefanov(2010): Javascript Patterns</a>, Kapitel 5.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="viele-skripte-ein-namensraum">Viele Skripte, ein Namensraum</h2>
+
+<p>Häuft werden in einer Webseite Javascript-Programm aus
+verschiedenen Quellen kombiniert.  Die Webseite
+enthält z.B. </p>
+
+<ul>
+  <li>Javascript der Website selbst, zu Prüfung von Formulardaten und für Animationen</li>
+  <li>für Zugriffs-Statistiken, z.B. <a href="http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=174090">Google Analytics</a></li>
+  <li>für das Teilen von Inhalten auf Sozialen Netzwerkden, z.B. <a href="https://developers.connect.facebook.com/docs/reference/plugins/like/">Facebook-Like-Button</a></li>
+  <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
+  <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
+  <li>für das Einbinden einer Landkarte, z.B. <a href="http://mapquery.org/">Open Street Map mit MapQuery</a></li>
+</ul>
+
+<p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
+Programme schnell in die eigene Webseite einbauen. All diese
+Programme laufen dann im selben Javascript Interpreter ab,
+und benutzen einen gemeinsamen globalen Namensraum.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="namensraum-imitieren">Namensraum imitieren</h2>
+
+<p>Um einen Namensraum zu imitieren kann man ein Objekt in Javascript verwenden.</p>
+
+<p>Die linke Version erzeugt 5 globale Namen. Oder, um genauer zu sein: sie
+erzeugt 3 Eigenschaften und 2 Methoden des <code>window</code>-Objekts. Würde ein
+anderes Programm ebenfalls ein Funktion <code>f()</code> definieren, so würde
+die spätere Definition erhalten bleiben.</p>
+
+<p>In der rechten Version wird nur ein globaler Name angelegt: <code>APP</code>.
+Alle weiteren Namen sind dann in diesem Objekt versteckt. Würde
+ein anderes Programm in der Webseite auch eine Funktion <code>f()</code> definieren
+dann wäre das kein Problem mehr.</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Ein globales Namensraum-Objekt statt vieler globalen Variablen</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// globale Variabeln 
+
+var KONSTANTE = 3.141;
+var variable = 3;
+function Ding(){
+  return this;
+}
+function f(x){
+  return 2*x;
+}
+
+var objekt = new Ding();
+</pre><pre class="lang-javascript prettyprint linenums right">
+// ein Namensraum-Objekt
+var APP = {}
+APP.KONSTANTE = 3.141;
+APP.variable = 3;
+APP.Ding = function() {
+  return this;
+}
+APP.f = function(x) {
+  return 2*x;
+}
+
+APP.objekt = new APP.Ding();
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="namensrume-anlegen">Namensräume anlegen</h2>
+
+<p>Namensräume können auch verschachtelt werden:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Verschachtelte Namensräume</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var GAME =  GAME || {};
+GAME.Player = ...
+GAME.Master = ...
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Die erste Zeile enthält eine Vorsichtsmaßnahme: Falls
+<code>GAME</code> schon definiert wäre, dann wird die alten Definition
+nicht überschrieben.  Dabei macht man sich die
+<a href="http://de.wikipedia.org/wiki/Kurzschlussauswertung">Kurzschulssauswertung</a>
+des Oder-Operators zu nutze.</p>
+
+<p>Folgender Code zeigt eine alternative Schreibweise
+für diese Zuweisung:</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Schreibweisen für Default-Wert</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+var GAME = GAME || {};
+
+
+
+
+
+</pre><pre class="lang-javascript prettyprint linenums right">
+var GAME;
+if( GAME ) {
+  // GAME = GAME;
+} else {
+  GAME = {};
+}
+</pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="sofort-ausgewertete-funktionen">Sofort ausgewertete Funktionen</h2>
+
+<p>Eine andere Methode um den globalen Namensraum sauber zu halten
+sind die sogenannten “sofort augewerteten Funktionen” (“immediate funktions”).</p>
+
+<p>Dabei wird eine Funktion definiert und sofort - und nur einmal - aufgerufen.
+Nur der Rückgabewert wird ein einer globalen Variable <code>g</code> gespeichert.</p>
+
+<p>Beachten sie dabei die Klammern rund um die Funktions-Definition:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Schreibweise für sofort ausgewertete Funktionen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var g = (function(){
+  return 42;
+)();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Beispiel einer sofort ausgewerteten Funktion:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>sofort ausgwertete Funktion</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var g = (function(){
+  var a,b,c;
+  function d() {
+  }
+  function Ding() {
+    return this;
+  }
+
+  a = 10;
+  b = d( a );
+  c = new Ding();
+
+  return a;
+)();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Eine Verwendung von sofort ausgewerteten Funktionen sind
+Polyfills. Im Artikel <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">requestAnimationFrame for smart animating</a>
+stellt Paul Irish einen Polyfill für <code>requestAnimationFrame</code> vor:</p>
+
+<p>Dieses Funktion wir einmal aufgerufen und stellt sicher,
+dass unter <code>window.requestAnimationFrame</code> die jeweilige Implementierung 
+im Browser verfügbar ist.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Polyfill für requestAnimationFrame - einfache Version</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+    window.requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       || 
+              window.webkitRequestAnimationFrame || 
+              window.mozRequestAnimationFrame    || 
+              window.oRequestAnimationFrame      || 
+              window.msRequestAnimationFrame;
+    })();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Im gleichen Artikel stellt Irish eine bessere Implementierung
+von Erik Möller vor:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Polyfill für requestAnimationFrame - Ausschnitt</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x &lt; vendors.length &amp;&amp; !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+    }
+ 
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            // verwende setTimeout 
+            // ...
+        };
+})();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="module">Module</h2>
+
+<p>Namensräume und sofort augewertete Funktionen werden verwendet um
+sogenannte Module zu bauen. Das Modul bündelt alle Namen unter
+einem Namensraum und bietet die Möglichkeit von privaten und
+öffentlichen Eigenschaften und Funktionen.</p>
+
+<p>In diesem Beispiel ist das Modul ein Objekt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Schreibweise für ein Modul: ein Objekt</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var APP = (function(){
+var a,b,f;      // private 
+var c,d,g;      // öffentlich
+f = function() {  // private Funktion
+};
+g = function() {  // öffentliche Funktion
+};
+return {
+  c: c,
+  d: d,  
+  g: g
+};
+})();
+</pre></div>
+
+<div class="alert"><strong>ToDo</strong> fertig stellen </div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript/module/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

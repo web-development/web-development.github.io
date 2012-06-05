@@ -56,12 +56,9 @@
                           </div>
 			
 			
-			<div class='slide'><p>Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
+			<p>Wir haben bisher keinerlei Rücksicht darauf genommen, dass ein Fehler auftreten
 könnte.  Zum Beispiel könnte beim Einfügen in die Datenbank ein Constraint verletzt werden
 und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="exceptions-in-php">Exceptions in PHP</h2>
 
@@ -83,9 +80,6 @@ und PHP versucht, den ersten passenden <code>catch</code>-Block zu finden. Falls
 nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception …“-Nachricht ausgegeben</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP: Division durch Null</small></h4>
 <pre class="lang-php prettyprint linenums">
   &lt;?php
@@ -109,9 +103,6 @@ nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception �
   ?&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="verwendung-von-exceptions-fr-die-datenbank">Verwendung von Exceptions für die Datenbank</h2>
 
 <p>In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
@@ -119,9 +110,6 @@ Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftrete
 oder bei einzelnen Abfragen.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
    $get_pid   = $_GET['pid'];
@@ -164,18 +152,12 @@ bevor die Ausgabe beginnt.  Im <code>catch</code>-Block wird eine Webseite
 erzeugt, die gar nichts mit der “normalen” Ausgabe der Seite zu
 tun hat.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
 
 <p>Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
 (siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
@@ -185,9 +167,6 @@ COMMIT;
 </pre></div>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
@@ -205,9 +184,6 @@ geschlossen wird obwohl noch eine Transaktion offen ist, dann löst PDO selbst
 das Rollback aus.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
 try {
@@ -226,14 +202,11 @@ try {
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
 bleibt gleich.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="exceptions-in-javascript">Exceptions in Javascript</h2>
 
 <p>Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
 gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -783,6 +756,10 @@ gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/201
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

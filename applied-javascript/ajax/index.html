@@ -56,16 +56,13 @@
                           </div>
 			
 			
-			<div class='slide'><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
+			<p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
 wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
 (URL eintippen, Link anklicken), oder um Ressourcen nachzuladen
 die zu einem HTML-Dokument gehören.</p>
 
 <p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
 verwerndet werden: Asynchrone Requests.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="was-ist-ajax">Was ist AJAX?</h2>
 
@@ -88,18 +85,12 @@ weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die A
 des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen und ein 
 Javascript-Programm fügt die Daten in die Seite ein. </p>
 
-</div>
-<div class='slide'>
-
 <h3 id="im-javascript-programm">Im Javascript Programm</h3>
 
 <p>Auf der Ebene des Javascript Programm-Codes sieht der Unterschied zwischen 
 synchron und asynchron so aus:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>synchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 Befehl1();
@@ -113,9 +104,6 @@ Befehl4();
 hier kann also eine Wartezeit von mehreren Sekunden entstehen. </p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function handle_data(Antwort) {  
@@ -133,9 +121,6 @@ Befehl4();
 Wenn die Daten vom Server schließlich einlangen wird die Funktion handle_data 
 aufgerufen und die Daten zu verarbeiten. Das kann z.B. gleichzeitig mit <code>Befehl4</code>
 erfolgen.</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="http">HTTP</h3>
 
@@ -163,9 +148,6 @@ die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.<
 
 <p><img  alt="AJAX Ablauf" src="/images/ajax.png" /></p>
 
-</div>
-<div class='slide'>
-
 <h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
 
 <p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server 
@@ -177,9 +159,6 @@ Objekt Unterschiede zwischen den Browsern. Um diese Unannehmlichkeiten zu
 vermeiden, sollte man fertige Libraries verwenden, die die Browser-Unterschiede 
 verbergen.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="simples-jquery-beispiel">Simples jQuery Beispiel</h2>
 
 <p>Im ersten AJAX Beispiel wird der Output eines PHP-Counters in eine HTML-Seite 
@@ -187,9 +166,6 @@ eingebunden. Das gibt noch keine besonderen Effekte für die LeserIn, sondern ma
 nur den Einbau des Counters in eine bestehende Webseite einfacher.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
   &lt;html&gt;
@@ -229,9 +205,6 @@ sollte also reiner Text oder HTML sein.</p>
 Die Daten vom Server inlangen muss man nicht mehr programmieren, das erledigt 
 jQuery schon.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
 
 <p>In diesem Beispiel werden die Daten des Yahoo-Wetterberichts auf mehrere Arten in 
@@ -242,9 +215,6 @@ werden! Wenn man es doch versucht erhält man in Firebug die Fehlermeldung „Ac
 <p>Man braucht am eigenen Server ein PHP-Programm das die Daten lädt und wiedergibt:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>backend um von yahoo den Wetterbericht zu laden</small></h4>
 <pre class="lang-php prettyprint linenums">
   &lt;?php 
@@ -264,9 +234,6 @@ werden! Wenn man es doch versucht erhält man in Firebug die Fehlermeldung „Ac
 Wetterseite. Es handelt sich um Daten im XML-Format, hier ein Auszug:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Xml Code <small>Yahoo Wetterbericht als XML</small></h4>
 <pre class="lang-xml prettyprint linenums">
   &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;
@@ -382,9 +349,6 @@ lesen:</p>
   }
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="hinter-den-kulissen-von-jquery">Hinter den Kulissen von jQuery</h2>
 
 <p>jQuery bietet vereinfachte Methoden für den Umgang mit AJAX-Request an.
@@ -396,9 +360,6 @@ ist es das <code>XMLHttpRequest</code>-Objekt.</p>
 die aufgerufen wird wenn der HTTP-Response einlangt.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Verwendung des XMLHttpRequest</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 my_ajax = new XMLHttpRequest();
@@ -421,7 +382,7 @@ my_ajax.send(null);
 empfangen.  Das <code>XMLHttpRequest</code>-Objekt kann einen XML-Response gleich
 verarbeiteten und als XML-DOM zurückliefern (<code>responseXML</code>), oder die
 puren Daten als <code>responseText</code>.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -971,6 +932,10 @@ puren Daten als <code>responseText</code>.</p>
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

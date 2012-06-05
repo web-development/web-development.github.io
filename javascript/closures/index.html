@@ -56,10 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'></div>
-<div class='slide'>
-
-<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
+			<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
 
 <p>In einer Funktion in Javascript sind lokale und globale
 Variablen sichtbar.  Da Funktionen auch innerhalb von
@@ -67,9 +64,6 @@ Funktionen definiert werden können sind in folgendem Code
 die Variablen a, b und c in der innern Funktion f sichtbar</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   var a = 1;
@@ -92,19 +86,11 @@ die Variablen a, b und c in der innern Funktion f sichtbar</p>
   console.log(y);  // ReferenceError: y is not defined
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Eine Besonderheit von Javascript ist das “Hochziehen” (hoisting): Alle
 Variablen-Deklarationen mit <code>var</code> werden an den Anfang der jeweiligen Funktion 
 vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function g( x ) {
@@ -122,18 +108,12 @@ vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
   // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="funktionen-und-lebenszeit-von-variablen">Funktionen und Lebenszeit von Variablen</h2>
 
 <p>Nach dem Aufruf einer Funktion verschwinden ihre lokalen Variablen,
 bei einem neuen Aufruf sind die vorhergehenden Werte nicht mehr vorhanden:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Lebenszeit einer Variable in einer Funktionen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function g( x ) {
@@ -152,18 +132,10 @@ bei einem neuen Aufruf sind die vorhergehenden Werte nicht mehr vorhanden:</p>
   // beim Ausstieg aus g ist b = 20
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Die Lebenszeit einer Variable kann aber verlängert werden, wenn sie in einer
 inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktionsabschluss”).</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Closure verlängert die Lebenszeit einer Variable in einer Funktionen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function g( x ) {
@@ -184,17 +156,9 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
 
 <p>Die Funktion f hat also immer noch zugriff auf die “alte” Variable b!</p>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Closure kann man zum Beispiel verwenden um einen Countdown zu erzeugen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Erzeuge eine Countdown-Funktion</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function create_countdown( max ) {
@@ -209,7 +173,7 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
     console.log(&quot;und auf Platz &quot; + i + &quot; .... &quot;);
   }
 </pre></div>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -759,6 +723,10 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

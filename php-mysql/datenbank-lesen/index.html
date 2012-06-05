@@ -56,7 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
+			<p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
 
 <p><img  alt="Abbildung 144: Homepage der Mini-Applikation" src="/images/dbapp-home.png" /></p>
 
@@ -121,16 +121,10 @@
     ?&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="viele-datenstze-aus-der-datenbank-lesen">Viele Datensätze aus der Datenbank lesen</h2>
 <p>In der Datei personen.php finden Sie ein Beispiel für die Auflistung von mehreren Datensätzen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>personen.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $query = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible ORDER BY RAND() LIMIT 1,10&quot;);
@@ -140,9 +134,6 @@
 <p>Das Ergebnis ist ein Array von Objekten in der Variable $personen. Hier der Output von print_r($personen):</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
 <pre class="lang-php prettyprint linenums">
 Array
@@ -177,16 +168,10 @@ Array
 )
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>In der Datei <code>home.php</code> finden Sie zwei Beispiele für das Lesen einzelner Daten. Mit der SQL-Funktion COUNT() wir die Anzahl der Werke in der Datenbank bestimmt. </p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel aus home.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $ergebnis = $dbh-&gt;query( 
@@ -194,18 +179,12 @@ Array
     $anz_personen = $ergebnis['anzahl'];
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
 <p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen person.php?pid=586 soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der Parameter aus dem <code>$_GET</code> – Array ausgelesen und sicher gestellt, dass es sich wirklich um eine Zahl handelt.</p>
 
 <p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit <code>profile_visible=0</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass nur sichtbare Personen angezeigt werden. Das Ergebnis der Abfrage kann also sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel gar keine gespeichert ist, oder weil <code>profile_visible=0</code> ist. In diesem Fall gibt fetch kein Objekt sondern der Wert FALSE zurück.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Beispiel aus home.php</small></h4>
 <pre class="lang-php prettyprint linenums">
     $pid = $_GET['pid'];
@@ -257,9 +236,6 @@ Array
 
 <p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder behandelt werden muss.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 <p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
 
@@ -304,7 +280,7 @@ Array
 </pre></div>
 
 <p>Achtung: hier verwenden wir die count-Funktion von PHP um die Datensätze zu zählen. Wenn wir die Datensätze alle brauchen ist das auch legitim. Wenn wir nur die Anzahl der Datensätze bräuchten würden wir ein <code>COUNT</code> in SQL verwenden, wie auf Seite 74  gezeigt.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -854,6 +830,10 @@ Array
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

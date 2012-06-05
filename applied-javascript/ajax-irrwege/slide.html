@@ -196,9 +196,6 @@ RewriteRule ^personen$     personen.php  [L]
 RewriteRule ^person/(.*)   person.php?slug=$1  [L]
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h4 id="umsetzung">Umsetzung</h4>
 
 <p>die Umstellung einer bestehenden Applikation 
@@ -217,9 +214,6 @@ Einzige Ausnahme: der im Kapitel <a href="/applied-javascript/ajax/">AJAX</a> ve
 Wetter-Service von Yahoo liefert nicht Links auf die dazugehörigen Bilder,
 sondern nur IDs, aus denen man dann (mit zusätzlichem Hintergrundwissen) die
 URLs konstruieren muss.</p>
-
-</div>
-<div class='slide'>
 
 <h4 id="umsetzung-1">Umsetzung</h4>
 
@@ -244,9 +238,6 @@ wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet. </
   <li><strong>DELETE</strong> Diese Methode dient zum Löschen einer Ressource. Auch diese Methode 
 steht bei normalen Web-Formularen nicht zur Verfügung.  </li>
 </ul>
-
-</div>
-<div class='slide'>
 
 <h4 id="umsetzung-2">Umsetzung</h4>
 
@@ -285,9 +276,6 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 <p>Dieselbe Person könnte man auch als XML darstellen, z.B. als:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>Daten einer Person als XML</small></h4>
 <pre class="lang-plain prettyprint linenums">
 &lt;person&gt;
@@ -312,9 +300,6 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 <p>Dieselbe Person als JSON:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>Daten einer Person als JSON</small></h4>
 <pre class="lang-plain prettyprint linenums">
 {&quot;image&quot;:&quot;http://multimediaart.at/media/profil/edvard_1_2.jpg&quot;,
@@ -347,9 +332,6 @@ http-Header spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur
 im http-Header:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt html als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
@@ -360,9 +342,6 @@ Accept: text/html
 <p>Bzw.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt xml als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
@@ -379,9 +358,6 @@ Accept: application/xml
   <li>http://ich.multimediatechnology.at/projekt-1/person/83.xml </li>
   <li>http://ich.multimediatechnology.at/projekt-1/person/83.json</li>
 </ul>
-
-</div>
-<div class='slide'>
 
 <h4 id="umsetzung-3">Umsetzung</h4>
 
@@ -453,12 +429,9 @@ BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den 
 Zeitbeschränkung von Sessions einen Sinn macht: Zum Verhindern von
 <a href="/security/a5-csrf/">Cross Site Request Forgeries - CSRF</a>.  Das
 ist aber nur bei Operationen sinnvoll, die etwas am Server ändern,
-bzw. die Daten abfragen die besonder geschützt werden müssen.</p>
+bzw. die Daten abfragen die besonders geschützt werden müssen.</p>
 
 <p>Die “Liste der Bücher mit dem Wert <code>Web</code> im Titel” ist nicht schützenswert.</p>
-
-</div>
-<div class='slide'>
 
 <h4 id="umsetzung-4">Umsetzung</h4>
 

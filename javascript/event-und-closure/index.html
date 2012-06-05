@@ -56,7 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
+			<p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
 Ein SVG-Editor soll programmiert werden, mit dem man
 Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
 
@@ -64,9 +64,6 @@ Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
 die Notwendigkeit von Closures erläutert.</p>
 
 <p>Der Fokus in diesem Kapitel liegt auf der Drag und Drop Funktionalität.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="die-ausgangslage">Die Ausgangslage</h2>
 
@@ -76,9 +73,6 @@ zur Wiederverwertung von Code gelegt:</p>
 <p>Für den Editor, und für Rechtecke (Rectangles) und Kreise (Circles) werden
 jeweils Konstruktor-Funktionen angelegt, mit der Editor-, Rechteck-, und Kreis-Objekte
 erzeugt werden können.</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="editor">Editor</h3>
 
@@ -104,15 +98,7 @@ erzeugt werden können.</p>
   <li><code>circle</code> - Erzeugt ein Objekt mit dem <code>Circle</code>-Konstruktur, fügt es in der renderlist ein</li>
 </ul>
 
-</div>
-<div class='slide'>
-
-
-
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Konstruktor</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function Editor( css_selector, w, h ) {
@@ -138,9 +124,6 @@ Editor.prototype.circle = function( x,y,r,att, text ) {
   return o;
 }
 </pre></div>
-
-</div>
-<div class='slide'>
 
 <h3 id="circle-und-rectangle">Circle und Rectangle</h3>
 
@@ -186,15 +169,7 @@ ein.</p>
   <li><code>setPosition( position )</code> - erwartet die Position als Objekt mit Eigenschaften <code>x</code> und <code>y</code>, positioniert das Element entsprechend</li>
 </ul>
 
-</div>
-<div class='slide'>
-
-
-
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Konstruktor für Kreis</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 var nextCircleId = idGenerator( &quot;cicle&quot; );
@@ -225,9 +200,6 @@ Circle.prototype.setPosition = function ( position ) {
 };
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="drag-and-drop">Drag and Drop</h2>
 
 <p>Wie funktioniert Drag-and-Drop?  Wir haben die Events <code>mousedown</code>, <code>mouseup</code> und <code>mousemove</code> zur Verfügung.</p>
@@ -238,18 +210,12 @@ Circle.prototype.setPosition = function ( position ) {
   <li>Wenn die Maus los gelassen wird wird Drag-and-Drop beendet</li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h3 id="mausposition">Mausposition</h3>
 
 <p>Das Auslesen der aktuellen Mous-Position ist leider nicht einheitlich implementiert.
 Hier eine Implementierung die in allen Browsern funktionieren sollte:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>auslesen der Maus-Position aus einem Event-Objekt</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function cursorPoint(e) {
@@ -272,9 +238,6 @@ function cursorPoint(e) {
 }
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h3 id="wiederholung-event-listener">Wiederholung: Event-Listener</h3>
 
 <p>Wenn wir Event-Listener-Funktionen für diese Events definieren haben wir der
@@ -283,9 +246,6 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <p>Also zum Beispiel:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Event Listener</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function onMouseDown(e) {
@@ -298,9 +258,6 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
 this das angeklickte element, und e enthält ein Event-Objekt mit
 weiteren Details.</p>
-
-</div>
-<div class='slide'>
 
 <h3 id="problemstellung-vom-dom-element-zum-javascript-objekt">Problemstellung: vom DOM-Element zum Javascript-Objekt</h3>
 
@@ -316,9 +273,6 @@ Tag / Element beliebige neue Attribute dazu erfinden, solange der
 Name des Attributs mit “data-“ beginnt.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>data-Attribute in HTML5</small></h4>
 <pre class="lang-html prettyprint linenums">
   &lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
@@ -326,17 +280,9 @@ Name des Attributs mit “data-“ beginnt.</p>
   &lt;circle data-weight=&quot;10kg&quot;&gt;
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Ein Data-Attribut könnte man mit Javascript setzen. Hier ein Versuch:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   c = document.getElementById(&quot;circle_1&quot;);
@@ -352,18 +298,12 @@ und nur der String wurde gespeichert.  </p>
 
 <p><strong>Es ist nicht möglich beliebige Javascript-Objekte in der DOM zu speicher!</strong></p>
 
-</div>
-<div class='slide'>
-
 <h3 id="lsungs-ansatz-mit-closure">Lösungs-Ansatz mit Closure</h3>
 
 <p>Die übliche Lösung in Javascript ist die Verwendung von Closures: die Event-Listener-Funktion
 ist eine Closure, die das Javascript-Objekt kennt, und deswegen darauf Zugriff hat.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Event-Listener-Funktion als Closure</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {
@@ -382,9 +322,6 @@ addDragability( jsobj, element );
 addDragability( other_jsobj, other_element );
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h3 id="umsetzung">Umsetzung</h3>
 
 <p>Wenn man die Beschreibung von Drag-and-Drop nochmal betrachtet …</p>
@@ -398,9 +335,6 @@ addDragability( other_jsobj, other_element );
 <p>und das nun in Event-Listener umsetzen will kommt man zu folgender Struktur</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Struktur der Event-Listener für Drag-and-Drop</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {
@@ -421,7 +355,7 @@ function addDragability( jsobj, element ) {
 </pre></div>
 
 <div class="alert"><strong>ToDo</strong> fertigen Code zeigen - später</div>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -429,7 +363,7 @@ function addDragability( jsobj, element ) {
       <li><a href="/javascript/objekte/">← <span class="article">Objekte + Prototypen</a></li>
     
     
-      <li><a href="/javascript/style/">Stil + Tipps →</a></li>
+      <li><a href="/javascript/module/">Module →</a></li>
     
   </ul>
 </div>
@@ -971,6 +905,10 @@ function addDragability( jsobj, element ) {
                     
                       
                       <li class="active"><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

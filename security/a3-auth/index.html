@@ -56,10 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.</p>
-
-</div>
-<div class='slide'>
+			<p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.</p>
 
 <h2 id="keine-information-in-fehlermeldungen-preisgeben">Keine Information in Fehlermeldungen preisgeben</h2>
 
@@ -79,9 +76,6 @@
 ist ja bereits die Hälfte der nötigen Information für ein Login. Deswegen soll man die Existenz
 von Usernamen genau so geheim halten wie die Passwörter.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
 
 <p>Das Protokoll HTTP ist stateless.  Wenn man trotzdem UserInnen authentifizieren
@@ -98,17 +92,11 @@ schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/T
 Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
 Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="nicht-selbst-implementieren">Nicht selbst implementieren</h2>
 
 <p>Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management zu implementieren. Man sollte nicht auf eigene Lösungen setzen - Diese haben dann oft Fehler bei Abmeldung und Passwortmanagement, bei der Wiedererkennung der BenutzerInnen, bei Timeouts, Sicherheitsabfragen usw. Das Auffinden dieser Fehler kann sehr schwierig sein, besonders wenn es sich um individuelle Implementierungen handelt.</p>
 
 <p>PHP liefert bereits ein fertiges Session-System.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="neue-session-bei-login--logout--neuen-rechten">Neue Session bei Login / Logout / neuen Rechten</h2>
 
@@ -125,9 +113,6 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 <p>In PHP geht das mit folgenden Befehlen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>neue Session starten nach erfolgreichem Login</small></h4>
 <pre class="lang-php prettyprint linenums">
   session_start();
@@ -137,15 +122,12 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
   session_start();
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="mehr">Mehr</h2>
 
 <p>Die OWAAS bietet noch mehr Informationen zu diesem Thema an
 im  <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">Authentication Cheat Sheet</a>
 und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">Session Management Cheat Sheet</a>.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -695,6 +677,10 @@ und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

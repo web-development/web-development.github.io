@@ -56,10 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>In Zusammenhang mit jQuery werden die Fachbegriffe „graceful degradation“, „progressive enhancement“  und „unobstrusive“ verwendet. Dahinter verbergen sich zwei verwandte, aber verschiedene Konzepte:</p>
-
-</div>
-<div class='slide'>
+			<p>In Zusammenhang mit jQuery werden die Fachbegriffe „graceful degradation“, „progressive enhancement“  und „unobstrusive“ verwendet. Dahinter verbergen sich zwei verwandte, aber verschiedene Konzepte:</p>
 
 <h2 id="graceful-und-progressive">graceful und progressive</h2>
 
@@ -74,9 +71,6 @@
 <p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie in Abbildung 61 gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
 
 <p><img  alt="Abbildung 61: Javascript deaktivieren mit QuickJava in Firefox" src="/images/image269.png" /></p>
-
-</div>
-<div class='slide'>
 
 <h2 id="unobstrusive">unobstrusive</h2>
 
@@ -99,13 +93,7 @@
 
 <p>Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern der Amazon Simple Storage Services (s3). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="ein-beispiel-inner-links">Ein Beispiel: Inner Links</h2>
-
-</div>
-<div class='slide'>
 
 <h3 id="version-1">Version 1</h3>
 
@@ -114,9 +102,6 @@ Navigationsmenü mit <code>position:fixed</code> kann man diese Ankerpunkte anst
 Das ist völlig problemloses HTML</p>
 
 <div class="example twopane">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>webseite mit Anker-Punkten, fixe Navigation</small></h4>
 <pre class="lang-html prettyprint linenums left">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -150,18 +135,12 @@ Das ist völlig problemloses HTML</p>
 
 </pre><div class="clearfix"></div></div>
 
-</div>
-<div class='slide'>
-
 <h3 id="version-2">Version 2</h3>
 
 <p>In einem Versuch die Seite zu verbessern ersetzen wir nun die 
 Links durch den Aufruf einer Javascript-Funktion:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Version 2</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -184,9 +163,6 @@ die das Ziel ganz oben im Fenster anzeigt.</p>
 <p>Mit <code>return false</code> wird die “normale” Funktion des Links deaktiviert.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Javascript für Version 1</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(id) {
@@ -195,11 +171,6 @@ function scrollToMe(id) {
   return false;
 }
 </pre></div>
-
-</div>
-<div class='slide'>
-
-
 
 <p>Diese Version ist kein Beispiel für gutes Javascript:
 in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</code> nicht.</p>
@@ -219,9 +190,6 @@ in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</cod
   <li>kein unobstrusive javascript: Javascript-Code direkt in HTML-Attributen</li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h3 id="version-3">Version 3</h3>
 
 <p>Im nächsten Versuch werden wir jQuery verwenden, um unobstrusive zu 
@@ -230,9 +198,6 @@ programmieren:</p>
 <p>Die Navigation wird wieder zurück-gestellt auf normale HTML-Links:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Version 3</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;div id=&quot;navigation&quot;&gt;
@@ -252,9 +217,6 @@ des Links zu unterbinden.</p>
 die Funktion <code>scrollToMe</code> als Eventhandler für <code>click</code> angefügt.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 3</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 $(document).ready( function () {
@@ -271,11 +233,6 @@ $(document).ready( function () {
   $('#navigation a').on('click', scrollToMe);
 });
 </pre></div>
-
-</div>
-<div class='slide'>
-
-
 
 <p>Diese Variante funktioniert schon besser:</p>
 
@@ -295,18 +252,12 @@ beim anderen Prinzipien auf halben weg</p>
   <li>unobstrusive javascript: erfüllt</li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h3 id="version-4">Version 4</h3>
 
 <p>Im nächsten Schritt werden wir sicher stellen, dass die Animation
 nur in solchen Browsern verwendet wird, wo sie auch funktioniert.</p>
 
 <p>Achtung: hier gibt es einen falschen und einen richtigen Ansatz:</p>
-
-</div>
-<div class='slide'>
 
 <h1 id="browser-detection-unterscheidung-nach-namen-versionsnummer-betriebssystem-des-browsers">Browser Detection: Unterscheidung nach Namen, Versionsnummer, Betriebssystem des Browsers</h1>
 <p># Feature Detection: Unterscheidung nach genau der Fähigkeit, die ich verwenden will</p>
@@ -323,9 +274,6 @@ die globale Variable <code>can_scroll</code> auf <code>true</code> gesetzt,
 andernfalls auf <code>false</code>.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 4</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 // try out scrollTop,
@@ -343,10 +291,13 @@ die im weiteren Code verwendet werden können - wird von der Library
 <a href="http://modernizr.com/">modernizr</a> für eine lange Liste von Features
 angeboten.</p>
 
-</div>
-<div class='slide'>
+<p>In ganz seltenen Fällen muss man doch Browser Detection machen.
+Eine Gute Library dafür ist <a href="http://api.html5please.com/">HTML5 please</a>.
+Damit kann man eine Liste von Features angeben die erfüllt sein
+müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
+wird eine entsprechende Meldung angezeigt</p>
 
-
+<p><img  alt="HTML5 please Fehlermeldung" src="/images/html5please.png" /></p>
 
 <p>Diese Variante behebt das Problem mit nicht-funktionierenden
 Javascript-Browsern:</p>
@@ -364,9 +315,6 @@ Javascript-Browsern:</p>
 ** in der Javascript-Variante bleibt die URL immer gleich</li>
   <li>unobstrusive javascript: erfüllt</li>
 </ul>
-
-</div>
-<div class='slide'>
 
 <h3 id="version-5">Version 5</h3>
 
@@ -397,9 +345,6 @@ aber nur das letzte Argument wird derzeit benutzt. Es ist ein String mit der
 URL die geladen werden soll.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Version 4</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(event) {
@@ -408,11 +353,6 @@ function scrollToMe(event) {
   window.history.pushState( {}, &quot;Thema &quot; + link, link);
 }
 </pre></div>
-
-</div>
-<div class='slide'>
-
-
 
 <p>Mit dieser Variante haben wir  für die Javascript-Browser
 alle Funktionalität der einfachen HTML-Version wiederhergestellt.
@@ -424,7 +364,7 @@ Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
   <li>progressive enhancement - alle Browser erhalten die maximal mögliche Funktionalität</li>
   <li>unobstrusive javascript - kein Javascript-Code im HTML</li>
 </ul>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -974,6 +914,10 @@ Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

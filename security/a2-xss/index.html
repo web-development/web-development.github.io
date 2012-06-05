@@ -56,7 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>XSS-Schwachstellen treten dann auf, wenn die Anwendung von BenutzerIn X eingegebene Daten übernimmt und an den Browser anderer BenutzerInnen zurücksendet, ohne sie hinreichend zu validieren und zu escapen.</p>
@@ -69,9 +69,6 @@
 </blockquote>
 
 <p>Der schlimmste Fall wäre die Installation eines sogenannten XSS Proxies, der es der AngreiferIn ermöglicht die Browser von BesucherInnen ferzusteuern.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="cross-site">Cross Site?</h2>
 
@@ -86,9 +83,6 @@
 <p>Es ist also nicht die Site der Hackerin, die hier gefählich ist, sondern eine andere, scheinbar
 harmlose Seite. </p>
 
-</div>
-<div class='slide'>
-
 <h2 id="vermeidung-von-xss">Vermeidung von XSS</h2>
 
 <p>Cross Site Scripting kann komplett vermieden werden, wenn man niemals Input von BenutzerInnen auf der Webseite wiedergibt.
@@ -101,18 +95,12 @@ Das ist ein seltener, aber sehr sicherer Fall.</p>
   <li>Bei der Ausgabe immer ein geeignetes Escaping verwenden</li>
 </ul>
 
-</div>
-<div class='slide'>
-
 <h2 id="eingabe-validieren-in-php">Eingabe validieren in PHP</h2>
 
 <p>Achtung: der PHP Befehl <code>strip_tags</code> enfernt keine Attribute aus erlaubten Tags, es ist
 also ganz leicht möglich Javascript in einem <code>onmouseover</code> Attribut einzuschummeln.</p>
 
 <p>Statt dessen sollte man einen HTML-Filter wie <a href="http://htmlpurifier.org/">HTML Purifier</a> verwenden.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="richtig-escapen">Richtig Escapen</h2>
 
@@ -127,13 +115,10 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 
 <p>Es gibt aber noch viele andere Kontexte!</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="mehr">Mehr</h2>
 
 <p>Siehe <a href="https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet">XSS (Cross Site Scripting) Prevention Cheat Sheet</a></p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -683,6 +668,10 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

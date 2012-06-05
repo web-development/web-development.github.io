@@ -56,13 +56,10 @@
                           </div>
 			
 			
-			<div class='slide'><p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt. Diese action wird direkt im &lt;form&gt;-Tag angegeben.</p>
+			<p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt. Diese action wird direkt im &lt;form&gt;-Tag angegeben.</p>
 
 <pre><code>  &lt;form action="http://multimediatechnology.at/~fhs666/pizza/bestellung.php"&gt;
 </code></pre>
-
-</div>
-<div class='slide'>
 
 <h2 id="daten-an-e-mail-senden">Daten an E-Mail senden</h2>
 
@@ -76,9 +73,6 @@
 <p><img  alt="Abbildung 48: Formular per E-Mail oder über den Webserver senden" src="/images/image225.png" /></p>
 
 <p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über den Webserver senden!</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="daten-senden-mit-methode-get">Daten senden mit Methode GET</h2>
 
@@ -113,9 +107,6 @@
 
 <p>Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute, Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein % gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396). Diese Codierung nennt man URL-Encoding.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="url-als-programm-schnittstelle">URL als Programm-Schnittstelle</h2>
 
 <p>Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:</p>
@@ -137,9 +128,6 @@
 <p>Ein lehrreiches Beispiel aus der Frühzeit des Web: es gab einst Webshops, die den Preis der Waren als verstecktes Eingabefeld im Formular speicherten:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Airbus Bestell-Formular</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;form action=&quot;order.php&quot; method=&quot;GET&quot;&gt;
@@ -159,7 +147,7 @@
 <p>Wenn nun das Programm <code>order.php</code> einfach den Preis aus der URL übernimmt und auf die Rechnung schreibt, wird der Airbus recht günstig (für die KundIn) verkauft.</p>
 
 <p>Merke: Alle Eingaben die eine Web-Applikation erhält sind mit extremer Skepsis zu betrachten!</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -709,6 +697,10 @@
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

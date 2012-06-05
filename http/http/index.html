@@ -56,10 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. Im ersten Semester wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
-
-</div>
-<div class='slide'>
+			<p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. Im ersten Semester wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
 
 <h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
 <p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich. </p>
@@ -74,9 +71,6 @@
 </ol>
 
 <p>Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="aufbau-von-request-und-response">Aufbau von Request und Response</h2>
 <p>Jede Anfrage des Clients und jede Antwort des Servers besteht aus einer ersten Zeile mit besonderer Bedeutung, einem Header und einem Body. Header und Body funktionieren ähnlich wie bei einer E-Mail:</p>
@@ -156,18 +150,12 @@
 
 <p>MIME-Type des im Body gelieferten Dokuments</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="http-abhren">HTTP abhören</h2>
 <p>Wie können Sie HTTP beobachten?  Entweder mit einem allgemeinen Netzwerk-Sniffer wie Ethereal/Wireshark9 oder mit der Firefox-Extension Live HTTP Headers10. </p>
 
 <p><img  alt="Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)" src="/images/image334.png" /></p>
 
 <p>Die folgenden Anwendungsbeispiele wurden mit Live HTTP Headers mitgeschnitten.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
 <p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten. </p>
@@ -213,9 +201,6 @@
 
 <p><img  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" src="/images/image336.png" /></p>
 
-</div>
-<div class='slide'>
-
 <h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
 <p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
 
@@ -234,9 +219,6 @@
 </code></pre>
 
 <p>Die Antwort des Servers unterscheidet sich nicht zwischen GET und POST (außer Sie haben das in PHP absichtlich so programmiert).</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
 <p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht. </p>
@@ -279,9 +261,6 @@ Client an Server</p>
 </code></pre>
 
 <p>und so weiter.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
 <p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
@@ -345,9 +324,6 @@ Client an Server</p>
 
 <p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.  </p>
 
-</div>
-<div class='slide'>
-
 <h2 id="proxies">Proxies</h2>
 <p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
 
@@ -358,7 +334,7 @@ Client an Server</p>
 <p>GET http://www.sbg.ac.at/pr/ HTTP/1.1</p>
 
 <p>Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -908,6 +884,10 @@ Client an Server</p>
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

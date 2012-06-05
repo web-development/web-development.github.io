@@ -56,10 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
-
-</div>
-<div class='slide'>
+			<p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
 
 <h2 id="zugriffsrechte">Zugriffsrechte</h2>
 <p>Achtung: Auf einem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! Dies wird relevant, sobald ein PHP-Programm eine andere Datei  lesen oder (über-)schreiben soll.</p>
@@ -75,9 +72,6 @@
 <p>Das PHP-Programm läuft nicht unter Ihrem Account, sondern unter dem Account des Webservers. D.h. für das PHP-Programm gelten die Zugriffsrechte „für Alle“. </p>
 
 <p>Mit den PHP-Funktionen is_readable() und is_writable() können Sie testen, ob das Programm Lese- bzw. Schreibrechte auf eine bestimmte Datei hat.</p>
-
-</div>
-<div class='slide'>
 
 <h2 id="ordner-auflisten">Ordner auflisten</h2>
 <p>Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion <code>glob</code>. (Achtung: die Funktionen <code>opendir</code>, <code>readdir</code>, <code>closedir</code> gibt es auch, die sind aber komplizierter zu verwenden) </p>
@@ -116,9 +110,6 @@
          asort( $alle_bilder )
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="datei-lesen">Datei lesen</h2>
 <p>Um eine Datei von PHP aus zu benutzen, muss man sie mit der Funktion <code>fopen</code> öffnen. Man erhält einen „handle“ mit dem man sich im Weiteren auf diese Datei bezeihen kann. </p>
 
@@ -149,9 +140,6 @@
       fclose($handle);
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="datei-ber-schreiben">Datei (über-)schreiben</h2>
 <p>Beim Schreiben wird als zweites Argument von fopen der Buchstabe „w“ übergeben:</p>
 
@@ -175,12 +163,9 @@
 
 <p>Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Wenn Ihr PHP-Programm eine Datei löscht, dann ist diese Datei sofort und unwiederbringlich weg.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="gleichzeitiger-schreibender-zugriff">Gleichzeitiger schreibender Zugriff</h2>
 <p>Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir werden es aber erst mal ignorieren.</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -730,6 +715,10 @@
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

@@ -56,7 +56,7 @@
                           </div>
 			
 			
-			<div class='slide'><p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
+			<p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
 Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
 z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in Javascript oder .. oder .. nicht der Fall.</p>
 
@@ -64,18 +64,12 @@ z.B. in Java, C++, C#, PHP diese Objekte in Klassen organisiert sind, ist das in
 
 <p>In diesem Kapitel lernen wir diese Mechanismen kennen.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="objekt-mit-objekten">Objekt mit Objekten</h2>
 
 <p>In folgendem Beispiel hat der Konstruktor <code>Studiengang</code> drei Argumente. Als
 drittes Argument wird ein Objekt übergeben:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Objekt mit Objekt</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   var hochschule = {
@@ -94,19 +88,11 @@ drittes Argument wird ein Objekt übergeben:</p>
   mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
 </pre></div>
 
-</div>
-<div class='slide'>
-
-
-
 <p>Da Objekte in Javascript immer Pointer sind, wird in diesem Beispiel also von
 beiden Studiengangs-Objekten <code>mmtb</code> und <code>mmtb</code> auf das gleiche Objekt 
 verwiesen:</p>
 
 <p><img  alt="Abbildung: Objekt mit Objekt" src="/images/objekt-mit-objekt.png" /></p>
-
-</div>
-<div class='slide'>
 
 <h2 id="objekt-und-konstruktor">Objekt und Konstruktor</h2>
 
@@ -114,9 +100,6 @@ verwiesen:</p>
 keine verwendet wurde auf die Funktion <code>Object()</code>.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Fortsetzung: Konstruktor-Funktionen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 // folgende Ausdrücke sind true:
@@ -129,9 +112,6 @@ hochschule.constructor === Object;
 <p>Dieser Konstruktor wird auch verwendet, um die Fragen <code>instanceof</code> zu beantworten:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Fortsetzung: Operator instanceof</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 mmtb instanceof Studiengang;
@@ -143,9 +123,6 @@ mmtb instanceof Object;
 geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <code>Object</code> geführt wird.
 Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
 
-</div>
-<div class='slide'>
-
 <h2 id="objekt-und-konstruktor-und-prototyp">Objekt und Konstruktor und Prototyp</h2>
 
 <p>Wie im vorigen Kapitel kurz erläutert ist jede Funktion in Javascript auch ein Objekt.
@@ -155,9 +132,6 @@ in dem weitere Methoden und Attribute für alle Objekte die mit diesem Konstrukt
 gespeichert werden.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   // Konstruktor
@@ -194,17 +168,11 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
 
 <p><img  alt="Abbildung: Objekt mit Konstruktor" src="/images/objekt-mit-prototyp.png" /></p>
 
-</div>
-<div class='slide'>
-
 <h2 id="vererbung">Vererbung</h2>
 
 <p>Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Prototypen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   // ----- Pet ---------
@@ -244,9 +212,6 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
 das kann zu unerwarteten Effekten führen:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   // ----- Pet ---------
@@ -262,9 +227,6 @@ das kann zu unerwarteten Effekten führen:</p>
   d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
 </pre></div>
 
-</div>
-<div class='slide'>
-
 <h2 id="verteifung">Verteifung</h2>
 
 <p>Dies war nur ein erster Einstieg in die objektorientierte Programmierung mit Javascript.
@@ -273,7 +235,7 @@ Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p
 <ul>
   <li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
 </ul>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -823,6 +785,10 @@ Details zu einigen wichtigen Befehlen in der Javascript-Referenz bei Mozilla:</p
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       

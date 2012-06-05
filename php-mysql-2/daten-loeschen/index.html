@@ -56,12 +56,9 @@
                           </div>
 			
 			
-			<div class='slide'><p>Das Löschen könnte so einfach sein: Ein Programm mit namen person_delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
+			<p>Das Löschen könnte so einfach sein: Ein Programm mit namen person_delete.php, das als Parameter die id der Person erhält, die gelöscht werden soll:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
 <pre class="lang-php prettyprint linenums">
 $pid   = $_POST['pid'];
@@ -73,9 +70,6 @@ benützt nicht das HTML-Formular unserer Applikation, sondern schreibt selbst ei
 In dem Formular setzt sie den Parameter pid auf Wert <code>9 OR 1=1</code>.</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Html Code <small>Formular für die Attacke auf das Skript person_delete.php</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;form method=&quot;post&quot; action=&quot;person_delete.php&quot; &gt;
@@ -93,16 +87,10 @@ DELETE FROM person WHERE pid=9 OR 1=1
 
 <p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“.</p>
 
-</div>
-<div class='slide'>
-
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem Beispiel also: nur wenn es sich bei pid um eine ganze Zahl handelt, darf sie verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht verstehen müssen) überprüft:</p>
 
 <div class="example">
-</div>
-<div class='slide'>
-
 <h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
 <pre class="lang-php prettyprint linenums">
 if( ! preg_match( '/^\d+$/', $pid ) ) {
@@ -124,12 +112,9 @@ $sth-&gt;execute(array($pid));
 
 <p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine normales query zu wiederholen.</p>
 
-</div>
-<div class='slide'>
-
 <h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
 <p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
-</div>
+
 		
 			<div class="pagination">
   <ul>
@@ -679,6 +664,10 @@ $sth-&gt;execute(array($pid));
                     
                       
                       <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
                       
                     
                       
