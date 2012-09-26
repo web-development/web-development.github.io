@@ -61,7 +61,7 @@ Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie
 nachschlagen. </p>
 
 <p>HTML hat sich in den ca. 20 Jahren seines Bestehens weit entwickelt. Die Version 5, die wir 
-verwenden, ist ein relativ neuer Standard, der aber in den aktuellen Versionen der gägnigen 
+verwenden, ist ein relativ neuer Standard, der aber in den aktuellen Versionen der gängigen 
 Browsern bereits umgesetzt ist. </p>
 
 <p>In den letzten 10 Jahren wurde auch XHTML neben HTML verwendet. Das X von XHTML 
@@ -70,18 +70,43 @@ Endung .htm oder .html (nur sehr selten oder .xhtm, .xhtml). Im Unterschied zu H
 XHTML strenger in der Schreibweise. Am Web finden Sie sowohl Tutorials zu HTML als 
 auch zu XHTML – lassen Sie sich davon nicht verwirren!</p>
 
+<h2 id="arbeitsablauf">Arbeitsablauf</h2>
+<p>Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:</p>
+
+<ol>
+  <li>Code im Editor eintippen</li>
+  <li>Abspeichern</li>
+  <li>Zum Browser wechseln</li>
+  <li>Neu Laden</li>
+  <li>zurück zu 1.</li>
+</ol>
+
+<p>Es gibt verschiedene Online-Tools um HTMl auszuprobieren:</p>
+
+<ul>
+  <li><a href="http://toolness.github.com/slowparse/demo/">Slowparse</a> erklärt die Struktur von HTML, hilft Fehler zu finden</li>
+</ul>
+
+<h2 id="zeichensatz">Zeichensatz</h2>
+
 <p>HTML-Dateien bestehen aus reinem Text, in unserem Falle entweder aus Text im Format 
-ISO 8859-1 (Latin-1)  oder im Format utf-8. Abbildung 8 zeigt wie dieses Format im 
-Windows Notpad / Editor gesetzt wird: ISO 8859-1 wird hier als ANSI bezeichnet. </p>
+ISO 8859-1 (Latin-1)  oder im Format utf-8. Mit Latin-1 ist man auf das
+lateineische Alphabet mit westeuropäischen Sonderzeichen beschränkt - man kann
+im selben Dokument nicht auch grieschische, hebräische, arabische, japanische
+Zeichen darstellen.  Mit utf-8 hat man den gesamten Zeichensatz der Menschheit
+zur Verfügung. Mein Empfehlung lautet: immer utf-8 Verwenden.</p>
 
-<p><img  alt="Abbildung 8: Auswahl des Charactersets „Unicode“  " src="/images/image037.jpg" /></p>
+<p><img src="/images/image037.jpg" alt="Abbildung 8: Auswahl des Charactersets „Unicode“  " /></p>
 
-<p>beim Speichern mit dem Windows Notepad / Editor und dem Mac TextWrangler</p>
+<p>Abbildung 8 zeigt wie diese Charactersets in Windows- und Mac-Programmen
+dargestellt werden. Links im Bild, in Notepad, wird ISO 8859-1 als ANIS
+bezeichnet. Rechts im Bild, im Mac-Programm Textwrangler, ist die Bezeichnung
+klarer. </p>
 
 <h2 id="sonderzeichen">Sonderzeichen</h2>
 
 <p>Sonderzeichen in HTML nennt man „character entities  <!-- XE "character entities" -->  “. Sie haben 
-die From &amp;entityname; </p>
+die From <code>&amp;entityname;</code></p>
 
 <p>Folgende Character Entities müssen Sie verwenden:</p>
 
@@ -140,102 +165,119 @@ verwenden:</p>
 
 <ol>
   <li>Tags sind zwischen spitzen Klammern eingeschlossen. </li>
-  <li>Zu (fast) jedem “Anfangs-Tag” gibt es einen “End-Tag”, der sich nur durch den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. &lt;p&gt;hier der Absatz&lt;/p&gt;. </li>
-  <li>Nur in XHTML müssen “alleinstehende” Tags mit einem Schrägstrich am Ende geschrieben werden:  <br /> In HTML5 schreibt man diesen Tag (wieder) als  <br /> </li>
+  <li>Zu (fast) jedem “Anfangs-Tag” gibt es einen “End-Tag”, der sich nur durch
+den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. <code>&lt;p&gt;</code>hier der Absatz<code>&lt;/p&gt;</code>. </li>
+  <li>Nur in XHTML müssen “alleinstehende” Tags mit einem Schrägstrich am Ende
+geschrieben werden:  <code>&lt;br /&gt;</code> In HTML5 schreibt man diesen Tag (wieder) als <code>&lt;br&gt;</code></li>
   <li>In XHTML werden Tags immer klein geschrieben, bei HTML ist  die Groß- oder Kleinschreibung egal. </li>
 </ol>
 
-<p>1.4.3	Whitespace 
-Sogenannter “whitespace  <!-- XE "whitespace" -->  “ - das sind mehrere Leerzeichen, 
+<h2 id="whitespace">Whitespace</h2>
+
+<p>Sogenannter “whitespace  <!-- XE "whitespace" -->  “ - das sind mehrere Leerzeichen, 
 Tabulatoren und Zeilenumbrüche hintereinander – wird vom Browser völlig ignoriert. Ob Sie 
 also in Ihrer HTML-Datei ein Leerzeichen oder 7 Leerzeilen einfügen macht keinen 
 Unterschied. (gar kein Leerzeichen oder ein Leerzeichen macht schon einen Unterschied) 
 Die folgenden beiden Dokumente sind also äquivalent:</p>
 
-<div class="example">
-<h4 class="caption">Html Code <small>Nur ein zeilenumbruch; Darstellung gleich wie im nächsten Beispiel</small></h4>
-<pre class="lang-html prettyprint linenums">
+<div class="example twopane">
+<h4 class="caption">Html Code <small>Zeilenumbruch im Code ist egal, Darstellung gleich</small></h4>
+<pre class="lang-html prettyprint linenums left">
     &lt;p&gt;Halli 
     Hallo&lt;/p&gt;
-</pre></div>
 
-<div class="example">
-<h4 class="caption">Html Code <small>Mehrere zeilenumbrüche; Darstellung gleich wie im vorhgehenden Beispiel</small></h4>
-<pre class="lang-html prettyprint linenums">
+
+</pre><pre class="lang-html prettyprint linenums right">
     &lt;p&gt;
     Halli
     Hallo
     &lt;/p&gt;
-</pre></div>
+</pre><div class="clearfix"></div></div>
 
-<p>Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag &lt;br  <!-- XE "br" --> <br />
-&gt; verwenden um einen Zeilenumbruch  <!-- XE "Zeilenumbruch" -->   auf der Webseite zu erzeugen 
+<h2 id="zeilenumbruch">Zeilenumbruch</h2>
+
+<p>Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag 
+ <code>&lt;br&gt;</code> verwenden um einen Zeilenumbruch  auf der Webseite zu erzeugen 
 – dies ist aber nur selten sinnvoll, da der Browser einen automatischen Zeilenumbruch 
-durchführt. </p>
+durchführt, um den Text im vorhandenen Platz optimal darzustellen.</p>
 
 <h2 id="attribute">Attribute</h2>
 
-<p>Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag &lt;img  <!-- XE "img" -->  &gt; der ein 
-Bild  <!-- XE "Bild" -->   in die Seite einfügt (Englisch: Image). Die wichtigsten Attribute von <img /> 
-sind src  <!-- XE "src" -->   (von Source = Quelle) und alt  <!-- XE "alt" -->   (Alternative Darstellung). </p>
+<p>Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag <code>&lt;img&gt;</code> der ein 
+Bild  in die Seite einfügt (Englisch: Image). Die wichtigsten Attribute von
+<code>&lt;img&gt;</code> sind <code>src</code>   (von Source = Quelle) und <code>alt</code>     (Alternative
+Darstellung, Ersatztext). </p>
 
-<pre><code>&lt;img src="neu.gif" alt="Das ist neu!"&gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img src=&quot;neu.gif&quot; alt=&quot;Das ist neu!&quot;&gt;
+</pre></div>
 
 <p>Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben:</p>
 
-<pre><code>&lt;img alt="Das ist neu!" src="neu.gif"&gt;
-</code></pre>
+<div class="example twopane">
+<pre class="lang-html prettyprint linenums left">
+&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.gif&quot;&gt;
 
-<p>oder</p>
 
-<pre><code>&lt;img                   alt="Das ist Neu!"  
-src="neu.gif"    
-bli="bla, blo" 
-&gt;
-</code></pre>
+</pre><pre class="lang-html prettyprint linenums right">
+&lt;img  alt=&quot;Das ist Neu!&quot;  
+    bli=&quot;bla, blo&quot; 
+    src=&quot;neu.gif&quot;    
+    &gt;
+</pre><div class="clearfix"></div></div>
+
+<h2 id="unbekannte-tags-und-attribute">Unbekannte Tags und Attribute</h2>
 
 <p>Das Attribut bli, welches nicht zu HTML gehört, also kein Browser kennt, wird wie andere 
-unbekannte Attribute einfach ignoriert. 
-Der Wert eines Attributes muß in Anführungszeichen geschrieben werden. (in HTML gab es 
-eine Ausnahme für Werte die keine Leerzeichen enthalten (wie z. B. Zahlen), diese konnten 
-auch ohne Anführungszeichen geschrieben werden, bei XHTML ist das verboten)</p>
+unbekannte Attribute einfach ignoriert. </p>
 
-<pre><code>&lt;img alt="Das ist Neu!" src="neu.gif" 
-width=50 height=15&gt;
-</code></pre>
+<p>Der Wert eines Attributes muß in XHTML immer in Anführungszeichen geschrieben
+werden, in HTML kann man die Anführungszeichen weglasse, dann endet der Wert
+beim nächsten Leerzeichen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img alt=&quot;Das ist Neu!&quot; src=&quot;neu.gif&quot; 
+     width=50 height=15&gt;
+</pre></div>
 
 <p>ACHTUNG: ein häufiger Fehler ist es, das zweite Anführungszeichen zu vergessen:</p>
 
-<pre><code>&lt;img alt="Das ist neu!" src="neu.gif &gt;
-</code></pre>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.gif &gt;
+</pre></div>
 
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
 <p>Jeder Browser (egal ob Chrome, Firefox, Safari, Microsoft Internet Explorer, Opera,…) kann 
 jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Dreamweaver, Frontpage, 
-GoLive,… ) kann jedes HTML-Dokument bearbeitet werden. Neue Tags, die z. B. ein 
-Browser nicht erkennt, sind zu ignorieren – es gibt keine Fehlermeldungen!</p>
+GoLive,… ) kann jedes HTML-Dokument bearbeitet werden. </p>
+
+<p>So soll das Web funktionieren.   (Die schweren Fälle, wo es manchmal doch nicht
+funktioniert, verschieben wir auf etwas später.)</p>
+
+<p>Neue Tags, die z. B. ein 
+Browser nicht erkennt, sind zu ignorieren – es gibt 
+<strong>keine Fehlermeldungen</strong>!</p>
 
 <p>Wenn das W3C in HTML Version 21 beispielsweise den neuen Tag &lt;jump&gt; (hüpfenden Text) 
 einführen würde, können Sie diesen Tag auf Ihrer Webseite verwenden. Der Text würde 
 jedoch nur in den neuesten Versionen der Browser (die schon die Version 21 kennen) 
 hüpfend dargestellt. In älteren Browsern wird der Tag &lt;jump&gt; ignoriert:</p>
 
-<div class="example">
-<h4 class="caption">Html Code <small>Ein Browser der den jump-Tag schon kennt stellt ihn entsprechend dar</small></h4>
-<pre class="lang-html prettyprint linenums">
+<div class="example twopane">
+<h4 class="caption">Html Code <small>Neuer Tag in neuem Browser, Interpretation in altem Browser</small></h4>
+<pre class="lang-html prettyprint linenums left">
     &lt;p&gt;Dies ist meine erste 
     &lt;jump&gt;supercoole&lt;/jump&gt; 
     Webseite!!!! &lt;/p&gt;
-</pre></div>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Ein älterer Browser ignoriert den jump-Tag; er liest also</small></h4>
-<pre class="lang-html prettyprint linenums">
-    &lt;p&gt;Dies ist meine erste supercoole 
+</pre><pre class="lang-html prettyprint linenums right">
+    &lt;p&gt;Dies ist meine erste 
+    supercoole 
     Webseite!!!!&lt;/p&gt;
-</pre></div>
+</pre><div class="clearfix"></div></div>
 
 <p>Bevor Sie also einen neuen Tag einsetzen, sollten Sie sich darüber klar sein, welche 
 Versionen der Browser diesen Tag darstellen und wie viel Prozent Ihres Zielpublikums schon 
@@ -277,11 +319,11 @@ nie geben. </p>
 Blockbildende Tags beanspruchen immer einen rechteckigen Bereich bei der Ausgabe, nicht 
 blockbildende Tags tun das nicht.</p>
 
-<p><img  alt="Abbildung 9: Darstellung von blockbildenden (grau hinterlegten) und nicht-blockbildenden (rot hinterlegten) Tags" src="/images/image042.png" /></p>
+<p><img src="/images/image042.png" alt="Abbildung 9: Darstellung von blockbildenden (grau hinterlegten) und nicht-blockbildenden (rot hinterlegten) Tags" /></p>
 
 <p>Der em-Tag ist nicht-blockbildend und wird im zweiten Absatz auf zwei Zeilen umgebrochen. </p>
 
-<p>Blockbildende Tags für Text</p>
+<h3 id="blockbildende-tags-fr-text">Blockbildende Tags für Text</h3>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Normaler Fließ-Text</small></h4>
@@ -292,19 +334,34 @@ blockbildende Tags tun das nicht.</p>
     text text. &lt;/p&gt;
 </pre></div>
 
-<p>&lt;htmlcode caption=”Zentrierter Text
-    &lt;p style="text-align:center;"&gt;Text 
+<p>In folgendem Beispiel wird schon ein bisschen CSS verwendet, hier
+mit Hilfe des Attributes <code>style</code>. CSS ist für die Darstellung von
+HTML zuständig, hier verwenden wir es um den Text im Absatz zu zentrieren.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Zentrierter Text</small></h4>
+<pre class="lang-html prettyprint linenums">
+    &lt;p style=&quot;text-align:center;&quot;&gt;Text 
     text text, text text. Text text 
     text, text text. Text text text, 
     text text. Text und text text, text 
     text. &lt;/p&gt;
-&lt;/htmlcode&gt;</p>
+</pre></div>
 
-<p>&lt;htmlcode caption=”Überschriften”
+<p>Überschriften werden für die Strukturierung des Textes verwendet,
+mehr als 3 Ebenen braucht man selten:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Überschriften</small></h4>
+<pre class="lang-html prettyprint linenums">
     &lt;h1&gt;Überschriftstext&lt;/h1&gt;
     &lt;h2&gt;Überschriftstext&lt;/h2&gt;
     &lt;h3&gt;Überschriftstext&lt;/h3&gt;
-&lt;/htmlcode&gt;</p>
+</pre></div>
+
+<p>Neu in HTML5 ist der <code>nav</code> Tag zur Auszeichnung von
+Navigations-Menüs. Achtung: dieser Tag hat erst mal
+keine sichtbare Wirkung. </p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Bereich mit Navigations-Menü, Links</small></h4>
@@ -315,6 +372,9 @@ blockbildende Tags tun das nicht.</p>
     &lt;/nav&gt;
 </pre></div>
 
+<p>Auch die folgenden drei Tags haben keine sichtbare Wirkung,
+sondern dienen erst mal nur zu Strukturierung des Dokuments.</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Weitere Tags zur Strukturierung der Seite</small></h4>
 <pre class="lang-html prettyprint linenums">
@@ -323,6 +383,8 @@ blockbildende Tags tun das nicht.</p>
     &lt;aside&gt; .... &lt;/aside&gt;
 </pre></div>
 
+<p>Für umfangreiche Zitate gibt es einen blockbildenden Tag:</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Block-Zitat (eingerückt)</small></h4>
 <pre class="lang-html prettyprint linenums">
@@ -330,7 +392,7 @@ blockbildende Tags tun das nicht.</p>
     schwimmen auf dem See&lt;/blockquote&gt;
 </pre></div>
 
-<p>Nicht-Blockbildende Tags für Text </p>
+<h3 id="nicht-blockbildende-tags-fr-text">Nicht-Blockbildende Tags für Text</h3>
 
 <p>Diese müssen Sie innerhalb eines Blocks verwenden. Diese Formate werden unterschieden 
 in logische und physische Elemente. </p>
@@ -358,43 +420,26 @@ in logische und physische Elemente. </p>
 
 <p>Physische Tags geben die genaue Darstellung vor. Das sind eigentlich „altmodische 
 Tags“,  besonders der font-Tag wurde schon um das Jahr 2000 herum durch Stylesheets 
-vollständig ersetzt, und sollte möglichst nicht mehr verwendet werden. (Sie werden ihn aber 
-in „alten“ Dokumenten noch finden):</p>
+vollständig ersetzt, und sollte möglichst nicht mehr verwendet werden. Sie werden 
+diese Tag in „alten“ Dokumenten aber noch finden:</p>
 
-<table class="table table-condensed table-bordered" style="width:auto">
-  <thead>
-    <tr>
-      <th style="text-align: left">Gewünschte Darstellung</th>
-      <th style="text-align: left">Code</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Fettgedruckter Text</td>
-      <td style="text-align: left">Eine <b>fette</b> Sache</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Kursiver Text</td>
-      <td style="text-align: left">und eine <i>schräge</i> Sache</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Text in einer bestimmten Schriftart</td>
-      <td style="text-align: left"><font face="Arial">Text</font></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Text in einer bestimmen Farbe</td>
-      <td style="text-align: left"><font color="red">rot</font></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Text in einer bestimmten Schriftart, moderne Schreibweise</td>
-      <td style="text-align: left"><span style="font-family:Arial;">Text</span></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Text in einer bestimmen Farbe</td>
-      <td style="text-align: left"><span style="color:red;">rot</span></td>
-    </tr>
-  </tbody>
-</table>
+<div class="example">
+<h4 class="caption">Html Code <small>veraltete Tags zum formatieren von Text</small></h4>
+<pre class="lang-html prettyprint linenums">
+Eine &lt;b&gt;fette&lt;/b&gt; Sache                      (VERALTET!)
+Eine &lt;i&gt;schräge&lt;/i&gt; Sache                    (VERALTET!)
+&lt;font face=&quot;Arial&quot;&gt;Text&lt;/font&gt;               (VERALTET!)
+&lt;font color=&quot;red&quot;&gt;rot&lt;/font&gt;                 (VERALTET!)
+</pre></div>
+
+<p>Heute verwendet man CSS im <code>style</code>-Attribut statt dessen:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>veraltete Tags zum formatieren von Text</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;span style=&quot;font-family:Arial;&quot;&gt;Text&lt;/span&gt; (aktuelle Schreibweise)
+&lt;span style=&quot;color:red;&quot;&gt;rot&lt;/span&gt;          (aktuelle Schreibweise)
+</pre></div>
 
 <h2 id="bilder">Bilder</h2>
 
@@ -402,43 +447,25 @@ in „alten“ Dokumenten noch finden):</p>
 auf die Bild  <!-- XE "Bild" -->  datei. Als Attribut src  <!-- XE "src" -->   im img-Tag können Sie eine 
 absolute oder relative URL angeben:</p>
 
-<table class="table table-condensed table-bordered" style="width:auto">
-  <thead>
-    <tr>
-      <th style="text-align: left">Gewünschte Darstellung</th>
-      <th style="text-align: left">Code</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Bild (URL absolut)</td>
-      <td style="text-align: left"><img src="http://www.google.at/intl/de_at/images/logo.gif" alt="Google" /></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Bild (URL relativ)</td>
-      <td style="text-align: left"><img src="neu.gif" /></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Bild mit Ersatztext (enthält wichtige Information)</td>
-      <td style="text-align: left"><img src="10prozent.gif" alt="jetzt 10% verbilligt!" /></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Bild ohne Alternativtext (nur Dekoration)</td>
-      <td style="text-align: left"><img src="zierleiste.gif" alt="" /></td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Bild nach links (Text fließt rechts vorbei)</td>
-      <td style="text-align: left"><img src="neu.gif" style="float:left;" alt="neu" /></td>
-    </tr>
-  </tbody>
-</table>
+<div class="example">
+<h4 class="caption">Html Code <small>Bilder</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;img src=&quot;http://www.google.at/intl/de_at/images/logo.gif&quot; alt=&quot;Google&quot;&gt;  
+&lt;img src=&quot;neu.gif&quot;&gt; 
+&lt;img src=&quot;10prozent.gif&quot; alt=&quot;jetzt 10% verbilligt!&quot;&gt; 
+    (mit Ersatztext, weil das Bild wichtige Information enthält)
+&lt;img src=&quot;zierleiste.gif&quot; alt=&quot;&quot;&gt; 
+    (ohne Ersatztext, weil das Bild zur zur Dekoration dient)
+&lt;img src=&quot;neu.gif&quot; style=&quot;float:left;&quot; alt=&quot;neu&quot;&gt; 
+    (Bild nach links, Text fließt rechts vorbei)
+</pre></div>
 
 <p>Für Blinde, Suchmaschinen, Browser die keine Bilder darstellen können, u.s.w. gibt man für 
 jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem AddOn 
 „Web Developer“ kann man testen wie die Seite mit ALT statt Bildern aussieht. 
 Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberichts.</p>
 
-<p><img  alt="Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)" src="/images/image044.png" /></p>
+<p><img src="/images/wetter-alt.png" alt="Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)" /></p>
 
 <p>Als Datenformate für <img />-Bilder werden drei Pixel-Formate von vielen Browsern 
 unterstützt, erst seit kurzem auch das Vektor-Format svg:</p>
@@ -465,23 +492,28 @@ Dateigröße möglichst gering ist. </p>
 canvas-Tag und Javascript kann man Bilder zeichnen. </p>
 
 <h2 id="links">Links</h2>
-<p>Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  skönnen Sie eine absolute oder relative 
-URL angeben:
+<p>Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  können Sie eine absolute oder relative 
+URL angeben:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Links</small></h4>
+<pre class="lang-html prettyprint linenums">
 Link zu Webseite (absolute URL)
-    <a href="http://cnn.com">zu CNN</a>
-Link zu Webseite im selben Ordner (relative URL)  <!-- XE "a" --><br />
-    <a href="seite2.htm">mehr</a>
+    &lt;a href=&quot;http://cnn.com&quot;&gt;zu CNN&lt;/a&gt;
+Link zu Webseite im selben Ordner (relative URL)  
+    &lt;a href=&quot;seite2.htm&quot;&gt;mehr&lt;/a&gt;
 Link zu E-Mail Adresse
-    <a href="mailto:aa@bb.cc">Mail</a>
+    &lt;a href=&quot;mailto:aa@bb.cc&quot;&gt;Mail&lt;/a&gt;
 Bild als Link
-    <a href="seite2.htm">&lt;img src=”mehr.gif”alt=”zur Seite 2”&gt;</a></p>
+    &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.gif&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
+</pre></div>
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
 <p>Eine HTML Seite hat ein Grundgerüst.  <!-- XE "Doctype" -->    <!-- XE "head" -->    <!-- XE "body" -->   aus 
-DOCTYPE, html, head und body. Der erste Tag ist der DOCTYPE, er gibt die Version von 
-HTML an, die verwendet wird. Es folgt der HTML-Tag. Innerhalb des HTML-Tags gibt es erst 
-einen HEAD und dann einen BODY-Tag – nicht mehr und nicht weniger.
+<code>DOCTYPE</code>, <code>html</code>, <code>head</code> und <code>body</code>. Der erste Tag ist der <code>DOCTYPE</code>, er gibt die Version von 
+HTML an, die verwendet wird. Es folgt der <code>html</code>-Tag. Innerhalb des <code>html</code>-Tags gibt es erst 
+einen <code>head</code> und dann einen <code>body</code>-Tag – nicht mehr und nicht weniger.
 Hier am Beispiel von HTML5: </p>
 
 <div class="example">
@@ -542,7 +574,7 @@ Liste. </p>
 <h2 id="tabellen">Tabellen</h2>
 
 <p>Um eine Tabelle  <!-- XE "Tabelle" -->    <!-- XE "table" -->    <!-- XE "tr" -->    <!-- XE "td" -->    <!-- XE "th" -->   zu erzeugen 
-müssen Sie die Tags &lt;table&gt;, &lt;tr&gt; (Table Row = Tabellenhzeile) und &lt;td&gt; (Table Data) 
+müssen Sie die Tags ´table´, ´tr´ (Table Row = Tabellenhzeile) und ´td´ (Table Data) 
 richtig ineinander verschachteln</p>
 
 <pre><code>&lt;table style="border-collapse:collapse;"&gt; 
@@ -560,15 +592,18 @@ richtig ineinander verschachteln</p>
 </code></pre>
 
 <p>Der Rahmen der Tabelle ist normalerweise unsichtbar, mit einer Zeile CSS wird er hier auf 
-sichtbar geschalten. Achtung! Diese Zeile muss innerhalb des &lt;head&gt;-Tags des Dokuments 
-gespeichert sein, nicht innerhalb des &lt;body&gt; !</p>
+sichtbar geschalten. </p>
 
 <pre><code>&lt;style&gt;td {  border:2px #ddd solid; padding: 5px; }&lt;/style&gt;
 </code></pre>
 
 <p>HTML-Tabellen wurden früher in Webseiten für das Layout  <!-- XE "Layout:mit Tabellen" -->   der 
-Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu finden. Moderne 
-Webseiten werden mit CSS-Layouts gestaltet.
+Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu
+finden.  Dazu noch ein Literaturhinweis:</p>
+
+<p><a href="http://shouldiusetablesforlayout.com/">http://shouldiusetablesforlayout.com/</a></p>
+
+<p>Moderne Webseiten werden mit CSS-Layouts gestaltet.
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 
 		

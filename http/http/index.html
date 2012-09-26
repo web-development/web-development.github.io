@@ -109,7 +109,8 @@
   &lt;/head&gt;&lt;body&gt;nix&lt;/body&gt;&lt;/html&gt; Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.
 </code></pre>
 
-<p>Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).</p>
+<p>Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).
+Siehe http://httpstatus.es/</p>
 
 <p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet. </p>
 
@@ -153,7 +154,7 @@
 <h2 id="http-abhren">HTTP abhören</h2>
 <p>Wie können Sie HTTP beobachten?  Entweder mit einem allgemeinen Netzwerk-Sniffer wie Ethereal/Wireshark9 oder mit der Firefox-Extension Live HTTP Headers10. </p>
 
-<p><img  alt="Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)" src="/images/image334.png" /></p>
+<p><img src="/images/image334.png" alt="Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)" /></p>
 
 <p>Die folgenden Anwendungsbeispiele wurden mit Live HTTP Headers mitgeschnitten.</p>
 
@@ -195,11 +196,11 @@
 
 <p>Accept-Language würde dem Aushandeln der Sprache dienen. Dazu müssten die UserInnen aber im Browser die Sprach-Präferenz konfigurieren:</p>
 
-<p><img  alt="Abbildung 132: Festlegen der Sprach-Präferenz im Browser Firefox" src="/images/image335.png" /></p>
+<p><img src="/images/image335.png" alt="Abbildung 132: Festlegen der Sprach-Präferenz im Browser Firefox" /></p>
 
 <p>Da aber kaum jemand diese Konfiguration vornimmt wird die Sprach-Aushandlung kaum verwendet. Einziges mir bekanntes Beispiel einer Webseite die unter der gleichen URL in verschiedenen Sprachen erhältlich ist ist die Homepage von Debian:</p>
 
-<p><img  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" src="/images/image336.png" /></p>
+<p><img src="/images/image336.png" alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" /></p>
 
 <h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
 <p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
@@ -265,7 +266,7 @@ Client an Server</p>
 <h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
 <p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
 
-<p><img  alt="Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern" src="/images/image337.png" /></p>
+<p><img src="/images/image337.png" alt="Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern" /></p>
 
 <p>Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable $_SERVER[‘PHP_AUTH_USER’].</p>
 
@@ -327,7 +328,7 @@ Client an Server</p>
 <h2 id="proxies">Proxies</h2>
 <p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
 
-<p><img  alt="Abbildung 135: Proxy-Konfiguration in Firefox: Extras - Einstellungen - Erweitert - Netzwerk – Verbindung" src="/images/image343.png" /></p>
+<p><img src="/images/image343.png" alt="Abbildung 135: Proxy-Konfiguration in Firefox: Extras - Einstellungen - Erweitert - Netzwerk – Verbindung" /></p>
 
 <p>Ist ein Proxy konfiguriert dann baut der Browser die HTTP-Verbindung nicht direkt zum Zielrechner auf, sondern zum Proxy, und verändert die Form der ersten Zeile der HTTP-Anfrage: die vollständige URL wird angegebe:</p>
 

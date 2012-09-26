@@ -77,15 +77,15 @@
 
 <p>Besonders wichtig ist diese Vorsichtsmaßnahme wenn Sie in einem W-LAN arbeiten: im W-LAN können alle anderen Computer, die das W-LAN auch benutzen, Ihren Datenverkehr „mithören“. In einer Hochschule mit Informatik-Studiengang sind das Viele!  „Am Kabel“ ist die Abhörgefahr etwas geringer. </p>
 
-<p><img  alt="Abbildung 104: Wordpress Backend ohne https" src="/images/wordpress-insecure.png" /></p>
+<p><img src="/images/wordpress-insecure.png" alt="Abbildung 104: Wordpress Backend ohne https" /></p>
 
 <p>Hier fragt Wordpress nach dem ersten Usernamen + Passwort (für den Upload auf den Server) weil es nur damit die Automatische Installation des Themes machen kann.  Die Frage nach FTP oder SFTP in der Seite ist irreführend: Der lange Weg von meinem Laptop bis zum Server (der im ersten Schritt übers W-LAN geht) ist unverschlüsselt. Das Verschlüsselte SFTP wird nur am Server selbst verwendet – dort wo niemand etwas abhören könnte:</p>
 
-<p><img  alt="Abbildung 105: Verschlüsselte und Unverschlüsselte Verbindungen beim Automatischen Installieren von Themes" src="/images/wordpress-security-illu.png" /></p>
+<p><img src="/images/wordpress-security-illu.png" alt="Abbildung 105: Verschlüsselte und Unverschlüsselte Verbindungen beim Automatischen Installieren von Themes" /></p>
 
 <p>Die Alternative zur automatische Installation ist der Upload der Dateien per SFTP. Dabei wird das Passwort verschlüsselt übertragen.</p>
 
-<p><img  alt="Abbildung 106: Verschlüsselte Verbindungen beim Upload von Themes mit SFTP" src="/images/wordpress-security-illu-2.png" /></p>
+<p><img src="/images/wordpress-security-illu-2.png" alt="Abbildung 106: Verschlüsselte Verbindungen beim Upload von Themes mit SFTP" /></p>
 
 		
 			<div class="pagination">

@@ -65,7 +65,7 @@
 <h2 id="cookies">Cookies</h2>
 <p>Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten, die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver wieder mitsendet. Der Browser sendet nie ein Cookie an einen anderen Webserver als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
-<p><img  alt="Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet" src="/images/image363.png" /></p>
+<p><img src="/images/image363.png" alt="Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet" /></p>
 
 <p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
 
@@ -118,11 +118,11 @@ alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
 Für unsere Applikation werden wir das verwenden, um den Usernamen des angemeldeten Users zu speichern. session_start() wird in functions.php ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</li>
 </ul>
 
-<p><img  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" src="/images/image364.png" /></p>
+<p><img src="/images/image364.png" alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" /></p>
 
 <p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
-<p><img  alt="Abbildung 147: Login-Formular der Applikation" src="/images/image365.png" /></p>
+<p><img src="/images/image365.png" alt="Abbildung 147: Login-Formular der Applikation" /></p>
 
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl header(“Location: index.php”) wird der Browser dann automatisch an die Hauptseite weitergeleitet. </p>
 
@@ -224,7 +224,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
-<p><img  alt="Abbildung 148: Login mit einer Weiterleitung" src="/images/image366.png" /></p>
+<p><img src="/images/image366.png" alt="Abbildung 148: Login mit einer Weiterleitung" /></p>
 
 		
 			<div class="pagination">
