@@ -62,83 +62,21 @@
 
 <p>Wenn der Browser Javascript, Flash, CSS unterstützt, dann soll die Website besonders schön, interaktiv, praktisch sein. Wenn der Browser etwas nicht unterstützt, dann soll die Website immer noch lesbar und benutzbar bleiben. </p>
 
-<p>Schlechtes Beispiel: Bild als Überschrift</p>
+<p>Da CSS von allen “klassischen” Browsern am Desktop und den Browsern am
+Smartphone gut unterstützt wird sind solche Überlegungen immer mehr in 
+den Hintergrund getreten.  Bei der Verwendung von CSS3 Features ist das Thema
+aber ganz aktuell:</p>
 
-<p>Als Überschrift einer Seite soll nicht blos ein Text sondern eine komplexe Grafik angezeigt werden:</p>
-
-<pre><code>&lt;img src="mmtlogo-400.png"&gt;
-</code></pre>
-
-<p>Das sieht zwar wie eine Überschrift aus – wenn das Bild geladen wird – die Information ist aber für eine Suchmaschine oder ein Braille-Ausgabegerät nicht lesbar. </p>
-
-<p>Besser wäre:</p>
-
-<pre><code>&lt;h1&gt;&lt;img src="mmtlogo-400.png" alt="MultiMediaTechnology"&gt;&lt;/h1&gt;
-</code></pre>
-
-<p>In manchen Situation hat man aber nur folgenden Code im HTML, und will das Bild nur über CSS darstellen:</p>
-
-<pre><code>&lt;h1&gt;MultiMediaTechnology&lt;/h1&gt;
-</code></pre>
-
-<p>Ein Beispiel für so eine Situation ist z.B: ein Wordpress Theme. In der H1 wird er Titel des Blogs angezeit, die Gestaltung der Darstellung erfolgt nur mit CSS.</p>
-
-<p>Gutes Beispiel: Image Replacement</p>
-
-<p>Der Text wird normal im HTML-Code eingegeben. Es wird aber auch ein Bild in der richtigen Schriftart erstellt.  Bei CSS-fähigen Browsern wird der Text versteckt und das Bild angezeigt. Browser ohne CSS und Suchmaschinen verwenden einfach den Text:</p>
-
-<pre><code>&lt;style&gt;
-h1#bildStattText {
-
-   /* schiebt den "echten text" extrem weit nach links */
-   text-indent:-10000px;
-   overflow:hidden;
-   background: url(mmtlogo-400.png);
-   /* hoehe und breite der grafik angeben! */
-   height:140px;
-   width:400px;
-}
-&lt;/style&gt;
-
-&lt;h1 id="bildStattText"&gt;MultiMediaTechnology&lt;/h1&gt;
-</code></pre>
-
-<p>Das Bild kann ausgetauscht werden indem man das Stylesheet ändert, ohne Eingriff in den HTML-Code.</p>
-
-<p>Schlechtes Beispiel: Navigationsmenü mit Bildern</p>
-
-<p>Ein Navigationsmenü wird mit Tabellen und Bildern aufgebaut:</p>
-
-<pre><code>&lt;table cellspacing="1"&gt;
-   &lt;tr&gt;
-      &lt;td&gt;&lt;a href="home.html"&gt;&lt;img src="1.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href="news.html"&gt;&lt;img src="2.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href="portfotdo.html"&gt;&lt;img src="3.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href="contact.html"&gt;&lt;img src="4.gif" /&gt;&lt;/a&gt;&lt;/td&gt;
-   &lt;/tr&gt;
-&lt;/table&gt;
-</code></pre>
-
-<p>Wieder gilt: die Information ist für eine Suchmaschine oder ein Braille Ausgabegerät nicht lesbar. Für diese „Kunden“ wären Links mit normalen Texten besser. </p>
-
-<pre><code> &lt;ul&gt;
-    &lt;li&gt;&lt;a href="home.html"&gt;home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="news.html"&gt;news&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="portfolio.html"&gt;portfolio&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="contact.html"&gt;contact&lt;/a&gt;&lt;/li&gt;
- &lt;/ul&gt;
-</code></pre>
-
-<p>Im nächsten Kapitel lernen Sie eine Methode kennen wie Sie aus dieser Liste ein horizontales Menü machen.</p>
+<p>Siehe <a href="http://fmbip.com/litmus#css3-selectors">HTML5 &amp; CSS3 Support</a></p>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/css/css/">← <span class="article">Syntax von CSS</a></li>
+      <li><a href="/css/basic-selectors/">← <span class="article">CSS Selektoren</a></li>
     
     
-      <li><a href="/css-layout/">CSS - Layout →</a></li>
+      <li><a href="/css/image-replacement/">Image Replacement →</a></li>
     
   </ul>
 </div>
@@ -195,15 +133,23 @@ h1#bildStattText {
                       
                     
                       
-                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
-                      
-                    
-                      
                       <li ><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
+                      <li ><a href="/css/properties/">Wichtige Properties</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
+                      
+                    
+                      
                       <li class="active"><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
                       
                     
                   

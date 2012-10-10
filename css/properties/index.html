@@ -1,0 +1,844 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Wichtige Properties</title>
+   
+  <meta name="author" content="Brigitte Jellinek"> 
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.css?v=1">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1">
+
+  <script src="/assets/js/jquery.js?v=1.7.1"></script>
+  <script src="/assets/js/bootstrap.js?v=1"></script>
+  <script src="/assets/js/prettify.js?v=1"></script>
+  <script src="/assets/js/libs/modernizr-1.5.min.js?v=1"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+      <a href="http://github.com/bjelline/web-development-textbook/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
+  </header>
+    
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title">Wichtige Properties</h2>
+                                <a href="/css/properties/slide.html">als Präsentation</a>
+                          </div>
+			
+			
+			<h2 id="schrift">Schrift</h2>
+
+<p>Dieses Beispiel zeigt weitere wichtige Beispiele für Properties:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+h1,h2 { 
+  font-family: &quot;Trebuchet MS&quot;,
+        Verdana, Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.4em
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: bold;
+  text-decoration: underline; 
+  text-transform: uppercase;
+  text-shadow: orange 0 -2px;
+}
+</pre></div>
+
+<h2 id="webfonts">Webfonts</h2>
+
+<p>Als Schriften kann man einerseits Schriftarten verwenden, die am Client schon
+installiert sind, und andererseits kann man auf Schriften verweisen, die im Web
+gespeichert sind.  Eine praktische Möglichkeit Webfonts aus den Web zu laden
+bietet <a href="http://www.google.com/webfonts">http://www.google.com/webfonts</a></p>
+
+<h2 id="abstze">Absätze</h2>
+<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:</p>
+
+<p><img src="/images/image066.png" alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" /></p>
+
+<p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
+
+<p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. </p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+p {
+   text-align: justify;
+   text-indent: 4em;
+   line-height: 1.2;
+}
+</pre></div>
+
+<h2 id="box-model">Box Model</h2>
+
+<p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus. </p>
+
+<p><img src="/images/image083.png" alt="Abbildung 21: Darstellung des Box Models von hicksdesign.co.uk" /></p>
+
+<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt. </p>
+
+<p><img src="/images/image085.png" alt="Abbildung 22: margin, border, padding in Firebug" /></p>
+
+<p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt. </p>
+
+<p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) bezieht auf
+den Inhalt, padding, border und margin muss man erst dazu zählen, um den
+Gesamt-Platzbedarf zu errechnen. Mit der Deklaration <code>box-sizing: border-box</code> 
+kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.  </p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  p {
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  border-width: 0px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  background-color: #DDD;
+  }
+</pre></div>
+
+<p>Mit CSS3 sind zusätzliche Effekte zum Box-Model dazu gekommen: abgerundete Ecken
+und Schatten:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+button{
+   color: white;
+   text-shadow: 0 1px 1px black;
+   padding: 5px 30px;
+   background-color: red;
+   border: 1px solid maroon;
+   border-radius: 4px;
+   box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
+}
+</pre></div>
+
+<p>So sieht’s aus:</p>
+
+<p><img src="/images/button-border-radius.png" alt="Beispiel wie der Button dargestellt wird" /></p>
+
+<p>Das ist ein Beispiel aus Helmers:
+<a href="http://dev.opera.com/articles/view/beautiful-ui-styling-with-css3-text-shadow-box-shadow-and-border-radius/">Beautiful UI styling with CSS3 text-shadow, box-shadow, and border-radius</a>, dort finden
+sich noch viele ausführlichere Beispiele.</p>
+
+<h2 id="absatz-mit-p">Absatz mit <code>&lt;p&gt;</code></h2>
+
+<p>Die Standard-Darstellung von Absätzen erklärt sich über den margin-top und margin-bottom des &lt;p&gt;-Tags:</p>
+
+<p><img src="/images/image086.png" alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" /></p>
+
+<h2 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h2>
+
+<p>Die Farbe des Textes wird mit <code>color</code>, die Hintergrundfarbe mit <code>background-color</code> gesetzt.  </p>
+
+<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
+
+<p><img src="/images/image088.png" alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" /></p>
+
+<p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar.</p>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/css/css/">← <span class="article">Syntax von CSS</a></li>
+    
+    
+      <li><a href="/css/basic-selectors/">CSS Selektoren →</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/css/">CSS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/css/properties/">Wichtige Properties</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/css-layout/">CSS LAYOUT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/urls/">URLS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/formulare/">FORMULARE</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/jquery/">JQUERY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/http/">HTTP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/git/">GIT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/wordpress/">WORDPRESS</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php/">PHP</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/session/">SESSION</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-2/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/javascript/">JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax-irrwege/">AJAX Irrwege</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/cors/">CORS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/css/properties.md">kommentar zu dieser seite</a></p>
+
+</p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+

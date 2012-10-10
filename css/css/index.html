@@ -200,75 +200,14 @@
 
 <p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise <code>url(http://absolute.com/bild.gif)</code> oder <code>url(relativ/bild.gif)</code> zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
 
-<h2 id="box-model">Box Model</h2>
-
-<p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus. </p>
-
-<p><img src="/images/image083.png" alt="Abbildung 21: Darstellung des Box Models von hicksdesign.co.uk" /></p>
-
-<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt. </p>
-
-<p><img src="/images/image085.png" alt="Abbildung 22: margin, border, padding in Firebug" /></p>
-
-<p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt. </p>
-
-<p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) bezieht auf den Inhalt, padding, border und margin muss man erst dazu zählen, um den Gesamt-Platzbedarf zu errechnen. Mit der Deklaration box-sizing: border-box kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.  </p>
-
-<p>Die Standard-Darstellung von Absätzen erklärt sich über den margin-top und margin-bottom des &lt;p&gt;-Tags:</p>
-
-<p><img src="/images/image086.png" alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" /></p>
-
-<h3 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h3>
-
-<p>Die Farbe des Textes wird mit color, die Hintergrundfarbe mit <code>background-color</code> gesetzt.  </p>
-
-<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
-
-<p><img src="/images/image088.png" alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" /></p>
-
-<p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar. </p>
-
-<h3 id="links-formatieren">Links formatieren</h3>
-
-<p>Der &lt;a&gt;-Tag wird in HTML für zwei sehr unterschiedliche Dinge verwendet: zum Setzen von Links und zum Setzen von Textmarken (auch ‚Anker’ genannt):</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h1&gt;&lt;a name=&quot;unis&quot;&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;   
-  &lt;a href=&quot;http://www.uni-salzburg.at/&quot;&gt;Uni Salzburg&lt;/a&gt;
-</pre></div>
-
-<p>Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen. </p>
-
-<p>Um die Darstellung von Links zu verändern muss man in CSS :link oder :visited als Selektoren verwenden. Der Browser unterscheidet dabei zwischen Links die schon einmal besucht wurden (visited) und neuen Links. </p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:link, a:visited { text-decoration: none; }
-  a:link    {color:blue}
-  a:visited {color:#FF00FF }
-</pre></div>
-
-<p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:link, a:visited { 
-     background-image:    url(icon-link.gif);
-     background-position: center right;
-     background-repeat:   no-repeat;
-     padding-right:       9px; 
-  } 
-</pre></div>
-
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/css/geschichte/">← <span class="article">Geschichte von CSS</a></li>
+      <li><a href="/css/css-kurz/">← <span class="article">Kurzvorstellung von Stylesheets</a></li>
     
     
-      <li><a href="/css/graceful/">Graceful Degradation →</a></li>
+      <li><a href="/css/properties/">Wichtige Properties →</a></li>
     
   </ul>
 </div>
@@ -325,15 +264,23 @@
                       
                     
                       
-                      <li ><a href="/css/geschichte/">Geschichte von CSS</a></li>
-                      
-                    
-                      
                       <li class="active"><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
+                      <li ><a href="/css/properties/">Wichtige Properties</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
+                      
+                    
+                      
                       <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
                       
                     
                   

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Selektoren - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>CSS Selektoren</h1>
+          <p><a href="/css/basic-selectors/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>Um CSS Selektoren zu verstehen muss man das Document Object Betrachten:
+die Darstellung des HTML-Dokuments als Baum:</p>
+
+<p><img src="/images/html-und-dom.png" alt="Document Object Model und Selektor" /></p>
+
+<p>Bei der Beschreibung des Baumes verwendet man folgende Fachbegriffe:</p>
+
+<ul>
+  <li>Elemente, </li>
+  <li>Texte, </li>
+  <li>Nodes</li>
+  <li>Eltern-Element, </li>
+  <li>Kinder</li>
+  <li>Vorfahren, </li>
+  <li>Nachkommen</li>
+</ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="universal-selector">Universal Selector</h2>
+
+<p>Der Selektor <code>*</code> wählt alle Elemente des Baums aus:</p>
+
+<p><img src="/images/selector-universal.png" alt="Document Object Model und Selektor" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="type-selector">Type Selector</h2>
+
+<p>Über den Namen des HTML-Tags wählt man alle Elemente dieses Typs aus,
+zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  li { color: red; }
+</pre></div>
+
+<p><img src="/images/selector-type.png" alt="Document Object Model und Selektor" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="group-selector">Group Selector</h2>
+
+<p>Mehrere Selektoren können mit Kommas zu einem neuen Selektor gruppiert werden.
+Das Komma entspricht einem “Oder”: selektiert werden Tags die entweder <code>h1</code> sind,
+oder <code>h2</code>, oder <code>a</code>:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  h1,h2,a { color: red; }
+</pre></div>
+
+<p><img src="/images/selector-group.png" alt="Document Object Model und Selektor" /></p>
+
+<p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
+siehe weiter Unten.)</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="descendant-selector">Descendant Selector</h2>
+
+<p>Hier wird ein Element ausgewählt, das Nachkomme eines anderen Elements ist.</p>
+
+<p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div a { color: red; }
+</pre></div>
+
+<p><img src="/images/selector-desc.png" alt="Document Object Model und Selektor" /></p>
+
+<p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
+siehe weiter Unten.)</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="links-formatieren">Links formatieren</h2>
+
+<p>Der &lt;a&gt;-Tag wird in HTML für zwei sehr unterschiedliche Dinge verwendet: zum Setzen von Links und zum Setzen von Textmarken (auch ‚Anker’ genannt):</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h1&gt;&lt;a name=&quot;unis&quot;&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;   
+  &lt;a href=&quot;http://www.uni-salzburg.at/&quot;&gt;Uni Salzburg&lt;/a&gt;
+</pre></div>
+
+<p>Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen. </p>
+
+<p>Um die Darstellung von Links zu verändern muss man in CSS als Selektor <code>:link</code>
+oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet dabei zwischen Links die schon einmal besucht wurden (visited) und neuen Links. </p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  a:link, a:visited { text-decoration: none; }
+  a:link    {color:blue}
+  a:visited {color:#FF00FF }
+</pre></div>
+
+<p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  a:link, a:visited { 
+     background-image:    url(icon-link.gif);
+     background-position: center right;
+     background-repeat:   no-repeat;
+     padding-right:       9px; 
+  } 
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css/basic-selectors/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
