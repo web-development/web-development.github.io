@@ -60,20 +60,27 @@
 
 <p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:</p>
 
-<pre><code>&lt;div class="navi"&gt;
-   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
-   &lt;ul&gt;
-      &lt;li&gt;&lt;a href="index.html"&gt;home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="ort.html"&gt;ort&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
-   &lt;/ul&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;div class=&quot;navi&quot;&gt;
+  &lt;h3 class=&quot;unsichtbar&quot;&gt;Seitenauswahl&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;ort.html&quot;&gt;ort&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;dies.html&quot;&gt;dies&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;das.html&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/div&gt;
-</code></pre>
+</pre></div>
 
-<p>Ohne CSS wird die Liste ganz normal dargestellt. Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit list-style-type:none der Listenpunkt zu einem normalen Tag. </p>
+<p>Ohne CSS wird die Liste ganz normal dargestellt. </p>
 
-<pre><code>.unsichtbar {display:none;}
+<p>Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit
+<code>list-style-type: none</code> der Listenpunkt <code>li</code> zu einem normalen Tag. </p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.unsichtbar {display:none;}
 
 div.navi li {
    list-style-type:none;
@@ -88,11 +95,16 @@ div.navi li a:link {
    font-weight: bold;
    color: black;
 }
-</code></pre>
+</pre></div>
 
-<p>Mit Hilfe von Float kann man das Menü auch horizontal darstellen, dazu muß nur ein float eingefügt und der margin anders gesetzt werden:</p>
+<h2 id="horizontales-men">Horizontales Menü</h2>
 
-<pre><code>div.navi li {
+<p>Mit Hilfe von <code>float</code> kann man das Menü auch horizontal darstellen, dazu muß nur
+ein <code>float</code> eingefügt und der <code>margin</code> anders gesetzt werden:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+div.navi li {
    float:left;
    list-style-type:none;
    margin-right:1px; 
@@ -106,40 +118,52 @@ div.navi li a:link {
    font-weight: bold;
    color: black;
 }
-</code></pre>
+</pre></div>
 
-<h2 id="navigationsmen-wiederverwerten-mit-php">Navigationsmenü wiederverwerten mit PHP</h2>
-<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
+<h2 id="php-fr-navigationsmen">PHP für Navigationsmenü</h2>
+<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. 
+Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man 
+dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
 
-<p>Deswegen bietet es sich an bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
+<p>Deswegen bietet es sich an, bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. 
+PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
 
 <p>Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:</p>
 
-<pre><code>&lt;div id="navi"&gt;
-   &lt;h3 class="unsichtbar"&gt;Seitenauswahl&lt;/h3&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;div id=&quot;navi&quot;&gt;
+   &lt;h3 class=&quot;unsichtbar&quot;&gt;Seitenauswahl&lt;/h3&gt;
    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="index.php"&gt;home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="ort.php"&gt;ort&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="typografie/"&gt;typografie&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="bestellung/"&gt;bestellung&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;ort.php&quot;&gt;ort&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;dies.php&quot;&gt;dies&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;das.php&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
    &lt;/ul&gt;
 &lt;/div&gt;
-</code></pre>
+</pre></div>
 
-<p>Links die auf Ordner verweisen sind hier besonders praktisch: Sie ersetzen die Datei index.html durch index.php, der Link bleibt gleich.</p>
+<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, 
+z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <code>include</code> eingebunden:</p>
 
-<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, z.B. navi.php.  In den einzelnen Seiten wird das Menü dann mit include eingebunden:</p>
-
-<pre><code>&lt;body&gt;
-&lt;?php include "navi.php" ?&gt;
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;body&gt;
+&lt;?php include &quot;navi.php&quot;; ?&gt;
 &lt;h1&gt;News&lt;/h1&gt;
-</code></pre>
+</pre></div>
 
-<p>Achtung: Das Einfügen der inkuldierten Datei erfolgt auf dem Server. Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
+<h2 id="server-side">Server Side</h2>
+
+<p>Das Einfügen der inkuldierten Datei erfolgt auf dem Server. 
+Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
 
 <p><img src="/images/image145.png" alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" /></p>
 
-<p>Damit ist nun das Einfügen eines neuen Menü-Punkts ins Navigationsmenü ganz einfach: nur die Datei navi.php muss editiert werden.</p>
+<h2 id="ergebnis">Ergebnis</h2>
+
+<p>Damit ist nun das Einfügen eines neuen Menü-Punkts ins Navigationsmenü 
+ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
 
 		
 			<div class="pagination">

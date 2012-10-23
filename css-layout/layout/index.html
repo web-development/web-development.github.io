@@ -56,7 +56,9 @@
                           </div>
 			
 			
-			<h3 id="text">Text</h3>
+			<p>Welche Gestaltungsmöglichkeiten bietet CSS nun?</p>
+
+<h3 id="text">Text</h3>
 
 <p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
 
@@ -68,113 +70,198 @@ em { background-color:#FFFF66; }
 
 <p><img src="/images/image128.png" alt="Abbildung 33: Darstellung von blockbildenden und nicht-blockbildenden Tags" /></p>
 
+<h3 id="bild-im-text">Bild im Text</h3>
+
 <p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert.  Wenn Sie das Bild wie in Abbildung 34 mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout. </p>
 
 <p><img src="/images/image130.png" alt="Abbildung 34: Bild mitten im Absatz" /></p>
 
-<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“ konnte dadurch die Breite eines Elemets überschreiten. In Abbildung 35 können Sie sehen, wie Microsoft Internet Explorer 7.0 eine lange URL nicht umbricht. </p>
+<h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
+
+<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“
+konnte dadurch die Breite eines Elements überschreiten. In Abbildung 35 können Sie sehen, wie Microsoft Internet Explorer 7.0 eine lange URL nicht umbricht. </p>
 
 <p><img src="/images/image132.png" alt="Abbildung 35: Darstellung eines Absatzes mit Rahmen und fixer Breite, der lange Wörter enthält, in MSIE 7.0" /></p>
 
 <p>CSS bietet ab Version 3 verschiedene Möglichkeiten diese Fälle zu behandeln, z.b mit der Eigenschaft <code>text-overflow</code> <a href="http://css3clickchart.com/#text-overflow">→</a></p>
 
-<p>Derzeit ist es immer noch notwendig im Text die Soll-Bruchstellen als <code>&amp;amp;shy;</code> einzutragen, damit der Browser dann den Zeilenumbruch korrekt durchführen kann. Die Library <a href="https://code.google.com/p/hyphenator/">hyphenator.js</a> bietet den Umbruch u.a. für englische und deutsche Texte an.</p>
+<p>Derzeit ist es immer noch notwendig im Text die Soll-Bruchstellen als <code>&amp;shy;</code> einzutragen, damit der Browser dann den Zeilenumbruch korrekt durchführen kann. Die Library <a href="https://code.google.com/p/hyphenator/">hyphenator.js</a> bietet den Umbruch u.a. für englische und deutsche Texte an.</p>
 
 <h2 id="width-und-auto">Width und Auto</h2>
-<p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit width kann eine Andere Breite eines Blocks definiert werden:</p>
+<p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit
+<code>width</code> kann eine andere Breite eines Blocks definiert werden:</p>
 
-<pre><code>div#main {  width:500px; }
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+div#main {  width:500px; }
+</pre></div>
 
-<p>Je nach box-sizing müssen Sie die Werte von padding, border, margin dazu addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht:</p>
+<p>Je nach <code>box-sizing</code> müssen Sie die Werte von padding, border, margin dazu
+addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht: der default ist
+<code>box-sizing: content-box</code>.</p>
 
-<pre><code>{
-   width: 200px; 
-   padding: 10px; 
-   border-width: 10px; 
-   margin: 32px 0px
-}
-</code></pre>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+box-sizing: content-box;
+width: 200px; 
+padding: 10px; 
+border-width: 10px; 
+margin: 32px 0px
+</pre></div>
 
-<p>Gesamtbreite = 0px + 10px + 10px + 200px + 10px + 10px + 0px = 240px</p>
+<p>Gesamtbreite inklusive Rahmen = 0px + 10px + 10px + 200px + 10px + 10px + 0px = 240px</p>
 
 <p><img src="/images/image134.png" alt="Abbildung 36: width im Box-Model mit box-sizing: content-box" /></p>
 
-<p>Um einen Inhalt zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt. </p>
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+box-sizing: border-box;
+width: 200px; 
+padding: 10px; 
+border-width: 10px; 
+margin: 32px 0px
+</pre></div>
 
-<pre><code>div#main {
-    width:500px; 
-    margin-left:  auto;
-    margin-right: auto;
+<p>Gesamtbreite inklusive Rahmen = 0px + 10px + 10px + 160px + 10px + 10px + 0px = 200px</p>
+
+<p><img src="/images/image134-border.png" alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" /></p>
+
+<h2 id="zentrieren-mit-auto">Zentrieren mit Auto</h2>
+
+<p>Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt. </p>
+
+<p><a href="/images/width-auto.html">Demo-Seite dazu</a></p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+div#main {
+  width:500px; 
+  margin-left:  auto;
+  margin-right: auto;
 }
-</code></pre>
+</pre></div>
 
 <h2 id="float">Float</h2>
-<p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen bietet die Deklaration float mit den Werten left und right. Damit wird ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts „rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“). </p>
+<p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen
+bietet die Deklaration <code>float</code> mit den Werten <code>left</code> und <code>right</code>. Damit wird 
+ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts 
+„rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“). </p>
 
-<p>In Abbildung 4 sind drei Absätze zu sehen die jeweils als erstes ein Bild enthalten. Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts, der Text rutscht links davon nach oben. Im dritten Absatz „floated“ das Bild nach links, der Text rutscht rechts davon nach oben. </p>
+<p>Hier sind drei Absätze zu sehen, die jeweils als Erstes ein Bild enthalten. 
+Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort 
+im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts, 
+der Text rutscht links davon nach oben. Im dritten Absatz „floated“ 
+das Bild nach links, der Text rutscht rechts davon nach oben. </p>
+
+<p><a href="/images/float.html">Beispiel als Demo-Seite</a></p>
 
 <p><img src="/images/image136.png" alt="Abbildung 37: Bilder mit float" /></p>
 
-<p>Bei Bildern funktioniert float besonders einfach, weil das Bild schon eine fixe Breite hat. Wird ein anderer HTML-Tag mit float versehen muß man auch die Breite des Tags setzen um einen sichtbaren Effekt zu erzielen. In Abbildung 38 soll der zweite Absatz nach rechts gehen. Er hat die ID edvard. </p>
+<p>Bei Bildern funktioniert float besonders einfach, weil das Bild schon eine fixe
+Breite hat. Wird ein anderer HTML-Tag mit float versehen muß man auch die Breite
+des Tags setzen um einen sichtbaren Effekt zu erzielen. Soll ein Absatz nach
+rechts gehen, dann muss man dafür die Breite noch setzen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+p { margin: 0px; }
+#slim { 
+    float:right;
+    width:33%;
+}
+</pre></div>
+
+<p><a href="/images/floatp.html">Beispiel als Demo-Seite</a></p>
 
 <p><img src="/images/image138.png" alt="Abbildung 38: Ein Absatz mit float" /></p>
 
-<p>Wenn viele Elemente mit float positioniert werden die die gleiche Höhe haben entsteht ein besonders flexibles Layout: in Abbildung 39 werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinander dargestellt:</p>
+<p>Wenn viele Elemente mit <code>float</code> positioniert werden, die die gleiche Höhe haben,
+entsteht ein besonders flexibles Layout: im folgenden Beispiel 
+werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinander dargestellt:</p>
 
 <p><img src="/images/image140.png" alt="Abbildung 39: Zwei Darstellungen der Bildergalerie mit float" /></p>
 
 <h2 id="absolute-positionierung">Absolute Positionierung</h2>
-<p>Mit der Deklaration position:absolute wird ein Tag aus der normalen Darstellung herausgenommen und über dem restlichen Inhalt der Seite platziert. Mit top und left kann die linke obere Ecke des Elements positioniert werden. (oder mit bottom und right die rechte unter Ecke)</p>
+<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung 
+herausgenommen und über dem restlichen Inhalt der Seite platziert. 
+Mit <code>top</code> und <code>left</code> kann die linke obere Ecke des Elements positioniert werden. 
+(oder mit <code>bottom</code> und <code>right</code> die rechte unter Ecke).
+In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
+einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
 
-<pre><code>#navi {
-       position: absolute;
-       width: 80px;
-       top:    0px;
-       left:   0px;
+<div class="example twopane">
+<pre class="lang-css prettyprint linenums left">
+#navi {
+  position: absolute;
+  width: 80px;
+  top:    0px;
+  left:   0px;
 }
-</code></pre>
+</pre><pre class="lang-css prettyprint linenums right">
+#content {
+  margin-left: 100px;
+}
 
-<p>In Kombination mit einem Inhalt mit margin-left ergibt das folgendes Layout:</p>
+
+
+</pre><div class="clearfix"></div></div>
 
 <p><img src="/images/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
 
-<p>Die Koordinaten (top und left) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster. </p>
+<h2 id="koordinatensystem">Koordinatensystem</h2>
+
+<p>Die Koordinaten (<code>top</code> und <code>left</code>) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster. </p>
 
 <p>Ein Element mit der Eigenschaft <code>position: absolute</code> oder <code>position: relative</code> bildet für seine untergeordneten Elemente ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert. </p>
 
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-    &lt;div id=&quot;main&quot;&gt;
-        &lt;div id=&quot;content&quot;&gt;
-            &lt;h1&gt;Inhalt&lt;/h1&gt;
-            &lt;p&gt;Hier ist der Inhalt[. . . ]&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;navi&quot;&gt;
-        [. . . ]
-        &lt;/div&gt;
-    &lt;/div&gt;
-</pre></div>
+<div class="example twopane">
+<pre class="lang-html prettyprint linenums left">
+&lt;div id=&quot;main&quot;&gt;
+  &lt;div id=&quot;content&quot;&gt;
+    &lt;h1&gt;Inhalt&lt;/h1&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;navi&quot;&gt;
+    &lt;p&gt;a&lt;/p&gt;
+    &lt;p&gt;b&lt;/p&gt;
+    &lt;p&gt;c&lt;/p&gt;
+    &lt;p&gt;d&lt;/p&gt;
+    &lt;p&gt;e&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre><pre class="lang-html prettyprint linenums right">
+#main {
+  border: 1px red solid;
+  position:relative;
+  width: 700px;
+  margin: 0px auto;
+} 
+#content {
+  margin-left: 120px;
+  background-color: yellow;
+}
+#navi {
+  position: absolute;
+  width: 80px;
+  top:0px;
+  left:0px;
+}
+</pre><div class="clearfix"></div></div>
 
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-    #main {
-       border: 1px red solid;
-       position:relative;
-       width: 700px;
-       margin: 0px auto;
-    } 
-    #content {
-       margin-left: 120px;
-       background-color: #ddd;
-    }
-    #navi {
-       position: absolute;
-       width: 80px;
-       top:0px;
-       left:0px;
-    }
-</pre></div>
+<p><a href="/images/koord.html">Beispiel-Seite</a></p>
+
+<h2 id="viele-methoden">Viele Methoden</h2>
+
+<p>Wie Sie gesehen haben gibt es viele CSS-Properties die
+das Layout beeinflussen.  Manche davon passen zusammen,
+andere widersprechen sich.  So macht es keinen Sinn 
+absolute Positionierung mit Float zu kombinieren.</p>
+
+<p>Mit der Zeit werden Sie Erfahrungen sammeln und auch Ihren
+eigenen Stil entwickeln.</p>
 
 		
 			<div class="pagination">
