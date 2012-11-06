@@ -39,68 +39,108 @@
           <div class="slide"><h1>Absolute und relative URLs</h1>
           <p><a href="/urls/absolut-relativ/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>URLs werden in CSS und HTML an vielen Stellen verwendet: bei Links und Bilder, beim Verweis auf externe Stylesheets, externe Javascript-Dateien, etc.  An all diesen Stellen können Sie URLs in den hier beschriebenen Schreibweisen verwenden.</p>
+	  <div class='slide'></div>
+<div class='slide'>
 
-<p>Die „absolute“ und „relative“ Schreibweise wurde von den Pfadangaben im UNIX-Dateisystem übernommen; auch die Pfadangaben von DOS/Windows und von CD-ROMs funktionieren ähnlich.
-Nehmen wir an, in der Datei <code>http://mediacube.at/pix/weg.html</code> seien folgende drei URLs enthalten:</p>
+<h2 id="verwendung">Verwendung</h2>
+
+<p>URLs werden in CSS und HTML an vielen Stellen verwendet: bei Links und Bilder, beim Verweis auf externe Stylesheets, externe Javascript-Dateien, etc.  An all diesen Stellen können Sie URLs in den hier beschriebenen Schreibweisen verwenden.</p>
+
+<p>Die „absolute“ und „relative“ Schreibweise wurde von den Pfadangaben im UNIX-Dateisystem übernommen; auch die Pfadangaben von Windows funktionieren ähnlich.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="beispiel">Beispiel</h2>
+
+<p>In der Beispiel-Datei
+<a href="/images/urls.html">http://web-development.github.com/images/urls.html</a> sind folgende drei URLs enthalten:</p>
 
 <dl>
-  <dt>absolut</dt>
-  <dd>beginnt mit Protokoll <code>http://mediacube.at/pix/weg-zur-saline.jpg</code></dd>
-  <dt>relativ zum Webserver</dt>
-  <dd>beginnt mit einem Schrägstrich (Slash) <code>/pix/weg-zur-saline.jpg</code></dd>
-  <dt>relativ zur Datei</dt>
-  <dd><code>weg-zur-saline.jpg</code></dd>
+  <dt><strong>absolut</strong></dt>
+  <dd>beginnt mit Protokoll <code>http://web-development.github.com/images/you-are-here.jpg</code></dd>
+  <dt><strong>relativ zum Webserver</strong></dt>
+  <dd>beginnt mit einem Schrägstrich (Slash) <code>/images/you-are-here.jpg</code></dd>
+  <dt><strong>relativ zum Dokument</strong></dt>
+  <dd>kein besonderes Kennzeichen <code>you-are-here.jpg</code></dd>
 </dl>
 
-<p>Bei den relativen URLs muss man die URL des enthaltenden Dokuments und die relative URLs zusammen—addieren, um zu einer absoluten URL zu kommen.</p>
+</div>
+<div class='slide'>
 
-<pre><code>http://mediacube.at/pix/weg.html   
-             +     /pix/weg-zur-saline.jpg  = 
-http://mediacube.at/pix/weg-zur-saline.jpg  
+<h2 id="relative-urls">Relative URLs</h2>
+
+<p>Bei den relativen URLs muss man die URL des enthaltenden Dokuments 
+und die relative URLs “zusammen—addieren”, um zu einer absoluten URL zu kommen.</p>
+
+<pre><code>http://web-development.github.com/images/urls.html   
+                           +     /images/you_are_here.jpg  = 
+http://web-development.github.com/images/you_are_here.jpg  
 </code></pre>
 
 <p>und</p>
 
-<pre><code>http://mediacube.at/pix/weg.html   +     weg-zur-saline.jpg  = 
-http://mediacube.at/pix/weg-zur-saline.jpg  
+<pre><code>http://web-development.github.com/images/urls.html   
+                                   +     you_are_here.jpg  = 
+http://web-development.github.com/images/you_are_here.jpg  
 </code></pre>
 
-<p>Mit einer anderen Ausgangs-URL ist das Ergebnis natürlich anders:</p>
+</div>
+<div class='slide'>
 
-<pre><code>http://multimediatechnology.at/2008/09/22/weg.html 
-                        +     /pix/weg-zur-saline.jpg  = 
-http://multimediatechnology.at/pix/weg-zur-saline.jpg  
+<h2 id="relative-urls-an-anderer-stelle">Relative URLs an anderer Stelle</h2>
+
+<p>Wird das Dokument an eine andere Stelle verschoen, und änderst sich
+damit die Ausgangs-URL, dann ist das Ergebnis anders (und würde nicht
+funktionieren):</p>
+
+<pre><code>http://multimediatechnology.at/2011/06/19/ruby
+                        +     /images/you_are_here.jpg  = 
+http://multimediatechnology.at/images/you_are_here.jpg  
 </code></pre>
 
 <p>und:</p>
 
-<pre><code>http://multimediatechnology.at/2008/09/22/weg.html  
-                                    +     weg-zur-saline.jpg  = 
-http://multimediatechnology.at/2008/09/22/weg-zur-saline.jpg  
+<pre><code>http://multimediatechnology.at/2011/06/19/ruby
+                                    +     you_are_here.jpg  = 
+http://multimediatechnology.at/2011/06/19/you_are_here.jpg  
 </code></pre>
+
+</div>
+<div class='slide'>
+
+<h2 id="relative-urls-mit-ordnernamen">Relative URLs mit Ordnernamen</h2>
 
 <p>Relativen URLs können selbst wieder Ordnernamen enthalten:</p>
 
-<pre><code>http://multimediatechnology.at/showcase-2008.html 
-                            +  2008/07/31/mmt-auf-facebook.html  = 
-http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+<pre><code>http://multimediatechnology.at/2011/
+                                 +  12/15/screenshot/= 
+http://multimediatechnology.at/2011/12/15/screenshot/
 </code></pre>
+
+</div>
+<div class='slide'>
+
+<h2 id="relative-urls-mit-punkt-punkt">Relative URLs mit Punkt-Punkt</h2>
 
 <p>Zwei Punkte als Ordnernamen bedeuten dabei: „raus aus dem aktuellen Ordner“:</p>
 
-<pre><code>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html 
-                                    +     ../../mmt-auf-facebook.html  = 
-http://multimediatechnology.at/2008/07/31/mmt-auf-facebook.html  
+<pre><code>http://multimediatechnology.at/web-communities/barcamp/
+                                                 +     ../ = 
+http://multimediatechnology.at/web-communities/
 </code></pre>
 
 <p>Dieser Schreibweise erlaubt auch sehr umständliche Formulierungen:</p>
 
-<pre><code>http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame.html 
-+     ../../05/../04/17/rattenscharfes-computergame.html  = 
-http://multimediatechnology.at/2008/04/17/rattenscharfs-computergame.html  
+<pre><code>http://multimediatechnology.at/2011/06/19/ruby
+               +     ../../2008/05/../04/17/rattenscharfes-computergame = 
+http://multimediatechnology.at/2008/04/17/rattenscharfes-computergame
 </code></pre>
 
+</div>
+<div class='slide'>
+
+<h2 id="alles-nur-im-client">Alles nur im Client</h2>
 <p>All diese Berechnungen finden im Webbrowser statt, und sind völlig unabhängig davon, wie der Webserver die URL interpretiert. So könnte z.B die letzten URL „in Wirklichkeit“ gar nicht auf Ordner mit Namen 2008, 04, 17 verweisen, sondern eine Datenbanksuche nach „2008-04-17“ nach sich ziehen – das ist Sache des Servers.</p>
 </div>
           <div class="slide"><h1>Ende</h1>

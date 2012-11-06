@@ -56,9 +56,15 @@
                           </div>
 			
 			
-			<p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur Verfügung gestellt.  Das Array <code>$_GET</code> enthält die Parameter einer GET-Anfrage. </p>
+			<p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die
+URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur
+Verfügung gestellt. („Superglobal“ bedeutet, dass das Array in jedem Teil des
+PHP-Programmes sichtbar ist. </p>
 
-<p>„Superglobal“ bedeutet, dass das Array in jedem Teil des PHP-Programmes sichtbar ist. Ein Array in PHP kann nicht nur Integers als Index haben (z.B. <code>$a[0]</code>) sondern auch Strings (z.B. <code>$a['salzburg']</code>)</p>
+<p>Das Array <code>$_GET</code> enthält die Parameter einer GET-Anfrage.  Ein Array in PHP
+kann nicht nur Integers als Index haben (z.B. <code>$a[0]</code>) sondern auch Strings
+(z.B. <code>$a['salzburg']</code>).  Der Name des Eingabefelder wird hier als Index
+verwendet.</p>
 
 <p>Um die Bestellung aus dem Formular zu verarbeiten, könnte folgendes Programm verwendet werden:</p>
 
@@ -74,15 +80,17 @@
 ?&gt;
 </pre></div>
 
-<p>Dabei wird aber die Eingabe noch gar nicht geprüft.  In dieser minimalen Version des Bestellprogramms senden wir die Daten einfach vom Server per E-Mail weiter:</p>
+<p>Dabei wird aber die Eingabe noch gar nicht geprüft.  </p>
+
+<p>In dieser minimalen Version des Bestellprogramms senden wir die Daten einfach vom Server per E-Mail weiter:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP-Befehl zum Versenden einer E-Mail</small></h4>
 <pre class="lang-php prettyprint linenums">
 mail(  
-         &quot;ich@fh-salzburg.ac.at&quot;,                                // To:
-         &quot;Bestellung von $anzahl Flugzeugen&quot;,                    // Subject:
-         &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;  // Text der E-Mail
+ &quot;ich@fh-salzburg.ac.at&quot;,                        // To
+ &quot;Bestellung von $anzahl Flugzeugen&quot;,       // Subject
+ &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;  
 );
 </pre></div>
 

@@ -56,11 +56,19 @@
                           </div>
 			
 			
-			<p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer noch in einem sehr strengen, sehr strukturierten Rahmen. Abbildung 44 zeigt zwei typische Anwendungsgebiete für Web-Formulare: das Eingabeformular der Suchmaschine Google und ein Bestellformular.</p>
+			<p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen
+Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die
+Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer
+noch in einem sehr strengen, sehr strukturierten Rahmen. Zwei
+typische Anwendungsgebiete für Web-Formulare sind: das Eingabeformular der
+Suchmaschine Google und ein Bestellformular.</p>
 
 <p><img src="/images/image173.png" alt="Abbildung 44: Formulare in Webseiten" /></p>
 
-<p>Mit den  HTML-Tags <code>form</code>, <code>input /</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden Formulare aufgebaut. Hier ein einfaches Beispiel:</p>
+<h2 id="tags-fr-formulare">Tags für Formulare</h2>
+
+<p>Mit den  HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
+Formulare aufgebaut. Hier der Code für ein ein <a href="/images/form.html">einfaches Beispiel</a>:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
@@ -79,99 +87,176 @@
 <p><img src="/images/image176.png" alt="Abbildung 45: Darstellung eines Web-Formulars im Browser" /></p>
 
 <h2 id="eingabefelder">Eingabefelder</h2>
-<p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf. Tabelle 2 zeigt die verschiedenen Arten von Text-Eingabefeldern.</p>
+
+<p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf. </p>
+
+<h2 id="text-eingabefelder">Text-Eingabefelder</h2>
+
+<p>Verschiedenen Arten von Text-Eingabefeldern.</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
     <tr>
       <td>Textfeld</td>
-      <td>&lt;input type=”text” name=”mail”&gt;</td>
+      <td><code>&lt;input type="text" name="mail"&gt;</code></td>
       <td><input type="text" name="mail" /></td>
     </tr>
     <tr>
-      <td>Textfeld mit default-Wert</td>
-      <td>&lt;input type=”text” name=”hochschule” value=”FH Salzburg”&gt;</td>
-      <td><input type="text" name="hochschule" value="FH Salzburg" /></td>
+      <td>Textfeld, E-Mail</td>
+      <td><code>&lt;input type="email" name="mail2"&gt;</code></td>
+      <td><input type="email" name="mail2" /></td>
     </tr>
     <tr>
       <td>Passwort-Feld:</td>
-      <td>&lt;input type=”password” name=”meinpasswort”&gt;</td>
+      <td><code>&lt;input type="password" name="meinpasswort"&gt;</code></td>
       <td><input type="password" name="meinpasswort" /></td>
     </tr>
     <tr>
       <td>mehrzeiliges Textfeld</td>
-      <td>&lt;textarea name=”zitat”&gt; In a hole in the ground there lived a Hobbit.  &lt;/textarea&gt;</td>
-      <td><textarea name="zitat"> In a hole in the ground there lived a Hobbit.  </textarea></td>
+      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit.  &lt;/textarea&gt;</code></td>
+      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit.  </textarea></td>
     </tr>
   </tbody>
 </table>
+
+<p>Achtung: das Passwort-Feld schützt nur vor neugierigen Blicken auf den Monitor.
+Die eingegebenen Daten werden dann genau so übertragen wie aus alle anderen
+Eingabefeldern - normalerweise unverschlüsselt.</p>
+
+<h2 id="attribute-fr-text-eingabefelder">Attribute für Text-Eingabefelder</h2>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <tbody>
+    <tr>
+      <td>mit Default-Wert</td>
+      <td><code>&lt;input type="text" name="vorname" value="Lara"&gt;</code></td>
+      <td><input type="text" name="vorname" value="Lara" /></td>
+    </tr>
+    <tr>
+      <td>muss eingegeben werden</td>
+      <td><code>&lt;input type="email" name="nachname" required&gt;</code></td>
+      <td><input type="email" name="nachname" required="" /></td>
+    </tr>
+    <tr>
+      <td>mit Placeholder</td>
+      <td><code>&lt;input placeholder="ich@some.net"&gt;</code></td>
+      <td><input type="email" name="mail" placeholder="ich@some.net" /></td>
+    </tr>
+    <tr>
+      <td>mit Eingabeprüfung</td>
+      <td><code>&lt;input pattern=".*@fh-salzburg\.ac\.at"&gt;</code></td>
+      <td><input pattern=".*@fh-salzburg\.ac\.at" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="janein-frage">Ja/Nein Frage</h2>
 
 <p>Für einzelne Fragen die mit Ja oder Nein zu beantworten sind wird das Eingabe-Element „checkbox“ verwendet</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Checkbox für Ja/Nein Frage</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers
+&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers&lt;/label&gt;
 </pre></div>
 
 <p><img src="/images/image186.png" alt="screenshot" /></p>
 
+<h2 id="auswahl">Auswahl</h2>
+
 <p>Für Fragen, bei denen eine von mehreren vorgegebenen Antworten möglich sein soll gibt es verschiedene Eingabeelemente.</p>
+
+<p>Radiobuttons (die zusammen gehören) müssen denselben <code>name</code> haben.
+Hier ist es wichtig die Beschriftung die zum jeweiligen Button gehört
+mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Radiobuttons</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt; XL
-    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt;   L
-    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt;   M
-    &lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt; S
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt;XL&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt;L&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt;M&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt;S&lt;/label&gt;
 </pre></div>
 
 <p><img src="/images/image188.png" alt="screenshot" /></p>
 
+<p>Ein Menü ist platzsparend:</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;select name=&quot;size2&quot;&gt;
-          &lt;option&gt;XL&lt;/option&gt;
-          &lt;option selected&gt;L&lt;/option&gt;
-          &lt;option&gt;M&lt;/option&gt;
-          &lt;option&gt;S&lt;/option&gt;
-    &lt;/select&gt;
+&lt;select name=&quot;size2&quot;&gt;
+  &lt;option&gt;XL&lt;/option&gt;
+  &lt;option selected&gt;L&lt;/option&gt;
+  &lt;option&gt;M&lt;/option&gt;
+  &lt;option&gt;S&lt;/option&gt;
+&lt;/select&gt;
 </pre></div>
 
 <p><img src="/images/image190.png" alt="screenshot" /></p>
 
+<p>Achtung: beim erstellen des Menüs muss man jede möglich Antwort bedenken!</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit „leer“- Auswahl</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;select name=&quot;size3&quot;&gt;
-          &lt;option&gt;---Bitte Auswählen---&lt;/option&gt;
-          &lt;option&gt;XL&lt;/option&gt;
-          &lt;option&gt;L&lt;/option&gt;
-          &lt;option&gt;M&lt;/option&gt;
-          &lt;option&gt;S&lt;/option&gt;
-    &lt;/select&gt;
+&lt;select name=&quot;size3&quot;&gt;
+  &lt;option&gt;---Bitte Auswählen---&lt;/option&gt;
+  &lt;option&gt;XL&lt;/option&gt;
+  &lt;option&gt;L&lt;/option&gt;
+  &lt;option&gt;M&lt;/option&gt;
+  &lt;option&gt;S&lt;/option&gt;
+&lt;/select&gt;
 </pre></div>
 
 <p><img src="/images/image192.png" alt="screenshot" /></p>
 
+<p>Die Mehrfach-Auswahl erfolgt mit dem Drücken der Steuerungs-Taste:</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Liste - ermöglicht Mehrfach-Auswahl</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;select name=&quot;html&quot; size=&quot;4&quot; multiple=&quot;multiple&quot;&gt;
-          &lt;option&gt;im Code&lt;/option&gt;
-          &lt;option&gt;Dreamweaver&lt;/option&gt;
-          &lt;option&gt;GoLive&lt;/option&gt;
-          &lt;option&gt;Frontpage&lt;/option&gt;
-    &lt;/select&gt;
+&lt;select name=&quot;html&quot; size=&quot;4&quot; multiple=&quot;multiple&quot;&gt;
+  &lt;option&gt;im Code&lt;/option&gt;
+  &lt;option&gt;Dreamweaver&lt;/option&gt;
+  &lt;option&gt;GoLive&lt;/option&gt;
+  &lt;option&gt;Frontpage&lt;/option&gt;
+&lt;/select&gt;
 </pre></div>
 
 <p><img src="/images/image194.png" alt="screenshot" /></p>
 
-<p>Radiobuttons, die zu einer Frage gehören, müssen den selben Namen tragen. der Wert ist unterschiedlich (im Code: Attribut name ist gleich, value unterschiedlich).  Nur bei einer Liste besteht die Möglichkeit mehrere Antworten auszuwählen. Für alle Eingabefelder gibt: falls auch “keine Antwort” möglich sein soll müssen Sie dafür eine eigene Option einbauen.</p>
+<h2 id="spezialisierte-eingabefelder">Spezialisierte Eingabefelder</h2>
 
-<h3 id="absenden">Absenden</h3>
+<p>Mit HTML5 wurden neue Eingeabefelder eingeführt, die aber noch nicht von allen
+Browsern unterstützt werden. (Mit Hilfe von
+<a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">Polyfills</a>
+kann man sie aber auf jeden Fall schon benutzen.)</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <tbody>
+    <tr>
+      <td>Datum</td>
+      <td><code>&lt;input type="date" min="2010-08-01" max="2011-08-31" value="2010-08-14"&gt;</code></td>
+      <td><input type="date" min="2010-08-01" max="2011-08-31" value="2010-08-14" /></td>
+    </tr>
+    <tr>
+      <td>Range</td>
+      <td><code>&lt;input type="range" min="0" max="50" value="10"&gt;</code></td>
+      <td><input type="range" min="0" max="50" value="10" /></td>
+    </tr>
+    <tr>
+      <td>Number</td>
+      <td><code>&lt;input type="number" step="1" min="-5" max="10" value="0"&gt;</code></td>
+      <td><input type="number" step="1" min="-5" max="10" value="0" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/images/special.png" alt="screenshot" /></p>
+
+<h2 id="absenden">Absenden</h2>
 
 <p>Jedes Formular braucht einen Absende-Button</p>
 
@@ -185,7 +270,7 @@
 
 <p>Neben dem Absende-Button gibt es noch andere Methoden wie ein Formular „abgesendet“ werden kann: Falls das Formular nur ein einziges Text-Eingabefeld hat, kann man in diesem Feld auf ENTER drücken um das Formular zu senden. Wenn das Formular ein Bild-Feld enthält (siehe unten) veranlasst ein Klick auf das Bild das Einsenden. </p>
 
-<h3 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h3>
+<h2 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h2>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Zurück: bitte nicht verwenden</small></h4>
@@ -197,14 +282,16 @@
 
 <p>Den Zurücksetzen Button sollten Sie nur sehr selten einsetzen. Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
 
-<h3 id="label">Label</h3>
+<h2 id="label">Label</h2>
 
-<p>Bisher haben wir nur die Eingabefelder selbst betrachtet. „Rundherum“ verwendet man auch alle bisher gelernten HTML-Elemente. So wäre es z.B. möglich, die Beschriftung einfach als Text neben das Eingabefeld zu stellen:</p>
+<p>Bisher haben wir nur die Eingabefelder selbst betrachtet. „Rundherum“ verwendet
+man alle bisher gelernten HTML-Elemente. So wäre es z.B. möglich, die
+Beschriftung einfach als Text neben das Eingabefeld zu stellen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld ohne Label</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;p&gt;E-Mail:&lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/p&gt;
+E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;
 </pre></div>
 
 <p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört. Dass dieser Zusammenhang klar ist (auch für screen reader etc) stellt man mit dem <code>label</code>-Tag sicher:</p>
@@ -212,7 +299,7 @@
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit Label</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;p&gt;&lt;label&gt;E-Mail:&lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/label&gt;&lt;/p&gt;
+&lt;label&gt;E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/label&gt;
 </pre></div>
 
 <p>Falls der Beschriftungs-Tag weiter entfernt ist kann der label auf die ID des Eingabefeldes verweisen:</p>
@@ -220,12 +307,12 @@
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit entferntem Label</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;label for=&quot;mail&quot;&gt;E-Mail:&lt;/label&gt; 
+&lt;label for=&quot;mail&quot;&gt;E-Mail&lt;/label&gt; 
 ....
 &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
 </pre></div>
 
-<h3 id="weitere-eingabefelder">Weitere Eingabefelder</h3>
+<h2 id="weitere-eingabefelder">Weitere Eingabefelder</h2>
 
 <p>Noch mehr Eingabefelder, die eher selten gebraucht werden.</p>
 
@@ -233,37 +320,40 @@
   <tbody>
     <tr>
       <td>Unsichtbares = Verstecktes Feld</td>
-      <td>&lt;input type=”hidden” name=”webseite” value=”www.students”&gt;</td>
+      <td><code>&lt;input type="hidden" name="source" value="wikipedia"&gt;</code></td>
     </tr>
     <tr>
       <td>Button ohne Auftrag, für Javascript-Programme</td>
-      <td>&lt;input type=”button” value=”Extrafenster” onclick=”…”&gt;</td>
+      <td><code>&lt;input type="button" value="Extrafenster" onclick="..."&gt;</code></td>
     </tr>
     <tr>
       <td>Bildfeld, liefert angeklickte x+y Koordinaten.</td>
-      <td>&lt;input type=”image” name=”position” src=”austria.gif”&gt;</td>
+      <td><code>&lt;input type="image" name="position" src="austria.gif"&gt;</code></td>
     </tr>
     <tr>
-      <td>Datei-Upload, funktioniert nur wenn die Formular-Daten mit Methode POST und speziellem enctype an den Webserver geschickt werden</td>
-      <td>Wählen Sie ein Bild aus: &lt;input type=”file” name=”bilddatei”&gt;</td>
+      <td>Datei-Upload*</td>
+      <td>Wählen Sie ein Bild aus: <code>&lt;input type="file" name="bilddatei"&gt;</code></td>
     </tr>
   </tbody>
 </table>
 
+<p>Der Datei-Upload funktioniert nur wenn die Formular-Daten mit Methode POST und
+speziellem enctype an den Webserver geschickt werden.</p>
+
+<h2 id="ordnung">Ordnung</h2>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Visuelle Zusammenfassung mehrer Felder: fieldset + legend</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;fieldset&gt; 
-&lt;legend&gt;Kreditkarte&lt;/legend&gt;
-     &lt;input name=&quot;nr&quot; /&gt;&lt;br&gt;
-     &lt;input type=&quot;radio&quot; name=&quot;kk&quot; 
-            value=&quot;Master&quot; /&gt; Master 
-     &lt;input type=&quot;radio&quot; name=&quot;kk&quot; 
-            value=&quot;Visa&quot; /&gt; Visa &lt;br&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Kreditkarte&lt;/legend&gt;
+  &lt;input name=&quot;nr&quot; placeholder=&quot;0000 0000 0000 0000&quot;&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Master&quot;&gt; Master&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Visa&quot;&gt; Visa &lt;/label&gt;
 &lt;/fieldset&gt;
 </pre></div>
 
-<p>Aus diesen Eingabeelementen ist jedes Web-Formular aufgebaut. Die Problematik der Formulare liegt nicht in der Kenntnis der Eingabefelder, sondern im Entwurf der Interaktionsmöglichkeiten.</p>
+<p><img src="/images/fieldset.png" alt="screenshot" /></p>
 
 		
 			<div class="pagination">
