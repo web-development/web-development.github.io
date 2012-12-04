@@ -49,54 +49,71 @@
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  var my_canvas = document.getElementById(&quot;c&quot;);
-  var my_context = my_canvas.getContext(&quot;2d&quot;);
+var my_canvas = document.getElementById(&quot;c&quot;);
+var my_context = my_canvas.getContext(&quot;2d&quot;);
 </pre></div>
 
-<p>Wir verwenden erst einmal die 2-dimensionale Zeichenfläche. Wenn Sie dann mehr von Computergrafik verstehen, können Sie auch die 3d-Version, genannt „webgl“ verwenden.</p>
+<p>Wir verwenden erst einmal die 2-dimensionale Zeichenfläche des Canvas. Wenn Sie mehr von Computergrafik verstehen können Sie auch die 3d-Version, genannt „webgl“ verwenden. </p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Achsenparallelle Rechtecke zeichnet man mit fillRect:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  my_context.fillRect(50, 50, 20, 20);
+my_context.fillRect(50, 50, 20, 20);
 </pre></div>
 
 <p>Linien ziehen kann man mit moveTo und lineTo. Die Linie erscheint erst, wenn man die abschließende Stroke-Methode aufruft:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  my_context.moveTo(10, 20);
-  my_context.lineTo(10, 50);
-  my_context.strokeStyle = &quot;#4a4&quot;;
-  my_context.stroke();
+my_context.moveTo(10, 20);
+my_context.lineTo(10, 50);
+my_context.strokeStyle = &quot;#4a4&quot;;
+my_context.stroke();
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Text auf den Canvas schreiben kann man mit dem font-Befehl:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  my_context.font = &quot;bold 12px sans-serif&quot;; 
-  my_context.fillText(&quot;hier bin ich&quot;, 10, 50);
+my_context.font = &quot;bold 12px sans-serif&quot;; 
+my_context.fillText(&quot;hier bin ich&quot;, 10, 50);
 </pre></div>
 
 <p>Bilder die sich bereits in der Webseite befinden kann man in den Canvas kopieren:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  var cat = document.getElementById(&quot;cat&quot;);   
-  my_context.drawImage(cat, 0, 0);
+var cat = document.getElementById(&quot;cat&quot;);   
+my_context.drawImage(cat, 0, 0);
 </pre></div>
 
-<p>Oder man kann ganz neue Bilder laden. Achtung: da das laden eines Bildes einige Zeit dauert verwenden wir hier das onload Event: erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Man kann ganz neue Bilder laden. Achtung: da das Laden eines Bildes 
+einige Zeit dauert verwenden wir hier das onload Event: 
+erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  var cat = new Image();   
-  cat.src = &quot;images/cat.png&quot;;   
-  cat.onload = function() {     
-    my_context.drawImage(cat, 0, 0);   
-  };
+var cat = new Image();   
+cat.src = &quot;images/cat.png&quot;;   
+cat.onload = function() {     
+  my_context.drawImage(cat, 0, 0);   
+};
 </pre></div>
 
 <p>Diese Beispiel zu Canvas stammen alle aus dem <a href="http://diveintohtml5.info/canvas.html">Canvas-Kapitel</a> von Mark Pilgrims „Dive into HTML5“.</p>

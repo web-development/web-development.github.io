@@ -60,31 +60,45 @@
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  $(&quot;a&quot;)        /* alle A-Tags ... als jQuery objekte */
-  $(&quot;h1&quot;)       /* alle Überschriften h1 ... als jQuery objekte */
-  $(&quot;p.extra&quot;)  /* alle p-tags mit klasse extra ... als jQuery objekte  */
+$(&quot;a&quot;)        /* alle A-Tags ... als jQuery objekte */
+$(&quot;h1&quot;)       /* alle Überschriften h1 ... als jQuery objekte */
+$(&quot;p.extra&quot;)  /* alle p-tags mit klasse extra ... als jQuery objekte  */
 </pre></div>
 
 <p>jQuery definiert noch ein paar zusätzliche Selektoren, die es in CSS (noch) nicht gibt:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  $(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
-  $(&quot;p:contains('Warnung')&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
-  $(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
+$(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
+$(&quot;p:contains('Warnung')&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
+$(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
 </pre></div>
 
-<p>Die Selektion allein verändert die Webseite noch nicht. Dafür bietet jQuery eine Reihe von Manipulations-Funktionen an. Diese können direkt an die Selektions-Funktion geschreiben werden: die Selektions-Funktion gibt ein Objekt mit entsprechenden Methoden zurück:</p>
+<p>und weitere Methoden, um noch besser zu selektieren:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  $(&quot;a&quot;).addClass(&quot;wichtig&quot;); /* alle A-Tags erhalten die Klasse wichtig */
-  $(&quot;h1&quot;).append(&quot;:&quot;);        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
-  $(&quot;h1&quot;).prepend(&quot;Titel:&quot;);  /*  --||-- wird vorne ‚titel:’ eingefügt */
-  $(&quot;p.extra&quot;).hide();        /* alle p-tags mit klasse extra werden versteckt */
+$('h1').next()               /* nächster Tag nach der h1 */
+$('h2').nextUntil('h2')      /* Alle Tags zwischen einem h2 und dem nächsten */
 </pre></div>
 
-<p>Hinweis: hier versteckt sich eine Schleife: der Selektor liefert ein ganzes Array von Objekten, die Manipulations-Funktion wird für jedes Objekt aufgerufen.</p>
+<p>Das Ergebnis ist jeweils ein jQuery Objekt.</p>
+
+<h2 id="manipulation">Manipulation</h2>
+
+<p>Die Selektion allein verändert die Webseite noch nicht. Dafür bietet jQuery 
+eine Reihe von Manipulations-Funktionen an. </p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+$(&quot;a&quot;).addClass(&quot;wichtig&quot;); /* alle A-Tags erhalten die Klasse wichtig */
+$(&quot;h1&quot;).append(&quot;:&quot;);        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
+$(&quot;h1&quot;).prepend(&quot;Titel:&quot;);  /*  --||-- wird vorne ‚titel:’ eingefügt */
+$(&quot;p.extra&quot;).hide();        /* alle p-tags mit klasse extra werden versteckt */
+</pre></div>
+
+<p>Hinweis: hier versteckt sich eine Schleife: der Selektor liefert ein Liste von
+Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</p>
 
 		
 			<div class="pagination">
@@ -299,6 +313,10 @@
                     
                       
                       <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
                       
                     
                       

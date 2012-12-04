@@ -56,53 +56,32 @@
                           </div>
 			
 			
-			<p>jQuery bietet eine etwas kürzere Schriebweise statt addEventListener an. Z.B. die Methode click: als Argument wird nur eine Funktion übergeben, die aufgerufen werden soll wenn das Event feuert. Hier kommen meist anonyme Funktionen zum Einsatz:</p>
+			<p>jQuery bietet eine etwas kürzere Schriebweise statt addEventListener an. Z.B. die Methode click: als Argument wird nur eine Funktion übergeben, die aufgerufen werden soll wenn das Event feuert. Hier kommen meist anonyme Funktionen zum Einsatz.</p>
+
+<p>In folgendem Beispiel ist es das <code>mouseover</code> event:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  $(&quot;h1&quot;).click(function() {
-      alert(&quot;ein h1 wurde geklickt&quot;);
-  });
+$(&quot;a&quot;).mouseover(function(){
+  // code wird bei mouseover ausgeführt
+});
 </pre></div>
 
-<p>Innerhalb der Funktion steht die Variable this zu Verfügung um den angeklickten Tag als jQuery Objekt zu erhalten:</p>
+<p>Innerhalb der Funktion steht die Variable <code>this</code> zu Verfügung, sie erhält 
+den Tag der das Event ausgelöst hat.  </p>
+
+<p>Um den angeklickten Tag als jQuery Objekt zu erhalten kann man wieder
+die Funktion <code>$</code> verwenden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  $(&quot;h1&quot;).click(function() {
-      $(this).hide();   /* versteckt den angeklickten h1 tag */
-  });
+$(&quot;a&quot;).mouseover(function(){
+  $(this).find(&quot;span&quot;).show();
+});
 </pre></div>
 
-<p>Dazu ein vollständiges Beispiel: zu mehreren Überschriften gibt es Text, der bei Klick auf die Überschrift versteckt bzw. angezeigt werden soll:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h2 class=&quot;more&quot;&gt;Vertiefendes Studium&lt;/h2&gt;
-  &lt;div class=&quot;extra&quot;&gt;
-  &lt;p&gt;Das Schwerpunktstudium Vertiefung ermöglicht den Erwerb hoch spezialisierter Qualifikationen in einer gestalterischen Fachdisziplin. &lt;/p&gt;&lt;/div&gt; 
-  &lt;h2 class=&quot;more&quot;&gt;Steuerung&lt;/h2&gt;
-  &lt;div class=&quot;extra&quot;&gt;
-  &lt;p&gt;Das Schwerpunktstudium Steuerung zielt auf die Ausbildung von Führungskräften der Kreativwirtschaft.&lt;/p&gt; 
-  &lt;/div&gt;
-</pre></div>
-
-<p>Dazu das vollständige Javascript-Programm mit jQuery:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script type=&quot;text/javascript&quot; src=&quot;http://code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
-  &lt;script&gt; 
-  $(document).ready(function(){ 
-      $(&quot;.extra&quot;).hide();
-      $(&quot;.more&quot;).click(function(){
-          $(this).next(&quot;.extra&quot;).toggle();
-      });
-  }); 
-  &lt;/script&gt;
-</pre></div>
-
-<p><code>this</code>  ist innerhalb der Funktion der angeklickte Tag. Mit dem jQuery-Befehl <code>next()</code> wird nach dem nächsten Tag im HTML-Code gesucht, hier nach dem nächsten Tag mit der Klasse extra. Auf den gefundenen Tag wird der befehl <code>toggle()</code> angewandt, der zwishcen sichtbar und unsichtbar hin und her schlatet (er setzt dafür die CSS Eigenschaft <code>display:none</code>)</p>
+<p>Das <a href="/images/mouseover.html">vollständiges Beispiel</a> zeigt mouseover und
+mouseout.</p>
 
 		
 			<div class="pagination">
@@ -317,6 +296,10 @@
                     
                       
                       <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
                       
                     
                       

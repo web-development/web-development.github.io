@@ -95,37 +95,40 @@
   node.replaceChild()
 </pre></div>
 
-<p>Ein simples Beispiel: ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:</p>
+<h3 id="simples-beispiel">Simples Beispiel</h3>
+
+<p>Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  d = document.getElementById(&quot;person_25“);
-  d.setAttribute(&quot;style&quot;, &quot;display:none&quot;);
+d = document.getElementById(&quot;person_25“);
+d.setAttribute(&quot;style&quot;, &quot;display:none&quot;);
 </pre></div>
 
 <p>Diese beiden Zeilen könnten auch zu einer kombiniert werden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  document.getElementById(&quot;person_25“).setAttribute(&quot;style&quot;, &quot;display:none&quot;);
+document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &quot;display:none&quot;);
 </pre></div>
 
 <p>Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.</p>
+
+<h3 id="selektieren">Selektieren</h3>
 
 <p>Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode <code>document.querySelectorAll()</code>:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   inputs = document.querySelectorAll(&quot;input&quot;);
-
   i=0;
-
-  while(i &amp;lt; inputs.length) {
-
+  while(i &lt; inputs.length) {
       console.log(&quot;input mit name &quot; + inputs[i].name );
       i++;
   }
 </pre></div>
+
+<h3 id="text">Text</h3>
 
 <p>Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen.</p>
 
@@ -169,12 +172,16 @@
   node.removeAttribute()
 </pre></div>
 
+<h3 id="einfgen">Einfügen</h3>
+
 <p>Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft <code>innerHTML</code>:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&gt;ganz&lt;/b&gt; neu&lt;/p&gt;“;
+document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&gt;neu&lt;/b&gt;&lt;/p&gt;“;
 </pre></div>
+
+<h3 id="duplizieren">Duplizieren</h3>
 
 <p>Mit <code>cloneNode</code> kann man einen ganzen Teil-Baum duplizieren, und wo anders wieder einfügen. So kann man z.B. in einem Pizza-Bestell-Formular die Eingabeelement für eine Pizza in einer div zusammenfassen:</p>
 
@@ -187,14 +194,7 @@
         &lt;option&gt;Vegetarian&lt;/option&gt;
         &lt;option&gt;Quattro Staggione&lt;/option&gt;
       &lt;/select&gt;
-      &lt;br /&gt;
-      &lt;label&gt;add Garlic  &lt;select name=&quot;addgarlic[]&quot;&gt;
-          &lt;option&gt;no&lt;/option&gt;&lt;option&gt;yes&lt;/option&gt;
-      &lt;/select&gt;&lt;/label&gt;
-      &lt;label&gt;add Cheese &lt;select name=&quot;addcheese[]&quot;&gt;
-          &lt;option&gt;no&lt;/option&gt;&lt;option&gt;yes&lt;/option&gt;
-      &lt;/select&gt;&lt;/label&gt;
-      &lt;label&gt;anything else?&lt;input type=&quot;text&quot; name=&quot;comment[]&quot;  /&gt;&lt;/label&gt;
+      ...
     &lt;/p&gt;
   &lt;/div&gt;
 </pre></div>
@@ -207,6 +207,8 @@
   var new_pizza = first_pizza.cloneNode(true);
   first_pizza.insertBefore(new_pizza, null);
 </pre></div>
+
+<p><a href="/images/moreformjs.html">Beispiel live im Browser</a></p>
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
 <p>Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:</p>
@@ -233,16 +235,19 @@
   &lt;/div&gt;
 </pre></div>
 
-<p>Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die funktion removeMe. Mit addEventListener können wir dann die Funktion als zuständig für das click-event am span.removthis definieren.</p>
+<p>Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen
+wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die
+funktion removeMe. Mit addEventListener können wir dann die Funktion als
+zuständig für das click-event am spam <code>.removthis</code> definieren.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  function removeMe(e){
-     var me = e.target;
-     var my_pizza = me.parentNode.parentNode;
-     my_pizza.parentNode.removeChild( my_pizza ); 
-  }
-  document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quot;, removeMe, false); 
+function removeMe(e){
+  var me = e.target;
+  var my_pizza = me.parentNode.parentNode;
+  my_pizza.parentNode.removeChild( my_pizza ); 
+}
+document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quot;, removeMe, false); 
 </pre></div>
 
 		
@@ -458,6 +463,10 @@
                     
                       
                       <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
                       
                     
                       

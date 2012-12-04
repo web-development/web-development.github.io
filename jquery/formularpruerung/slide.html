@@ -39,47 +39,55 @@
           <div class="slide"><h1>Formulardaten Prüfen mit jQuery</h1>
           <p><a href="/jquery/formularpruerung/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>In Kapitel 4.5.6 (Seite 85) haben Sie gelernt wie Sie mit Javascript die Daten eines Webformulars prüfen können bevor das Formular abgesendet wird. Mit jQuery können wir dieses Programm noch verfeinern: Jeweils beim betroffenen Eingabefeld wird direkt eine Fehlermeldung angezeigt:</p>
+	  <div class='slide'><p>Im Kapitel über Formulare haben Sie gelernt, 
+wie Sie mit Javascript die Daten eines Webformulars prüfen können 
+bevor das Formular abgesendet wird. </p>
+
+<p>Das Submit-Event des Formulars wird nun in der jQuery Schreibweise
+behandelt, der boolsche Rückgabewert bleibt in der Bedeutung gleich:
+<code>return false</code> verhindert das Absenden des Formulars.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;jquery-1.2.3.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script&gt;
+<pre class="lang-javascript prettyprint linenums">
+$(&quot;form&quot;).submit(function(){
+  // ...
+  return ok;
+});
+</pre></div>
 
-    $(document).ready(function(){
-          $(&quot;form&quot;).submit(function(){
-              var ok = true;
-             var $i = null;
-              
-              $(&quot;span.error&quot;).remove();
+<p>Der Wert eines Eingabefeldes kann mit der jQuery Methode <code>val()</code> ausgelesen
+werden:</p>
 
-              $i = $(&quot;input[name=liefername]&quot;);
-              if($i.val() == &quot;&quot;) {
-                  $i.after('&lt;span class=&quot;error&quot;&gt;den Empfänger angeben&lt;/span&gt;');
-                   ok = false;
-              } 
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+$(&quot;input[name=schokolade]&quot;).val()    // ein Wert
+</pre></div>
 
-              $i = $(&quot;input[name=adresse]&quot;);
-              if($i.val() == &quot;&quot;) {
-                  $i.after('&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;');
-                  ok = false;
-              }
+<p>Das (fertige Programm)[/images/form-jquery.html]
+zeigt die Fehlermeldungen jeweils beim betroffenen Eingabefeld an:</p>
 
-              return ok;
-          });
-    });
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+$(&quot;form&quot;).submit(function(){
+  var ok = true;
+  $(&quot;span.error&quot;).remove();
 
-  &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-  &lt;form action = &quot;bestell.php&quot;&gt;
+  gesamt_zahl = parseInt( $(&quot;input[name=schokolade]&quot;).val() )
+              + parseInt( $(&quot;input[name=schweinsbraten]&quot;).val() )
+              + parseInt( $(&quot;input[name=kaffee]&quot;).val() );
 
-  &lt;label&gt;Empfänger: &lt;input type=&quot;text&quot; name=&quot;liefername&quot;&gt; &lt;/label&gt;
-  &lt;label&gt;Adresse: &lt;input type=&quot;text&quot; name=&quot;adresse&quot;&gt; &lt;/label&gt;
-  &lt;label&gt;Telefon/Handy: &lt;input type=&quot;text&quot; name=&quot;tel&quot;&gt; &lt;/label&gt;
+  if(gesamt_zahl == 0) {
+      $('form').before('&lt;span class=&quot;error&quot;&gt;Mindestes-Bestellmenge 1!&lt;/span&gt;');
+       ok = false;
+  }
 
-  &lt;input name=&quot;&quot; type=&quot;submit&quot;&gt;
-  &lt;/form&gt;
+  $i = $(&quot;input[name=adresse]&quot;);
+  if($i.val() == &quot;&quot;) {
+      $i.after('&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;');
+      ok = false;
+  }
+  return ok;
+});
 </pre></div>
 </div>
           <div class="slide"><h1>Ende</h1>

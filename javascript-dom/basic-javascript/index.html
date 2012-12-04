@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm:</p>
+			<p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
+<a href="/images/farbfeld.html">live im browser</a>.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
@@ -86,6 +87,13 @@ function setcolor( c ) {
 
 <h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
 
+<ul>
+  <li>externe Javascript-Datei</li>
+  <li>mit &lt;script&gt;-Tag</li>
+  <li>Javascript in einer URL</li>
+  <li>onevent-Attribute</li>
+</ul>
+
 <h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
 
 <p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem <code>script</code>-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: </p>
@@ -98,7 +106,9 @@ function setcolor( c ) {
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
 
 <h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
-<p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet werden. Das Programm wird dann beim Aufbau der Seite ausgeführt:</p>
+<p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet
+werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
+<a href="/images/countdown.html">live im Browser</a></p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -137,7 +147,7 @@ function setcolor( c ) {
 
 <p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
 
-<h2 id="die-onevent---attribute">Die onevent - Attribute</h2>
+<h3 id="die-onevent---attribute">Die onevent - Attribute</h3>
 
 <p>Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.</p>
 
@@ -185,6 +195,21 @@ function setcolor( c ) {
 
 <p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
 
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;div ontouchstart=&quot;...&quot; ontouchend=&quot;...&quot; ontouchmove=&quot;....&quot;&gt;
+</pre></div>
+
+<p>Nur auf geräten mit Touchscreen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;body onoffline=&quot;...&quot; ononline=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt wenn das Gerät die Verbindung zum Internet
+verliert, bzw. wieder erhält.</p>
+
 <h2 id="syntax-von-javascript">Syntax von Javascript</h2>
 
 <p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Anweisung wird mit einem Strichpunkt (Semikolon) getrennt, Blöcke werden mit geschwungenen Klammern gebildet. </p>
@@ -195,25 +220,27 @@ function setcolor( c ) {
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  // document.location          
-  // diese Eigenschaft speichert die aktuelle URL
-  document.location = &quot;http://io9.com&quot;;  
- // wenn man einen neuen Wert in location speichert surft der Browser hin
+// document.location          
+// diese Eigenschaft speichert die aktuelle URL
+// wenn man einen neuen Wert in location speichert surft der Browser hin
+document.location = &quot;http://io9.com&quot;;  
 
-  document.alert(&quot;hi&quot;);  // die Methode alert zeigt ein Popup-Fenster an
-
-  document.alert(&quot;meine URL ist &quot; + document.location);
+document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die webseite
 </pre></div>
 
-<p>Es gibt in Javascript aber auch „normale“ Variablen und Funktionen, nicht nur Objekte, Eigenschaften und Methoden. Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes <code>div</code> in der Webseite auszuwählen. </p>
+<p>Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes <code>div</code> in der Webseite auszuwählen. </p>
 
 <p><img src="/images/image254.png" alt="Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/" /></p>
+
+<h3 id="variablen">Variablen</h3>
 
 <p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt. </p>
 
 <p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. </p>
 
 <p><img src="/images/image264.png" alt="Abbildung 58: Javascript Console in Firebug" /></p>
+
+<h3 id="datentypen">Datentypen</h3>
 
 <p>Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – der Interpreter trennt Variablen nicht nach verschiedenen Datentypen:</p>
 
@@ -245,7 +272,8 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   // typeof(b) == &quot;object&quot;
 </pre></div>
 
-<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.</p>
+<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.
+<a href="/images/jsarray.html">Beispiel live im Browser</a></p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -253,7 +281,8 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   i = 0;
   t = &quot;Das Array:\n&quot;;
   while( i &lt; b.length ) {
-      t += &quot;Index = &quot; + i + &quot;, Wert = &quot; + b[i] + &quot;\n&quot;;
+      t += &quot;Index &quot; + i    + &quot;\n&quot;;
+      t += &quot;Wert  &quot; + b[i] + &quot;\n&quot;;
       i++;
   }   
   alert(t);
@@ -274,13 +303,17 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
       this.beschriftung = b;
       this.verkauft     = v;
   }
-  c = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
+  d = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
 
   alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”
+  alert(&quot;Das Shirt ist &quot; + d.farbe ); // gibt “Das Shirt ist rot”
 
   // typeof c === &quot;object&quot;
   // c.constructor === Shirt
+  // d.constructor === Object
 </pre></div>
+
+<h3 id="zugriff-auf-eigenschaften">Zugriff auf Eigenschaften</h3>
 
 <p>Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen finden werden) ist, dass Eigenschaften eines Objekts nicht nur über die Punkt-Schreibweise, sondern auch über eckige Klammern – also wie ein Array – angesprochen werden können:</p>
 
@@ -298,6 +331,8 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   alert(&quot;Die Beschriftung lautet &quot; + c[e] );
 </pre></div>
 
+<h3 id="schleife-ber-eigenschaften">Schleife über Eigenschaften</h3>
+
 <p>Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:</p>
 
 <div class="example">
@@ -305,7 +340,8 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   var i,t;
   t = &quot;Das Objekt:\n&quot;;
   for( i in c ) {
-      t += &quot;Eigenschaft = &quot; + i + &quot;, Wert = &quot; + c[i] + &quot;\n&quot;;
+      t += &quot;Eigenschaft = &quot; + i    + &quot;, &quot;;
+      t += &quot;Wert        = &quot; + c[i] + &quot;\n&quot;;
   }   
   alert(t);
 </pre></div>
@@ -523,6 +559,10 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
                     
                       
                       <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
                       
                     
                       

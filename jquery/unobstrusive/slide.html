@@ -52,11 +52,29 @@
 
 <p><img src="/images/image267.png" alt="Abbildung 60: Die Rolle von Content, Darstellung und Programmierung (Unobstrusive Javascript)" /></p>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Von dieser Herangehensweise profitieren nicht nur Blinde, Menschen mit veralteten Browsern oder exotischen Ausgabegeräte. Auch für Suchmaschinen wie Google oder andere Programme die die Information aus den Webseiten weiter verarbeiten ist dieses Prinzip hilfreich.</p>
 
 <p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie in Abbildung 61 gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
 
 <p><img src="/images/image269.png" alt="Abbildung 61: Javascript deaktivieren mit QuickJava in Firefox" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="grenzen-von-graceful-degradation">Grenzen von Graceful Degradation</h2>
+
+<p>Es gibt Websites, bei denen dieser Ansatz nicht funktionieren kann.
+z.B. für einen Shooter als Browsergame kann man nicht nicht eine
+Javascript-Freie Alternative anbieten.</p>
+
+<p>Für viele Apps funktioniert das aber.  Probieren Sie z.B. gmail ohne javascript
+aus, oder das Webmail der FH (zimbra).  Die Interaktion ist etwas
+umständlicher, aber man kann alle Features der Mail benutzen.</p>
 
 </div>
 <div class='slide'>
@@ -81,332 +99,6 @@
 </pre></div>
 
 <p>Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern der Amazon Simple Storage Services (s3). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="ein-beispiel-inner-links">Ein Beispiel: Inner Links</h2>
-
-</div>
-<div class='slide'>
-
-<h3 id="version-1">Version 1</h3>
-
-<p>In einer langen Webseite sind mehrere Anker-Punkte gesetzt, über ein
-Navigationsmenü mit <code>position:fixed</code> kann man diese Ankerpunkte ansteuern.
-Das ist völlig problemloses HTML</p>
-
-<div class="example twopane">
-<h4 class="caption">Html Code <small>webseite mit Anker-Punkten, fixe Navigation</small></h4>
-<pre class="lang-html prettyprint linenums left">
-&lt;div id=&quot;navigation&quot;&gt;
-  &lt;a href=&quot;#s0&quot;&gt;Thema 0&lt;/a&gt; 
-  &lt;a href=&quot;#s1&quot;&gt;Thema 1&lt;/a&gt; 
-  ...
-&lt;/div&gt;  
-&lt;section id=&quot;s0&quot;&gt;
-  &lt;h2&gt;Thema 0&lt;/h1&gt; 
-  &lt;p&gt;bla bla ...&lt;/p&gt;
-&lt;/section&gt;
-&lt;section id=&quot;s1&quot;&gt;
-  &lt;h2&gt;Thema 1&lt;/h1&gt; 
-  &lt;p&gt;bla bla ...&lt;/p&gt;
-&lt;/section&gt;
-...
-</pre><pre class="lang-html prettyprint linenums right">
-#navigation {
-  position: fixed;
-  z-index: 10;
-  bottom: -1px;
-}
-
-
-
-
-
-
-
-
-
-</pre><div class="clearfix"></div></div>
-
-</div>
-<div class='slide'>
-
-<h3 id="version-2">Version 2</h3>
-
-<p>In einem Versuch die Seite zu verbessern ersetzen wir nun die 
-Links durch den Aufruf einer Javascript-Funktion:</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Version 2</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;div id=&quot;navigation&quot;&gt;
-  &lt;a onClick=&quot;scrollToMe('#s0')&quot;&gt;Thema 0&lt;/a&gt; 
-  &lt;a onClick=&quot;scrollToMe('#s1')&quot;&gt;Thema 1&lt;/a&gt; 
-  ...
-&lt;/div&gt;    
-</pre></div>
-
-<p>Die Javsacript-Funktion verwendet jQuery und die übergebene
-ID um den Ziel des Links ausfindig zu machen, und dann die
-jQuery Methode <code>offset</code> um die Position des Ziels im Dokument
-zu berechnen.  </p>
-
-<p>Mit der jQuery-Methode <code>animate</code> wird dann eine Animation erzeugt:
-binnen 800 Millisekunden wird die Seite durch setzen von <code>scrollTop</code>
-von der aktuellen Scrollposition in die Scrollposition gebracht, 
-die das Ziel ganz oben im Fenster anzeigt.</p>
-
-<p>Mit <code>return false</code> wird die “normale” Funktion des Links deaktiviert.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Javascript für Version 1</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function scrollToMe(id) {
-  var top  = $(id).offset().top;
-  $('body').animate({ scrollTop: top }, 800);
-  return false;
-}
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Diese Version ist kein Beispiel für gutes Javascript:
-in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</code> nicht.</p>
-
-<p>Mit dieser Version haben wir</p>
-
-<ul>
-  <li>die klassischen Links zerstört</li>
-  <li>für manche javascript-fähige Browser eine Animation eingefügt</li>
-  <li>für manche javascript-fähige Browser keine Animation eingefügt</li>
-</ul>
-
-<p>Wir haben dabei beide Prinzipien gebrochen</p>
-
-<ul>
-  <li>kein progressive enhancement: Links funktionieren nicht mehr</li>
-  <li>kein unobstrusive javascript: Javascript-Code direkt in HTML-Attributen</li>
-</ul>
-
-</div>
-<div class='slide'>
-
-<h3 id="version-3">Version 3</h3>
-
-<p>Im nächsten Versuch werden wir jQuery verwenden, um unobstrusive zu 
-programmieren:</p>
-
-<p>Die Navigation wird wieder zurück-gestellt auf normale HTML-Links:</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Version 3</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;div id=&quot;navigation&quot;&gt;
-  &lt;a href=&quot;#s0&quot;&gt;Thema 0&lt;/a&gt;
-  &lt;a href=&quot;#s1&quot;&gt;Thema 1&lt;/a&gt;
-  ...
-&lt;/div&gt;
-</pre></div>
-
-<p>Die Funktion <code>scrollToMe</code> wird als Eventhandler implementiert:
-sie erwartet ein Event als Argument und die angeklickte Node
-in der Variablen <code>this</code>.  Ausserdem verwendet die Funktion
-die jQuery-Methode <code>preventDefault</code> um das “normale” Verhalten
-des Links zu unterbinden.</p>
-
-<p>In der letzten Zeile wird an alle Links in der Navigation
-die Funktion <code>scrollToMe</code> als Eventhandler für <code>click</code> angefügt.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Version 3</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-$(document).ready( function () {
-
-  function scrollToMe(event) {
-    var link = $(this).attr('href'),
-        top  = $(link).offset().top;
-    $('body').animate({
-      scrollTop: top
-    }, 800);
-    event.preventDefault();
-  }
-
-  $('#navigation a').on('click', scrollToMe);
-});
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Diese Variante funktioniert schon besser:</p>
-
-<ul>
-  <li>die klassischen Links funktionier für Browser ohne Javascript</li>
-  <li>für manche javascript-fähige Browser eine Animation eingefügt</li>
-  <li>für manche javascript-fähige Browser ist die Animation immer noch kaputt</li>
-</ul>
-
-<p>Wir haben damit schon ein Prinzip eingehalten, und sind
-beim anderen Prinzipien auf halben weg</p>
-
-<ul>
-  <li>teilweise progressive enhancement: 
-** Links funktionieren für Browser ohne Javascript
-** in der Javascript-Variante bleibt die URL immer gleich</li>
-  <li>unobstrusive javascript: erfüllt</li>
-</ul>
-
-</div>
-<div class='slide'>
-
-<h3 id="version-4">Version 4</h3>
-
-<p>Im nächsten Schritt werden wir sicher stellen, dass die Animation
-nur in solchen Browsern verwendet wird, wo sie auch funktioniert.</p>
-
-<p>Achtung: hier gibt es einen falschen und einen richtigen Ansatz:</p>
-
-</div>
-<div class='slide'>
-
-<h1 id="browser-detection-unterscheidung-nach-namen-versionsnummer-betriebssystem-des-browsers">Browser Detection: Unterscheidung nach Namen, Versionsnummer, Betriebssystem des Browsers</h1>
-<p># Feature Detection: Unterscheidung nach genau der Fähigkeit, die ich verwenden will</p>
-
-<p>Die erste Variante funktioniert nicht: die Selbstoffenbarung der Browser
-kann falsch sein, ich kenne nicht alle Browser und ihre Fähigkeiten.
-Siehe auch
-<a href="http://www.nczonline.net/blog/2009/12/29/feature-detection-is-not-browser-detection/">Zakas(2009): Feature detection is not browser detection. In NCZOnline.</a></p>
-
-<p>Die Funktion <code>scrollToMe</code> bleibt unverändert.
-Wir testen ob die Funktion scrollTop wirklich den Wert
-von scrollTop verändern kann. Wenn das funktioniert wird
-die globale Variable <code>can_scroll</code> auf <code>true</code> gesetzt, 
-andernfalls auf <code>false</code>.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Version 4</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-// try out scrollTop,
-// set global Flag can_scroll
-var old_scrolltop = $('body').scrollTop();
-$('body').scrollTop(10);
-window.can_scroll = ( $('body').scrollTop() &gt; 0 );
-$('body').scrollTop(old_scrolltop);
-
-if ( window.can_scroll ) $('#navigation a').on('click', scrollToMe);
-</pre></div>
-
-<p>Diese Herangehensweise - Feature Detection, dann Flags setzen,
-die im weiteren Code verwendet werden können - wird von der Library
-<a href="http://modernizr.com/">modernizr</a> für eine lange Liste von Features
-angeboten.</p>
-
-</div>
-<div class='slide'>
-
-
-
-<p>In ganz seltenen Fällen muss man doch Browser Detection machen.
-Eine Gute Library dafür ist <a href="http://api.html5please.com/">HTML5 please</a>.
-Damit kann man eine Liste von Features angeben die erfüllt sein
-müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
-wird eine entsprechende Meldung angezeigt</p>
-
-<p><img src="/images/html5please.png" alt="HTML5 please Fehlermeldung" /></p>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Diese Variante behebt das Problem mit nicht-funktionierenden
-Javascript-Browsern:</p>
-
-<ul>
-  <li>die klassischen Links funktionier für Browser ohne Javascript</li>
-  <li>die klassische Version wird auch für “animations-unfähige” Javascript Browser verwendet</li>
-  <li>für manche javascript-fähige Browser funktioniert die Animation</li>
-</ul>
-
-<p>Es bleibt aber noch in Problem:</p>
-
-<ul>
-  <li>teilweise progressive enhancement: 
-** in der Javascript-Variante bleibt die URL immer gleich</li>
-  <li>unobstrusive javascript: erfüllt</li>
-</ul>
-
-</div>
-<div class='slide'>
-
-<h3 id="version-5">Version 5</h3>
-
-<p>In der klassischen Version ändert sich beim navigieren zwischen den
-Ankern jeweils die URL im Browser.  Wenn ich ein Ziel an-navigiere,
-und dann die URL kopiere um einen Link zu setzen / mir eine Bookmark setze,
-dann verweist die URL die ich verwende wirklich wieder genauf auf das Ziel.</p>
-
-<p>Dieses Verhalten ist erstrebenswert, wird aber von der “animierten” Version
-derzeit nicht geliefert.</p>
-
-<p>Diese “navigierbarkeit” ist auch ein klassisches Problem von AJAX-Applikationen,
-die Lösung die wir hier entwickeln funktioniert auch dort:</p>
-
-<p>In die Funktion <code>scrollToMe</code> wird eine Zeile eingefügt.
-Mit dem History-Objekt kann man den Browser von Javascript aus “navigieren”:
-mit <code>history.back()</code> zum Beispiel einen Schritt zurück gehen.</p>
-
-<p>Mit <code>history.pushState()</code> kann man zu einer neuen Seite navigieren,
-sie wird dabei an die History angefügt - das ist das “normale” Verhalten
-des Browsers.</p>
-
-<p>Eine Alternative ist <code>history.replaceState()</code> - dabei wird die aktuelle Seite
-ersetzt, die Browser-History wird nicht länger.  </p>
-
-<p>Beide Methoden erwarten drei Argumente - ein Objekt und zwei Strings - 
-aber nur das letzte Argument wird derzeit benutzt. Es ist ein String mit der
-URL die geladen werden soll.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Version 4</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function scrollToMe(event) {
-  var link = $(this).attr('href');
-  ...
-  window.history.pushState( {}, &quot;Thema &quot; + link, link);
-}
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Mit dieser Variante haben wir  für die Javascript-Browser
-alle Funktionalität der einfachen HTML-Version wiederhergestellt.
-Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
-
-<p>Damit sind beide Prinzipien voll erfüllt:</p>
-
-<ul>
-  <li>progressive enhancement - alle Browser erhalten die maximal mögliche Funktionalität</li>
-  <li>unobstrusive javascript - kein Javascript-Code im HTML</li>
-</ul>
-
-</div>
-<div class='slide'>
-
-
-
-<p>History auch in HTML4 Browsern verwenden:
-https://github.com/balupton/History.js/</p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/jquery/unobstrusive/">zurück zum Buch-Kapitel</a></p>
