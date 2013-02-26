@@ -39,19 +39,58 @@
           <div class="slide"><h1>Das erste PHP-Programm</h1>
           <p><a href="/php-vorbereitung/erstes-php-programm/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Beachten Sie, dass das Programm die richtige Dateiendung (.php) haben muss und nicht direkt im Browser angezeigt werden kann:</p>
+	  <div class='slide'><p>Während das Schreiben und Testen von HTML-Seiten sehr einfach war,
+erforder das Schreiben und Testen von PHP einige Schritte mehr.
+Hier eine Schritt- für Schritt Auflistung, was alles schief gehen kann:</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Das Programm muss die richtige Dateiendung (.php) haben. Es kann nicht direkt im
+Browser angezeigt werden, sondern muss über den Webserver aufgerufen weden. In
+folgendem Beispiel ist beides falsch:</p>
 
 <p><img src="/images/image327.png" alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" /></p>
 
-<p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm speichern wird es nicht vom Webserver interpretiert, sondern direkt an den Browser gesandt. Der Browser zeigt den Code aber nicht an, erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
+<p>Tipp:  wenn die URL mit <strong>file:///</strong> beginnt, öffnet der Browser die Datei
+direkt vom Filesystem, es ist keine Webserver involviert.  Dann kann PHP nicht
+funktionieren!</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm
+speichern, und über den Webserver aufrufen, wird es trotzdem nicht vom Webserver 
+interpretiert, sondern direkt an den Browser gesandt. </p>
+
+<p>Der Browser zeigt den PHP-Teil des Code aber nicht an, 
+erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
 
 <p><img src="/images/image328.png" alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" /></p>
 
-<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver 
+betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. 
+Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
 <p><img src="/images/image329.png" alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" /></p>
 
-<p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden Testlauf:</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden
+Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
+<strong>http://localhost/</strong>, und keine Fehler im Programm:</p>
 
 <p><img src="/images/image330.png" alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" /></p>
 
@@ -61,18 +100,34 @@
 <div class='slide'>
 
 <h2 id="php-versionen">PHP Versionen</h2>
-<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In Abbildung 124 sehen Sie z.B. dass PHP in der Version 5.0.5 installiert ist.</p>
+<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen 
+Sie z.B. dass PHP in der Version 5.0.5 verwendet wird.</p>
 
-<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, PHP ist nicht aufwärts-kompatibel. Wenn ihr Webspace-Vermieter auf eine neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes anpassen.</p>
+<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, 
+verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>. 
+Wenn ihr Webspace-Vermieter auf eine 
+neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
+anpassen!</p>
 
-<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: </p>
+<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen 
+aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: </p>
 
 <p>(PHP 4 &gt;= 4.2.0, PHP 5)
 Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
 
-<p>Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!</p>
+</div>
+<div class='slide'>
 
-<p>Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: viele Webspace-Provider bieten nur veraltete PHP-Versionen an. Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen!</p>
+
+
+<p>Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) 
+gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert 
+programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!</p>
+
+<p>Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: 
+wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
+können Sie das nicht änder!
+Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
 
 </div>
 <div class='slide'>
@@ -81,6 +136,11 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
 <p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
 
 <p><img src="/images/image331.png" alt="Abbildung 129: Eine Funktion in der Doku auf php. net nachschlagen" /></p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation ‚vergessen’ wurden, oder Anwendungsbeispiele:</p>
 

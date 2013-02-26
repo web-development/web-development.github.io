@@ -48,37 +48,67 @@
                           </div>
 			
 			
-			<p>Beachten Sie, dass das Programm die richtige Dateiendung (.php) haben muss und nicht direkt im Browser angezeigt werden kann:</p>
+			<p>Während das Schreiben und Testen von HTML-Seiten sehr einfach war,
+erforder das Schreiben und Testen von PHP einige Schritte mehr.
+Hier eine Schritt- für Schritt Auflistung, was alles schief gehen kann:</p>
+
+<p>Das Programm muss die richtige Dateiendung (.php) haben. Es kann nicht direkt im
+Browser angezeigt werden, sondern muss über den Webserver aufgerufen weden. In
+folgendem Beispiel ist beides falsch:</p>
 
 <p><img src="/images/image327.png" alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" /></p>
 
-<p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm speichern wird es nicht vom Webserver interpretiert, sondern direkt an den Browser gesandt. Der Browser zeigt den Code aber nicht an, erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
+<p>Tipp:  wenn die URL mit <strong>file:///</strong> beginnt, öffnet der Browser die Datei
+direkt vom Filesystem, es ist keine Webserver involviert.  Dann kann PHP nicht
+funktionieren!</p>
+
+<p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm
+speichern, und über den Webserver aufrufen, wird es trotzdem nicht vom Webserver 
+interpretiert, sondern direkt an den Browser gesandt. </p>
+
+<p>Der Browser zeigt den PHP-Teil des Code aber nicht an, 
+erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
 
 <p><img src="/images/image328.png" alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" /></p>
 
-<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
+<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver 
+betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. 
+Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
 <p><img src="/images/image329.png" alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" /></p>
 
-<p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden Testlauf:</p>
+<p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden
+Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
+<strong>http://localhost/</strong>, und keine Fehler im Programm:</p>
 
 <p><img src="/images/image330.png" alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" /></p>
 
 <p>Mit Ansicht-&gt;Quelltext kann man nun im Browser nur noch den HTML-Code sehen, niemals aber den PHP-Quellcode!</p>
 
 <h2 id="php-versionen">PHP Versionen</h2>
-<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In Abbildung 124 sehen Sie z.B. dass PHP in der Version 5.0.5 installiert ist.</p>
+<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen 
+Sie z.B. dass PHP in der Version 5.0.5 verwendet wird.</p>
 
-<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, PHP ist nicht aufwärts-kompatibel. Wenn ihr Webspace-Vermieter auf eine neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes anpassen.</p>
+<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, 
+verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>. 
+Wenn ihr Webspace-Vermieter auf eine 
+neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
+anpassen!</p>
 
-<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: </p>
+<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen 
+aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben: </p>
 
 <p>(PHP 4 &gt;= 4.2.0, PHP 5)
 Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
 
-<p>Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!</p>
+<p>Besonders im Bereich der Objektorientierung (Objekte, Klassen, etc.) 
+gab es große Veränderungen von PHP 4 auf PHP 5. Falls Sie objektorientiert 
+programmieren wollen, sollten Sie auf jeden Fall PHP 5 verwenden!</p>
 
-<p>Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: viele Webspace-Provider bieten nur veraltete PHP-Versionen an. Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen!</p>
+<p>Wenn Sie Webspace mieten liegt die Entscheidung aber nicht bei Ihnen: 
+wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
+können Sie das nicht änder!
+Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
 
 <h2 id="dokumentation">Dokumentation</h2>
 <p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
@@ -98,7 +128,7 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
       <li><a href="/php-vorbereitung/apache/">← <span class="article">Apache</a></li>
     
     
-      <li><a href="/http/">HTTP →</a></li>
+      <li><a href="/wordpress/">Wordpress →</a></li>
     
   </ul>
 </div>
@@ -331,30 +361,6 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
               </ul>
             </li>
           
-            <li class="active"><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
-                      
-                    
-                      
-                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
-                      
-                    
-                      
-                      <li class="active"><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
             <li ><a href="/http/">HTTP</a>
               <ul class="sub">
                 
@@ -404,6 +410,30 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
                     
                       
                       <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
                       
                     
                   
@@ -496,6 +526,50 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
                     
                       
                       <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/xml/">XML</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -596,34 +670,6 @@ Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
                     
                       
                       <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
