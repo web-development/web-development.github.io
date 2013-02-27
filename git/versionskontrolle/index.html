@@ -54,11 +54,33 @@
 
 <p>Diese Methode funktioniert aber nicht mehr, sobald zwei Personen gleichzeitig unabhängig voneinander Änderungen durchführen.</p>
 
-<p>Die professionelle Lösung ist ein Versionskontrollsystem. Die englische Wikipedia enthält einen Überblick über verschiedene Systeme (siehe Abbildung 136).</p>
+<p>Die professionelle Lösung ist ein Versionskontrollsystem. 
+Diese System hilft bei der Verwaltung von Datei-Versionen. Alle Änderungen werden gespeichert, nichts kann verloren gehen.</p>
+
+<p>Mit einem Versionskontrollsystem ist ein freieres Arbeite
+möglich: Es wird einfacher  Veränderungen auszuprobieren -
+in der Sicherheit, dass man sie rückgängig zu machen kann,
+bzw. an der anderen Version unabhängig weiter arbeiten kann.</p>
+
+<p>Die englische Wikipedia enthält einen Überblick über verschiedene Systeme:</p>
 
 <p><img src="/images/image355.png" alt="Abbildung 140: Überblick über Versionskontrollsysteme aus der Wikipedia13" /></p>
 
-<p>Aktueller Stand der Technik ist die Verwendung eines verteilten Versionskontrollsystems wie git oder Mercurial, ältere Projekte verwenden noch Subversion (SVN). Bei MMT wird im Fachbereich Web hauptsächlich git, im Fachbereich game teilweise auch SVN verwendet.</p>
+<p>Dabei sind drei historische Entwicklungsschritte erkennbar:</p>
+
+<ul>
+  <li>Nur Lokal: das System ist auf die Verwaltung vom Daten im lokalen Filesystem ausgelegt. </li>
+  <li>Client-Server: Daten werden in einem zentralen Repository gespeichert.</li>
+  <li>Verteilt: Jeder Arbeitsplatz hat ein eigenes Repository, kann auch “offline” arbeiten.</li>
+</ul>
+
+<p>Open Source Systeme sind:</p>
+
+<ul>
+  <li>Nur Lokal: rcs</li>
+  <li>Client-Server: cvs, svn.</li>
+  <li>Verteilt: git, mercurial</li>
+</ul>
 
 		
 			<div class="pagination">
@@ -367,14 +389,6 @@
                       <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
                       
                     
-                      
-                      <li ><a href="/php-vorbereitung/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
-                      
-                    
-                      
-                      <li ><a href="/php-vorbereitung/datei-upload/">Datei Upload</a></li>
-                      
-                    
                   
                 
               </ul>
@@ -445,6 +459,14 @@
                     
                       
                       <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload/">Datei Upload</a></li>
                       
                     
                   
