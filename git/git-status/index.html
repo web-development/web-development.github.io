@@ -48,10 +48,16 @@
                           </div>
 			
 			
-			<p>Mit dem Befehl git status kann man den aktuellen Zustand des lokalen Repositories und der working copy abfragen. Bevor man mit der Arbeit beginnt ist die working copy clean:</p>
+			<p>Mit dem Befehl <code>git status</code> kann man den aktuellen Zustand des lokalen Repositories und der working copy abfragen. </p>
+
+<h2 id="clean">Clean</h2>
+
+<p>Bevor man mit der Arbeit beginnt ist die working copy clean:</p>
 
 <pre><code>  D:\Webprojekte\wp2&gt;git status # On branch master nothing to commit (working directory clean)
 </code></pre>
+
+<h2 id="changed-but-not-updated">Changed but not updated</h2>
 
 <p>Wenn ich nun zwei Dateien verändere zeigt mir git status das genau an:</p>
 
@@ -68,7 +74,9 @@
   no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 
-<p>Nach dem git add werden die beiden Dateien als gestaged angezeit:</p>
+<h2 id="changes-to-be-commited">Changes to be commited</h2>
+
+<p>Nach dem git add werden die beiden Dateien als gestaged angezeigt:</p>
 
 <pre><code>  D:\Webprojekte\wp2&gt;git status
   # On branch master
@@ -83,27 +91,31 @@
 
 <p>Nach dem Commit ist die working copy wieder clean. </p>
 
+<h2 id="git-log">git log</h2>
+
 <p>Mit git log kann man die alten Commits anzeigen:</p>
 
 <pre><code>  D:\Webprojekte\wp2&gt;git log
-  commit d01a7db9b741b14dfb95dc810b4c002122565560
+  commit 611a84e34ee4eb7de3264befc07cede24e0f3bfa
   Author: Brigitte Jellinek &lt;brigitte.jellinek@fh-salzburg.ac.at&gt;
-  Date:   Wed Mar 23 17:07:44 2011 +0100
+  Date:   Wed Feb 27 15:06:54 2013 +0100
 
       von get auf post umgestellt - wir sind restful!
 
-  commit 409ef21529e863499bf745531c79e33d6766cf47
+  commit a86390b0d0ae00ae35b2110657d7c11b1fd41e9a
   Author: Brigitte Jellinek &lt;brigitte.jellinek@fh-salzburg.ac.at&gt;
-  Date:   Wed Mar 23 17:04:11 2011 +0100
+  Date:   Wed Feb 27 15:06:26 2013 +0100
 
       bestellung funktioniert jetzt
 
-  commit 5ce70fd6a71aba84b839aa3424af1b4a9f0bcf41
+  commit 21c7ff3047cb710cb2edb554545582ee7f7ce74d
   Author: Brigitte Jellinek &lt;brigitte.jellinek@fh-salzburg.ac.at&gt;
-  Date:   Wed Mar 9 14:01:45 2011 +0100
+  Date:   Wed Feb 27 15:05:43 2013 +0100
 
       bestellformular da, bestellung geht noch nicht
 </code></pre>
+
+<h2 id="git-log-optionen">git log optionen</h2>
 
 <p>für git log gibt es viele verschiedene optionen, die verschiedene Details anzeigen, z.B. –numstat zeitgt die Anzahl der hinzugefügten und gelöschten Zeilen in jeder veränderten Datei</p>
 
@@ -125,7 +137,7 @@
       <li><a href="/git/basic-git/">← <span class="article">Einfacher Arbeitsablauf in Git</a></li>
     
     
-      <li><a href="/php-vorbereitung/">Vorbereitungen für PHP →</a></li>
+      <li><a href="/git/git-tools/">Tools für Git →</a></li>
     
   </ul>
 </div>
@@ -401,6 +413,10 @@
                       <li class="active"><a href="/git/git-status/">Status von Git abfragen</a></li>
                       
                     
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -454,11 +470,11 @@
                       
                     
                       
-                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
                       
                     
                       
-                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -467,6 +483,10 @@
                     
                       
                       <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   

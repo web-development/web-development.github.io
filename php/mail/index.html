@@ -52,37 +52,37 @@
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      mail(  
-             &quot;bjelli@horus.at&quot;, 
-             &quot;Just another SPAM&quot;, 
-             &quot;Das ist der Text in der E-Mail&quot;
-      );
+mail(  
+   &quot;bjelli@horus.at&quot;, 
+   &quot;Just another SPAM&quot;, 
+   &quot;Das ist der Text in der E-Mail&quot;
+);
 </pre></div>
 
 <p>Dazu passend wieder der “Here-Document” Trick, viel Text in einen langen String zu schreiben:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      $text &lt;&lt;&lt;Ende
-         Lieber Newsletter-Kunde!
-         wir freuen uns, dass Sie unseren
-         Newsletter zum Thema $thema
-         abonniert haben. 
-      Ende;
-      mail(&quot;bjelli@horus.at&quot;, &quot;Just another $thema-Newsletter&quot;, $text);
+$text &lt;&lt;&lt;Ende
+   Lieber Newsletter-Kunde!
+   wir freuen uns, dass Sie unseren
+   Newsletter zum Thema $thema
+   abonniert haben. 
+Ende;
+mail(&quot;bjelli@horus.at&quot;, &quot;Just another $thema-Newsletter&quot;, $text);
 </pre></div>
 
 <p>Wie die Mail vom PHP-Interpreter versandt wird, ist in der PHP- Konfiguration festgelegt. Die Konfigurations-Datei hat den Namen php.ini. Wenn man PHP auf dem eigenen Computer betreibt, kann man den SMTP-Server des Providers eintragen um die ausgehende Mail über diesen Server zu versenden:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      ;;;;;;;;;;;;;;;;;;;
-      ; Module Settings ;
-      ;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+; Module Settings ;
+;;;;;;;;;;;;;;;;;;;
 
-      [mail function]
-      SMTP = mail.provider.at
-      sendmail_from = someuser@fh-salzburg.ac.at
+[mail function]
+SMTP = mail.provider.at
+sendmail_from = someuser@fh-salzburg.ac.at
 </pre></div>
 
 <p>Der Befehl <code>phpinfo()</code> gibt die ganze Konfiguration von PHP aus. Hier kann man auch die Mail-Konfiguration nachlesen:</p>
@@ -372,6 +372,10 @@
                       <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
                       
                     
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -425,11 +429,11 @@
                       
                     
                       
-                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
                       
                     
                       
-                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -438,6 +442,10 @@
                     
                       
                       <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   

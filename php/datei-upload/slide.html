@@ -39,21 +39,45 @@
           <div class="slide"><h1>Datei Upload</h1>
           <p><a href="/php/datei-upload/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>POST ermöglicht das Senden beliebig langer Daten, und damit das Hochladen von ganzen Dateien. Dabei muss auch noch das enctype Attribut des Form-Tags gesetzt werden:</p>
+	  <div class='slide'><p>Im “Frontend” gab es in den letzten Jahren einige Verbesserungen beim
+Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
+durch “Drag-and-Drop” auf den Browser</p>
+
+<p><img src="/images/drag-and-drop-upload.png" alt="New im Frontend: Drag and Drop in den Browser" /></p>
+
+<p>Dazu ist aber eine Javascript-API notwendig, die wir erst
+später kennen lernen.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Die einfachste Version des Upload-Formulares verwendet eine input-Tag
+vom typ <code>file</code>:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      &lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
-Neues Bild zum hochladen in den Ordner 
-
-      &lt;a href='upload/'&gt;upload&lt;/a&gt;: &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
-      &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
-      &lt;/form&gt;
+&lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  Neues Bild zum hochladen in den Ordner &lt;a href='pix/'&gt;upload&lt;/a&gt;: 
+  &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
+&lt;/form&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
 
 <p><img src="/images/image345.png" alt="Abbildung 136: Webformular mit Datei-Upload" /></p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
 
@@ -72,34 +96,41 @@ Neues Bild zum hochladen in den Ordner
   <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.</dd>
 </dl>
 
+</div>
+<div class='slide'>
+
+
+
+<p>TODO: Sicherheitsprobleme beschreiben</p>
+
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      &lt;?php
-      $uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/upload/&quot;;
+&lt;?php
+$uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/pix/&quot;;
 
-      $filename = basename($_FILES['bild']['name']);
-      $ext = substr($filename, -4);
+$filename = basename($_FILES['bild']['name']);
+$ext = substr($filename, -4);
 
-      if( $ext != '.jpg' ) {
-         die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . substr($filename, -3) );
-      }
+if( $ext != '.jpg' ) {
+   die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . substr($filename, -3) );
+}
 
-      $uploadfile = $uploaddir . $filename;
+$uploadfile = $uploaddir . $filename;
 
-      if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
-          echo &quot;Datei erfolgreich hochgeladen nach &lt;a href='upload/'&gt;upload/&lt;/a&gt;\n&quot;;
-      } else {
-          echo &quot;Problem beim Speichern der Datei.\n&quot;;
-      }
+if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
+  echo &quot;Datei erfolgreich hochgeladen nach &lt;a href='upload/'&gt;upload/&lt;/a&gt;\n&quot;;
+} else {
+  echo &quot;Problem beim Speichern der Datei.\n&quot;;
+}
 
-      echo '&lt;pre&gt;debugging info:';
-      print_r($_FILES);
-      print '&lt;/pre&gt;';
+echo '&lt;pre&gt;debugging info:';
+print_r($_FILES);
+print '&lt;/pre&gt;';
 
-      ?&gt;
+?&gt;
 </pre></div>
 
-<p>Achtung: Sie müssen den Ordner upload erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver (= ein anderer Account) hineinschreiben darf!</p>
+<p>Achtung: Sie müssen den Ordner <code>pix</code> erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver hineinschreiben darf!</p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php/datei-upload/">zurück zum Buch-Kapitel</a></p>

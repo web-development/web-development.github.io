@@ -54,7 +54,9 @@
 
 <p><img src="/images/wordpress-theme-dir.png" alt="Abbildung 113: Das offizielle Verzeichnis von Wordpress-Themes http://wordpress.org/extend/themes/" /></p>
 
-<p>Achtung: wenn Sie nach Themes googlen werden Sie auch viele Themes mit eingebautem SPAM finden!</p>
+<p>Achtung: wenn Sie nach Themes googlen werden Sie auch viele Themes mit eingebautem SPAM finden! Deswegen
+ist es besser das offizielle Verzeichnis zu verwenden, oder das Theme genau zu
+utnersuchen.</p>
 
 <p>Themes werden meist als zip-Dateien zum Download angeboten. Um ein Theme zu installieren muss man:</p>
 
@@ -62,12 +64,14 @@
   <li>Die zip-Datei herunterladen, </li>
   <li>Die zip-Datei auspacken (Dabei entsteht ein Ordner mit vielen Dateien) </li>
   <li>den Ordner in wp-content/themes hochladen (dabei die Ordnerstruktur erhalten!)</li>
-  <li>im Bachend von Wordpress unter Darstellung ⇒ Theme das neue Theme aktivieren (siehe Abbildung 110).</li>
+  <li>im Backend von Wordpress unter Darstellung ⇒ Theme das neue Theme aktivieren (siehe Abbildung 110).</li>
 </ol>
 
 <p><img src="/images/wordpress-themes.png" alt="Abbildung 114: Auswahl des Themes (Navigationspunkt &quot;Darstellungs&quot;)" /></p>
 
-<p>Technisch betrachtet ist ein Theme ist ein Ordner voll PHP und CSS-Dateien in einem Unter-Order von wp-content/themes.  Das Theme kann viele Dateien enthalten, die beiden wichtigsten sind style.css und screenshot.png. Als Kommentar im Stylesheet style.css sind Informationen über das Theme und die AutorInnen gespeichert. Im Backend von Wordpress (Abbildung 110) wird diese Information gemeinsam mit der Datei screenshot.png bei der Auswahl der Themes angezeigt.</p>
+<p>Technisch betrachtet ist ein Theme ist ein Ordner voll PHP und CSS-Dateien in einem Unter-Order von <code>wp-content/themes</code>.  Das Theme kann viele Dateien enthalten, die beiden wichtigsten sind style.css und screenshot.png. </p>
+
+<p>Als Kommentar im Stylesheet style.css sind Informationen über das Theme und die AutorInnen gespeichert. Im Backend von Wordpress (Abbildung 110) wird diese Information gemeinsam mit der Datei screenshot.png bei der Auswahl der Themes angezeigt.</p>
 
 <p>In Abbildung 111 wird der Ordner des Themes sandbox gezeigt. </p>
 
@@ -75,13 +79,13 @@
 
 <h2 id="sidebars-und-widgets">Sidebars und Widgets</h2>
 
-<p>Falls die „Sidebar“ im Theme mit Widgets gestaltet ist erscheint ein entsprechender Navigationspunkt Darstellung ⇒ Widgets im Backend. </p>
+<p>Die “Sidebar” wird auf jeder erzeugten HTML-Seite dargestellt - egal ob
+Homepage, Beitrag oder Seite.  Welche Sidebars es gibt und wo sie angezeigt werden ist im Theme
+definiert.</p>
 
-<p>Widgets sind die einzelnen Teile die zu Sidebars zusammen gestellt werden können.  Das folgende Theme bietet z.B. eine fixe Navigation für die Seiten (rechts oben) und drei Sidebars auf der rechten Seite.  In die Sidebars können jeweils mehrere Widgets eingefügt werden.  Hier findet sich in der oberen Sidebar nur ein Text-Widget, in der linken Sidebar nur das Such-Widget. In der rechten Sidebar befinden sich zwei Widgets: Aktuelle Artikel und Kategorien.</p>
+<p>“Widgets” sind die einzelnen Teile die zu Sidebars zusammen gestellt werden können.  Das folgende Theme bietet z.B. eine fixe Navigation für die Seiten (rechts oben) und drei Sidebars auf der rechten Seite.  In die Sidebars können jeweils mehrere Widgets eingefügt werden.  Hier findet sich in der oberen Sidebar nur ein Text-Widget, in der linken Sidebar nur das Such-Widget. In der rechten Sidebar befinden sich zwei Widgets: Aktuelle Artikel und Kategorien.</p>
 
 <p><img src="/images/wordpress-sidebars.png" alt="Abbildung 116: Theme mit Page-Navigation (schwarzer Block oben rechts) und drei Sidebars (rot strichlierte Kästen)" /></p>
-
-<p>Diese Navigationselemente werden auf allen Seiten des Blogs angezeigt – egal ob Homepage oder Monats-Archiv oder Seite eines einzelnen Artikels. </p>
 
 <h2 id="widgets">Widgets</h2>
 
@@ -131,16 +135,16 @@
 <div class="example">
 <h4 class="caption">Html Code <small>verweis auf den RSS-Feed im HEAD eines HTML-Dokuments</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
-          href=&quot;http://wordpress.local/?feed=rss2&quot; 
-          title=&quot;Programmier-Portfolio Posts RSS feed&quot;&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
+      href=&quot;http://wordpress.local/?feed=rss2&quot; 
+      title=&quot;Programmier-Portfolio Posts RSS feed&quot;&gt;
 </pre></div>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/wordpress/multimedia/">← <span class="article">Multimedia-Dateien</a></li>
+      <li><a href="/wordpress/multimedia/">← <span class="article">Medien</a></li>
     
     
       <li><a href="/wordpress/plugins/">Plugins verwenden →</a></li>
@@ -419,6 +423,10 @@
                       <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
                       
                     
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -472,11 +480,11 @@
                       
                     
                       
-                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
                       
                     
                       
-                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -485,6 +493,10 @@
                     
                       
                       <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   

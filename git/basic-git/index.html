@@ -56,6 +56,20 @@
 
 <p>Im <strong>lokalen Repository</strong> (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.</p>
 
+<p>Wenn ich eine Veränderung an einer Datei vorgenommen habe, kann ich sie
+mit dem Befehl <strong>add</strong> in den Zustand <strong>staged</strong> versetzten.  Ich sammle Schritt
+für Schritt die Dateien zusammen, die ich gemeinsam <strong>committen</strong> will.</p>
+
+<p>Mit dem Befehl <strong>commit</strong> werden die gestageden Dateien im lokalen Repository
+abgespeichert, und erhalten dort einen eindeutigen Hash und eine Meldund (die
+ich dazu eingebe).</p>
+
+<p>Mit dem Befehl <strong>push</strong> kann ich die commits aus meinem lokalen Repository
+in ein anderes, remote Repository übertragen.  Meist hat man nur ein remote
+Repository - als <strong>ein</strong> zentrales Repository.</p>
+
+<h2 id="arbeitsablauf">Arbeitsablauf</h2>
+
 <p>Wenn ein Webprojekt schon für die Arbeit mit git aufgesetzt ist, sieht der Arbeitsalltag z.B. so aus:</p>
 
 <p>Meine working copy ist direkt im Webspace meines lokalen Webserver gespeichert.  Ich nehme Änderungen an einer Datei „form.html“ und einer dazu gehörigen Datei „bestellung.php“ vor, teste über den lokalen Webserver ob alles  funktioniert. Wenn ich einen Zustand erreicht habe, der funktioniert dann ist es Zeit für einen Commit:</p>
@@ -76,7 +90,7 @@
 <pre><code>git push origin master
 </code></pre>
 
-<p>Das erste Argument „origin“ ist die Abkürzung für das remote Repository, das zweite Argument ist der Branch der gepushed werden soll.  Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.</p>
+<p>Das erste Argument „origin“ ist der Name des remote Repositories, das zweite Argument ist der Branch der gepushed werden soll.  Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.</p>
 
 		
 			<div class="pagination">
@@ -361,6 +375,10 @@
                       <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
                       
                     
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -414,11 +432,11 @@
                       
                     
                       
-                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
                       
                     
                       
-                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -427,6 +445,10 @@
                     
                       
                       <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   

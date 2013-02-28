@@ -70,12 +70,13 @@
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      &lt;?php
-         $alle = glob(&quot;*&quot;);
-         foreach( $alle as $file ) {  // forach-Schleife über Werte, Schlüssel ignorieren!
-             echo &quot;&lt;br&gt;Datei $file gefunden.\n&quot;;
-         } 
-      ?&gt; 
+&lt;?php
+   $alle = glob(&quot;*&quot;);
+   foreach( $alle as $file ) {  // forach-Schleife über Werte
+                                // Schlüssel wird ignorieren!
+       echo &quot;&lt;br&gt;Datei $file gefunden.\n&quot;;
+   } 
+?&gt; 
 </pre></div>
 
 <p>Im Output des Programmes werden nicht nur Dateien angezeigt, sondern auch Ordner. Mit den Funktionen <code>is_dir()</code> und <code>is_file()</code> könnte man herausfinden ob ein Ordner oder eine Datei vorliegt.</p>
@@ -84,22 +85,22 @@
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      &lt;?php
-         $alle = glob(&quot;*.jpg&quot;);
-         foreach( $alle as $file ) {
-             echo &quot;&lt;br&gt;Bild $file gefunden.\n&quot;;
-         } 
-      ?&gt;
+&lt;?php
+   $alle = glob(&quot;*.jpg&quot;);
+   foreach( $alle as $file ) {
+       echo &quot;&lt;br&gt;Bild $file gefunden.\n&quot;;
+   } 
+?&gt;
 </pre></div>
 
 <p>Der Rückgabewert von glob ist ein Array. Mit <code>array_merge</code> kann man mehrere Arrays zusammenfügen zu einem langen Array und mit asort die Werte alphabethisch sortieren:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-         $jpg = glob(&quot;bilder/*.jpg&quot;);
-         $gif = glob(&quot;bilder/*.gif&quot;);
-         $alle_bilder = array_merge($jpg, $gif);
-         asort( $alle_bilder )
+$jpg = glob(&quot;bilder/*.jpg&quot;);
+$gif = glob(&quot;bilder/*.gif&quot;);
+$alle_bilder = array_merge($jpg, $gif);
+asort( $alle_bilder )
 </pre></div>
 
 <h2 id="datei-lesen">Datei lesen</h2>
@@ -107,29 +108,29 @@
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      $handle = fopen(&quot;counter.txt&quot;, &quot;r&quot;);    // r steht für read = lesen
+$handle = fopen(&quot;counter.txt&quot;, &quot;r&quot;);    // r steht für read = lesen
 </pre></div>
 
 <p>Achtung: die Pfadangabe zur Datei ist in UNIX-Schreibweise mit Slash zu schreiben, nicht in Windows-Schreibweise mit Backslash, also: </p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      # $handle = fopen (&quot;unterordner\counter.txt&quot;, &quot;r&quot;) # FALSCH
-        $handle = fopen (&quot;unterordner/counter.txt&quot;, &quot;r&quot;)
+# $handle = fopen (&quot;unterordner\counter.txt&quot;, &quot;r&quot;) # FALSCH
+  $handle = fopen (&quot;unterordner/counter.txt&quot;, &quot;r&quot;)
 </pre></div>
 
 <p>Da die Datei zum Lesen geöffnet wurde, kann man nun mit <code>fgets</code> eine Zeile aus der Datei lesen. „Eine Zeile“ bedeutet hier: bis ein Zeilenumbruch in der Datei gefunden wird. </p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      $zahl = fgets($handle);
+$zahl = fgets($handle);
 </pre></div>
 
 <p>Bei längeren Dateien wird <code>fgets</code> meist in einer Schleife verwendet, um alle Zeilen aus der Datei zu lesen. Nach Gebrauch muss man die Datei wieder schließen:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      fclose($handle);
+fclose($handle);
 </pre></div>
 
 <h2 id="datei-ber-schreiben">Datei (über-)schreiben</h2>
@@ -137,20 +138,20 @@
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      $handle = fopen(&quot;counter.txt&quot;, 'w');
-      fwrite($handle, &quot;$zahl\n&quot;);
-      fclose($handle);
+$handle = fopen(&quot;counter.txt&quot;, 'w');
+fwrite($handle, &quot;$zahl\n&quot;);
+fclose($handle);
 </pre></div>
 
 <p>Leider ist das Leben aber nicht so einfach:  sowohl beim Lesen als auch beim Schreiben von Dateien kann viel schief gehen. Existiert die Datei, aus der ich lesen will, überhaupt?  Darf ich in die Datei, in die ich schreiben will überhaupt schreiben?  Um diese Fragen zu beantworten gibt es Funktionen <code>is_readable</code>,  <code>is_writable</code> und die Rückgabewerte der verschiedenen schon gezeigten File-Funktionen. So liefert fwrite entweder die Anzahl der geschriebenen Bytes oder FALSE als Status-Code zurück:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-      $status = fwrite($handle, $zahl);
-      if ( $status === FALSE ) {
-          echo &quot;Datei nicht schreibbar: Platte voll? Zugriff verboten?&quot;;
-          exit;
-      }
+$status = fwrite($handle, $zahl);
+if ( $status === FALSE ) {
+  echo &quot;Datei nicht schreibbar: Platte voll? Zugriff verboten?&quot;;
+  exit;
+}
 </pre></div>
 
 <p>Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Wenn Ihr PHP-Programm eine Datei löscht, dann ist diese Datei sofort und unwiederbringlich weg.</p>
@@ -441,6 +442,10 @@
                       <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
                       
                     
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -494,11 +499,11 @@
                       
                     
                       
-                      <li ><a href="/wordpress/seiten/">Artikel und Seiten</a></li>
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
                       
                     
                       
-                      <li ><a href="/wordpress/multimedia/">Multimedia-Dateien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -507,6 +512,10 @@
                     
                       
                       <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   

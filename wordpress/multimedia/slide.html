@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Multimedia-Dateien - als Präsentation </title>
+	<title>Medien - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -36,22 +36,37 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Multimedia-Dateien</h1>
+          <div class="slide"><h1>Medien</h1>
           <p><a href="/wordpress/multimedia/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Während Texte in Artikeln und Seiten gespeichert werden, müssen Bilde-, Audio-, und Video-Dateien („Attachments“) erst einmal separat hochgeladen werden. Direkt im Editor für Artikel oder Seiten finden Sie den Link zum Uploader:</p>
+	  <div class='slide'><p>Während Texte in Beiträgen und Seiten gespeichert werden, müssen Bild-, Audio-, und Video-Dateien („Attachments“) erst einmal separat hochgeladen werden. Direkt im Editor für Beiträge oder Seiten finden Sie den Link zum Uploader:</p>
 
 <p><img src="/images/wordpress-media-upload.png" alt="Abbildung 109: Menü für den Upload von Datei im Editor" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="speicherung-von-medien">Speicherung von Medien</h3>
 
 <p>Die hochgeladenen Dateien werden einen Unter-Ordner von wp-content/uploads hochgeladen, und haben damit euch eine entsprechende URL.  zeigt den relevanten Teil der Ordnerstruktur:</p>
 
 <p><img src="/images/wordpress-uploads.png" alt="Abbildung 111: Ordnerstruktur für hochgeladene Attachment-Dateien (Audio, Video)" /></p>
 
+</div>
+<div class='slide'>
+
+<h3 id="zugriffsrechte">Zugriffsrechte</h3>
+
 <p>Bei der genauen Betrachtung dieser Dateien und Ordner erkennen Sie, dass Wordpress unter einem andere (UNIX) User arbeitet als Sie selbst. Meist hat dieser User einen Namen wie „wwwdata“ oder „apache“. Die Zugriffsrechte im upload-Ordner müssen also so gesetzt sein, dass dieser fremde User Dateien speichern darf!</p>
 
 <p>Hinweis: nur die Bilder (z.B. mit FTP) in den richtigen Ordner zu speichern ist nicht ausreichend, es ist auch ein Eintrag in der Datenbank notwendig.  Dieser Eintrag wird gemacht, wenn man den Wordpress Uploader verwendet.</p>
 
-<p>Anschliessend können diese Dateien auf verschiedene Arten im Artikel bzw. in der Seite eingebunden werden. Ein Bild kann als „Artikelbild“ festgelegt werden, und wird dann bei manchen Themes besonders angezeigt.</p>
+</div>
+<div class='slide'>
+
+<h3 id="einbinden-von-medien-in-beitrge-und-seiten">Einbinden von Medien in Beiträge und Seiten</h3>
+
+<p>Anschliessend können diese Dateien auf verschiedene Arten im Beiträge bzw. in der Seite eingebunden werden. Ein Bild kann als „Beitragsbild“ festgelegt werden, und wird dann bei manchen Themes besonders angezeigt.</p>
 
 <p><img src="/images/wordpress-bild-einfuegen.png" alt="Abbildung 112: Verwendung von Bildern in Wordpress" /></p>
 </div>
