@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Start mit PHP und MySQL</title>
+  <title>Lehrbuch Web-Development - PHP und MySQL/MariaDB</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -43,144 +43,55 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Start mit PHP und MySQL</h2>
+				<h2 class="title">PHP und MySQL/MariaDB</h2>
                                 <a href="/php-mysql/start/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<p>MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.</p>
+			<p>Mit der Verwendung einer Datenbank wird der Ablauf noch einmal komplexer:</p>
 
-<h2 id="mysql-installation-wiederholung-dokumentation">MySQL Installation, Wiederholung, Dokumentation</h2>
-<p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. Die MySQL-Shell wird wie folgt gestartet:</p>
+<p><img src="/images/php-db.svg" alt="Webseite wird von PHP erzeugt, mit DB-Abfrage" /></p>
 
-<pre><code>&gt; mysql –u username –p datenbankname
-Welcome to the MySQL monitor. Commands end with ; or \g.
-
-Your MySQL connection id is 2 to server version: 5.0.27-community-nt
-
-
-Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-
-mysql&amp;gt; 
-</code></pre>
-
-<p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: </p>
-
-<pre><code>&gt; mysql –u username –p datenbankname &lt; portfolio.sandbox.sql Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
-
-mysql&amp;gt; show tables;
-
-+-----------------------------+
-| Tables_in_portfolio_sandbox |
-+-----------------------------+
-| macht                       | 
-| media                       | 
-| media_werk                  | 
-| person                      | 
-| rollen                      | 
-| student                     | 
-...
-| werk                        | 
-+-----------------------------+
-16 rows in set (0.00 sec)
-</code></pre>
-
-<p>Describe zeigt den Aufbau einer bestimmten Tabelle:</p>
-
-<pre><code>mysql&amp;gt; describe person;
-
-+------------+--------------+------+-----+---------+----------------+
-| Field      | Type         | Null | Key | Default | Extra          |
-+------------+--------------+------+-----+---------+----------------+
-| pid        | bigint(20)   |      | PRI | NULL    | auto_increment |
-| uid        | varchar(8)   | YES  | MUL | NULL    |                |
-| vorname    | varchar(40)  |      |     |         |                |
-| nachname   | varchar(50)  |      |     |         |                |
-| profil     | text         |      |     |         |                |
-| mail       | varchar(40)  | YES  | MUL | NULL    |                |
-| web        | varchar(200) | YES  |     | NULL    |                |
-| blog       | varchar(200) | YES  |     | NULL    |                |
-| feed       | varchar(200) | YES  |     | NULL    |                |
-| title      | varchar(10)  | YES  |     | NULL    |                |
-| isfemale   | tinyint(4)   |      |     | 0       |                |
-| bildpfad   | varchar(250) | YES  | MUL | NULL    |                |
-| ifshow     | tinyint(4)   |      |     | 0       |                |
-| facebookid | bigint(20)   | YES  |     | NULL    |                |
-+------------+--------------+------+-----+---------+----------------+
-14 rows in set (0.00 sec)
-</code></pre>
-
-<p>Select und Join funktionieren wie erwartet:</p>
-
-<pre><code>mysql&amp;gt; select pid,vorname from person limit 1,8;
-
-+-----+-------------+
-| pid | vorname     |
-+-----+-------------+
-|   2 | Paul        |
-|   3 | Edvard Paul |
-|   4 | Sandra      |
-|   5 | Philipp     |
-|   6 | Antal       |
-|   7 | Sebastian   |
-|   8 | Johannes    |
-|   9 | Ivan        |
-+-----+-------------+
-10 rows in set (0.00 sec)
-</code></pre>
-
-<p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der Dokumentation entnehmen die Online unter http://dev.mysql.com/  erreichbar ist.</p>
-
-<p><img src="/images/image357.png" alt="Abbildung 142: Dokumentation von MySQL auf http://dev.mysql.com/" /></p>
-
-<p>Ein häufig verwendetes Tool ist der phpMyAdmin, der ein Interface am Web zur Verfügung stellt. (Am gemeinsamen MMA/MMT-Server ist er unter der Adresse https://mediacube.at/phpmyadmin/ zu finden.)</p>
-
-<p><img src="/images/image358.png" alt="Abbildung 143: phpMyAdmin" /></p>
-
-<p>Über phpMyAdmin kann man viele SQL-Abfragen durch Point+Klick formulieren. Das lehrreiche daran: phpMyAdmin zeigt immer das SQL-Statement mit an — auf diese Art kann man einfach SQL lernen. Besonders praktisch ist das beim Anlegen und Verändern von Tabellen. 
-Erster Schritt: Name der Tabelle:</p>
-
-<p><img src="/images/image359.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle" /></p>
-
-<p>Zweiter Schritt: Spalten definieren:</p>
-
-<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - die Spalten" /></p>
-
-<p>Dritter Schritt: Tabelle wird angelegt und dazugehörendes SQL-Statement angezeigt:</p>
-
-<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - der SQL Befehl" /></p>
+<p>Ob der Datenbank-Server und der Webserver auf dem selben Computer laufen
+oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.</p>
 
 <h2 id="mysql-von-php-aus">MySQL von PHP aus</h2>
 <p>Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. Hier werden die „PHP Database Objects“ (PDO) vorgestellt.</p>
 
-<p>Verbindungsaufbau</p>
+<h3 id="verbindungsaufbau">Verbindungsaufbau</h3>
 
 <p>So funktioniert der Verbindung-Aufbau (und -Abbau) zur mysql-Datenbank:</p>
 
-<pre><code>&lt;?
- include "config.php";
- $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
- $dbh-&gt;exec('SET CHARACTER SET utf8');
-?&gt; 
-</code></pre>
+<div class="example">
+<h4 class="caption">Php Code <small>Verbindungs-Aufbau und Abbau</small></h4>
+<pre class="lang-php prettyprint linenums">
+    &lt;?
+     include &quot;config.php&quot;;
+     $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+     $dbh-&gt;exec('SET CHARACTER SET utf8');
+    ?&gt; 
+</pre></div>
 
-<p>Das „Database-Handle“ $dbh wird nun im Weiteren für Abfragen verwendet. </p>
+<p>Das „Database-Handle“ <code>$dbh</code> wird nun im Weiteren für Abfragen verwendet. </p>
 
-<p>Datenbank-Zugangsdaten und .gitignore</p>
+<h3 id="datenbank-zugangsdaten-und-gitignore">Datenbank-Zugangsdaten und .gitignore</h3>
 
-<p>Achtung: zum Erzeugen des Database Handles brauchen wir noch eine zweite Datei mit den eigentlichen Zugangsdaten. Diese Datei heisst im Beispiel config.php heissen:</p>
+<p>Achtung: zum Erzeugen des Database Handles brauchen wir noch eine zweite Datei mit den eigentlichen Zugangsdaten. Diese Datei heisst im unserem Beispiel <code>config.php</code>:</p>
 
-<pre><code>&lt;?php
-$DB_NAME = "portfolio_sandbox"; 
-$DB_USER = "mmtuser"; 
-$DB_PASS = "geheim!";
-$DSN     = "mysql:dbname=$DB_NAME;host=localhost";
-?&gt;
-</code></pre>
+<div class="example">
+<h4 class="caption">Php Code <small>Zugangsdaten für die Datenbank</small></h4>
+<pre class="lang-php prettyprint linenums">
+    &lt;?php
+    $DB_NAME = &quot;portfolio_sandbox&quot;; 
+    $DB_USER = &quot;mmtuser&quot;; 
+    $DB_PASS = &quot;geheim!&quot;;
+    $DSN     = &quot;mysql:dbname=$DB_NAME;host=localhost&quot;;
+    ?&gt;
+</pre></div>
 
-<p>Warum zwei Dateien?  Weil dieses zweite Datei niemals, niemals, niemals in git commited werden darf!  Um das zu verhindern, wird die Datei in .gitignore eingetragen. Was das bewirkt zeigt der Vorher / Nachher-Vergleich am besten:</p>
+<p>Warum zwei Dateien?  Weil dieses zweite Datei niemals, niemals, niemals in git commited werden darf!  Um das zu verhindern, wird die Datei in <code>.gitignore</code> eingetragen. Was das bewirkt zeigt der Vorher / Nachher-Vergleich am besten:</p>
 
-<pre><code>D:\Webprojekte\wp2&amp;gt;git status
+<pre><code>D:\Webprojekte\wp2&gt;git status
 
 # On branch master
 # Your branch is ahead of 'origin/master' by 2 commits.
@@ -192,16 +103,16 @@ $DSN     = "mysql:dbname=$DB_NAME;host=localhost";
 nothing added to commit but untracked files present (use "git add" to track)
 </code></pre>
 
-<p>noch erkennt git die datei config.php als neue, interessante Datei. Nun tragen wir den Dateinamen config.php in die Datei .gitignore im Haupt-Ordner der Working Copy ein:</p>
+<p>Hier erkennt git die datei <code>config.php</code> als neue, interessante Datei. Nun tragen wir den Dateinamen <code>config.php</code> in die Datei <code>.gitignore</code> im Haupt-Ordner der Working Copy ein:</p>
 
-<pre><code>D:\Webprojekte\wp2&amp;gt;cat .gitignore
+<pre><code>D:\Webprojekte\wp2&gt;cat .gitignore
 *.bak
 config.php
 </code></pre>
 
-<p>Damit ist git angewiesen, alle Dateien mit der Endung .bak und alle Dateien mit dem Namen config.php (egal in welchem Ordner) zu ignorieren. </p>
+<p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen <code>config.php</code> (egal in welchem Ordner) zu ignorieren. </p>
 
-<pre><code>D:\Webprojekte\wp2&amp;gt;git status
+<pre><code>D:\Webprojekte\wp2&gt;git status
 
 # On branch master
 # Your branch is ahead of 'origin/master' by 2 commits.
@@ -215,52 +126,81 @@ config.php
 no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 
-<p>Wie man sieht zeigt git status nun die Datei config.php nicht mehr an. Dafür hat git bemerkt dass die Datei .gitignore geändert wurde. Die sollte man ganz normal commiten.</p>
+<p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an. Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde. Die sollte man ganz normal commiten.</p>
 
-<p>Select</p>
+<h3 id="anweisung-an-die-datenbank">Anweisung an die Datenbank</h3>
+
+<p>Manche SQL-Queries liefern keine Daten retour.
+Solche Queries kann man mit der Methode <code>exec</code> absetzen:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Anweisungen an die Datenbank mit exec</small></h4>
+<pre class="lang-php prettyprint linenums">
+$dbh = new PDO(…);
+dbh-&gt;exec(&quot;DELETE FROM users&quot;);
+</pre></div>
+
+<p>Hier werden alle Datensätze aus der Tabelle <code>users</code> gelöscht,
+es gibt keine Rückmeldung an PHP.</p>
+
+<h3 id="abfrage-mit-select">Abfrage mit Select</h3>
 
 <p>Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). Man braucht also eine Schleife um alle Datensätze abzuarbeiten. Innerhalb der Schleife erhält man den einzelnen Datensatz als Array. </p>
 
-<pre><code>$query =$dbh-&gt;query(
-     "SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10"
-);
-$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-foreach($personen as $person) {
+<div class="example">
+<h4 class="caption">Php Code <small>Abfrage der Datenbank mit SELECT</small></h4>
+<pre class="lang-php prettyprint linenums">
+    $query =$dbh-&gt;query(
+         &quot;SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10&quot;
+    );
+    $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
+    foreach($personen as $person) {
 
-      echo "$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n";
-}
-</code></pre>
+          echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
+    }
+</pre></div>
 
-<p>Die SQL-Anfrage wird hier als String an die query-methode des Datenbankhandler übergeben.  Der Rückgabewert von query ist ein Query-Handle (ähnlich dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der Datenbank zu PHP übertragen. Das passiert erst in der nächsten Zeile mit der Methode fetchAll. Der Rückgabewert von fetchAll ist in diesem Fall ein Array mit Objekten. Dieses Array wird anschließend mit einer foreach-Schleife abgearbeitet.</p>
+<p>Die SQL-Anfrage wird hier als String an die query-methode des Datenbankhandler übergeben.  Der Rückgabewert von query ist ein Query-Handle <code>$query</code> (ähnlich dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der Datenbank zu PHP übertragen. Das passiert erst in der nächsten Zeile mit der Methode <code>fetchAll</code>. Der Rückgabewert von fetchAll ist in diesem Fall ein Array mit Objekten. Dieses Array wird anschließend mit einer foreach-Schleife abgearbeitet. </p>
 
-<p>Effizient Arbeiten mit der Datenbank</p>
+<h2 id="effizient-arbeiten-mit-der-datenbank">Effizient Arbeiten mit der Datenbank</h2>
 
 <p>Ein ganz wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern und Berechnen der Daten möglichst in der Datenbank erledigen und möglichst wenige Daten zu PHP übermitteln. Folgender Ansatz wäre also ganz schlecht, besonders wenn viele Daten in der Datenbank sind:</p>
 
-<pre><code>$query =$dbh-&gt;query("SELECT * FROM person");
+<div class="example">
+<h4 class="caption">Php Code <small>Ineffiziente Abfrage der Datenbank</small></h4>
+<pre class="lang-php prettyprint linenums">
+$query =$dbh-&gt;query(&quot;SELECT * FROM person&quot;);
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 foreach($personen as $person ) {
-
-    if($person-&gt;ifshow) {
-      echo "$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n";
-    }
+  if($person-&gt;ifshow) {
+    echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
+  }
 }
-</code></pre>
+</pre></div>
 
-<p>Richtig wäre, den Filter bereits im SELECT einzubauen:</p>
+<p>Besser wäre, den Filter bereits im SELECT einzubauen:</p>
 
-<pre><code>$query =$dbh-&gt;query("SELECT * FROM person WHERE ifshow");
+<div class="example">
+<h4 class="caption">Php Code <small>Effiziente Abfrage der Datenbank</small></h4>
+<pre class="lang-php prettyprint linenums">
+$query =$dbh-&gt;query(&quot;SELECT * FROM person WHERE ifshow&quot;);
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 foreach($personen as $person ) {
-      echo "$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n";
+  echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
 }
-</code></pre>
+</pre></div>
 
-<p>Zu diesem Prinzip gehört auch die konsequente Verwendung der richtigen Datentypen in der Datenbank:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“</p>
+<p>Die gleichen Überlegungen gelten auch, wenn Datensätze “Seitenweise” angezeigt
+werden sollen: hier verwendet man bereits in der Datenbank <code>LIMIT</code> um nur
+die beötigten Datensätze zu laden.</p>
 
-<pre><code>select titel,pub_datum from werk 
-where datediff( curdate( ) , pub_datum ) &amp;lt;= 100; 
-</code></pre>
+<p>Die Verwendung der richtigen Datentypen in der Datenbank erleichtert die Abfragen:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+  select titel,pub_datum from werk 
+  where datediff( curdate( ) , pub_datum ) &lt;= 100; 
+</pre></div>
 
 <p>Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.</p>
 
@@ -268,10 +208,10 @@ where datediff( curdate( ) , pub_datum ) &amp;lt;= 100;
 			<div class="pagination">
   <ul>
     
-      <li><a href="/php-mysql/">← <span class="article">Webapplikationen mit MySQL</a></li>
+      <li><a href="/php-mysql/db/">← <span class="article">Datenbank</a></li>
     
     
-      <li><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation →</a></li>
+      <li><a href="/php-mysql/struktur-webapplikation/">Struktur einer Web-Applikation →</a></li>
     
   </ul>
 </div>
@@ -672,11 +612,19 @@ where datediff( curdate( ) , pub_datum ) &amp;lt;= 100;
                       
                     
                       
-                      <li class="active"><a href="/php-mysql/start/">Start mit PHP und MySQL</a></li>
+                      <li ><a href="/php-mysql/db/">Datenbank</a></li>
                       
                     
                       
-                      <li ><a href="/php-mysql/datenbank-lesen/">Eine lesende Web-Applikation</a></li>
+                      <li class="active"><a href="/php-mysql/start/">PHP und MySQL/MariaDB</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql/datenbank-lesen/">Lesen aus der Datenbank</a></li>
                       
                     
                   

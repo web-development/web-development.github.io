@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Datenbank - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Datenbank</h1>
+          <p><a href="/php-mysql/db/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	  <div class='slide'><p>MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. MariaDB ist eine leichtgewichtiger Alternative zu MySQL. Falls Sie noch keine relationale Datenbank auf Ihrem Entwicklungsrechner installiert haben empfehle ich MariaDB.</p>
+
+<p>Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="mysql-installation-wiederholung-dokumentation">MySQL Installation, Wiederholung, Dokumentation</h2>
+<p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. Die MySQL-Shell wird wie folgt gestartet:</p>
+
+<pre><code>&gt; mysql –u username –p datenbankname
+Welcome to the MySQL monitor. Commands end with ; or \g.
+
+Your MySQL connection id is 2 to server version: 5.0.27-community-nt
+
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql&gt;
+</code></pre>
+
+<p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: </p>
+
+<pre><code>&gt; mysql –u username –p datenbankname &lt; portfolio.sandbox.sql Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
+
+mysql&gt; show tables;
+
++-----------------------------+
+| Tables_in_portfolio_sandbox |
++-----------------------------+
+| macht                       | 
+| media                       | 
+| media_werk                  | 
+| person                      | 
+| rollen                      | 
+| student                     | 
+...
+| werk                        | 
++-----------------------------+
+16 rows in set (0.00 sec)
+</code></pre>
+
+<p>Describe zeigt den Aufbau einer bestimmten Tabelle:</p>
+
+<pre><code>mysql&gt; describe person;
+
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| pid        | bigint(20)   |      | PRI | NULL    | auto_increment |
+| uid        | varchar(8)   | YES  | MUL | NULL    |                |
+| vorname    | varchar(40)  |      |     |         |                |
+| nachname   | varchar(50)  |      |     |         |                |
+| profil     | text         |      |     |         |                |
+| mail       | varchar(40)  | YES  | MUL | NULL    |                |
+| web        | varchar(200) | YES  |     | NULL    |                |
+| blog       | varchar(200) | YES  |     | NULL    |                |
+| feed       | varchar(200) | YES  |     | NULL    |                |
+| title      | varchar(10)  | YES  |     | NULL    |                |
+| isfemale   | tinyint(4)   |      |     | 0       |                |
+| bildpfad   | varchar(250) | YES  | MUL | NULL    |                |
+| ifshow     | tinyint(4)   |      |     | 0       |                |
+| facebookid | bigint(20)   | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+14 rows in set (0.00 sec)
+</code></pre>
+
+<p>Select und Join funktionieren wie erwartet:</p>
+
+<pre><code>mysql&gt; select pid,vorname from person limit 1,8;
+
++-----+-------------+
+| pid | vorname     |
++-----+-------------+
+|   2 | Paul        |
+|   3 | Edvard Paul |
+|   4 | Sandra      |
+|   5 | Philipp     |
+|   6 | Antal       |
+|   7 | Sebastian   |
+|   8 | Johannes    |
+|   9 | Ivan        |
++-----+-------------+
+10 rows in set (0.00 sec)
+</code></pre>
+
+<p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der <a href="http://dev.mysql.com/">Dokumentation</a> entnehmen.</p>
+
+<p><img src="/images/image357.png" alt="Dokumentation von MySQL auf http://dev.mysql.com/" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="phpmyadmin">phpMyAdmin</h2>
+
+<p>Ein häufig verwendetes Tool ist der phpMyAdmin, der ein Interface am Web zur Verfügung stellt. </p>
+
+<p>TODO: Bilder einfügen</p>
+
+<p><img src="/images/image358.png" alt="phpMyAdmin" /></p>
+
+<p>Über phpMyAdmin kann man viele SQL-Abfragen durch Point+Klick formulieren. Das lehrreiche daran: phpMyAdmin zeigt immer das SQL-Statement mit an — auf diese Art kann man einfach SQL lernen. Besonders praktisch ist das beim Anlegen und Verändern von Tabellen. 
+Erster Schritt: Name der Tabelle:</p>
+
+<p><img src="/images/image359.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle" /></p>
+
+<p>Zweiter Schritt: Spalten definieren:</p>
+
+<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - die Spalten" /></p>
+
+<p>Dritter Schritt: Tabelle wird angelegt und dazugehörendes SQL-Statement angezeigt:</p>
+
+<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - der SQL Befehl" /></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/php-mysql/db/">zurück zum Buch-Kapitel</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/modernizr.custom.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>

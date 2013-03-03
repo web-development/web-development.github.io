@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Permalinks</title>
+  <title>Lehrbuch Web-Development - Struktur einer Web-Applikation</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -43,90 +43,113 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Permalinks</h2>
-                                <a href="/wordpress/permalinks/slide.html">als Präsentation</a>
+				<h2 class="title">Struktur einer Web-Applikation</h2>
+                                <a href="/php-mysql/struktur-webapplikation/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<p>Ein Grundprinzip des Webs lautet: URLs verändern sich nicht - siehe <a href="http://www.w3.org/Provider/Style/URI.html">Berners-Lee</a>.</p>
+			<p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
 
-<p>In Wordpress erhalten Beiträge und Seiten bei Ihrer Erstellung eine
-fixe URL - genannt “Permalink” - die sich nie wieder ändert.
-Auf der Homepage werden immer die neuesten Beiträge angezeigt, jeder
-dort angezeigt Anreisser ist aber bereits mit dem vollen Beitrag
-unter seiner endgültigen URL verlinkt.</p>
+<p><img src="/images/dbapp-home.png" alt="Abbildung 144: Homepage der Mini-Applikation" /></p>
 
-<h2 id="permalinks-konfigurieren">Permalinks konfigurieren</h2>
+<p>Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick. Zu jeder Seite wird der Titel angeführt (wird auf der Seite angezeigt), der Dateiname der PHP-Datei (wichtig für die Verlinkung), eventuell notwendige Parameter und eine Beschreibung was die Seite anzeigt.</p>
 
-<p>Im Backend unter Einstellung → Permalinks kann man die Form der
-URLs konfigurieren.</p>
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Dateiname</th>
+      <th>Parameter</th>
+      <th>Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Home</td>
+      <td><code>index.php</code></td>
+      <td> </td>
+      <td>Zeigt Gesamtzahl der Personen und Werke an.</td>
+    </tr>
+    <tr>
+      <td>Personen</td>
+      <td><code>personen.php</code></td>
+      <td> </td>
+      <td>Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php</td>
+    </tr>
+    <tr>
+      <td>Details zu einer Person</td>
+      <td><code>person.php</code></td>
+      <td>pid (Schlüssel der Person)</td>
+      <td>Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username</td>
+    </tr>
+    <tr>
+      <td>Werke</td>
+      <td><code>werke.php</code></td>
+      <td> </td>
+      <td>Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php</td>
+    </tr>
+    <tr>
+      <td>Details zu einem Werk</td>
+      <td><code>werk.php</code></td>
+      <td>wid (Schlüssel des Werks)</td>
+      <td>Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="/images/wordpress-permalinks.png" alt="Permalinks konfigurieren" /></p>
+<p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die Dateien functions.php (mit der Datenbank-Verbindung) header.php und footer.php inkluidert.</p>
 
-<p>Betrachten wir die Form “Tag und Name” näher:</p>
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+&lt;?
+  $pagetitle = &quot;Titel der Seite&quot;;
+  include &quot;functions.php&quot;;
 
-<p><code>http://mozartchor.at/2013/02/28/Beispielbeitrag/</code></p>
+  // hier passiert die eigentliche Arbeit
+  
+  include &quot;header.php&quot;;
+  // und hier die Ausgabe
+  include &quot;footer.php&quot;;
+?&gt;
+</pre></div>
 
-<p>Hier scheint es eine Ordnerstruktur aus Jahr, Monat, Tag und
-Titel des Beitrags zu geben.  Wenn der Beitrag einen längeren
-Titel hat werden Sonderzeichen entfernt und Leerzeichen durch 
-Minus-Zeichen ersetzt:</p>
+<h2 id="verlinkung">Verlinkung</h2>
 
-<ul>
-  <li>Beitragstitel = Bericht über das Probenwochenende in Brixen</li>
-  <li>Permalink = http://mozartchor.at/2013/02/28/bericht-uber-das-probenwochenende-in-brixen</li>
-</ul>
+<p>In der Datei personen.php wird zu jeder Person ein passender Link zu person.php angezeigt:</p>
 
-<p>Diese Form des Permalinks ist nicht nur gut lesbar, sondern
-bringt eventuell positive Effekte bei Suchmaschinen: Wird bei
-einer Suchmaschine nach dem Wort “Brixen” gesucht, dann werden
-jede Suchergebnisse zuerst angezeigt, bei denen das Wort besonders
-prominent vorkommt: also im Titel der Seite, als Überschrift, oder
-in der URL.</p>
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+&lt;li&gt;
+  &lt;b&gt;&lt;?= $person-&gt;firstname ?&gt; &lt;?= $person-&gt;surname?&gt;&lt;/b&gt;
+  &lt;a href=&quot;person.php?pid=&lt;?= $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+</pre></div>
 
-<h2 id="modrewrite">mod_rewrite</h2>
+<p>Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingibt!</p>
 
-<p>Normalerweise entspricht die URL einfach der
-Ordnerstruktur und dem Dateinamen im Filesystem des Webservers.
-Im Fall von Wordpress wäre das also einfach <code>index.php</code> als
-Dateiname des PHP-Programmes.</p>
+<p><code>http://meinedomain.at/person.php?pid=666</code></p>
 
-<p>Um die Verwendung von anderen URLs zu ermöglichen
-muss man den Webserver Apache entsprechend um-konfiguriere.
-Dazu ist das Apache Modul <code>mod_rewrite</code> notwendig, das
-aber meist schon installiert ist.</p>
+<p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder behandelt werden muss.</p>
 
-<p>Wordpress braucht folgende Konfiguration in der Datei <code>.htaccess</code>:</p>
+<h2 id="datenstze-suchen">Datensätze suchen</h2>
+<p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
 
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>Diese Konfiguration bewirkt:</p>
-
-<ul>
-  <li>falls die Datei index.php direkt angefordert wird, wird sie aufgerufen</li>
-  <li>falls ein Dateiname oder ein Ordnername direkt angefordert wird, wird das normal von Apache behandelt</li>
-  <li>in allen anderen Fällen wird auch index.php aufgerufen - die Information über die genaue URL steht dem Programm aber zur Verfügung</li>
-</ul>
-
-<p>Wordpress liest die Information über die volle URL aus, und interpretiert
-sie wie unter Einstellung → Permalinks festgelegt.</p>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
+  Suche nach einer Person mit dem Vornamen &lt;input name=&quot;suchwort&quot;&gt; 
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</pre></div>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/wordpress/plugins/">← <span class="article">Plugins verwenden</a></li>
+      <li><a href="/php-mysql/start/">← <span class="article">PHP und MySQL/MariaDB</a></li>
     
     
-      <li><a href="/php/">PHP Basics →</a></li>
+      <li><a href="/php-mysql/datenbank-lesen/">Lesen aus der Datenbank →</a></li>
     
   </ul>
 </div>
@@ -435,7 +458,7 @@ sie wie unter Einstellung → Permalinks festgelegt.</p>
               </ul>
             </li>
           
-            <li class="active"><a href="/wordpress/">WORDPRESS</a>
+            <li ><a href="/wordpress/">WORDPRESS</a>
               <ul class="sub">
                 
                   
@@ -475,7 +498,7 @@ sie wie unter Einstellung → Permalinks festgelegt.</p>
                       
                     
                       
-                      <li class="active"><a href="/wordpress/permalinks/">Permalinks</a></li>
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
                       
                     
                   
@@ -519,7 +542,7 @@ sie wie unter Einstellung → Permalinks festgelegt.</p>
               </ul>
             </li>
           
-            <li ><a href="/php-mysql/">PHP MYSQL</a>
+            <li class="active"><a href="/php-mysql/">PHP MYSQL</a>
               <ul class="sub">
                 
                   
@@ -535,7 +558,7 @@ sie wie unter Einstellung → Permalinks festgelegt.</p>
                       
                     
                       
-                      <li ><a href="/php-mysql/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+                      <li class="active"><a href="/php-mysql/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
                       
                     
                       
@@ -769,7 +792,7 @@ sie wie unter Einstellung → Permalinks festgelegt.</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/wordpress/permalinks.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql/struktur-webapplikation.md">Kommentar zu dieser seite</a></p>
 
 </p>
     </div>
