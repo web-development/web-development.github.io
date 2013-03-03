@@ -48,7 +48,9 @@
                           </div>
 			
 			
-			<p>Im “Frontend” gab es in den letzten Jahren einige Verbesserungen beim
+			<h2 id="frontend">Frontend</h2>
+
+<p>Im “Frontend” gab es in den letzten Jahren einige Verbesserungen beim
 Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
 durch “Drag-and-Drop” auf den Browser</p>
 
@@ -61,7 +63,8 @@ später kennen lernen.</p>
 vom typ <code>file</code>:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
+<h4 class="caption">Html Code <small>Formular für den Datei-Upload</small></h4>
+<pre class="lang-html prettyprint linenums">
 &lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
   Neues Bild zum hochladen in den Ordner &lt;a href='pix/'&gt;upload&lt;/a&gt;: 
   &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
@@ -71,28 +74,54 @@ vom typ <code>file</code>:</p>
 
 <p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
 
-<p><img src="/images/image345.png" alt="Abbildung 136: Webformular mit Datei-Upload" /></p>
+<p><img src="/images/image345.png" alt="Webformular mit Datei-Upload" /></p>
+
+<h2 id="backend">Backend</h2>
+
+<p>Zuerst ein paar Überlegung zur Sicherheit von Datei-Uploads. Folgendes Bild
+zeigt den Super-GAU: Über das Formular upload.php kann man nicht nur “harmlose”
+Dateien wie Bilder hochladen, sondern auch eine Datei mit der Endung <code>.php</code>.</p>
+
+<p>Diese Datei wird im Ordner <code>uploads/</code> innerhalb des Webspace gespeichert,
+kann dort über den Webserver aufgerufen werden, und wird vom PHP-Interpreter
+ausgeführt.</p>
+
+<p><img src="/images/upload-security.png" alt="Security Super-GAU: Upload einer Datei mit Endung php in den Webspace" /></p>
+
+<p>So ein Upload öffnet das Tor für beliebigen PHP Code, der dann mit den
+Rechten des Account <code>apache</code> ausgeführt wird.  Ein guter erster Schritt, wenn
+man den Server hacken will!</p>
+
+<h3 id="manahmen">Maßnahmen</h3>
+
+<p>Die Mindestanforderungen an ein Upload-Skript lauten also:
+* <strong>niemals</strong> hochgeladene Daten als Code interpretieren!
+* Vorsicht bei Daten, die im Webspace gespeichert werden!
+* Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!</p>
+
+<h3 id="implementierung">Implementierung</h3>
 
 <p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
 
-<p>Die Details zu den Hochgeladenen Dateien sind im Array $_FILES gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“: </p>
+<p>Die Details zu den Hochgeladenen Dateien sind im Array <code>$_FILES</code> gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“: </p>
 
 <dl>
-  <dt>$_FILES[‘bild’][‘name’]</dt>
+  <dt><code>$_FILES['bild']['name']</code></dt>
   <dd>Der Originalname der Datei am Client. </dd>
-  <dt>$_FILES[‘bild’][‘type’]</dt>
+  <dt><code>$_FILES['bild']['type']</code></dt>
   <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig! </dd>
-  <dt>$_FILES[‘bild’][‘size’]</dt>
+  <dt><code>$_FILES['bild']['size']</code></dt>
   <dd>Größe der hochgeladenen Datei in Byte. </dd>
-  <dt>$_FILES[‘bild’][‘tmp_name’]</dt>
-  <dd>Der Dateiname der temporären Datei. </dd>
-  <dt>$_FILES[‘bild’][‘error’]</dt>
+  <dt><code>$_FILES['bild']['tmp_name']</code></dt>
+  <dd>Der Pfad und Dateiname der temporären Datei. </dd>
+  <dt><code>$_FILES['bild']['error']</code></dt>
   <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.</dd>
 </dl>
 
-<p>TODO: Sicherheitsprobleme beschreiben</p>
+<h3 id="beispielcode">Beispielcode</h3>
 
 <div class="example">
+<h4 class="caption">Php Code <small>PHP-Programm zur Behandlung von Datei-Upload</small></h4>
 <pre class="lang-php prettyprint linenums">
 &lt;?php
 $uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/pix/&quot;;
@@ -119,7 +148,11 @@ print '&lt;/pre&gt;';
 ?&gt;
 </pre></div>
 
-<p>Achtung: Sie müssen den Ordner <code>pix</code> erstellen und ihm geeignete Zugriffsrechte zuweisen, damit der Webserver hineinschreiben darf!</p>
+<h3 id="zugriffsrechte-am-server">Zugriffsrechte am Server</h3>
+
+<p>Achtung: Sie müssen den Ordner <code>pix</code> erstellen und ihm 
+geeignete Zugriffsrechte zuweisen, damit der Webserver (Account <code>apache</code>) 
+hineinschreiben darf!</p>
 
 		
 			<div class="pagination">
