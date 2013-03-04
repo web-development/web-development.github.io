@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Unzureichende Absicherung der Transportschicht</title>
+  <title>Lehrbuch Web-Development - Cookies</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -43,29 +43,70 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Unzureichende Absicherung der Transportschicht</h2>
-                                <a href="/security/a9-transport/slide.html">als Präsentation</a>
+				<h2 class="title">Cookies</h2>
+                                <a href="/session/cookies/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage abrufen oder ob eine Person die Seite 10mal lädt.</p>
 
-<blockquote>
-  <p>Häufig wird der Netzwerkverkehr einer Anwendung nicht ausreichend geschützt, z.B. indem nur die Authentifizierung, nicht aber der Rest SSL/TLS nutzt. Hierdurch werden Daten und die Session ID gefährdet. Eventuell werden auch abgelaufene oder falsch konfigurierte Zertifikate verwendet. Durch die Beobachtung des Netzwerkverkehrs können einfache Schwachstellen gefunden werden.</p>
-</blockquote>
+<p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
 
-<div class="alert info"><strong>Lokale Information </strong> 
-Im Bachelor-Studiengang MultiMediaTechnology lernen Sie mehr über diese Themen in den Lehrveranstaltungen
-Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.</div>
+<p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
+
+<h2 id="cookies">Cookies</h2>
+<p>Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten, die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver wieder mitsendet. Der Browser sendet nie ein Cookie an einen anderen Webserver als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von verschiedenen Servern speichern (In einem Cookie-Jar).</p>
+
+<p><img src="/images/image363.png" alt="Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet" /></p>
+
+<p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+Set-Cookie: style=gelb
+Set-Cookie: style=gelb; path=/admin/
+Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
+</pre></div>
+
+<p>Die einzige Art ein Cookie zu löschen ist ein Cookie mit gleichem Namen und Ablaufdatum in der Vergangenheit zu setzen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
+</pre></div>
+
+<h3 id="cookies-in-php">Cookies in PHP</h3>
+
+<p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet wurden im Array $_COOKIES (und — zusammen mit GET und POST-Parametern — in $_REQUEST). Neue Cookies können Sie mit setcookie() setzen. </p>
+
+<h3 id="cookies-in-javascript">Cookies in Javascript</h3>
+
+<p>Im Client können Cookies mit Javascript gelesen und geschrieben werden. Dies funktioniert über eine Zuweisung an die Eigenschaft document.cookie.</p>
+
+<p>Achtung: beim lesenden Zugriff auf diese Eigenschaft enthält man einen String mit allen Cookies die gerade gültig sind. </p>
+
+<p>Zum Setzen von neuen Cookies wird auf die Eigenschaft zugewiesen. Zum Setzen mehrere Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluß auf den Wert den man aus document.cookie auslesen kann:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+alert(document.cookie);  // Zeigt die gültigen Cookies
+
+document.cookie = &quot;farbe:grün&quot;;
+document.cookie = &quot;anzahl: 3&quot;;
+document.cookie = &quot;passwort: total super geheimes aber recht langes passwort&quot;;
+alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
+</pre></div>
+
+<p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!</p>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/security/a8-url/">← <span class="article">Mangelhafter URL-Zugriffsschutz</a></li>
+      <li><a href="/session/">← <span class="article">Login, Sessions und Datenbank verändern</a></li>
     
     
-      <li><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen →</a></li>
+      <li><a href="/session/session-und-login/">Session und Login →</a></li>
     
   </ul>
 </div>
@@ -486,7 +527,7 @@ Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.<
               </ul>
             </li>
           
-            <li ><a href="/session/">SESSION</a>
+            <li class="active"><a href="/session/">SESSION</a>
               <ul class="sub">
                 
                   
@@ -494,7 +535,7 @@ Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.<
                       
                     
                       
-                      <li ><a href="/session/cookies/">Cookies</a></li>
+                      <li class="active"><a href="/session/cookies/">Cookies</a></li>
                       
                     
                       
@@ -646,7 +687,7 @@ Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.<
               </ul>
             </li>
           
-            <li class="active"><a href="/security/">SECURITY</a>
+            <li ><a href="/security/">SECURITY</a>
               <ul class="sub">
                 
                   
@@ -686,7 +727,7 @@ Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.<
                       
                     
                       
-                      <li class="active"><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
                       
                     
                       
@@ -712,7 +753,7 @@ Multimedia Netzwerke und IT Sicherheit im 3. und Web Operations  im 4.Semester.<
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/security/a9-transport.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/session/cookies.md">Kommentar zu dieser seite</a></p>
 
 </p>
     </div>

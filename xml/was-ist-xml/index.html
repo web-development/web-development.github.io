@@ -54,33 +54,84 @@
 die Sprache auf SGML (Standard Generalized Markup Language). </p>
 
 <p>SGML ist eine Metasprache, mit deren Hilfe man verschiedene Auszeichnungssprachen 
-(englisch: Markup Languages) definieren kann. SGML ist ein ISO-Standard: ISO 8879:1986 Information Processing — Text and Office Systems — Standard Generalized Markup Language (SGML) und  ist in der Europäischen Norm EN 28879:1990 und der DIN EN 28879:1991 beschrieben.</p>
+(englisch: Markup Languages) definieren kann. SGML war damals (1990) bereits ein ISO-Standard.</p>
 
-<p>Um ein gültiges (engl. valid) Dokument in SGML zu beschreiben, wird die Dokumenttypdefinition verwendet (DTD), 
+<p>Um ein gültiges  Dokument (engl. valid document) in SGML zu beschreiben, wird die Dokumenttypdefinition verwendet (DTD), 
 die den strukturellen Aufbau von Dokumenten beschreibt.  In frühen Versionen von HTML, wie z.B. HTML 3.2,
-wurde diese DTD auch wirklich in der <a href="http://www.w3.org/TR/REC-html32-19970114#dtd">HTML Skezifikation</a> angegeben.</p>
+wurde diese DTD auch wirklich in der <a href="http://www.w3.org/TR/REC-html32-19970114#dtd">HTML Spezifikation</a> angegeben.</p>
 
 <p>Im Jahr 1998 veröffentlichte das World Wide Web Consortium <a href="http://www.w3.org/TR/xml/">XML</a>, eine neue
 Meta-Sprache, als Teilmenge von SGML.  Sprachen auf Basis von XML sind
 zum Beispiel RSS, SVG, oder XHTML.</p>
 
-<p><img src="/images/SGML.png" alt="SGML, HTML, XML und XHTML - eine Sprach-Familie" /></p>
+<p><img src="/images/SGML.svg" alt="SGML, HTML, XML und XHTML - eine Sprach-Familie" /></p>
 
 <p>Mit HTML5 hat sich HTML von diesem Stammbaum emanzipiert: HTML5 ist
-nicht mehr eine Sprache, sondern zuerst das DOM als “in momory representation” im Browesr,
+nicht mehr eine Sprache, sondern zuerst das DOM als “in memory representation” im Browesr,
 und einige APIS für das DOM. Ausgehend davon werden zwei Darstellungsweisen
 definiert: HTML und XML.  </p>
 
 <h2 id="svg">SVG</h2>
 
 <svg width="200" height="200" style="float:left;">
-    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
-    <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
+  <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
+  <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
 
 <p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
 World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
-zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
+zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML. </p>
+
+<p><br clear="left" /></p>
+
+<h2 id="rss">RSS</h2>
+
+<p>RSS ist ein Format um die Daten eines Blogs maschienenlesbar anzubieten.
+Wo bietet z.B. der Wordpress Blog <code>http://multimediatechnology.at/</code> 
+unter der URL <code>http://multimediatechnology.at/feed/</code> die gleichen Inhalte
+wie die Homepage des Blogs im RSS Format an.</p>
+
+<p>TODO: RSS Code</p>
+
+<pre><code>&lt;rss example here&gt;
+</code></pre>
+
+<p>RSS ist ein Beispiel für XML.</p>
+
+<h2 id="mathml">MathML</h2>
+
+<p>MathML ist eine Markup Language zur Darstellung von Mathematischen Formeln.
+Es wird von … Browsern unterstütz.</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" style="float:left;">
+    <mrow>
+      <mrow>
+        <msubsup>
+          <mo maxsize="1">∫</mo>
+          <mrow>
+            <mi _moz-math-font-style="italic">x</mi>
+            <mo>=</mo>
+            <mi _moz-math-font-style="italic">a</mi>
+          </mrow>
+          <mrow>
+            <mi _moz-math-font-style="italic">x</mi>
+            <mo>=</mo>
+            <mi _moz-math-font-style="italic">b</mi>
+          </mrow>
+        </msubsup>
+        <mrow>
+          <mi _moz-math-font-style="italic">f</mi>
+          <mo stretchy="false">(</mo>
+          <mi _moz-math-font-style="italic">x</mi>
+          <mo stretchy="false">)</mo>
+          <mi _moz-math-font-style="italic">d</mi>
+          <mi _moz-math-font-style="italic">x</mi>
+        </mrow>
+      </mrow>
+    </mrow>
+</math>
+
+<p><br clear="left" /></p>
 
 		
 			<div class="pagination">
@@ -510,55 +561,15 @@ zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
               </ul>
             </li>
           
-            <li class="active"><a href="/xml/">XML</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li class="active"><a href="/xml/was-ist-xml/">Was ist XML</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
             <li ><a href="/session/">SESSION</a>
               <ul class="sub">
                 
                   
                     
+                      
+                    
+                      
+                      <li ><a href="/session/cookies/">Cookies</a></li>
                       
                     
                       
@@ -602,7 +613,7 @@ zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
               </ul>
             </li>
           
-            <li ><a href="/security/">SECURITY</a>
+            <li class="active"><a href="/xml/">XML</a>
               <ul class="sub">
                 
                   
@@ -610,43 +621,35 @@ zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      <li class="active"><a href="/xml/was-ist-xml/">Was ist XML</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
                       
                     
                       
-                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -711,6 +714,58 @@ zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
                     
                       
                       <li ><a href="/applied-javascript/cors/">CORS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/security/">SECURITY</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   
