@@ -70,7 +70,7 @@
     <tr>
       <td>Details zu einer Person</td>
       <td><code>person.php</code></td>
-      <td>pid (Schlüssel der Person)</td>
+      <td>id (Schlüssel der Person)</td>
       <td>Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username</td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@
     <tr>
       <td>Details zu einem Werk</td>
       <td><code>werk.php</code></td>
-      <td>wid (Schlüssel des Werks)</td>
+      <td>id (Schlüssel des Werks)</td>
       <td>Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen</td>
     </tr>
   </tbody>
@@ -115,13 +115,13 @@
 <pre class="lang-php prettyprint linenums">
 &lt;li&gt;
   &lt;b&gt;&lt;?= $person-&gt;firstname ?&gt; &lt;?= $person-&gt;surname?&gt;&lt;/b&gt;
-  &lt;a href=&quot;person.php?pid=&lt;?= $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
+  &lt;a href=&quot;person.php?id=&lt;?= $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
 </pre></div>
 
-<p>Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere pid „von Hand“ eingibt!</p>
+<p>Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere id „von Hand“ eingibt!</p>
 
-<p><code>http://meinedomain.at/person.php?pid=666</code></p>
+<p><code>http://meinedomain.at/person.php?id=666</code></p>
 
 <p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder behandelt werden muss.</p>
 
