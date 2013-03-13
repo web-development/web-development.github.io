@@ -39,7 +39,7 @@
           <div class="slide"><h1>Session und Login</h1>
           <p><a href="/session/session-und-login/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Ohne “state” ist jeder HTTP Request ein isoliertes ereignis.
+	  <div class='slide'><p>Ohne “state” ist jeder HTTP Request ein isoliertes Ereignis.
 Mit der Einführung von Cookies, und damit von state, können
 wir nun erkennen, dass mehere Requests zusammen gehören,
 von derselben Person ausgelöst wurden. Wir nennen diese Folge
@@ -51,12 +51,12 @@ von Requests dann eine “Session”.</p>
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
 
-<p>Mit dem Befehle  session_start() wird </p>
+<p>Mit dem Befehle  <code>session_start()</code> wird </p>
 
 <ul>
-  <li>…beim ersten Aufruf automatisch ein Cookie gesetzt. Wenn danach Daten im Array $_SESSION Daten gespeichert werden, sorgt PHP dafür dass die Daten am Server permanent gespeichert werden und damit beim nächsten Programmaufruf wieder zur Verfügung stehen.</li>
-  <li>…bei jedem weiteren Aufruf die Session an Hand des Cookies wieder identifiziert, und die Daten wieder ins $_SESSION-Array geladen.
-Für unsere Applikation werden wir das verwenden, um den Usernamen des angemeldeten Users zu speichern. session_start() wird in functions.php ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</li>
+  <li>…beim ersten Aufruf automatisch ein Cookie gesetzt. Wenn danach im Array <code>$_SESSION</code> Daten gespeichert werden, sorgt PHP dafür dass die Daten am Server permanent gespeichert werden und damit beim nächsten Programmaufruf wieder zur Verfügung stehen.</li>
+  <li>…bei jedem weiteren Aufruf die Session an Hand des Cookies wieder identifiziert, und die Daten wieder ins <code>$_SESSION</code>-Array geladen.
+Für unsere Applikation werden wir das verwenden, um den Usernamen des angemeldeten Users zu speichern. <code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</li>
 </ul>
 
 <p><img src="/images/image364.png" alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" /></p>
@@ -70,7 +70,7 @@ Für unsere Applikation werden wir das verwenden, um den Usernamen des angemelde
 
 <p><img src="/images/image365.png" alt="Abbildung 147: Login-Formular der Applikation" /></p>
 
-<p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl header(“Location: index.php”) wird der Browser dann automatisch an die Hauptseite weitergeleitet. </p>
+<p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet. </p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Überprüfung von username und passwort</small></h4>
@@ -82,7 +82,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 }
 </pre></div>
 
-<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigation angezeigt werden wie in Abbildung 142 gezeigt.</p>
+<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
 
 <p>Das Logout erfolgt ebenfalls mit der Methode POST:</p>
 
@@ -102,20 +102,20 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-  // Löschen aller Session-Variablen.
-  $_SESSION = array();
+// Löschen aller Session-Variablen.
+$_SESSION = array();
 
-  // Löscht das Session-Cookie.
-  if (isset($_COOKIE[session_name()])) {
-    setcookie(
-         session_name(),  // Cookie-Name war gleich Name der Session 
-         '',             // Cookie-Daten. Achtung! Leerer String hier hilft nicht!
-         time()-42000,  // Ablaufdatum in der Vergangenheit. Erst das führt zur Löschung!
-         '/'           // Wirkungsbereich des Cookies: der ganze Server
-     );
-  }
-  session_destroy();
-  header(&quot;Location: index.php&quot;)
+// Löscht das Session-Cookie.
+if (isset($_COOKIE[session_name()])) {
+  setcookie(
+    session_name(),  // Cookie-Name war gleich Name der Session 
+    '',             // Cookie-Daten. Achtung! Leerer String hier hilft nicht!
+    time()-42000,  // Ablaufdatum in der Vergangenheit. Erst das löscht!
+    '/'           // Wirkungsbereich des Cookies: der ganze Server
+   );
+}
+session_destroy();
+header(&quot;Location: index.php&quot;)
 </pre></div>
 
 </div>
@@ -123,7 +123,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 
 
 
-<p>Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung wie hier mit Location: sinnvoll. </p>
+<p>Achtung: das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung mit <code>Location:</code> sinnvoll. </p>
 
 <p>Achtung: die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:</p>
 
