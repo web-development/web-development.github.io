@@ -47,24 +47,55 @@
 <div class='slide'>
 
 <h2 id="mysql-installation-wiederholung-dokumentation">MySQL Installation, Wiederholung, Dokumentation</h2>
-<p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. Die MySQL-Shell wird wie folgt gestartet:</p>
+<p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. </p>
 
-<pre><code>&gt; mysql –u username –p datenbankname
+</div>
+<div class='slide'>
+
+<h3 id="mysql-shell">MySQL-Shell</h3>
+
+<p>Die MySQL-Shell<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql.html">*</a> wird wie folgt gestartet:</p>
+
+<pre><code>mysql -p -u USERNAME DATENBANKNAME
+</code></pre>
+
+<p>Die Option <code>-p</code> sorgt dafür, dass ich nach Passwort gefragt werde (und es nicht
+als Argument angeben muss).  Mit der Option <code>-u</code> gebe ich den Usernamen mit an.
+Zuletzt (und ohne Option) wird der Name der Datenbank als Argument übergeben.</p>
+
+<p>Konkret sieht das dann so aus:</p>
+
+<pre><code>&gt; mysql -p –u root portfolio_playground
 Welcome to the MySQL monitor. Commands end with ; or \g.
-
 Your MySQL connection id is 2 to server version: 5.0.27-community-nt
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-
 mysql&gt;
 </code></pre>
 
-<p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen: </p>
+</div>
+<div class='slide'>
 
-<pre><code>&gt; mysql –u username –p datenbankname &lt; portfolio.sandbox.sql Show Tables zeigt alle Tabellen in der aktuellen Datenbank:
+<h3 id="sql-importieren">SQL Importieren</h3>
 
-mysql&gt; show tables;
+<p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen,
+dabei verwenden wir die Eingabeumlenkung der Shell (siehe <a href="http://openbook.galileocomputing.de/ubuntu_1104/linux_07_008.htm#mjc7a653a8681ed7268edaff751d10f51f">Linux openbook:Eingabeumlenkung</a>)</p>
+
+<pre><code>&gt; mysql -p –u USERNAME –p DATENBANAME &lt; DATEINAME
+</code></pre>
+
+<p>oder konkret:</p>
+
+<pre><code>&gt; mysql -p –u root –p portfolio_playground &lt; portfolio_playground.sql
+</code></pre>
+
+</div>
+<div class='slide'>
+
+<h3 id="tabellen-anzeigen">Tabellen anzeigen</h3>
+
+<p><code>show tables</code><a href="http://dev.mysql.com/doc/refman/5.6/en/show-tables.html">*</a> zeigt alle Tabellen in der aktuellen Datenbank:</p>
+
+<pre><code>mysql&gt; show tables;
 +------------------------------------------+
 | Tables_in_portfolio_playground           |
 +------------------------------------------+
@@ -84,9 +115,14 @@ mysql&gt; show tables;
 12 rows in set (0.00 sec)
 </code></pre>
 
-<p>Describe zeigt den Aufbau einer bestimmten Tabelle:</p>
+</div>
+<div class='slide'>
 
-<pre><code>mysql&gt; describe users;
+<h3 id="eine-tabelle-beschreiben">Eine Tabelle beschreiben</h3>
+
+<p><code>explain</code><a href="http://dev.mysql.com/doc/refman/5.6/en/explain.html">*</a> zeigt den Aufbau einer bestimmten Tabelle:</p>
+
+<pre><code>mysql&gt; explain users;
 +-----------------+--------------+------+-----+---------+----------------+
 | Field           | Type         | Null | Key | Default | Extra          |
 +-----------------+--------------+------+-----+---------+----------------+
@@ -106,7 +142,12 @@ mysql&gt; show tables;
 12 rows in set (0.00 sec)
 </code></pre>
 
-<p>Select und Join funktionieren wie erwartet:</p>
+</div>
+<div class='slide'>
+
+<h3 id="abfrage">Abfrage</h3>
+
+<p><code>select</code> und <code>join</code> funktionieren wie erwartet:</p>
 
 <pre><code>mysql&gt; select id,firstname from users limit 1,8;
 +----+-----------+
@@ -124,33 +165,45 @@ mysql&gt; show tables;
 8 rows in set (0.01 sec)
 </code></pre>
 
-<p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der <a href="http://dev.mysql.com/">Dokumentation</a> entnehmen.</p>
+</div>
+<div class='slide'>
 
-<p><img src="/images/image357.png" alt="Dokumentation von MySQL auf http://dev.mysql.com/" /></p>
+<h3 id="dokumentation">Dokumentation</h3>
+
+<p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der <a href="http://dev.mysql.com/doc/refman/5.6/en/index.html">Dokumentation</a> entnehmen.</p>
+
+<p><img src="/images/mysql-doku.png" alt="Dokumentation von MySQL auf http://dev.mysql.com/" /></p>
 
 </div>
 <div class='slide'>
 
 <h2 id="phpmyadmin">phpMyAdmin</h2>
 
-<p>Ein häufig verwendetes Tool ist der phpMyAdmin, der ein Interface am Web zur Verfügung stellt. </p>
+<p>PhpMyAdmin ist ein häufig verwendetes Tool zur Verwaltung von MySQL Datenbanken.
+Es ist in PHP geschreiben, kann also im Webspace installiert und über
+den Browser verwendet werden.  </p>
 
-<p>TODO: Bilder einfügen</p>
+<p><img src="/images/phpmyadmin.png" alt="phpMyAdmin" /></p>
 
-<p><img src="/images/image358.png" alt="phpMyAdmin" /></p>
+</div>
+<div class='slide'>
 
-<p>Über phpMyAdmin kann man viele SQL-Abfragen durch Point+Klick formulieren. Das lehrreiche daran: phpMyAdmin zeigt immer das SQL-Statement mit an — auf diese Art kann man einfach SQL lernen. Besonders praktisch ist das beim Anlegen und Verändern von Tabellen. 
-Erster Schritt: Name der Tabelle:</p>
+<h3 id="create-table-in-phpmyadmin">Create Table in phpMyAdmin</h3>
 
-<p><img src="/images/image359.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle" /></p>
+<p>Über phpMyAdmin kann man viele SQL-Befehle durch Point+Klick formulieren,
+hier zum Beispiel ein <code>create table</code> Statement:</p>
 
-<p>Zweiter Schritt: Spalten definieren:</p>
+<p><img src="/images/phpmyadmin-create-table.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle" /></p>
 
-<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - die Spalten" /></p>
+</div>
+<div class='slide'>
 
-<p>Dritter Schritt: Tabelle wird angelegt und dazugehörendes SQL-Statement angezeigt:</p>
+<h3 id="select-in-phpmyadmin">SELECT in phpMyAdmin</h3>
 
-<p><img src="/images/image360.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - der SQL Befehl" /></p>
+<p>Bei Manchen Operationen zeigt phpMyAdmin das verwendete SQL-Statement an — das kann ganz lehrreich sein.</p>
+
+<p><img src="/images/phpmyadmin-search.png" alt="Abbildung 143: Suchen mit  phpMyAdmin - Eingabemaske" />
+<img src="/images/phpmyadmin-search-sql.png" alt="Abbildung 143: Suchen mit  phpMyAdmin - SQL" /></p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql/db/">zurück zum Buch-Kapitel</a></p>

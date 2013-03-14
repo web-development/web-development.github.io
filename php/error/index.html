@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Datenbank</title>
+  <title>Lehrbuch Web-Development - Errors + Debugging</title>
    
   <meta name="author" content="Brigitte Jellinek"> 
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium."> 
@@ -43,155 +43,27 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Datenbank</h2>
-                                <a href="/php-mysql/db/slide.html">als Präsentation</a>
+				<h2 class="title">Errors + Debugging</h2>
+                                <a href="/php/error/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<p>MySQL ist die relationale Datenbank, die bei gemietetem Webspace am öftesten angeboten wird. MariaDB ist eine leichtgewichtiger Alternative zu MySQL. Falls Sie noch keine relationale Datenbank auf Ihrem Entwicklungsrechner installiert haben empfehle ich MariaDB.</p>
+			<p>TODO</p>
 
-<p>Hier wird nicht die Funktionsweise einer relationalen Datenbank erklärt (siehe Lehrveranstaltung im 1.Semester), sondern nur die Besonderheiten von MySQL und die für Web-Applikationen wichtigen Aspekte.</p>
-
-<h2 id="mysql-installation-wiederholung-dokumentation">MySQL Installation, Wiederholung, Dokumentation</h2>
-<p>MySQL ist im Paket XAMPP enthalten. (Man könnte die Datenbank auch separat von mysql.com herunterladen und installieren.) In der Standardinstallation ist ein Administrator-Account „root“ ohne Passwort vorhanden. </p>
-
-<h3 id="mysql-shell">MySQL-Shell</h3>
-
-<p>Die MySQL-Shell<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql.html">*</a> wird wie folgt gestartet:</p>
-
-<pre><code>mysql -p -u USERNAME DATENBANKNAME
-</code></pre>
-
-<p>Die Option <code>-p</code> sorgt dafür, dass ich nach Passwort gefragt werde (und es nicht
-als Argument angeben muss).  Mit der Option <code>-u</code> gebe ich den Usernamen mit an.
-Zuletzt (und ohne Option) wird der Name der Datenbank als Argument übergeben.</p>
-
-<p>Konkret sieht das dann so aus:</p>
-
-<pre><code>&gt; mysql -p –u root portfolio_playground
-Welcome to the MySQL monitor. Commands end with ; or \g.
-Your MySQL connection id is 2 to server version: 5.0.27-community-nt
-Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
-mysql&gt;
-</code></pre>
-
-<h3 id="sql-importieren">SQL Importieren</h3>
-
-<p>Auf der Kommandozeile kann man auch ganze Dateien mit SQL-Befehlen auf einen Schlag einspielen,
-dabei verwenden wir die Eingabeumlenkung der Shell (siehe <a href="http://openbook.galileocomputing.de/ubuntu_1104/linux_07_008.htm#mjc7a653a8681ed7268edaff751d10f51f">Linux openbook:Eingabeumlenkung</a>)</p>
-
-<pre><code>&gt; mysql -p –u USERNAME –p DATENBANAME &lt; DATEINAME
-</code></pre>
-
-<p>oder konkret:</p>
-
-<pre><code>&gt; mysql -p –u root –p portfolio_playground &lt; portfolio_playground.sql
-</code></pre>
-
-<h3 id="tabellen-anzeigen">Tabellen anzeigen</h3>
-
-<p><code>show tables</code><a href="http://dev.mysql.com/doc/refman/5.6/en/show-tables.html">*</a> zeigt alle Tabellen in der aktuellen Datenbank:</p>
-
-<pre><code>mysql&gt; show tables;
-+------------------------------------------+
-| Tables_in_portfolio_playground           |
-+------------------------------------------+
-| agegroups                                | 
-| agegroups_studycourses_departments_users | 
-| assets                                   | 
-| departments                              | 
-| projects                                 | 
-| projects_roles_users                     | 
-| projects_tags                            | 
-| roles                                    | 
-| studycourses                             | 
-| tags                                     | 
-| urls                                     | 
-| users                                    | 
-+------------------------------------------+
-12 rows in set (0.00 sec)
-</code></pre>
-
-<h3 id="eine-tabelle-beschreiben">Eine Tabelle beschreiben</h3>
-
-<p><code>explain</code><a href="http://dev.mysql.com/doc/refman/5.6/en/explain.html">*</a> zeigt den Aufbau einer bestimmten Tabelle:</p>
-
-<pre><code>mysql&gt; explain users;
-+-----------------+--------------+------+-----+---------+----------------+
-| Field           | Type         | Null | Key | Default | Extra          |
-+-----------------+--------------+------+-----+---------+----------------+
-| id              | int(11)      | NO   | PRI | NULL    | auto_increment | 
-| firstname       | varchar(255) | YES  |     | NULL    |                | 
-| surname         | varchar(255) | YES  |     | NULL    |                | 
-| title           | varchar(255) | YES  |     | NULL    |                | 
-| email           | varchar(255) | YES  | UNI | NULL    |                | 
-| isfemale        | tinyint(1)   | YES  |     | NULL    |                | 
-| profile_visible | tinyint(1)   | YES  |     | NULL    |                | 
-| type            | varchar(255) | YES  | MUL | NULL    |                | 
-| is_admin        | int(11)      | YES  |     | 0       |                | 
-| description     | text         | YES  |     | NULL    |                | 
-| slug            | varchar(255) | YES  | UNI | NULL    |                | 
-| avatar          | varchar(255) | YES  |     | NULL    |                | 
-+-----------------+--------------+------+-----+---------+----------------+
-12 rows in set (0.00 sec)
-</code></pre>
-
-<h3 id="abfrage">Abfrage</h3>
-
-<p><code>select</code> und <code>join</code> funktionieren wie erwartet:</p>
-
-<pre><code>mysql&gt; select id,firstname from users limit 1,8;
-+----+-----------+
-| id | firstname |
-+----+-----------+
-|  2 | Lea       | 
-|  3 | Stefan    | 
-|  4 | Karin     | 
-|  5 | Katharina | 
-|  6 | Julia     | 
-|  7 | Gianni    | 
-|  8 | Josef     | 
-|  9 | Michael   | 
-+----+-----------+
-8 rows in set (0.01 sec)
-</code></pre>
-
-<h3 id="dokumentation">Dokumentation</h3>
-
-<p>Die Details zu SQL in MySQL (Abweichungen vom SQL Standard, Erweiterungen) kann man der <a href="http://dev.mysql.com/doc/refman/5.6/en/index.html">Dokumentation</a> entnehmen.</p>
-
-<p><img src="/images/mysql-doku.png" alt="Dokumentation von MySQL auf http://dev.mysql.com/" /></p>
-
-<h2 id="phpmyadmin">phpMyAdmin</h2>
-
-<p>PhpMyAdmin ist ein häufig verwendetes Tool zur Verwaltung von MySQL Datenbanken.
-Es ist in PHP geschreiben, kann also im Webspace installiert und über
-den Browser verwendet werden.  </p>
-
-<p><img src="/images/phpmyadmin.png" alt="phpMyAdmin" /></p>
-
-<h3 id="create-table-in-phpmyadmin">Create Table in phpMyAdmin</h3>
-
-<p>Über phpMyAdmin kann man viele SQL-Befehle durch Point+Klick formulieren,
-hier zum Beispiel ein <code>create table</code> Statement:</p>
-
-<p><img src="/images/phpmyadmin-create-table.png" alt="Abbildung 143: Tabelle anlegen mit phpMyAdmin - Name der Tabelle" /></p>
-
-<h3 id="select-in-phpmyadmin">SELECT in phpMyAdmin</h3>
-
-<p>Bei Manchen Operationen zeigt phpMyAdmin das verwendete SQL-Statement an — das kann ganz lehrreich sein.</p>
-
-<p><img src="/images/phpmyadmin-search.png" alt="Abbildung 143: Suchen mit  phpMyAdmin - Eingabemaske" />
-<img src="/images/phpmyadmin-search-sql.png" alt="Abbildung 143: Suchen mit  phpMyAdmin - SQL" /></p>
+<ul>
+  <li>http://www.php.net/manual/en/function.error-reporting.php</li>
+  <li>http://www.php.net/manual/en/errorfunc.configuration.php#ini.display-errors</li>
+  <li>http://www.php.net/manual/en/function.error-get-last.php</li>
+</ul>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/php-mysql/">← <span class="article">Webapplikationen mit MySQL</a></li>
+      <li><a href="/php/datei-upload/">← <span class="article">Datei Upload</a></li>
     
     
-      <li><a href="/php-mysql/start/">PHP und MySQL/MariaDB →</a></li>
+      <li><a href="/php-mysql/">Webapplikationen mit MySQL →</a></li>
     
   </ul>
 </div>
@@ -548,7 +420,7 @@ hier zum Beispiel ein <code>create table</code> Statement:</p>
               </ul>
             </li>
           
-            <li ><a href="/php/">PHP</a>
+            <li class="active"><a href="/php/">PHP</a>
               <ul class="sub">
                 
                   
@@ -580,7 +452,7 @@ hier zum Beispiel ein <code>create table</code> Statement:</p>
                       
                     
                       
-                      <li ><a href="/php/error/">Errors + Debugging</a></li>
+                      <li class="active"><a href="/php/error/">Errors + Debugging</a></li>
                       
                     
                   
@@ -588,7 +460,7 @@ hier zum Beispiel ein <code>create table</code> Statement:</p>
               </ul>
             </li>
           
-            <li class="active"><a href="/php-mysql/">PHP MYSQL</a>
+            <li ><a href="/php-mysql/">PHP MYSQL</a>
               <ul class="sub">
                 
                   
@@ -596,7 +468,7 @@ hier zum Beispiel ein <code>create table</code> Statement:</p>
                       
                     
                       
-                      <li class="active"><a href="/php-mysql/db/">Datenbank</a></li>
+                      <li ><a href="/php-mysql/db/">Datenbank</a></li>
                       
                     
                       
@@ -846,7 +718,7 @@ hier zum Beispiel ein <code>create table</code> Statement:</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql/db.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php/error.md">Kommentar zu dieser seite</a></p>
 
 </p>
     </div>
