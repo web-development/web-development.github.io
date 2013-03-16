@@ -66,36 +66,89 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 <p>So funktioniert der Verbindung-Aufbau (und -Abbau) zur mysql-Datenbank:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Verbindungs-Aufbau und Abbau</small></h4>
+<h4 class="caption">Php Code <small>new PDO für den Verbindungs-Aufbau</small></h4>
 <pre class="lang-php prettyprint linenums">
-    &lt;?
-     include &quot;config.php&quot;;
-     $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
-     $dbh-&gt;exec('SET CHARACTER SET utf8');
-    ?&gt; 
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 </pre></div>
 
-<p>Das „Database-Handle“ <code>$dbh</code> wird nun im Weiteren für Abfragen verwendet. </p>
+<p>Der Rückgabewert ist ein sogenanntes “Datenbank-Handle”.
+Das zweite und dritte Argument sind einfach Strings mit
+dem Usernamen und Passwort für die Datenbank.</p>
+
+<p>Das erste Argument wird in der <a href="http://www.php.net/manual/en/pdo.construct.php">Dokumentation</a> 
+als “Data Source Name” bezeichnet und enthält mehrere Informationen, die in
+einen String gepackt werden.</p>
+
+<p>Ein Beispiel für einen MySQL DSN ist <code>"mysql:dbname=portfolio_playground;host=localhost"</code>.
+Ein DSN beginnt immer mit dem Namen der Datebank, hier also <code>mysql</code>.  Welche
+weiteren Teile der DSN anthält kann man in der <a href="http://www.php.net/manual/en/ref.pdo-mysql.connection.php">Dokumentation des jeweiligen PDO Datenbank Treibers</a> nachlesen.</p>
+
+<p>Für den MySQL Treiber sind das der Name der Datenbank <code>dbname</code> und der <code>host</code>,
+eventuell der <code>port</code>.  Alternativ kann man die Verbindung statt über Host und
+Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
+<code>unix_socket</code> an.</p>
 
 </div>
 <div class='slide'>
 
-<h3 id="datenbank-zugangsdaten-und-gitignore">Datenbank-Zugangsdaten und .gitignore</h3>
 
-<p>Achtung: zum Erzeugen des Database Handles brauchen wir noch eine zweite Datei mit den eigentlichen Zugangsdaten. Diese Datei heisst im unserem Beispiel <code>config.php</code>:</p>
+
+<p>Hier eine konkrete Implementierung des Verbindungs-Aufbaus:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Verbindungs-Aufbau</small></h4>
+<pre class="lang-php prettyprint linenums">
+include &quot;config.php&quot;;
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+</pre></div>
+
+<p>Hier werden die Argumente für <code>new PDO</code> in der Datei <code>config.php</code> gesetzt,
+die zuvor inkludiert wird.  Warum?</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="datenbank-zugangsdaten">Datenbank-Zugangsdaten</h3>
+
+<p>So sieht die Datei <code>config.php</code> aus:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Zugangsdaten für die Datenbank</small></h4>
 <pre class="lang-php prettyprint linenums">
-    &lt;?php
-    $DB_NAME = &quot;portfolio_playground&quot;; 
-    $DB_USER = &quot;mmtuser&quot;; 
-    $DB_PASS = &quot;geheim!&quot;;
-    $DSN     = &quot;mysql:dbname=$DB_NAME;host=localhost&quot;;
-    ?&gt;
+$DB_NAME = &quot;portfolio_playground&quot;; 
+$DB_USER = &quot;mmtuser&quot;; 
+$DB_PASS = &quot;geheim!&quot;;
+$DSN     = &quot;mysql:dbname=$DB_NAME;host=localhost&quot;;
 </pre></div>
 
-<p>Warum zwei Dateien?  Weil dieses zweite Datei niemals, niemals, niemals in git commited werden darf!  Um das zu verhindern, wird die Datei in <code>.gitignore</code> eingetragen. Was das bewirkt zeigt der Vorher / Nachher-Vergleich am besten:</p>
+<p>Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
+niemals, niemals, niemals in git speichern wollen!  Das hat zwei
+Gründe: </p>
+
+<p>1) Einerseits wollen wir den Code im Repository vielleicht
+veröffentlichen und die Zugangsdaten weiter geheimhalten.  </p>
+
+<p>2) Andererseits wird unsere Web-Applikation wahrscheinlich auf mehreren Web-Servern
+installiert (mindestens auf einem Entwicklungs-Rechner und einem Produktions-Server).
+Auf den verschiedenen Maschinen werden wir verschiedene Datenbanken benutzen 
+und brauchen dafür verschiedene Zugangsdaten. </p>
+
+</div>
+<div class='slide'>
+
+<h3 id="gitignore">.gitignore</h3>
+
+<p>Um zu verhindern, dass die Datei <code>config.php</code> in git committed werden kann,
+wird der Dateiname in die Datei <code>.gitignore</code> eingetragen. 
+<code>.gitignore</code> ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Was der Eintrag in  <code>.gitignore</code> bewirkt
+zeigt der Vorher / Nachher-Vergleich am besten:</p>
 
 <pre><code>D:\Webprojekte\wp2&gt;git status
 
@@ -109,14 +162,28 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 nothing added to commit but untracked files present (use "git add" to track)
 </code></pre>
 
-<p>Hier erkennt git die datei <code>config.php</code> als neue, interessante Datei. Nun tragen wir den Dateinamen <code>config.php</code> in die Datei <code>.gitignore</code> im Haupt-Ordner der Working Copy ein:</p>
+<p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen. </p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Nun tragen wir den Dateinamen <code>config.php</code> in die Datei <code>.gitignore</code> im Haupt-Ordner der Working Copy ein.
+Ein Check ob es funktioniert hat:</p>
 
 <pre><code>D:\Webprojekte\wp2&gt;cat .gitignore
 *.bak
 config.php
 </code></pre>
 
-<p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen <code>config.php</code> (egal in welchem Ordner) zu ignorieren. </p>
+<p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen 
+<code>config.php</code> (egal in welchem Ordner) zu ignorieren. </p>
+
+</div>
+<div class='slide'>
+
+
 
 <pre><code>D:\Webprojekte\wp2&gt;git status
 
@@ -132,7 +199,37 @@ config.php
 no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 
-<p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an. Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde. Die sollte man ganz normal commiten.</p>
+<p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an. 
+Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde. 
+Die sollte man ganz normal committen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="empfohlene-optionen-fr-den-verbindungsaufbau">Empfohlene Optionen für den Verbindungsaufbau</h3>
+
+<p>In folgenden Code werden noch zwei Optionen nach dem Verbindungsaufbau gesetzt:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Optionen für den Verbindungs-Aufbau</small></h4>
+<pre class="lang-php prettyprint linenums">
+include &quot;config.php&quot;;
+$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+$dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+$dbh-&gt;exec('SET CHARACTER SET utf8') ;
+</pre></div>
+
+<p>Mit der Methode <code>setAttribute</code> wird hier festgelegt,
+dass die gelesenen Datensätze aus der Datenbank in PHP als
+Objekt dargestellt werden. (Die Alternative wäre ein assoziatives Array.)</p>
+
+<p>Mit dem Befehl <code>SET CHARACTER SET utf8</code> wird UTF-8 als
+Zeichensatz für die gelesenen Text-Daten festgelegt.  Das
+macht natürlich nur Sinn, wenn die Daten in der Datenbank
+wirklich als UTF-8 gespeichert sind!</p>
+
+<p>Für die Applikation die in den nächsten 2 Kapitel beschreiben wird
+werden diese Optionen vorausgesetzt.</p>
 
 </div>
 <div class='slide'>
@@ -140,99 +237,39 @@ no changes added to commit (use "git add" and/or "git commit -a")
 <h3 id="anweisung-an-die-datenbank">Anweisung an die Datenbank</h3>
 
 <p>Manche SQL-Queries liefern keine Daten retour.
-Solche Queries kann man mit der Methode <code>exec</code> absetzen:</p>
+Solche Queries kann man mit der Methode <code>exec</code><a href="http://www.php.net/manual/en/pdo.exec.php">*</a> absetzen:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Anweisungen an die Datenbank mit exec</small></h4>
 <pre class="lang-php prettyprint linenums">
-$dbh = new PDO(…);
-dbh-&gt;exec(&quot;DELETE FROM users&quot;);
+$anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
 </pre></div>
 
-<p>Hier werden alle Datensätze aus der Tabelle <code>users</code> gelöscht,
-es gibt keine Rückmeldung an PHP.</p>
+<p>Hier werden alle Datensätze aus der Tabelle <code>users</code> gelöscht.
+Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
 
 </div>
 <div class='slide'>
 
-<h3 id="abfrage-mit-select">Abfrage mit Select</h3>
+<h3 id="abfrage-der-datenbank">Abfrage der Datenbank</h3>
 
-<p>Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). Man braucht also eine Schleife um alle Datensätze abzuarbeiten. Innerhalb der Schleife erhält man den einzelnen Datensatz als Array. </p>
+<p>Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). </p>
+
+<p>Mit der Methode <code>query</code><a href="http://www.php.net/manual/en/pdo.query.php">*</a>  schickt man die Anfrage an die Datenbank,
+erhält aber noch nicht die Daten retour, sondern nur ein neues “Handle”:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage der Datenbank mit SELECT</small></h4>
+<h4 class="caption">Php Code <small>Query an die Datenbank senden</small></h4>
 <pre class="lang-php prettyprint linenums">
-    $query =$dbh-&gt;query(
-         &quot;SELECT * FROM person WHERE ifshow=1 ORDER BY RAND() LIMIT 1,10&quot;
-    );
-    $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-    foreach($personen as $person) {
-
-          echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
-    }
+$sth =$dbh-&gt;query( $sql );
 </pre></div>
 
-<p>Die SQL-Anfrage wird hier als String an die query-methode des Datenbankhandler übergeben.  Der Rückgabewert von query ist ein Query-Handle <code>$query</code> (ähnlich dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der Datenbank zu PHP übertragen. Das passiert erst in der nächsten Zeile mit der Methode <code>fetchAll</code>. Der Rückgabewert von fetchAll ist in diesem Fall ein Array mit Objekten. Dieses Array wird anschließend mit einer foreach-Schleife abgearbeitet. </p>
+<p>Das Argument ist ein String mit dem SQL, der Rückgabewert
+ist ein “Statement-Handle”. Dieses Objekt bietet verschiedene
+Methoden an, mit denen man dann wirklich die Daten aus der DB holen kann.</p>
 
-</div>
-<div class='slide'>
-
-<h2 id="effizient-arbeiten-mit-der-datenbank">Effizient Arbeiten mit der Datenbank</h2>
-
-<p>Ein ganz wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern und Berechnen der Daten möglichst in der Datenbank erledigen und möglichst wenige Daten zu PHP übermitteln. Folgender Ansatz wäre also ganz schlecht, besonders wenn viele Daten in der Datenbank sind:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Ineffiziente Abfrage der Datenbank</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query =$dbh-&gt;query(&quot;SELECT * FROM person&quot;);
-$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-foreach($personen as $person ) {
-  if($person-&gt;ifshow) {
-    echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
-  }
-}
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Besser wäre, den Filter bereits im SELECT einzubauen:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Effiziente Abfrage der Datenbank</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query =$dbh-&gt;query(&quot;SELECT * FROM person WHERE ifshow&quot;);
-$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-foreach($personen as $person ) {
-  echo &quot;$person-&gt;vorname $person-&gt;mail&lt;/br&gt;\n&quot;;
-}
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Die gleichen Überlegungen gelten auch, wenn Datensätze “Seitenweise” angezeigt
-werden sollen: hier verwendet man bereits in der Datenbank <code>LIMIT</code> um nur
-die beötigten Datensätze zu laden.</p>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Die Verwendung der richtigen Datentypen in der Datenbank erleichtert die Abfragen:  zum Beipiel zum Speichern eines Datums DATE oder TIMESTAMP verwenden. Das ermöglicht das Sortieren nach Datum und  Berechnungen wie „falls datum nicht älter als 100 Tage alt ist“</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-  select titel,pub_datum from werk 
-  where datediff( curdate( ) , pub_datum ) &lt;= 100; 
-</pre></div>
-
-<p>Zeigt Titel und Publikations-Datum aller Werke die in den letzten 100 Tagen publiziert wurden.</p>
+<p>Doch bevor wir hier ins Detail gehen werden wir uns
+im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql/start/">zurück zum Buch-Kapitel</a></p>

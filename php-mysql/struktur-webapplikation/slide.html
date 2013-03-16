@@ -39,9 +39,16 @@
           <div class="slide"><h1>Struktur einer Web-Applikation</h1>
           <p><a href="/php-mysql/struktur-webapplikation/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Am Beispiel einer  Mini-Applikation lernen Sie nun den typischen Aufbau einer solchen Applikation kennen. Die fertige Applikation soll Werke und Personen aus einem Gemeinschafts-Portfolio anzeigen:</p>
+	  <div class='slide'><p>An einem Beispiel lernen wir nun den typischen Aufbau einer einfachen Web-Applikation
+kennen. Die fertige Applikation soll Werke und Personen aus einem
+Gemeinschafts-Portfolio anzeigen:</p>
 
 <p><img src="/images/dbapp-home.png" alt="Abbildung 144: Homepage der Mini-Applikation" /></p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick. Zu jeder Seite wird der Titel angeführt (wird auf der Seite angezeigt), der Dateiname der PHP-Datei (wichtig für die Verlinkung), eventuell notwendige Parameter und eine Beschreibung was die Seite anzeigt.</p>
 
@@ -59,16 +66,28 @@
       <td>Home</td>
       <td><code>index.php</code></td>
       <td> </td>
-      <td>Zeigt Gesamtzahl der Personen und Werke an.</td>
+      <td>Zeigt Gesamtzahl der Personen und Werke an, sowie Bilder von 10 zufälligen Werken</td>
     </tr>
     <tr>
       <td>Personen</td>
       <td><code>personen.php</code></td>
       <td> </td>
-      <td>Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php</td>
+      <td>Zeigt alle sichtbaren Profile an, mit Links zu  person.php</td>
     </tr>
     <tr>
-      <td>Details zu einer Person</td>
+      <td>Personensuche</td>
+      <td><code>psuche.php</code></td>
+      <td> </td>
+      <td>Zeigt Ein Such-Formular für Personen an</td>
+    </tr>
+    <tr>
+      <td>Personensuche</td>
+      <td><code>psuche.php</code></td>
+      <td>suchwort</td>
+      <td>Zeigt alle sichtbaren Profile an, wo Vor- oder Nachname like suchwort</td>
+    </tr>
+    <tr>
+      <td>Profil einer Person</td>
       <td><code>person.php</code></td>
       <td>id (Schlüssel der Person)</td>
       <td>Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username</td>
@@ -77,7 +96,7 @@
       <td>Werke</td>
       <td><code>werke.php</code></td>
       <td> </td>
-      <td>Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php</td>
+      <td>Zeigt alle sichtbaren Werke an, mit Links zu werk.php</td>
     </tr>
     <tr>
       <td>Details zu einem Werk</td>
@@ -85,10 +104,29 @@
       <td>id (Schlüssel des Werks)</td>
       <td>Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen</td>
     </tr>
+    <tr>
+      <td>Werksuche</td>
+      <td><code>wsuche.php</code></td>
+      <td> </td>
+      <td>Zeigt Ein Such-Formular für Werke an</td>
+    </tr>
+    <tr>
+      <td>Werksuche</td>
+      <td><code>wsuche.php</code></td>
+      <td>suchwort</td>
+      <td>Zeigt alle sichtbaren Werke an, wo Titel like suchwort</td>
+    </tr>
   </tbody>
 </table>
 
-<p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die Dateien functions.php (mit der Datenbank-Verbindung) header.php und footer.php inkluidert.</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die
+Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <code>header.php</code> und 
+<code>footer.php</code> inkluidert.</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
@@ -112,18 +150,17 @@
 <p>In der Datei personen.php wird zu jeder Person ein passender Link zu person.php angezeigt:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
+<h4 class="caption">Html Code <small>Links von Personen zur einzelnen Person</small></h4>
+<pre class="lang-html prettyprint linenums">
 &lt;li&gt;
-  &lt;b&gt;&lt;?= $person-&gt;firstname ?&gt; &lt;?= $person-&gt;surname?&gt;&lt;/b&gt;
-  &lt;a href=&quot;person.php?id=&lt;?= $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
+  &lt;b&gt;Michael A&lt;/b&gt;
+  &lt;a href=&quot;person.php?id=577&quot;&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;b&gt;Benjamin A&lt;/b&gt;
+  &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
 </pre></div>
-
-<p>Achtung: diese Verlinkung schützt nicht davor, dass jemand einfach eine URL mit ganz andere id „von Hand“ eingibt!</p>
-
-<p><code>http://meinedomain.at/person.php?id=666</code></p>
-
-<p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder behandelt werden muss.</p>
 
 </div>
 <div class='slide'>
@@ -134,7 +171,7 @@
 <div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
-  Suche nach einer Person mit dem Vornamen &lt;input name=&quot;suchwort&quot;&gt; 
+  Suche nach einer Person mit Namen &lt;input name=&quot;suchwort&quot;&gt; 
   &lt;input type=&quot;submit&quot;&gt;
 &lt;/form&gt;
 </pre></div>
