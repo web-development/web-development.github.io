@@ -51,7 +51,7 @@ Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 <p>Mit der Einführung von Cookies, und damit von state, können
 wir nun erkennen, dass mehrere Requests zusammen gehören,
-von derselben Person ausgelöst wurden. </p>
+vom selben Browser ausgelöst wurden. </p>
 
 <p><img src="/images/stateful-http-with-cookies.svg" alt="HTTP mit cookies wird &quot;stateful&quot;" /></p>
 
@@ -63,8 +63,7 @@ von derselben Person ausgelöst wurden. </p>
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
 
-<p>Mit dem Befehle  <code>session_start()</code> <a href="http://www.php.net/manual/de/function.session-start.php">PHP
-Doku</a>  wird </p>
+<p>Mit dem Befehle  <code>session_start()</code><a href="http://www.php.net/manual/de/function.session-start.php">*</a>  wird </p>
 
 <ul>
   <li>…beim ersten Aufruf 
@@ -129,14 +128,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
       <td>POST</td>
       <td><code>logout.php</code></td>
       <td> </td>
-      <td>Löschte Session und Session-Cookie, dann</td>
-    </tr>
-    <tr>
-      <td>Redirect zu index.php</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>Löschte Session und Session-Cookie, dann Redirect zu index.php</td>
     </tr>
     <tr>
       <td>Personen</td>

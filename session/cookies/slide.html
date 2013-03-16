@@ -39,35 +39,53 @@
           <div class="slide"><h1>Cookies</h1>
           <p><a href="/session/cookies/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage abrufen oder ob eine Person die Seite 10mal lädt.</p>
+	  <div class='slide'><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen
+Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage
+abrufen oder ob eine Person die Seite 10 mal lädt.</p>
 
-<p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
+<p><img src="/images/stateless-http.svg" alt="HTTP als &quot;stateless protocol&quot;" /></p>
 
-<p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
+<p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das
+Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
+
+<p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“
+schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
+„wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
 
 </div>
 <div class='slide'>
 
 <h2 id="cookies">Cookies</h2>
-<p>Um das zu ermöglichen wurde das HTTP-Protokoll um die sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten, die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver wieder mitsendet. Der Browser sendet nie ein Cookie an einen anderen Webserver als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
-<p><img src="/images/image363.png" alt="Abbildung 145: Cookie wird gesetzt und bei jedem weiteren Request gesendet" /></p>
+<p>Um das zu ermöglichen wurde das HTTP-Protokoll um die
+sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten,
+die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver
+wieder mitsendet. </p>
+
+<p><img src="/images/image363.png" alt="Cookie wird gesetzt und bei jedem weiteren Request gesendet" /></p>
+
+<p>Der Browser sendet nie ein Cookie an einen anderen Webserver
+als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von
+verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
 </div>
 <div class='slide'>
 
 
 
-<p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
+<p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User
+wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server
+gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der
+gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-Set-Cookie: style=gelb
-Set-Cookie: style=gelb; path=/admin/
+Set-Cookie: style=gelb Set-Cookie: style=gelb; path=/admin/
 Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
 </pre></div>
 
-<p>Die einzige Art ein Cookie zu löschen ist ein Cookie mit gleichem Namen und Ablaufdatum in der Vergangenheit zu setzen:</p>
+<p>Die einzige Art ein Cookie zu löschen ist ein Cookie mit gleichem Namen und
+Ablaufdatum in der Vergangenheit zu setzen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -79,42 +97,51 @@ Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
 
 <h3 id="cookies-in-php">Cookies in PHP</h3>
 
-<p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet wurden im Array $_COOKIES (und — zusammen mit GET und POST-Parametern — in $_REQUEST). Neue Cookies können Sie mit setcookie() setzen. </p>
+<p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet
+wurden im Array <code>$_COOKIES</code><a href="http://php.net/manual/en/reserved.variables.cookies.php">*</a> 
+(und — zusammen mit GET und POST-Parametern — in $_REQUEST). </p>
+
+<p>Neue Cookies können Sie mit <code>setcookie()</code><a href="http://www.php.net/manual/en/function.setcookie.php">*</a> setzen. </p>
 
 </div>
 <div class='slide'>
 
 <h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
-<p>Im Client können Cookies mit Javascript gelesen und geschrieben werden. Dies funktioniert über eine Zuweisung an die Eigenschaft document.cookie.</p>
+<p>Im Client können Cookies mit Javascript gelesen und geschrieben werden. Dies
+funktioniert über eine Zuweisung an die Eigenschaft document.cookie.</p>
 
-<p>Achtung: beim lesenden Zugriff auf diese Eigenschaft enthält man einen String mit allen Cookies die gerade gültig sind. </p>
+<p>Achtung: beim lesenden Zugriff auf diese Eigenschaft enthält man einen String
+mit allen Cookies die gerade gültig sind. </p>
 
-<p>Zum Setzen von neuen Cookies wird auf die Eigenschaft zugewiesen. Zum Setzen mehrere Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluß auf den Wert den man aus document.cookie auslesen kann:</p>
+<p>Zum Setzen von neuen Cookies wird auf die Eigenschaft zugewiesen. Zum Setzen
+mehrere Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluß
+auf den Wert den man aus document.cookie auslesen kann:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 alert(document.cookie);  // Zeigt die gültigen Cookies
 
-document.cookie = &quot;farbe:grün&quot;;
-document.cookie = &quot;anzahl: 3&quot;;
+document.cookie = &quot;farbe:grün&quot;; document.cookie = &quot;anzahl: 3&quot;; 
 document.cookie = &quot;passwort: total super geheimes aber recht langes passwort&quot;;
 alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
 </pre></div>
 
-<p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die neuen Cookies in Javascript über document.cookie lesbar!</p>
+<p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten
+Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die
+neuen Cookies in Javascript über document.cookie lesbar!</p>
 
 </div>
 <div class='slide'>
 
 <h3 id="libraries-fr-cookies-in-javascript">Libraries für Cookies in Javascript</h3>
 
-<p>Um das Lesen, Setzen und Löschen von Cookies in Javascript
-zu vereinfachen git es zwei gute Libraries:</p>
+<p>Um das Lesen, Setzen und Löschen von Cookies in Javascript zu vereinfachen git
+es zwei gute Libraries:</p>
 
 <ul>
-  <li>die Funktionen von <a href="http://www.quirksmode.org/js/cookies.html">Quirksmode</a></li>
-  <li>ein jQuery Plugin <a href="https://github.com/carhartl/jquery-cookie">jquery-cookies</a></li>
+  <li>die Funktionen von <a href="http://www.quirksmode.org/js/cookies.html">Quirksmode</a> ein</li>
+  <li>jQuery Plugin <a href="https://github.com/carhartl/jquery-cookie">jquery-cookies</a></li>
 </ul>
 </div>
           <div class="slide"><h1>Ende</h1>
