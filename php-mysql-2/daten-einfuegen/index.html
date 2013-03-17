@@ -54,33 +54,46 @@
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
 <pre class="lang-php prettyprint linenums">
 $t = $_POST['title'];
-$dbh-&gt;query( &quot;INSERT INTO projects (title) VALUES ('$t')&quot; );
+$dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES ('$t')&quot;);
 </pre></div>
 
-<p>Das funktioniert für viele Eingaben, aber was passiert wenn ein Werk den Titel „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
+<p>Aber was passiert wenn ein Werk den Titel
+„That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
 INSERT INTO projects (titel) VALUES ('That's it')
 </pre></div>
 
-<p>Das kann nicht funktionieren, das einfache Anführungszeichen beendet den String und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
+<p>Das kann nicht funktionieren: das einfache Anführungszeichen beendet den String
+und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 
 <div class="example">
 <pre class="lang-plain prettyprint linenums">
 #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's it')' at line 1
 </pre></div>
 
+<h3 id="die-falsche-lsung">die falsche Lösung</h3>
+
 <p>Für dieses Problem gibt es in PHP eine <strong>einfache</strong> und <strong>falsche</strong> Lösung:</p>
 
-<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.  Aus „That’s it“ wird also automatisch „That\’s it“ , das SQL-Statement funktioniert wieder:</p>
+<p>Normalerweise verändert PHP automatisch alle Daten die über GET, POST  und
+Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.
+Aus „That’s it“ wird also automatisch „That\’s it“ , das SQL-Statement
+funktioniert wieder:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
 INSERT INTO werk (titel) VALUES ('That\'s it')
 </pre></div>
 
-<p>Diese Automatik ist unter dem Namen <code>magic_quotes</code> bekannt und kann in der Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer ausschalten!</p>
+<p>Diese Automatik funktioniert aber leider nur für MySQL.
+Andere Datenbanken haben anderen Quoting-Konventionen, in
+anderen Kontexten muss man ganz anders Escapen.</p>
+
+<p>Diese Automatik ist unter dem Namen <code>magic_quotes</code> bekannt und kann in der
+Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer
+ausschalten!</p>
 
 <p><code caption="In der Apache Konfiguration: magic quotes abschalten">
 php_flag magic_quotes_gpc off
@@ -91,13 +104,21 @@ php_flag magic_quotes_gpc off
 <div class="example">
 <h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
 <pre class="lang-php prettyprint linenums">
-echo( (get_magic_quotes_gpc() ? &quot;mit magic quotes&quot; : &quot;ohne magic quotes&quot;) );
+if (get_magic_quotes_gpc() ) {
+  echo &quot;mit magic quotes&quot;;
+} else {
+  echo &quot;ohne magic quotes&quot;);
+}
 echo(&quot;&lt;pre&gt;&quot;);
 print_r($_POST);
 echo(&quot;&lt;/pre&gt;&quot;);
 </pre></div>
 
-<p>In Wirklichkeit kann man Sie nicht ganz abschalten, wie man in der PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>. Das Problem betrifft allerdings nur Array-Parameter.</p>
+<p>In Wirklichkeit kann man die magic Quotes nicht ganz abschalten, wie man in der
+PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>.
+Das Problem betrifft allerdings nur Array-Parameter.</p>
+
+<h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
 <p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
 
@@ -106,36 +127,49 @@ echo(&quot;&lt;/pre&gt;&quot;);
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
-    (id,  firstname,surname,email,profile_visible,created_at,updated_at,slug)
+    (id,  firstname,surname,email,profile_visible)
       VALUES
-    (NULL,        ?,      ?,    ?,              ?,     NOW(),     NOW(),   ?)&quot;);
+    (NULL,        ?,      ?,    ?,              ?)&quot;);
 
 $sth-&gt;execute(
-        array(
-          $_POST['firstname'],
-          $_POST['surname'],
-          $_POST['email'],
-          $_POST['profile_visible'],
-          str_replace(&quot; &quot;, &quot;-&quot;, $_POST['firstname'] . &quot; &quot; .  $_POST['surname'])
-        )
+  array(
+    $_POST['firstname'],
+    $_POST['surname'],
+    $_POST['email'],
+    $_POST['profile_visible']
+  )
 ); 
 
 // noch ohne Fehlerbehandlung
 </pre></div>
 
-<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man hier einfach nichts eingibt gibt das einen Fehler.</p>
+<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die
+Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man
+hier einfach nichts eingibt gibt das einen Fehler.</p>
 
-<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige, deutsche Fehlermeldungen ausgeben.</p>
+<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem
+Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
+deutsche Fehlermeldungen ausgeben.</p>
 
-<p><img src="/images/image367.png" alt="Abbildung 149: Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" /></p>
+<p><img src="/images/image367.png" alt="Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" /></p>
 
-<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des Schlüssels im neuen Datensatz auslesen und weiter verwenden:</p>
+<p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein
+autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
+Schlüssels im neuen Datensatz mit 
+<code>lastInsertId</code><a href="http://php.net/manual/en/pdo.lastinsertid.php">*</a> 
+auslesen und weiter verwenden:</p>
 
-<pre><code>  $pid = $dbh-&gt;lastInsertId(); 
-  header("Location: person.php?pid=$pid");
-</code></pre>
+<div class="example">
+<h4 class="caption">Php Code <small>Primärschlüssel des neuen Datensatzes auslesen</small></h4>
+<pre class="lang-php prettyprint linenums">
+$id = $dbh-&gt;lastInsertId(); 
+header(&quot;Location: person.php?id=$id&quot;);
+</pre></div>
 
-<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem
+Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
+weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu
+angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
 
 		
 			<div class="pagination">

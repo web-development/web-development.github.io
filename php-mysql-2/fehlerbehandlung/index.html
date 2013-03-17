@@ -60,10 +60,7 @@ und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?</p>
 geworfen (<code>throw</code>) und abgefangen (<code>catch</code>) werden. Um das Fangen potentieller Exceptions zu 
 ermöglichen, wird der jeweilige Code mit einem <code>try</code>-Block umschlossen. </p>
 
-<p>Jeder <code>try</code>-Block muss mindestens einen zugehörigen <code>catch</code> Block besitzen. 
-Mehrere <code>catch</code>-Blöcke können verwendet werden, um verschiedene Klassen von Exceptions abzufangen. 
-Die normale Programmausführung (wenn keine Exception innerhalb des <code>try</code>-Blockes geworfen wird 
-oder keine zur Klasse der geworfenen Exception passendes <code>catch</code> vorhanden ist) 
+<p>Die normale Programmausführung (wenn keine Exception innerhalb des <code>try</code>-Blockes geworfen wird) 
 wird nach dem letzten <code>catch</code>-Block fortgesetzt. 
 Exceptions können innerhalb eines <code>catch</code>-Blockes geworfen (oder weitergeworfen) werden.</p>
 
@@ -72,27 +69,27 @@ und PHP versucht, den ersten passenden <code>catch</code>-Block zu finden. Falls
 nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception …“-Nachricht ausgegeben</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP: Division durch Null</small></h4>
+<h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
-  &lt;?php
-  function inverse($x) {
-      if ($x == 0) {
-         throw new Exception('Division durch Null.');
-      }
-      return 1 / $x;
-  }
+&lt;?php
+function compute($x) {
+    if ($x == 0) {
+       throw new Exception('Illegal Input: 0.');
+    }
+    return 1 / $x;
+}
 
-  try {
-      echo inverse(5) . &quot;\n&quot;;
-      echo inverse(0) . &quot;\n&quot;;
-  } catch (Exception $e) {
-      echo 'Exception abgefangen: ',  $e-&gt;getMessage(), &quot;\n&quot;;
-  }
+try {
+    echo compute(5) . &quot;\n&quot;;
+    echo compute(0) . &quot;\n&quot;;
+} catch (Exception $e) {
+    echo 'Exception abgefangen: ',  $e-&gt;getMessage(), &quot;\n&quot;;
+}
 
-  // output:
-  // 0.2
-  // Exception abgefangen: Division durch Null
-  ?&gt;
+// output:
+// 0.2
+// Exception abgefangen: Illegal Input: 0
+?&gt;
 </pre></div>
 
 <h2 id="verwendung-von-exceptions-fr-die-datenbank">Verwendung von Exceptions für die Datenbank</h2>
@@ -104,37 +101,40 @@ oder bei einzelnen Abfragen.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
-   $get_pid   = $_GET['pid'];
-   try{
-      include &quot;config.php&quot;;
+$get_id = $_GET['id'];
+try{
+  include &quot;config.php&quot;;
 
-      if( ! $DB_NAME ) throw (new Exception( &quot;Datenbank-Verbindung ist nicht konfiguriert. Bitte die Datei config.php anlegen!&quot; ));
+  if( ! $DB_NAME ) 
+    throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
 
-      $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
-      $dbh-&gt;exec('SET CHARACTER SET utf8') ;
+  $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
+  $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+  $dbh-&gt;exec('SET CHARACTER SET utf8') ;
 
-      $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM `users` WHERE id=?&quot; );
-      $sth-&gt;setFetchMode(PDO::FETCH_OBJ);
-      $sth-&gt;execute(array($get_pid));
-      $p = $sth-&gt;fetch();
+  $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
+  $sth-&gt;execute(array($get_id));
+  $p = $sth-&gt;fetch();
 
-      // wirklich nicht in der Datenbank
-      if( $p === false )          throw (new Exception( &quot;Konnte Person Nr. $get_pid in der Datenbank nicht finden.&quot; ));
+  // wirklich nicht in der Datenbank
+  if( $p === false )          
+    throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
 
-      // Profil verborgen
-      if( !$p-&gt;profile_visible  ) throw (new Exception( &quot;Konnte Person Nr. $get_pid in der Datenbank nicht finden.&quot; ));
+  // Profil verborgen
+  if( !$p-&gt;profile_visible  ) 
+    throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
 
-      $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
-      $sth-&gt;execute(array($get_pid));
-      $projects = $sth-&gt;fetchAll(PDO::FETCH_OBJ);
+  $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
+  $sth-&gt;execute(array($get_id));
+  $projects = $sth-&gt;fetchAll();
 
-    } catch( Exception $e ) {
-      include &quot;header.php&quot;;
-      echo &quot;&lt;h1&gt;Error&lt;/h1&gt;&quot; ;
-      echo &quot;&lt;p&gt;&quot; . $e-&gt;getMessage() . &quot;&lt;/p&gt;&quot;;
-      include &quot;footer.php&quot;;
-      exit;
-    }
+} catch( Exception $e ) {
+  include &quot;header.php&quot;;
+  echo &quot;&lt;h1&gt;Error&lt;/h1&gt;&quot; ;
+  echo &quot;&lt;p&gt;&quot; . $e-&gt;getMessage() . &quot;&lt;/p&gt;&quot;;
+  include &quot;footer.php&quot;;
+  exit;
+}
 
 /* hier folgt die normale Ausgabe der Seite */
 </pre></div>
@@ -153,8 +153,10 @@ tun hat.</p>
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
-INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
 COMMIT;
 </pre></div>
 
@@ -162,18 +164,18 @@ COMMIT;
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
-INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW());
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
 ROLLBACK;
 -- nichts ist passiert!
 </pre></div>
 
-<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die 
-Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.</p>
-
-<p>Und einen besonderen Service: Wenn die Datenbank-Verbindung
-geschlossen wird obwohl noch eine Transaktion offen ist, dann löst PDO selbst
-das Rollback aus.</p>
+<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die
+Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.  Wenn die
+Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
+offen ist, dann löst PDO selbst das Rollback aus.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
@@ -196,8 +198,9 @@ bleibt gleich.</p>
 
 <h2 id="exceptions-in-javascript">Exceptions in Javascript</h2>
 
-<p>Die Verwendung und Schreibweise ist in Javascript so ähnelich, dass es sich
-gar nicht lohnt näher darauf einzugehen. Siehe <a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
+<p>Die Verwendung und Schreibweise ist in Javascript so ähnlich, dass es sich
+gar nicht lohnt näher darauf einzugehen. Siehe 
+<a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
 
 		
 			<div class="pagination">

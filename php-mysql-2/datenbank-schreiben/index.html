@@ -48,8 +48,8 @@
                           </div>
 			
 			
-			<p>In diesem Kapitel werden wir die Web-Applikation weiter entwickeln,
-so dass Sie Daten nicht nur anzeigen, sondern auch löschen und editieren kann.</p>
+			<p>In diesem Kapitel werden wir die Web-Applikation weiter entwickeln:
+Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
 
 <p>Hier der Plan für die einzelnen Seiten dieser Applikation:</p>
 
@@ -64,8 +64,8 @@ so dass Sie Daten nicht nur anzeigen, sondern auch löschen und editieren kann.<
     <tr>
       <td>Person löschen</td>
       <td>person_delete.php</td>
-      <td>POST pid</td>
-      <td>Löscht die Person mit der angegeben pid.</td>
+      <td>POST id</td>
+      <td>Löscht die Person mit der angegeben id.</td>
     </tr>
     <tr>
       <td>Person einfügen</td>
@@ -76,20 +76,20 @@ so dass Sie Daten nicht nur anzeigen, sondern auch löschen und editieren kann.<
     <tr>
       <td>Person einfügen</td>
       <td>person_new.php</td>
-      <td>POST uid,vorname,nachname, profil,mail,web, blog,feed,title, isfemale,ifshow</td>
+      <td>POST firstname,surname,title,email,isfemale,profile_visible,description</td>
       <td>Legt eine neue Person an.</td>
     </tr>
     <tr>
       <td>Person bearbeiten</td>
       <td>person_edit.php</td>
-      <td>GET pid</td>
+      <td>GET id</td>
       <td>Zeigt Bearbeitungs-Formuar an</td>
     </tr>
     <tr>
       <td>Person bearbeiten</td>
       <td>person_edit.php</td>
-      <td>POST pid, vorname, nachname, profil</td>
-      <td>Speichert neue Daten zur Person pid</td>
+      <td>POST id,firstname,surname,title,email,isfemale,profile_visible,description</td>
+      <td>Speichert neue Daten zur Person id</td>
     </tr>
   </tbody>
 </table>

