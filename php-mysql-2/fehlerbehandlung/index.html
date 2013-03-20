@@ -105,8 +105,9 @@ $get_id = $_GET['id'];
 try{
   include &quot;config.php&quot;;
 
-  if( ! $DB_NAME ) 
+  if( ! $DB_NAME ) {
     throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
+  }
 
   $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
   $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -117,12 +118,14 @@ try{
   $p = $sth-&gt;fetch();
 
   // wirklich nicht in der Datenbank
-  if( $p === false )          
+  if( $p === false ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
+  }
 
   // Profil verborgen
-  if( !$p-&gt;profile_visible  ) 
+  if( !$p-&gt;profile_visible  ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
+  }
 
   $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
   $sth-&gt;execute(array($get_id));
