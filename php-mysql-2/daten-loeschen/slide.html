@@ -46,7 +46,7 @@ das als Parameter die <code>id</code> der Person erhält, die gelöscht werden s
 <h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
 <pre class="lang-php prettyprint linenums">
 $id   = $_POST['id'];
-$dbh-&gt;exec(&quot;DELETE FROM person WHERE pid=$id&quot; );  
+$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
 // NICHT so implementieren!
 </pre></div>
 
@@ -78,7 +78,7 @@ In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1<
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-DELETE FROM person WHERE pid=9 OR 1=1
+DELETE FROM users WHERE id=9 OR 1=1
 </pre></div>
 
 <p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese
@@ -131,7 +131,7 @@ anrichten.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>DELETE mit prepared statement</small></h4>
 <pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(&quot;DELETE FROM person WHERE pid = ?&quot;);
+$sth = $dbh-&gt;prepare(&quot;DELETE FROM users WHERE id = ?&quot;);
 $sth-&gt;execute(array($id));
 </pre></div>
 
