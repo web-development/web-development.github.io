@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Syntax von CSS</title>
+  <title>Lehrbuch Web-Development - Transaktionen</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -43,163 +43,71 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Syntax von CSS</h2>
-                                <a href="/css/css/slide.html">als Präsentation</a>
+				<h2 class="title">Transaktionen</h2>
+                                <a href="/php-mysql-3/transaktionen/slide.html">als Präsentation</a>
                           </div>
 			
 			
-			<p>Ein Beispiel</p>
+			<h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
+
+<p>Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
+(siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
 
 <div class="example">
-<h4 class="caption">Css Code <small>Die Datei fh.css</small></h4>
-<pre class="lang-css prettyprint linenums">
-  h1,h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: lightblue;
-  }
-  body {
-    margin-left: 150px;
-    background-color: white;
-  } 
-  p {
-    text-align: justify;
-  }
+<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
+<pre class="lang-sql prettyprint linenums">
+START TRANSACTION;
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
+COMMIT;
 </pre></div>
-
-<p>Eine Stylesheet-Regel („Rule“)  besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann. </p>
-
-<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Sie können auch mehrere Elemente durch ein Komma trennen. In diesem Falle werden für alle Elemente die selben Style -Angaben definiert, (siehe h1,h2 in obigem Beispiel). </p>
-
-<p>Sie können beliebig Zeilenumbrüche einfügen, diese werden ignoriert. </p>
-
-<h3 id="style-fr-mehrere-seiten">Style für mehrere Seiten</h3>
-
-<p>Die Seiten einer gesamten Website haben meist ein einheitliches Aussehen. Dies können Sie erreichen, wenn Sie für jede Webseite dieselbe CSS Datei verwenden. Dazu müssen Sie in jede HTML-Datei die CSS Datei mittels folgender Anweisung einbinden:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;mystyle.css&quot;&gt;
+<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
+<pre class="lang-sql prettyprint linenums">
+START TRANSACTION;
+INSERT INTO staff (id, first, last) 
+  VALUES (42, 'Alyssa', 'Hacker');
+INSERT INTO salarychange (id, amount, changedate) 
+  VALUES (42, 50000, NOW());
+ROLLBACK;
+-- nichts ist passiert!
 </pre></div>
 
-<p>Diese Zeile sollte innerhalb des head Bereiches der HTML-Datei stehen (da sonst die Darstellung der Seite verzögert werden kann5). mysyle.css könnte etwa so aussehen wie im vorigen Beispiel. </p>
-
-<h3 id="style-fr-eine-seite">Style für eine Seite</h3>
-
-<p>Wenn Sie einen Style  nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches. </p>
+<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die
+Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.  Wenn die
+Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
+offen ist, dann löst PDO selbst das Rollback aus.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;style&gt;
-    h1,h2 {
-      font-family: Arial, Helvetica, sans-serif;
-      color: lightblue
-    }
-  &lt;/style&gt;
+<h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
+<pre class="lang-php prettyprint linenums">
+try {
+  $dbh-&gt;beginTransaction();
+  $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker')&quot;);
+  $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
+  $dbh-&gt;commit();
+  
+} catch (Exception $e) {
+  $dbh-&gt;rollBack();
+  echo &quot;Error: &quot; . $e-&gt;getMessage();
+}
 </pre></div>
 
-<p>Style für einen Tag</p>
-
-<p>Style Angaben können auch direkt in einen einzelnen HTML-Tag geschrieben werden. In diesem Fall gilt die Angabe nur für diesen ganz speziellen Tag. </p>
-
-<p>Um einen style für einen einzelnen Tag zu definieren, müssen Sie innerhalb des Tags das Attribut style verwenden. </p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h1 style=&quot;color:red; text-align:center;&quot;&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
-</pre></div>
-
-<p>Gültigkeitsbereich einer Style Angabe</p>
-
-<p>Sie können innerhalb einer HTML-Datei sowohl eine externe Style Sheet Datei verwenden (eingebunden durch eine entsprechende Anweisung im head Bereich) als auch eine lokale Definition im head Bereich angeben, als auch spezielle Angaben für einzelne Tags erstellen. </p>
-
-<p>Was passiert nun, wenn die verschiedenen Style-Deklarationen sich widersprechen? Die Angaben bei einem einzelnen Tag haben immer Vorrang. danach folgen die lokalen Angabe im head Bereich und erst zum Schluß die externe Datei. „Je näher beim Tag desto stärker wirkt es.“</p>
-
-<h2 id="klassen-ids-spans-und-divs">Klassen, IDs, SPANs und DIVs</h2>
-<p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite. Oft möchten Sie aber ein oder zwei Absätze anders formatieren als die anderen Absätze. Zu diesem Zweck können Sie sich im Stylesheet noch weitere Formatvorlagen - sogenannte “Klassen” - definieren:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  .wichtig { color: red; }
-</pre></div>
-
-<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt. Jedem normalen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class. </p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
-  &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
-  &lt;p&gt;Ein ganz normaler Absatz&lt;/p&gt;
-</pre></div>
-
-<p>Zur „normalen“ Wirkung des HTML-Tags kommt nun die Formatierung durch die Klasse hinzu: der Text „ganz wichtige“ und „Ein ganz wichtiger Absatz“ ist in diesem Beispiel also rot. Eine Klasse kann also mehrmals in einem Dokument verwendet werden. Ein Tag kann mehrere Klassen erhalten, diese werden durch Leerzeichen getrennt im class-Attribut angeführt.</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;p class=&quot;wichtig eilmeldung&quot;&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
-</pre></div>
-
-<p>Zur eindeutigen Kennzeichnung von Tags wird das Attribut id verwendet:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
-  &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
-  &lt;p id=&quot;impressum&quot;&gt;Das einzige Impressum dieser Seite&lt;/p&gt;
-</pre></div>
-
-<p>Auf diese eindeutigen IDs kann in CSS mit der Raute (englisch: „hash sign“) referenziert werden:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  #impressum { background-color: #DDD; }
-</pre></div>
-
-<p>Sowohl Klassen als auch IDs können mit Tags kombiniert werden um einen komplexen Selektor zu bilden, aber das macht nur bei Klassen wirklich Sinn:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  .wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
-  p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
-
-  b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
-
-  #impressum { background-color:#ddd; }   /* nur der Tag mit der id #impressum */
-  p#impressum { background-color:#ddd; } /* == nur der p-Tag mit der id #impressum */
-
-  b#impressum { background-color:#ddd; }   /* nix! */
-</pre></div>
-
-<p>Die Firefox-Erweiterung Firebug zeigt Tags, Klassen und IDs in dieser Schreibweise an:</p>
-
-<p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die  beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;p&gt;Es gibt hier ganz &lt;span class=&quot;wichtig&quot;&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
-</pre></div>
-
-<p>Die Worte „besonders interessante“ erscheinen rot. </p>
-
-<h2 id="maeinheiten-in-stylesheets">Maßeinheiten in Stylesheets</h2>
-
-<p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten: px (Pixel) , em (=Breite des Buchstaben M) , ex (Höhe des Buchstaben X),  % (Prozent), cm (Zentimeter), in (Inch).   Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.</p>
-
-<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil (jeweils werte von 0 bis 255) in verschiedenen Schreibweisen: Dezimal <code>rgb(16,0,255)</code>, hexadezimal <code>#10F</code> oder zweistellig hexadezimal <code>#1000FF</code>. Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt: <code>rgba(153, 134, 117, 0.2);</code></p>
-
-<p>Tool-Tipp: Mit dem Firefox AddOn Colorzilla kann man die Farben einer Webseite auslesen und in verschiedenen Schreibweisen kopieren:</p>
-
-<p><img src="/images/image073.png" alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" /></p>
-
-<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise <code>url(http://absolute.com/bild.gif)</code> oder <code>url(relativ/bild.gif)</code> zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
+<p>Bei einem realen Beispiel würde man nicht die <code>exec</code> Methode verwenden,
+sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
+bleibt gleich.</p>
 
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/css/css-kurz/">← Kurzvorstellung von Stylesheets</a></li>
+      <li><a href="/php-mysql-3/">← Constraints und Transaktionen in der DB</a></li>
     
     
-      <li><a href="/css/properties/">Wichtige Properties →</a></li>
+      <li><a href="/javascript/">Javascript die Sprache →</a></li>
     
   </ul>
 </div>
@@ -244,7 +152,7 @@
               </ul>
             </li>
           
-            <li class="active"><a href="/css/">CSS</a>
+            <li ><a href="/css/">CSS</a>
               <ul class="sub">
                 
                   
@@ -256,7 +164,7 @@
                       
                     
                       
-                      <li class="active"><a href="/css/css/">Syntax von CSS</a></li>
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
                       
                     
                       
@@ -728,7 +636,7 @@
               </ul>
             </li>
           
-            <li ><a href="/php-mysql-3/">PHP MYSQL 3</a>
+            <li class="active"><a href="/php-mysql-3/">PHP MYSQL 3</a>
               <ul class="sub">
                 
                   
@@ -736,7 +644,7 @@
                       
                     
                       
-                      <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      <li class="active"><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
                       
                     
                   
@@ -874,7 +782,7 @@
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/css/css.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/php-mysql-3/transaktionen.md">Kommentar zu dieser seite</a></p>
     </div>
   </div>
 

@@ -96,6 +96,14 @@ try {
 
 <h2 id="verwendung-von-exceptions-fr-die-datenbank">Verwendung von Exceptions für die Datenbank</h2>
 
+<p>PDO wirft normalerweise keine Exceptions. Ihre Verwendung muss erst mit dem
+Attribut <code>ERRMODE</code> aktiviert werden:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+</pre></div>
+
 <p>In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
 Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftreten,
 oder bei einzelnen Abfragen.</p>
@@ -112,11 +120,9 @@ try{
   }
 
   $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
-  $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-  # ich will exceptions!
+  /* das folgende Attribut aktiviert die Exceptions */
   $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+  $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
   $dbh-&gt;exec('SET CHARACTER SET utf8') ;
 
   $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
@@ -156,67 +162,7 @@ tun hat.</p>
 </div>
 <div class='slide'>
 
-<h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
-
-<p>Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
-(siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
-
-<div class="example">
-<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL, die zwei Einfüge-Operationen zusammenfasst</small></h4>
-<pre class="lang-sql prettyprint linenums">
-START TRANSACTION;
-INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) 
-  VALUES (42, 50000, NOW());
-COMMIT;
-</pre></div>
-
-<div class="example">
-<h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in MySQL und zurück-gerollt wird</small></h4>
-<pre class="lang-sql prettyprint linenums">
-START TRANSACTION;
-INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
-INSERT INTO salarychange (id, amount, changedate) 
-  VALUES (42, 50000, NOW());
-ROLLBACK;
--- nichts ist passiert!
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die
-Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.  Wenn die
-Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
-offen ist, dann löst PDO selbst das Rollback aus.</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
-<pre class="lang-php prettyprint linenums">
-try {
-  $dbh-&gt;beginTransaction();
-  $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker')&quot;);
-  $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
-  $dbh-&gt;commit();
-  
-} catch (Exception $e) {
-  $dbh-&gt;rollBack();
-  echo &quot;Error: &quot; . $e-&gt;getMessage();
-}
-</pre></div>
-
-<p>Bei einem realen Beispiel würde man nicht die <code>exec</code> Methode verwenden,
-sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
-bleibt gleich.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="exceptions-in-javascript">Exceptions in Javascript</h2>
+<h2 id="exkurs-exceptions-in-javascript">Exkurs: Exceptions in Javascript</h2>
 
 <p>Die Verwendung und Schreibweise ist in Javascript so ähnlich, dass es sich
 gar nicht lohnt näher darauf einzugehen. Siehe 
