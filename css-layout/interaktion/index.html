@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">CSS für Interaktion</h2>
-                                <a href="/css-layout/interaktion/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>CSS für Interaktion</h2>
+                                <a href="/css-layout/interaktion/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Mit dem Selektor <code>:hover</code> wird eine CSS-Regel nur angewandt 
+			<a name='slide-1'></a><p>Mit dem Selektor <code>:hover</code> wird eine CSS-Regel nur angewandt 
 wenn sich der Maus-Cursor über dem Element befindet. 
 <code>:focus</code> hat eine ähnliche Bedeutung bei der Steuerung mit der Tastatur.</p>
 
@@ -62,6 +70,9 @@ div       { background-color: #ddd; }
 div:hover { background-color: red; }
 </pre></div>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="hover-mit-bild">Hover mit Bild</h2>
 
 <p>Mit Hilfe von Hintergrundbildern kann man so zum Beispiel einen 
@@ -72,6 +83,9 @@ kitschigen 3d-Button darstellen, der beim hovern „hineingedrückt“ wird. </p
 div       { background-image: url(button-up.png);   }
 div:hover { background-image: url(button-down.png); }
 </pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="hover-mit-bild-1">Hover mit Bild</h2>
 
@@ -93,6 +107,9 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
   background-position: 0 -34px;
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="css-sprites">CSS-Sprites</h2>
 
@@ -614,39 +631,19 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -663,6 +660,10 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -699,6 +700,34 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -807,6 +836,7 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Daten Bearbeiten</h2>
-                                <a href="/php-mysql-2/daten-editieren/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Daten Bearbeiten</h2>
+                                <a href="/php-mysql-2/daten-editieren/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
+			<a name='slide-1'></a><p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
 <p><img src="/images/person_edit.png" alt="Formular zum Bearbeiten einer Person" /></p>
@@ -63,6 +71,9 @@ $sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
 $sth-&gt;execute( array( $id ) );
 $person = $sth-&gt;fetch();
 </pre></div>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
 
@@ -102,6 +113,11 @@ MariaDB [portfolio_playground]&gt; select firstname,description from users where
 <p>Das Attribut <code>value</code> endet zu früh, und der <code>&lt;style&gt;</code> Tag lässt
 den Rest der Webseite verschwinden.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Richtig ist die Darstellung gewisser Zeichen als HTML Entities:</p>
 
 <div class="example">
@@ -118,6 +134,11 @@ den Rest der Webseite verschwinden.</p>
 htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
 
 <div class="example">
@@ -126,6 +147,9 @@ htmlspecialchars( $person-&gt;firstname );
 &lt;input name=&quot;firstname&quot; value=&quot;&lt;?php echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
@@ -155,6 +179,9 @@ header(&quot;Location: person.php?id=&quot; . $_POST['id']);
 exit;
 </pre></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
 
@@ -166,6 +193,11 @@ exit;
 hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 // problematisch!
 </pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Wenn hier in der Description „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
 
@@ -190,10 +222,16 @@ EOM;
 
 <p><img src="/images/html-escaped1.png" alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
 angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
 wieder anzeigen?</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
@@ -218,6 +256,11 @@ Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen:
 Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele
 BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
 vorhergehenden Suche noch ein Cookie haben.)</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
 
 <p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ein:</p>
 
@@ -244,11 +287,19 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
 <p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code
 z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 „wirkt nicht“:</p>
 
 <p><img src="/images/html-escaped.png" alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
@@ -261,6 +312,9 @@ erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 
 <p><img src="/images/aloha.png" alt="Aloha Editor" /></p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
 
@@ -790,39 +844,19 @@ EOM;
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -839,6 +873,10 @@ EOM;
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -875,6 +913,34 @@ EOM;
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -983,6 +1049,7 @@ EOM;
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Daten absenden</h2>
-                                <a href="/formulare/action/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Daten absenden</h2>
+                                <a href="/formulare/action/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button
+			<a name='slide-1'></a><p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button
 drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt.
 Diese action wird direkt im <code>&lt;form&gt;</code>-Tag angegeben.</p>
 
@@ -59,6 +67,9 @@ Diese action wird direkt im <code>&lt;form&gt;</code>-Tag angegeben.</p>
 
 <p>Für die Verarbeitung der Daten braucht man ein serverseitiges  Programm - hier
 zum Beispiel ein PHP-Programm.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="daten-an-e-mail-senden">Daten an E-Mail senden</h2>
 
@@ -77,6 +88,9 @@ HTML-Code des Formulars aus:</p>
 
 <p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über den Webserver senden!</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h2 id="daten-senden-mit-methode-get">Daten senden mit Methode GET</h2>
 
 <p>Wird im Form-Tag als Action eine URL mit http angegeben dann werden die Daten an den Webserver gesendet. Dabei gibt es zwei Methoden: GET und POST. GET ist die einfachere. </p>
@@ -90,6 +104,9 @@ action und den Namen und Werten der einzelnen Eingabefelder eine URL zusammen,
 die dann aufgerufen wird.</p>
 
 <p><img src="/images/image232.png" alt="Abbildung 50: URL einer GET-Anfrage" /></p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="url-der-get-anfrage">URL der GET-Anfrage</h2>
 
@@ -121,6 +138,9 @@ gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396).
 Diese Codierung nennt man URL-Encoding. (siehe
 <a href="http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1">HTML 4.01 Specification</a>.)</p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h2 id="url-als-programm-schnittstelle">URL als Programm-Schnittstelle</h2>
 
 <p>Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:</p>
@@ -137,7 +157,11 @@ http://www.google.com/search?q=Schokolade
 &lt;a href=&quot;http://www.google.com/search?q=schokolade&quot;&gt;Suche nach Schokolade&lt;/a&gt;
 </pre></div>
 
-<p>Gerade bei Suchmaschinen wird diese Möglichkeit oft genutzt: z.B. durch die Suchfelder, die in den Browsern eingebaut sind:</p>
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+Gerade bei Suchmaschinen wird diese Möglichkeit oft genutzt: z.B. durch die Suchfelder, die in den Browsern eingebaut sind:</p>
 
 <p><img src="/images/image237.png" alt="Abbildung 51: Suchfeld von Firefox" /></p>
 
@@ -145,6 +169,9 @@ http://www.google.com/search?q=Schokolade
 dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs
 konstruieren und aufrufen. Die <strong>URL</strong> (und nicht das Formular) ist also eine
 <strong>öffentliche Schnittstelle</strong> zu Ihrem Programm!</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="pricing-attack">pricing attack</h2>
 
@@ -671,39 +698,19 @@ verkauft.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -720,6 +727,10 @@ verkauft.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -756,6 +767,34 @@ verkauft.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -864,6 +903,7 @@ verkauft.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

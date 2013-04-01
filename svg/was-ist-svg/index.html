@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Was ist SVG</h2>
-                                <a href="/svg/was-ist-svg/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Was ist SVG</h2>
+                                <a href="/svg/was-ist-svg/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<svg width="200" height="200" style="float:left;">
+			<a name='slide-1'></a><svg width="200" height="200" style="float:left;">
     <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
     <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
@@ -579,39 +587,19 @@ im Beispiel den grünen Kreis.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li class="active"><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li class="active"><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -628,6 +616,10 @@ im Beispiel den grünen Kreis.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -664,6 +656,34 @@ im Beispiel den grünen Kreis.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li class="active"><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -772,6 +792,7 @@ im Beispiel den grünen Kreis.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

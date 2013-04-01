@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,17 +51,23 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Pragmatische Tipps</h2>
-                                <a href="/urls/tipps/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Pragmatische Tipps</h2>
+                                <a href="/urls/tipps/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h3 id="gro--und-kleinschreibung">Groß- und Kleinschreibung</h3>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h3 id="gro--und-kleinschreibung">Groß- und Kleinschreibung</h3>
 
 <p>Hintergrund: Viele Webserver werden auf UNIX betreiben, dort sind Dateinamen case-sensitive.</p>
 
 <p>Tipp: ich schreibe alle Ordner- und Dateinamen sowie alle URLs immer durchgängig
 <strong>klein</strong>.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="leerzeichen">Leerzeichen</h3>
 
@@ -61,11 +75,17 @@
 
 <p>Tipp: ich verwende <strong>keine Leerzeichen</strong> in Ordner- und Dateinamen meiner Web-Projekte.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="umlaute">Umlaute</h3>
 
 <p>Hintergrund: URLs sind global sichtbar. Eine URL, die ich erschaffe, muss vielleicht einmal auf einer Tastatur eingetippt werden, die keine deutschen Umlaute hat.</p>
 
 <p>Tipp: ich <strong>vermeide Umlaute</strong> in Ordner- und Dateinamen meiner Web-Projekte und beschränke mich auf den englischen Zeichensatz.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="ordnerstruktur">Ordnerstruktur</h3>
 
@@ -569,39 +589,19 @@
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -618,6 +618,10 @@
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -654,6 +658,34 @@
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -762,6 +794,7 @@
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

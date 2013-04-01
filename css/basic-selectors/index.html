@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">CSS Selektoren</h2>
-                                <a href="/css/basic-selectors/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>CSS Selektoren</h2>
+                                <a href="/css/basic-selectors/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Um CSS Selektoren zu verstehen muss man das Document Object Betrachten:
+			<a name='slide-1'></a><p>Um CSS Selektoren zu verstehen muss man das Document Object Betrachten:
 die Darstellung des HTML-Dokuments als Baum:</p>
 
 <p><img src="/images/html-und-dom.png" alt="Document Object Model und Selektor" /></p>
@@ -65,11 +73,17 @@ die Darstellung des HTML-Dokuments als Baum:</p>
   <li>Nachkommen</li>
 </ul>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="universal-selector">Universal Selector</h2>
 
 <p>Der Selektor <code>*</code> wählt alle Elemente des Baums aus:</p>
 
 <p><img src="/images/selector-universal.png" alt="Document Object Model und Selektor" /></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="type-selector">Type Selector</h2>
 
@@ -82,6 +96,9 @@ zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
 </pre></div>
 
 <p><img src="/images/selector-type.png" alt="Document Object Model und Selektor" /></p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="group-selector">Group Selector</h2>
 
@@ -99,6 +116,9 @@ oder <code>h2</code>, oder <code>a</code>:</p>
 <p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
 siehe weiter Unten.)</p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h2 id="descendant-selector">Descendant Selector</h2>
 
 <p>Hier wird ein Element ausgewählt, das Nachkomme eines anderen Elements ist.</p>
@@ -114,6 +134,9 @@ siehe weiter Unten.)</p>
 
 <p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
 siehe weiter Unten.)</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="links-formatieren">Links formatieren</h2>
 
@@ -645,39 +668,19 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -694,6 +697,10 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -730,6 +737,34 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -838,6 +873,7 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

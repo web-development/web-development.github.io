@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">PHP und MySQL/MariaDB</h2>
-                                <a href="/php-mysql/start/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>PHP und MySQL/MariaDB</h2>
+                                <a href="/php-mysql/start/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Mit der Verwendung einer Datenbank wird der Aufruf einer
+			<a name='slide-1'></a><p>Mit der Verwendung einer Datenbank wird der Aufruf einer
 Webseite noch einmal komplexer:  der Webserver ruft
 das PHP Programm auf, das PHP-Programm schickt eine
 Anfrage an die Datenbank.</p>
@@ -58,11 +66,17 @@ Anfrage an die Datenbank.</p>
 <p>Ob der Datenbank-Server und der Webserver auf dem selben Computer laufen
 oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.</p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="mysql-von-php-aus">MySQL von PHP aus</h2>
 
 <p>Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. 
 Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 <a href="http://php.net/manual/de/book.pdo.php">PDO Dokumentation</a>.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="verbindungsaufbau">Verbindungsaufbau</h3>
 
@@ -91,6 +105,11 @@ eventuell der <code>port</code>.  Alternativ kann man die Verbindung statt über
 Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
 <code>unix_socket</code> an.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Hier eine konkrete Implementierung des Verbindungs-Aufbaus:</p>
 
 <div class="example">
@@ -102,6 +121,9 @@ $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 
 <p>Hier werden die Argumente für <code>new PDO</code> in der Datei <code>config.php</code> gesetzt,
 die zuvor inkludiert wird.  Warum?</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="datenbank-zugangsdaten">Datenbank-Zugangsdaten</h3>
 
@@ -128,11 +150,19 @@ installiert (mindestens auf einem Entwicklungs-Rechner und einem Produktions-Ser
 Auf den verschiedenen Maschinen werden wir verschiedene Datenbanken benutzen 
 und brauchen dafür verschiedene Zugangsdaten. </p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h3 id="gitignore">.gitignore</h3>
 
 <p>Um zu verhindern, dass die Datei <code>config.php</code> in git committed werden kann,
 wird der Dateiname in die Datei <code>.gitignore</code> eingetragen. 
 <code>.gitignore</code> ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Was der Eintrag in  <code>.gitignore</code> bewirkt
 zeigt der Vorher / Nachher-Vergleich am besten:</p>
@@ -151,6 +181,11 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 <p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen. </p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Nun tragen wir den Dateinamen <code>config.php</code> in die Datei <code>.gitignore</code> im Haupt-Ordner der Working Copy ein.
 Ein Check ob es funktioniert hat:</p>
 
@@ -161,6 +196,11 @@ config.php
 
 <p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen 
 <code>config.php</code> (egal in welchem Ordner) zu ignorieren. </p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <pre><code>D:\Webprojekte\wp2&gt;git status
 
@@ -179,6 +219,9 @@ no changes added to commit (use "git add" and/or "git commit -a")
 <p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an. 
 Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde. 
 Die sollte man ganz normal committen.</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="empfohlene-optionen-fr-den-verbindungsaufbau">Empfohlene Optionen für den Verbindungsaufbau</h3>
 
@@ -205,6 +248,9 @@ wirklich als UTF-8 gespeichert sind!</p>
 <p>Für die Applikation die in den nächsten 2 Kapitel beschreiben wird
 werden diese Optionen vorausgesetzt.</p>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h3 id="anweisung-an-die-datenbank">Anweisung an die Datenbank</h3>
 
 <p>Manche SQL-Queries liefern keine Daten retour.
@@ -218,6 +264,9 @@ $anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
 
 <p>Hier werden alle Datensätze aus der Tabelle <code>users</code> gelöscht.
 Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="abfrage-der-datenbank">Abfrage der Datenbank</h3>
 
@@ -735,39 +784,19 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -784,6 +813,10 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -820,6 +853,34 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -928,6 +989,7 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

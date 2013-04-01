@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Effizient Arbeiten mit der DB</h2>
-                                <a href="/php-mysql/effizent/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Effizient Arbeiten mit der DB</h2>
+                                <a href="/php-mysql/effizent/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Ein wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern
+			<a name='slide-1'></a><p>Ein wichtiges Grundprinzip beim Programmieren mit Datenbanken: Das Filtern
 und Berechnen der Daten möglichst in der Datenbank erledigen und möglichst
 wenige Daten zu PHP übermitteln. </p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="filtern-in-der-datenbank">Filtern in der Datenbank</h3>
 
@@ -69,6 +80,11 @@ foreach( $personen as $person ) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Besser wäre, den Filter bereits im SELECT einzubauen:</p>
 
 <div class="example">
@@ -83,11 +99,17 @@ foreach( $personen as $person ) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="seitenweise-anzeigen">Seitenweise Anzeigen</h3>
 
 <p>Die gleichen Überlegungen gelten auch, wenn Datensätze “seitenweise” angezeigt
 werden sollen: hier verwendet man bereits in der Datenbank <code>LIMIT</code> um nur
 die benötigten Datensätze zu laden.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="datentypen-der-datenbank">Datentypen der Datenbank</h3>
 
@@ -602,39 +624,19 @@ als String in der Datenbank gespeichert, dann wäre das sehr viel umständlicher
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -651,6 +653,10 @@ als String in der Datenbank gespeichert, dann wäre das sehr viel umständlicher
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -687,6 +693,34 @@ als String in der Datenbank gespeichert, dann wäre das sehr viel umständlicher
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -795,6 +829,7 @@ als String in der Datenbank gespeichert, dann wäre das sehr viel umständlicher
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

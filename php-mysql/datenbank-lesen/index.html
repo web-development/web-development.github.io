@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,13 +51,16 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Lesen aus der Datenbank</h2>
-                                <a href="/php-mysql/datenbank-lesen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Lesen aus der Datenbank</h2>
+                                <a href="/php-mysql/datenbank-lesen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Für die Applikation müssen wir nun auf verschiedene
+			<a name='slide-1'></a><p>Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
@@ -67,6 +78,11 @@ $anz_personen = $result-&gt;anzahl;
 <p>Hier verwenden wir die Methode <code>fetch()</code> des Statement-Handles
 um nur einen Datensatz zu lesen.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Man könnte all diese Befehle direkt aneinander-ketten (englisch: “to chain”):</p>
 
 <div class="example">
@@ -77,6 +93,9 @@ $anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE 
 
 <p>Damit spart man sich zwei der drei Variablen, macht aber
 die Fehlersuche etwas schwieriger.  </p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="viele-datenstze-lesen">Viele Datensätze lesen</h2>
 
@@ -97,14 +116,29 @@ $personen = $sth-&gt;fetchAll();
 dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
 Datenbank zu PHP übertragen. </p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>Im Beispiel wird eine Besonderheit von SQL in MySQL verwendet: 
 <code>LIMIT anfangsposition, anzahl</code>
 wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
 Anfangsposition<a href="http://dev.mysql.com/doc/refman/5.6/en/select.html#idp72285024">*</a>.</p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
 <p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
 <code>profile_visible=0</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
 nur sichtbare Profil angezeigt werden. </p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Das eigentliche Lesen der Daten aus der Datenbank geschieht erst nach dem
 <code>query()</code> mit der Methode <code>fetchAll()</code><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">*</a>. 
@@ -138,6 +172,11 @@ Array
 )
 </pre></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Später werden die Personen dann angezeigt:</p>
 
 <div class="example">
@@ -149,6 +188,11 @@ foreach($personen as $person) {
 </pre></div>
 
 <p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Falls man den Index auch anzeigen will, kann man die ausführlichere Version
 der <code>foreach</code> Schleife verwenden:</p>
@@ -164,6 +208,11 @@ foreach($personen as $i =&gt; $person) {
 <p>Achtung: <code>$i</code>  ist hier der Index im Array das <code>fetchAll()</code> erzeugt
 hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
 mit <code>$person-&gt;id</code> erhalten!</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
 
 <p>Bei der Ausgabe soll für jede Person ein passender Link zu <code>person.php</code> angezeigt werden:</p>
 
@@ -194,6 +243,11 @@ mit <code>$person-&gt;id</code> erhalten!</p>
 <p>Auf diese Weise haben wir den Parameter <code>id</code> an den nächsten Teil
 der Applikation weiter gegeben.</p>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
 <p>Wir haben in personen.php nur sichtbare Profile angezeigt,
 und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor, 
 dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
@@ -202,6 +256,9 @@ dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
 
 <p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder
 behandelt werden muss.</p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
 <p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen <code>person.php?id=586</code>
@@ -224,6 +281,11 @@ if( $person === FALSE ) {
   die(&quot;&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;&quot;);
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
 
 <p>Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert:
 Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.</p>
@@ -249,6 +311,9 @@ include &quot;header.php&quot;;
   &lt;?php echo $ersie ?&gt; hat die E-Mail Adresse &lt;?php echo $person-&gt;email ?&gt;.
 &lt;/p&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 
@@ -277,6 +342,9 @@ SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren
 wir die Problematik einfach, und implementieren diese Seite
 ganz ähnlich wie <code>personen.php</code>.</p>
 
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
 <h2 id="zufllige-datenstze-auswhlen">Zufällige Datensätze auswählen</h2>
 
 <p>Auf der Homepage index.php sollen wir 10 zufällig ausgewählte Werke
@@ -295,6 +363,9 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 MySQL<a href="dev.mysql.com/doc/refman/5.6/en/mathematical-functions.html#function_rand#idp61451584">*</a>, 
 die auch nur für beschänkte Datenmengen gut funktioniert. In anderen relationalen Datenbanken und bei
 größeren Tabellen gibt es dafür andere Lösungen.  </p>
+
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h3 id="neue-befehle-in-diesem-kapitel">Neue Befehle in diesem Kapitel:</h3>
 
@@ -809,39 +880,19 @@ größeren Tabellen gibt es dafür andere Lösungen.  </p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -858,6 +909,10 @@ größeren Tabellen gibt es dafür andere Lösungen.  </p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -894,6 +949,34 @@ größeren Tabellen gibt es dafür andere Lösungen.  </p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1002,6 +1085,7 @@ größeren Tabellen gibt es dafür andere Lösungen.  </p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

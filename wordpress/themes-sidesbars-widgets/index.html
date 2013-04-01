@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Themes, Sidebars und Widgets verwenden</h2>
-                                <a href="/wordpress/themes-sidesbars-widgets/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Themes, Sidebars und Widgets verwenden</h2>
+                                <a href="/wordpress/themes-sidesbars-widgets/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="themes">Themes</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="themes">Themes</h2>
 
 <p>Die visuelle Darstellung des Blogs wird durch ein „Theme“ festgelegt. Viele fertige Themes finden Sie auf der offiziellen Wordpress Seite: http://wordpress.org/extend/themes/ (siehe Abbildung 1Abbildung 9).</p>
 
@@ -57,6 +68,11 @@
 <p>Achtung: wenn Sie nach Themes googlen werden Sie auch viele Themes mit eingebautem SPAM finden! Deswegen
 ist es besser das offizielle Verzeichnis zu verwenden, oder das Theme genau zu
 utnersuchen.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Themes werden meist als zip-Dateien zum Download angeboten. Um ein Theme zu installieren muss man:</p>
 
@@ -69,6 +85,11 @@ utnersuchen.</p>
 
 <p><img src="/images/wordpress-themes.png" alt="Abbildung 114: Auswahl des Themes (Navigationspunkt &quot;Darstellungs&quot;)" /></p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Technisch betrachtet ist ein Theme ist ein Ordner voll PHP und CSS-Dateien in einem Unter-Order von <code>wp-content/themes</code>.  Das Theme kann viele Dateien enthalten, die beiden wichtigsten sind style.css und screenshot.png. </p>
 
 <p>Als Kommentar im Stylesheet style.css sind Informationen über das Theme und die AutorInnen gespeichert. Im Backend von Wordpress (Abbildung 110) wird diese Information gemeinsam mit der Datei screenshot.png bei der Auswahl der Themes angezeigt.</p>
@@ -76,6 +97,9 @@ utnersuchen.</p>
 <p>In Abbildung 111 wird der Ordner des Themes sandbox gezeigt. </p>
 
 <p><img src="/images/wordpress-theme-ordner.png" alt="Abbildung 115: Wordpress Theme &quot;Sandbox“: nach dem Auspacken der ZIP-Datei ein Ordner mit vielen Dateien" /></p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="sidebars-und-widgets">Sidebars und Widgets</h2>
 
@@ -87,19 +111,37 @@ definiert.</p>
 
 <p><img src="/images/wordpress-sidebars.png" alt="Abbildung 116: Theme mit Page-Navigation (schwarzer Block oben rechts) und drei Sidebars (rot strichlierte Kästen)" /></p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="widgets">Widgets</h2>
 
 <p>Viele der angebotenen Widgets sind erst sinnvoll wenn der Blog viele Einträge hat. z.B. ein Kalender oder ein Archiv. Eine Empfehlung für die ersten drei Widgets, die ein neuer Blog haben sollte: Ein kurzer Text, ein Suchfeld und die neusten Artikel:</p>
 
 <p><img src="/images/wordpress-widgets.png" alt="Abbildung 117: Empfehlung für einen neuen Blog: Drei Widgets: Text, Suche, Letzte Artikel" /></p>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
+
 <p>Das Zusammenstellen der Sidebars aus den einzelnen Widgets erfolgt im Backend unter Darstellung ⇒ Widgets per „drag and drop“:</p>
 
 <p><img src="/images/wordpress-widget-drag.png" alt="Abbildung 118: Das Widget „Kategorien“ wird per „drag and drop“ zur Sidebar 3 hinzugefügt" /></p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Viele Widgets haben noch Konfigurationsmöglichkeiten. Diese werden erst sichtbar, wenn man das Dreieck rechts anklickt, siehe Abbildung 115.</p>
 
 <p><img src="/images/wordpress-widget-delete.png" alt="Abbildung 119: Verändern oder Löschen eines Widgets" /></p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Hier ein Überblick über die Funktion der angebotenen Widgets:</p>
 
@@ -636,39 +678,19 @@ definiert.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -685,6 +707,10 @@ definiert.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -721,6 +747,34 @@ definiert.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -829,6 +883,7 @@ definiert.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

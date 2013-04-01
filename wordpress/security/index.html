@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,18 +51,23 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Security</h2>
-                                <a href="/wordpress/security/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Security</h2>
+                                <a href="/wordpress/security/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Im Zusammenhang mit Wordpress haben Sie drei verschiedene Usernamen + Passwörter:</p>
+			<a name='slide-1'></a><p>Im Zusammenhang mit Wordpress haben Sie drei verschiedene Usernamen + Passwörter:</p>
 
 <ol>
   <li>Server Username und Passwort, für den Upload von Dateien mit SFTP auf den Server</li>
   <li>Datenbank-Name, Datenbank-Username und Passwort, für die MySQL Datenbank. Diese Datenbank können Sie auch noch für andere Dinge als Wordpress verwenden, in einer Datenbank können viele Tabellen gespeichert weren. </li>
   <li>Wordpress-Username und Passwort, dient nur für die Arbeit in Ihrem eigenen Wordpress-Blog.  </li>
 </ol>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Achten Sie bei der Verwendung von Passwörter darauf, dass sie nicht unverschlüsselt über das Internet übertragen werden:</p>
 
@@ -67,11 +80,26 @@
   <li>Eingabe in einen Webbrowser auf einer URL die mit http:// beginnt = unverschlüsselt</li>
 </ul>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Besonders wichtig ist diese Vorsichtsmaßnahme wenn Sie in einem W-LAN arbeiten: im W-LAN können alle anderen Computer, die das W-LAN auch benutzen, Ihren Datenverkehr „mithören“. In einer Hochschule mit Informatik-Studiengang sind das Viele!  „Am Kabel“ ist die Abhörgefahr etwas geringer. </p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
 
 <p><img src="/images/wordpress-insecure.png" alt="Abbildung 104: Wordpress Backend ohne https" /></p>
 
 <p>Hier fragt Wordpress nach dem ersten Usernamen + Passwort (für den Upload auf den Server) weil es nur damit die Automatische Installation des Themes machen kann.  Die Frage nach FTP oder SFTP in der Seite ist irreführend: Der lange Weg von meinem Laptop bis zum Server (der im ersten Schritt übers W-LAN geht) ist unverschlüsselt. Das Verschlüsselte SFTP wird nur am Server selbst verwendet – dort wo niemand etwas abhören könnte:</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p><img src="/images/wordpress-security-illu.png" alt="Abbildung 105: Verschlüsselte und Unverschlüsselte Verbindungen beim Automatischen Installieren von Themes" /></p>
 
@@ -575,39 +603,19 @@
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -624,6 +632,10 @@
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -660,6 +672,34 @@
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -768,6 +808,7 @@
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

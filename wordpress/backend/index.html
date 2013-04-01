@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Überblick Backend</h2>
-                                <a href="/wordpress/backend/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Überblick Backend</h2>
+                                <a href="/wordpress/backend/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die Navigation im Backend zeigt 10 Haupt-Navigationspunkte zu denen weitere Unter-Navigations-Punkte eingeblendet werden können. Falls neben der AdministratorIn admin noch weitere Accounts angelegt werden können diesen weniger Recht zugestanden werden, diese sehen dann manche Navigationspunkte nicht.</p>
+			<a name='slide-1'></a><p>Die Navigation im Backend zeigt 10 Haupt-Navigationspunkte zu denen weitere Unter-Navigations-Punkte eingeblendet werden können. Falls neben der AdministratorIn admin noch weitere Accounts angelegt werden können diesen weniger Recht zugestanden werden, diese sehen dann manche Navigationspunkte nicht.</p>
 
 <p><img src="/images/wordpress-navigation.png" alt="Abbildung 107: Wordpress Backend: Überblick über die Navigation" /></p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="beitrag-schreiben">Beitrag schreiben</h3>
 <p>In Abbildung 104 sehen Sie die Eingabemaske zum Schreiben eines neuen Beitrags.
@@ -58,6 +69,9 @@
 “Artikel” übersetzt, in neuern mit “Beitrag”)</p>
 
 <p><img src="/images/wordpress-artikel-eingabe.png" alt="Abbildung 108: Wordpress Backend - Beitrag Schreiben" /></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="kommentare">Kommentare</h3>
 
@@ -559,39 +573,19 @@
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -608,6 +602,10 @@
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -644,6 +642,34 @@
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -752,6 +778,7 @@
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

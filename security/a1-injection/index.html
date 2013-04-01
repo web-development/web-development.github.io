@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Injection</h2>
-                                <a href="/security/a1-injection/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Injection</h2>
+                                <a href="/security/a1-injection/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<a name='slide-1'></a><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection Schwachstellen sind weit verbreitet, besonders in altem Code; sie finden sich in SQL-, LDAP- und XPath-Anfragen, Systembefehlen, Programm-parametern usw.</p>
@@ -68,6 +76,9 @@ Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur 
 die als Input vom User/der Userin kommen werden mit <code>execute</code> an die Datenbank
 übergeben, können aber nicht mehr als SQL interpretiert werden.</p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="prepared-statement-mit-benannten-platzhaltern">Prepared Statement mit benannten Platzhaltern</h2>
 
 <p>Eine zweite Schreibweise für prepared Statement ist noch besser lesbar: dabei
@@ -80,6 +91,9 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
     $stm-&gt;bindParam(&quot;:name&quot;, $_POST['name'] );
     $stm-&gt;execute();
 </pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="owasp-empfehlungen">OWASP Empfehlungen</h2>
 
@@ -601,39 +615,19 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -650,6 +644,10 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -686,6 +684,34 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -794,6 +820,7 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

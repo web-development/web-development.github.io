@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">DOM</h2>
-                                <a href="/javascript-dom/dom/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>DOM</h2>
+                                <a href="/javascript-dom/dom/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
 <p>Die wichstigsten Befehle zur Manipulation des DOM finden Sie in selfhtml unter „document“ und „node“. Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. Die Attribute des HTML-Tags sind über getAttribute / setAttribute / … zugänglich und manipulierbar.</p>
 
 <p>Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:</p>
@@ -87,6 +98,9 @@
   node.replaceChild()
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h3 id="simples-beispiel">Simples Beispiel</h3>
 
 <p>Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:</p>
@@ -106,6 +120,9 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <p>Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="selektieren">Selektieren</h3>
 
 <p>Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode <code>document.querySelectorAll()</code>:</p>
@@ -119,6 +136,9 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
       i++;
   }
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="text">Text</h3>
 
@@ -145,6 +165,9 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="manipulation-des-dom">Manipulation des DOM</h2>
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
 
@@ -164,6 +187,9 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
   node.removeAttribute()
 </pre></div>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h3 id="einfgen">Einfügen</h3>
 
 <p>Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft <code>innerHTML</code>:</p>
@@ -172,6 +198,9 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 <pre class="lang-javascript prettyprint linenums">
 document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&gt;neu&lt;/b&gt;&lt;/p&gt;“;
 </pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="duplizieren">Duplizieren</h3>
 
@@ -191,6 +220,11 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&
   &lt;/div&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
 <p>Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:</p>
 
 <div class="example">
@@ -201,6 +235,9 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&
 </pre></div>
 
 <p><a href="/images/moreformjs.html">Beispiel live im Browser</a></p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
 <p>Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:</p>
@@ -226,6 +263,11 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&
     &lt;/p&gt;
   &lt;/div&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
 
 <p>Im Javascript-Code können wir nun das Event an den span-Tag binden. Dafür müssen
 wir erst eine Funktion definieren, die aufgerufen werden soll, hier heisst die
@@ -738,39 +780,19 @@ document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quo
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -787,6 +809,10 @@ document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quo
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -823,6 +849,34 @@ document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quo
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -931,6 +985,7 @@ document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quo
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

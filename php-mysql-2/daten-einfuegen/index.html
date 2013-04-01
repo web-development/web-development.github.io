@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Einfügen</h2>
-                                <a href="/php-mysql-2/daten-einfuegen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Einfügen</h2>
+                                <a href="/php-mysql-2/daten-einfuegen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
+			<a name='slide-1'></a><p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
@@ -56,6 +64,11 @@
 $t = $_POST['title'];
 $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES ('$t')&quot;);
 </pre></div>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Aber was passiert wenn ein Werk den Titel
 „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
@@ -72,6 +85,9 @@ und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 <pre class="lang-plain prettyprint linenums">
 #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's it')' at line 1
 </pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="die-falsche-lsung">die falsche Lösung</h3>
 
@@ -90,6 +106,11 @@ INSERT INTO werk (titel) VALUES ('That\'s it')
 <p>Diese Automatik funktioniert aber leider nur für MySQL.
 Andere Datenbanken haben anderen Quoting-Konventionen, in
 anderen Kontexten muss man ganz anders Escapen.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
 
 <p>Diese Automatik ist unter dem Namen <code>magic_quotes</code> bekannt und kann in der
 Apache- oder PHP-Konfiguration abgeschalten werden. Sie sollten das immer
@@ -118,6 +139,9 @@ echo(&quot;&lt;/pre&gt;&quot;);
 PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>.
 Das Problem betrifft allerdings nur Array-Parameter.</p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
 <p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
@@ -143,6 +167,11 @@ $sth-&gt;execute(
 // noch ohne Fehlerbehandlung
 </pre></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
 <p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die
 Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man
 hier einfach nichts eingibt gibt das einen Fehler.</p>
@@ -152,6 +181,11 @@ Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
 deutsche Fehlermeldungen ausgeben.</p>
 
 <p><img src="/images/2fehlermeldungen.png" alt="Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" /></p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein
 autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
@@ -667,39 +701,19 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -716,6 +730,10 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -752,6 +770,34 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -860,6 +906,7 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

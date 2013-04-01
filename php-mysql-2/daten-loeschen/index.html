@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Löschen</h2>
-                                <a href="/php-mysql-2/daten-loeschen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Löschen</h2>
+                                <a href="/php-mysql-2/daten-loeschen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Das Löschen könnte so einfach sein: Ein Programm mit namen <code>person_delete.php</code>,
+			<a name='slide-1'></a><p>Das Löschen könnte so einfach sein: Ein Programm mit namen <code>person_delete.php</code>,
 das als Parameter die <code>id</code> der Person erhält, die gelöscht werden soll:</p>
 
 <div class="example">
@@ -58,6 +66,11 @@ $id   = $_POST['id'];
 $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
 // NICHT so implementieren!
 </pre></div>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Dieses Programm ist anfällig für folgende Attacke. Alyssa P. Hacker (eine fiktive Hackerin) 
 benützt nicht das HTML-Formular unserer Applikation, sondern schreibt selbst ein Formular.
@@ -73,6 +86,11 @@ In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1<
 &lt;/form&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
 
 <div class="example">
@@ -83,6 +101,9 @@ DELETE FROM users WHERE id=9 OR 1=1
 <p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese
 Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil in
 das SQL etwas “injiziert” wird.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
@@ -100,6 +121,11 @@ if( ! preg_match( '/^\d+$/', $id ) ) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank.
 Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
 
@@ -114,6 +140,11 @@ String gebaut, sondern die einzufügenden Daten werden binär an den
 Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden
 anrichten.</p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
 <div class="example">
 <h4 class="caption">Php Code <small>DELETE mit prepared statement</small></h4>
 <pre class="lang-php prettyprint linenums">
@@ -123,6 +154,9 @@ $sth-&gt;execute(array($id));
 
 <p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine
 normale query zu wiederholen.</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
 
@@ -625,39 +659,19 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -674,6 +688,10 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -710,6 +728,34 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -818,6 +864,7 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

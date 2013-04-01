@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Navigationsmenü</h2>
-                                <a href="/css-layout/navigation/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Navigationsmenü</h2>
+                                <a href="/css-layout/navigation/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
+			<a name='slide-1'></a><p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
 
 <p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links:</p>
 
@@ -66,6 +74,11 @@
 </pre></div>
 
 <p>Ohne CSS wird die Liste ganz normal dargestellt. </p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit
 <code>list-style-type: none</code> der Listenpunkt <code>li</code> zu einem normalen Tag. </p>
@@ -88,6 +101,9 @@ div.navi li a:link {
    color: black;
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="horizontales-men">Horizontales Menü</h2>
 
@@ -112,6 +128,9 @@ div.navi li a:link {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="php-fr-navigationsmen">PHP für Navigationsmenü</h2>
 <p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. 
 Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man 
@@ -135,6 +154,11 @@ PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester i
 &lt;/div&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, 
 z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <code>include</code> eingebunden:</p>
 
@@ -145,12 +169,18 @@ z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <co
 &lt;h1&gt;News&lt;/h1&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="server-side">Server Side</h2>
 
 <p>Das Einfügen der inkuldierten Datei erfolgt auf dem Server. 
 Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen. </p>
 
 <p><img src="/images/image145.png" alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" /></p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="ergebnis">Ergebnis</h2>
 
@@ -653,39 +683,19 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -702,6 +712,10 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -738,6 +752,34 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -846,6 +888,7 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

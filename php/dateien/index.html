@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Dateien und Ordnern in PHP</h2>
-                                <a href="/php/dateien/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Dateien und Ordnern in PHP</h2>
+                                <a href="/php/dateien/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
+			<a name='slide-1'></a><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="zugriffsrechte">Zugriffsrechte</h2>
 <p>Achtung: Auf einem UNIX-Webserver läuft das PHP-Programm unter dem Account des Webservers, nicht unter Ihrem Account! Dies wird relevant, sobald ein PHP-Programm eine andere Datei  lesen oder (über-)schreiben soll.</p>
@@ -64,6 +75,9 @@
 <p>Das PHP-Programm läuft nicht unter Ihrem Account, sondern unter dem Account des Webservers. D.h. für das PHP-Programm gelten die Zugriffsrechte „für Alle“. </p>
 
 <p>Mit den PHP-Funktionen is_readable() und is_writable() können Sie testen, ob das Programm Lese- bzw. Schreibrechte auf eine bestimmte Datei hat.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="ordner-auflisten">Ordner auflisten</h2>
 <p>Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion <code>glob</code>. (Achtung: die Funktionen <code>opendir</code>, <code>readdir</code>, <code>closedir</code> gibt es auch, die sind aber komplizierter zu verwenden) </p>
@@ -103,6 +117,9 @@ $alle_bilder = array_merge($jpg, $gif);
 asort( $alle_bilder )
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="datei-lesen">Datei lesen</h2>
 <p>Um eine Datei von PHP aus zu benutzen, muss man sie mit der Funktion <code>fopen</code> öffnen. Man erhält einen „handle“ mit dem man sich im Weiteren auf diese Datei bezeihen kann. </p>
 
@@ -133,6 +150,9 @@ $zahl = fgets($handle);
 fclose($handle);
 </pre></div>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h2 id="datei-ber-schreiben">Datei (über-)schreiben</h2>
 <p>Beim Schreiben wird als zweites Argument von fopen der Buchstabe „w“ übergeben:</p>
 
@@ -155,6 +175,9 @@ if ( $status === FALSE ) {
 </pre></div>
 
 <p>Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Wenn Ihr PHP-Programm eine Datei löscht, dann ist diese Datei sofort und unwiederbringlich weg.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="gleichzeitiger-schreibender-zugriff">Gleichzeitiger schreibender Zugriff</h2>
 <p>Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir werden es aber erst mal ignorieren.</p>
@@ -655,39 +678,19 @@ if ( $status === FALSE ) {
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -704,6 +707,10 @@ if ( $status === FALSE ) {
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -740,6 +747,34 @@ if ( $status === FALSE ) {
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -848,6 +883,7 @@ if ( $status === FALSE ) {
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,15 +51,20 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Session und Login</h2>
-                                <a href="/session/session-und-login/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Session und Login</h2>
+                                <a href="/session/session-und-login/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
+			<a name='slide-1'></a><p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
 Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 <p><img src="/images/stateless-http.svg" alt="HTTP als &quot;stateless protocol&quot;" /></p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Mit der Einführung von Cookies, und damit von state, können
 wir nun erkennen, dass mehrere Requests zusammen gehören,
@@ -60,6 +73,9 @@ vom selben Browser ausgelöst wurden. </p>
 <p><img src="/images/stateful-http-with-cookies.svg" alt="HTTP mit cookies wird &quot;stateful&quot;" /></p>
 
 <p>Wir nennen diese Folge von Requests dann eine “Session”.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
@@ -82,6 +98,9 @@ vom selben Browser ausgelöst wurden. </p>
 </ul>
 
 <p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den Usernamen des angemeldeten Users zu speichern. </p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="struktur-der-applikation-mit-login">Struktur der Applikation mit Login</h3>
 
@@ -159,11 +178,17 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h3 id="sessionstart">session_start</h3>
 
 <p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</p>
 
 <p><img src="/images/image364.png" alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" /></p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="login">Login</h3>
 
@@ -185,6 +210,9 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 
 <p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h3 id="logout">Logout</h3>
 
 <p>Das Logout erfolgt ebenfalls mit der Methode POST:</p>
@@ -195,6 +223,11 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
       &lt;input type=&quot;submit&quot; value=&quot;Logout&quot; /&gt;
   &lt;/form&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
 
 <p>Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.</p>
 
@@ -215,6 +248,9 @@ if (isset($_COOKIE[session_name()])) {
 session_destroy();
 header(&quot;Location: index.php&quot;)
 </pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="redirect--weiterleitung">Redirect / Weiterleitung</h3>
 
@@ -243,6 +279,9 @@ header(&quot;Location: index.php&quot;)
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
 <p><img src="/images/image366.png" alt="Abbildung 148: Login mit einer Weiterleitung" /></p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="neue-php-befehle">Neue PHP Befehle</h3>
 
@@ -751,39 +790,19 @@ header(&quot;Location: index.php&quot;)
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -800,6 +819,10 @@ header(&quot;Location: index.php&quot;)
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -836,6 +859,34 @@ header(&quot;Location: index.php&quot;)
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -944,6 +995,7 @@ header(&quot;Location: index.php&quot;)
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

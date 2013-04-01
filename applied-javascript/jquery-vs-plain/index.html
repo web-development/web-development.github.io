@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,15 +51,18 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">jQuery und reines Javascript</h2>
-                                <a href="/applied-javascript/jquery-vs-plain/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>jQuery und reines Javascript</h2>
+                                <a href="/applied-javascript/jquery-vs-plain/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Im ersten Teil des Buches, in den Kapiteln <a href="/formulare/javascript/">Formular und Javascript</a>,
+			<a name='slide-1'></a><p>Im ersten Teil des Buches, in den Kapiteln <a href="/formulare/javascript/">Formular und Javascript</a>,
 <a href="/javascript-dom/">Javascript DOM</a> und <a href="/jQuery/">jQuery</a> wurde Javascript und jQuery bereits vorgestellt.</p>
 
 <p>Nun wollen wir dieselben Themen nocheinmal genauer betrachten.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="das-jquery-objekt">das jQuery Objekt</h2>
 
@@ -88,6 +99,11 @@ node = document.getElementById(&quot;id&quot;);
 $q = $(node);
 
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Wenn mehrere Nodes gefunden werden muss das in jQuery nicht
 besonders behandelt werden, in reinem Javascript schon:</p>
@@ -126,6 +142,9 @@ $q = $(arr);
 
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="selektieren">Selektieren</h2>
 
 <p>Wie wählt man Nodes aus der DOM aus?</p>
@@ -157,6 +176,9 @@ $q = $(&quot;h2&quot;).first();
 // Alle Nodes auswählen
 $q = $(&quot;h2&quot;);
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="traversieren">Traversieren</h2>
 
@@ -197,6 +219,9 @@ $n = $q.find(':selected');
 // Geschwister
 $n = $q.next('p');
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="attribute">Attribute</h2>
 
@@ -268,6 +293,9 @@ document.querySelector('h2')
     color: 'red'});
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="html-einfgen">HTML einfügen</h2>
 
 <p>Wie fügt man eine Node in die DOM ein?</p>
@@ -316,6 +344,9 @@ $n.append($l);
 
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
 <h2 id="clonen">Clonen</h2>
 
 <p>Wie kopiert oder verschiebt man eine vorhandene Node?</p>
@@ -355,6 +386,9 @@ $('#ziel').append($('kirk').remove());
 
 
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="event-listener">Event-Listener</h2>
 
@@ -866,39 +900,19 @@ $n.on(&quot;click&quot;, f);
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -915,6 +929,10 @@ $n.on(&quot;click&quot;, f);
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -951,6 +969,34 @@ $n.on(&quot;click&quot;, f);
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1059,6 +1105,7 @@ $n.on(&quot;click&quot;, f);
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

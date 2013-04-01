@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">HTML Grundkurs</h2>
-                                <a href="/das-web-und-html/html-grundkurs/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>HTML Grundkurs</h2>
+                                <a href="/das-web-und-html/html-grundkurs/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
+			<a name='slide-1'></a><p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
 Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie Intenet 
 nachschlagen. </p>
 
@@ -56,11 +64,19 @@ nachschlagen. </p>
 verwenden, ist ein relativ neuer Standard, der aber in den aktuellen Versionen der gängigen 
 Browsern bereits umgesetzt ist. </p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
 <p>In den letzten 10 Jahren wurde auch XHTML neben HTML verwendet. Das X von XHTML 
 steht für die Kompatibilität mit XML  <!-- XE "XML" -->  . Die Dateien haben dabei weiterhin die 
 Endung .htm oder .html (nur sehr selten oder .xhtm, .xhtml). Im Unterschied zu HTML war 
 XHTML strenger in der Schreibweise. Am Web finden Sie sowohl Tutorials zu HTML als 
 auch zu XHTML – lassen Sie sich davon nicht verwirren!</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="arbeitsablauf">Arbeitsablauf</h2>
 <p>Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:</p>
@@ -79,6 +95,9 @@ auch zu XHTML – lassen Sie sich davon nicht verwirren!</p>
   <li><a href="http://toolness.github.com/slowparse/demo/">Slowparse</a> erklärt die Struktur von HTML, hilft Fehler zu finden</li>
 </ul>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="zeichensatz">Zeichensatz</h2>
 
 <p>HTML-Dateien bestehen aus reinem Text, in unserem Falle entweder aus Text im Format 
@@ -94,6 +113,9 @@ zur Verfügung. Mein Empfehlung lautet: immer utf-8 Verwenden.</p>
 dargestellt werden. Links im Bild, in Notepad, wird ISO 8859-1 als ANIS
 bezeichnet. Rechts im Bild, im Mac-Programm Textwrangler, ist die Bezeichnung
 klarer. </p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="sonderzeichen">Sonderzeichen</h2>
 
@@ -121,6 +143,14 @@ die From <code>&amp;entityname;</code></p>
     <tr>
       <td style="text-align: center">&amp;</td>
       <td style="text-align: center">&amp;amp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">”</td>
+      <td style="text-align: center">&amp;quot;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">’</td>
+      <td style="text-align: center">&amp;apos;</td>
     </tr>
   </tbody>
 </table>
@@ -151,6 +181,9 @@ verwenden:</p>
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="html-tags">HTML-Tags</h2>
 
 <p>Die gewünschte Formatierung des Textes wird mit HTML-Tag  <!-- XE "Tag" -->  s angegeben</p>
@@ -163,6 +196,9 @@ den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. <code>&lt;p&gt;</code>hi
 geschrieben werden:  <code>&lt;br /&gt;</code> In HTML5 schreibt man diesen Tag (wieder) als <code>&lt;br&gt;</code></li>
   <li>In XHTML werden Tags immer klein geschrieben, bei HTML ist  die Groß- oder Kleinschreibung egal. </li>
 </ol>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="whitespace">Whitespace</h2>
 
@@ -186,12 +222,18 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
     &lt;/p&gt;
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
 <h2 id="zeilenumbruch">Zeilenumbruch</h2>
 
 <p>Nur die Tags beeinflussen die Darstellung der Webseite. Sie müssen den Tag 
  <code>&lt;br&gt;</code> verwenden um einen Zeilenumbruch  auf der Webseite zu erzeugen 
 – dies ist aber nur selten sinnvoll, da der Browser einen automatischen Zeilenumbruch 
 durchführt, um den Text im vorhandenen Platz optimal darzustellen.</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="attribute">Attribute</h2>
 
@@ -219,6 +261,9 @@ Darstellung, Ersatztext). </p>
     &gt;
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
 <h2 id="unbekannte-tags-und-attribute">Unbekannte Tags und Attribute</h2>
 
 <p>Das Attribut bli, welches nicht zu HTML gehört, also kein Browser kennt, wird wie andere 
@@ -241,6 +286,9 @@ beim nächsten Leerzeichen.</p>
   &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.gif &gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
 <p>Jeder Browser (egal ob Chrome, Firefox, Safari, Microsoft Internet Explorer, Opera,…) kann 
@@ -249,6 +297,11 @@ GoLive,… ) kann jedes HTML-Dokument bearbeitet werden. </p>
 
 <p>So soll das Web funktionieren.   (Die schweren Fälle, wo es manchmal doch nicht
 funktioniert, verschieben wir auf etwas später.)</p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
 
 <p>Neue Tags, die z. B. ein 
 Browser nicht erkennt, sind zu ignorieren – es gibt 
@@ -270,6 +323,11 @@ hüpfend dargestellt. In älteren Browsern wird der Tag &lt;jump&gt; ignoriert:<
     supercoole 
     Webseite!!!!&lt;/p&gt;
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
 
 <p>Bevor Sie also einen neuen Tag einsetzen, sollten Sie sich darüber klar sein, welche 
 Versionen der Browser diesen Tag darstellen und wie viel Prozent Ihres Zielpublikums schon 
@@ -305,6 +363,9 @@ auch mit älteren Browsern der gesamte Inhalt lesbar ist. </p>
 <p>Hinweis: Der &lt;jump&gt;–Tag ist ein Scherz, den gibt es nicht wirklich, und wird es hoffentlich 
 nie geben. </p>
 
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
 <h2 id="text-formatieren">Text formatieren</h2>
 
 <p>Wir unterscheiden zwischen HTML-Tags die Blöcke definieren, und solchen die das nicht tun. 
@@ -314,6 +375,9 @@ blockbildende Tags tun das nicht.</p>
 <p><img src="/images/image042.png" alt="Abbildung 9: Darstellung von blockbildenden (grau hinterlegten) und nicht-blockbildenden (rot hinterlegten) Tags" /></p>
 
 <p>Der em-Tag ist nicht-blockbildend und wird im zweiten Absatz auf zwei Zeilen umgebrochen. </p>
+
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h3 id="blockbildende-tags-fr-text">Blockbildende Tags für Text</h3>
 
@@ -384,6 +448,9 @@ sondern dienen erst mal nur zu Strukturierung des Dokuments.</p>
     schwimmen auf dem See&lt;/blockquote&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
 <h3 id="nicht-blockbildende-tags-fr-text">Nicht-Blockbildende Tags für Text</h3>
 
 <p>Diese müssen Sie innerhalb eines Blocks verwenden. Diese Formate werden unterschieden 
@@ -432,6 +499,9 @@ Eine &lt;i&gt;schräge&lt;/i&gt; Sache                    (VERALTET!)
 &lt;span style=&quot;font-family:Arial;&quot;&gt;Text&lt;/span&gt; (aktuelle Schreibweise)
 &lt;span style=&quot;color:red;&quot;&gt;rot&lt;/span&gt;          (aktuelle Schreibweise)
 </pre></div>
+
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h2 id="bilder">Bilder</h2>
 
@@ -485,6 +555,9 @@ responsive images kann man verschieden große Bilder für verschiedene
 Ausgabegeräte anbieten. Mit dem 
 canvas-Tag und Javascript kann man Bilder zeichnen. </p>
 
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+
 <h2 id="links">Links</h2>
 <p>Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  können Sie eine absolute oder relative 
 URL angeben:</p>
@@ -501,6 +574,9 @@ Link zu E-Mail Adresse
 Bild als Link
     &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.gif&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
@@ -547,6 +623,9 @@ Charactersets ist ebenfalls komplizierter.</p>
 
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+
 <h2 id="listen">Listen</h2>
 
 <p>Listen  <!-- XE "Liste" -->    <!-- XE "ul" -->    <!-- XE "ol" -->    <!-- XE "li" -->   werden mit zwei verschachtelten Tags 
@@ -564,6 +643,9 @@ Liste. </p>
   &lt;li&gt;drei&lt;/li&gt; 
 &lt;/ol&gt;
 </code></pre>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h2 id="tabellen">Tabellen</h2>
 
@@ -1096,39 +1178,19 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -1145,6 +1207,10 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -1181,6 +1247,34 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1289,6 +1383,7 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

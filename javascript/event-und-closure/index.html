@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Events und Closures</h2>
-                                <a href="/javascript/event-und-closure/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Events und Closures</h2>
+                                <a href="/javascript/event-und-closure/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
+			<a name='slide-1'></a><p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
 Ein SVG-Editor soll programmiert werden, mit dem man
 Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
 
@@ -56,6 +64,9 @@ Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
 die Notwendigkeit von Closures erläutert.</p>
 
 <p>Der Fokus in diesem Kapitel liegt auf der Drag und Drop Funktionalität.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="die-ausgangslage">Die Ausgangslage</h2>
 
@@ -65,6 +76,9 @@ zur Wiederverwertung von Code gelegt:</p>
 <p>Für den Editor, und für Rechtecke (Rectangles) und Kreise (Circles) werden
 jeweils Konstruktor-Funktionen angelegt, mit der Editor-, Rechteck-, und Kreis-Objekte
 erzeugt werden können.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="editor">Editor</h3>
 
@@ -89,6 +103,11 @@ erzeugt werden können.</p>
   <li><code>rectangle</code> - Erzeugt ein Objekt mit dem <code>Rectangle</code>-Konstruktur, fügt es in der renderlist ein</li>
   <li><code>circle</code> - Erzeugt ein Objekt mit dem <code>Circle</code>-Konstruktur, fügt es in der renderlist ein</li>
 </ul>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor</small></h4>
@@ -116,6 +135,9 @@ Editor.prototype.circle = function( x,y,r,att, text ) {
   return o;
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="circle-und-rectangle">Circle und Rectangle</h3>
 
@@ -161,6 +183,11 @@ ein.</p>
   <li><code>setPosition( position )</code> - erwartet die Position als Objekt mit Eigenschaften <code>x</code> und <code>y</code>, positioniert das Element entsprechend</li>
 </ul>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor für Kreis</small></h4>
 <pre class="lang-javascript prettyprint linenums">
@@ -192,6 +219,9 @@ Circle.prototype.setPosition = function ( position ) {
 };
 </pre></div>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="drag-and-drop">Drag and Drop</h2>
 
 <p>Wie funktioniert Drag-and-Drop?  Wir haben die Events <code>mousedown</code>, <code>mouseup</code> und <code>mousemove</code> zur Verfügung.</p>
@@ -201,6 +231,9 @@ Circle.prototype.setPosition = function ( position ) {
   <li>Wenn die Maus sich beweget, und wir in einem Drag-and-Drop sind, dann wird die differenz zwischen aktueller Maus-Position und der Start-Position berechnet. Das ergibt einen Translations-Vektor. Dieser Vektor wird zur Startposition des Objekts addiert und ergibt die aktuelle Position des Objekts. (“Drag”)</li>
   <li>Wenn die Maus los gelassen wird wird Drag-and-Drop beendet</li>
 </ul>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="mausposition">Mausposition</h3>
 
@@ -230,6 +263,9 @@ function cursorPoint(e) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
 <h3 id="wiederholung-event-listener">Wiederholung: Event-Listener</h3>
 
 <p>Wenn wir Event-Listener-Funktionen für diese Events definieren haben wir der
@@ -250,6 +286,9 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
 this das angeklickte element, und e enthält ein Event-Objekt mit
 weiteren Details.</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="problemstellung-vom-dom-element-zum-javascript-objekt">Problemstellung: vom DOM-Element zum Javascript-Objekt</h3>
 
@@ -272,6 +311,11 @@ Name des Attributs mit “data-“ beginnt.</p>
   &lt;circle data-weight=&quot;10kg&quot;&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
 <p>Ein Data-Attribut könnte man mit Javascript setzen. Hier ein Versuch:</p>
 
 <div class="example">
@@ -290,6 +334,9 @@ Name des Attributs mit “data-“ beginnt.</p>
 und nur der String wurde gespeichert.  </p>
 
 <p><strong>Es ist nicht möglich beliebige Javascript-Objekte in der DOM zu speicher!</strong></p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="lsungs-ansatz-mit-closure">Lösungs-Ansatz mit Closure</h3>
 
@@ -314,6 +361,9 @@ function addDragability( jsobj, element ) {
 addDragability( jsobj, element );
 addDragability( other_jsobj, other_element );
 </pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h3 id="umsetzung">Umsetzung</h3>
 
@@ -847,39 +897,19 @@ function addDragability( jsobj, element ) {
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -896,6 +926,10 @@ function addDragability( jsobj, element ) {
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -932,6 +966,34 @@ function addDragability( jsobj, element ) {
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1040,6 +1102,7 @@ function addDragability( jsobj, element ) {
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

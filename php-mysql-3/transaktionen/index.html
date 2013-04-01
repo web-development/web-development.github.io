@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Transaktionen</h2>
-                                <a href="/php-mysql-3/transaktionen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Transaktionen</h2>
+                                <a href="/php-mysql-3/transaktionen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="transaktionen-und-rollback">Transaktionen und Rollback</h2>
-
-<p>Sie kennen Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
+			<a name='slide-1'></a><p>Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
 (siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
 
 <div class="example">
@@ -76,30 +82,6 @@ ROLLBACK;
 -- nichts ist passiert!
 </pre></div>
 
-<p>Die Datenbankschnittstelle <code>PDO</code> bietet für den Umgang mit Transaktionen die
-Methoden <code>beginTransaction</code>, <code>commit</code> und <code>rollback</code> an.  Wenn die
-Datenbank-Verbindung unerwartet geschlossen wird obwohl noch eine Transaktion
-offen ist, dann löst PDO selbst das Rollback aus.</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
-<pre class="lang-php prettyprint linenums">
-try {
-  $dbh-&gt;beginTransaction();
-  $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, 'Alyssa', 'Hacker')&quot;);
-  $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
-  $dbh-&gt;commit();
-  
-} catch (Exception $e) {
-  $dbh-&gt;rollBack();
-  echo &quot;Error: &quot; . $e-&gt;getMessage();
-}
-</pre></div>
-
-<p>Bei einem realen Beispiel würde man nicht die <code>exec</code> Methode verwenden,
-sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
-bleibt gleich.</p>
-
 		
 			<div class="pagination">
   <ul>
@@ -107,7 +89,7 @@ bleibt gleich.</p>
       <li><a href="/php-mysql-3/">← Constraints und Transaktionen in der DB</a></li>
     
     
-      <li><a href="/javascript/">Javascript die Sprache →</a></li>
+      <li><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP →</a></li>
     
   </ul>
 </div>
@@ -596,39 +578,19 @@ bleibt gleich.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -645,6 +607,10 @@ bleibt gleich.</p>
                     
                       
                       <li class="active"><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -681,6 +647,34 @@ bleibt gleich.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -789,6 +783,7 @@ bleibt gleich.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

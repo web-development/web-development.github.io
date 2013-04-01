@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">CSS Selektoren im Detail</h2>
-                                <a href="/css-layout/selektoren/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>CSS Selektoren im Detail</h2>
+                                <a href="/css-layout/selektoren/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Im Kapitel <a href="/css/basic-selectors/">CSS Selektoren</a> haben Sie CSS schon
+			<a name='slide-1'></a><p>Im Kapitel <a href="/css/basic-selectors/">CSS Selektoren</a> haben Sie CSS schon
 einige Selektoren
 kennen gelernt. In der CSS 2.1 Spezifikation werden u.a. 
 folgende Schreibweisen für Selektoren beschrieben:</p>
@@ -169,6 +177,9 @@ folgende Schreibweisen für Selektoren beschrieben:</p>
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="child-selector">Child Selector</h2>
 
 <p>Wir kennen schon den Descendant Selector, der beliebige Nachfahren auswählt.
@@ -180,6 +191,9 @@ Der Child Selector ist auf direkte Kinder beschränkt.</p>
 </pre></div>
 
 <p><img src="/images/selector-child.png" alt="Document Object Model und Selektor" /></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="pseudo-classes">Pseudo Classes</h2>
 
@@ -207,6 +221,9 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 
 <p><img src="/images/selector-firstchild.png" alt="Document Object Model und Selektor" /></p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="adjacent-selector">Adjacent selector</h2>
 
 <p>Dieser Selector wählt das direkte Geschwister-Node aus.</p>
@@ -218,6 +235,9 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 </pre></div>
 
 <p><img src="/images/selector-adj.png" alt="Document Object Model und Selektor" /></p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="kombinationen-von-selektoren">Kombinationen von Selektoren</h2>
 
@@ -726,39 +746,19 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -775,6 +775,10 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -811,6 +815,34 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -919,6 +951,7 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

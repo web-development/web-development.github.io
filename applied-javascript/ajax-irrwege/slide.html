@@ -14,6 +14,18 @@
         <link rel="stylesheet" href="/assets/css/deck.hash.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
           h4.caption { color: #999999; }
           h4.caption small { color: black; }
           table.table-bordered {
@@ -37,7 +49,7 @@
 
 <!-- Create any number of elements with class slide within the container -->
           <div class="slide"><h1>AJAX Irrwege</h1>
-          <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
 Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber 
@@ -334,7 +346,10 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, aber einfach die XML-
 oder JSON-Repräsentation abfragen.</p>
 
-<p>$</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Ob die Repräsentation als Teil der URL, als URL-Parameter oder nur als
 http-Header spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur die Abfrage
@@ -358,7 +373,10 @@ Host: ich.multimediatechnology.at
 Accept: application/xml
 </pre></div>
 
-<p>$</p>
+</div>
+<div class='slide'>
+
+
 
 <p>Eine beliebte Vereinfachung ist die Verwendung von Endungen in der URL:</p>
 
@@ -449,7 +467,7 @@ Verwenden Sie nur die php-SESSION um den Zustand der Applikation zu speichern, u
 gehen Sie möglichst sparsam damit um.</p>
 </div>
           <div class="slide"><h1>Ende</h1>
-          <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
@@ -464,7 +482,6 @@ gehen Sie möglichst sparsam damit um.</p>
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 <!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/modernizr.custom.js"></script>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/deck.core.js"></script>
 <script src="/assets/js/deck.hash.js"></script>
@@ -472,13 +489,15 @@ gehen Sie möglichst sparsam damit um.</p>
 <script src="/assets/js/deck.status.js"></script>
 
 <!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
-	$(function() {
-		$.deck('.slide');
-	});
+  $(function() {
+    $.deck('.slide');
+  });
 </script>
 </body>
 </html>

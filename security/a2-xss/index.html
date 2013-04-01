@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Cross Site Scripting (XSS)</h2>
-                                <a href="/security/a2-xss/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Cross Site Scripting (XSS)</h2>
+                                <a href="/security/a2-xss/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<a name='slide-1'></a><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>XSS-Schwachstellen treten dann auf, wenn die Anwendung von BenutzerIn X eingegebene Daten übernimmt und an den Browser anderer BenutzerInnen zurücksendet, ohne sie hinreichend zu validieren und zu escapen.</p>
@@ -61,6 +69,9 @@
 </blockquote>
 
 <p>Der schlimmste Fall wäre die Installation eines sogenannten XSS Proxies, der es der AngreiferIn ermöglicht die Browser von BesucherInnen ferzusteuern.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="cross-site">Cross Site?</h2>
 
@@ -75,6 +86,9 @@
 <p>Es ist also nicht die Site der Hackerin, die hier gefählich ist, sondern eine andere, scheinbar
 harmlose Seite. </p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h2 id="vermeidung-von-xss">Vermeidung von XSS</h2>
 
 <p>Cross Site Scripting kann komplett vermieden werden, wenn man niemals Input von BenutzerInnen auf der Webseite wiedergibt.
@@ -87,12 +101,18 @@ Das ist ein seltener, aber sehr sicherer Fall.</p>
   <li>Bei der Ausgabe immer ein geeignetes Escaping verwenden</li>
 </ul>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="eingabe-validieren-in-php">Eingabe validieren in PHP</h2>
 
 <p>Achtung: der PHP Befehl <code>strip_tags</code> enfernt keine Attribute aus erlaubten Tags, es ist
 also ganz leicht möglich Javascript in einem <code>onmouseover</code> Attribut einzuschummeln.</p>
 
 <p>Statt dessen sollte man einen HTML-Filter wie <a href="http://htmlpurifier.org/">HTML Purifier</a> verwenden.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="richtig-escapen">Richtig Escapen</h2>
 
@@ -106,6 +126,9 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 </ol>
 
 <p>Es gibt aber noch viele andere Kontexte!</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -607,39 +630,19 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -656,6 +659,10 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -692,6 +699,34 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -800,6 +835,7 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

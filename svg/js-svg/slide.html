@@ -14,6 +14,18 @@
         <link rel="stylesheet" href="/assets/css/deck.hash.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
           h4.caption { color: #999999; }
           h4.caption small { color: black; }
           table.table-bordered {
@@ -37,7 +49,7 @@
 
 <!-- Create any number of elements with class slide within the container -->
           <div class="slide"><h1>Javascript und SVG</h1>
-          <p><a href="/svg/js-svg/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/svg/js-svg/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>Die SVG-Element sind (fast) ganz normale Nodes im DOM,
 und können mit den üblichen Javascript-Befehlen erzeugt,
@@ -62,7 +74,7 @@ eingefügt und manipuliert werden.</p>
 <div class="alert"><a class="close" data-dismiss="alert">×</a><strong>ToDo</strong> hier fehlt noch Text. u.a. zu Javascript und den transformas, als Beispiel wie man die anderen JS-APIS benutzt</div>
 </div>
           <div class="slide"><h1>Ende</h1>
-          <p><a href="/svg/js-svg/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/svg/js-svg/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
@@ -77,7 +89,6 @@ eingefügt und manipuliert werden.</p>
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 <!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/modernizr.custom.js"></script>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/deck.core.js"></script>
 <script src="/assets/js/deck.hash.js"></script>
@@ -85,13 +96,15 @@ eingefügt und manipuliert werden.</p>
 <script src="/assets/js/deck.status.js"></script>
 
 <!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
-	$(function() {
-		$.deck('.slide');
-	});
+  $(function() {
+    $.deck('.slide');
+  });
 </script>
 </body>
 </html>

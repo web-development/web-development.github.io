@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Funktionen und Closures</h2>
-                                <a href="/javascript/closures/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Funktionen und Closures</h2>
+                                <a href="/javascript/closures/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
 
 <p>In einer Funktion in Javascript sind lokale und globale
 Variablen sichtbar.  Da Funktionen auch innerhalb von
@@ -78,6 +89,11 @@ die Variablen a, b und c in der innern Funktion f sichtbar</p>
   console.log(y);  // ReferenceError: y is not defined
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Eine Besonderheit von Javascript ist das “Hochziehen” (hoisting): Alle
 Variablen-Deklarationen mit <code>var</code> werden an den Anfang der jeweiligen Funktion 
 vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
@@ -99,6 +115,9 @@ vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
   g(10);
   // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
 </pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="funktionen-und-lebenszeit-von-variablen">Funktionen und Lebenszeit von Variablen</h2>
 
@@ -124,6 +143,11 @@ bei einem neuen Aufruf sind die vorhergehenden Werte nicht mehr vorhanden:</p>
   // beim Ausstieg aus g ist b = 20
 </pre></div>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>Die Lebenszeit einer Variable kann aber verlängert werden, wenn sie in einer
 inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktionsabschluss”).</p>
 
@@ -147,6 +171,11 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
 </pre></div>
 
 <p>Die Funktion f hat also immer noch zugriff auf die “alte” Variable b!</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 
 <p>Closure kann man zum Beispiel verwenden um einen Countdown zu erzeugen:</p>
 
@@ -662,39 +691,19 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -711,6 +720,10 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -747,6 +760,34 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -855,6 +896,7 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

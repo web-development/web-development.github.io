@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -44,21 +52,27 @@
 				<h1 class="title">Web Development</h1>
 			
 			
-			<p>Softwareentwicklung für das World Wide Web <br />
+			<a name='slide-1'></a><p>Softwareentwicklung für das World Wide Web <br />
 für das Informatik- oder Medieninformatik-Studium.</p>
 
 <p>Das Buch wurde ursprünglich von Brigitte Jellinek an der FH Salzburg
 zur Verwendung im Studiengang MultiMediaTechnology geschreiben, und 2012
 unter der CC-NC-SA Lizenz auf github publiziert. </p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h3 id="aufbau">Aufbau</h3>
 
-<p>Teil 1 (die ersten 7 Kapitel) entsprichen einem Semester. Teil 2 (der Rest
-des Buches) entspricht dem 2.Semester der Lehrveranstaltung,
-und baut zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken<br />
-und einen Grundkurs in UNIX-Kommandozeile auf.</p>
+<p>Das Buch ist in Kapitel eingeteilt, die meist einer Woche der Lehrveranstaltung
+entsprechen.  Die ersten 7 Kapitel entsprichen dem Wintersemester. Der Rest
+der Kapitel werden im Sommersemester behandelt, und
+bauen zusätzlich noch auf eine Lehrveranstaltung Einführung in relationale Datenbanken auf.</p>
 
-<h3 id="lernergebnisse">Lernergebnisse</h3>
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h3 id="lernergebnisse">(Lern)ergebnisse</h3>
 
 <p>Das Ergebnis von Teil 1 dieses Kurses sollte sein:</p>
 
@@ -568,39 +582,19 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -617,6 +611,10 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -653,6 +651,34 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -760,6 +786,7 @@ und einen Grundkurs in UNIX-Kommandozeile auf.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

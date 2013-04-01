@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,16 +51,21 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Struktur einer Web-Applikation</h2>
-                                <a href="/php-mysql/struktur-webapplikation/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Struktur einer Web-Applikation</h2>
+                                <a href="/php-mysql/struktur-webapplikation/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>An einem Beispiel lernen wir nun den typischen Aufbau einer einfachen Web-Applikation
+			<a name='slide-1'></a><p>An einem Beispiel lernen wir nun den typischen Aufbau einer einfachen Web-Applikation
 kennen. Die fertige Applikation soll Werke und Personen aus einem
 Gemeinschafts-Portfolio anzeigen:</p>
 
 <p><img src="/images/dbapp-home.png" alt="Abbildung 144: Homepage der Mini-Applikation" /></p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick. Zu jeder Seite wird der Titel angeführt (wird auf der Seite angezeigt), der Dateiname der PHP-Datei (wichtig für die Verlinkung), eventuell notwendige Parameter und eine Beschreibung was die Seite anzeigt.</p>
 
@@ -123,6 +136,11 @@ Gemeinschafts-Portfolio anzeigen:</p>
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die
 Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <code>header.php</code> und 
 <code>footer.php</code> inkluidert.</p>
@@ -141,6 +159,9 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 ?&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="verlinkung">Verlinkung</h2>
 
 <p>In der Datei personen.php wird zu jeder Person ein passender Link zu person.php angezeigt:</p>
@@ -157,6 +178,9 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
   &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 <p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
@@ -665,39 +689,19 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -714,6 +718,10 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -750,6 +758,34 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -858,6 +894,7 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

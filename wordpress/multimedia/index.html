@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Medien</h2>
-                                <a href="/wordpress/multimedia/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Medien</h2>
+                                <a href="/wordpress/multimedia/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Während Texte in Beiträgen und Seiten gespeichert werden, müssen Bild-, Audio-, und Video-Dateien („Attachments“) erst einmal separat hochgeladen werden. Direkt im Editor für Beiträge oder Seiten finden Sie den Link zum Uploader:</p>
+			<a name='slide-1'></a><p>Während Texte in Beiträgen und Seiten gespeichert werden, müssen Bild-, Audio-, und Video-Dateien („Attachments“) erst einmal separat hochgeladen werden. Direkt im Editor für Beiträge oder Seiten finden Sie den Link zum Uploader:</p>
 
 <p><img src="/images/wordpress-media-upload.png" alt="Abbildung 109: Menü für den Upload von Datei im Editor" /></p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="speicherung-von-medien">Speicherung von Medien</h3>
 
@@ -58,11 +69,17 @@
 
 <p><img src="/images/wordpress-uploads.png" alt="Abbildung 111: Ordnerstruktur für hochgeladene Attachment-Dateien (Audio, Video)" /></p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h3 id="zugriffsrechte">Zugriffsrechte</h3>
 
 <p>Bei der genauen Betrachtung dieser Dateien und Ordner erkennen Sie, dass Wordpress unter einem andere (UNIX) User arbeitet als Sie selbst. Meist hat dieser User einen Namen wie „wwwdata“ oder „apache“. Die Zugriffsrechte im upload-Ordner müssen also so gesetzt sein, dass dieser fremde User Dateien speichern darf!</p>
 
 <p>Hinweis: nur die Bilder (z.B. mit FTP) in den richtigen Ordner zu speichern ist nicht ausreichend, es ist auch ein Eintrag in der Datenbank notwendig.  Dieser Eintrag wird gemacht, wenn man den Wordpress Uploader verwendet.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="einbinden-von-medien-in-beitrge-und-seiten">Einbinden von Medien in Beiträge und Seiten</h3>
 
@@ -566,39 +583,19 @@
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -615,6 +612,10 @@
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -651,6 +652,34 @@
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -759,6 +788,7 @@
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

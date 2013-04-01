@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - RSS - Really Simple Syndication</title>
+  <title>Lehrbuch Web-Development - Beispiel RSS</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">RSS - Really Simple Syndication</h2>
-                                <a href="/xml/rss/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Beispiel RSS</h2>
+                                <a href="/xml/rss/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>RSS ist ein Format um die Daten eines Blogs maschienenlesbar anzubieten.
+			<a name='slide-1'></a><p>RSS ist ein Format um die Daten eines Blogs maschienenlesbar anzubieten.
 Wo bietet z.B. der Wordpress Blog <code>http://multimediatechnology.at/</code> 
 unter der URL <code>http://multimediatechnology.at/feed/</code> die gleichen Inhalte
 wie die Homepage des Blogs im RSS Format an.</p>
@@ -70,10 +78,10 @@ wie die Homepage des Blogs im RSS Format an.</p>
 			<div class="pagination">
   <ul>
     
-      <li><a href="/xml/">← XML</a></li>
+      <li><a href="/xml/dtd/">← DTD</a></li>
     
     
-      <li><a href="/xml/was-ist-xml/">Was ist XML →</a></li>
+      <li><a href="/php-mysql-3/">Constraints und Transaktionen in der DB →</a></li>
     
   </ul>
 </div>
@@ -562,39 +570,19 @@ wie die Homepage des Blogs im RSS Format an.</p>
                       
                     
                       
-                      <li class="active"><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li class="active"><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -611,6 +599,10 @@ wie die Homepage des Blogs im RSS Format an.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -647,6 +639,34 @@ wie die Homepage des Blogs im RSS Format an.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -755,6 +775,7 @@ wie die Homepage des Blogs im RSS Format an.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

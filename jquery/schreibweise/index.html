@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Besondere Javascript-Schreibwesen in jQuery</h2>
-                                <a href="/jquery/schreibweise/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Besondere Javascript-Schreibwesen in jQuery</h2>
+                                <a href="/jquery/schreibweise/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>jQuery Code ist auf den ersten Blick nicht einfach lesbar. Wenn man ein paar Grundprinzipien verstanden hat profitiert man aber von den ungewohnten Schreibweisen: der Code bleibt relativ kurz.</p>
+			<a name='slide-1'></a><p>jQuery Code ist auf den ersten Blick nicht einfach lesbar. Wenn man ein paar Grundprinzipien verstanden hat profitiert man aber von den ungewohnten Schreibweisen: der Code bleibt relativ kurz.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="mein-name-ist-dollar">Mein Name ist Dollar</h2>
 <p>In Javascript kann das Dollar-Zeichen in Bezeichnen (Variablennamen, Funktionsnamen) verwendet werden. jQuery nutzt diese Besondernheit von Javascript aus und definiert eine Funktion und ein Objekt mit dem Dollarzeichen als Namen. Hier eine kleine Lese-Schule:</p>
@@ -73,6 +84,9 @@
 <pre class="lang-javascript prettyprint linenums">
   $.get(&quot;backend.php&quot;, callback)
 </pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="chaining--eine-kette-von-methodenaufrufen">Chaining – eine Kette von Methodenaufrufen</h2>
 <p>Die meisten jQuery-Methoden geben wieder ein jQuery-Objekt zurück. In folgendem Code sind o1, o2, o3 jeweils jQuery-Objekte.  Jedes jQuery-Objekt bietet die Methoden addClass und append an.</p>
@@ -99,6 +113,9 @@
     .addClass(&quot;gag&quot;)
     .append(&quot;:&quot;);
 </pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="funktionen-als-first-class-citizens">Funktionen als first-class citizens</h2>
 <p>In Javascript können Funktionen zur Laufzeit erzeugt werden, in Variablen gespeichert werden, haben eine Identität auch wenn sie keinen Namen haben. Betrachten wir eine ganz normale Funktion:</p>
@@ -141,6 +158,9 @@
 
 <p>auch hier wird die Funktion nur übergeben, aber noch nicht aufgerufen.</p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h2 id="anonyme-funktionen">Anonyme Funktionen</h2>
 <p>Da Funktionen in Variablen gespeichert werden können, ist es nicht unbedingt nötig, dass Sie einen normalen Funktionsnamen haben. Die folgende Funktion hat den Funktionsnamen hase:</p>
 
@@ -167,6 +187,9 @@
   hase();
   anon();
 </pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="document-ready">document ready</h2>
 
@@ -687,39 +710,19 @@
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -736,6 +739,10 @@
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -772,6 +779,34 @@
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -880,6 +915,7 @@
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">AJAX Irrwege</h2>
-                                <a href="/applied-javascript/ajax-irrwege/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>AJAX Irrwege</h2>
+                                <a href="/applied-javascript/ajax-irrwege/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
+			<a name='slide-1'></a><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
 Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber 
 auch verschlechtern.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="schlechte-verwendung-von-ajax">Schlechte Verwendung von AJAX</h2>
 
@@ -83,6 +94,11 @@ Das hat viele Auswirkungen, unter anderem:</p>
 <p>Vergleicht man Vor- und Nachteile sieht man schnell, dass in diesem Fall die
 Version ohne AJAX (ganz normale Links) besser wäre.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Wann ist der Einsatz von AJAX sinnvoll? Wann sollte man darauf verzichten? Um
 diese Frage zu beantworten brauchen wir eine Idealvorstellung wie eine Web-Site oder
 Web-Applikation funktionieren soll. Ein Prinzip haben wir schon kennen 
@@ -98,6 +114,9 @@ gelernt, in diesem Kapitel kommt ein zweites, technischeres dazu:</p>
 auch im primitivsten Ausgabegerät noch funktionieren, also z.B. ohne Javascript.
 Was Javascript an zusätzlichen Features bringt soll nicht auf Kosten der
 Grundfunktion geben, sondern nur die vorhandene Funktion erweitern.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="rest--representational-state-transfer">REST – Representational State Transfer</h2>
 
@@ -115,12 +134,22 @@ zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen,
 <p><strong>Welche Eigenschaften des Webs führen dazu, dass dieses
 Zusammenspiel funktioniert?</strong></p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>REST ist – nach der Analyse von Fielding – die zugrundeliegende <strong>Architektur</strong> des
 Webs.  Wenn man versucht, beim Bau einer Web-Applikation die Prinzipien von REST
 einzuhalten dann wird diese Applikation sich besonders gut in die vorhandene
 Infrastruktur des Web (Server, Browser, Proxies, Caches, etc.) einpassen und davon profitieren.</p>
 
 <p>Wenn man REST missachtet wird die Infrastruktur nicht funktionieren.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 
 <p>In der REST-Terminologie ist das Web ist eine Ansammlung von „<strong>Ressourcen</strong>“. In
 diesem Skriptum wird für Ressourcen auch der Begriff „<strong>Dokumente</strong>“ verwendet. Wir
@@ -139,6 +168,9 @@ Darstellung in
 </ol>
 
 <p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung. </p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="jedes-dokument-soll-eine-eindeutige-url-haben">Jedes Dokument soll eine eindeutige URL haben</h3>
 
@@ -161,6 +193,11 @@ waren die URLs:</p>
 </ul>
 
 <p>und so weiter. Das erfüllt schon das REST-Prinzip.</p>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
 
 <p>In Kapitel <a href="/security/a4-referenz/">SECURITY - Unsichere direkte Objektreferenz</a>
 haben wir erfahren, wie man mit der RewriteEngine von Apache und der
@@ -193,6 +230,9 @@ verwendet haben, um z.B. auf Stylesheets zu verweisen. Deswegen rate ich von
 einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit als man
 denkt. </p>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
 <h3 id="dokumente-sollen-links-auf-andere-dokument-enthalten">Dokumente sollen Links auf andere Dokument enthalten</h3>
 
 <p>Dieses Prinzip haben wir in allen bisher gezeigten Beispielen erfüllt.
@@ -204,6 +244,9 @@ URLs konstruieren muss.</p>
 <h4 id="umsetzung-1">Umsetzung</h4>
 
 <p>dieses Prinzip müssen Ihre Web-Applikationen auf jeden Fall erfüllen.</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="http-methoden-get-post-put-delete">HTTP-Methoden GET, POST, PUT, DELETE</h3>
 
@@ -228,6 +271,9 @@ steht bei normalen Web-Formularen nicht zur Verfügung.  </li>
 einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden. </p>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h3 id="ein-dokument--mehrere-reprsentationen">Ein Dokument – mehrere Repräsentationen</h3>
 
 <p>Ein Dokument kann auf verschiedene Arten repräsentiert werden: z.B. kann die
@@ -248,6 +294,11 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;/ul&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
 <p>Dieselbe Person könnte man auch als XML darstellen, z.B. als:</p>
 
 <div class="example">
@@ -266,6 +317,11 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;/werke&gt;
 &lt;/person&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
 
 <p>Dieselbe Person als JSON:</p>
 
@@ -286,11 +342,19 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
      &quot;url&quot;:&quot;http://ich.multimediatechnology.at/projekt-1/werk/303&quot;}]}
 </pre></div>
 
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+
+
 <p>Besonders praktisch ist das, wenn ich Teile meiner Applikation später
 AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, aber einfach die XML-
 oder JSON-Repräsentation abfragen.</p>
 
-<p>$</p>
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+
 
 <p>Ob die Repräsentation als Teil der URL, als URL-Parameter oder nur als
 http-Header spezifiziert werden soll ist umstritten. RESTfull ist eigentlich nur die Abfrage
@@ -314,7 +378,10 @@ Host: ich.multimediatechnology.at
 Accept: application/xml
 </pre></div>
 
-<p>$</p>
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
+
 
 <p>Eine beliebte Vereinfachung ist die Verwendung von Endungen in der URL:</p>
 
@@ -329,6 +396,9 @@ Accept: application/xml
 <p>Diesen Aspekt von REST werden sie wahrscheinlich erst
 bei der Verwendung von Frameworks umsetzten.</p>
 
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
 <p>Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
@@ -339,18 +409,38 @@ erhalte ich zum Beispiel folgende URL:</p>
 
 <p><code>http://alephino.fh-salzburg.ac.at/alipac/GYOJPQZTMURYQVHVWMND-00021/find-simple?C1=%28&amp;V1=web&amp;C2=%29&amp;F1=ALL&amp;A1=N&amp;x=0&amp;y=0</code></p>
 
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+
+
+
 <p>Wenn ich diese URL zwei Tage später wieder verwende erhalte ich keine Antwort
 mehr, sondern die Fehlermeldung:</p>
 
 <p><img src="/images/session-timeout-error.png" alt="Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State" /></p>
+
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+
+
 
 <p>Warum ist das so?  Auch zwei Tage später sollte die Ressource „Liste der Bücher
 mit dem Wort ‚Web’ im Titel“ noch vorhanden sein!
 Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
 Session.</p>
 
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+
+
+
 <p>Nach dem REST-Prinzip sollte man also den Zustand der Session nur dann
 verwenden, wenn er unbedingt notwendig ist. </p>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+
+
 
 <p>z.B. könnte man denken „Liste meiner ausgeliehenen Bücher“ sei von der Session abhängig. 
 Aber selbst hier könnte man eine fixe URL
@@ -361,6 +451,11 @@ verwenden:</p>
 <p>Auf diese URL muß es nun Zugriffsbeschränkungen geben: nur ich und die
 BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den Statuscode
 <code>403 Access Denied</code>. Die BibliothekarIn hat aber Zugriff auf alle URLs dieser Form.</p>
+
+
+<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+
+
 
 <p><strong>Achtung</strong>: wir haben schon ein Szenario kennen gelernt, wo die
 Zeitbeschränkung von Sessions einen Sinn macht: Zum Verhindern von
@@ -872,39 +967,19 @@ gehen Sie möglichst sparsam damit um.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -921,6 +996,10 @@ gehen Sie möglichst sparsam damit um.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -957,6 +1036,34 @@ gehen Sie möglichst sparsam damit um.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1065,6 +1172,7 @@ gehen Sie möglichst sparsam damit um.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

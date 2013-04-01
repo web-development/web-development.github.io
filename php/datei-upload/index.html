@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Datei Upload</h2>
-                                <a href="/php/datei-upload/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Datei Upload</h2>
+                                <a href="/php/datei-upload/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="frontend">Frontend</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="frontend">Frontend</h2>
 
 <p>Im “Frontend” gab es in den letzten Jahren einige Verbesserungen beim
 Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
@@ -58,6 +69,11 @@ durch “Drag-and-Drop” auf den Browser</p>
 
 <p>Dazu ist aber eine Javascript-API notwendig, die wir erst
 später kennen lernen.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Die einfachste Version des Upload-Formulares verwendet eine input-Tag
 vom typ <code>file</code>:</p>
@@ -72,9 +88,17 @@ vom typ <code>file</code>:</p>
 &lt;/form&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
 
 <p><img src="/images/image345.png" alt="Webformular mit Datei-Upload" /></p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="backend">Backend</h2>
 
@@ -92,12 +116,18 @@ ausgeführt.</p>
 Rechten des Account <code>apache</code> ausgeführt wird.  Ein guter erster Schritt, wenn
 man den Server hacken will!</p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h3 id="manahmen">Maßnahmen</h3>
 
 <p>Die Mindestanforderungen an ein Upload-Skript lauten also:
 * <strong>niemals</strong> hochgeladene Daten als Code interpretieren!
 * Vorsicht bei Daten, die im Webspace gespeichert werden!
 * Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="implementierung">Implementierung</h3>
 
@@ -117,6 +147,9 @@ man den Server hacken will!</p>
   <dt><code>$_FILES['bild']['error']</code></dt>
   <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.</dd>
 </dl>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="beispielcode">Beispielcode</h3>
 
@@ -147,6 +180,9 @@ print '&lt;/pre&gt;';
 
 ?&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="zugriffsrechte-am-server">Zugriffsrechte am Server</h3>
 
@@ -650,39 +686,19 @@ hineinschreiben darf!</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -699,6 +715,10 @@ hineinschreiben darf!</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -735,6 +755,34 @@ hineinschreiben darf!</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -843,6 +891,7 @@ hineinschreiben darf!</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -47,13 +55,16 @@
                           </div>
 			
 
-			<p>Der Fokus dieses Buches liegt darauf der Software-Entwicklung für das World Wide Web.  Das ist die Kernkompetenz die Sie erwerben sollen.</p>
+			<a name='slide-1'></a><p>Der Fokus dieses Buches liegt darauf der Software-Entwicklung für das World Wide Web.  Das ist die Kernkompetenz die Sie erwerben sollen.</p>
 
 <p>In vielen Anwendungs-Szenarien werden Sie das aber nicht tun: Für viele Szenarien
 gibt es bereits fertige Software, die Sie nur adaptieren und konfigurieren müssen.
 Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management Systeme.</p>
 
 <p>In diesem Kapitel lernen Sie “Wordpresss” als Beispiel für so ein System kennen.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="was-sie-wissen-sollten">Was Sie wissen sollten</h3>
 
@@ -65,6 +76,9 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
   <li>Dass Wordpress das Modul <code>mod_rewrite</code> von Apache verwendet um URLs zu verändern, und diese URLs “permalinks” nennt</li>
 </ul>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h3 id="was-sie-knnen-sollten">Was Sie können sollten</h3>
 
 <ul>
@@ -73,6 +87,9 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
   <li>Beträge/Artikel + Seiten schreiben, Widgets einrichten.</li>
 </ul>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="weitere-informationsquellen">Weitere Informationsquellen</h3>
 
 <ul>
@@ -80,6 +97,9 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
   <li><a href="http://de.wordpress.org/">Deutsches Wordpress Homepage</a></li>
   <li><a href="http://codex.wordpress.org/">Dokumentation von Wordpress</a></li>
 </ul>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="vertiefung">Vertiefung</h3>
 
@@ -632,39 +652,19 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -681,6 +681,10 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -717,6 +721,34 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -825,6 +857,7 @@ Zum Beispiel Wikis, Blogging-Systeme, oder ganz allgemein Web Content Management
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

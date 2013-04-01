@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Rahmenbedingungen für Layout</h2>
-                                <a href="/css-layout/rahmenbedingungen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Rahmenbedingungen für Layout</h2>
+                                <a href="/css-layout/rahmenbedingungen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle. </p>
+			<a name='slide-1'></a><p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle. </p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="auflsung">Auflösung</h2>
 <p>Zuerst stellt sich die Frage: woher weiß ich, wie hoch die Auflösung am Computer meiner LeserIn ist?  Woher weiß ich, wie viel Platz im Browserfenster zur Verfügung steht?</p>
@@ -63,6 +74,11 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 
 <p>Alle Messmethoden die uns zur Verfügung stehen sind unvollständig.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Abbildung 25 zeigt einige derzeit (2012) mögliche Bildschirm-Auflösungen. </p>
 
 <p><img src="/images/image092.png" alt="Abbildung 25: einige mögliche Bildschirmauflösungen und Seitenverhältnisse 2011," /></p>
@@ -71,11 +87,19 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 
 <p>Vergleichen Sie die höchsten hier dargestellte Auflösungen mit der geringsten Auflösungen. Da Breite und Höhe (mehr als) verdreifacht sind, steht bei der höchsten Auflösung also (mehr als) die neunfache Fläche zur Verfügung!</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.</p>
 
 <p><img src="/images/image097.png" alt="Abbildung 26: Statistik über die Bildschirmauflösung," /></p>
 
 <p>http://www.w3schools.com/browsers/browsers_display.asp</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="pixeldichte">Pixeldichte</h2>
 
@@ -172,10 +196,16 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="brutto-flche-vs-netto-flche">Brutto-Fläche vs. Netto-Fläche</h2>
 <p>Von diesen „Brutto-Angaben“ über die Größe der zur Verfügung stehenden Fläche sind nun noch der Platz für den Fensterrahmen des Browsers, für Scrollbalken, Symbolleisten, und eventuell eingeblendete Favoritenleisten abzuziehen, um den „netto“ verbleibenden Raum für die Gestaltung der Webseite zu erhalten. Abbildung 27 zeigt diese Problematik am Beispiel von Firefox. </p>
 
 <p><img src="/images/image100.png" alt="Abbildung 27: Platzbedarf von Browser-Elementen: firefox ohne Sidebar, Internet Explorer mit Favoriten" /></p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="umgang-mit-der-problematik">Umgang mit der Problematik</h2>
 <p>Wie gehen WebdesignerInnen mit den verschiedenen Auflösungen um? Ein paar Varianten:</p>
@@ -186,6 +216,11 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
   <li>Zwei oder drei Entwürfe, die den gleichen Inhalt für verschiedene Auflösungen unterschiedlich darstellen.</li>
 </ol>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Dazu ein strenges Urteil:</p>
 
 <ol>
@@ -194,11 +229,19 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
   <li>Nur das verdient wirklich die Bezeichnung „Webdesign“.</li>
 </ol>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
 <h2 id="technische-umsetzung">Technische Umsetzung</h2>
 
 <p>Kleine Unterschiede im vorhandenen Platz kann man durch Zentrierung des Inhalts augleichen (siehe auch “Briefmarkenlayout”)</p>
 
 <p><img src="/images/image110.png" alt="Abbildung 28: Homepage der FH Salzburg (August 2012)" /></p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
 
 <div class="example">
 <h4 class="caption">Css Code <small>fixen Breite und automatischer Seitenabstand ergeben eine Zentierung des Inhalts</small></h4>
@@ -209,15 +252,24 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
   }
 </pre></div>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h2 id="responsive-design">Responsive Design</h2>
 
 <p>Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in “A List Apart” unter dem Begriff “Responsive Webdesign” popularisiert <a href="http://www.alistapart.com/articles/responsive-web-design/">→</a>. </p>
 
 <p><img src="/images/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
 
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
 <h2 id="mobile-first">Mobile First</h2>
 
 <p>Luke Wroblewski schlug schon 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h2 id="mediaqueries">Mediaqueries</h2>
 
@@ -235,8 +287,14 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
   /* allgemein gültige Regeln */
 </pre></div>
 
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
 <h2 id="bilder">Bilder</h2>
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist im Jahr 2011 anders.</p>
+
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h3 id="pixel">Pixel</h3>
 <p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
@@ -247,6 +305,9 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 
 <p><img src="/images/image119.png" alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" /></p>
 
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
 <h3 id="vektor">Vektor</h3>
 
 <p>Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag: </p>
@@ -255,6 +316,9 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 </code></pre>
 
 <p><img src="/images/circle.svg" alt="Abbildung: Kreis in SVG-Darstelllung" /></p>
+
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h3 id="svg-erstellen">SVG erstellen</h3>
 
@@ -282,9 +346,15 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 
 <p>Das Attribut <code>preserveAspectRatio</code> im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.</p>
 
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+
 <h3 id="canvas">Canvas</h3>
 
 <p>Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.</p>
+
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 <p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG – </p>
@@ -292,6 +362,9 @@ Version 9.0. Siehe <a href="http://caniuse.com/css-mediaqueries">can i use</a>.<
 <p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt. </p>
 
 <p><img src="/images/zeilenumbruch.png" alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" /></p>
+
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
 
 <h2 id="skalieren">Skalieren</h2>
 
@@ -301,6 +374,9 @@ verkleinert (heute default), oder nur der Text wird verändern, die Bilder aber 
 Hier das entsprechnde Menü in Firefox. </p>
 
 <p><img src="/images/zoom.png" alt="Abbildung 32: Zoom Menü in Firefox" /></p>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h2 id="retina-displays">Retina Displays</h2>
 
@@ -808,39 +884,19 @@ das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -857,6 +913,10 @@ das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -893,6 +953,34 @@ das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1001,6 +1089,7 @@ das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

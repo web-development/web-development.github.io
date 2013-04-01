@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Grundformen in SVG</h2>
-                                <a href="/svg/formen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Grundformen in SVG</h2>
+                                <a href="/svg/formen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
+			<a name='slide-1'></a><p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
 simple geometrische Elemente definiert.</p>
 
 <svg width="700" height="200">
@@ -67,6 +75,9 @@ simple geometrische Elemente definiert.</p>
   </g>
 </svg>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h3 id="kreis-ellipse-rechteck">Kreis, Ellipse, Rechteck</h3>
 
 <p>Das Rechteck wird die Position seiner oberen linken Ecke, seiner Breite und seiner Höhe definiert. Der
@@ -83,6 +94,11 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
           fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Viele Attribute kann man alternativ auch über CSS definieren.</p>
 
 <div class="example">
@@ -92,6 +108,9 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
  &lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
           style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="pfad-und-polygon">Pfad und Polygon</h3>
 
@@ -105,6 +124,11 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
     &lt;path d=&quot;M 149,109 L 149,127 L 127 144    L 140,172    L 188,167 L 191,119 L 149,109 z&quot;
           fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p>Wird der Befehl als Großbuchstaben geschrieben, dann werden die Koordinaten
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
@@ -146,6 +170,11 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
     </tr>
   </tbody>
 </table>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 
 <p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
@@ -193,6 +222,9 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
   </tbody>
 </table>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h3 id="text">Text</h3>
 
 <p>Mit dem Tag <code>text</code> kann Text in SVG gesetzt werden. Das ist
@@ -203,6 +235,11 @@ an und für sich noch nicht sehr spannend:</p>
 <pre class="lang-html prettyprint linenums">
     &lt;text x=&quot;122&quot; y=&quot;81&quot;&gt;Kreis + Ellipse&lt;/text&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
 
 <p>Mit dem Tag <code>textpath</code> kann der Text entlang eines
 beliebigen Pfades gesetzt werden.</p>
@@ -734,39 +771,19 @@ beliebigen Pfades gesetzt werden.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li class="active"><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li class="active"><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -783,6 +800,10 @@ beliebigen Pfades gesetzt werden.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -819,6 +840,34 @@ beliebigen Pfades gesetzt werden.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li class="active"><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -927,6 +976,7 @@ beliebigen Pfades gesetzt werden.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

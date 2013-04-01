@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,15 +51,18 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Graceful Degradation</h2>
-                                <a href="/jquery/graceful/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Graceful Degradation</h2>
+                                <a href="/jquery/graceful/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
+			<a name='slide-1'></a><p>Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
 mit <code>&lt;a name=...&gt;</code> gesetzt, über ein Navigationsmenü soll man diese erreichen
 können.  <a href="http://brigitte-jellinek.at">Diese Seite</a> zeigt ein funktionierendes
 Beispiel (letzte Version).</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="version-1">Version 1</h3>
 
@@ -91,6 +102,9 @@ Beispiel (letzte Version).</p>
 
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h3 id="version-2">Version 2</h3>
 
 <p>In einem Versuch die Seite zu verbessern ersetzen wir nun die 
@@ -128,6 +142,11 @@ function scrollToMe(id) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Diese Version ist kein Beispiel für gutes Javascript:
 in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</code> nicht.</p>
 
@@ -145,6 +164,9 @@ in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</cod
   <li>kein progressive enhancement: Links funktionieren nicht mehr</li>
   <li>kein unobstrusive javascript: Javascript-Code direkt in HTML-Attributen</li>
 </ul>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="version-3">Version 3</h3>
 
@@ -190,6 +212,11 @@ $(document).ready( function () {
 });
 </pre></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
 <p>Diese Variante funktioniert schon besser:</p>
 
 <ul>
@@ -210,6 +237,9 @@ beim anderen Prinzipien auf halben Weg</p>
   </li>
   <li>unobstrusive javascript: erfüllt</li>
 </ul>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="version-4">Version 4</h3>
 
@@ -252,6 +282,11 @@ die im weiteren Code verwendet werden können - wird von der Library
 <a href="http://modernizr.com/">modernizr</a> für eine lange Liste von Features
 angeboten.</p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Nebenbemerkung: In ganz seltenen Fällen muss man doch Browser Detection machen.
 Eine Gute Library dafür ist <a href="http://api.html5please.com/">HTML5 please</a>.
 Damit kann man eine Liste von Features angeben die erfüllt sein
@@ -259,6 +294,11 @@ müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
 wird eine entsprechende Meldung angezeigt</p>
 
 <p><img src="/images/html5please.png" alt="HTML5 please Fehlermeldung" /></p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Diese Variante behebt das Problem mit nicht-funktionierenden
 Javascript-Browsern:</p>
@@ -279,6 +319,9 @@ Javascript-Browsern:</p>
   </li>
   <li>unobstrusive javascript: erfüllt</li>
 </ul>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="version-5">Version 5</h3>
 
@@ -318,6 +361,11 @@ function scrollToMe(event) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
 <p>Mit dieser Variante haben wir  für die Javascript-Browser
 alle Funktionalität der einfachen HTML-Version wiederhergestellt.
 Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
@@ -328,6 +376,11 @@ Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
   <li>progressive enhancement - alle Browser erhalten die maximal mögliche Funktionalität</li>
   <li>unobstrusive javascript - kein Javascript-Code im HTML</li>
 </ul>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
 
 <p>History auch in HTML4 Browsern verwenden:
 https://github.com/balupton/History.js/</p>
@@ -828,39 +881,19 @@ https://github.com/balupton/History.js/</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -877,6 +910,10 @@ https://github.com/balupton/History.js/</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -913,6 +950,34 @@ https://github.com/balupton/History.js/</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1021,6 +1086,7 @@ https://github.com/balupton/History.js/</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Kurz-Installation von Wordpress</h2>
-                                <a href="/wordpress/installation/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Kurz-Installation von Wordpress</h2>
+                                <a href="/wordpress/installation/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Voraussetzung ist, dass in Ihrem Webspace PHP und MySQL möglich sind.</p>
+			<a name='slide-1'></a><p>Voraussetzung ist, dass in Ihrem Webspace PHP und MySQL möglich sind.</p>
 
 <ol>
   <li>Finden Sie heraus wie der Zugang zur Datenbank funktioniert: Datenbankname, Username, Passwort</li>
@@ -56,6 +64,11 @@
   <li>Laden Sie das Gesamtpaket (allen Dateien und Unterordner) auf Ihren Webspace hoch. Damit ist der Aufwändige teil erledigt, weiter geht es (fast) nur mit dem Browser weiter.</li>
   <li>Öffnen Sie die Seite über den Webbrowser, folgen Sie den weiteren Anweisungen um einen ersten Account anzulegen.</li>
 </ol>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Sie werden in Schritt vier nach den Zugangsdaten für die Datenbank gefragt. Es geht hier um vier Angaben:</p>
 
@@ -65,6 +78,11 @@
   <li>Passwort (für den Datenbank-Zugriff)</li>
   <li>Datenbank Host (das ist immer „localhost“)</li>
 </ul>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Diese Daten werden am Ende in der Datei wp-config.php gespeichert, und zwar in folgender Form:</p>
 
@@ -78,6 +96,11 @@ define('DB_HOST',     'localhost');
                // 99% chance you won't need to change this value
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Wenn Sie mehrere Wordpresse mit nur einer Datenbank betreiben gibt es eine weitere Frage: den Tabellen Prefix – die verschiedenen Wordpresse legen jeweils ca. 12 Tabellen an, damit diese Tabellen nicht alle den gleichen Namen haben wird der Prefix verwendet: z.B. beim ersten Wordpress beginnt der Tabellenname immer mit wp_ beim zweiten mit devblog_.</p>
 
 <div class="example">
@@ -87,6 +110,11 @@ define('DB_HOST',     'localhost');
 // if you give each a unique prefix
 $table_prefix  = 'devblog_';      // Only numbers, letters, and underscores 
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p>Nach der Installation von Wordpress finden Sie das Backend im Ordner wp-admin (also z.B. http://meinblog.at/wp-admin/). Dieser Bereich ist nur mit Login zugänglich. Im Rahmen der Installation wurde ein Account angelegt den Sie verwenden können.</p>
 
@@ -586,39 +614,19 @@ $table_prefix  = 'devblog_';      // Only numbers, letters, and underscores
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -635,6 +643,10 @@ $table_prefix  = 'devblog_';      // Only numbers, letters, and underscores
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -671,6 +683,34 @@ $table_prefix  = 'devblog_';      // Only numbers, letters, and underscores
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -779,6 +819,7 @@ $table_prefix  = 'devblog_';      // Only numbers, letters, and underscores
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

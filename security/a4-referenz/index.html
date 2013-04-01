@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,18 +51,21 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Unsichere direkte Objektreferenzen</h2>
-                                <a href="/security/a4-referenz/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Unsichere direkte Objektreferenzen</h2>
+                                <a href="/security/a4-referenz/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
+			<a name='slide-1'></a><p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
 
 <blockquote>
   <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
 </blockquote>
 
 <p>Dieser Punkt hängt eng mit <a href="A8 - Mangelhafter URL-Zugriffsschutz">/security/a8-url/</a> zusammen.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="beispiel-fr-unsichere-direkte-referenz">Beispiel für unsichere direkte Referenz</h2>
 
@@ -74,6 +85,9 @@
 
 <p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h2 id="vermeidung-von-unsichere-direkten-referenzen">Vermeidung von unsichere direkten Referenzen</h2>
 
 <ul>
@@ -86,6 +100,9 @@
 <ul>
   <li>Am Server prüfen ob genau diese UserIn Zugriff auf genau diese Ressource hat.</li>
 </ul>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="slugs-statt-keys">Slugs statt Keys</h2>
 
@@ -113,6 +130,9 @@ RewriteRule ^item/([-a-z]+) view_item.php?slug=$1
 </pre></div>
 
 <p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="kein-zugriff-auf-beliebige-dateien">Kein Zugriff auf beliebige Dateien</h2>
 
@@ -639,39 +659,19 @@ Dateien am Server “erforschen”. </p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -688,6 +688,10 @@ Dateien am Server “erforschen”. </p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -724,6 +728,34 @@ Dateien am Server “erforschen”. </p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -832,6 +864,7 @@ Dateien am Server “erforschen”. </p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

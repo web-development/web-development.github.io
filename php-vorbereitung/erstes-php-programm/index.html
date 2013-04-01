@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,14 +51,19 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Das erste PHP-Programm</h2>
-                                <a href="/php-vorbereitung/erstes-php-programm/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Das erste PHP-Programm</h2>
+                                <a href="/php-vorbereitung/erstes-php-programm/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Während das Schreiben und Testen von HTML-Seiten sehr einfach war,
+			<a name='slide-1'></a><p>Während das Schreiben und Testen von HTML-Seiten sehr einfach war,
 erforder das Schreiben und Testen von PHP einige Schritte mehr.
 Hier eine Schritt- für Schritt Auflistung, was alles schief gehen kann:</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Das Programm muss die richtige Dateiendung (.php) haben. Es kann nicht direkt im
 Browser angezeigt werden, sondern muss über den Webserver aufgerufen weden. In
@@ -64,6 +77,11 @@ funktionieren!</p>
 
 <p><img src="/images/php-no-webserver.svg" alt="Vergleich von file: und http:" /></p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm
 speichern, und über den Webserver aufrufen, wird es trotzdem nicht vom Webserver 
 interpretiert, sondern direkt an den Browser gesandt. </p>
@@ -73,11 +91,21 @@ erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 geze
 
 <p><img src="/images/image328.png" alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" /></p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver 
 betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. 
 Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
 <p><img src="/images/image329.png" alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" /></p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p>Zum Abschluss nun das funktionierende Programm bei einem funktionierenden
 Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
@@ -86,6 +114,9 @@ Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 <p><img src="/images/image330.png" alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" /></p>
 
 <p>Mit Ansicht-&gt;Quelltext kann man nun im Browser nur noch den HTML-Code sehen, niemals aber den PHP-Quellcode!</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="php-versionen">PHP Versionen</h2>
 <p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen 
@@ -105,6 +136,11 @@ aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeb
 
 <p>Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5. </p>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
+
 <p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen: 
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
 können Sie das nicht ändern!
@@ -112,10 +148,18 @@ Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.
 Und Sie sollten auf Ihrem Entwicklungsrechner die gleiche PHP Version
 verwenden die am Webspace installiert ist.</p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
 <h2 id="dokumentation">Dokumentation</h2>
 <p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
 
 <p><img src="/images/image331.png" alt="Abbildung 129: Eine Funktion in der Doku auf php. net nachschlagen" /></p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation “vergessen” wurden, oder Anwendungsbeispiele:</p>
 
@@ -619,39 +663,19 @@ verwenden die am Webspace installiert ist.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -668,6 +692,10 @@ verwenden die am Webspace installiert ist.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -704,6 +732,34 @@ verwenden die am Webspace installiert ist.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -812,6 +868,7 @@ verwenden die am Webspace installiert ist.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

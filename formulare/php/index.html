@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Formular und PHP</h2>
-                                <a href="/formulare/php/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Formular und PHP</h2>
+                                <a href="/formulare/php/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die
+			<a name='slide-1'></a><p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die
 URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur
 Verfügung gestellt. („Superglobal“ bedeutet, dass das Array in jedem Teil des
 PHP-Programmes sichtbar ist. </p>
@@ -57,6 +65,11 @@ PHP-Programmes sichtbar ist. </p>
 kann nicht nur Integers als Index haben (z.B. <code>$a[0]</code>) sondern auch Strings
 (z.B. <code>$a['salzburg']</code>).  Der Name des Eingabefelder wird hier als Index
 verwendet.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
 
 <p>Um die Bestellung aus dem Formular zu verarbeiten, könnte folgendes Programm verwendet werden:</p>
 
@@ -73,6 +86,11 @@ verwendet.</p>
 </pre></div>
 
 <p>Dabei wird aber die Eingabe noch gar nicht geprüft.  </p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>In dieser minimalen Version des Bestellprogramms senden wir die Daten einfach vom Server per E-Mail weiter:</p>
 
@@ -582,39 +600,19 @@ mail(
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -631,6 +629,10 @@ mail(
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -667,6 +669,34 @@ mail(
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -775,6 +805,7 @@ mail(
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

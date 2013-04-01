@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,15 +51,18 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">HTTP</h2>
-                                <a href="/http/http/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>HTTP</h2>
+                                <a href="/http/http/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. 
+			<a name='slide-1'></a><p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. 
 HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. 
 Im <a href="/das-web-und-html/standards/">Kapitel „Drei Standards definieren das Web“</a> 
 wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
 <p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich. </p>
@@ -65,15 +76,28 @@ wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten
   <li>Der Browser nimmt das Dokument in Empfang, <strong>stellt es dar</strong>, und beendet die TCP-Verbindung.</li>
 </ol>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p><img src="/images/http-sequence-diagram.svg" alt="zwei http requests" /></p>
 
 <p>Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="aufbau-von-request-und-response">Aufbau von Request und Response</h2>
 <p>Jede Anfrage des Clients und jede Antwort des Servers besteht aus einer ersten Zeile 
 mit besonderer Bedeutung, einem Header und einem Body. 
 Header und Body funktionieren ähnlich wie bei einer E-Mail, es kann viele
 Header-Zeilen geben.  Der Body ist beim Request meist leer.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p>Hier ein Beispiel für einen Request:</p>
 
@@ -90,6 +114,11 @@ Header-Zeilen geben.  Der Body ist beim Request meist leer.</p>
 Die meist-verwendete Methode ist GET. Sie erinnern sich:
 bei Web-Formularen muss man die Methode angeben, mit der die Daten an den 
 Server übertragen werden sollen. Das ist diese Methode.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 
 <p>Hier ein Beispiel für eine Server-Antwort:</p>
 
@@ -109,15 +138,24 @@ Server übertragen werden sollen. Das ist diese Methode.</p>
 <p>Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).
 Siehe http://httpstatus.es/</p>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="header">Header</h2>
 
 <p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet. </p>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="host">Host</h3>
 
 <p>Im Request: <code>Host: www.biblio.at</code> Wichtig wenn der Server unter mehreren Domain Names (aber nur einer IP-Adresse) 
 erreichbar ist.  Das ist fast immer der Fall, dieser Header ist also fast immer
 notwendig.</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="user-agent">User-Agent</h3>
 
@@ -130,11 +168,17 @@ notwendig.</p>
 <p>Das ist die Selbstoffenbarung des Clients: welcher Browser, welche Version. Die meisten 
 Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe. </p>
 
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
 <h3 id="referer">Referer</h3>
 
 <p>Im Request: <code>Referer: http://my.app.at/form.html</code> Welche Seite hat der Client
 zuvor angezeigt? URL der vorigen Seite — falls von dort ein Link hierher verfolgt 
 wurde oder ein FORM gesendet wurde. Dieser Header kann im Browser deaktiviert werden!</p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h3 id="date-server">Date, Server</h3>
 
@@ -147,6 +191,9 @@ Server: Apache/1.3.9 (Unix) Debian/GNU
 <p>zeigt Datum und Uhrzeit am Server, bzw. die verwendete
 Webserver-Software.  Wenn Sie Statistiken über den Marktanteil der verschiedenen
 Server sehen, dann basieren diese auf dieser Angabe.</p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="content-type">Content-Type</h3>
 
@@ -167,6 +214,9 @@ sie hier häufig antreffen sind:</p>
   <li>image/svg+xml</li>
 </ul>
 
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
 <h2 id="http-abhren">HTTP abhören</h2>
 <p>Wie können Sie HTTP beobachten?  Entweder mit einem allgemeinen
 <strong>Netzwerk-Sniffer</strong> wie <a href="http://www.wireshark.org/">Wireshark</a> oder mit der 
@@ -176,6 +226,9 @@ oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search
 <p><img src="/images/image334.png" alt="Abbildung 131: HTTP abhören mit Wireshark (links) und Live HTTP Headers (rechts)" /></p>
 
 <p>Die folgenden Anwendungsbeispiele wurden mit Live HTTP Headers mitgeschnitten.</p>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
 <p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten. </p>
@@ -203,6 +256,11 @@ oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search
 
 <p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post. </p>
 
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+
+
 <p>Die Header, die mit Accept beginnen, können (laut Standard) dem Aushandeln von Sprache, Datentyp, Encoding dienen; werden aber von Servern und Clients nur teilweise beachtet.</p>
 
 <pre><code>  Accept: text/html;q=0.9,text/plain;q=0.8,*/*;q=0.1 
@@ -217,6 +275,9 @@ oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search
 <p>Da aber kaum jemand diese Konfiguration vornimmt wird die Sprach-Aushandlung kaum verwendet. Einziges mir bekanntes Beispiel einer Webseite die unter der gleichen URL in verschiedenen Sprachen erhältlich ist ist die Homepage von Debian:</p>
 
 <p><img src="/images/image336.png" alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" /></p>
+
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
 <p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
@@ -234,6 +295,9 @@ oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search
 </code></pre>
 
 <p>Die Antwort des Servers unterscheidet sich nicht zwischen GET und POST (außer Sie haben das in PHP absichtlich so programmiert).</p>
+
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
 <p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht. </p>
@@ -271,6 +335,9 @@ oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search
 </code></pre>
 
 <p>und so weiter.</p>
+
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
 <p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
@@ -325,6 +392,9 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
   &lt;title&gt;Universit&amp;auml;t Salzburg - B&amp;uuml;ro f&amp;uuml;r Public Relations&lt;/title&gt;
 </code></pre>
 
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+
 <h2 id="https">HTTPS</h2>
 <p>HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen. </p>
 
@@ -335,6 +405,9 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 <p>Die Electronic Frontier Foundation hat eine Kampagne11 gestartet um KonsumentInnen und Website-BetreiberInnen zu überzeugen, dass https immer verwendet werden sollte: „HTTPS Everywhere“.</p>
 
 <p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.  </p>
+
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
 
 <h2 id="proxies">Proxies</h2>
 <p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
@@ -844,39 +917,19 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -893,6 +946,10 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -929,6 +986,34 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1037,6 +1122,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

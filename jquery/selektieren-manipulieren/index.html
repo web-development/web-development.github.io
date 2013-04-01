@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Selektieren und Manipulieren mit jQuery</h2>
-                                <a href="/jquery/selektieren-manipulieren/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Selektieren und Manipulieren mit jQuery</h2>
+                                <a href="/jquery/selektieren-manipulieren/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:</p>
+			<a name='slide-1'></a><p>jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -75,6 +83,9 @@ $('h2').nextUntil('h2')      /* Alle Tags zwischen einem h2 und dem nächsten */
 </pre></div>
 
 <p>Das Ergebnis ist jeweils ein jQuery Objekt.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="manipulation">Manipulation</h2>
 
@@ -588,39 +599,19 @@ Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -637,6 +628,10 @@ Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -673,6 +668,34 @@ Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -781,6 +804,7 @@ Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

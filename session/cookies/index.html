@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Cookies</h2>
-                                <a href="/session/cookies/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Cookies</h2>
+                                <a href="/session/cookies/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen
+			<a name='slide-1'></a><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen
 Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage
 abrufen oder ob eine Person die Seite 10 mal lädt.</p>
 
@@ -60,6 +68,9 @@ Gegenteil davon wäre „statefull“ (zustandsbehaftet).</p>
 <p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“
 schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
 „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="cookies">Cookies</h2>
 
@@ -73,6 +84,11 @@ wieder mitsendet. </p>
 <p>Der Browser sendet nie ein Cookie an einen anderen Webserver
 als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von
 verschiedenen Servern speichern (In einem Cookie-Jar).</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User
 wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server
@@ -93,6 +109,9 @@ Ablaufdatum in der Vergangenheit zu setzen:</p>
 Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="cookies-in-php">Cookies in PHP</h3>
 
 <p>In PHP finden Sie die bereits gesetzten Cookies, die vom Browser zurückgesendet
@@ -100,6 +119,9 @@ wurden im Array <code>$_COOKIES</code><a href="http://php.net/manual/en/reserved
 (und — zusammen mit GET und POST-Parametern — in $_REQUEST). </p>
 
 <p>Neue Cookies können Sie mit <code>setcookie()</code><a href="http://www.php.net/manual/en/function.setcookie.php">*</a> setzen. </p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
@@ -125,6 +147,9 @@ alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
 <p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten
 Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die
 neuen Cookies in Javascript über document.cookie lesbar!</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="libraries-fr-cookies-in-javascript">Libraries für Cookies in Javascript</h3>
 
@@ -632,39 +657,19 @@ es zwei gute Libraries:</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -681,6 +686,10 @@ es zwei gute Libraries:</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -717,6 +726,34 @@ es zwei gute Libraries:</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -825,6 +862,7 @@ es zwei gute Libraries:</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

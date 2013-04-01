@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Basic Javascript</h2>
-                                <a href="/javascript-dom/basic-javascript/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Basic Javascript</h2>
+                                <a href="/javascript-dom/basic-javascript/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
+			<a name='slide-1'></a><p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
 <a href="/images/farbfeld.html">live im browser</a>.</p>
 
 <div class="example">
@@ -77,6 +85,9 @@ function setcolor( c ) {
 
 <p>Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird. </p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
 <h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
 
 <ul>
@@ -85,6 +96,9 @@ function setcolor( c ) {
   <li>Javascript in einer URL</li>
   <li>onevent-Attribute</li>
 </ul>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
 
@@ -96,6 +110,9 @@ function setcolor( c ) {
 </pre></div>
 
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
 <p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet
@@ -116,6 +133,9 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 </pre></div>
 
 <p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
 
@@ -139,11 +159,19 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h3 id="die-onevent---attribute">Die onevent - Attribute</h3>
 
 <p>Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.</p>
 
 <p>Ein paar typische Events mit ihren typischen HTML-Tags:</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -152,12 +180,22 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;a href=&quot;...&quot; onmouseover=&quot;...&quot;&gt;
 </pre></div>
 
 <p>Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: onmouseout). (Achtung: funktioniert nicht auf Touch-Devices – so wie :hover)</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -166,12 +204,22 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll. </p>
 
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
+
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;form onsubmit=&quot;...&quot;&gt;
 </pre></div>
 
 <p>Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden. Falls der Javascript-Code false zurückgibt werden die Daten aber nicht versandt! </p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -180,6 +228,11 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <p>Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascript-Code false zurückgibt wird der Link aber nicht aktiviert!</p>
 
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;input onchange=&quot;...&quot;&gt;
@@ -187,12 +240,22 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
 
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;div ontouchstart=&quot;...&quot; ontouchend=&quot;...&quot; ontouchmove=&quot;....&quot;&gt;
 </pre></div>
 
 <p>Nur auf geräten mit Touchscreen.</p>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -202,11 +265,19 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn das Gerät die Verbindung zum Internet
 verliert, bzw. wieder erhält.</p>
 
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
 <h2 id="syntax-von-javascript">Syntax von Javascript</h2>
 
 <p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Anweisung wird mit einem Strichpunkt (Semikolon) getrennt, Blöcke werden mit geschwungenen Klammern gebildet. </p>
 
 <p>Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Funktionen existieren können, die zu diesem Objekt gehören.</p>
+
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
+
 
 <p>Zum Beispiel das Objekt <code>document</code> ist bei Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):</p>
 
@@ -220,9 +291,17 @@ document.location = &quot;http://io9.com&quot;;
 document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die webseite
 </pre></div>
 
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+
+
+
 <p>Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes <code>div</code> in der Webseite auszuwählen. </p>
 
 <p><img src="/images/image254.png" alt="Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/" /></p>
+
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h3 id="variablen">Variablen</h3>
 
@@ -231,6 +310,9 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 <p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben. </p>
 
 <p><img src="/images/image264.png" alt="Abbildung 58: Javascript Console in Firebug" /></p>
+
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
 
 <h3 id="datentypen">Datentypen</h3>
 
@@ -250,6 +332,9 @@ bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werde
 darüber nur noch floats.  Die Details
 können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
 
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+
 <h3 id="arrays">Arrays</h3>
 
 <p>Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>, …  Aber eigentlich sind Arrays schon Objekte. </p>
@@ -263,6 +348,11 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   b = new Array(&quot;eins&quot;, 2, 3.141, true);  // Objekt-Schreibweise  
   // typeof(b) == &quot;object&quot;
 </pre></div>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+
+
 
 <p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft .length ausgelesen werden.
 <a href="/images/jsarray.html">Beispiel live im Browser</a></p>
@@ -279,6 +369,9 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   }   
   alert(t);
 </pre></div>
+
+
+<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
 
 <h3 id="objekte">Objekte</h3>
 
@@ -305,6 +398,9 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   // d.constructor === Object
 </pre></div>
 
+
+<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+
 <h3 id="zugriff-auf-eigenschaften">Zugriff auf Eigenschaften</h3>
 
 <p>Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen finden werden) ist, dass Eigenschaften eines Objekts nicht nur über die Punkt-Schreibweise, sondern auch über eckige Klammern – also wie ein Array – angesprochen werden können:</p>
@@ -322,6 +418,9 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
   e = &quot;beschriftung&quot;;
   alert(&quot;Die Beschriftung lautet &quot; + c[e] );
 </pre></div>
+
+
+<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
 
 <h3 id="schleife-ber-eigenschaften">Schleife über Eigenschaften</h3>
 
@@ -834,39 +933,19 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -883,6 +962,10 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -919,6 +1002,34 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1027,6 +1138,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

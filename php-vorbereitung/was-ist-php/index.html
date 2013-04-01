@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Was ist PHP? Was passiert am Webserver?</h2>
-                                <a href="/php-vorbereitung/was-ist-php/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Was ist PHP? Was passiert am Webserver?</h2>
+                                <a href="/php-vorbereitung/was-ist-php/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>PHP ist eine Programmiersprache die oft am Webserver verwendet wird, um HTML dynamisch zu erzeugen. </p>
+			<a name='slide-1'></a><p>PHP ist eine Programmiersprache die oft am Webserver verwendet wird, um HTML dynamisch zu erzeugen. </p>
 
 <p>Sie ist im Vergleich zu anderen Programmiersprachen wie C++  oder Javascript
 recht ‘'’simple’’’  in der Schreibweise und etwas ‘'’altmodisch’’’. Gerade deswegen eignet sie sich gut für Programmier-EinsteigerInnen. Viele bekannte open source Web-Applikationen sind in PHP geschrieben.</p>
@@ -56,12 +64,22 @@ recht ‘'’simple’’’  in der Schreibweise und etwas ‘'’altmodisch’
 <p>Neben PHP werden viele andere Sprachen am Webserver verwendet: ruby (on rails),
 c#, java, python, … </p>
 
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
 <p><img src="/images/php-sequence-diagram.svg" alt="Abbildung: So funktioniert PHP" /></p>
 
 <p>Das PHP-Programm wird gestartet um die Anfrage des Browsers zu beantworten. Nachdem diese Aufgabe erfüllt ist, wird das PHP-Programm wieder beendet. Die Laufzeit ist also sehr, sehr kurz! </p>
 
 <p>Der Output ist immer HTML. Der Client erhält nur das fertige HTML und kann nicht erkennen, welche Sprache am
 Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser sichtbar.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Ein sehr einfaches Beispielprogramm in PHP gibt „Hallo Welt“ aus und zeigt (mit dem Befehl phpinfo) viele Informationen über den Webserver und die PHP Installation an:</p>
 
@@ -575,39 +593,19 @@ Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -624,6 +622,10 @@ Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -660,6 +662,34 @@ Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -768,6 +798,7 @@ Server verwendet wurde. Der PHP-Quelltext des Programms wird also nie im Browser
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,18 +51,21 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">AJAX</h2>
-                                <a href="/applied-javascript/ajax/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>AJAX</h2>
+                                <a href="/applied-javascript/ajax/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
+			<a name='slide-1'></a><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
 wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
 (URL eintippen, Link anklicken), oder um Ressourcen nachzuladen
 die zu einem HTML-Dokument gehören.</p>
 
 <p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
 verwerndet werden: Asynchrone Requests.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="was-ist-ajax">Was ist AJAX?</h2>
 
@@ -76,6 +87,9 @@ Asynchron heisst: der Request wird abgesetzt, das Javascript-Programm läuft sof
 weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort 
 des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen und ein 
 Javascript-Programm fügt die Daten in die Seite ein. </p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="im-javascript-programm">Im Javascript Programm</h3>
 
@@ -114,6 +128,9 @@ Wenn die Daten vom Server schließlich einlangen wird die Funktion handle_data
 aufgerufen und die Daten zu verarbeiten. Das kann z.B. gleichzeitig mit <code>Befehl4</code>
 erfolgen.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="http">HTTP</h3>
 
 <p>Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
@@ -140,6 +157,9 @@ die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.<
 
 <p><img src="/images/ajax.png" alt="AJAX Ablauf" /></p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
 
 <p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server 
@@ -150,6 +170,9 @@ Javascript-Interpreter des Browsers zur Verfügungs stellt. Leider gibt es bei d
 Objekt Unterschiede zwischen den Browsern. Um diese Unannehmlichkeiten zu 
 vermeiden, sollte man fertige Libraries verwenden, die die Browser-Unterschiede 
 verbergen.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="simples-jquery-beispiel">Simples jQuery Beispiel</h2>
 
@@ -196,6 +219,9 @@ sollte also reiner Text oder HTML sein.</p>
 <p>Die load-Methode von jQuery ist besonders einfach zu verwenden: was passiert wenn 
 Die Daten vom Server inlangen muss man nicht mehr programmieren, das erledigt 
 jQuery schon.</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
 
@@ -340,6 +366,9 @@ lesen:</p>
       $(&quot;body&quot;).css(&quot;background-color&quot;,color);
   }
 </pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="hinter-den-kulissen-von-jquery">Hinter den Kulissen von jQuery</h2>
 
@@ -871,39 +900,19 @@ puren Daten als <code>responseText</code>.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -920,6 +929,10 @@ puren Daten als <code>responseText</code>.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -956,6 +969,34 @@ puren Daten als <code>responseText</code>.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1064,6 +1105,7 @@ puren Daten als <code>responseText</code>.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

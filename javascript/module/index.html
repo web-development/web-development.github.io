@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,18 +51,21 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Module</h2>
-                                <a href="/javascript/module/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Module</h2>
+                                <a href="/javascript/module/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Wie kann man Javascript-Code in größere Einheiten
+			<a name='slide-1'></a><p>Wie kann man Javascript-Code in größere Einheiten
 organisieren?  Wo doch die Sprache keine Unterstütztung
 für Namespaces oder Kapselung bietet?</p>
 
 <p>Eine Lösung für diese Fragestellung ist der Modul-Pattern,
 hier beschrieben nach 
 <a href="http://shop.oreilly.com/product/9780596806767.do">Stefanov(2010): Javascript Patterns</a>, Kapitel 5.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="viele-skripte-ein-namensraum">Viele Skripte, ein Namensraum</h2>
 
@@ -75,6 +86,9 @@ enthält z.B. </p>
 Programme schnell in die eigene Webseite einbauen. All diese
 Programme laufen dann im selben Javascript Interpreter ab,
 und benutzen einen gemeinsamen globalen Namensraum.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="namensraum-imitieren">Namensraum imitieren</h2>
 
@@ -120,6 +134,9 @@ APP.f = function(x) {
 APP.objekt = new APP.Ding();
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="namensrume-anlegen">Namensräume anlegen</h2>
 
 <p>Namensräume können auch verschachtelt werden:</p>
@@ -131,6 +148,11 @@ var GAME =  GAME || {};
 GAME.Player = ...
 GAME.Master = ...
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
 
 <p>Die erste Zeile enthält eine Vorsichtsmaßnahme: Falls
 <code>GAME</code> schon definiert wäre, dann wird die alten Definition
@@ -159,6 +181,9 @@ if( GAME ) {
 }
 </pre><div class="clearfix"></div></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="sofort-ausgewertete-funktionen">Sofort ausgewertete Funktionen</h2>
 
 <p>Eine andere Methode um den globalen Namensraum sauber zu halten
@@ -176,6 +201,11 @@ var g = (function(){
   return 42;
 })();
 </pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Beispiel einer sofort ausgewerteten Funktion:</p>
 
@@ -198,6 +228,11 @@ var g = (function(){
 })();
 </pre></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Eine Verwendung von sofort ausgewerteten Funktionen sind
 Polyfills. Im Artikel <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">requestAnimationFrame for smart animating</a>
 stellt Paul Irish einen Polyfill für <code>requestAnimationFrame</code> vor:</p>
@@ -217,6 +252,11 @@ im Browser verfügbar ist.</p>
               window.msRequestAnimationFrame;
     })();
 </pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Im gleichen Artikel stellt Irish eine bessere Implementierung
 von Erik Möller vor:</p>
@@ -238,6 +278,9 @@ von Erik Möller vor:</p>
         };
 })();
 </pre></div>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="module">Module</h2>
 
@@ -764,39 +807,19 @@ return {
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -813,6 +836,10 @@ return {
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -849,6 +876,34 @@ return {
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -957,6 +1012,7 @@ return {
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

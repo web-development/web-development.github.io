@@ -14,6 +14,18 @@
         <link rel="stylesheet" href="/assets/css/deck.hash.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
           h4.caption { color: #999999; }
           h4.caption small { color: black; }
           table.table-bordered {
@@ -37,7 +49,7 @@
 
 <!-- Create any number of elements with class slide within the container -->
           <div class="slide"><h1>HTML Grundkurs</h1>
-          <p><a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
 Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie Intenet 
@@ -126,6 +138,14 @@ die From <code>&amp;entityname;</code></p>
     <tr>
       <td style="text-align: center">&amp;</td>
       <td style="text-align: center">&amp;amp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">”</td>
+      <td style="text-align: center">&amp;quot;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">’</td>
+      <td style="text-align: center">&amp;apos;</td>
     </tr>
   </tbody>
 </table>
@@ -658,7 +678,7 @@ finden.  Dazu noch ein Literaturhinweis:</p>
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 </div>
           <div class="slide"><h1>Ende</h1>
-          <p><a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel</a></p>
+          <p><a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
@@ -673,7 +693,6 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 <!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/modernizr.custom.js"></script>
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/deck.core.js"></script>
 <script src="/assets/js/deck.hash.js"></script>
@@ -681,13 +700,15 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 <script src="/assets/js/deck.status.js"></script>
 
 <!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
-	$(function() {
-		$.deck('.slide');
-	});
+  $(function() {
+    $.deck('.slide');
+  });
 </script>
 </body>
 </html>

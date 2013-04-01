@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Authentifizierung und Session-Management</h2>
-                                <a href="/security/a3-auth/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Authentifizierung und Session-Management</h2>
+                                <a href="/security/a3-auth/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.</p>
+			<a name='slide-1'></a><p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="keine-information-in-fehlermeldungen-preisgeben">Keine Information in Fehlermeldungen preisgeben</h2>
 
@@ -68,6 +79,9 @@
 ist ja bereits die Hälfte der nötigen Information für ein Login. Deswegen soll man die Existenz
 von Usernamen genau so geheim halten wie die Passwörter.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
 
 <p>Das Protokoll HTTP ist stateless.  Wenn man trotzdem UserInnen authentifizieren
@@ -84,11 +98,17 @@ schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/T
 Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
 Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="nicht-selbst-implementieren">Nicht selbst implementieren</h2>
 
 <p>Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management zu implementieren. Man sollte nicht auf eigene Lösungen setzen - Diese haben dann oft Fehler bei Abmeldung und Passwortmanagement, bei der Wiedererkennung der BenutzerInnen, bei Timeouts, Sicherheitsabfragen usw. Das Auffinden dieser Fehler kann sehr schwierig sein, besonders wenn es sich um individuelle Implementierungen handelt.</p>
 
 <p>PHP liefert bereits ein fertiges Session-System.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="neue-session-bei-login--logout--neuen-rechten">Neue Session bei Login / Logout / neuen Rechten</h2>
 
@@ -113,6 +133,9 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
   unset($_SESSION);
   session_start();
 </pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -616,39 +639,19 @@ und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -665,6 +668,10 @@ und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -701,6 +708,34 @@ und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -809,6 +844,7 @@ und im <a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

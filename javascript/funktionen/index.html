@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Funktionen und this</h2>
-                                <a href="/javascript/funktionen/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Funktionen und this</h2>
+                                <a href="/javascript/funktionen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</h2>
 
 <p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
 
@@ -74,6 +85,11 @@
   }
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
 Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
 Teile von Objekten oder Arrays definieren:</p>
@@ -88,6 +104,11 @@ Teile von Objekten oder Arrays definieren:</p>
   }
 </pre></div>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
 <p>Es gibt auch mehrere Arten eine (schon definierte) Funktion aufzurufen: neben
 der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
 <code>call</code> und <code>apply</code>:</p>
@@ -99,6 +120,9 @@ der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
   repeat.call(null, &quot;hallo &quot;, 10);
   repeat.apply(null, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
 
@@ -127,6 +151,9 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
   // rückgabewert ist &quot;x, x, x&quot;;
 </pre></div>
 
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
 <h2 id="was-ist-this">Was ist this?</h2>
 
 <p>Die Variable <code>this</code> hat eine besondere Bedeutung in Javascript Funktionen.
@@ -144,6 +171,11 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
   // output auf der Console:
   // this = [object Window]
 </pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Wird eine Funktion als Methode eines Objekts aufgerufen, dann verweist <code>this</code> auf das Objekt:</p>
 
@@ -166,6 +198,11 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
   // this.prop2 = 42
 </pre></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen <code>f()</code>,
 dann nimmt Javascript ein implizites Objekt an:</p>
 
@@ -182,6 +219,11 @@ dann nimmt Javascript ein implizites Objekt an:</p>
   // this = [object Window]
 </pre></div>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
 <p>Nun macht auch das erste Argument der Funktionen <code>call</code> und <code>apply</code> Sinn: das erste
 Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 
@@ -192,6 +234,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
   objekt.f.call(objekt, &quot;hallo &quot;, 10);
   objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
 
 <p>Bei Event-Handlern wird <code>this</code> anders gesetzt:</p>
 
@@ -207,6 +254,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 
 <p>Der Event Handler wird also als Methode auf dem jeweils betroffenen
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
 
 <p>Die Funktion erhält aber noch mehr Informationen zum Event,
 und zwar als Argument:</p>
@@ -227,12 +279,22 @@ und zwar als Argument:</p>
   // ev = [object MouseEvent]
 </pre></div>
 
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
 <p>Das Event-Objekt beinhaltet Informationen wie z.B. die Koordinaten
 an denen geklickt wurde, ob dazu noch Shift, Alt und/oder Ctrl gedrückt wurden,
 und noch einmal einen Verweis auf den Button.  Hier ein Screenshot aus Chrome der 
 die Eigenschaften des MouseEvents zeigt:</p>
 
 <p><img src="/images/chrome-mouse-event.png" alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" /></p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
 
 <p>Es gibt noch eine besondere Art eine Funktion in Javascript aufzurufen: mit <code>new</code>.
 Damit wird die Funktion als Konstruktor für ein Objekt verwendet. Es ist üblich
@@ -750,39 +812,19 @@ Objekt ist auch automatisch Rückgabewert der Funktion.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -799,6 +841,10 @@ Objekt ist auch automatisch Rückgabewert der Funktion.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -835,6 +881,34 @@ Objekt ist auch automatisch Rückgabewert der Funktion.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -943,6 +1017,7 @@ Objekt ist auch automatisch Rückgabewert der Funktion.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

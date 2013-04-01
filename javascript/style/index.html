@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,13 +51,16 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Stil + Tipps</h2>
-                                <a href="/javascript/style/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Stil + Tipps</h2>
+                                <a href="/javascript/style/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Dieses Kapitel richtet sich speziell an Personen mit wenig Programmier-Erfahrung.
+			<a name='slide-1'></a><p>Dieses Kapitel richtet sich speziell an Personen mit wenig Programmier-Erfahrung.
 Viele hier erwähnten Punkte sind nicht spezifisch für Javascascript.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="menschenfreundliche-programmierung">Menschenfreundliche Programmierung</h2>
 
@@ -84,6 +95,9 @@ verständlich und manche weniger leicht.</p>
   for(var top10=create_countdown(10),i;i=top10();)console.log(&quot;und auf Platz &quot;+i+&quot; .... &quot;);
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h2 id="refactoring">Refactoring</h2>
 
 <p>Manchmal schafft man es, auf Anhieb ein schönes, lesbares, funktionierendes Programm zu schreiben.
@@ -105,10 +119,16 @@ passenden log-message machen.</p>
 <p>Wenn man Code liest, und Stellen entdeckt, die man verbessern könnte, dann nennt man
 die üblen Stellen <strong>Code Smells</strong>.</p>
 
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="variablen">Variablen</h2>
 
 <p>Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
 Variablen sollen so kurz wie möglich, aber nicht kürzer sein.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="konvenelle-variablennamen">Konvenelle Variablennamen</h3>
 
@@ -129,6 +149,9 @@ while( x &lt; 10 ) {
   x++;
 }
 
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 // mit der Konvention
 var i=0;
 var x,y;
@@ -139,6 +162,9 @@ while( i &lt; 10 ) {
   i++;
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="fixe-werte-durch-variablen-ersetzen">Fixe Werte durch Variablen ersetzen</h3>
 
@@ -169,6 +195,11 @@ zeichnet ein Rechteck in ein neu geschaffens SVG:</p>
   document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
 <p>Die Größe des Rahmens ist hier eigentlich von der Größe des SVG abhängig,
 es macht also Sinn eine Variable zu verwenden:</p>
 
@@ -193,6 +224,11 @@ es macht also Sinn eine Variable zu verwenden:</p>
 
   document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
 
 <p>Nun kann man auch die Breite des Rahmens in einer Variablen speichern:</p>
 
@@ -219,6 +255,9 @@ es macht also Sinn eine Variable zu verwenden:</p>
   document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
 <h2 id="code-wiederverwenden">Code wiederverwenden</h2>
 
 <p>Ein ganz wichtiger <strong>Code Smell</strong> ist kopierter Code:  die gleichen Zeilen finde 
@@ -228,6 +267,9 @@ ich an mehreren Stellen im Programm. Je größer der wiederholte Teil, desto sch
 gar nicht verstanden, sondern nur wiederverwendet wurde. Diese Art ein Programm
 zu erzeugen nennt man <a href="http://en.wikipedia.org/wiki/Cargo_cult_programming">Cargo Cult Programming</a> 
 - das Verwenden oder Nachahmen von Technik die man nicht versteht <a href="https://www.google.com/search?q=Cargo+cult+airplane&amp;tbm=isch">Bilder</a>.</p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h3 id="schleife-statt-kopierterm-code">Schleife statt kopierterm Code</h3>
 
@@ -279,6 +321,8 @@ svg.appendChild( frame );
 document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
+<p>§ </p>
+
 <p>Da der einzige Unterschied zwischen den kopierten Code-Zeilen die
 X-Koordinate ist, und diese stetig ansteigt, kann man hier eine 
 Schleife verwenden, um den Code wiederzuverwenden.</p>
@@ -313,6 +357,9 @@ while( i &lt; 3 ) {
 
 document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="funktion-statt-kopiertem-code">Funktion statt kopiertem Code</h3>
 
@@ -351,6 +398,9 @@ Argumente.</p>
   document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
 <h2 id="quellen">Quellen</h2>
 
 <p>Dieses Kapitel beschreibt u.a. einen Teil der Coding Conventions von Douglas Crockford.</p>
@@ -377,7 +427,7 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’ als Na
       <li><a href="/javascript/module/">← Module</a></li>
     
     
-      <li><a href="/applied-javascript/">Javascript im Browser →</a></li>
+      <li><a href="/svg/">SVG →</a></li>
     
   </ul>
 </div>
@@ -866,39 +916,19 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’ als Na
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -915,6 +945,10 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’ als Na
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -951,6 +985,34 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’ als Na
                     
                       
                       <li class="active"><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1059,6 +1121,7 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’ als Na
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

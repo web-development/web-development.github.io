@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">Syntax von PHP</h2>
-                                <a href="/php/syntax/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>Syntax von PHP</h2>
+                                <a href="/php/syntax/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<h2 id="html-und-php">HTML und PHP</h2>
+			<a name='slide-1'></a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="html-und-php">HTML und PHP</h2>
 <p>Ein erstes längeres Beispiel zeigt wie eng HTML und PHP vermischt werden:</p>
 
 <div class="example">
@@ -82,6 +93,11 @@ werden nur Berechnungen durchgeführt, diese Zeilen haben keine
 Auswirkung auf das resultierende HTML-Dokument. In den Zeile 
 15 und 17 wird mit der echo() – Funktion ein Output erstellt. </p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Der PHP-Interpreter fügt den Output an der Stelle in den HTML-Code
 ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 
@@ -101,6 +117,11 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 </pre></div>
 
 <p>Welcher Teil des Dokuments statisch war und welcher von PHP berechnet wurde ist nicht mehr erkennbar.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
 
 <p>Ein PHP-Dokument kann mehrere Einbettungen enthalten, dabei können 
 sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
@@ -141,6 +162,11 @@ ist in den meisten Sprachen verboten.</p>
 
 <p>In PHP wird diese Schreibweise aber oft verwendet.</p>
 
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
 <p>Es gibt auch eine alternative 
 Schreibweise für die Kontrollstrukturen, die besser zu unseren 
 Lesegewohnheiten passt: Statt der öffnenden geschwungenen Klammer 
@@ -165,6 +191,11 @@ mit einem eigenen Schlüsselwort (endwhile, endif, endfor) markiert:</p>
   
 &lt;p&gt;Und ein gutes nächstes Jahr!&lt;/p&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
 
 <p>Bei größeren Projekten empfiehlt sich aber auf jeden Fall die 
 möglichst starke Trennung von Programm-Logik und Darstellung.</p>
@@ -202,6 +233,9 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 &lt;/html&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="includes">Includes</h2>
 <p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die 
 Verwendung von <code>include</code> um Duplizierung von Code zu vermeiden. 
@@ -223,6 +257,11 @@ kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden: </p>
 <p>Wenn diese Datei direkt aufgerufen wird  (http://www.meinhost.at/phpfunctions.php) 
 erscheint kein Output, aber auch keine Fehlermeldung 404 
 wie bei einer nicht existierenden Seite.</p>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
 
 <p>Der Anfang und das Ende einer Webseite (head inklusive Titel, Navigation, footer) 
 können z.B. in Dateien <code>header.php</code> und <code>footer.php</code> ausgelagert werden. 
@@ -251,6 +290,11 @@ den Titel der Seite dynamisch generieren zu können:</p>
 erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist 
 (undefined) wir sie behandelt als ob sie den leeren String enthält: die Überschrift ist leer.</p>
 
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
 <p>Dieser Footer könnte auch eine statische HTML-Datei sein, 
 da hier gar keine Variablen oder PHP-Code verwendet warden:</p>
 
@@ -261,6 +305,11 @@ da hier gar keine Variablen oder PHP-Code verwendet warden:</p>
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
 
 <p>In der “Haupt-Datei” index.php werden alle diese Einzelteile zusammengefügt:</p>
 
@@ -288,6 +337,9 @@ Im Client landet nur der fertige HTML-Code. Die UserIn
 kann nicht erkennen, dass die Seite ursprünglich 
 aus mehreren Dateien bestand. </p>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h2 id="variablen-und-typen">Variablen und Typen</h2>
 <p>Variablennamen in PHP beginnen mit einem Dollar-Zeichen. Warum? 
 Sie haben im Beispielprogramm schon gesehen, 
@@ -301,6 +353,11 @@ echo &quot;$entfernung km in $h:$min sind $kmh km/h&quot;;
 <p>Das ist nur möglich weil die Variablennamen mit einem besonderen 
 Zeichen gekennzeichnet sind. </p>
 
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
 <p>Es gibt in PHP eine 
 zweite Schreibweise für Strings: einfache Anführungszeichen.
 Diese Variante erlaubt keine Variablen:</p>
@@ -309,6 +366,35 @@ Diese Variante erlaubt keine Variablen:</p>
 <pre class="lang-php prettyprint linenums">
 echo 'Bei einfachen Anführungszeichen ist ein $ einfach ein $';
 </pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
+<p>Eine weitere Methode einen String zu definieren - neben einfachen
+und doppelten Anführungszeichen - ist das “heredoc” Schreibweise<a href="http://www.php.net/manual/de/language.types.string.php#language.types.string.syntax.heredoc">→</a></p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel für heredoc</small></h4>
+<pre class="lang-php prettyprint linenums">
+echo &lt;&lt;&lt;EOT
+My name is $lastname, $firstname $lastname. 
+I am printing some $foo-&gt;foo.
+Now, I am printing some {$foo-&gt;bar[1]}.
+I can't mess up this string
+by mentioning 19&quot; racks!
+EOT;
+</pre></div>
+
+<p>Da der String durch “EOT” beendet wird, kann
+man beide Arten von Anführungszeichen gefahrlos verwenden.
+Variableninterpolation funktioniert.</p>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+
 
 <p>Variablen in PHP müssen nicht deklariert oder initialisiert werden. 
 PHP unterscheidet zwischen den Datentypen boolean, integer, 
@@ -327,6 +413,11 @@ Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:</p>
   $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
 ?&gt;
 </pre></div>
+
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+
 
 <p>Betrachten wir die letzten zwei Zeilen des Codes genauer:</p>
 
@@ -347,11 +438,19 @@ interpretiert seine beiden Operanden als Strings.</p>
 
 <p>Der Operator bestimmt also den Typ! </p>
 
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
+
+
 <p>In Javascript ist es 
 genau umgekehrt: da entscheidet der Datentyp<br />
 über die Bedeutung des Operators:</p>
 
 <p><img src="/images/php-javascript-plus.png" alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" /></p>
+
+
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h2 id="arrays">Arrays</h2>
 
@@ -371,6 +470,11 @@ for($i=0;$i&lt;count($foo);$i++) {
   echo(&quot;Der $i. Wert im Array ist $foo[$i]&lt;br /&gt;&quot;);
 }
 </pre></div>
+
+
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+
+
 
 <p>Auf den zweiten Blick sind Arrays in PHP aber wesentlich 
 komplexer: nicht nur Integers sind als Index zulässig, 
@@ -396,6 +500,11 @@ foreach( $foo as $key =&gt; $value ) {
 }
 </pre></div>
 
+
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+
+
+
 <p>Mit der Schreibweise <code>$foo[]</code> kann ein Wert unter der 
 kleinsten (noch nicht verwendet) Integer-Zahl als Schlüssel gespeichert werden:</p>
 
@@ -411,6 +520,11 @@ $foo['das']  = &quot;etwas Fernes&quot;;
 $foo[] = &quot;das Nächste&quot;;
 </pre></div>
 
+
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+
+
+
 <p>Das Array in PHP ist also ein wesentlich komplexerer Datentyp 
 als ein Array in anderen Programmiersprachen – 
 es verbindet Eigenschaften von Arrays mit denen von Hashmaps. </p>
@@ -418,6 +532,9 @@ es verbindet Eigenschaften von Arrays mit denen von Hashmaps. </p>
 <p>Ein Array zu sortieren ist entsprechend kompliziert; es 
 gibt eine ganze Reihe von Sortier-Funktionen. Sie finden 
 diese im Abschnitt <a href="http://at.php.net/manual/de/ref.array.php">→Array-Funktionen</a> der PHP-Doku.</p>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h2 id="funktionen-und-scope">Funktionen und Scope</h2>
 
@@ -434,6 +551,11 @@ $y = foo(20, &quot;Pfund&quot;);
 
 <p>Die Schreibweise von Funktionen inklusive Argumentliste und 
 Rückgabewert ist leicht verständlich. </p>
+
+
+<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+
+
 
 <p>Eine Falle 
 für erfahrene ProgrammiererInnen ist das Scoping von globalen Variablen:</p>
@@ -456,6 +578,11 @@ einer Funktion kein Zugriff auf die außerhalb definierten Variablen
 möglich ist! Die Variable <code>$pi</code> ist in der Funktion nicht sichtbar, 
 stattdessen wird mit einer neuen Variable <code>$pi</code> mit Default-Wert <code>0</code> gerechnet. </p>
 
+
+<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+
+
+
 <p>Mit dem Keyword global wird die Variable „in die Funktion eingeladen“ 
 und ist dann auch innerhalb der Funktion sichtbar, lesbar und veränderbar.</p>
 
@@ -472,6 +599,11 @@ $a = inhalt($r);
 echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 // korrekte Berechnung und Ausgabe
 </pre></div>
+
+
+<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
+
+
 
 <p>Ausgenommen von dieser Regelung sind die sogenannten „superglobals“. 
 Das sind Variablen, die auf jeden Fall sichtbar sind. Vier davon 
@@ -503,6 +635,9 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
     </tr>
   </tbody>
 </table>
+
+
+<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
 
 <h2 id="weitere-besonderheiten-von-php">Weitere Besonderheiten von PHP</h2>
 
@@ -1002,39 +1137,19 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -1051,6 +1166,10 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -1087,6 +1206,34 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -1195,6 +1342,7 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

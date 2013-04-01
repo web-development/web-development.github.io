@@ -18,6 +18,14 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,12 +51,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title">TCP/IP und DNS</h2>
-                                <a href="/http/tcpip-und-dns/slide.html">als Präsentation</a>
+				<h2 class="title"><a name="slide-0"></a>TCP/IP und DNS</h2>
+                                <a href="/http/tcpip-und-dns/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<p>Um das Protokoll des Web zu verstehen erst ein paar Grundsätzliche Informationen zur Funktionsweise des Internet. Genaueres erfahren Sie in einer seperaten Lehrveranstaltung zum Thema Computer-Netwerke.</p>
+			<a name='slide-1'></a><p>Um das Protokoll des Web zu verstehen erst ein paar Grundsätzliche Informationen zur Funktionsweise des Internet. Genaueres erfahren Sie in einer seperaten Lehrveranstaltung zum Thema Computer-Netwerke.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="das-internet">Das Internet</h2>
 
@@ -64,6 +75,9 @@ Firmen, Universitäten, Schulen, Vereinen, Privatpersonen.  </p>
 (z.B. Ethernet) muss jeder Computer am Internet (genannt „Host“) diese Protokoll-Familie 
 implementieren. Zwischen den Netzen vermitteln <strong>Router</strong> die Pakete von einem Netz zum nächsten.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
 <h3 id="ip-adressen">IP-Adressen</h3>
 
 <p>Die eindeutigen Adressen für Hosts am Internet werden zentral verwaltet. 
@@ -72,6 +86,9 @@ Organisationen auf den verschiedenen Kontinenten verteilt, in Europa an das
 Réseaux IP Européens Network Coordination Centre (RIPE NCC). 
 RIPE vergibt die Adressen an die Internet-Provider in Europa. 
 In der Whois-Datenbank von RIPE kann man die „Besitzer“ von IP-Adressen herausfinden.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="ip--das-internetprotokoll">IP – das Internetprotokoll</h3>
 
@@ -84,6 +101,9 @@ selbst kennt nur sein Standard-Gateway (= der nächste Router) und das eigene Ne
 auf Grund der Adressen auf welchem Netzwerk und an welchen Router er das 
 Paket weiterleitet.  Beim Ziel-Host langen die Pakete ein – es gibt aber 
 keine Garantie, dass alle ankommen oder dass sie in der richtigen Reihenfolge ankommen.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="tcp---transmission-control-protocol">TCP - Transmission Control Protocol</h3>
 
@@ -98,6 +118,9 @@ der Pakete und meldet zurück falls Pakete fehlen. </p>
 
 <p>Aus Programmier-Sicht erhält man also entweder die Daten 
 in richtiger Reihenfolge oder eine Fehlermeldung.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="dns--domain-name-system">DNS – Domain Name System</h3>
 
@@ -611,39 +634,19 @@ Für die Domain .at ist die Firma nic.at zuständig.</p>
                       
                     
                       
-                      <li ><a href="/xml/rss/">RSS - Really Simple Syndication</a></li>
-                      
-                    
-                      
                       <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
                       
                     
-                  
-                
-              </ul>
-            </li>
-          
-            <li ><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
                       
                     
                       
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      <li ><a href="/xml/dtd/">DTD</a></li>
                       
                     
                       
-                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -660,6 +663,10 @@ Für die Domain .at ist die Firma nic.at zuständig.</p>
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
                       
                     
                   
@@ -696,6 +703,34 @@ Für die Domain .at ist die Firma nic.at zuständig.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/svg/">SVG</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/formen/">Grundformen in SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -804,6 +839,7 @@ Für die Domain .at ist die Firma nic.at zuständig.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){
