@@ -56,18 +56,120 @@ Wo bietet z.B. der Wordpress Blog <code>http://multimediatechnology.at/</code>
 unter der URL <code>http://multimediatechnology.at/feed/</code> die gleichen Inhalte
 wie die Homepage des Blogs im RSS Format an.</p>
 
-<p>TODO: RSS Zweck und Aufbau beschreiben, Podcasts</p>
+</div>
+<div class='slide'>
 
-<pre><code>&lt;rss example here&gt;
-</code></pre>
+<h2 id="was-ist-rss">Was ist RSS?</h2>
 
-<p>RSS ist ein Beispiel für XML.</p>
+<p>RSS ist eine XML-Sprache, die Spezifikation findet sich auf <a href="http://www.rssboard.org/rss-specification">rssboard.org</a>
+Eine URL unter der man immer die aktuellen Daten im RSS Format abrufen
+kann nennt man auch einen “Feed”. Das gängige Icon dafür ist orange:</p>
+
+<p><img src="/images/feed-icon.png" alt="RSS Feed Icon" /></p>
+
+</div>
+<div class='slide'>
+
+
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Beispiel für RSS</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;rss version=&quot;2.0&quot;
+  xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;&gt;
+  &lt;channel&gt;
+    &lt;title&gt;MultiMediaTechnology&lt;/title&gt;
+    &lt;link&gt;http://multimediatechnology.at&lt;/link&gt;
+    &lt;description&gt;Das Studium an der FH Salzburg&lt;/description&gt;
+    &lt;lastBuildDate&gt;Mon, 01 Apr 2013 08:36:25 +0000&lt;/lastBuildDate&gt;
+    &lt;language&gt;de-DE&lt;/language&gt;
+    &lt;generator&gt;http://wordpress.org/?v=3.5.1&lt;/generator&gt;
+    &lt;item&gt;
+      &lt;title&gt;Barcamp März 2013: mit WebGL, Redis, ...&lt;/title&gt;
+      &lt;link&gt;http://multimediatechnology.at/2013/03/23/barcamp-marz-2013-mit-webgl-redis-memcached-riac-multi-user-games/&lt;/link&gt;
+      &lt;pubDate&gt;Sat, 23 Mar 2013 13:15:52 +0000&lt;/pubDate&gt;
+      &lt;dc:creator&gt;Brigitte Jellinek&lt;/dc:creator&gt;
+      &lt;description&gt;&lt;![CDATA[&lt;p&gt;Das 5. Barcamp &amp;#8220;The Next Web&amp;#8221; im März 2013 brachte wieder an die 70 Studierende und Fachleute an der FH Salzburg zusammen. Bei Workshops, Vorträgen und einer Ausstellung gab es nicht nur viel zu lernen, sondern auch viel Gelegenheit Leute &amp;#8230;&lt;/p&gt;]]&gt;&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;title&gt;Welcome Lecture Zach Liebermann&lt;/title&gt;
+      &lt;link&gt;http://multimediatechnology.at/2013/03/18/welcome-lecture-zach-liebermann/&lt;/link&gt;
+      &lt;pubDate&gt;Mon, 18 Mar 2013 10:03:24 +0000&lt;/pubDate&gt;
+      &lt;dc:creator&gt;Martin Ortner&lt;/dc:creator&gt;
+      &lt;description&gt;&lt;![CDATA[&lt;p&gt;Er ist Inbegriff des kreativen Coders: Der vielfach ausgezeichnete Medienkünstler und Creative Technologist Zach Lieberman. Ende März übernimmt er eine Gastprofessur am Studiengang MultiMediaTechnology. Für seine Zeit in Puch/Urstein plant der New Yorker gemeinsam mit Studierenden die Stadt Salzburg zur &amp;#8230;&lt;/p&gt;]]&gt;&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/channel&gt;
+&lt;/rss&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="darstellung-von-rss">Darstellung von RSS</h2>
+
+</div>
+<div class='slide'>
+
+<h3 id="im-browser">im Browser</h3>
+
+<p>In Firefox werden RSS-Dateien nicht als Code, sondern bereits mit
+einem Stylsheet aufbereitet angezeigt. </p>
 
 <p><img src="/images/rss-in-firefox.png" alt="Darstellung von RSS in Firefox" /></p>
 
+</div>
+<div class='slide'>
+
+
+
+<p>Ebenso in Chrome:</p>
+
 <p><img src="/images/rss-in-chrome.png" alt="Darstellung von RSS in Chrome" /></p>
 
+</div>
+<div class='slide'>
+
+<h3 id="im-online-feed-reader">im Online Feed Reader</h3>
+
+<p>Der meist benutzte Feed Reader war <a href="http://www.google.de/reader/view/">Google Reader</a>, er wird im Jahr 2013 eingestellt:</p>
+
 <p><img src="/images/rss-in-google-reader.png" alt="Darstellung von RSS in Google Reader" /></p>
+
+</div>
+<div class='slide'>
+
+
+
+<p><a href="http://www.netvibes.com/">Netvibes</a> stellt verschiedene Feeds auf einer Art Desktop dar:</p>
+
+<p><img src="/images/rss-netvibes.png" alt="Darstellung von RSS in Netvibes" /></p>
+
+</div>
+<div class='slide'>
+
+
+
+<p><a href="http://www.feedly.com/">Feedly</a> stellt Feeds in einer Art Online-Magazin dar:</p>
+
+<p><img src="/images/rss-feedly.png" alt="Darstellung von RSS in Feedly" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="bedeutung-von-rss">Bedeutung von RSS</h2>
+
+<p>Anfang der 2000er waren einzelne Blogs eine wichtige Informationsquelle
+im Internet. Es gab noch keine sozialen Netzwerke wie Facebook.  Ein Feed Reader
+war damals die beste Möglichkeit viele Blogs zu lesen.</p>
+
+<p>Mit dem Aufkommen der Sozialen Netzwerke wurden die vielen einzelnen Daten-Quellen
+durch große, in sich abgeschlossene Daten-Silos abgelöst. Auf der anderen
+Seite kam mit Twitter eine schnellere Alternative zu Blogs hinzu.</p>
+
+<p>Mit dem PubSubHubbub Protokoll gibt es seit ca. 2009 die Möglichkeit
+Feeds von “Pull” auf “Push” umzustellen, und damit fast in Echtzeit über
+neue Daten informiert zu werden. <a href="http://en.wikipedia.org/wiki/PubSubHubbub">→ PubSubHubbub</a></p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/xml/rss/">zurück zum Buch-Kapitel [esc]</a></p>
