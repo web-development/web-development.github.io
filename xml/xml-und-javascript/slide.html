@@ -92,6 +92,27 @@ svg.appendChild( circle );
 
 <h2 id="laden-von-xml">Laden von XML</h2>
 
+<p>Zum Laden von XML-Dateien gibt es ein eigenes Objekt, dessen Lade-Methode
+synchron oder asynchron verwendet werden kann.  Wir verwenden
+hier die synchrone Variante, und beschäftigen uns im
+Kapitel <a href="/applied-javascript/ajax/">AJAX</a> mit der asynchronenen Variante.</p>
+
+<p>Die Methode <code>open</code> legt fest: die HTTP Methoden, die URL, und ob
+asynchron geladen werden soll.  Mit der Methode <code>send</code> wird der
+Request abgeschickt, hier könnte man noch den HTTP-Request Body als
+String übergeben.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+xhttp = new XMLHttpRequest();
+xhttp.open(&quot;GET&quot;, &quot;stark.xml&quot;, false);
+xhttp.send(null);
+
+xmlDoc = xhttp.responseXML;
+var first = xmlDoc.getElementsByTagName(&quot;person&quot;)[0];
+document.getElementById('output').value = first.firstChild.nodeValue;
+</pre></div>
+
 <p><a href="/images/load-xml.html">demo</a></p>
 </div>
           <div class="slide"><h1>Ende</h1>
