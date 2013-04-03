@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Grundformen in SVG</title>
+  <title>Lehrbuch Web-Development - Beispiel SVG</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -51,32 +51,77 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Grundformen in SVG</h2>
-                                <a href="/svg/formen/slide.html">als Präsentation ▻</a>
+				<h2 class="title"><a name="slide-0"></a>Beispiel SVG</h2>
+                                <a href="/xml/svg/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
-simple geometrische Elemente definiert.</p>
-
-<svg width="700" height="200">
-  <g transform="translate(10,30) scale(1.5,1.5)">
-    <rect width="66" height="30" x="21" y="32" stroke="#204a87" fill="#204a87" fill-opacity="0.6" stroke-width="2" />
-    <text x="21" y="82">Rechteck</text>
-    <circle cx="144" cy="38" r="18" stroke="#4e9a06" fill="#4e9a06" fill-opacity="0.6" stroke-width="2" />
-    <ellipse cx="170" cy="43" rx="27" ry="15" stroke="#73d216" fill="#73d216" fill-opacity="0.6" stroke-width="2" />
-    <text x="122" y="81">Kreis + Ellipse</text>
-  </g>
-  <g transform="translate(340,-137) scale(1.5,1.5)">
-    <path d="M 12,170 C 39,182 43,154 49,142 C 62,114 101,145 101,145" fill="#ef2929" fill-opacity="0.62" stroke="#a40000" stroke-width="2" />
-    <path d="M 149,109 L 149,127 L 127,144 L 140,172 L 188,167 L 191,119 L 149,109 z" fill="#edd400" fill-opacity="0.59" stroke="#c4a000" stroke-width="2" />
-    <text x="35" y="192">Pfad</text>
-    <text x="141" y="192">Polygon</text>
-  </g>
+			<a name='slide-1'></a><svg width="200" height="200" style="float:left;">
+    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
 </svg>
+
+<p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
+World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
+zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML. </p>
+
+<p>SVG wurde erstmals im September 2001 veröffentlicht, die aktuelle Version
+ist <a href="http://www.w3.org/TR/SVG11/">Version 1.2</a>, die seit Dezember 2008 vom W3C empfohlen wird, aktuell.</p>
+
+<p>SVG hat eine lange und wechselvolle Geschichte hinter sich: es wurde bereits im Jahr 2001 veröffentlicht.
+Für die Darstellung im Browser war aber damals die Installation eines Plugins notwendig. 
+Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer) wird SVG
+im Browser nativ dargestellt.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Einbindung von SVG in HTML (Inline-SVG)</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
+  &lt;rect    x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
+&lt;/svg&gt;
+</pre></div>
+
+<p>Mit SVG kann man zweidimensional zeichnen. Die grafischen Objekte werden
+- wie bei HTML - in einem DOM gespeichert und können manipuliert werden. Zur
+Darstellung im Browser werden sie mit dem <a href="http://de.wikipedia.org/wiki/Painter%27s_Algorithmus">Painters Algorithm</a> gezeichnet:
+“spätere” Objekte übermalen “frühere” Objekte. Deswegen überdeckt das blaue Rechteck
+im Beispiel den grünen Kreis.</p>
+
+<p>Inline SVG wird heute von den aktuellen Browsersn unterstütz, siehe
+<a href="http://caniuse.com/#feat=svg-html5">can i use</a></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h2 id="grundformen-in-svg">Grundformen in SVG</h2>
+
+<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
+simple geometrische Elemente definiert.</p>
+
+<svg width="700" height="200">
+<g transform="translate(10,30) scale(1.5,1.5)">
+  <rect width="66" height="30" x="21" y="32" stroke="#204a87" fill="#204a87" fill-opacity="0.6" stroke-width="2" />
+  <text x="21" y="82">Rechteck</text>
+  <circle cx="144" cy="38" r="18" stroke="#4e9a06" fill="#4e9a06" fill-opacity="0.6" stroke-width="2" />
+  <ellipse cx="170" cy="43" rx="27" ry="15" stroke="#73d216" fill="#73d216" fill-opacity="0.6" stroke-width="2" />
+  <text x="122" y="81">Kreis + Ellipse</text>
+</g>
+<g transform="translate(340,-137) scale(1.5,1.5)">
+  <path d="M 12,170 C 39,182 43,154 49,142 C 62,114 101,145 101,145" fill="#ef2929" fill-opacity="0.62" stroke="#a40000" stroke-width="2" />
+  <path d="M 149,109 L 149,127 L 127,144 L 140,172 L 188,167 L 191,119 L 149,109 z" fill="#edd400" fill-opacity="0.59" stroke="#c4a000" stroke-width="2" />
+  <text x="35" y="192">Pfad</text>
+  <text x="141" y="192">Polygon</text>
+</g>
+</svg>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="kreis-ellipse-rechteck">Kreis, Ellipse, Rechteck</h3>
 
@@ -84,33 +129,33 @@ simple geometrische Elemente definiert.</p>
 Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbradien.</p>
 
 <div class="example">
-<h4 class="caption">Html Code <small>Kreis und Ellipse</small></h4>
-<pre class="lang-html prettyprint linenums">
- &lt;circle  cx=&quot;144&quot; cy=&quot;38&quot; r=&quot;18&quot; 
-          stroke=&quot;#4e9a06&quot; stroke-width=&quot;2&quot; 
-          fill=&quot;#4e9a06&quot;   fill-opacity=&quot;0.6&quot;  /&gt;
- &lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
-          stroke=&quot;#73d216&quot; stroke-width=&quot;2&quot; 
-          fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
+<h4 class="caption">Xml Code <small>Kreis und Ellipse</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;circle  cx=&quot;144&quot; cy=&quot;38&quot; r=&quot;18&quot; 
+        stroke=&quot;#4e9a06&quot; stroke-width=&quot;2&quot; 
+        fill=&quot;#4e9a06&quot;   fill-opacity=&quot;0.6&quot;  /&gt;
+&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
+        stroke=&quot;#73d216&quot; stroke-width=&quot;2&quot; 
+        fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
 <p>Viele Attribute kann man alternativ auch über CSS definieren.</p>
 
 <div class="example">
-<h4 class="caption">Html Code <small>Attribute per CSS</small></h4>
-<pre class="lang-html prettyprint linenums">
- &lt;circle style=&quot;cx: 144px; cy: 38px; r: 18px; stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot;  /&gt;
- &lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
-          style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
+<h4 class="caption">Xml Code <small>Attribute per CSS</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;circle style=&quot;cx: 144px; cy: 38px; r: 18px; stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot;  /&gt;
+&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
+        style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="pfad-und-polygon">Pfad und Polygon</h3>
 
@@ -119,14 +164,14 @@ ein einziges Attribut <code>d</code> des Tags geschreiben werden. Ein Pfad beste
 Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p>
 
 <div class="example">
-<h4 class="caption">Html Code <small>SVG</small></h4>
-<pre class="lang-html prettyprint linenums">
-    &lt;path d=&quot;M 149,109 L 149,127 L 127 144    L 140,172    L 188,167 L 191,119 L 149,109 z&quot;
-          fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
+<h4 class="caption">Xml Code <small>SVG</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;path d=&quot;M 149,109 L 149,127 L 127 144    L 140,172    L 188,167 L 191,119 L 149,109 z&quot;
+      fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -172,7 +217,7 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
 </table>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -185,10 +230,10 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 </svg>
 
 <div class="example">
-<h4 class="caption">Html Code <small>Beispiel für LineTo und Quadratic B</small></h4>
-<pre class="lang-html prettyprint linenums">
-  &lt;path d=&quot;M   0 10 l 50,50  50,-50 50,50 50,-50 50,50&quot; /&gt;
-  &lt;path d=&quot;M 270 35 q 25,-50 50,0 25,50 50,0 q 25,-25 50,0 q 25,25 50,0&quot; /&gt;
+<h4 class="caption">Xml Code <small>Beispiel für LineTo und Quadratic B</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;path d=&quot;M   0 10 l 50,50  50,-50 50,50 50,-50 50,50&quot; /&gt;
+&lt;path d=&quot;M 270 35 q 25,-50 50,0 25,50 50,0 q 25,-25 50,0 q 25,25 50,0&quot; /&gt;
 </pre></div>
 
 <table class="table table-condensed table-bordered" style="width:auto">
@@ -223,7 +268,7 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 </table>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="text">Text</h3>
 
@@ -231,13 +276,13 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 an und für sich noch nicht sehr spannend:</p>
 
 <div class="example">
-<h4 class="caption">Html Code <small>Text in SVG</small></h4>
-<pre class="lang-html prettyprint linenums">
+<h4 class="caption">Xml Code <small>Text in SVG</small></h4>
+<pre class="lang-xml prettyprint linenums">
     &lt;text x=&quot;122&quot; y=&quot;81&quot;&gt;Kreis + Ellipse&lt;/text&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -263,7 +308,7 @@ beliebigen Pfades gesetzt werden.</p>
 </svg>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
+<pre class="lang-xml prettyprint linenums">
 &lt;defs&gt;
 &lt;path id=&quot;my_path&quot; d=&quot;M 100,200 C 200,100 300,  0 400,100
       C 500,200 600,300 700,200 C 800,100 900,100 900,100&quot; /&gt;
@@ -275,14 +320,57 @@ beliebigen Pfades gesetzt werden.</p>
 &lt;/text&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+<h2 id="koordinaten-und-transformationen">Koordinaten und Transformationen</h2>
+
+<p>Koordinaten in SVG werden als reelle Zahlen angegeben,
+nicht als Ganzzahlen!  Es ist ein wirkliches Vektorformat.</p>
+
+<p>Das ursprüngliche Koordinatensystem beginnt in der linken oberen Ecke,
+die X-Achse zeigt nach rechts, die Y-Achse nach unten.  Mit dem <code>g</code> Tag
+können Elemente gruppiert werden. Dabei kann man auch ein neues
+lokales Koordinatensystem definieren.</p>
+
+<svg width="700" height="200">
+  <defs>
+      <marker id="pointy" viewbox="0 0 10 10" refx="0" refy="5" markerunits="strokeWidth" markerwidth="4" markerheight="3" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" />
+      </marker>
+  </defs>
+  <g transform="translate(10,10)">
+    <path d="M 0 0 L 200 0" stroke="black" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <path d="M 0 0 L 0 100" stroke="black" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <text x="215" y="5" font-family="Verdana" font-size="15" fill="black">x</text>
+    <text x="-5" y="125" font-family="Verdana" font-size="15" fill="black">y</text>
+  </g>
+  <g transform="rotate(-5) translate(50,30)" stroke="blue">
+    <path d="M 0 0 L 100 0" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <path d="M 0 0 L 0 100" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <text x="115" y="5" font-family="Verdana" font-size="15" fill="black">x</text>
+    <text x="-5" y="125" font-family="Verdana" font-size="15" fill="black">y</text>
+  </g>
+</svg>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Gruppe mit lokalem Koordinatensystem</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;g transform=&quot;rotate(-5) translate(50,30)&quot;&gt;
+  ...
+&lt;/g&gt;
+</pre></div>
+
+<div class="alert"><strong>ToDo</strong> hier fehlt noch Text zu den verschiedenen Transformationen und der Transformations-Matrix.</div>
+
 		
 			<div class="pagination">
   <ul>
     
-      <li><a href="/svg/was-ist-svg/">← Was ist SVG</a></li>
+      <li><a href="/xml/rss/">← Beispiel RSS</a></li>
     
     
-      <li><a href="/svg/koordinaten/">Koordinaten und Transformationen →</a></li>
+      <li><a href="/php-mysql-3/">Constraints und Transaktionen in der DB →</a></li>
     
   </ul>
 </div>
@@ -763,7 +851,7 @@ beliebigen Pfades gesetzt werden.</p>
               </ul>
             </li>
           
-            <li ><a href="/xml/">XML</a>
+            <li class="active"><a href="/xml/">XML</a>
               <ul class="sub">
                 
                   
@@ -784,6 +872,10 @@ beliebigen Pfades gesetzt werden.</p>
                     
                       
                       <li ><a href="/xml/rss/">Beispiel RSS</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/xml/svg/">Beispiel SVG</a></li>
                       
                     
                   
@@ -840,34 +932,6 @@ beliebigen Pfades gesetzt werden.</p>
                     
                       
                       <li ><a href="/javascript/style/">Stil + Tipps</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
-            <li class="active"><a href="/svg/">SVG</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/svg/was-ist-svg/">Was ist SVG</a></li>
-                      
-                    
-                      
-                      <li class="active"><a href="/svg/formen/">Grundformen in SVG</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/koordinaten/">Koordinaten und Transformationen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/svg/js-svg/">Javascript und SVG</a></li>
                       
                     
                   
@@ -969,7 +1033,7 @@ beliebigen Pfades gesetzt werden.</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/svg/formen.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/xml/svg.md">Kommentar zu dieser seite</a></p>
     </div>
   </div>
 
