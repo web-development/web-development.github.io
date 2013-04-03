@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Web Security</title>
+  <title>Lehrbuch Web-Development - XPath</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -44,117 +44,154 @@
 
 
 
-<!-- body -->
-	<article class="row">
-
+	<!-- body -->
+	<article id="body" class="row">
+		
 		<div class="span8">
-
+		
 			
                           <div class="page-header">
-                                <h2 class="title">Web Security</h2>
+				<h2 class="title"><a name="slide-0"></a>XPath</h2>
+                                <a href="/xml/xpath/slide.html">als Präsentation ▻</a>
                           </div>
 			
+			
+			<a name='slide-1'></a><p>XPath ist eine Abfrage-Sprache zu XML, ähnlich zu
+einer Pfadangabe im Dateisystem.  Aber während eine
+Pfadangabe nur ungefähr 3 Features kennt (“..” für den
+übergeordneten Ordner, die Wildcards “*” und “?”)
+hat XPath dutzende, wenn nicht hunderte Features.</p>
 
-			<p>Die Sicherheit von Web Applikationen ist ein komplexes Thema.
-Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">OWASP Top 10 von 2010</a>
-sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, Apache anwenden.</p>
 
-<p>Zehn Problemfelder die sie kennen sollten:</p>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
-<ul>
-  <li>A1 - Injection </li>
-  <li>A2 – Cross-Site Scripting (XSS)</li>
-  <li>A3 - Fehler in Authentifizierung und Session Management</li>
-  <li>A4 - Unsichere direkte Objekt-referenzen</li>
-  <li>A5 – Cross-Site Request Forgery (CSRF)</li>
-  <li>A6 – Sicherheits-relevante Fehlkonfiguration</li>
-  <li>A7 - Kryptografisch unsichere Speicherung</li>
-  <li>A8 - Mangelhafter URL-Zugriffsschutz</li>
-  <li>A9 - Unzureichende Absicherung der Transportschicht</li>
-  <li>A10 - Ungeprüfte Um- und Weiterleitungen</li>
-</ul>
+<h2 id="xpath-intro">XPath Intro</h2>
 
-<p>Was Sie können sollten</p>
+<p>Aus dem Kurs “Introduction to Databases” von Prof.Jennifer Widom:</p>
 
 <ul>
-  <li>Sie können SQL-Injection Probleme erkennen und mittels prepared Statements vermeiden</li>
-  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen oder Säubern des Outputs vermeiden</li>
-  <li>Sie können eine Authentisierung mit Passwort und Cookie in PHP implementieren, und dabei Session Fixation vermeiden</li>
-  <li>Sie können CSRF Probleme erkennen und durch Verwendung eines CSRF Tokens vermeiden</li>
-  <li>Sie können die Apache-Konfiguration überprüfen und Sicherheitsprobleme erkennen</li>
-  <li>Sie können Sicherheitsproblem beim Speichern von Passwörter und sensitiven Daten erkennen und  vermeiden</li>
-  <li>Sie können erkennen, wenn eine Applikation den Zugriffsschutz nicht konsequent für jede URL überprüft, und das Problem beheben</li>
-  <li>Sie können erkennen wann SSL verwendet werden sollte</li>
-  <li>Sie können Sicherheitsprobleme bei der Weiterleitung an externe Seiten erkennen und vermeiden</li>
+  <li><a href="http://www.youtube.com/watch?v=qY2Ezw786ko&amp;list=WLF4A5CFFB0BD48551">Intro</a></li>
+  <li><a href="http://www.youtube.com/watch?v=6Zvw3kmJ0KA&amp;list=WLF4A5CFFB0BD48551">Demo</a></li>
 </ul>
 
 
-                        <h3>In diesem Kapitel</h3>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
-                        <ul class="sub">
-  
-    
-      
-    
-      
-      <li ><a href="/security/a1-injection/">Injection</a></li>
-      
-    
-      
-      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
-      
-    
-      
-      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
-      
-    
-      
-      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
-      
-    
-      
-      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
-      
-    
-      
-      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
-      
-    
-      
-      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
-      
-    
-      
-      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
-      
-    
-      
-      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
-      
-    
-      
-      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
-      
-    
-  
-</ul>
+<h2 id="xpath-in-php--simplexml">XPath in PHP / SimpleXML</h2>
+
+<p>Als Beispiel wird hier ein Output der Wikipedia-API verwendet: Informationen
+zu einem Bestimmten Bild <a href="http://de.wikipedia.org/w/api.php?action=query&amp;titles=Datei%3A2010-04-29-tulpen-by-RalfR-14.jpg&amp;prop=imageinfo&amp;iiprop=url&amp;iiurlwidth=300&amp;format=xml">Demo</a></p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>output der Wikipedia-API: Abfrage von Bild-Information</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;api&gt;
+  &lt;query&gt;
+    &lt;pages&gt;
+      &lt;page ns=&quot;6&quot; title=&quot;Datei:2010-04-29-tulpen-by-RalfR-14.jpg&quot; missing=&quot;&quot; imagerepository=&quot;shared&quot;&gt;
+        &lt;imageinfo&gt;
+          &lt;ii thumburl=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg/300px-2010-04-29-tulpen-by-RalfR-14.jpg&quot; thumbwidth=&quot;300&quot; thumbheight=&quot;451&quot; url=&quot;http://upload.wikimedia.org/wikipedia/commons/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg&quot; descriptionurl=&quot;http://commons.wikimedia.org/wiki/File:2010-04-29-tulpen-by-RalfR-14.jpg&quot;/&gt;
+        &lt;/imageinfo&gt;
+      &lt;/page&gt;
+    &lt;/pages&gt;
+  &lt;/query&gt;
+&lt;/api&gt;
+</pre></div>
 
 
-                        <div class="pagination">
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
+<p>Um aus dieses XML nun in PHP Informationen zu extrahieren können 
+wir XPath verwenden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>XML abfragen mit XPath in PHP</small></h4>
+<pre class="lang-php prettyprint linenums">
+$xml_doc = new SimpleXMLElement(&quot;....xml von oben ...&quot;);
+
+$query_result = $xml_doc-&gt;xpath( &quot;//ii/@thumburl&quot; );
+
+$bild_url = (string) $query_result[0];
+
+echo &quot;&lt;h1&gt;Das Bild&lt;/h1&gt;&quot;;
+echo &quot;&lt;img src='$bild_url'&gt;&quot;;
+</pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+<h2 id="xpath-in-javascript">XPath in Javascript</h2>
+
+<p>XPath kann man verwenden um das HTML-Dokument selbst zu durchsuchen:
+Der folgende Code sucht alle <code>h2</code>-Element im aktuellen Dokument, und
+gibt sie in einem Ausgabefeld aus. <a href="/images/js-und-xpath.html">Demo</a></p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>XPath verwenden in HTML</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+iterator = document.evaluate('//h2', document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
+thisNode = iterator.iterateNext();
+while (thisNode) {
+  document.getElementById('output').value += thisNode.innerHTML + &quot;\n&quot;;
+  thisNode = iterator.iterateNext();
+} 
+</pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
+<p>In folgendem Beispiel wird ein String mit XML (den man z.B. schon
+serverseitig geladen und ins Javascript Eingefügt hat) in
+Javascript geparsed und mit XPath abgefragt.  <a href="/images/js-und-xml-xpath.html">Demo</a></p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+var xml_string, parser, doc, iterator, thisNode;
+
+xml_string = '... &lt;ii thumburl=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg/300px-2010-04-29-tulpen-by-RalfR-14.jpg&quot; thumbwidth=&quot;300&quot; thumbheight=&quot;451&quot; /&gt; ....';
+parser   = new DOMParser();
+doc      = parser.parseFromString(xml_string, &quot;application/xml&quot;);
+iterator = doc.evaluate('//ii/@thumburl', doc, 
+               null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
+thisNode = iterator.iterateNext();
+if (thisNode) {
+  document.getElementById('bild').src = thisNode.value;
+} 
+</pre></div>
+
+<p>Siehe <a href="https://developer.mozilla.org/en-US/docs/Introduction_to_using_XPath_in_JavaScript">Introduction to using XPath in JavaScript</a></p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+<h2 id="wo-wird-xpath-im-web-development-verwendet">Wo wird XPath im Web Development verwendet?</h2>
+
+<p>Mit <a href="http://docs.seleniumhq.org/">Selenium</a> kann man das Testen einer Webseite
+mit dem Browser automatisieren.  Dazu schreibt man Skripts,
+mit den einzelnen Schritt die der Browser durchführen soll: 
+“klicke hier, schreib das in ein Eingabefeld, drücke diesen Knopf”.
+Wie sagt man dem Browser welchen Link, welches Eingabefeld, welchen Knopf man meint?
+Mit XPath (siehe <a href="http://docs.seleniumhq.org/docs/02_selenium_ide.jsp#locating-by-xpath">Selenium Dokumentation</a>)
+oder mit CSS Selektoren oder mit einer ID.</p>
+
+		
+			<div class="pagination">
   <ul>
     
-      <li><a href="/applied-javascript/cors/">← CORS</a></li>
+      <li><a href="/xml/xml-und-javascript/">← XML und Javascript</a></li>
     
     
-      <li><a href="/security/a1-injection/">Injection →</a></li>
+      <li><a href="/xml/rss/">Beispiel RSS →</a></li>
     
   </ul>
 </div>
 
-
-
 		</div>
-
+		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
@@ -629,7 +666,7 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
               </ul>
             </li>
           
-            <li ><a href="/xml/">XML</a>
+            <li class="active"><a href="/xml/">XML</a>
               <ul class="sub">
                 
                   
@@ -657,7 +694,7 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                       
                     
                       
-                      <li ><a href="/xml/xpath/">XPath</a></li>
+                      <li class="active"><a href="/xml/xpath/">XPath</a></li>
                       
                     
                       
@@ -757,7 +794,7 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
               </ul>
             </li>
           
-            <li class="active"><a href="/security/">SECURITY</a>
+            <li ><a href="/security/">SECURITY</a>
               <ul class="sub">
                 
                   
@@ -815,15 +852,15 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
 </div>
 <!-- sidebar -->
 
-
+		
 	</article>
-<!-- /body -->
+	<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/security/dex.md">Kommentar zu dieser seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/bjelline/web-development-textbook/fork_select">Projekt forken</a> oder <a href="https://github.com/bjelline/web-development-textbook/blob/master/content/xml/xpath.md">Kommentar zu dieser seite</a></p>
     </div>
   </div>
 
