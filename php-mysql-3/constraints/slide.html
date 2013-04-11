@@ -52,6 +52,12 @@
           <p><a href="/php-mysql-3/constraints/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>TODO</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+SELECT * FROM `projects_roles_users` 
+WHERE user_id NOT IN (SELECT id FROM users)
+</pre></div>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql-3/constraints/">zurück zum Buch-Kapitel [esc]</a></p>
