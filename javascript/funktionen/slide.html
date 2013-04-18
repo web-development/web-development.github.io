@@ -51,12 +51,7 @@
           <div class="slide"><h1>Funktionen und this</h1>
           <p><a href="/javascript/funktionen/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'></div>
-<div class='slide'>
-
-<h2 id="funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</h2>
-
-<p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
+	  <div class='slide'><p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
@@ -95,7 +90,7 @@ Teile von Objekten oder Arrays definieren:</p>
   var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
-    method1 : function () {  console.log( &quot;method 1&quot; ) }
+    method_1 : function () {  console.log( &quot;method 1&quot; ) }
   }
 </pre></div>
 
@@ -202,7 +197,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 dann nimmt Javascript ein implizites Objekt an:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite schreibweise)</small></h4>
+<h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite Schreibweise)</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   window.f = function() {
     console.log(&quot;this = &quot; + this);
@@ -228,6 +223,9 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
   objekt.f(&quot;hallo &quot;, 10);
   objekt.f.call(objekt, &quot;hallo &quot;, 10);
   objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
+  
+  objekt.f.call(anderes_objekt, &quot;hallo &quot;, 10);
+  objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
 
 </div>
@@ -240,7 +238,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  document.getElementById(&quot;the_button&quot;).addEventListener(&quot;click&quot;, f);
+  function f() {
+    console.log(&quot;this = &quot; + this);
+  }
+
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
 
   // bei klick auf den Button
   // output in der Console:
@@ -266,7 +268,7 @@ und zwar als Argument:</p>
     console.log(&quot;ev = &quot; + ev);
   }
  
-  document.getElementById(&quot;the_button&quot;).addEventListener(&quot;click&quot;, f);
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
 
   // bei klick auf den Button
   // output in der Console:

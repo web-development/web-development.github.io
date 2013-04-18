@@ -78,18 +78,14 @@ bewusst sein, arbeitet man immer in der Mehrzahl, nie in der Einzahl.</p>
 unterscheiden zu können werden wir ihre Variablennamen immer mit
 einem Dollar beginnen.</p>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <div class="example twopane">
 <h4 class="caption">Javascript Code <small>von jQuery zu DOM und umgekehrt: Eine Node</small></h4>
 <pre class="lang-javascript prettyprint linenums left">
-// von jQuery nach Javascript
-
-// Eine Node mit ID auswählen 
-$q = $(&quot;#idname&quot;);
-
-// DOM-Node extrahieren:
-node = $q.get(0);
-node = $q[0];
-</pre><pre class="lang-javascript prettyprint linenums right">
 // von Javascript zu jQuery
 
 // Eine Node nach ID auswählen 
@@ -98,10 +94,19 @@ node = document.getElementById(&quot;id&quot;);
 // jQuery Objekt konstruieren
 $q = $(node);
 
+</pre><pre class="lang-javascript prettyprint linenums right">
+// von jQuery nach Javascript
+
+// Eine Node mit ID auswählen 
+$q = $(&quot;#idname&quot;);
+
+// DOM-Node extrahieren:
+node = $q.get(0);
+node = $q[0];
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -111,21 +116,7 @@ besonders behandelt werden, in reinem Javascript schon:</p>
 <div class="example twopane">
 <h4 class="caption">Javascript Code <small>von jQuery zu DOM und umgekehrt: mehrere Nodes</small></h4>
 <pre class="lang-javascript prettyprint linenums left">
-// Nodes mit CSS-Selektor auswählen
-$q = $(&quot;.class&quot;);
-
-
-// wie viele sind es?
-if( $q.length &gt; 1 ) {
-  console.log(&quot;mehrere&quot;);
-}
-
-// extrahieren
-var i=0, arr=Array();
-while( i &lt; $q.length ) {
-  arr[i] = $q.get(i);
-}
-</pre><pre class="lang-javascript prettyprint linenums right">
+// plain Javascript
 // Nodes mit CSS-Selektor auswählen
 arr = document
         .querySelectorAll(&quot;.class&quot;);
@@ -140,10 +131,26 @@ $q = $(arr);
 
 
 
+</pre><pre class="lang-javascript prettyprint linenums right">
+// jQuery
+// Nodes mit CSS-Selektor auswählen
+$q = $(&quot;.class&quot;);
+
+
+// wie viele sind es?
+if( $q.length &gt; 1 ) {
+  console.log(&quot;mehrere&quot;);
+}
+
+// extrahieren
+var i=0, arr=Array();
+while( i &lt; $q.length ) {
+  arr[i] = $q.get(i);
+}
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="selektieren">Selektieren</h2>
 
@@ -162,7 +169,7 @@ node = document.querySelector(&quot;h2&quot;);
 
 
 // Alle Nodes auswählen
-arr = document.querySelectorAll(&quot;h2&quot;);
+arr= document.querySelectorAll(&quot;h2&quot;);
 </pre><pre class="lang-javascript prettyprint linenums right">
 // jQuery 
 
@@ -178,7 +185,7 @@ $q = $(&quot;h2&quot;);
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="traversieren">Traversieren</h2>
 
@@ -221,7 +228,7 @@ $n = $q.next('p');
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="attribute">Attribute</h2>
 
@@ -262,7 +269,7 @@ $('input')
 // Node nach Attribut auswählen:
 // Input-Tag mit ID und Attribut 
 // 'name' das auf '_no' endet
-$('input[id][name$='_no'])
+$('input[id][name$=_no]')
 
 </pre><div class="clearfix"></div></div>
 
@@ -294,7 +301,7 @@ document.querySelector('h2')
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="html-einfgen">HTML einfügen</h2>
 
@@ -306,7 +313,7 @@ document.querySelector('h2')
 // plain Javascript
 
 // Text einfügen
-t = document.createTextNode(&quot;Hello&quot;); 
+t= document.createTextNode(&quot;Hello&quot;); 
 node.appendChild(t);
 
 // Tag einfügen
@@ -345,7 +352,7 @@ $n.append($l);
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="clonen">Clonen</h2>
 
@@ -360,27 +367,27 @@ $n.append($l);
 var d2 = document
   .getElementById('dolly')
   .cloneNode();
-document.getElementById('ziel')
+document.getElementById('da')
   .appendChild(d2);
 
 // kirk ans ziel verschieben
 var beam = document
   .getElementById('kirk')
   .removeChild();
-document.getElementById('ziel')
+document.getElementById('da')
   .appendChild(beam);
 </pre><pre class="lang-javascript prettyprint linenums right">
 // jQuery
 
 // dolly kopieren und einfügen
-$('#dolly').clone().appendTo('#ziel');
+$('#dolly').clone().appendTo('#da');
 
 
 
 
 
 // kirk ans ziel verschieben
-$('#ziel').append($('kirk').remove());
+$('#da').append($('kirk').remove());
 
 
 
@@ -388,7 +395,7 @@ $('#ziel').append($('kirk').remove());
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="event-listener">Event-Listener</h2>
 

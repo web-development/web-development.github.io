@@ -56,12 +56,7 @@
                           </div>
 			
 			
-			<a name='slide-1'></a>
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
-
-<h2 id="funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</h2>
-
-<p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
+			<a name='slide-1'></a><p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
@@ -86,7 +81,7 @@
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -100,12 +95,12 @@ Teile von Objekten oder Arrays definieren:</p>
   var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
-    method1 : function () {  console.log( &quot;method 1&quot; ) }
+    method_1 : function () {  console.log( &quot;method 1&quot; ) }
   }
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -122,7 +117,7 @@ der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
 
@@ -152,7 +147,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="was-ist-this">Was ist this?</h2>
 
@@ -173,7 +168,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -199,7 +194,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -207,7 +202,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 dann nimmt Javascript ein implizites Objekt an:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite schreibweise)</small></h4>
+<h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite Schreibweise)</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   window.f = function() {
     console.log(&quot;this = &quot; + this);
@@ -220,7 +215,7 @@ dann nimmt Javascript ein implizites Objekt an:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -233,10 +228,13 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
   objekt.f(&quot;hallo &quot;, 10);
   objekt.f.call(objekt, &quot;hallo &quot;, 10);
   objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
+  
+  objekt.f.call(anderes_objekt, &quot;hallo &quot;, 10);
+  objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -245,7 +243,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  document.getElementById(&quot;the_button&quot;).addEventListener(&quot;click&quot;, f);
+  function f() {
+    console.log(&quot;this = &quot; + this);
+  }
+
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
 
   // bei klick auf den Button
   // output in der Console:
@@ -256,7 +258,7 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll: </p>
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -271,7 +273,7 @@ und zwar als Argument:</p>
     console.log(&quot;ev = &quot; + ev);
   }
  
-  document.getElementById(&quot;the_button&quot;).addEventListener(&quot;click&quot;, f);
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
 
   // bei klick auf den Button
   // output in der Console:
@@ -280,7 +282,7 @@ und zwar als Argument:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -292,7 +294,7 @@ die Eigenschaften des MouseEvents zeigt:</p>
 <p><img src="/images/chrome-mouse-event.png" alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" /></p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
