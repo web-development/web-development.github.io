@@ -143,29 +143,34 @@ gespeichert werden.</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  // Konstruktor
-  function Studiengang(name, seit, hs) {
-    this.name = name;
-    this.seit = seit;
-    this.hs = hs;
-  }
-  // Zwei Attribute am prototyp des Konstruktors
-  Studiengang.prototype.min = 2;
-  Studiengang.prototype.max = 42;
-  // Eine Methode am prototyp des Konstruktors
-  Studiengang.prototype.toString = function () {
-    return &quot;Studiengang &quot; + this.name + &quot; (seit &quot; + this.seit + &quot; @ &quot; + this.hs.name + &quot;)&quot;;
-  }
+// Konstruktor
+function Studiengang(name, seit, hs) {
+  this.name = name;
+  this.seit = seit;
+  this.hs = hs;
+}
+// Zwei Attribute am prototyp des Konstruktors
+Studiengang.prototype.min = 2;
+Studiengang.prototype.max = 42;
+// Eine Methode am prototyp des Konstruktors
+Studiengang.prototype.toString = function () {
+  return &quot;Studiengang &quot; + this.name + 
+    &quot; (seit &quot; + this.seit + 
+    &quot; @ &quot; + this.hs.name + &quot;)&quot;;
+}
 
-  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
-  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
+mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
 
-  mmtb.toString();  // findet toString Methode des Prototypen und ruft sie auf
+mmtb.toString();  // findet toString Methode des 
+            // Prototypen und ruft sie auf
 
-  mmtb.min    // findet min Attribut des Prototypen, gibt Wert 2 
-  mmtb.min=5  // speichert Wert 2 im Objekt selbst
-  mmtb.min    // gibt jetzt Wert 5
-  mmtm.min    // findet min Attribut des Prototypen, gibt Wert 2 
+mmtb.min    // findet min Attribut des Prototypen
+            // gibt Wert 2 
+mmtb.min=5  // speichert Wert 5 im Objekt selbst
+mmtb.min    // gibt jetzt Wert 5
+mmtm.min    // findet min Attribut des Prototypen, 
+            // gibt Wert 2 
 </pre></div>
 
 <p>Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
