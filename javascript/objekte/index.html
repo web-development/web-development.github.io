@@ -202,7 +202,8 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
     this.status = &quot;sleeping&quot;;
   }
   Pet.prototype.log = function() {
-    console.log(&quot;i am &quot; + this.status.get() + &quot;. &quot; + this.word + &quot;!&quot;);
+    console.log(&quot;i am &quot; + this.status.get() + 
+      &quot;. &quot; + this.word + &quot;!&quot;);
   }
 
   // ----- Mammal ---------
@@ -223,9 +224,11 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
   }
 
   d = new Dog(&quot;beagle&quot;);
-  d.word    // ist direkt im Objekt gespeichert
-  d.legs    // ist im Prototyp von Dog gespeichert (einem Mammal-Objekt)
-  d.status  // ist im Prototyp von mammal gespeichert (einem Pet-Objekt)
+  d.word    // direkt im Objekt gespeichert
+  d.legs    // im Prototyp von Dog gespeichert 
+            // (einem Mammal-Objekt)
+  d.status  // im Prototyp von mammal gespeichert 
+            // (einem Pet-Objekt)
 </pre></div>
 
 <p>Diese Vererbungs-Kette über die Prototypen nenn man auf english “prototype chain”. </p>

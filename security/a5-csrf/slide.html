@@ -37,6 +37,10 @@
             border: 2px white solid;
             padding: 2px;
           }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
         </style>
   
 	
@@ -67,14 +71,14 @@ eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
 <div class="example">
 <h4 class="caption">Html Code <small>Verwundbarer Web-Applikation</small></h4>
 <pre class="lang-html prettyprint linenums">
-   &lt;form action=&quot;spende.php&quot; method=&quot;...&quot;&gt;
-      &lt;input name=&quot;betrag&quot;&gt;
-      &lt;select name=&quot;kontonummer&quot;&gt;
-        &lt;option value=&quot;23456789&quot;&gt;Greenpeace&lt;/option&gt;
-        &lt;option value=&quot;34567890&quot;&gt;Amnesty International&lt;/option&gt;
-      &lt;/select&gt;
-      &lt;input type=&quot;submit&quot;&gt;
-   &lt;form&gt;
+&lt;form action=&quot;spende.php&quot; method=&quot;...&quot;&gt;
+  &lt;input name=&quot;betrag&quot;&gt;
+  &lt;select name=&quot;kontonummer&quot;&gt;
+    &lt;option value=&quot;23456789&quot;&gt;Greenpeace&lt;/option&gt;
+    &lt;option value=&quot;34567890&quot;&gt;Amnesty International&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;form&gt;
 </pre></div>
 
 </div>
@@ -88,15 +92,15 @@ der Attacke verschieden aus. </p>
 <div class="example">
 <h4 class="caption">Html Code <small>Attacke auf das Formular</small></h4>
 <pre class="lang-html prettyprint linenums">
-  &lt;!-- Attacke auf GET --&gt;
-  &lt;img src=&quot;http://spendenportal.ch/spende.php?betrag=1000&amp;kontonummer=6666666&quot; alt=&quot;i can has cheezburger&quot;&gt;
+&lt;!-- Attacke auf GET --&gt;
+&lt;img src=&quot;http://spendenportal.ch/spende.php?betrag=1000&amp;kontonummer=6666666&quot; alt=&quot;i can has cheezburger&quot;&gt;
 
-  &lt;!-- Attacke auf POST --&gt;
-  &lt;form action=&quot;http://spendenportal.ch/spende.php&quot; method=&quot;POST&quot;&gt;
-    &lt;input name=&quot;betrag&quot;      value=&quot;1000&quot; type=&quot;hidden&quot;&gt;
-    &lt;input name=&quot;kontonummer&quot; value=&quot;6666&quot; type=&quot;hidden&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Like this on Facebook&quot;&gt;
-  &lt;/form&gt;
+&lt;!-- Attacke auf POST --&gt;
+&lt;form action=&quot;http://spendenportal.ch/spende.php&quot; method=&quot;POST&quot;&gt;
+  &lt;input name=&quot;betrag&quot;      value=&quot;1000&quot; type=&quot;hidden&quot;&gt;
+  &lt;input name=&quot;kontonummer&quot; value=&quot;6666&quot; type=&quot;hidden&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Like this on Facebook&quot;&gt;
+&lt;/form&gt;
 </pre></div>
 
 </div>
@@ -126,16 +130,16 @@ gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Erzeugung des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
-  if (!isset($_SESSION['token'])) {
-    $token = md5(uniqid(rand(), TRUE));
-    $_SESSION['token']      = $token;
-    $_SESSION['token_time'] = time();
-  }
+if (!isset($_SESSION['token'])) {
+  $token = md5(uniqid(rand(), TRUE));
+  $_SESSION['token']      = $token;
+  $_SESSION['token_time'] = time();
+}
+...
+&lt;form action=&quot;spende.php&quot; method=&quot;post&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;&lt;?php echo $token; ?&gt;&quot;&gt;
+  &lt;input name=&quot;betrag&quot;&gt;
   ...
-  &lt;form action=&quot;spende.php&quot; method=&quot;post&quot;&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;&lt;?php echo $token; ?&gt;&quot;&gt;
-    &lt;input name=&quot;betrag&quot;&gt;
-    ...
 </pre></div>
 
 </div>
@@ -149,12 +153,12 @@ ist und noch gültig ist:</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Check des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
-  if (!isset($_SESSION['token']))            throw TokenException;
-  if ($_POST['token'] != $_SESSION['token']) throw TokenException;
+if (!isset($_SESSION['token']))            throw TokenException;
+if ($_POST['token'] != $_SESSION['token']) throw TokenException;
 
-  $token_age = time() - $_SESSION['token_time'];
-   
-  if ($token_age &gt; 300)                      throw TokenException;
+$token_age = time() - $_SESSION['token_time'];
+ 
+if ($token_age &gt; 300)                      throw TokenException;
 </pre></div>
 
 </div>

@@ -37,6 +37,10 @@
             border: 2px white solid;
             padding: 2px;
           }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
         </style>
   
 	
@@ -194,9 +198,8 @@ waren die URLs:</p>
 
 
 
-<p>In Kapitel <a href="/security/a4-referenz/">SECURITY - Unsichere direkte Objektreferenz</a>
-haben wir erfahren, wie man mit der RewriteEngine von Apache und der
-Verwendung von Slugs die Preisgabe von IDs vemeiden kann:</p>
+<p>In Wordpress haben Sie schon gesehen, dann man die URLs
+im Webserver umschreiben kann, mit der RewriteEngine von Apache.</p>
 
 <ul>
   <li>http://ich.multimediatechnology.at/projekt-1/</li>
@@ -254,15 +257,15 @@ nichts an der Ressource, diese Methode ist also harmlos.</li>
 werden. z.B. könnte ein POST auf <code>/dings/</code> eine neue Ressource mit der 
 URL <code>/dings/17</code> erzeugen</li>
   <li><strong>PUT</strong> Diese Methode dient zum Speichern einer Ressource unter der  angegebenen URL. 
-Diese Methode steht bei normalen Web-Formularen aber nicht zur Verfügung. Deswegen 
+Diese Methode steht bei Web-Formularen aber nicht zur Verfügung. Deswegen 
 wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet. </li>
   <li><strong>DELETE</strong> Diese Methode dient zum Löschen einer Ressource. Auch diese Methode 
-steht bei normalen Web-Formularen nicht zur Verfügung.  </li>
+steht bei Web-Formularen nicht zur Verfügung.  </li>
 </ul>
 
 <h4 id="umsetzung-2">Umsetzung</h4>
 
-<p>Bei der Programmeirung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
+<p>Bei der Programmierung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
 einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden. </p>
 
@@ -398,11 +401,11 @@ bei der Verwendung von Frameworks umsetzten.</p>
 
 <p>Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
 man am einfachsten an einem Gegenbeispiel: Wenn ich im 
-<a href="http://alephino.fh-salzburg.ac.at/">Katalog der FH-Bibliotek</a> 
+<a href="http://opac.obvsg.at/fsa">Katalog der FH-Bibliotek</a> 
 nach Büchern suche (hier mit dem Suchwort „Web“) 
 erhalte ich zum Beispiel folgende URL:</p>
 
-<p><code>http://alephino.fh-salzburg.ac.at/alipac/GYOJPQZTMURYQVHVWMND-00021/find-simple?C1=%28&amp;V1=web&amp;C2=%29&amp;F1=ALL&amp;A1=N&amp;x=0&amp;y=0</code></p>
+<p><code>http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&amp;find_code=WRD&amp;request=Web&amp;adjacent=N&amp;x=0&amp;y=0&amp;filter_code_1=WSP&amp;filter_request_1=&amp;filter_code_2=WEF&amp;filter_request_2=&amp;filter_code_5=WYR&amp;filter_request_5=&amp;filter_code_6=WYR&amp;filter_request_6=&amp;filter_code_7=WDA&amp;filter_request_7=&amp;filter_code_8=WZW&amp;filter_request_8=</code></p>
 
 </div>
 <div class='slide'>
