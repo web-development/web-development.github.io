@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Regular Expressions - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Regular Expressions</h1>
+          <p><a href="/javascript/regular-expressions/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'><p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
+eine besondere Schreibweise die es erlaubt in Strings nach Mustern zu suchen
+und Ersetzungen vorzunehmen.  </p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Mit Regular Expressions kann man die Welt retten:</p>
+
+<p><img src="/images/regex-hero.png" alt="" />
+Basierend auf <a href="http://xkcd.com/208/">http://xkcd.com/208/</a> von Randall Munroe - verändert und verwendet unter der <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC</a> Lizenz</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Regular Expressions sind keine Besonderheit von Javascript. Viele UNIX Kommandozeilen-Befehle
+und die meisten Programmiersprachen bieten Regular Expressions an.  Egal ob Sie also mit vi, grep, mod_rewrite,
+Javascript, C++ oder Ruby arbeiten, alles was Sie über Regular Expressions lernen
+zahlt sich aus!</p>
+
+<p><a href="http://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck">Reguläre Ausdrücke</a> sind 
+ein Konzept aus der Theoretischen Informatik. Diese ursprünglichen regulären Ausdrücke
+bieten nur 3 Operatoren an.  Bei der Umsetzung in diversen UNIX-Tools und Programmiersprachen
+wurden mehr und mehr Operatoren eingeführt. Zur unterscheidung nenne ich diese
+erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="verwendung-von-regular-expressions">Verwendung von Regular Expressions</h2>
+
+<p>In Javascript gibt es viele verschiedene Schreibweise für Regular Expressions,
+wir beginnen mit der Methode <code>match</code> des String-Objekts:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>match</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var s = &quot;begreifen&quot;;
+if( s.match(/greif/) ) {
+  console.log(&quot;greif gefunden!&quot;);
+}
+</pre></div>
+
+<p>Hier wird im String “begreifen” nach dem String “greif” gesucht.
+Falls er gefunden wird (ja, wird er), gibt die Match-Methoden einen
+Wert zurück, der als wahr gilt.</p>
+
+<p>Für diesen einfachen Fall wird man aber nicht eine RegEx verwenden,
+sondern <code>indexOf</code>: diese Methode gibt -1 zurück falls der String
+nicht gefunden wurde, und die Position der Fundstelle anderfalls.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>match</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var s = &quot;begreifen&quot;;
+if( s.indexOf('greif') &gt; -1) {
+  console.log(&quot;greif gefunden!&quot;);
+}
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="zeichenkette">Zeichenkette</h2>
+
+<p>Die einfachste Regular Expression besteht aus einer
+Zeichenkette, nach der “wörtlich” gesucht werden soll.
+Falls die Zeichenkette irgendwo im String gefunden wird
+ist die Suche erfolgreich:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/hallo/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list[]=&amp;list[]=hallo&amp;list[]=aber%20hallo!&amp;list[]=die%20hallobergrenze&amp;list[]=halo&amp;list[]=Hallo">RegEx Tester: /hallo/</a></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="alternative">Alternative</h2>
+
+<p>Mit dem senkrechten Strich <code>|</code>  kann man Alternative definieren, er
+entspricht also einem logischen “oder”;</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/en|sk|zh|us|uk/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="regex-in-php">RegEx in PHP</h2>
+
+<div class="example">
+<h4 class="caption">Php Code <small>RegEx Beispiel-Code aus Wordpress Plugins</small></h4>
+<pre class="lang-php prettyprint linenums">
+# Beispiel Link Suchen
+if (preg_match('/^(http)(s?)(:)\/\//',$linky)){ ...
+
+# Beispiel Sprache-Code
+if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, $locale_code )){ ...
+</pre></div>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Suchen mit RegEx in PHP</small></h4>
+<pre class="lang-php prettyprint linenums">
+preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;) 
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="verteifung">Verteifung</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions">Regular Expressions Guide auf MDN</a></li>
+</ul>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript/regular-expressions/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

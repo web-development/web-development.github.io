@@ -275,15 +275,15 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Event Listener</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  function onMouseDown(e) {
-    console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
-  }
+function onMouseDown(e) {
+  console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
+}
 
-  element.addEventListener( 'mousedown', onMouseDown, false );
+element.addEventListener( 'mousedown', onMouseDown, false );
 </pre></div>
 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
-this das angeklickte element, und e enthält ein Event-Objekt mit
+<code>this</code> das angeklickte Element, und <code>e</code> enthält ein Event-Objekt mit
 weiteren Details.</p>
 
 </div>
@@ -295,7 +295,7 @@ weiteren Details.</p>
 die SVG-Node <code>&lt;circle&gt;</code> repräsentiert, sondern durch ein Javascript-Objekt
 das mit dem Konstruktor <code>Circle</code> erzeugt wurde.</p>
 
-<p>Wie kann die Listener-Funktion Zugriff zu diesem Objekt erhalten?</p>
+<p>Wie kann die Listener-Funktion Zugriff zu diesem Javascript-Objekt erhalten?</p>
 
 <p>Ein Versuch wäre, das Javascript-Objekt im SVG-Element zu speichern.
 zum Beispiel in einem Data-Attribut. In HTML5 darf man ja zu jedem
@@ -305,9 +305,9 @@ Name des Attributs mit “data-“ beginnt.</p>
 <div class="example">
 <h4 class="caption">Html Code <small>data-Attribute in HTML5</small></h4>
 <pre class="lang-html prettyprint linenums">
-  &lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
-  ....
-  &lt;circle data-weight=&quot;10kg&quot;&gt;
+&lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
+....
+&lt;circle data-weight=&quot;10kg&quot;&gt;
 </pre></div>
 
 </div>
@@ -320,13 +320,14 @@ Name des Attributs mit “data-“ beginnt.</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  c = document.getElementById(&quot;circle_1&quot;);
-  // Versuch ein Objekt zu speichern
-  c.setAttribute(&quot;data-myobject&quot;, { color: 'red', no: 42 } ); 
+// Versuch ein Objekt zu speichern
+c = document.getElementById(&quot;circle_1&quot;);
+c.setAttribute(&quot;data-myobject&quot;, { color: 'red', no: 42 } ); 
 
-  o = c.getAttribute(&quot;data-editorobject&quot;);    // auslesen der Daten
-  typeof o        // ergibt &quot;string&quot;
-  console.log(o)  // ergibt &quot;[object Object]&quot;
+// auslesen der Daten
+o = c.getAttribute(&quot;data-editorobject&quot;);    
+typeof o        // ergibt &quot;string&quot;
+console.log(o)  // ergibt &quot;[object Object]&quot;
 </pre></div>
 
 <p>Beim Speichern in der DOM wurde also mein Objekt in einen String umgewandelt,
@@ -381,18 +382,21 @@ addDragability( other_jsobj, other_element );
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {
   function onMove(e) {
-    // die Differenz zwischen aktueller Maus-Position und der 
-    // Start-Position berechnen. Das ergibt einen Translations-Vektor. 
-    // Diesen Vektor zur Startposition des Objekts addieren, 
-    // aktuelle Position des Objekts setzen
+    // die Differenz zwischen aktueller Maus-Position 
+    // und der Start-Position berechnen. Das ergibt 
+    // einen Translations-Vektor. 
+    // Diesen Vektor zur Startposition des Objekts 
+    // addieren, aktuelle Position des Objekts setzen
   }
   function onMouseDown(e) {
-    // Drag-und-Drop beginnt: den richtigen eventlistener für mousemove setzen
-    // Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt 
-    // müssen gespeichert werden.
+    // Drag-und-Drop beginnt: den richtigen Eventlistener 
+    // für mousemove setzen
+    // Die Position der Maus und des Objekt zu diesem 
+    // Start-Zeitpunkt müssen gespeichert werden.
   }
   function onMouseUp(e) {
-    // Drag-and-Drop beenden: nicht mehr gebrauchte event-listener entfernen
+    // Drag-and-Drop beenden: nicht mehr gebrauchte 
+    // event-listener entfernen
   }
 
   console.log( jsobj + &quot; und damit &quot; + element + &quot; sind nun draggable&quot;);

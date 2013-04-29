@@ -276,15 +276,15 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Event Listener</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  function onMouseDown(e) {
-    console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
-  }
+function onMouseDown(e) {
+  console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
+}
 
-  element.addEventListener( 'mousedown', onMouseDown, false );
+element.addEventListener( 'mousedown', onMouseDown, false );
 </pre></div>
 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
-this das angeklickte element, und e enthält ein Event-Objekt mit
+<code>this</code> das angeklickte Element, und <code>e</code> enthält ein Event-Objekt mit
 weiteren Details.</p>
 
 
@@ -296,7 +296,7 @@ weiteren Details.</p>
 die SVG-Node <code>&lt;circle&gt;</code> repräsentiert, sondern durch ein Javascript-Objekt
 das mit dem Konstruktor <code>Circle</code> erzeugt wurde.</p>
 
-<p>Wie kann die Listener-Funktion Zugriff zu diesem Objekt erhalten?</p>
+<p>Wie kann die Listener-Funktion Zugriff zu diesem Javascript-Objekt erhalten?</p>
 
 <p>Ein Versuch wäre, das Javascript-Objekt im SVG-Element zu speichern.
 zum Beispiel in einem Data-Attribut. In HTML5 darf man ja zu jedem
@@ -306,9 +306,9 @@ Name des Attributs mit “data-“ beginnt.</p>
 <div class="example">
 <h4 class="caption">Html Code <small>data-Attribute in HTML5</small></h4>
 <pre class="lang-html prettyprint linenums">
-  &lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
-  ....
-  &lt;circle data-weight=&quot;10kg&quot;&gt;
+&lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
+....
+&lt;circle data-weight=&quot;10kg&quot;&gt;
 </pre></div>
 
 
@@ -321,13 +321,14 @@ Name des Attributs mit “data-“ beginnt.</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  c = document.getElementById(&quot;circle_1&quot;);
-  // Versuch ein Objekt zu speichern
-  c.setAttribute(&quot;data-myobject&quot;, { color: 'red', no: 42 } ); 
+// Versuch ein Objekt zu speichern
+c = document.getElementById(&quot;circle_1&quot;);
+c.setAttribute(&quot;data-myobject&quot;, { color: 'red', no: 42 } ); 
 
-  o = c.getAttribute(&quot;data-editorobject&quot;);    // auslesen der Daten
-  typeof o        // ergibt &quot;string&quot;
-  console.log(o)  // ergibt &quot;[object Object]&quot;
+// auslesen der Daten
+o = c.getAttribute(&quot;data-editorobject&quot;);    
+typeof o        // ergibt &quot;string&quot;
+console.log(o)  // ergibt &quot;[object Object]&quot;
 </pre></div>
 
 <p>Beim Speichern in der DOM wurde also mein Objekt in einen String umgewandelt,
@@ -382,18 +383,21 @@ addDragability( other_jsobj, other_element );
 <pre class="lang-javascript prettyprint linenums">
 function addDragability( jsobj, element ) {
   function onMove(e) {
-    // die Differenz zwischen aktueller Maus-Position und der 
-    // Start-Position berechnen. Das ergibt einen Translations-Vektor. 
-    // Diesen Vektor zur Startposition des Objekts addieren, 
-    // aktuelle Position des Objekts setzen
+    // die Differenz zwischen aktueller Maus-Position 
+    // und der Start-Position berechnen. Das ergibt 
+    // einen Translations-Vektor. 
+    // Diesen Vektor zur Startposition des Objekts 
+    // addieren, aktuelle Position des Objekts setzen
   }
   function onMouseDown(e) {
-    // Drag-und-Drop beginnt: den richtigen eventlistener für mousemove setzen
-    // Die Position der Maus und des Objekt zu diesem Start-Zeitpunkt 
-    // müssen gespeichert werden.
+    // Drag-und-Drop beginnt: den richtigen Eventlistener 
+    // für mousemove setzen
+    // Die Position der Maus und des Objekt zu diesem 
+    // Start-Zeitpunkt müssen gespeichert werden.
   }
   function onMouseUp(e) {
-    // Drag-and-Drop beenden: nicht mehr gebrauchte event-listener entfernen
+    // Drag-and-Drop beenden: nicht mehr gebrauchte 
+    // event-listener entfernen
   }
 
   console.log( jsobj + &quot; und damit &quot; + element + &quot; sind nun draggable&quot;);
@@ -405,7 +409,7 @@ function addDragability( jsobj, element ) {
 			<div class="pagination">
   <ul>
     
-      <li><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+      <li><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
     
     
       <li><a href="/javascript/module/">Module</a></li>
@@ -425,7 +429,7 @@ function addDragability( jsobj, element ) {
         <ul class="nav nav-list">
         
           
-            <li ><a href="/das-web-und-html/">DAS WEB UND HTML</a>
+            <li ><a href="/das-web-und-html/">Das Web Und Html</a>
               <ul class="sub">
                 
                   
@@ -453,7 +457,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/css/">CSS</a>
+            <li ><a href="/css/">Css</a>
               <ul class="sub">
                 
                   
@@ -489,7 +493,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/css-layout/">CSS LAYOUT</a>
+            <li ><a href="/css-layout/">Css Layout</a>
               <ul class="sub">
                 
                   
@@ -521,7 +525,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/urls/">URLS</a>
+            <li ><a href="/urls/">Urls</a>
               <ul class="sub">
                 
                   
@@ -545,7 +549,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/formulare/">FORMULARE</a>
+            <li ><a href="/formulare/">Formulare</a>
               <ul class="sub">
                 
                   
@@ -577,7 +581,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/javascript-dom/">JAVASCRIPT DOM</a>
+            <li ><a href="/javascript-dom/">Javascript Dom</a>
               <ul class="sub">
                 
                   
@@ -605,7 +609,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/jquery/">JQUERY</a>
+            <li ><a href="/jquery/">Jquery</a>
               <ul class="sub">
                 
                   
@@ -641,7 +645,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/http/">HTTP</a>
+            <li ><a href="/http/">Http</a>
               <ul class="sub">
                 
                   
@@ -665,7 +669,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/git/">GIT</a>
+            <li ><a href="/git/">Git</a>
               <ul class="sub">
                 
                   
@@ -693,7 +697,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/php-vorbereitung/">PHP VORBEREITUNG</a>
+            <li ><a href="/php-vorbereitung/">Php Vorbereitung</a>
               <ul class="sub">
                 
                   
@@ -717,7 +721,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/wordpress/">WORDPRESS</a>
+            <li ><a href="/wordpress/">Wordpress</a>
               <ul class="sub">
                 
                   
@@ -765,7 +769,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/php/">PHP</a>
+            <li ><a href="/php/">Php</a>
               <ul class="sub">
                 
                   
@@ -805,7 +809,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/php-mysql/">PHP MYSQL</a>
+            <li ><a href="/php-mysql/">Php Mysql</a>
               <ul class="sub">
                 
                   
@@ -837,7 +841,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/session/">SESSION</a>
+            <li ><a href="/session/">Session</a>
               <ul class="sub">
                 
                   
@@ -857,7 +861,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/php-mysql-2/">PHP MYSQL 2</a>
+            <li ><a href="/php-mysql-2/">Php Mysql 2</a>
               <ul class="sub">
                 
                   
@@ -889,7 +893,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/xml/">XML</a>
+            <li ><a href="/xml/">Xml</a>
               <ul class="sub">
                 
                   
@@ -933,7 +937,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/json/">JSON</a>
+            <li ><a href="/json/">Json</a>
               <ul class="sub">
                 
                   
@@ -953,7 +957,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/php-mysql-3/">PHP MYSQL 3</a>
+            <li ><a href="/php-mysql-3/">Php Mysql 3</a>
               <ul class="sub">
                 
                   
@@ -985,7 +989,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li class="active"><a href="/javascript/">JAVASCRIPT</a>
+            <li class="active"><a href="/javascript/">Javascript</a>
               <ul class="sub">
                 
                   
@@ -1005,6 +1009,10 @@ function addDragability( jsobj, element ) {
                       
                     
                       
+                      <li ><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
+                      
+                    
+                      
                       <li class="active"><a href="/javascript/event-und-closure/">Events und Closures</a></li>
                       
                     
@@ -1021,7 +1029,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/applied-javascript/">APPLIED JAVASCRIPT</a>
+            <li ><a href="/applied-javascript/">Applied Javascript</a>
               <ul class="sub">
                 
                   
@@ -1049,7 +1057,7 @@ function addDragability( jsobj, element ) {
               </ul>
             </li>
           
-            <li ><a href="/security/">SECURITY</a>
+            <li ><a href="/security/">Security</a>
               <ul class="sub">
                 
                   
