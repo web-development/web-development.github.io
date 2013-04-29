@@ -75,20 +75,20 @@ drittes Argument wird ein Objekt übergeben:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Objekt mit Objekt</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  var hochschule = {
-    name: &quot;FH Salzburg&quot;,
-    typ: &quot;Fachhochschule&quot;,
-    seit: 1996
-  };
+var hs = {
+  name: &quot;FH Salzburg&quot;,
+  typ: &quot;Fachhochschule&quot;,
+  seit: 1996
+};
 
-  function Studiengang(name, seit, hs) {
-    this.name = name;
-    this.seit = seit;
-    this.hs = hs;
-  }
+function Studiengang(name, seit, hs) {
+  this.name = name;
+  this.seit = seit;
+  this.hs = hs;
+}
 
-  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
-  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
+mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
 </pre></div>
 
 
@@ -115,7 +115,7 @@ keine verwendet wurde auf die Funktion <code>Object()</code>.</p>
 <pre class="lang-javascript prettyprint linenums">
 // folgende Ausdrücke sind true:
 mmtb.constructor === Studiengang;
-hochschule.constructor === Object;
+hs.constructor === Object;
 </pre></div>
 
 <p><img src="/images/objekt-mit-objekt-und-constructor.png" alt="Abbildung: Objekt mit Konstruktor" /></p>
@@ -126,7 +126,7 @@ hochschule.constructor === Object;
 <h4 class="caption">Javascript Code <small>Fortsetzung: Operator instanceof</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 mmtb instanceof Studiengang;
-hochschule instanceof Object;
+hs instanceof Object;
 mmtb instanceof Object;
 </pre></div>
 
@@ -164,8 +164,8 @@ Studiengang.prototype.toString = function () {
     &quot; @ &quot; + this.hs.name + &quot;)&quot;;
 }
 
-mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hochschule );
-mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hochschule );
+mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
+mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
 
 mmtb.toString();  // findet toString Methode des 
             // Prototypen und ruft sie auf
@@ -177,6 +177,8 @@ mmtb.min    // gibt jetzt Wert 5
 mmtm.min    // findet min Attribut des Prototypen, 
             // gibt Wert 2 
 </pre></div>
+
+<p><a href="/images/js-vererbung.html">Demo in der Console</a></p>
 
 <p>Wird ein Attribut oder eine Methode an einem Objekt gesucht, und
 kann direkt am Objekt nicht gefunden werden, dann durchsucht
@@ -211,6 +213,7 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
     this.legs = 4;
   }
   Mammal.prototype = new Pet();
+  Mammal.prototype.constructor = Mammal;
 
   // ----- Dog --------
   function Dog( b ) {
@@ -218,6 +221,7 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
     this.word = &quot;wau! &quot;;
   }
   Dog.prototype = new Mammal();
+  Dog.prototype.constructor = Dog;
 
   Dog.prototype.sit = function() {
     this.status.set(&quot;sitting&quot;);
@@ -230,6 +234,8 @@ wird das Attribut <code>min</code> direkt im Objekt gefunden, hier ist kein Zugr
   d.status  // im Prototyp von mammal gespeichert 
             // (einem Pet-Objekt)
 </pre></div>
+
+<p><a href="/images/js-vererbung.html">Demo in der Console</a></p>
 
 <p>Diese Vererbungs-Kette über die Prototypen nenn man auf english “prototype chain”. </p>
 
@@ -249,11 +255,52 @@ das kann zu unerwarteten Effekten führen:</p>
   d1 = new Dog(&quot;Beagle&quot;);
   d2 = new Dog(&quot;Schnauzer&quot;);
   
-  d1.status === d2.status // es gibt nur ein Status-Objekt für alle Mammals!
+  d1.status === d2.status // es gibt nur ein Status-Objekt 
+                          // für alle Mammals!
+  d1.hasOwnProperty('status'); // false
+
+  d1.status = new Status('playing');
+
+  d1.status === d2.status      // false
+  d1.hasOwnProperty('status'); // true
 </pre></div>
 
 
 <a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+<h2 id="das-wunder-des-dreibeinigen-hundes">Das Wunder des dreibeinigen Hundes</h2>
+
+<p>Der Schnauzer hat einen schrecklichen Unfall, und verliert ein Bein:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+d1 = new Dog(&quot;Beagle&quot;);
+d2 = new Dog(&quot;Schnauzer&quot;);
+d2.legs = 3;
+
+console.log(d1.legs); // 4 Beine von Mammal
+console.log(d2.legs); // 3 Beine 
+
+d1.hasOwnProperty('legs') // ... false
+d2.hasOwnProperty('legs') // ... true
+</pre></div>
+
+<p>Doch nun geschieht ein Wunder: wenn wir mit <code>delete</code> das
+Attribut <code>legs</code> aus <code>d2</code> entfernen hat er wieder 3 Bein - weil
+das im prototypen so gespeichert ist.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+delete(d2.legs);
+
+console.log(d2.legs);     // 4 Beine 
+d2.hasOwnProperty('legs') // ... false
+</pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="verteifung">Verteifung</h2>
 
