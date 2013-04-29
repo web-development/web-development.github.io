@@ -86,6 +86,10 @@ bieten nur 3 Operatoren an.  Bei der Umsetzung in diversen UNIX-Tools und Progra
 wurden mehr und mehr Operatoren eingeführt. Zur unterscheidung nenne ich diese
 erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx.</p>
 
+<p>Regular Expressions nennt man of auch Muster (en: patterns), man spricht von
+Mustersuche (en: pattern matching). Wenn ein Muster auf ein Zeichenkette zutrifft
+sagt man auf Halb-Englisch: “der Pattern matched”.</p>
+
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
@@ -105,7 +109,7 @@ if( s.match(/greif/) ) {
 
 <p>Hier wird im String “begreifen” nach dem String “greif” gesucht.
 Falls er gefunden wird (ja, wird er), gibt die Match-Methoden einen
-Wert zurück, der als wahr gilt.</p>
+Wert zurück, der als wahr gilt.  </p>
 
 <p>Für diesen einfachen Fall wird man aber nicht eine RegEx verwenden,
 sondern <code>indexOf</code>: diese Methode gibt -1 zurück falls der String
@@ -155,6 +159,125 @@ entspricht also einem logischen “oder”;</p>
 
 <a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
+<h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
+
+<p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/(de|fr)_(DE|CH)/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list[]=&amp;list[]=de_DE&amp;list[]=fr_DE&amp;list[]=de_CH&amp;list[]=fr_CH&amp;list[]=de_AT&amp;list[]=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
+
+<p>Ausserdem stehen die von den Klammern gefundenen Teile des
+Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
+liefert ein Array als Rückgabewert, an der Stelle 0 ist der
+gesamte gefundene String gespeichert, auf 1, 2, 3 der Reihe
+nach die gefundnen Gruppen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+locale = &quot;de_CH&quot;;
+if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
+  console.log(&quot;gesamt:  &quot; + match[0]);
+  console.log(&quot;sprache: &quot; + match[1]);
+  console.log(&quot;land:    &quot; + match[2]);
+}
+</pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+<h2 id="verankern">Verankern</h2>
+
+<p>Mit den Zeichen Zirkumflex <code>^</code> und Dollar <code>$</code> kann die Suche am
+Anfang bzw. Ende der Strings verankert werden.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/^Am Anfang war/
+/dann leben sie noch heute.$/
+/^Ganzer String$/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=Maske&amp;list[]=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+<h2 id="zeichen-klassen">Zeichen-Klassen</h2>
+
+<p>Wenn für ein Zeichen im String mehrere Zeichen zur
+Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character class”) zusammen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[aeiou]/
+</pre></div>
+
+<p>Achtung!  Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
+
+<p><a href="/images/match.html?pattern=hall[oia]&amp;listname=hallos&amp;list[]=&amp;list[]=halli&amp;list[]=hallo&amp;list[]=halla&amp;list[]=halloi&amp;list[]=hall&amp;list[]=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+<h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
+
+<p>Mit einem Bindestrich <code>-</code> innerhalb der Klasse kann
+man einen Bereich von Zeichen angeben, die im Zeichensatz hintereinander
+stehen.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[a-f]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=[a-z]&amp;listname=buchstaben&amp;list[]=&amp;list[]=a&amp;list[]=b&amp;list[]=c&amp;list[]=x&amp;list[]=y&amp;list[]=z&amp;list[]=A&amp;list[]=.&amp;list[]=%25">RegEx Tester: /[a-z]/</a></p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+<h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
+
+<p>Mit dem Zirkumflex <code>^</code> kann man das Komplement der Zeichen-Klasse bilden,
+es werden dann alle Zeichen gematched die <strong>nicht</strong> in der eckigen
+Klammer erwähnt werden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[^aeiou]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=u[%5E1234]&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=usa">RegEx Tester: /u[^1234]/</a></p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d/      # eine Ziffer, entspricht /[0-9]/
+/\D/      # keine Ziffer, entspricht /[^0-9]/
+/\w/      # Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
+/\W/      # kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=u9&amp;list[]=usa">RegEx Tester: /u\d/</a></p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+<h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
+
+<p>Der Punkt <code>.</code> steht für ein beliebiges Zeichen.  Achtung, Verwechslungsgefahr:
+bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
 <h2 id="regex-in-php">RegEx in PHP</h2>
 
 <div class="example">
@@ -174,12 +297,14 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h2 id="verteifung">Verteifung</h2>
 
 <ul>
+  <li><a href="http://www.youtube.com/watch?v=EkluES9Rvak">Video: Lea Verou Demystifying Regular Expressions</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions">Regular Expressions Guide auf MDN</a></li>
+  <li><a href="http://de.wikipedia.org/wiki/Regular_Expression">Wikipedia: Regular Expression</a></li>
 </ul>
 
 		
