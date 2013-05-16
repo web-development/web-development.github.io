@@ -124,7 +124,7 @@ http://localhost/php/test.php?anzahl=4&amp;adresse=Jakob+Haringer+Str.1%0D%0A502
   <li>für alle Eingabefelder, getrennt durch <code>&amp;</code> (kaufmännisches Und):
     <ul>
       <li>Name des Eingabefeldes</li>
-      <li>= (Gleich Zeichen)</li>
+      <li><code>=</code> (Gleich Zeichen)</li>
       <li>Eingegebener / angeklickter Wert</li>
     </ul>
   </li>
@@ -132,7 +132,7 @@ http://localhost/php/test.php?anzahl=4&amp;adresse=Jakob+Haringer+Str.1%0D%0A502
 
 <p>Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute,
 Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt
-Leerzeichen wird ein + oder %20 gesetzt, bei allen anderen Zeichen wird ein %
+Leerzeichen wird ein <code>+</code> oder <code>%20</code> gesetzt, bei allen anderen Zeichen wird ein <code>%</code>
 gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396).
 Diese Codierung nennt man URL-Encoding. (siehe
 <a href="http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1">HTML 4.01 Specification</a>.)</p>
@@ -142,7 +142,8 @@ Diese Codierung nennt man URL-Encoding. (siehe
 
 <h2 id="url-als-programm-schnittstelle">URL als Programm-Schnittstelle</h2>
 
-<p>Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:</p>
+<p>Das Webformular ist nicht notwendig, um eine GET-Anfrage zu erzeugen. Wenn Sie z.B. das Eingabe-Formular von Google analysieren,
+werden Sie herausfinden, dass die Anfrage mit dem Suchwort „Schokolade“ so aussieht:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -169,10 +170,22 @@ dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs
 konstruieren und aufrufen. Die <strong>URL</strong> (und nicht das Formular) ist also eine
 <strong>öffentliche Schnittstelle</strong> zu Ihrem Programm!</p>
 
+<p>Nun könnte man meinen: “Wenn ich die URL geheim halte ist es doch keine öffentliche Schnittstelle”.
+Das ist aber ein Trugschluss: auch eine “geheime” URL, die ich nie bewusst öffentlich mache
+wird öffentlich werden.  URLs sind im Browser-Cache gespeichert, werden im Browser vorgeschlagen
+wenn ich eine URL eintippe, sind in Logfile von Proxies gespeichert.  Selbst URLs die ich blos
+im Skype-Chat weitergegen habe, sind dritten bekannt, wie <a href="http://www.heise.de/security/meldung/Vorsicht-beim-Skypen-Microsoft-liest-mit-1857620.html">diese Untersuchung von Heise zeigt</a></p>
+
+<p>Das “geheimhalten” einer URL ist also keine geeignete Sicherheitsmaßnahme!
+Wenn ich eine Webseite vor Zugriffen schützen will brauche ich dazu Passwörter
+und https, siehe <a href="/http/http/#slide-18">Authentisieren nach RFC 2617</a>
+und <a href="/http/http/slide.html#slide-19">HTTPS</a>, beide im Kapitel HTTP, und 
+das <a href="/session/">Kapitel Session</a>.</p>
+
 </div>
 <div class='slide'>
 
-<h2 id="pricing-attack">pricing attack</h2>
+<h2 id="pricing-attack">Pricing Attack</h2>
 
 <p>Ein lehrreiches Beispiel aus der Frühzeit des Web: es gab einst Webshops, die den Preis der Waren als verstecktes Eingabefeld im Formular speicherten:</p>
 
