@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Konfiguration</title>
+  <title>Lehrbuch Web-Development - Konfiguration Webserver</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -51,7 +51,7 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Konfiguration</h2>
+				<h2 class="title"><a name="slide-0"></a>Konfiguration Webserver</h2>
                                 <a href="/urls/konfiguration/slide.html">als Präsentation ▻</a>
                           </div>
 			
@@ -122,7 +122,7 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 <pre><code>DirectoryIndex index.html
 </code></pre>
 
-<p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wir die Datei <code>default.htm</code> verwendet!</p>
+<p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wird die Datei <code>default.htm</code> verwendet!</p>
 
 
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
@@ -179,21 +179,20 @@ Webspace ist im Unter-Ordner <code>public_html</code>: </p>
 
 <h2 id="relativer-link-dazu">relativer Link dazu</h2>
 
-<p>Beachten Sie: für das Formulieren von relativen URLs sind nur die URLs relevant,
-nicht die Position der Dokumente im Dateisystem! Der Ordnername <code>public_html</code> 
-wird also nie in einer URL vorkommen.</p>
+<p>Beachten Sie: für das Formulieren von relativen URLs sind wirklich nur die URLs relevant,
+nicht die Position der Dokumente im Dateisystem! Der Ordnername <code>public_html</code> wird also nie in einer URL vorkommen.</p>
 
 <p>Der Link von einem User-Webspace zum nächsten funktioniert also so:</p>
 
 <pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                           +    ../~fhs111111/test   =
+                          +    ../~fhs111111/test   =
 http://multimediatechnology.at/~fhs111111/test
 </code></pre>
 
 <p>Oder relative zum Webserver:</p>
 
 <pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                             +    /~fhs111111/test   =
+                          +   /~fhs111111/test   =
 http://multimediatechnology.at/~fhs111111/test
 </code></pre>
 
@@ -329,7 +328,7 @@ http://multimediatechnology.at/~fhs111111/test
                       
                     
                       
-                      <li class="active"><a href="/urls/konfiguration/">Konfiguration</a></li>
+                      <li class="active"><a href="/urls/konfiguration/">Konfiguration Webserver</a></li>
                       
                     
                       
@@ -774,6 +773,30 @@ http://multimediatechnology.at/~fhs111111/test
                     
                       
                       <li ><a href="/php-mysql-3/transaktionen-und-php/">Transaktionen und PHP</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+            <li ><a href="/apache/">Apache</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/apache/konfigurieren/">Konfigurieren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                   

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Konfiguration - als Präsentation </title>
+	<title>Konfiguration Webserver - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -52,7 +52,7 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Konfiguration</h1>
+          <div class="slide"><h1>Konfiguration Webserver</h1>
           <p><a href="/urls/konfiguration/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt.
@@ -121,7 +121,7 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 <pre><code>DirectoryIndex index.html
 </code></pre>
 
-<p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wir die Datei <code>default.htm</code> verwendet!</p>
+<p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wird die Datei <code>default.htm</code> verwendet!</p>
 
 </div>
 <div class='slide'>
@@ -178,21 +178,20 @@ Webspace ist im Unter-Ordner <code>public_html</code>: </p>
 
 <h2 id="relativer-link-dazu">relativer Link dazu</h2>
 
-<p>Beachten Sie: für das Formulieren von relativen URLs sind nur die URLs relevant,
-nicht die Position der Dokumente im Dateisystem! Der Ordnername <code>public_html</code> 
-wird also nie in einer URL vorkommen.</p>
+<p>Beachten Sie: für das Formulieren von relativen URLs sind wirklich nur die URLs relevant,
+nicht die Position der Dokumente im Dateisystem! Der Ordnername <code>public_html</code> wird also nie in einer URL vorkommen.</p>
 
 <p>Der Link von einem User-Webspace zum nächsten funktioniert also so:</p>
 
 <pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                           +    ../~fhs111111/test   =
+                          +    ../~fhs111111/test   =
 http://multimediatechnology.at/~fhs111111/test
 </code></pre>
 
 <p>Oder relative zum Webserver:</p>
 
 <pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                             +    /~fhs111111/test   =
+                          +   /~fhs111111/test   =
 http://multimediatechnology.at/~fhs111111/test
 </code></pre>
 </div>
