@@ -81,8 +81,8 @@
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 &lt;?php
-  $anzahl  = $_GET['anzahl'];
-  $adresse = $_GET['adresse'];
+  $anzahl  = $_GET[&#39;anzahl&#39;];
+  $adresse = $_GET[&#39;adresse&#39;];
 
   echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
   echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
@@ -94,8 +94,8 @@
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 &lt;?php
-  $anzahl  = $_GET['anzahl'];
-  $adresse = $_GET['adresse'];
+  $anzahl  = $_GET[&#39;anzahl&#39;];
+  $adresse = $_GET[&#39;adresse&#39;];
   $ok = true;        // zeigt ob alle Eingaben ok sind
   $fehler = array(); // sammelt alle Fehlermeldungen
   if( (int) $anzahl != $anzahl or $anzahl &lt; 1) {

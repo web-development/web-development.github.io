@@ -202,7 +202,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <h4 class="caption">Php Code <small>Überprüfung von username und passwort</small></h4>
 <pre class="lang-php prettyprint linenums">
 if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
-    $_SESSION['USER'] = $username;
+    $_SESSION[&#39;USER&#39;] = $username;
     header(&quot;Location: index.php&quot;);
     exit;
 }
@@ -240,9 +240,9 @@ $_SESSION = array();
 if (isset($_COOKIE[session_name()])) {
   setcookie(
     session_name(),  // Cookie-Name war gleich Name der Session 
-    '',             // Cookie-Daten. Achtung! Leerer String hier hilft nicht!
+    &#39;&#39;,             // Cookie-Daten. Achtung! Leerer String hier hilft nicht!
     time()-42000,  // Ablaufdatum in der Vergangenheit. Erst das löscht!
-    '/'           // Wirkungsbereich des Cookies: der ganze Server
+    &#39;/&#39;           // Wirkungsbereich des Cookies: der ganze Server
    );
 }
 session_destroy();
@@ -264,11 +264,11 @@ header(&quot;Location: index.php&quot;)
     $pagetitle = &quot;Login&quot;;
     include &quot;functions.php&quot;;
 
-    $username = $_POST['username'];
-    $passwort = $_POST['passwort'];
+    $username = $_POST[&#39;username&#39;];
+    $passwort = $_POST[&#39;passwort&#39;];
 
     if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
-        $_SESSION['USER'] = $username;	
+        $_SESSION[&#39;USER&#39;] = $username;	
         header(&quot;Location: index.php&quot;);
         exit;
     } 

@@ -298,7 +298,7 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 <div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;input value=&quot;0&quot; name=&quot;in&quot; 
-  onchange=&quot;document.getElementById('out').innerHTML = this.value * 100&quot;&gt;
+  onchange=&quot;document.getElementById(&#39;out&#39;).innerHTML = this.value * 100&quot;&gt;
 &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;   
 </pre></div>
 
@@ -331,14 +331,14 @@ zurückverwandelt (z.B. “300”).</p>
 &lt;script language=&quot;javascript&quot;&gt;
 function compute() { 	
 
-  document.getElementById('outtotal').innerHTML =  	      
+  document.getElementById(&#39;outtotal&#39;).innerHTML =  	      
 
-    document.getElementById('in1').value * 100 		
-  + document.getElementById('in2').value * 200 		
-  + document.getElementById('in3').value * 0 		
-  + document.getElementById('in4').value * 1000 		
-  + document.getElementById('in5').value * 10 		
-  + document.getElementById('in6').value * 5 
+    document.getElementById(&#39;in1&#39;).value * 100 		
+  + document.getElementById(&#39;in2&#39;).value * 200 		
+  + document.getElementById(&#39;in3&#39;).value * 0 		
+  + document.getElementById(&#39;in4&#39;).value * 1000 		
+  + document.getElementById(&#39;in5&#39;).value * 10 		
+  + document.getElementById(&#39;in6&#39;).value * 5 
 }
 &lt;/script&gt;
 &lt;/head&gt;
@@ -442,11 +442,11 @@ verhindern, dass das Formular abgesendet werden kann.</p>
     ok = true;
     fehler = &quot;&quot;;
     
-    if ( document.getElementById('liefername').value == &quot;&quot; ) {
+    if ( document.getElementById(&#39;liefername&#39;).value == &quot;&quot; ) {
         fehler += &quot;Sie müssen den Empfänger angeben\n&quot;;
         ok = false;
     }
-    if ( document.getElementById('adresse')..value == &quot;&quot; ) {
+    if ( document.getElementById(&#39;adresse&#39;)..value == &quot;&quot; ) {
         fehler += &quot;Sie müssen eine Lieferadresse angeben\n&quot;;
         ok = false;
     }		

@@ -114,8 +114,8 @@ Links durch den Aufruf einer Javascript-Funktion:</p>
 <h4 class="caption">Html Code <small>Version 2</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;div id=&quot;navigation&quot;&gt;
-  &lt;a onClick=&quot;scrollToMe('#s0')&quot;&gt;Thema 0&lt;/a&gt; 
-  &lt;a onClick=&quot;scrollToMe('#s1')&quot;&gt;Thema 1&lt;/a&gt; 
+  &lt;a onClick=&quot;scrollToMe(&#39;#s0&#39;)&quot;&gt;Thema 0&lt;/a&gt; 
+  &lt;a onClick=&quot;scrollToMe(&#39;#s1&#39;)&quot;&gt;Thema 1&lt;/a&gt; 
   ...
 &lt;/div&gt;    
 </pre></div>
@@ -137,7 +137,7 @@ die das Ziel ganz oben im Fenster anzeigt.</p>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(id) {
   var top  = $(id).offset().top;
-  $('body').animate({ scrollTop: top }, 800);
+  $(&#39;body&#39;).animate({ scrollTop: top }, 800);
   return false;
 }
 </pre></div>
@@ -200,15 +200,15 @@ die Funktion <code>scrollToMe</code> als Eventhandler für <code>click</code> an
 $(document).ready( function () {
 
   function scrollToMe(event) {
-    var link = $(this).attr('href'),
+    var link = $(this).attr(&#39;href&#39;),
         top  = $(link).offset().top;
-    $('body').animate({
+    $(&#39;body&#39;).animate({
       scrollTop: top
     }, 800);
     event.preventDefault();
   }
 
-  $('#navigation a').on('click', scrollToMe);
+  $(&#39;#navigation a&#39;).on(&#39;click&#39;, scrollToMe);
 });
 </pre></div>
 
@@ -269,12 +269,12 @@ andernfalls auf <code>false</code>.</p>
 <pre class="lang-javascript prettyprint linenums">
 // try out scrollTop,
 // set global Flag can_scroll
-var old_scrolltop = $('body').scrollTop();
-$('body').scrollTop(10);
-window.can_scroll = ( $('body').scrollTop() &gt; 0 );
-$('body').scrollTop(old_scrolltop);
+var old_scrolltop = $(&#39;body&#39;).scrollTop();
+$(&#39;body&#39;).scrollTop(10);
+window.can_scroll = ( $(&#39;body&#39;).scrollTop() &gt; 0 );
+$(&#39;body&#39;).scrollTop(old_scrolltop);
 
-if ( window.can_scroll ) $('#navigation a').on('click', scrollToMe);
+if ( window.can_scroll ) $(&#39;#navigation a&#39;).on(&#39;click&#39;, scrollToMe);
 </pre></div>
 
 <p>Diese Herangehensweise - Feature Detection, dann Flags setzen,
@@ -355,7 +355,7 @@ URL die geladen werden soll.</p>
 <h4 class="caption">Javascript Code <small>Version 4</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 function scrollToMe(event) {
-  var link = $(this).attr('href');
+  var link = $(this).attr(&#39;href&#39;);
   ...
   window.history.pushState( {}, &quot;Thema &quot; + link, link);
 }

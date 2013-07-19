@@ -64,16 +64,16 @@
 &lt;head&gt;
 &lt;script&gt;
 function setcolor( c ) {
-        b = document.getElementById('farbfeld');
+        b = document.getElementById(&#39;farbfeld&#39;);
         b.style.backgroundColor = c
 }
 &lt;/script&gt;
 &lt;body id=&quot;farbfeld&quot;&gt;
 &lt;h1&gt;Farbwahl&lt;/h1&gt;
 &lt;form&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor('red')&quot; /&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor('#0F0')&quot; /&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor('blue')&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot; /&gt;
 &lt;/form&gt;
 &lt;/body&gt;
 </pre></div>
@@ -142,7 +142,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;javascript:location='http://www.google.at/'&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
+  &lt;a href=&quot;javascript:location=&#39;http://www.google.at/&#39;&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
 </pre></div>
 
 <p>Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.  </p>
@@ -151,7 +151,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm('go?'); return ok;&quot;&gt;google&lt;/a&gt;
+  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm(&#39;go?&#39;); return ok;&quot;&gt;google&lt;/a&gt;
 </pre></div>
 
 <p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>

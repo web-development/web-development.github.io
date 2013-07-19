@@ -217,14 +217,14 @@ $p = $q.parent();
 
 // Kinder 
 $c = $q.children();
-$c = $q.children(':selected');
+$c = $q.children(&#39;:selected&#39;);
 
 // Nachfahren
 $n = $q.find();
-$n = $q.find(':selected');
+$n = $q.find(&#39;:selected&#39;);
 
 // Geschwister
-$n = $q.next('p');
+$n = $q.next(&#39;p&#39;);
 </pre><div class="clearfix"></div></div>
 
 
@@ -243,12 +243,12 @@ und bietet andererseites ein paar besser verständliche Werte für Attribute:</p
 <h4 class="caption">Javascript Code <small>Attribute lesen und setzen</small></h4>
 <pre class="lang-javascript prettyprint linenums left">
 // plain Javascript - nur erstes h2!
-document.querySelector('h2').align;
-document.querySelector('h2')
-  .align = 'center';
+document.querySelector(&#39;h2&#39;).align;
+document.querySelector(&#39;h2&#39;)
+  .align = &#39;center&#39;;
 
 // Form-Element deaktivieren
-document.querySelector('input')
+document.querySelector(&#39;input&#39;)
   .disabled = &quot;disabled&quot;;
 
 // existiert nicht
@@ -258,22 +258,22 @@ document.querySelector('input')
 
 </pre><pre class="lang-javascript prettyprint linenums right">
 // jQuery - alle h2!
-$('h2').attr('align');
-$('h2')
-  .attr('align', 'center');
+$(&#39;h2&#39;).attr(&#39;align&#39;);
+$(&#39;h2&#39;)
+  .attr(&#39;align&#39;, &#39;center&#39;);
 
 // Form-Element deaktivieren
-$('input')
-  .attr('disabled', true);
+$(&#39;input&#39;)
+  .attr(&#39;disabled&#39;, true);
 
 // Node nach Attribut auswählen:
 // Input-Tag mit ID und Attribut 
-// 'name' das auf '_no' endet
-$('input[id][name$=_no]')
+// &#39;name&#39; das auf &#39;_no&#39; endet
+$(&#39;input[id][name$=_no]&#39;)
 
 </pre><div class="clearfix"></div></div>
 
-<p>Bei der Manipulation von CSS ist zu beachent: die Schreibweise
+<p>Bei der Manipulation von CSS ist zu beachten: die Schreibweise
 von CSS-Eigenschaften mit einem Minus-Zeichen lässt sich nicht
 nach Javascript übertragen.  In Javscript wird deswegen aus 
 <code>background-color</code> die Eigenschaft <code>backgroundColor</code>.</p>
@@ -282,7 +282,7 @@ nach Javascript übertragen.  In Javscript wird deswegen aus
 <h4 class="caption">Javascript Code <small>Style setzen</small></h4>
 <pre class="lang-javascript prettyprint linenums left">
 // Style setzen - Schreibweise!
-document.querySelector('h2')
+document.querySelector(&#39;h2&#39;)
   .style.backgroundColor = &quot;yellow&quot;;
 
 
@@ -291,17 +291,47 @@ document.querySelector('h2')
 
 </pre><pre class="lang-javascript prettyprint linenums right">
 // Style setzen
- $('h2')
-  .css('background-color', 'yellow');
+ $(&#39;h2&#39;)
+  .css(&#39;background-color&#39;, &#39;yellow&#39;);
 
 // mehrere Eigenschaften setzen
- $('h2')
-  .css({backgroundColor: 'yellow',
-    color: 'red'});
+ $(&#39;h2&#39;)
+  .css({backgroundColor: &#39;yellow&#39;,
+    color: &#39;red&#39;});
 </pre><div class="clearfix"></div></div>
 
 
 <a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
+<p>Statt den Style direkt zu manipulieren sollte man
+Klassen setzen:</p>
+
+<div class="example twopane">
+<h4 class="caption">Javascript Code <small>Klassen setzen</small></h4>
+<pre class="lang-javascript prettyprint linenums left">
+// Klassen setzen
+
+
+$(&#39;#foo&#39;).addClass(&#39;bar&#39;);
+$(&#39;#foo&#39;).removeClass(&#39;bar&#39;);
+$(&#39;#foo&#39;).toggle(&#39;bar&#39;);
+// Klassen abfragen
+$(&#39;#foo&#39;).hasClass(&#39;bar&#39;);
+</pre><pre class="lang-javascript prettyprint linenums right">
+// Klassen setzen
+var cl = d.querySelector(&#39;#foo&#39;)
+           .classList;
+cl.add(&#39;bar&#39;);
+cl.remove(&#39;bar&#39;);
+cl.toggle(&#39;bar&#39;);
+// Klassen abfragen
+cl.contains(&#39;bar&#39;);
+</pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="html-einfgen">HTML einfügen</h2>
 
@@ -318,14 +348,14 @@ node.appendChild(t);
 
 // Tag einfügen
 l = document.createElement(&quot;a&quot;); 
-l.setAttribute('href', 'page.html');
+l.setAttribute(&#39;href&#39;, &#39;page.html&#39;);
 l.appendChild(t);
 node.appendChild(t);
 
 
 // hack
 node.innerHTML = 
-  &quot;&lt;a href='page.html'&gt;Hallo&lt;/a&gt;&quot;;
+  &quot;&lt;a href=&#39;page.html&#39;&gt;Hallo&lt;/a&gt;&quot;;
 
 
 
@@ -338,21 +368,21 @@ $n.append(&quot;Hallo&quot;);
 
 // Tag einfügen
 $l = $(
-  &quot;&lt;a href='page.html'&gt;Hallo&lt;/a&gt;&quot;
+  &quot;&lt;a href=&#39;page.html&#39;&gt;Hallo&lt;/a&gt;&quot;
 );
 $n.append($l);
 
 
 // oder
 $l = $(&quot;&lt;a&gt;&quot;)
-       .attr('href', 'page.html')
-       .text('Hallo');
+       .attr(&#39;href&#39;, &#39;page.html&#39;)
+       .text(&#39;Hallo&#39;);
 $n.append($l);
 
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="clonen">Clonen</h2>
 
@@ -365,29 +395,29 @@ $n.append($l);
 
 // dolly kopieren und einfügen
 var d2 = document
-  .getElementById('dolly')
+  .getElementById(&#39;dolly&#39;)
   .cloneNode();
-document.getElementById('da')
+document.getElementById(&#39;da&#39;)
   .appendChild(d2);
 
 // kirk ans ziel verschieben
 var beam = document
-  .getElementById('kirk')
+  .getElementById(&#39;kirk&#39;)
   .removeChild();
-document.getElementById('da')
+document.getElementById(&#39;da&#39;)
   .appendChild(beam);
 </pre><pre class="lang-javascript prettyprint linenums right">
 // jQuery
 
 // dolly kopieren und einfügen
-$('#dolly').clone().appendTo('#da');
+$(&#39;#dolly&#39;).clone().appendTo(&#39;#da&#39;);
 
 
 
 
 
 // kirk ans ziel verschieben
-$('#da').append($('kirk').remove());
+$(&#39;#da&#39;).append($(&#39;kirk&#39;).remove());
 
 
 
@@ -395,7 +425,7 @@ $('#da').append($('kirk').remove());
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="event-listener">Event-Listener</h2>
 
@@ -410,6 +440,25 @@ node.addEventListener(&quot;click&quot;, f);
 // jQuery 
 $n.on(&quot;click&quot;, f);
 </pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h2 id="wann-brauche-ich-jquery-wann-brauche-ich-ein-framework">Wann brauche ich jQuery? Wann brauche ich ein Framework?</h2>
+
+<p>Als jQuery im Jahre 2006 erschien brachte es große Fortschritte
+gegenüber “reinem Javascript”.  In den Jahren seither hat jQuery
+die Weiterentwicklung von Javascript beeinflusst: so wurde 
+querySelector und querySelectorAll erst nach jQuery in den 
+Javascript Standard aufgenommen, und landet z.B. in Firefox 3.5 im Juni 2009.</p>
+
+<p>Die “reine Javascript” Lösung bringt meine performance Vorteile,
+besonders auf mobilen Endgeräten, wo das Laden der Liberary und
+der Speicherverbrauch durch die Libraray größere Auswirkungen
+haben als am Desktop.</p>
+
+<p>Siehe auch
+* Vortrag von Estelle Weyl: “You don’t need a Framework for that!”, <a href="http://www.youtube.com/watch?v=FbpUt3XLGlE">YouTube</a>, <a href="http://estelle.github.io/fluentconf/#slide1">Slides</a></p>
 
 		
 			<div class="pagination">

@@ -126,7 +126,7 @@ print_r( $o );
 //    [0] =&gt; a
 //  )
 echo &quot;Wert von foo: &quot; . $o-&gt;foo;
-echo &quot;Wert von 0: &quot; . $o-&gt;{'0'};
+echo &quot;Wert von 0: &quot; . $o-&gt;{&#39;0&#39;};
 </pre></div>
 
 
@@ -139,7 +139,7 @@ echo &quot;Wert von 0: &quot; . $o-&gt;{'0'};
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-$string = '{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}';
+$string = &#39;{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}&#39;;
 $o = json_decode( $string, true );
 print_r( $o );
 // Array
@@ -149,7 +149,7 @@ print_r( $o );
 //   [baz] =&gt; 30
 //   [0] =&gt; a
 // )
-echo &quot;Wert von foo: &quot; . $o['foo'];
+echo &quot;Wert von foo: &quot; . $o[&#39;foo&#39;];
 echo &quot;Wert von 0: &quot; . $o[0];  
 </pre></div>
 

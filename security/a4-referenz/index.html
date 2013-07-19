@@ -146,9 +146,9 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 <div class="example">
 <h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
 <pre class="lang-html prettyprint linenums">
-  &lt;img src=&quot;&lt;?= $_GET['img'] ?&gt;&quot;&gt;
+  &lt;img src=&quot;&lt;?= $_GET[&#39;img&#39;] ?&gt;&quot;&gt;
   &lt;?php
-  include $_GET['text'];  // nicht so programmieren!!!
+  include $_GET[&#39;text&#39;];  // nicht so programmieren!!!
   ?&gt;
 </pre></div>
 

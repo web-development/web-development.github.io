@@ -62,7 +62,7 @@ das als Parameter die <code>id</code> der Person erhält, die gelöscht werden s
 <div class="example">
 <h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
 <pre class="lang-php prettyprint linenums">
-$id   = $_POST['id'];
+$id   = $_POST[&#39;id&#39;];
 $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
 // NICHT so implementieren!
 </pre></div>
@@ -114,7 +114,7 @@ verstehen müssen) überprüft:</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
 <pre class="lang-php prettyprint linenums">
-if( ! preg_match( '/^\d+$/', $id ) ) {
+if( ! preg_match( &#39;/^\d+$/&#39;, $id ) ) {
     error_log(&quot;hack: $id statt id in person_delete.php.&quot;);
     echo(&quot;Hack detected. Police will arrive shortly.&quot;);
     exit;

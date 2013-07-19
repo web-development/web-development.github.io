@@ -68,7 +68,7 @@ es mit den gleichen Methoden manipulieren.</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Element einfügen in HML</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-var container = document.getElementById('container');
+var container = document.getElementById(&#39;container&#39;);
 div = document.createElement(&quot;div&quot;);
 container.appendChild( div );
 </pre></div>
@@ -81,7 +81,7 @@ neuen Elements: hier muss die Methode <code>createElementNS</code> verwendet wer
 <div class="example">
 <h4 class="caption">Javascript Code <small>Element einfügen in XML (SVG)</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-var svg = document.getElementsByTagName('svg')[0];
+var svg = document.getElementsByTagName(&#39;svg&#39;)[0];
 circle = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;circle&quot;);
 circle.setAttribute(&quot;cx&quot;, 10);
 circle.setAttribute(&quot;cy&quot;, 10);
@@ -114,7 +114,7 @@ xhttp.send(null);
 
 xmlDoc = xhttp.responseXML;
 var first = xmlDoc.getElementsByTagName(&quot;person&quot;)[0];
-document.getElementById('output').value = first.firstChild.nodeValue;
+document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
 </pre></div>
 
 <p><a href="/images/load-xml.html">demo</a></p>

@@ -233,7 +233,7 @@ Die sollte man ganz normal committen.</p>
 include &quot;config.php&quot;;
 $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-$dbh-&gt;exec('SET CHARACTER SET utf8') ;
+$dbh-&gt;exec(&#39;SET CHARACTER SET utf8&#39;) ;
 </pre></div>
 
 <p>Mit der Methode <code>setAttribute</code> wird hier festgelegt,

@@ -90,7 +90,7 @@ nicht abgefangen wird, wird ein fataler Fehler mit einer â€œUncaught Exception â
 &lt;?php
 function compute($x) {
     if ($x == 0) {
-       throw new Exception('Illegal Input: 0.');
+       throw new Exception(&#39;Illegal Input: 0.&#39;);
     }
     return 1 / $x;
 }
@@ -99,7 +99,7 @@ try {
     echo compute(5) . &quot;\n&quot;;
     echo compute(0) . &quot;\n&quot;;
 } catch (Exception $e) {
-    echo 'Exception abgefangen: ',  $e-&gt;getMessage(), &quot;\n&quot;;
+    echo &#39;Exception abgefangen: &#39;,  $e-&gt;getMessage(), &quot;\n&quot;;
 }
 
 // output:
@@ -128,7 +128,7 @@ oder bei einzelnen Abfragen.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
 <pre class="lang-php prettyprint linenums">
-$get_id = $_GET['id'];
+$get_id = $_GET[&#39;id&#39;];
 try{
   include &quot;config.php&quot;;
 
@@ -140,7 +140,7 @@ try{
   /* das folgende Attribut aktiviert die Exceptions */
   $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-  $dbh-&gt;exec('SET CHARACTER SET utf8') ;
+  $dbh-&gt;exec(&#39;SET CHARACTER SET utf8&#39;) ;
 
   $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
   $sth-&gt;execute(array($get_id));

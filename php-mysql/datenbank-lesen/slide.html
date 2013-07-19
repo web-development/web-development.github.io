@@ -273,7 +273,7 @@ gibt fetch kein Objekt sondern der Wert <code>FALSE</code> zurück.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
 <pre class="lang-php prettyprint linenums">
-$id = $_GET['id'];  // SICHERHEITSPROBEM - behandeln wir später noch!
+$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
 $stm = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible=1 AND id=$id&quot;);
 $person = $stm-&gt;fetch();
 if( $person === FALSE ) {
@@ -333,7 +333,7 @@ include &quot;header.php&quot;;
 <pre class="lang-sql prettyprint linenums">
 ... 
 WHERE profile_visible=1 
-  AND (surname LIKE '%$suchwort%' OR firstname LIKE '%$suchwort%')
+  AND (surname LIKE &#39;%$suchwort%&#39; OR firstname LIKE &#39;%$suchwort%&#39;)
 </pre></div>
 
 <p>Wir werden uns später noch genauer mit der Sicherheitsproblematik von

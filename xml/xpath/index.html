@@ -116,7 +116,7 @@ $query_result = $xml_doc-&gt;xpath( &quot;//ii/@thumburl&quot; );
 $bild_url = (string) $query_result[0];
 
 echo &quot;&lt;h1&gt;Das Bild&lt;/h1&gt;&quot;;
-echo &quot;&lt;img src='$bild_url'&gt;&quot;;
+echo &quot;&lt;img src=&#39;$bild_url&#39;&gt;&quot;;
 </pre></div>
 
 
@@ -131,10 +131,10 @@ gibt sie in einem Ausgabefeld aus. <a href="/images/js-und-xpath.html">Demo</a><
 <div class="example">
 <h4 class="caption">Javascript Code <small>XPath verwenden in HTML</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-iterator = document.evaluate('//h2', document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
+iterator = document.evaluate(&#39;//h2&#39;, document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
 thisNode = iterator.iterateNext();
 while (thisNode) {
-  document.getElementById('output').value += thisNode.innerHTML + &quot;\n&quot;;
+  document.getElementById(&#39;output&#39;).value += thisNode.innerHTML + &quot;\n&quot;;
   thisNode = iterator.iterateNext();
 } 
 </pre></div>
@@ -152,14 +152,14 @@ Javascript geparsed und mit XPath abgefragt.  <a href="/images/js-und-xml-xpath.
 <pre class="lang-javascript prettyprint linenums">
 var xml_string, parser, doc, iterator, thisNode;
 
-xml_string = '... &lt;ii thumburl=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg/300px-2010-04-29-tulpen-by-RalfR-14.jpg&quot; thumbwidth=&quot;300&quot; thumbheight=&quot;451&quot; /&gt; ....';
+xml_string = &#39;... &lt;ii thumburl=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg/300px-2010-04-29-tulpen-by-RalfR-14.jpg&quot; thumbwidth=&quot;300&quot; thumbheight=&quot;451&quot; /&gt; ....&#39;;
 parser   = new DOMParser();
 doc      = parser.parseFromString(xml_string, &quot;application/xml&quot;);
-iterator = doc.evaluate('//ii/@thumburl', doc, 
+iterator = doc.evaluate(&#39;//ii/@thumburl&#39;, doc, 
                null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
 thisNode = iterator.iterateNext();
 if (thisNode) {
-  document.getElementById('bild').src = thisNode.value;
+  document.getElementById(&#39;bild&#39;).src = thisNode.value;
 } 
 </pre></div>
 

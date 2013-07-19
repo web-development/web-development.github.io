@@ -259,7 +259,7 @@ function cursorPoint(e) {
   }
   // posx and posy contain the mouse position relative to the document
   // Do something with this information
-  return { 'x': posx, 'y': posy  };
+  return { &#39;x&#39;: posx, &#39;y&#39;: posy  };
 }
 </pre></div>
 
@@ -280,7 +280,7 @@ function onMouseDown(e) {
   console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
 }
 
-element.addEventListener( 'mousedown', onMouseDown, false );
+element.addEventListener( &#39;mousedown&#39;, onMouseDown, false );
 </pre></div>
 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
@@ -323,7 +323,7 @@ Name des Attributs mit “data-“ beginnt.</p>
 <pre class="lang-javascript prettyprint linenums">
 // Versuch ein Objekt zu speichern
 c = document.getElementById(&quot;circle_1&quot;);
-c.setAttribute(&quot;data-myobject&quot;, { color: 'red', no: 42 } ); 
+c.setAttribute(&quot;data-myobject&quot;, { color: &#39;red&#39;, no: 42 } ); 
 
 // auslesen der Daten
 o = c.getAttribute(&quot;data-myobject&quot;);    
@@ -356,7 +356,7 @@ function addDragability( jsobj, element ) {
     console.log(&quot;my event is &quot; + e);
   }
 
-  element.addEventListener( 'mousedown', onMouseDown, false );
+  element.addEventListener( &#39;mousedown&#39;, onMouseDown, false );
 }
 
 addDragability( jsobj, element );

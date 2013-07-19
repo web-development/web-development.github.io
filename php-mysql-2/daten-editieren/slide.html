@@ -165,16 +165,16 @@ $sth = $dbh-&gt;prepare(
 
 $update_went_ok = $sth-&gt;execute(
   array(
-    $_POST['firstname'],
-    $_POST['surname'],
-    $_POST['email'],
-    $_POST['profile_visible'],
-    $_POST['description'],
-    $_POST['id']
+    $_POST[&#39;firstname&#39;],
+    $_POST[&#39;surname&#39;],
+    $_POST[&#39;email&#39;],
+    $_POST[&#39;profile_visible&#39;],
+    $_POST[&#39;description&#39;],
+    $_POST[&#39;id&#39;]
   )
 );
 
-header(&quot;Location: person.php?id=&quot; . $_POST['id']);
+header(&quot;Location: person.php?id=&quot; . $_POST[&#39;id&#39;]);
 exit;
 </pre></div>
 
@@ -206,7 +206,7 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 $username    = htmlspecialchars( $person-&gt;username     );
 $firstname   = htmlspecialchars( $person-&gt;firstname    );
 $surname     = htmlspecialchars( $person-&gt;surname      );
-$description = htmlspecialchars( $person-&gt;description' );
+$description = htmlspecialchars( $person-&gt;description&#39; );
 
 echo &lt;&lt;&lt;EOM
   &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
@@ -324,7 +324,7 @@ gestellt:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-$description = strip_tags( $_POST['description'], &quot;&lt;p&gt;&lt;b&gt;&quot; );
+$description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
 </pre></div>
 
 <p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 

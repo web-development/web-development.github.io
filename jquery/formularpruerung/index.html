@@ -94,13 +94,13 @@ $(&quot;form&quot;).submit(function(){
               + parseInt( $(&quot;input[name=kaffee]&quot;).val() );
 
   if(gesamt_zahl == 0) {
-      $('form').before('&lt;span class=&quot;error&quot;&gt;Mindestes-Bestellmenge 1!&lt;/span&gt;');
+      $(&#39;form&#39;).before(&#39;&lt;span class=&quot;error&quot;&gt;Mindestes-Bestellmenge 1!&lt;/span&gt;&#39;);
        ok = false;
   }
 
   $i = $(&quot;input[name=adresse]&quot;);
   if($i.val() == &quot;&quot;) {
-      $i.after('&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;');
+      $i.after(&#39;&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;&#39;);
       ok = false;
   }
   return ok;

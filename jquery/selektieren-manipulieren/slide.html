@@ -69,7 +69,7 @@ $(&quot;p.extra&quot;)  /* alle p-tags mit klasse extra ... als jQuery objekte  
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 $(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
-$(&quot;p:contains('Warnung')&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
+$(&quot;p:contains(&#39;Warnung&#39;)&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
 $(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
 </pre></div>
 
@@ -77,8 +77,8 @@ $(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$('h1').next()               /* nächster Tag nach der h1 */
-$('h2').nextUntil('h2')      /* Alle Tags zwischen einem h2 und dem nächsten */
+$(&#39;h1&#39;).next()               /* nächster Tag nach der h1 */
+$(&#39;h2&#39;).nextUntil(&#39;h2&#39;)      /* Alle Tags zwischen einem h2 und dem nächsten */
 </pre></div>
 
 <p>Das Ergebnis ist jeweils ein jQuery Objekt.</p>

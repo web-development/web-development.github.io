@@ -81,7 +81,7 @@ vom typ <code>file</code>:</p>
 <h4 class="caption">Html Code <small>Formular für den Datei-Upload</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
-  Neues Bild zum hochladen in den Ordner &lt;a href='pix/'&gt;upload&lt;/a&gt;: 
+  Neues Bild zum hochladen in den Ordner &lt;a href=&#39;pix/&#39;&gt;upload&lt;/a&gt;: 
   &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
 &lt;/form&gt;
@@ -158,24 +158,24 @@ man den Server hacken will!</p>
 &lt;?php
 $uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/pix/&quot;;
 
-$filename = basename($_FILES['bild']['name']);
+$filename = basename($_FILES[&#39;bild&#39;][&#39;name&#39;]);
 $ext = substr($filename, -4);
 
-if( $ext != '.jpg' ) {
+if( $ext != &#39;.jpg&#39; ) {
    die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . substr($filename, -3) );
 }
 
 $uploadfile = $uploaddir . $filename;
 
-if (move_uploaded_file($_FILES['bild']['tmp_name'], $uploadfile)) {
-  echo &quot;Datei erfolgreich hochgeladen nach &lt;a href='upload/'&gt;upload/&lt;/a&gt;\n&quot;;
+if (move_uploaded_file($_FILES[&#39;bild&#39;][&#39;tmp_name&#39;], $uploadfile)) {
+  echo &quot;Datei erfolgreich hochgeladen nach &lt;a href=&#39;upload/&#39;&gt;upload/&lt;/a&gt;\n&quot;;
 } else {
   echo &quot;Problem beim Speichern der Datei.\n&quot;;
 }
 
-echo '&lt;pre&gt;debugging info:';
+echo &#39;&lt;pre&gt;debugging info:&#39;;
 print_r($_FILES);
-print '&lt;/pre&gt;';
+print &#39;&lt;/pre&gt;&#39;;
 
 ?&gt;
 </pre></div>

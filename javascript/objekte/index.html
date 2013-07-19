@@ -257,12 +257,12 @@ das kann zu unerwarteten Effekten führen:</p>
   
   d1.status === d2.status // es gibt nur ein Status-Objekt 
                           // für alle Mammals!
-  d1.hasOwnProperty('status'); // false
+  d1.hasOwnProperty(&#39;status&#39;); // false
 
-  d1.status = new Status('playing');
+  d1.status = new Status(&#39;playing&#39;);
 
   d1.status === d2.status      // false
-  d1.hasOwnProperty('status'); // true
+  d1.hasOwnProperty(&#39;status&#39;); // true
 </pre></div>
 
 
@@ -282,8 +282,8 @@ d2.legs = 3;
 console.log(d1.legs); // 4 Beine von Mammal
 console.log(d2.legs); // 3 Beine 
 
-d1.hasOwnProperty('legs') // ... false
-d2.hasOwnProperty('legs') // ... true
+d1.hasOwnProperty(&#39;legs&#39;) // ... false
+d2.hasOwnProperty(&#39;legs&#39;) // ... true
 </pre></div>
 
 <p>Doch nun geschieht ein Wunder: wenn wir mit <code>delete</code> das
@@ -296,7 +296,7 @@ das im prototypen so gespeichert ist.</p>
 delete(d2.legs);
 
 console.log(d2.legs);     // 4 Beine 
-d2.hasOwnProperty('legs') // ... false
+d2.hasOwnProperty(&#39;legs&#39;) // ... false
 </pre></div>
 
 

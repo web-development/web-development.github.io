@@ -131,10 +131,10 @@ gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Erzeugung des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
-if (!isset($_SESSION['token'])) {
+if (!isset($_SESSION[&#39;token&#39;])) {
   $token = md5(uniqid(rand(), TRUE));
-  $_SESSION['token']      = $token;
-  $_SESSION['token_time'] = time();
+  $_SESSION[&#39;token&#39;]      = $token;
+  $_SESSION[&#39;token_time&#39;] = time();
 }
 ...
 &lt;form action=&quot;spende.php&quot; method=&quot;post&quot;&gt;
@@ -154,10 +154,10 @@ ist und noch gültig ist:</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Check des Tokens</small></h4>
 <pre class="lang-php prettyprint linenums">
-if (!isset($_SESSION['token']))            throw TokenException;
-if ($_POST['token'] != $_SESSION['token']) throw TokenException;
+if (!isset($_SESSION[&#39;token&#39;]))            throw TokenException;
+if ($_POST[&#39;token&#39;] != $_SESSION[&#39;token&#39;]) throw TokenException;
 
-$token_age = time() - $_SESSION['token_time'];
+$token_age = time() - $_SESSION[&#39;token_time&#39;];
  
 if ($token_age &gt; 300)                      throw TokenException;
 </pre></div>

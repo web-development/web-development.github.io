@@ -67,11 +67,11 @@ angeführt. Wir werden 2 davon näher betrachten.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>XML verarbeiten in PHP mit dem DOM</small></h4>
 <pre class="lang-php prettyprint linenums">
-$doc = DOMDocument::loadXML('&lt;set&gt;&lt;node&gt;gleich&lt;/node&gt;&lt;node&gt;vorher&lt;/node&gt;&lt;/set&gt;');
-$node = $doc-&gt;getElementsByTagName('node')-&gt;item(1);
+$doc = DOMDocument::loadXML(&#39;&lt;set&gt;&lt;node&gt;gleich&lt;/node&gt;&lt;node&gt;vorher&lt;/node&gt;&lt;/set&gt;&#39;);
+$node = $doc-&gt;getElementsByTagName(&#39;node&#39;)-&gt;item(1);
 $node-&gt;removeChild($node-&gt;firstChild);
 
-$newText = new DOMText('nachher');
+$newText = new DOMText(&#39;nachher&#39;);
 $node-&gt;appendChild($newText);
 
 
@@ -93,7 +93,7 @@ einer Node wird ein Array, aus Attributen werden Eigenschaften.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>XML verarbeiten in PHP mit SimpleXML</small></h4>
 <pre class="lang-php prettyprint linenums">
-$doc = new SimpleXMLElement('&lt;set&gt;&lt;node&gt;gleich&lt;/node&gt;&lt;node&gt;vorher&lt;/node&gt;&lt;/set&gt;');
+$doc = new SimpleXMLElement(&#39;&lt;set&gt;&lt;node&gt;gleich&lt;/node&gt;&lt;node&gt;vorher&lt;/node&gt;&lt;/set&gt;&#39;);
 $doc-&gt;node[1] = &quot;nachher&quot;;
 
 header( &quot;Content-Type: application/xml; charset=utf-8&quot; );

@@ -265,9 +265,9 @@ von Erik Möller vor:</p>
 <pre class="lang-javascript prettyprint linenums">
 (function() {
     var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    var vendors = [&#39;ms&#39;, &#39;moz&#39;, &#39;webkit&#39;, &#39;o&#39;];
     for(var x = 0; x &lt; vendors.length &amp;&amp; !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.requestAnimationFrame = window[vendors[x]+&#39;RequestAnimationFrame&#39;];
     }
  
     if (!window.requestAnimationFrame)

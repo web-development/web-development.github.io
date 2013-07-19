@@ -196,12 +196,12 @@ eingebunden. </p>
   &lt;p id=&quot;counter_zeile&quot;&gt;Counter: &lt;span id=&quot;counter_zahl&quot;&gt;?&lt;/span&gt;&lt;/p&gt;
 
   &lt;script&gt;
-    window.addEventListener('load', loadCounterWithAjax);
+    window.addEventListener(&#39;load&#39;, loadCounterWithAjax);
 
     function loadCounterWithAjax() {
-      document.getElementById('counter_zeile').style.display = &quot;block&quot;;
+      document.getElementById(&#39;counter_zeile&#39;).style.display = &quot;block&quot;;
       var ajax_request = new XMLHttpRequest();
-      ajax_request.addEventListener('load', handleCounterData);
+      ajax_request.addEventListener(&#39;load&#39;, handleCounterData);
       ajax_request.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
       ajax_request.send();
       console.log(&quot;Request wurde gesendet&quot;);
@@ -209,7 +209,7 @@ eingebunden. </p>
 
     function handleCounterData() {
       console.log(&quot;Response wurde empfangen&quot;);
-      document.getElementById('counter_zahl').innerHTML = 
+      document.getElementById(&#39;counter_zahl&#39;).innerHTML = 
         this.responseText;
     }
   &lt;/script&gt;

@@ -118,7 +118,7 @@ exit; /* fertig, nichts weiter ausgeben! */
 <pre class="lang-php prettyprint linenums">
 &lt;?php
 // hier passieren wichtige Dinge ...
-header(&quot;Location: &quot; + $_GET['url'] ); // so nicht programmieren!
+header(&quot;Location: &quot; + $_GET[&#39;url&#39;] ); // so nicht programmieren!
 ?&gt;
 </pre></div>
 
@@ -143,8 +143,8 @@ $urls = array(
   &quot;wissenschaft&quot;  =&gt; &quot;http://www.plosone.org/&quot;
 );
 
-if ( array_key_exists( $_GET['url'], $urls ) ) {
-  header(&quot;Location: &quot; . $urls[  $_GET['url'] ]  );
+if ( array_key_exists( $_GET[&#39;url&#39;], $urls ) ) {
+  header(&quot;Location: &quot; . $urls[  $_GET[&#39;url&#39;] ]  );
 } else {
   header(&quot;Location: ich-lass-mich-nicht-hacken.php&quot;);
 }

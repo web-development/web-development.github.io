@@ -95,7 +95,7 @@ Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bl
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
 INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
+  VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;);
 INSERT INTO salarychange (id, amount, changedate) 
   VALUES (42, 50000, NOW());
 COMMIT;
@@ -111,7 +111,7 @@ COMMIT;
 <pre class="lang-sql prettyprint linenums">
 START TRANSACTION;
 INSERT INTO staff (id, first, last) 
-  VALUES (42, 'Alyssa', 'Hacker');
+  VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;);
 INSERT INTO salarychange (id, amount, changedate) 
   VALUES (42, 50000, NOW());
 ROLLBACK;

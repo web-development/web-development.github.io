@@ -61,8 +61,8 @@
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
 <pre class="lang-php prettyprint linenums">
-$t = $_POST['title'];
-$dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES ('$t')&quot;);
+$t = $_POST[&#39;title&#39;];
+$dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 </pre></div>
 
 
@@ -75,7 +75,7 @@ $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES ('$t')&quot;);
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-INSERT INTO projects (titel) VALUES ('That's it')
+INSERT INTO projects (titel) VALUES (&#39;That&#39;s it&#39;)
 </pre></div>
 
 <p>Das kann nicht funktionieren: das einfache Anführungszeichen beendet den String
@@ -83,7 +83,7 @@ und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 
 <div class="example">
 <pre class="lang-plain prettyprint linenums">
-#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's it')' at line 1
+#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;s it&#39;)&#39; at line 1
 </pre></div>
 
 
@@ -100,7 +100,7 @@ funktioniert wieder:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-INSERT INTO werk (titel) VALUES ('That\'s it')
+INSERT INTO werk (titel) VALUES (&#39;That\&#39;s it&#39;)
 </pre></div>
 
 <p>Diese Automatik funktioniert aber leider nur für MySQL.
@@ -157,10 +157,10 @@ $sth = $dbh-&gt;prepare(
 
 $sth-&gt;execute(
   array(
-    $_POST['firstname'],
-    $_POST['surname'],
-    $_POST['email'],
-    $_POST['profile_visible']
+    $_POST[&#39;firstname&#39;],
+    $_POST[&#39;surname&#39;],
+    $_POST[&#39;email&#39;],
+    $_POST[&#39;profile_visible&#39;]
   )
 ); 
 
