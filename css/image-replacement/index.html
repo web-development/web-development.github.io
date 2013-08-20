@@ -82,7 +82,7 @@ die Information ist aber für eine Suchmaschine oder ein Braille-Ausgabegerät n
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-    &lt;h1&gt;&lt;img src=&quot;mmtlogo-400.png&quot; alt=&quot;MultiMediaTechnology&quot;&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;img src=&quot;mmtlogo-400.png&quot; alt=&quot;MultiMediaTechnology&quot;&gt;&lt;/h1&gt;
 </pre></div>
 
 <p>In manchen Situation hat man aber nur folgenden Code im HTML, 
@@ -90,7 +90,7 @@ und will das Bild nur über CSS darstellen:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-    &lt;h1&gt;MultiMediaTechnology&lt;/h1&gt;
+&lt;h1&gt;MultiMediaTechnology&lt;/h1&gt;
 </pre></div>
 
 <p>Ein Beispiel für so eine Situation ist z.B: ein Wordpress Theme. In der <code>h1</code> 
@@ -106,21 +106,20 @@ der Text versteckt und das Bild angezeigt. Browser ohne CSS und Suchmaschinen ve
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-    &lt;style&gt;
-    h1#bildStattText {
+&lt;style&gt;
+  h1#bildStattText {
+     /* schiebt den &quot;echten text&quot; extrem weit nach links */
+     text-indent:-10000px;
+     overflow:hidden;
+     background: url(mmtlogo-400.png);
 
-       /* schiebt den &quot;echten text&quot; extrem weit nach links */
-       text-indent:-10000px;
-       overflow:hidden;
-       background: url(mmtlogo-400.png);
+     /* hoehe und breite der grafik angeben! */
+     height:140px;
+     width:400px;
+  }
+&lt;/style&gt;
 
-       /* hoehe und breite der grafik angeben! */
-       height:140px;
-       width:400px;
-    }
-    &lt;/style&gt;
-
-    &lt;h1 id=&quot;bildStattText&quot;&gt;MultiMediaTechnology&lt;/h1&gt;
+&lt;h1 id=&quot;bildStattText&quot;&gt;MultiMediaTechnology&lt;/h1&gt;
 </pre></div>
 
 <p>Das Bild kann ausgetauscht werden indem man das Stylesheet ändert, 

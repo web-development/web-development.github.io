@@ -107,8 +107,25 @@ das SQL etwas “injiziert” wird.</p>
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt, darf sie
-verwendet werde. Das wird hier mit einer Regular Expression (die Sie noch nicht
-verstehen müssen) überprüft:</p>
+verwendet werde. Das kann man auf verschiedene Arten prüfen, 
+z.B. mit der Funktion <code>filter_var</code>: </p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Eingabeprüfung mit filter_var</small></h4>
+<pre class="lang-php prettyprint linenums">
+if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
+  echo(&quot;Hack detected: Police will arrive shortly.&quot;);
+  echo(&quot;variable id is false!&quot;);
+  exit;
+}
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Oft sieht man auch Eingabeprüfungen mit Regular Expressions - die müssen Sie noch nicht verstehen:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>

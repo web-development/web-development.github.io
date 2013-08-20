@@ -121,10 +121,11 @@ Prinzip funktionieren Datei-Tauschbörsen.</p>
 <p>Ein Webbrowser, oder kurz Browser  <!-- XE "Browser" -->  , ist ein Programm, das bei Eingabe 
 einer URL über HTTP eine HTML-Webseite laden und anzeigen kann, es ist also der Client 
 zum World Wide Web. 
-Es gibt sehr viele verschiedene Webbrowser. Abbildung 4 zeigt drei davon: den Browser 
+Es gibt sehr viele verschiedene Webbrowser. Die folgende Abbildung zeigt vier davon: den Browser 
 „Mosaic“ <!-- XE "Mosaic" -->    <!-- XE "Browser:Mosaic" -->  , der im Jahre 1993 als zweiter Webbrowser 
 mit grafischer Oberflächen stark zur Verbreitung des World Wide Web beigetragen hat,  und 
-die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->   und Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" -->  in den Versionen, die im Jahre 2004 verwendet wurden. </p>
+die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->,   Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" --><br />
+und Chrome (in Versionen aus verschiedenen Jahren).</p>
 
 <p><img src="/images/browsers.png" alt="Abbildung 4: Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)" /></p>
 
@@ -150,7 +151,7 @@ im Web surfen. </p>
 
 
 <p>In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutzung 
-zugenommen: Smartphones und Tablets. Abbildung 6 zeigt Browser auf verschiedenen 
+zugenommen: Smartphones und Tablets. Die nächste Abbildung zeigt Browser auf verschiedenen 
 mobilen Geräten:</p>
 
 <p><img src="/images/image031.png" alt="Abbildung 6: Browser auf mobilen Geräten: Handys und iPad, 2010" /></p>
@@ -163,7 +164,7 @@ mobilen Geräten:</p>
 <p>Die Dokumente, die im Webbrowser dargestellt werden nennt man Webseiten. Eine Webseite  <!-- XE "Webseite" -->    <!-- XE "Seite" -->   ist – technisch gesehen – ein Dokument im HTML-Format. </p>
 
 <p>Eine Webseite kann – im Gegensatz zu einer Seite in einem Buch – beliebig lang sein. Ist 
-die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scrollbalken  <!-- XE "Scrollen" -->  mit dem man den Rest der Seite erreichen kann, wie in Abbildung 7 gezeigt.</p>
+die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scrollbalken  <!-- XE "Scrollen" -->  mit dem man den Rest der Seite erreichen kann, wie in der nächsten Abbildung gezeigt.</p>
 
 </div>
 <div class='slide'>
@@ -209,7 +210,30 @@ Parameter enthalten:</p>
 <pre><code>http://www.google.com/search?q=schokolade&amp;ie=utf-8&amp;oe=utf-8
 </code></pre>
 
-<p>Mit den Frage-Zeichen, dem kaufmännischen Und und dem Ist-Gleich-Zeichen werden hier Parameter  <!-- XE "Parameter" -->   an die URL angefügt.  </p>
+<p>Mit den Fragezeichen, dem kaufmännischen Und und dem Ist-Gleich-Zeichen werden hier Parameter  <!-- XE "Parameter" -->   an die URL angefügt.  </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left"> Wert</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">q</td>
+      <td style="text-align: left"> schokolade</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ie</td>
+      <td style="text-align: left"> utf-8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">oe</td>
+      <td style="text-align: left"> utf-8</td>
+    </tr>
+  </tbody>
+</table>
 
 </div>
 <div class='slide'>
@@ -231,14 +255,15 @@ Beispiel:</p>
 <div class="example">
 <h4 class="caption">Plain Code <small>Beispiel für BNF mit vier Ableitungsregeln</small></h4>
 <pre class="lang-plain prettyprint linenums">
+studiengang = &quot;MMA&quot; | &quot;MMT&quot;
 jahrgang  = studiengang &quot;-&quot; boderm jahr
 boderm    = &quot;B&quot; |  &quot;M&quot;
 jahr      = ziffer ziffer ziffer ziffer
 ziffer    = &quot;0&quot; |  &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot;
 </pre></div>
 
-<p>Eine letzte Ableitungsregel liest man so: eine ziffer ist entweder eine 0 oder
-eine 1 oder … oder eine 9.  Ein jahr ist vier ziffern hintereinander.</p>
+<p>Eine letzte Ableitungsregel liest man so: eine <code>ziffer</code> ist entweder eine <code>0</code> oder
+eine <code>1</code> oder … oder eine <code>9</code>.  Ein <code>jahr</code> ist vier ziffern hintereinander.</p>
 
 </div>
 <div class='slide'>
@@ -561,7 +586,7 @@ HTTP so aus (hier 9 Schritte am Beispiel der URL <code>http://multimediatechnolo
   <li>Der Webserver nimmt die Anfrage entgegen und analysiert sie. Meistens interpretiert er sie als Aufforderung, eine bestimmte Datei von der Platte zu lesen. In diesem Fall aber wird ein PHP Programm gestartet, dass Daten aus einer MySQL Datenbank abfragt und als HTML aufbereitet.</li>
   <li>Der Webserver schickt einen HTTP-Response an den Browser, diese enthält einen Statuscode, z. B. <code>200 OK</code>, einige Zusatzinformationen und dann die eigentlichen Daten des Dokuments (den erzeugten HTML-Code)</li>
   <li>Der Browser nimmt das Dokument in Empfang und stellt es dar</li>
-  <li>Der Browser scrollt das Dokument bis zur Textmarke “master”</li>
+  <li>Der Browser scrollt das Dokument bis zur Textmarke <code>master</code></li>
   <li>Der Browser beendet die TCP-Verbindung</li>
 </ol>
 
