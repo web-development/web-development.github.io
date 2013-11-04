@@ -60,42 +60,45 @@
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
-<p>Die wichstigsten Befehle zur Manipulation des DOM finden Sie in selfhtml unter „document“ und „node“. Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. Die Attribute des HTML-Tags sind über getAttribute / setAttribute / … zugänglich und manipulierbar.</p>
+<p>Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objecten vom Typ „node“. 
+Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text. 
+Die Attribute des HTML-Tags sind über <code>getAttribute</code> / <code>setAttribute</code> zugänglich und manipulierbar.</p>
 
 <p>Hier eine Liste der wichtigen Objekte, Methoden, Eigenschaften für die DOM:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  document.getElementById() 
-  document.getElementsByTagName() 
-  document.createElement()
-  document.querySelectorAll()   (liefert Array)
-  document.querySelector()      (liefert 1 Node)
+document.getElementById() 
+document.getElementsByTagName() 
+document.querySelectorAll()   /* liefert Array   */
+document.querySelector()      /* liefert 1 Node  */
 
-  node.parentNode   (liefert 1 Node)
-  node.childNodes   (liefert Array von Nodes)
-  node.firstChild
-  node.lastChild
-  node.previousSibling
-  node.nextSibling
-  node.data
-  node.attributes
-  node.innerHTML
+document.createElement()
+
+node.parentNode   /* liefert 1 Node          */
+node.childNodes   /* liefert Array von Nodes */
+node.firstChild
+node.lastChild
+node.previousSibling
+node.nextSibling
+node.data
+node.attributes
+node.innerHTML
 
 
-  node.getElementById() 
-  node.getElementsByTagName() 
-  node.getElementsByClassName() 
+node.getElementById()            
+node.getElementsByTagName() 
+node.getElementsByClassName() 
 
-  node.appendChild()
-  node.cloneNode()
-  node.getAttribute()
-  node.setAttribute()
-  node.hasChildNodes()
-  node.insertBefore()
-  node.removeAttribute()
-  node.removeChild()
-  node.replaceChild()
+node.appendChild()
+node.cloneNode()
+node.getAttribute()
+node.setAttribute()
+node.hasChildNodes()
+node.insertBefore()
+node.removeAttribute()
+node.removeChild()
+node.replaceChild()
 </pre></div>
 
 
@@ -107,7 +110,7 @@
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-d = document.getElementById(&quot;person_25“);
+d = document.getElementById(&quot;person_25&quot;);
 d.setAttribute(&quot;style&quot;, &quot;display:none&quot;);
 </pre></div>
 
@@ -129,12 +132,12 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  inputs = document.querySelectorAll(&quot;input&quot;);
-  i=0;
-  while(i &lt; inputs.length) {
-      console.log(&quot;input mit name &quot; + inputs[i].name );
-      i++;
-  }
+inputs = document.querySelectorAll(&quot;input&quot;);
+i=0;
+while(i &lt; inputs.length) {
+  console.log(&quot;input mit name &quot; + inputs[i].name );
+  i++;
+}
 </pre></div>
 
 
@@ -146,24 +149,25 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;span id=&quot;v_25&quot; class=&quot;vorname&quot;&gt;Benjamin&lt;/span&gt;
+&lt;span id=&quot;v_25&quot; class=&quot;vorname&quot;&gt;Benjamin&lt;/span&gt;
 </pre></div>
 
 <p>Das erste und einzige Kind des Span ist ein Text-Node:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  vn = document.getElementById(&quot;v_25&quot;).firstChild.data;
+vn = document.getElementById(&quot;v_25&quot;).firstChild.data;
 </pre></div>
 
 <p>oder – etwas kürzer – über die Eigenschaft textContent:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  vn = document.getElementById(&quot;v_25&quot;).textContent;
+vn = document.getElementById(&quot;v_25&quot;).textContent;
 </pre></div>
 
-<p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
+<p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte 
+Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
 
 <a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
@@ -173,18 +177,26 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  document.createElement()
+node = document.createElement(&quot;h1&quot;);  
+                // erzeugt eine Node, Tag-Name angeben
+node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong bla&quot;;                
+                // Zugriff auf den &quot;Inhalt&quot; der node als String, 
+                // ist of schneller als DOM manipulation! 
+node.appendChild(newchild);     
+                // fügt die newchild als Kind an 
+newnode = node.cloneNode()    
+                // gibt eine Kopie der Node zurück, 
+                // die Kopie ist noch nicht im DOM Baum eingefügt! 
+node.insertBefore(newchild, oldchild)    
+                // fügt newchild als Kind von node ein, vor dem oldchild 
+oldchild = node.removeChild(child)    
+                // löscht child als Kind von node, 
+                // gibt es als &quot;frei schwebende&quot; node zurück 
+node.replaceChild(newchild, oldchild)  
+                // ersetzt kind oldchild durch kind newchild 
 
-  node.innerHTML
-
-  node.appendChild()
-  node.cloneNode()
-  node.insertBefore()
-  node.removeChild()
-  node.replaceChild()
-
-  node.setAttribute()
-  node.removeAttribute()
+node.setAttribute(&#39;value&#39;, 42)  // setzt ein attribut 
+node.removeAttribute(&#39;value&#39;)   // löscht ein attribute 
 </pre></div>
 
 
@@ -298,6 +310,16 @@ function removeMe(e){
 }
 document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quot;, removeMe, false); 
 </pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+<h3 id="referenz">Referenz</h3>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> im Mozilla Developer Network </li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> im Mozilla Developer Network</li>
+</ul>
 
 		
 			<div class="pagination">
