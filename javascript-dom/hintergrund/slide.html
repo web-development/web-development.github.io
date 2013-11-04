@@ -171,22 +171,9 @@
 
 <p>Das DOM einer Webseite kann man sich als Baum vorstellen, ähnlich der Ordnerstruktur im Dateisystem.  Sie kennen diese Idee schon von CSS und den CSS-Selektoren.</p>
 
-<p>In folgendem Beispiel ist der markierte <code>li</code>-Tag innerhalb des <code>ol</code>-Tags, der <code>li</code>-Tag enthält wiederum einen <code>a</code>-Tag. </p>
+<p>In folgendem Beispiel ist der markierte <code>li</code>-Tag innerhalb des <code>ul</code>-Tags mit klasse <code>.sub</code>, der <code>li</code>-Tag enthält wiederum einen <code>a</code>-Tag. </p>
 
 <p><img src="/images/dom.png" alt="Abbildung: Bild des DOM, erzeugt mit dem DOM Inspektor von Mozilla" /></p>
-
-<pre><code>  &lt;html&gt;
-  &lt;body&gt;
-    &lt;p&gt;Navigation&lt;/p&gt;
-    &lt;h1&gt;Überschrift&lt;/h1&gt;
-    &lt;div class="intro"&gt;
-    &lt;h2&gt;Dies und Das&lt;/h2&gt;
-    &lt;ol&gt;
-      &lt;li&gt;&lt;a href="#bla"&gt;erster Link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#bla"&gt;zweiter Link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-    &lt;/div&gt; ...
-</code></pre>
 
 <p>Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:</p>
 

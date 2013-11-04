@@ -63,12 +63,6 @@
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;head&gt;
-&lt;script&gt;
-function setcolor( c ) {
-        b = document.getElementById(&#39;farbfeld&#39;);
-        b.style.backgroundColor = c
-}
-&lt;/script&gt;
 &lt;body id=&quot;farbfeld&quot;&gt;
 &lt;h1&gt;Farbwahl&lt;/h1&gt;
 &lt;form&gt;
@@ -76,10 +70,16 @@ function setcolor( c ) {
     &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot; /&gt;
     &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot; /&gt;
 &lt;/form&gt;
+&lt;script&gt;
+function setcolor( c ) {
+        b = document.getElementById(&#39;farbfeld&#39;);
+        b.style.backgroundColor = c
+}
+&lt;/script&gt;
 &lt;/body&gt;
 </pre></div>
 
-<p>In dieser Webseite ist an vier Stellen Javascript zu finden. Im <code>script</code> Tag im Head, und dreimal in einem Attribut des <code>input</code>-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. </p>
+<p>In dieser Webseite ist an vier Stellen Javascript zu finden. Im <code>script</code> Tag am Ende des body, und dreimal in einem Attribut des <code>input</code>-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt. </p>
 
 <p>Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen brauchen ein Grundverständnis von Javascript.</p>
 
@@ -102,7 +102,7 @@ function setcolor( c ) {
 
 <h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
 
-<p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem <code>script</code>-Tag im Head des Dokuments wird die externe Javascript-Datei eingebunden: </p>
+<p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die Endung .js. Wir werden später eine Javascript-Library namens jQuery verwendet. Mit dem <code>script</code>-Tag wird die externe Javascript-Datei eingebunden: </p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -250,7 +250,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
   &lt;div ontouchstart=&quot;...&quot; ontouchend=&quot;...&quot; ontouchmove=&quot;....&quot;&gt;
 </pre></div>
 
-<p>Nur auf geräten mit Touchscreen.</p>
+<p>Nur auf Geräten mit Touchscreen.</p>
 
 
 <a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
