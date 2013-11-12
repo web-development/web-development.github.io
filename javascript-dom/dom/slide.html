@@ -266,14 +266,89 @@ if( document.querySelector(&#39;#foo&#39;).classList.contains(&#39;bar&#39;) ) {
 <div class='slide'>
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
-<p>Wir haben im Kapitel 4.5.5 schon gesehen, wie Event-Handler direkt im HTML definiert werden können:</p>
+<p>Wir haben im Kapitel [Hintergründe](/javascript-dom/hintergrund/ schon gesehen, 
+wie Event-Handler direkt im HTML definiert werden können:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;input value=&quot;0&quot; name=&quot;in&quot;  onchange=&quot;hier Javascript&quot;&gt;
+&lt;form&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  function setcolor( c ) {
+    b = document.getElementById(&#39;farbfeld&#39;);
+    b.style.backgroundColor = c
+  }
+&lt;/script&gt;
 </pre></div>
 
-<p>Mit der Methode addEventListener kann das auch von Javascript aus erfolgen. Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.</p>
+<p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen. </p>
+
+</div>
+<div class='slide'>
+
+<h3 id="farb-beispiel">Farb-Beispiel</h3>
+
+<p>Hier ein erster Entwurf: Um die Buttons einzeln anzusprechen,
+müssen wir eine id hinzufügen:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;form&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  id=&quot;r&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; id=&quot;g&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; id=&quot;b&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  function setcolor( ev ) {
+    b = document.getElementById(&#39;farbfeld&#39;);
+    b.style.backgroundColor = &#39;red&#39;;
+  }
+  document.getElementById(&#39;r&#39;).addEventListener(&#39;click&#39;, setcolor);
+  document.getElementById(&#39;g&#39;).addEventListener(&#39;click&#39;, setcolor);
+  document.getElementById(&#39;b&#39;).addEventListener(&#39;click&#39;, setcolor);
+&lt;/script&gt;
+</pre></div>
+
+<p>Wir haben aber ein Problem: der Methode <code>addEventListern</code> wird als
+zweites Argument die Methode <code>setcolor</code> übergeben.  Das ist nicht dasselbe
+wie ein Aufruf der Methode, dann würde man schreiben: <code>setcolor()</code>.</p>
+
+<p>Hier gibt es keine einfache Möglichkeit ein Argument für die Farbe mit zu geben!</p>
+
+<p>Eine Lösung dafür: was in der Methode <code>setcolor</code> zur Verfügung steht
+ist <code>this</code>: die Node die angeklickt wurde, in unserem Fall der jeweilige Button.
+Wir müssen also einen Weg finden die Farbe direkt aus dem Button auzulesen.
+So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;form&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  style=&quot;background-color:red&quot;  id=&quot;r&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; style=&quot;background-color:#0F0&quot; id=&quot;g&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; style=&quot;background-color:blue&quot; id=&quot;b&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  function setcolor( ev ) {
+    b = document.getElementById(&#39;farbfeld&#39;);
+    b.style.backgroundColor = this.style.backgroundColor;
+  }
+  document.getElementById(&#39;r&#39;).addEventListener(&#39;click&#39;, setcolor);
+  document.getElementById(&#39;g&#39;).addEventListener(&#39;click&#39;, setcolor);
+  document.getElementById(&#39;b&#39;).addEventListener(&#39;click&#39;, setcolor);
+&lt;/script&gt;
+</pre></div>
+
+<p>Programm <a href="/images/farbfeld-dom.html">live im browser</a></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="pizza-beispiel">Pizza-Beispiel</h3>
+
+<p>Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.</p>
 
 <p><img src="/images/image265.png" alt="Abbildung 59: Pizza löschen mit Klick auf das x in der rechten oberen Ecke" /></p>
 

@@ -75,7 +75,7 @@
 
 <p>Von dieser Herangehensweise profitieren nicht nur Blinde, Menschen mit veralteten Browsern oder exotischen Ausgabegeräte. Auch für Suchmaschinen wie Google oder andere Programme die die Information aus den Webseiten weiter verarbeiten ist dieses Prinzip hilfreich.</p>
 
-<p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie in Abbildung 61 gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
+<p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie hier gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
 
 <p><img src="/images/image269.png" alt="Abbildung 61: Javascript deaktivieren mit QuickJava in Firefox" /></p>
 
@@ -102,7 +102,7 @@ umständlicher, aber man kann alle Features der Mail benutzen.</p>
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;script type = &quot;text/javscript&quot; 
-            src  = &quot;http://code.jquery.com/jquery-latest.js&quot;&gt;&lt;/script&gt;
+            src  = &quot;//codeorigin.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
   &lt;script&gt;
   $(document).ready(function(){ 
         // Javascript code here 
@@ -114,7 +114,12 @@ umständlicher, aber man kann alle Features der Mail benutzen.</p>
   &lt;/body&gt;
 </pre></div>
 
-<p>Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern der das <a href="http://www.netdna.com/">NetDNA</a> CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.</p>
+</div>
+<div class='slide'>
+
+<h2 id="jquery-vom-cdn">jquery vom CDN</h2>
+
+<p>Die URLs https://codeorigin.jquery.com/jquery-latest.min.js und http://codeorigin.jquery.com/jquery-latest.min.js kann man für alle Webseiten die online sind verwenden: hinter codeorigin.jquery.com steht nicht nur ein Server, sondern der das <a href="http://www.maxcdn.com/">MaxCDN</a> CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.</p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/jquery/unobstrusive/">zurück zum Buch-Kapitel [esc]</a></p>
