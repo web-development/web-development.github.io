@@ -95,6 +95,54 @@ wo der Pfad angezeigt wird.  In der Abbildung unten ist das <strong>/Users/bjell
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
+<h3 id="pfade">Pfade</h3>
+
+<p>Im Kapitel über <a href="/urls/absolut-relativ/">Absolute und relative URLs</a> haben
+Sie schon gesehen wie absolute und relative URLs interpretiert werden.
+Pfadangaben im Dateisystem sind sogar etwas einfacher.</p>
+
+<p>Unter Mac OS X und UNIX werden die Teile eines Pfades mit einem “Slash” / getrennt.
+Das Dateisystem hat einen “Hauptordner” in dem alle weiteren Ordner
+und Dateien zu finden sind, er wird “root” (also “die Wurzel”) genannt.<br />
+Eine Absolute Pfadangabe beginnt mit einem Slash und bezieht sich auf diesen Hauptordner.</p>
+
+<pre><code>/Users/bjelline
+</code></pre>
+
+<p>ist also eine Datei oder ein Ordner namens <strong>bjelline</strong>, der sich in einem Ordner <strong>Users</strong> befindet,
+der ich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  </p>
+
+<p>Unter Windows ist das Trennzeichen ein Backslash <em>**</em>. 
+Es kann es mehrere Laufwerke geben, die jeweils einen eigenen Root-Ordner
+enthalten.  Ein absoluter Pfad beginnt mit der Laufwerksangabe:</p>
+
+<pre><code>c:\Users\bjelline
+</code></pre>
+
+<p>ist eine ist also eine Datei oder ein Ordner namens <strong>bjelline</strong>, der sich in einem Ordner <strong>Users</strong> befindet,
+der ich im Root-Ordner des Laufwerks <strong>C</strong> befindet.  Ein relativer Pfad beginnt 
+nicht mit einem Laufwerk.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h3 id="die-oberflche-lgt">Die Oberfläche lügt!</h3>
+
+<p>Sowohl der Windows Explorer als auch der Mac OS X Finder stellen das Dateisystem
+nicht wahrheitsgemäß dar.  Sie übersetzen einige Namen:  </p>
+
+<pre><code>Mac OS X:
+echter Pfad:            /Users/bjelline/Music/
+Darstellung im Finder:  /Users/bjelline/Musik/
+echter Pfad:            /Users/bjelline/Sites/
+Darstellung im Finder:  /Users/bjelline/Websites/
+</code></pre>
+
+<p>Für die Programmierung ist immer der wirklich Pfad, wie auf der Kommandozeile angzeigt, relevant.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h3 id="dateien-und-ordner-auflisten">Dateien und Ordner auflisten</h3>
 
 <p>Der Finder (bzw. Windows Explorer) beantwortet auch die Frage welche Dateien
@@ -170,7 +218,7 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
       <li><a href="/kommandozeile/kommandozeile/">Kommandozeile</a></li>
     
     
-      <li><a href="/git/">GIT</a></li>
+      <li><a href="/kommandozeile/zugriffsrechte/">Zugriffsrechte</a></li>
     
   </ul>
 </div>
@@ -418,6 +466,10 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
                       <li class="active"><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
                       
                     
+                      
+                      <li ><a href="/kommandozeile/zugriffsrechte/">Zugriffsrechte</a></li>
+                      
+                    
                   
                 
               </ul>
@@ -464,6 +516,14 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
                     
                       
                       <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/tools/">Werkzeuge</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/anwendungsbeispiele/">Beispiele</a></li>
                       
                     
                       

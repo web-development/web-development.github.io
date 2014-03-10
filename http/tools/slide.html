@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Werkzeuge - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Werkzeuge</h1>
+          <p><a href="/http/tools/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'><p>Wie kann man HTTP untersuchen? </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="http-abhren">HTTP abhören</h2>
+<p>Wie können Sie HTTP beobachten?  Mit einem allgemeinen
+<strong>Netzwerk-Sniffer</strong> wie <a href="http://www.wireshark.org/">Wireshark</a> oder mit Browser-AddOns
+wie <a href="https://addons.mozilla.org/en-US/firefox/addon/live-http-headers/">Live HTTP Headers</a>
+oder <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=search">Firebug</a>. </p>
+
+</div>
+<div class='slide'>
+
+<h3 id="wireshark">Wireshark</h3>
+
+<p>Mit Wireshark können Sie den gesamten Netzverkehr abhören, der für Ihren
+Computer sichtbar ist.  Das sind nicht nur Pakete die HTTP betreffen, sondern
+auch noch viele andere. </p>
+
+<p><img src="/images/wireshark-fullscreen.png" alt="Netzverkehr abhören mit Wireshark" /></p>
+
+<p>Die einzelnen Pakete kann man von Wireshark wieder
+zusammesetzen lassen: mit einem “Rechtsklick” auf ein bestimmtes Paket und
+der Auswahl des Menüpunktes “Follow TCP Stream”.</p>
+
+<p><img src="/images/wireshark-http.png" alt="Ein HTTP Request + Response, abgehört mit Wireshark" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="firebug">Firebug</h3>
+
+<p>Firebug kann nur den Verkehr zwischen Browser und Webservern abhören, also weniger als Wireshark.
+Aber: Firebug kann auch HTTPS-Verbindungen abhören, die er selbst aufgebaut hat.  Wireshark
+würde hier nur die Verschlüsselten Daten sehen.</p>
+
+<p>Firebug zeigt mehrere Requests auf einmal an, nämlich alle die zur selben “Seite” gehören.
+In dieser Ansicht kann man gut sehen in welcher Reihenfolge die Requests erfolgen und wie
+lange die Beantwortung jeweils dauert:</p>
+
+<p><img src="/images/firebug-netzwerk.png" alt="Darstellung von HTTP-Requests im Netzwerk-Panel von FireBug" /></p>
+
+<p>Um Details eines Requests zu sehen muss man ihn “aufklappen”.  Achtung: hier sieht
+man zuerst die Header des <strong>Response</strong> und dann erst die Header des <strong>Request</strong>.</p>
+
+<p><img src="/images/firebug-netzwerk-detail.png" alt="Darstellung von einem HTTP-Request im Netzwerk-Panel von FireBug" /></p>
+
+<p>Um Request und Response genauer zu studieren ist es oft hilfreich die Daten
+in einen Text-Editor zu kopieren:</p>
+
+<p><img src="/images/firebug-netzwerk-copy.png" alt="Darstellung von einem HTTP-Request im Netzwerk-Panel von FireBug" /></p>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/http/tools/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

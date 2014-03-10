@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Zugriffsrechte - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Zugriffsrechte</h1>
+          <p><a href="/kommandozeile/zugriffsrechte/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'><p>Die meisten Webserver werden auf UNIX-Systemen betrieben.
+Das UNIX-Filesystem unterscheidet sich in einigen wichtigen
+Punkten von den Filesystemen von Windows (und Mac OS X), die
+sie vielleicht besser kennen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="dateien-und-ordner-auflisten">Dateien und Ordner auflisten</h3>
+
+<p>Die Option <strong>-l</strong> und <strong>-a</strong> zum Befehl <strong>ls</strong> führt dazu, dass mehr Informationen angezeigt werden,
+insbesondere auch die Zugriffsrechte:</p>
+
+<div class="example">
+<h4 class="caption">Shell Code <small>Dateien und Ordner auflisten inklusive geheimer Dateien</small></h4>
+<pre class="lang-shell prettyprint linenums">
+bash-3.2$ ls -la
+total 12
+drwxr-xr-x   14 bjelline staff  476 Mär  2 09:29 .
+drwxr-xr-x+ 232 bjelline staff 7888 Mär  2 09:29 ..
+-rw-------    1 bjelline staff    3 Mär  2 09:19 .CFUserTextEncoding
+-rw-------    1 bjelline staff   11 Mär  2 09:28 .bash_history
+-rw-------    1 bjelline staff   80 Mär  2 09:29 .bash_profile
+drwx------    2 bjelline staff   68 Mär  1 20:21 Desktop
+drwx------    2 bjelline staff   68 Mär  1 20:21 Documents
+drwx------    2 bjelline staff   68 Mär  1 20:21 Downloads
+drwx------    2 bjelline staff   68 Mär  1 20:21 Dropbox
+drwx------    2 bjelline staff   68 Mär  1 20:21 Library
+drwx------    2 bjelline staff   68 Mär  1 20:21 Movies
+drwx------    2 bjelline staff   68 Mär  1 20:21 Music
+drwx------    2 bjelline staff   68 Mär  1 20:21 Pictures
+drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
+</pre></div>
+
+<p>Das erste Zeichen zeigt an ob es sich um eine Datei (“-“) oder einen Ordner (“d”) handelt.
+Hier sind es viele Ordner und drei Dateien. Danach folgen Informationen über Zugriffsrechte, und das Datum der
+letzten Änderung. </p>
+
+</div>
+<div class='slide'>
+
+<h2 id="unix-datei-zugriffsrechte">UNIX Datei-Zugriffsrechte</h2>
+
+<p>Die nächste Abbildung zeigt links die Darstellung der Zugriffsrechte in der Shell, rechts das Verändern der Zugriffsrechte mit 
+einer grafischen Oberfläche (hier am Beispiel von Dreamweaver).</p>
+
+<p><img src="/images/zugriffsrechte-dreamweaver.png" alt="Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen" /></p>
+
+<p>Eine kurze Wiederholung der UNIX-Zugriffsrechte: Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). Im Terminal werden diese Rechte als Buchstaben angezeigt: r steht für Lesen, w für Schreiben, x für Ausführen.</p>
+
+<p><img src="/images/zugriffsrechte-kommandozeile.png" alt="Abbildung: Darstellung der UNIX Zugriffsrechte in der Kommandozeile" /></p>
+
+<p>Für jedes Objekt im Filesystem (egal ob Datei, Ordner, Link, ..) gilt: 
+Das Objekt ist einem Account zugeordnet  (“owner” genannt)  und einer
+Gruppe.  In der Abbildung haben die Userin “bjelline” als Besitzerin und
+die Gruppe “apache” besondere Zugriffsrechte.  </p>
+
+<p>Die Zugriffsrechte werden als 3 Bits gespeichert und mit den Zeichen “r”, “w”, “x” und “-“ dargestellt:</p>
+
+<ul>
+  <li>“r” oder “-“ steht für das “read”-Recht: darf ich diese Datei lesen?</li>
+  <li>“w” oder “-“ steht für das “write”-Recht: darf ich diese Datei ändern? löschen? eine Datei in diesem Ordner anlegen?</li>
+  <li>“x” oder “-“ steht für das “execute”-Recht: 
+** bei einer Datei: darf ich diese Datei als Programm ausführen?
+** bei einem Ordner: darf ich in diesen Ordner hinein?</li>
+</ul>
+
+<p>In der Abbildung hat die Userin “bjelline” die Rechte die Datei <strong>calender.dat</strong> zu lesen und zu verändern.
+Alle anderen User (egal ob in der Gruppe “apache” oder nicht) haben nur das Recht zu lesen.
+“bjelline” und alle User in der Gruppe “apache” haben das Recht im Ordner <strong>cl_file</strong> Dateien
+anzulegen oder zu löschen. Alle anderen User dürfen in den Ordner wechseln und die Dateien
+auflisten, aber keine neuen Dateien anlegen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="zugriffsrechte-setzen-mit-chmod">Zugriffsrechte setzen mit chmod</h2>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+bash-3.2$ ls -la public_html/index.html 
+-rw------- 1 bjelline bjelline 20 Nov  6  2012 public_html/index.html
+
+bash-3.2$ chmod go+r public_html/index.html
+
+bash-3.2$ ls -la public_html/index.html 
+-rw-r--r-- 1 bjelline bjelline 20 Nov  6  2012 public_html/index.html
+</pre></div>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+bash-3.2$ chmod 644 public_html/index.html 
+</pre></div>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/kommandozeile/zugriffsrechte/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
