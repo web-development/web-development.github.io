@@ -92,6 +92,8 @@ des Betriebssystems.  Um z.B. im Finder auf Mac OS X heraus zu finden
 welcher Ordner aktuell angezeigt wird genügt ein Blick auf die Titelzeile, 
 wo der Pfad angezeigt wird.  In der Abbildung unten ist das <strong>/Users/bjelline</strong>.</p>
 
+<p><img src="/images/shell-pwd.png" alt="Abbildung: Finder zeigt Arbeitsverzeichnis" /></p>
+
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
@@ -106,21 +108,24 @@ Das Dateisystem hat einen “Hauptordner” in dem alle weiteren Ordner
 und Dateien zu finden sind, er wird “root” (also “die Wurzel”) genannt.<br />
 Eine Absolute Pfadangabe beginnt mit einem Slash und bezieht sich auf diesen Hauptordner.</p>
 
+<p>Der Pfad</p>
+
 <pre><code>/Users/bjelline
 </code></pre>
 
 <p>ist also eine Datei oder ein Ordner namens <strong>bjelline</strong>, der sich in einem Ordner <strong>Users</strong> befindet,
-der ich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  </p>
+der sich im Root-Ordner befindet.  Ein relativer Pfad beginnt nicht mit einem Slash.  </p>
 
-<p>Unter Windows ist das Trennzeichen ein Backslash <em>**</em>. 
-Es kann es mehrere Laufwerke geben, die jeweils einen eigenen Root-Ordner
+<p>Unter Windows ist das Trennzeichen ein Backslash <strong>\</strong>. 
+Es kann mehrere <strong>Laufwerke</strong> geben, die mit Buchstaben
+bezeichnet werden (z.B. <strong>c:</strong>) und die jeweils einen eigenen Root-Ordner
 enthalten.  Ein absoluter Pfad beginnt mit der Laufwerksangabe:</p>
 
 <pre><code>c:\Users\bjelline
 </code></pre>
 
 <p>ist eine ist also eine Datei oder ein Ordner namens <strong>bjelline</strong>, der sich in einem Ordner <strong>Users</strong> befindet,
-der ich im Root-Ordner des Laufwerks <strong>C</strong> befindet.  Ein relativer Pfad beginnt 
+der sich im Root-Ordner des Laufwerks <strong>C</strong> befindet.  Ein relativer Pfad beginnt 
 nicht mit einem Laufwerk.</p>
 
 
@@ -138,7 +143,7 @@ echter Pfad:            /Users/bjelline/Sites/
 Darstellung im Finder:  /Users/bjelline/Websites/
 </code></pre>
 
-<p>Für die Programmierung ist immer der wirklich Pfad, wie auf der Kommandozeile angzeigt, relevant.</p>
+<p>Für die Programmierung ist immer der wirklich Pfad relevant, der auf der Kommandozeile angezeigt wird.</p>
 
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
@@ -146,7 +151,7 @@ Darstellung im Finder:  /Users/bjelline/Websites/
 <h3 id="dateien-und-ordner-auflisten">Dateien und Ordner auflisten</h3>
 
 <p>Der Finder (bzw. Windows Explorer) beantwortet auch die Frage welche Dateien
-und Ordner sich im akutellen Ordner befinden.  Auf der Kommandozeile fragen
+und Ordner sich im aktuellen Ordner befinden.  Auf der Kommandozeile fragen
 Sie diese Information mit dem Befehl <strong>ls</strong> ab:</p>
 
 <div class="example">
@@ -187,6 +192,12 @@ letzten Änderung. Die Zugriffsrechte von UNIX werde in einem <a href="/kommando
 behandelt.</p>
 
 <p><img src="/images/shell-ls-l.png" alt="Abbildung: Dateien und Ordner auflisten mit ls" /></p>
+
+<p>Mit der Option <strong>-a</strong> zum Befehl <strong>ls</strong> werden auch “versteckte Dateien” angezeigt.
+Das sind unter UNIX Dateien und Ordner deren Namen mit einem Punkt beginnen.
+Zwei gibt es immer: <strong>.</strong> verweist auf den aktuellen Ordner selbst, <strong>..</strong> verweist
+auf den übergeordneten Ordner.  In folgendem Beispiel werden auch noch drei
+weitere Dateien angezeigt:</p>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten inklusive geheimer Dateien</small></h4>
@@ -984,7 +995,7 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> im Jahr 2012 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/kommandozeile/wo-bin-ich.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
