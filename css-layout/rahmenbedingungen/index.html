@@ -295,17 +295,18 @@ div#wrap {
 <a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="bilder">Bilder</h2>
-<p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist im Jahr 2011 anders.</p>
+<p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
 
 
 <a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h3 id="pixel">Pixel</h3>
-<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten werden nur Pixel-Formate von vielen Browsern unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
+<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
 
 <p><img src="/images/image117.png" alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" /></p>
 
-<p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern.</p>
+<p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
+dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
 
 <p><img src="/images/image119.png" alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" /></p>
 
@@ -389,8 +390,12 @@ neue Herausforderung: soll man - wegen der Pixeldichte - riesige Bilder ausliefe
 Oder - weil es doch ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 
-<p>Eine aktuelle Diskussion dazu findet man in
-<a href="http://www.alistapart.com/articles/mo-pixels-mo-problems/">Rupert(2012): Mo’ Pixels Mo’ Problems. In: A List Apart.</a></p>
+<p>Dafür wurden die neuen attribute “srcset” und “sizes” entwickelt, diese
+werden aber derzeit noch nicht von allen Browsern unterstützt <a href="http://caniuse.com/#feat=svg-img">caniuse srcset</a>.</p>
+
+<p>Mit Hilfe der Javascript Library <a href="http://scottjehl.github.io/picturefill/">picturefill</a> kann man 
+diese feature trotzdem schon verwenden, und so verschiedene Bilder für verschiedene Bildschirmauflösungen
+ausliefern.</p>
 
 
 <a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
