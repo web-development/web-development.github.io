@@ -56,9 +56,10 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
+			<a name='slide-1'></a>
+<p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
 eine besondere Schreibweise die es erlaubt in Strings nach Mustern zu suchen
-und Ersetzungen vorzunehmen.  </p>
+und Ersetzungen vorzunehmen.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
@@ -109,7 +110,7 @@ if( s.match(/greif/) ) {
 
 <p>Hier wird im String “begreifen” nach dem String “greif” gesucht.
 Falls er gefunden wird (ja, wird er), gibt die Match-Methoden einen
-Wert zurück, der als wahr gilt.  </p>
+Wert zurück, der als wahr gilt.</p>
 
 <p>Für diesen einfachen Fall wird man aber nicht eine RegEx verwenden,
 sondern <code>indexOf</code>: diese Methode gibt -1 zurück falls der String
@@ -218,7 +219,7 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 
 <p>Achtung!  Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
 
-<p><a href="/images/match.html?pattern=hall[oia]&amp;listname=hallos&amp;list[]=&amp;list[]=halli&amp;list[]=hallo&amp;list[]=halla&amp;list[]=halloi&amp;list[]=hall&amp;list[]=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
+<p><a href="/images/match.html?pattern=hall%5C[oia%5C]&amp;listname=hallos&amp;list[]=&amp;list[]=halli&amp;list[]=hallo&amp;list[]=halla&amp;list[]=halloi&amp;list[]=hall&amp;list[]=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
 
 
 <a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
@@ -234,7 +235,7 @@ stehen.</p>
 /[a-f]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=[a-z]&amp;listname=buchstaben&amp;list[]=&amp;list[]=a&amp;list[]=b&amp;list[]=c&amp;list[]=x&amp;list[]=y&amp;list[]=z&amp;list[]=A&amp;list[]=.&amp;list[]=%25">RegEx Tester: /[a-z]/</a></p>
+<p><a href="/images/match.html?pattern=%5C[a-z%5C]&amp;listname=buchstaben&amp;list[]=&amp;list[]=a&amp;list[]=b&amp;list[]=c&amp;list[]=x&amp;list[]=y&amp;list[]=z&amp;list[]=A&amp;list[]=.&amp;list[]=%25">RegEx Tester: /[a-z]/</a></p>
 
 
 <a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
@@ -250,7 +251,7 @@ Klammer erwähnt werden:</p>
 /[^aeiou]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=u[%5E1234]&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=usa">RegEx Tester: /u[^1234]/</a></p>
+<p><a href="/images/match.html?pattern=u%5C[%5E1234%5C]&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=usa">RegEx Tester: /u[^1234]/</a></p>
 
 
 <a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
@@ -289,7 +290,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 
 <p>Da der Punkt <code>.</code> eine besondere Bedeutung in einer Regular Expression
 hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
-Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>. </p>
+Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -388,7 +389,7 @@ möglichst lange Strings zu erfassen.</p>
 die kein o sind, und dann ein zweites o.  Damit ist der Pattern beendet,
 auch wenn es später im String noch weitere o’s geben würde.</p>
 
-<p><a href="/images/match.html?pattern=_[%5E_]*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^_]*</em>/</a></p>
+<p><a href="/images/match.html?pattern=_%5C[%5E_%5C]*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 
 <a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
@@ -450,7 +451,7 @@ s.replace(/Voldemort/g,
 </pre></div>
 
 <p>Achtung, auch hier kommt man bald an die Grenzen
-von Regular Expressions: </p>
+von Regular Expressions:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -1295,7 +1296,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/javascript/regular-expressions.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>

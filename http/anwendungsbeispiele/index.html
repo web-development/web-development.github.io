@@ -56,14 +56,15 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Wie wird HTTP nun von Browsern und Servern verwendet?
+			<a name='slide-1'></a>
+<p>Wie wird HTTP nun von Browsern und Servern verwendet?
 Ein paar Beispiele:</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
-<p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten. </p>
+<p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten.</p>
 
 <pre><code>  GET /rezensionen/list.php3?no=20 HTTP/1.1
   Host: www.biblio.at
@@ -86,7 +87,7 @@ Ein paar Beispiele:</p>
   &lt;/head&gt;
 </code></pre>
 
-<p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post. </p>
+<p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post.</p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
@@ -132,7 +133,7 @@ Ein paar Beispiele:</p>
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
-<p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht. </p>
+<p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht.</p>
 
 <p>(Wie auf Seite Fehler! Textmarke nicht definiert. beschrieben, können Sie diese Umleitung von PHP aus mit dem header-Befehl auslösen)</p>
 
@@ -178,7 +179,7 @@ Ein paar Beispiele:</p>
 
 <p>Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable $_SERVER[‘PHP_AUTH_USER’].</p>
 
-<p>Auf Ebene des HTTP-Protokolls betrachtet funktioniert diese Authentisierung wie folgt: bei der ersten Anfrage des Clients schickt der Server einen Status-Code 401 (nicht autorisiert). </p>
+<p>Auf Ebene des HTTP-Protokolls betrachtet funktioniert diese Authentisierung wie folgt: bei der ersten Anfrage des Clients schickt der Server einen Status-Code 401 (nicht autorisiert).</p>
 
 <pre><code>  GET /pr/ HTTP/1.1
   Host: www.sbg.ac.at
@@ -199,10 +200,10 @@ Ein paar Beispiele:</p>
   &lt;TITLE&gt;401 Authorization Required&lt;/TITLE&gt;
 </code></pre>
 
-<p>Daraufhin zeigt der Browser das Passwort-Eingabefenster an. Nach Eingabe von Username und Passwort schickt der Browser die gleiche Anfrage erneut, diesmal aber mit der zusätzlichen Header-Zeile Authorization. In dieser Zeile werden Username und Passwort (leicht verschlüsselt) mitgeschickt. </p>
+<p>Daraufhin zeigt der Browser das Passwort-Eingabefenster an. Nach Eingabe von Username und Passwort schickt der Browser die gleiche Anfrage erneut, diesmal aber mit der zusätzlichen Header-Zeile Authorization. In dieser Zeile werden Username und Passwort (leicht verschlüsselt) mitgeschickt.</p>
 
 <p>Wenn Username und Passwort stimmen, schickt der Server eine positive Antwort und das Dokument. 
-Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Authorization-Zeile mitschicken. </p>
+Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Authorization-Zeile mitschicken.</p>
 
 <pre><code>  GET /pr/ HTTP/1.1
   Host: www.sbg.ac.at
@@ -228,15 +229,15 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 <a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="https">HTTPS</h2>
-<p>HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen. </p>
+<p>HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen.</p>
 
 <p>Ob HTTPS oder HTTP verwendet wird, hängt von der Konfiguration des Server ab. Wenn Sie nur Webspace in „Untermiete“ benutzen (wie auf multimediatechnology.at), können Sie HTTPS nicht aktivieren.</p>
 
-<p>Die Verschlüsselung und Entschlüsselung des gesamten Verkehrs braucht CPU-Zeit — der Webserver kann also weniger Anfragen bedienen als mit HTTP. Eine Möglichkeit diese Belastung vom Webserver „fernzuhalten“ ist die Terminierung von SSL auf einem anderen Rechner. </p>
+<p>Die Verschlüsselung und Entschlüsselung des gesamten Verkehrs braucht CPU-Zeit — der Webserver kann also weniger Anfragen bedienen als mit HTTP. Eine Möglichkeit diese Belastung vom Webserver „fernzuhalten“ ist die Terminierung von SSL auf einem anderen Rechner.</p>
 
 <p>Die Electronic Frontier Foundation hat eine Kampagne11 gestartet um KonsumentInnen und Website-BetreiberInnen zu überzeugen, dass https immer verwendet werden sollte: „HTTPS Everywhere“.</p>
 
-<p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.  </p>
+<p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.</p>
 
 
 <a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
@@ -252,6 +253,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 </code></pre>
 
 <p>Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden.</p>
+
 
 		
 			<div class="pagination">
@@ -1042,7 +1044,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/http/anwendungsbeispiele.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>

@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Für die Applikation müssen wir nun auf verschiedene
+			<a name='slide-1'></a>
+<p>Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.</p>
 
 
@@ -92,7 +93,7 @@ $anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE 
 </pre></div>
 
 <p>Damit spart man sich zwei der drei Variablen, macht aber
-die Fehlersuche etwas schwieriger.  </p>
+die Fehlersuche etwas schwieriger.</p>
 
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
@@ -114,7 +115,7 @@ $personen = $sth-&gt;fetchAll();
 <p>Die SQL-Anfrage wird hier als String an die <code>query()</code>-Methode des Datenbankhandler
 übergeben.  Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
 dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
-Datenbank zu PHP übertragen. </p>
+Datenbank zu PHP übertragen.</p>
 
 
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
@@ -133,7 +134,7 @@ Anfangsposition<a href="http://dev.mysql.com/doc/refman/5.6/en/select.html#idp72
 
 <p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
 <code>profile_visible=0</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
-nur sichtbare Profil angezeigt werden. </p>
+nur sichtbare Profil angezeigt werden.</p>
 
 
 <a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
@@ -362,7 +363,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <p>Diese Verwendung von <code>RAND()</code> in der <code>ORDER</code> clause ist  eine Besondernheit von 
 MySQL<a href="dev.mysql.com/doc/refman/5.6/en/mathematical-functions.html#function_rand#idp61451584">*</a>, 
 die auch nur für beschänkte Datenmengen gut funktioniert. In anderen relationalen Datenbanken und bei
-größeren Tabellen gibt es dafür andere Lösungen.  </p>
+größeren Tabellen gibt es dafür andere Lösungen.</p>
 
 
 <a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
@@ -1173,7 +1174,7 @@ größeren Tabellen gibt es dafür andere Lösungen.  </p>
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-mysql/datenbank-lesen.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>

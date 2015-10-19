@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<a name='slide-1'></a>
+<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>Anwendungen nutzen regelmäßig Weiter- oder Umleitungen, um Browser auf andere Seiten umzulenken. Manchmal verwendet die angegriffene Seite ungeprüfte Parameter für Umleitungen, so dass eine AngreiferIn die Zielseite selbst festlegen kann.</p>
@@ -73,9 +74,9 @@
 
 <p>Die Anwendung enthält eine Seite namens <code>redirect.php</code>, die einen einzigen Parameter <code>url</code> verwendet. 
 Ein Angreifer setzt eine URL als Parameterwert ein, die BenutzerInnen auf eine Website führt, 
-die Schadcode installiert oder Phishing ermöglicht. </p>
+die Schadcode installiert oder Phishing ermöglicht.</p>
 
-<p>http://www.example.com/redirect.php?url=evil.com </p>
+<p>http://www.example.com/redirect.php?url=evil.com</p>
 
 <p><strong>Szenario 2:</strong></p>
 
@@ -84,7 +85,7 @@ weiterzureichen. Um dies zu erleichtern, können Parameter verwendet werden, um 
 auf welchen Bereich im Erfolgsfall umgeleitet wird. In diesem Fall schleust eine
 Angreiferin eine URL als Parameter ein, die die Zugangskontrollen der Anwendung umgeht 
 und den Browser der Angreiferin auf einen administrativen Bereich leitet, auf den sie 
-normalerweise keinen Zugriff hätte. </p>
+normalerweise keinen Zugriff hätte.</p>
 
 <p>http://www.example.com/boring.php?fwd=admin.jsp</p>
 
@@ -157,6 +158,7 @@ if ( array_key_exists( $_GET[&#39;url&#39;], $urls ) ) {
 <h2 id="mehr">Mehr</h2>
 
 <p>Informationen von Google über <a href="http://googlewebmastercentral.blogspot.com/2009/01/open-redirect-urls-is-your-site-being.html">Open Redirects</a>.</p>
+
 
 		
 			<div class="pagination">
@@ -947,7 +949,7 @@ if ( array_key_exists( $_GET[&#39;url&#39;], $urls ) ) {
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a10-redirect.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>

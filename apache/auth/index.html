@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>In diesem Kapitel lernen Sie die Konfigurationsanweisungen
+			<a name='slide-1'></a>
+<p>In diesem Kapitel lernen Sie die Konfigurationsanweisungen
 für Authentisierung und für  Fehlermeldungen kennen.</p>
 
 
@@ -66,7 +67,7 @@ für Authentisierung und für  Fehlermeldungen kennen.</p>
 
 <p>Die Fehlermeldungen des Webservers können an das Design der Webseite angepasst werden. Die häufigste Fehlermeldung ist der Fehler 404 - Dokument nicht gefunden.</p>
 
-<p>Die Standard-Fehlermeldung des Apache Webservers ist neutral gestaltet. </p>
+<p>Die Standard-Fehlermeldung des Apache Webservers ist neutral gestaltet.</p>
 
 <p><img src="/images/apache-404.png" alt="apache standard 404" /></p>
 
@@ -123,7 +124,7 @@ Allow from 10.
   &lt;/Location&gt;
 </pre></div>
 
-<p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace. </p>
+<p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace.</p>
 
 
 <a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
@@ -183,14 +184,15 @@ Allow from 10.
   Adding password for user Clemens
 </pre></div>
 
-<p>Diese Methode funktioniert auch auf den Webserver www.users.fh-salzburg.ac.at und  multimediatechnology.at. Wenn Sie einen eigenen Apache Server betreiben, können Sie diese Authentisierungmethode mit verschiedenen Backends verwenden (LDAP, Datenbank, …) - dafür gibt es verschiedene Apache Module25. </p>
+<p>Diese Methode funktioniert auch auf den Webserver www.users.fh-salzburg.ac.at und  multimediatechnology.at. Wenn Sie einen eigenen Apache Server betreiben, können Sie diese Authentisierungmethode mit verschiedenen Backends verwenden (LDAP, Datenbank, …) - dafür gibt es verschiedene Apache Module25.</p>
 
-<p>Mit der HTTP-Authentisierung ist das HTTP-Protokoll (genau wie bei der Verwendung von Cookies) nicht mehr stateless. http-Auth hat gegenüber Cookies den Vorteil, dass die Eingabe von Username und Passwort über ein Browser-Fenster erfolgt und nicht implementiert werden muß. </p>
+<p>Mit der HTTP-Authentisierung ist das HTTP-Protokoll (genau wie bei der Verwendung von Cookies) nicht mehr stateless. http-Auth hat gegenüber Cookies den Vorteil, dass die Eingabe von Username und Passwort über ein Browser-Fenster erfolgt und nicht implementiert werden muß.</p>
 
 <p><img src="/images/firefox-auth.png" alt="Authentisierungs-Popup in Firefox" />
 <img src="/images/chrome-auth.png" alt="Authentisierungs-Popup in Chrome" /></p>
 
 <p>Was mit http Auth nicht funktioniert, ist der Zugriff ohne Login auf die gleiche URL. (Bei Authentisierung über Cookies geht das).</p>
+
 
 		
 			<div class="pagination">
@@ -981,7 +983,7 @@ Allow from 10.
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2014 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/apache/auth.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>

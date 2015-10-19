@@ -64,14 +64,14 @@ wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten
 <div class='slide'>
 
 <h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
-<p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich. </p>
+<p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich.</p>
 
 <ol>
   <li>Der <strong>Browser</strong> analysiert die <strong>URL</strong>: falls Sie eine IP-Adresse enthält geht’s weiter zum nächsten Schritt. Falls sie einen Domain Namen enthält wird dieser mittels DNS-Lookup in die entsprechende IP-Adresse übersetzt.</li>
   <li>Der Browser baut eine <strong>TCP-Verbindung</strong> zum Server auf, falls in der URL nicht anders angegeben wird  dabei Port 80 angesteuert.</li>
   <li>Der Browser sendet über die TCP-Verbindung einen <strong>HTTP-Request</strong>; dieser besteht aus einer ersten Zeile (Request-Line), mehreren Header-Zeilen und manchmal einem Body.</li>
   <li>Der <strong>Webserver</strong> nimmt den Request entgegen und analysiert ihn. Der Webserver entscheidet, ob er zur Beantwortung der Anfrage nur eine bestimmte Datei aus dem Dateisystem zu liest, oder ein Programm aufruft.</li>
-  <li>Der Webserver schickt über die TCP-Verbindung einen <strong>HTTP-Response</strong> an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource. </li>
+  <li>Der Webserver schickt über die TCP-Verbindung einen <strong>HTTP-Response</strong> an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource.</li>
   <li>Der Browser nimmt das Dokument in Empfang, <strong>stellt es dar</strong>, und beendet die TCP-Verbindung.</li>
 </ol>
 
@@ -142,7 +142,7 @@ Siehe http://httpstatus.es/</p>
 
 <h2 id="header">Header</h2>
 
-<p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet. </p>
+<p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet.</p>
 
 </div>
 <div class='slide'>
@@ -165,7 +165,7 @@ notwendig.</p>
 </code></pre>
 
 <p>Das ist die Selbstoffenbarung des Clients: welcher Browser, welche Version. Die meisten 
-Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe. </p>
+Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe.</p>
 
 <p>(Siehe <a href="http://webaim.org/blog/user-agent-string-history/">History of the browser user-agent string</a>.)</p>
 
@@ -183,7 +183,7 @@ wurde oder ein FORM gesendet wurde. Dieser Header kann im Browser deaktiviert we
 
 <h3 id="date-server">Date, Server</h3>
 
-<p>Im Response: </p>
+<p>Im Response:</p>
 
 <pre><code>Date: Sat, 27 Apr 2002 05:52:57 GMT
 Server: Apache/1.3.9 (Unix) Debian/GNU
@@ -198,7 +198,7 @@ Server sehen, dann basieren diese auf dieser Angabe.</p>
 
 <h3 id="content-type">Content-Type</h3>
 
-<p>Im Response: </p>
+<p>Im Response:</p>
 
 <pre><code>Content-Type: text/html
 </code></pre>
@@ -214,6 +214,7 @@ sie hier häufig antreffen sind:</p>
   <li>image/gif</li>
   <li>image/svg+xml</li>
 </ul>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/http/http/">zurück zum Buch-Kapitel [esc]</a></p>

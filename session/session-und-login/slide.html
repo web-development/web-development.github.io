@@ -55,7 +55,8 @@
           <div class="slide"><h1>Session und Login</h1>
           <p><a href="/session/session-und-login/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
+	  <div class='slide'>
+<p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
 Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 <p><img src="/images/stateless-http.svg" alt="HTTP als &quot;stateless protocol&quot;" /></p>
@@ -67,7 +68,7 @@ Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 <p>Mit der Einführung von Cookies, und damit von state, können
 wir nun erkennen, dass mehrere Requests zusammen gehören,
-vom selben Browser ausgelöst wurden. </p>
+vom selben Browser ausgelöst wurden.</p>
 
 <p><img src="/images/stateful-http-with-cookies.svg" alt="HTTP mit cookies wird &quot;stateful&quot;" /></p>
 
@@ -79,16 +80,16 @@ vom selben Browser ausgelöst wurden. </p>
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
 
-<p>Mit dem Befehle  <code>session_start()</code><a href="http://www.php.net/manual/de/function.session-start.php">*</a>  wird </p>
+<p>Mit dem Befehle  <code>session_start()</code><a href="http://www.php.net/manual/de/function.session-start.php">*</a>  wird</p>
 
 <ul>
-  <li>…beim ersten Aufruf 
+  <li>…beim ersten Aufruf
     <ul>
-      <li>automatisch ein Cookie gesetzt. </li>
+      <li>automatisch ein Cookie gesetzt.</li>
       <li>Wenn im Array <code>$_SESSION</code> Daten gespeichert werden, sorgt PHP dafür, dass die Daten am Server permanent gespeichert werden.</li>
     </ul>
   </li>
-  <li>…bei jedem weiteren Aufruf 
+  <li>…bei jedem weiteren Aufruf
     <ul>
       <li>die Session an Hand des Cookies wieder identifiziert.</li>
       <li>und die Daten wieder ins <code>$_SESSION</code>-Array geladen.</li>
@@ -96,7 +97,7 @@ vom selben Browser ausgelöst wurden. </p>
   </li>
 </ul>
 
-<p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den Usernamen des angemeldeten Users zu speichern. </p>
+<p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den Usernamen des angemeldeten Users zu speichern.</p>
 
 </div>
 <div class='slide'>
@@ -195,7 +196,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p><img src="/images/image365.png" alt="Abbildung 147: Login-Formular der Applikation" /></p>
 
-<p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet. </p>
+<p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Überprüfung von username und passwort</small></h4>
@@ -253,7 +254,7 @@ header(&quot;Location: index.php&quot;)
 
 <h3 id="redirect--weiterleitung">Redirect / Weiterleitung</h3>
 
-<p>Das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung mit <code>Location:</code> sinnvoll. </p>
+<p>Das Setzen und Löschen der Session-Cookies dauert immer einen Request länger als gedacht! Deswegen ist eine Weiterleitung mit <code>Location:</code> sinnvoll.</p>
 
 <p>Die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:</p>
 
@@ -287,9 +288,9 @@ header(&quot;Location: index.php&quot;)
 <ul>
   <li><code>$_SESSION()</code> <a href="http://php.net/manual/en/reserved.variables.session.php">PHP Doku</a></li>
   <li><code>$_COOKIE()</code> <a href="http://php.net/manual/en/reserved.variables.cookies.php">PHP Doku</a></li>
-  <li><code>header()</code> <a href="http://www.php.net/manual/de/function.header.php">PHP Doku</a>  </li>
+  <li><code>header()</code> <a href="http://www.php.net/manual/de/function.header.php">PHP Doku</a></li>
   <li><code>session_name()</code> <a href="http://www.php.net/manual/de/function.session-name.php">PHP Doku</a></li>
-  <li><code>session_start()</code> <a href="http://www.php.net/manual/de/function.session-start.php">PHP Doku</a>  </li>
+  <li><code>session_start()</code> <a href="http://www.php.net/manual/de/function.session-start.php">PHP Doku</a></li>
   <li><code>setcookie()</code> <a href="http://www.php.net/manual/de/function.setcookie.php">PHP Doku</a></li>
 </ul>
 </div>

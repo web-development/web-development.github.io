@@ -55,7 +55,8 @@
           <div class="slide"><h1>AJAX Irrwege</h1>
           <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
+	  <div class='slide'>
+<p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones 
 Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber 
 auch verschlechtern.</p>
 
@@ -75,7 +76,7 @@ dafür?</p>
 </ul>
 
 <p>Nun  surfen wir durch diese Site und beobachten in Firebug welche http-Requests
-gemacht werden </p>
+gemacht werden</p>
 
 <p><img src="/images/ajax-bad.png" alt="AJAX statt normaler Links - eine schlechte Idee" /></p>
 
@@ -87,7 +88,7 @@ Das hat viele Auswirkungen, unter anderem:</p>
 <ul>
   <li>Man kann keinen Link zu einer bestimmten Seite setzen – nur zur „Startseite“</li>
   <li>Man kann kein Lesezeichen (Bookmark, Favoriten) auf eine bestimmte Seite setzen</li>
-  <li>Google „sieht“ den Text der einzelnen Seite nicht </li>
+  <li>Google „sieht“ den Text der einzelnen Seite nicht</li>
 </ul>
 
 <p>Vergleicht man Vor- und Nachteile sieht man schnell, dass in diesem Fall die
@@ -122,13 +123,13 @@ Grundfunktion geben, sondern nur die vorhandene Funktion erweitern.</p>
 <p>Der Begriff “REST” wurde von Roy Fielding 2000 in seiner Dissertation definiert .
 Fielding hat unter anderem an der HTTP-Spezifikation und an WebDAV
 mitgearbeitet. In seiner Dissertation stellt er grundlegende Überlegungen zur Architektur von
-verteilten Systemen an. </p>
+verteilten Systemen an.</p>
 
 <p>Die Grundfrage könnte man so stellen: das Web ist ein sehr erfolgreiches 
 verteiltes System, viele Hersteller entwickeln dafür Software (Microsoft,
 Mozilla, IBM, …) und die Zusammenarbeit funktioniert. Es gibt viele Komponenten die erfolgreich
 zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen, 
-…). </p>
+…).</p>
 
 <p><strong>Welche Eigenschaften des Webs führen dazu, dass dieses
 Zusammenspiel funktioniert?</strong></p>
@@ -166,7 +167,7 @@ Darstellung in
   <li>Zustandslosigkeit = Statelessness.</li>
 </ol>
 
-<p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung. </p>
+<p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung.</p>
 
 </div>
 <div class='slide'>
@@ -176,7 +177,7 @@ Darstellung in
 <p>Wenn jedes Dokument eine URL hat, dann ist es verlinkbar, kann in Lesezeichen
 gespeichert werden, kann von Google gefunden und verlinkt werden, etc.
 Wenn Sie eine statische Webseite bauen erzeugen Sie die URLs beim Festlegen der 
-Dateinamen. </p>
+Dateinamen.</p>
 
 <p>Bei einer PHP-Applikation sind es die Dateinamen und die GET-
 Parameter, die die URL ausmachen. In der Datenbank-Applikation, die wir in den
@@ -184,10 +185,10 @@ Kapiteln <a href="/php-mysql/">PHP MYSQL</a> und <a href="/php-mysql-2/">PHP MYS
 waren die URLs:</p>
 
 <ul>
-  <li>http://ich.multimediatechnology.at/projekt-1/index.php </li>
-  <li>http://ich.multimediatechnology.at/projekt-1/personen.php  </li>
-  <li>http://ich.multimediatechnology.at/projekt-1/person.php?pid=1 </li>
-  <li>http://ich.multimediatechnology.at/projekt-1/person.php?pid=2 </li>
+  <li>http://ich.multimediatechnology.at/projekt-1/index.php</li>
+  <li>http://ich.multimediatechnology.at/projekt-1/personen.php</li>
+  <li>http://ich.multimediatechnology.at/projekt-1/person.php?pid=1</li>
+  <li>http://ich.multimediatechnology.at/projekt-1/person.php?pid=2</li>
   <li>http://ich.multimediatechnology.at/projekt-1/person.php?pid=3</li>
 </ul>
 
@@ -204,7 +205,7 @@ im Webserver umschreiben kann, mit der RewriteEngine von Apache.</p>
 <ul>
   <li>http://ich.multimediatechnology.at/projekt-1/</li>
   <li>http://ich.multimediatechnology.at/projekt-1/personen</li>
-  <li>http://ich.multimediatechnology.at/projekt-1/person/max_mustermann </li>
+  <li>http://ich.multimediatechnology.at/projekt-1/person/max_mustermann</li>
   <li>http://ich.multimediatechnology.at/projekt-1/person/nina_nocheinbeispiel</li>
   <li>http://ich.multimediatechnology.at/projekt-1/person/klaus_maria_nachname</li>
 </ul>
@@ -226,7 +227,7 @@ RewriteRule ^person/(.*)   person.php?slug=$1  [L]
 auf diese URLs hat Auswirkungen falls sie relative Links 
 verwendet haben, um z.B. auf Stylesheets zu verweisen. Deswegen rate ich von
 einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit als man
-denkt. </p>
+denkt.</p>
 
 </div>
 <div class='slide'>
@@ -258,16 +259,16 @@ werden. z.B. könnte ein POST auf <code>/dings/</code> eine neue Ressource mit d
 URL <code>/dings/17</code> erzeugen</li>
   <li><strong>PUT</strong> Diese Methode dient zum Speichern einer Ressource unter der  angegebenen URL. 
 Diese Methode steht bei Web-Formularen aber nicht zur Verfügung. Deswegen 
-wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet. </li>
+wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet.</li>
   <li><strong>DELETE</strong> Diese Methode dient zum Löschen einer Ressource. Auch diese Methode 
-steht bei Web-Formularen nicht zur Verfügung.  </li>
+steht bei Web-Formularen nicht zur Verfügung.</li>
 </ul>
 
 <h4 id="umsetzung-2">Umsetzung</h4>
 
 <p>Bei der Programmierung mit simplem PHP ist wichtig, dass Sie GET und POST korrekt
 einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
-PHP werden sie die anderen Methoden verwenden. </p>
+PHP werden sie die anderen Methoden verwenden.</p>
 
 </div>
 <div class='slide'>
@@ -384,8 +385,8 @@ Accept: application/xml
 <p>Eine beliebte Vereinfachung ist die Verwendung von Endungen in der URL:</p>
 
 <ul>
-  <li>http://ich.multimediatechnology.at/projekt-1/person/83.html </li>
-  <li>http://ich.multimediatechnology.at/projekt-1/person/83.xml </li>
+  <li>http://ich.multimediatechnology.at/projekt-1/person/83.html</li>
+  <li>http://ich.multimediatechnology.at/projekt-1/person/83.xml</li>
   <li>http://ich.multimediatechnology.at/projekt-1/person/83.json</li>
 </ul>
 
@@ -433,7 +434,7 @@ Session.</p>
 
 
 <p>Nach dem REST-Prinzip sollte man also den Zustand der Session nur dann
-verwenden, wenn er unbedingt notwendig ist. </p>
+verwenden, wenn er unbedingt notwendig ist.</p>
 
 </div>
 <div class='slide'>
@@ -468,6 +469,7 @@ bzw. die Daten abfragen die besonders geschützt werden müssen.</p>
 <p>Diesen Aspekt von REST können und sollen Sie voll umsetzten. 
 Verwenden Sie nur die php-SESSION um den Zustand der Applikation zu speichern, und
 gehen Sie möglichst sparsam damit um.</p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/applied-javascript/ajax-irrwege/">zurück zum Buch-Kapitel [esc]</a></p>

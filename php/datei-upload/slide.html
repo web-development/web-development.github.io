@@ -55,7 +55,8 @@
           <div class="slide"><h1>Datei Upload</h1>
           <p><a href="/php/datei-upload/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'></div>
+	  <div class='slide'>
+</div>
 <div class='slide'>
 
 <h2 id="frontend">Frontend</h2>
@@ -132,17 +133,17 @@ man den Server hacken will!</p>
 
 <p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
 
-<p>Die Details zu den Hochgeladenen Dateien sind im Array <code>$_FILES</code> gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“: </p>
+<p>Die Details zu den Hochgeladenen Dateien sind im Array <code>$_FILES</code> gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“:</p>
 
 <dl>
   <dt><code>$_FILES['bild']['name']</code></dt>
-  <dd>Der Originalname der Datei am Client. </dd>
+  <dd>Der Originalname der Datei am Client.</dd>
   <dt><code>$_FILES['bild']['type']</code></dt>
-  <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig! </dd>
+  <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig!</dd>
   <dt><code>$_FILES['bild']['size']</code></dt>
-  <dd>Größe der hochgeladenen Datei in Byte. </dd>
+  <dd>Größe der hochgeladenen Datei in Byte.</dd>
   <dt><code>$_FILES['bild']['tmp_name']</code></dt>
-  <dd>Der Pfad und Dateiname der temporären Datei. </dd>
+  <dd>Der Pfad und Dateiname der temporären Datei.</dd>
   <dt><code>$_FILES['bild']['error']</code></dt>
   <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe PHP-Doku.</dd>
 </dl>
@@ -188,6 +189,7 @@ print &#39;&lt;/pre&gt;&#39;;
 <p>Achtung: Sie müssen den Ordner <code>pix</code> erstellen und ihm 
 geeignete Zugriffsrechte zuweisen, damit der Webserver (Account <code>apache</code>) 
 hineinschreiben darf!</p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php/datei-upload/">zurück zum Buch-Kapitel [esc]</a></p>

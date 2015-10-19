@@ -55,7 +55,8 @@
           <div class="slide"><h1>Einfügen</h1>
           <p><a href="/php-mysql-2/daten-einfuegen/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
+	  <div class='slide'>
+<p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
@@ -143,7 +144,7 @@ Das Problem betrifft allerdings nur Array-Parameter.</p>
 
 <h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
-<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements. </p>
+<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
@@ -203,6 +204,7 @@ header(&quot;Location: person.php?id=$id&quot;);
 Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
 weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu
 angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql-2/daten-einfuegen/">zurück zum Buch-Kapitel [esc]</a></p>
