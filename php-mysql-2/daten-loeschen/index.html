@@ -56,8 +56,7 @@
                           </div>
 			
 			
-			<a name='slide-1'></a>
-<p>Das Löschen könnte so einfach sein: Ein Programm mit namen <code>person_delete.php</code>,
+			<a name='slide-1'></a><p>Das Löschen könnte so einfach sein: Ein Programm mit namen <code>person_delete.php</code>,
 das als Parameter die <code>id</code> der Person erhält, die gelöscht werden soll:</p>
 
 <div class="example">
@@ -110,7 +109,7 @@ das SQL etwas “injiziert” wird.</p>
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt, darf sie
 verwendet werde. Das kann man auf verschiedene Arten prüfen, 
-z.B. mit der Funktion <code>filter_var</code>:</p>
+z.B. mit der Funktion <code>filter_var</code>: </p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit filter_var</small></h4>
@@ -145,11 +144,11 @@ if( ! preg_match( &#39;/^\d+$/&#39;, $id ) ) {
 
 
 <p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank.
-Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen.</p>
+Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen. </p>
 
 <p>Als erster Schritt wird mit <code>prepare</code><a href="http://www.php.net/manual/en/pdo.prepare.php">*</a> 
 ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. Dieses
-SQL-Statement wird vom Datenbank-Server sofort geparset und compiliert.</p>
+SQL-Statement wird vom Datenbank-Server sofort geparset und compiliert. </p>
 
 <p>Mit <code>execute</code><a href="http://www.php.net/manual/en/pdostatement.execute.php">*</a> 
 wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten
@@ -180,7 +179,6 @@ normale query zu wiederholen.</p>
 
 <p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel
 zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
-
 
 		
 			<div class="pagination">

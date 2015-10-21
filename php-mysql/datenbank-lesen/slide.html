@@ -55,8 +55,7 @@
           <div class="slide"><h1>Lesen aus der Datenbank</h1>
           <p><a href="/php-mysql/datenbank-lesen/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-<p>Für die Applikation müssen wir nun auf verschiedene
+	  <div class='slide'><p>Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.</p>
 
 </div>
@@ -92,7 +91,7 @@ $anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE 
 </pre></div>
 
 <p>Damit spart man sich zwei der drei Variablen, macht aber
-die Fehlersuche etwas schwieriger.</p>
+die Fehlersuche etwas schwieriger.  </p>
 
 </div>
 <div class='slide'>
@@ -114,7 +113,7 @@ $personen = $sth-&gt;fetchAll();
 <p>Die SQL-Anfrage wird hier als String an die <code>query()</code>-Methode des Datenbankhandler
 übergeben.  Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
 dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
-Datenbank zu PHP übertragen.</p>
+Datenbank zu PHP übertragen. </p>
 
 </div>
 <div class='slide'>
@@ -133,7 +132,7 @@ Anfangsposition<a href="http://dev.mysql.com/doc/refman/5.6/en/select.html#idp72
 
 <p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
 <code>profile_visible=0</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
-nur sichtbare Profil angezeigt werden.</p>
+nur sichtbare Profil angezeigt werden. </p>
 
 </div>
 <div class='slide'>
@@ -362,7 +361,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <p>Diese Verwendung von <code>RAND()</code> in der <code>ORDER</code> clause ist  eine Besondernheit von 
 MySQL<a href="dev.mysql.com/doc/refman/5.6/en/mathematical-functions.html#function_rand#idp61451584">*</a>, 
 die auch nur für beschänkte Datenmengen gut funktioniert. In anderen relationalen Datenbanken und bei
-größeren Tabellen gibt es dafür andere Lösungen.</p>
+größeren Tabellen gibt es dafür andere Lösungen.  </p>
 
 </div>
 <div class='slide'>

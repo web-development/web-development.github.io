@@ -69,7 +69,7 @@ Macs, UNIX-Workstations, Smartphones und Tablets, Drucker und Fernseher, und noc
 Die einzelnen <strong>Netze</strong> sind sehr unterschiedlich: Kupferleitungen, Glasfaserleitungen, 
 Satelliten-Verbindungen, Ethernet, Funkstrecken, verschiedene Handy-Netze. 
 Die <strong>Besitzverhältnisse</strong> sind kompliziert: die Leitungen und Computer gehören verschiedenen 
-Firmen, Universitäten, Schulen, Vereinen, Privatpersonen.</p>
+Firmen, Universitäten, Schulen, Vereinen, Privatpersonen.  </p>
 
 <p>Was hält das Internet dann zusammen? Das <strong>Internet Protokoll</strong>. Aufbauend auf die Grund-Netze 
 (z.B. Ethernet) muss jeder Computer am Internet (genannt „Host“) diese Protokoll-Familie 
@@ -95,7 +95,7 @@ In der Whois-Datenbank von RIPE kann man die „Besitzer“ von IP-Adressen hera
 <p>Der Host teilt die zu sendenden Daten in einzelne Pakete und versieht jedes Pakt 
 mit der Absender- und Zieladresse (IP-Adressen, 4 Byte). Der Host 
 selbst kennt nur sein Standard-Gateway (= der nächste Router) und das eigene Netzwerk. 
-Über das eigene Netzwerk schickt er das Paket an das Standard-Gateway.</p>
+Über das eigene Netzwerk schickt er das Paket an das Standard-Gateway. </p>
 
 <p>Der Router nimmt das Paket auf dem einen Netzwerk entgegen und entscheidet 
 auf Grund der Adressen auf welchem Netzwerk und an welchen Router er das 
@@ -109,12 +109,12 @@ keine Garantie, dass alle ankommen oder dass sie in der richtigen Reihenfolge an
 
 <p>TCP bietet zusätzlich zur Datenübertragung die Sicherheit, 
 dass Pakete nicht unterkannt verloren gehen und dass sie 
-– falls sie ankommen – in der richtigen Reihenfolge ankommen.</p>
+– falls sie ankommen – in der richtigen Reihenfolge ankommen. </p>
 
 <p>Dazu wird der Datenstrom wieder in IP-Pakete zerlegt, diese werden aber 
 nummeriert bevor sie abgesendet werden. Die Adressierung erfolgt über 
 IP-Adresse plus <strong>Port-Nummer</strong>. Der Ziel-Host prüft die Reihenfolge 
-der Pakete und meldet zurück falls Pakete fehlen.</p>
+der Pakete und meldet zurück falls Pakete fehlen. </p>
 
 <p>Aus Programmier-Sicht erhält man also entweder die Daten 
 in richtiger Reihenfolge oder eine Fehlermeldung.</p>
@@ -127,17 +127,16 @@ in richtiger Reihenfolge oder eine Fehlermeldung.</p>
 <p>Das Domain Name System ist eine verteilte Datenbank die „hübsche Namen“ 
 für Hosts speichert. Z.B. ist dort zu <code>multimediatechnology.at</code> die IP-Adresse 
 <code>193.170.119.79s</code> gespeichert. 
-Viele Namen verweisen übrigens auf die gleiche IP-Adresse.</p>
+Viele Namen verweisen übrigens auf die gleiche IP-Adresse. </p>
 
 <p>Auf jedem Host ist die IP-Adresse des nächsten Domain Name Servers gespeichert. 
 So kann der Host einen „domain name lookup“ machen: er fragt seinen DNS-Server 
-„was ist die IP-Adresse von x.y.z“ und erhält als Antwort die IP-Adresse.</p>
+„was ist die IP-Adresse von x.y.z“ und erhält als Antwort die IP-Adresse. </p>
 
 <p>Der DNS-Server übernimmt dabei die Arbeit eventuell bei mehreren anderen 
 DNS-Servern nachzufragen. Auch die Top-Level-Domains (.com, .at, .de, …) 
 werden von IANA verwaltet und können über Whois abgefragt werden. 
 Für die Domain .at ist die Firma nic.at zuständig.</p>
-
 
 		
 			<div class="pagination">

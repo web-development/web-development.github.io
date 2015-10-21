@@ -55,8 +55,7 @@
           <div class="slide"><h1>Unsichere direkte Objektreferenzen</h1>
           <p><a href="/security/a4-referenz/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-<p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
+	  <div class='slide'><p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
 
 <blockquote>
   <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
@@ -153,7 +152,7 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 </pre></div>
 
 <p>Mit diesem Programm kann man durch einfaches ändern der URL beliebige
-Dateien am Server “erforschen”.</p>
+Dateien am Server “erforschen”. </p>
 
 <p>Gegen diese Art von Attacke kann man an mehreren Linien verteidigen:</p>
 
@@ -162,7 +161,6 @@ Dateien am Server “erforschen”.</p>
   <li>In der PHP Konfiguration: Mit <code>open_basedir</code> kann in der Konfiguration festelegt werden, auf welche Dateien ein PHP-Programm zugreifen darf</li>
   <li>In der Applikation selbst: mit einer whitelist wird nur der Zugriff auf ausgewählte Dateien erlaubt.</li>
 </ul>
-
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/security/a4-referenz/">zurück zum Buch-Kapitel [esc]</a></p>

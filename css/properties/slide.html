@@ -55,8 +55,7 @@
           <div class="slide"><h1>Wichtige Properties</h1>
           <p><a href="/css/properties/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-</div>
+	  <div class='slide'></div>
 <div class='slide'>
 
 <h2 id="schrift">Schrift</h2>
@@ -98,7 +97,7 @@ bietet <a href="http://www.google.com/webfonts">http://www.google.com/webfonts</
 
 <p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
 
-<p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein.</p>
+<p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein. </p>
 
 </div>
 <div class='slide'>
@@ -119,20 +118,20 @@ p {
 
 <h2 id="box-model">Box Model</h2>
 
-<p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus.</p>
+<p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus. </p>
 
 <p><img src="/images/image083.png" alt="Abbildung 21: Darstellung des Box Models von hicksdesign.co.uk" /></p>
 
-<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt.</p>
+<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt. </p>
 
 <p><img src="/images/image085.png" alt="Abbildung 22: margin, border, padding in Firebug" /></p>
 
-<p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
+<p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt. </p>
 
 <p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) auf
 den Inhalt, padding, border und margin muss man erst dazu zählen, um den
 Gesamt-Platzbedarf zu errechnen. Mit der Deklaration <code>box-sizing: border-box</code> 
-kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.</p>
+kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.  </p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
@@ -187,14 +186,13 @@ sich noch viele ausführlichere Beispiele.</p>
 
 <h2 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h2>
 
-<p>Die Farbe des Textes wird mit <code>color</code>, die Hintergrundfarbe mit <code>background-color</code> gesetzt.</p>
+<p>Die Farbe des Textes wird mit <code>color</code>, die Hintergrundfarbe mit <code>background-color</code> gesetzt.  </p>
 
-<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt.</p>
+<p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt. </p>
 
 <p><img src="/images/image088.png" alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" /></p>
 
 <p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar.</p>
-
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/css/properties/">zurück zum Buch-Kapitel [esc]</a></p>

@@ -55,8 +55,7 @@
           <div class="slide"><h1>PHP und MySQL/MariaDB</h1>
           <p><a href="/php-mysql/start/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-<p>Mit der Verwendung einer Datenbank wird der Aufruf einer
+	  <div class='slide'><p>Mit der Verwendung einer Datenbank wird der Aufruf einer
 Webseite noch einmal komplexer:  der Webserver ruft
 das PHP Programm auf, das PHP-Programm schickt eine
 Anfrage an die Datenbank.</p>
@@ -140,15 +139,15 @@ $DSN     = &quot;mysql:dbname=$DB_NAME;host=localhost&quot;;
 
 <p>Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
 niemals, niemals, niemals in git speichern wollen!  Das hat zwei
-Gründe:</p>
+Gründe: </p>
 
 <p>1) Einerseits wollen wir den Code im Repository vielleicht
-veröffentlichen und die Zugangsdaten weiter geheimhalten.</p>
+veröffentlichen und die Zugangsdaten weiter geheimhalten.  </p>
 
 <p>2) Andererseits wird unsere Web-Applikation wahrscheinlich auf mehreren Web-Servern
 installiert (mindestens auf einem Entwicklungs-Rechner und einem Produktions-Server).
 Auf den verschiedenen Maschinen werden wir verschiedene Datenbanken benutzen 
-und brauchen dafür verschiedene Zugangsdaten.</p>
+und brauchen dafür verschiedene Zugangsdaten. </p>
 
 </div>
 <div class='slide'>
@@ -179,7 +178,7 @@ zeigt der Vorher / Nachher-Vergleich am besten:</p>
 nothing added to commit but untracked files present (use "git add" to track)
 </code></pre>
 
-<p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen.</p>
+<p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen. </p>
 
 </div>
 <div class='slide'>
@@ -195,7 +194,7 @@ config.php
 </code></pre>
 
 <p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen 
-<code>config.php</code> (egal in welchem Ordner) zu ignorieren.</p>
+<code>config.php</code> (egal in welchem Ordner) zu ignorieren. </p>
 
 </div>
 <div class='slide'>
@@ -270,7 +269,7 @@ Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
 
 <h3 id="abfrage-der-datenbank">Abfrage der Datenbank</h3>
 
-<p>Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze).</p>
+<p>Eine Abfrage aus der Datenbank liefert normalerweise eine ganze Tabelle von Daten (mehrere Datensätze). </p>
 
 <p>Mit der Methode <code>query</code><a href="http://www.php.net/manual/en/pdo.query.php">*</a>  schickt man die Anfrage an die Datenbank,
 erhält aber noch nicht die Daten retour, sondern nur ein neues “Handle”:</p>
