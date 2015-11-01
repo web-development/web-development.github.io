@@ -437,22 +437,21 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;script&gt;
-  function formularok() {
-    // ... Berechnung der Gesamtsumme ...
- 
-    if ( total &lt; 100 ) {
-        alert(&quot;Die Gesamt-Bestellung muss mindestens 100€ betragen\n&quot;);
-        return false;
-    } else {
-        return true;
-    } 
- }
+function formularok() {
+  // ... Berechnung der Gesamtsumme ...
+
+  if ( total &lt; 100 ) {
+    alert(&quot;Die Gesamt-Bestellung muss mindestens 100€ betragen\n&quot;);
+    return false;
+  }
+  return true;
+}
 &lt;/script&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
   &lt;form name     = &quot;pizzaformular&quot; 
-        action   = &quot;https://users.multimediatechnology.at/~bjelline/echo.php&quot;
+        action   = &quot;bestellung.php&quot;
         onsubmit = &quot;wert=formularok(); return wert;&quot;&gt;
   .... viele eingabefelder ...
   &lt;input name=&quot;&quot; type=&quot;submit&quot; /&gt;
