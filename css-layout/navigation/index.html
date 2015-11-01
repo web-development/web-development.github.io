@@ -63,7 +63,7 @@
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-&lt;div class=&quot;navi&quot;&gt;
+&lt;nav&gt;
   &lt;h3 class=&quot;unsichtbar&quot;&gt;Seitenauswahl&lt;/h3&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
@@ -71,10 +71,10 @@
     &lt;li&gt;&lt;a href=&quot;dies.html&quot;&gt;dies&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;das.html&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/div&gt;
+&lt;/nav&gt;
 </pre></div>
 
-<p>Ohne CSS wird die Liste ganz normal dargestellt.</p>
+<p>Ohne CSS wird die Liste ganz normal dargestellt <a href="/images/navi-demo.html">Demo</a>.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
@@ -88,20 +88,24 @@
 <pre class="lang-css prettyprint linenums">
 .unsichtbar {display:none;}
 
-div.navi li {
+nav li {
    list-style-type:none;
    margin-bottom:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em;
 }
 
-div.navi li a:link {
+nav li a:link {
    text-decoration: none;
    font-weight: bold;
-   color: black;
+   display: block;
+   background: #6C6;
+   width: 6em;
+   padding: 0.2em;
 }
 </pre></div>
+
+<p>Der eigentliche Link wird zu einem blockbildenden Element gemacht.
+Damit ist dann das ganze Rechteck anklickbar, nicht nur der Text selbst.
+<a href="/images/navi-demo-1.html">Demo</a></p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
@@ -113,21 +117,24 @@ ein <code>float</code> eingefügt und der <code>margin</code> anders gesetzt wer
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-div.navi li {
-   float:left;
+nav li {
    list-style-type:none;
    margin-right:1px; 
-   background:#6C6;
-   width:6em;
-   padding: 0.2em; 
 }
 
-div.navi li a:link {
+nav li a:link {
    text-decoration: none;
    font-weight: bold;
-   color: black;
+   display: block;
+   background: #6C6;
+   width: 6em;
+   padding: 0.2em;
+
+   float:left;
 }
 </pre></div>
+
+<p><a href="/images/navi-demo-2.html">Demo</a></p>
 
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
@@ -144,7 +151,7 @@ PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester i
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-&lt;div id=&quot;navi&quot;&gt;
+&lt;nav&gt;
    &lt;h3 class=&quot;unsichtbar&quot;&gt;Seitenauswahl&lt;/h3&gt;
    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
@@ -152,7 +159,7 @@ PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester i
       &lt;li&gt;&lt;a href=&quot;dies.php&quot;&gt;dies&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;das.php&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
    &lt;/ul&gt;
-&lt;/div&gt;
+&lt;/nav&gt;
 </pre></div>
 
 
@@ -386,6 +393,10 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
                     
                       
                       <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/formular-zeile/">Formular++</a></li>
                       
                     
                   
