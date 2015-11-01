@@ -438,40 +438,23 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <pre class="lang-html prettyprint linenums">
 &lt;script&gt;
   function formularok() {
-    var ok, fehler;
-    ok = true;
-    fehler = &quot;&quot;;
-    
-    if ( document.getElementById(&#39;liefername&#39;).value == &quot;&quot; ) {
-        fehler += &quot;Sie müssen den Empfänger angeben\n&quot;;
-        ok = false;
-    }
-    if ( document.getElementById(&#39;adresse&#39;)..value == &quot;&quot; ) {
-        fehler += &quot;Sie müssen eine Lieferadresse angeben\n&quot;;
-        ok = false;
-    }		
-    
-    // weitere Überprüfungen
-
-    
-    if ( ok ) {
-      return true;
+    // ... Berechnung der Gesamtsumme ...
+ 
+    if ( total &lt; 100 ) {
+        alert(&quot;Die Gesamt-Bestellung muss mindestens 100€ betragen\n&quot;);
+        return false;
     } else {
-      alert(&quot;Das Formular ist nicht ok:\n&quot;  + fehler );
-      return false;
-    }
+        return true;
+    } 
  }
 &lt;/script&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
   &lt;form name     = &quot;pizzaformular&quot; 
-        action   = &quot;http://webwelt.horus.at/html/form/echo.cgi&quot;
+        action   = &quot;https://users.multimediatechnology.at/~bjelline/echo.php&quot;
         onsubmit = &quot;wert=formularok(); return wert;&quot;&gt;
-  Empfänger: &lt;input type=&quot;text&quot; name=&quot;liefername&quot; id=&quot;liefername&quot;&gt; &lt;br&gt;
-  Adresse: &lt;input type=&quot;text&quot; name=&quot;adresse&quot; id=&quot;adresse&quot;&gt; in 5020 Salzburg&lt;br&gt;
-  Telefon/Handy: &lt;input type=&quot;text&quot; name=&quot;tel&quot; id=&quot;tel&quot;&gt; in 5020 Salzburg&lt;br&gt;
-
+  .... viele eingabefelder ...
   &lt;input name=&quot;&quot; type=&quot;submit&quot; /&gt;
   &lt;/form&gt;
 &lt;/body&gt;
