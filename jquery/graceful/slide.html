@@ -55,8 +55,7 @@
           <div class="slide"><h1>Graceful Degradation</h1>
           <p><a href="/jquery/graceful/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-<p>Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
+	  <div class='slide'><p>Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
 mit <code>&lt;a name=...&gt;</code> gesetzt, über ein Navigationsmenü soll man diese erreichen
 können.  <a href="http://brigitte-jellinek.at">Diese Seite</a> zeigt ein funktionierendes
 Beispiel (letzte Version).</p>
@@ -123,7 +122,7 @@ Links durch den Aufruf einer Javascript-Funktion:</p>
 <p>Die Javsacript-Funktion verwendet jQuery und die übergebene
 ID um den Ziel des Links ausfindig zu machen, und dann die
 jQuery Methode <code>offset</code> um die Position des Ziels im Dokument
-zu berechnen.</p>
+zu berechnen.  </p>
 
 <p>Mit der jQuery-Methode <code>animate</code> wird dann eine Animation erzeugt:
 binnen 800 Millisekunden wird die Seite durch setzen von <code>scrollTop</code>
@@ -229,7 +228,7 @@ $(document).ready( function () {
 beim anderen Prinzipien auf halben Weg</p>
 
 <ul>
-  <li>teilweise progressive enhancement:
+  <li>teilweise progressive enhancement: 
     <ul>
       <li>Links funktionieren für Browser ohne Javascript</li>
       <li>in der Javascript-Variante bleibt die URL immer gleich</li>
@@ -249,7 +248,7 @@ nur in solchen Browsern verwendet wird, wo sie auch funktioniert.</p>
 <p>Achtung: hier gibt es einen falschen und einen richtigen Ansatz:</p>
 
 <ol>
-  <li>Browser Detection: Unterscheidung nach Namen, Versionsnummer, Betriebssystem des Browsers</li>
+  <li>Browser Detection: Unterscheidung nach Namen, Versionsnummer, Betriebssystem des Browsers </li>
   <li>Feature Detection: Unterscheidung nach genau der Fähigkeit, die ich verwenden will</li>
 </ol>
 
@@ -312,7 +311,7 @@ Javascript-Browsern:</p>
 <p>Es bleibt aber noch in Problem:</p>
 
 <ul>
-  <li>teilweise progressive enhancement:
+  <li>teilweise progressive enhancement: 
     <ul>
       <li>in der Javascript-Variante bleibt die URL immer gleich</li>
     </ul>
@@ -345,7 +344,7 @@ sie wird dabei an die History angefügt - das ist das “normale” Verhalten
 des Browsers.</p>
 
 <p>Eine Alternative ist <code>history.replaceState()</code> - dabei wird die aktuelle Seite
-ersetzt, die Browser-History wird nicht länger.</p>
+ersetzt, die Browser-History wird nicht länger.  </p>
 
 <p>Beide Methoden erwarten drei Argumente - ein Objekt und zwei Strings - 
 aber nur das letzte Argument wird derzeit benutzt. Es ist ein String mit der

@@ -55,8 +55,7 @@
           <div class="slide"><h1>DOM</h1>
           <p><a href="/javascript-dom/dom/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'>
-</div>
+	  <div class='slide'></div>
 <div class='slide'>
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
@@ -178,23 +177,22 @@ Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 node = document.createElement(&quot;h1&quot;);  
-                // erzeugt eine Node, Tag-Name angeben
+       // erzeugt eine Node, Tag-Name angeben
 node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong bla&quot;;                
-                // Zugriff auf den &quot;Inhalt&quot; der node als String, 
-                // ist of schneller als DOM manipulation! 
+       // Zugriff auf den &quot;Inhalt&quot; der node als String, 
+       // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
-                // fügt die newchild als Kind an 
+       // fügt die newchild als Kind an 
 newnode = node.cloneNode()    
-                // gibt eine Kopie der Node zurück, 
-                // die Kopie ist noch nicht im DOM Baum eingefügt! 
+       // gibt eine Kopie der Node zurück, 
+       // die Kopie ist noch nicht im DOM Baum eingefügt! 
 node.insertBefore(newchild, oldchild)    
-                // fügt newchild als Kind von node ein, vor dem oldchild 
+       // fügt newchild als Kind von node ein, vor dem oldchild 
 oldchild = node.removeChild(child)    
-                // löscht child als Kind von node, 
-                // gibt es als &quot;frei schwebende&quot; node zurück 
+       // löscht child als Kind von node, 
+       // gibt es als &quot;frei schwebende&quot; node zurück 
 node.replaceChild(newchild, oldchild)  
-                // ersetzt kind oldchild durch kind newchild 
-
+       // ersetzt kind oldchild durch kind newchild 
 node.setAttribute(&#39;value&#39;, 42)  // setzt ein attribut 
 node.removeAttribute(&#39;value&#39;)   // löscht ein attribute 
 </pre></div>
@@ -208,7 +206,7 @@ node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;Alles &lt;b&gt;neu&lt;/b&gt;&lt;/p&gt;“;
+document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt;new&lt;/b&gt;&lt;/p&gt;&quot;;
 </pre></div>
 
 </div>
@@ -267,7 +265,7 @@ if( document.querySelector(&#39;#foo&#39;).classList.contains(&#39;bar&#39;) ) {
 <div class='slide'>
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
-<p>Wir haben im Kapitel [Hintergründe](/javascript-dom/hintergrund/ schon gesehen, 
+<p>Wir haben im Kapitel <a href="/javascript-dom/hintergrund/">Hintergründe</a> schon gesehen, 
 wie Event-Handler direkt im HTML definiert werden können:</p>
 
 <div class="example">
@@ -285,7 +283,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 &lt;/script&gt;
 </pre></div>
 
-<p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen.</p>
+<p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen. </p>
 
 </div>
 <div class='slide'>
@@ -332,9 +330,12 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 <div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;form&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  style=&quot;background-color:red&quot;  id=&quot;r&quot;&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; style=&quot;background-color:#0F0&quot; id=&quot;g&quot;&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; style=&quot;background-color:blue&quot; id=&quot;b&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  
+         style=&quot;background-color:red&quot;  id=&quot;r&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; 
+         style=&quot;background-color:#0F0&quot; id=&quot;g&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; 
+         style=&quot;background-color:blue&quot; id=&quot;b&quot;&gt;
 &lt;/form&gt;
 &lt;script&gt;
   function setcolor( ev ) {
@@ -388,7 +389,8 @@ function removeMe(e){
   var my_pizza = me.parentNode.parentNode;
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
-document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quot;, removeMe, false); 
+document.querySelector(&quot;.removethis&quot;)
+        .addEventListener(&quot;click&quot;, removeMe, false); 
 </pre></div>
 
 </div>
@@ -397,7 +399,7 @@ document.querySelector(&quot;.removethis&quot;).addEventListener(&quot;click&quo
 <h3 id="referenz">Referenz</h3>
 
 <ul>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> im Mozilla Developer Network</li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> im Mozilla Developer Network </li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> im Mozilla Developer Network</li>
 </ul>
 </div>
