@@ -57,6 +57,7 @@
 			
 			
 			<a name='slide-1'></a>
+
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
@@ -68,8 +69,8 @@ Die Attribute des HTML-Tags sind über <code>getAttribute</code> / <code>setAttr
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-document.getElementById() 
-document.getElementsByTagName() 
+document.getElementById()     /* liefert 1 Node  */
+document.getElementsByTagName() /*       Array   */
 document.querySelectorAll()   /* liefert Array   */
 document.querySelector()      /* liefert 1 Node  */
 
@@ -81,14 +82,14 @@ node.firstChild
 node.lastChild
 node.previousSibling
 node.nextSibling
-node.data
+node.textContent
 node.attributes
 node.innerHTML
 
-
 node.getElementById()            
 node.getElementsByTagName() 
-node.getElementsByClassName() 
+node.querySelectorAll() 
+node.querySelector() 
 
 node.appendChild()
 node.cloneNode()
@@ -179,7 +180,7 @@ Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” 
 <pre class="lang-javascript prettyprint linenums">
 node = document.createElement(&quot;h1&quot;);  
        // erzeugt eine Node, Tag-Name angeben
-node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong bla&quot;;                
+node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong&gt; bla&quot;;                
        // Zugriff auf den &quot;Inhalt&quot; der node als String, 
        // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
@@ -284,7 +285,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 &lt;/script&gt;
 </pre></div>
 
-<p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen. </p>
+<p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen.</p>
 
 
 <a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
@@ -391,7 +392,7 @@ function removeMe(e){
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
 document.querySelector(&quot;.removethis&quot;)
-        .addEventListener(&quot;click&quot;, removeMe, false); 
+        .addEventListener(&quot;click&quot;, removeMe); 
 </pre></div>
 
 
@@ -400,7 +401,7 @@ document.querySelector(&quot;.removethis&quot;)
 <h3 id="referenz">Referenz</h3>
 
 <ul>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> im Mozilla Developer Network </li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document</a> im Mozilla Developer Network</li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> im Mozilla Developer Network</li>
 </ul>
 

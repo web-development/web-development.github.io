@@ -55,7 +55,8 @@
           <div class="slide"><h1>Transaktionen</h1>
           <p><a href="/php-mysql-3/transaktionen/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
+	  <div class='slide'>
+<p>Transaktionen auf Ebene von SQL, hier am Beispiel von MySQL gezeigt.
 (siehe das <a href="http://dev.mysql.com/doc/refman/5.1/de/commit.html">MySQL Referenz Handbuch</a>)</p>
 
 </div>
@@ -67,9 +68,9 @@
 
 <ul>
   <li>Atomarität (<em>A</em>tomicity)</li>
-  <li>Konsistenz (<em>C</em>onsistency) </li>
+  <li>Konsistenz (<em>C</em>onsistency)</li>
   <li>Isolation (<em>I</em>solation)</li>
-  <li>Dauerhaftigkeit (<em>D</em>urability) </li>
+  <li>Dauerhaftigkeit (<em>D</em>urability)</li>
 </ul>
 
 <p><strong>Atomarität</strong> bedeutet: Eine Transaktion wird entweder ganz oder gar nicht ausgeführt. 
@@ -83,7 +84,7 @@ wenn er es bereits zu Beginn der Transaktion war.</p>
 Transaktionen dürfen sich diese nicht gegenseitig beeinflussen.</p>
 
 <p><strong>Dauerhaftigkeit</strong> bedeutete
-Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bleiben.  Die Effekte von Transaktionen dürfen also nicht „mit der Zeit verblassen“ oder „aus Versehen verloren gehen“. </p>
+Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bleiben.  Die Effekte von Transaktionen dürfen also nicht „mit der Zeit verblassen“ oder „aus Versehen verloren gehen“.</p>
 
 </div>
 <div class='slide'>
@@ -140,7 +141,7 @@ COMMIT;
 
 <h2 id="tipp-nicht-auf-input-warten">Tipp: Nicht auf Input warten</h2>
 
-<p>Schlecht: </p>
+<p>Schlecht:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
@@ -190,6 +191,7 @@ Werte sind (laut  SQL Standard und MySQL mit InnoDB):</p>
 verwendet werden, sie bilden immer eine eigene Transaktion: <code>ALTER</code>, <code>CREATE</code>, <code>DROP</code>, <code>RENAME</code>.</p>
 
 <p><a href="http://dev.mysql.com/doc/refman/5.1/de/innodb-implicit-command-or-rollback.html">→</a></p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/php-mysql-3/transaktionen/">zurück zum Buch-Kapitel [esc]</a></p>

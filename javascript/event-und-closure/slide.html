@@ -55,7 +55,8 @@
           <div class="slide"><h1>Events und Closures</h1>
           <p><a href="/javascript/event-und-closure/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
+	  <div class='slide'>
+<p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
 Ein SVG-Editor soll programmiert werden, mit dem man
 Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
 
@@ -279,7 +280,7 @@ function onMouseDown(e) {
   console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
 }
 
-element.addEventListener( &#39;mousedown&#39;, onMouseDown, false );
+element.addEventListener( &#39;mousedown&#39;, onMouseDown);
 </pre></div>
 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
@@ -331,7 +332,7 @@ console.log(o)  // ergibt &quot;[object Object]&quot;
 </pre></div>
 
 <p>Beim Speichern in der DOM wurde also mein Objekt in einen String umgewandelt,
-und nur der String wurde gespeichert.  </p>
+und nur der String wurde gespeichert.</p>
 
 <p><strong>Es ist nicht möglich beliebige Javascript-Objekte in der DOM zu speicher!</strong></p>
 
@@ -355,7 +356,7 @@ function addDragability( jsobj, element ) {
     console.log(&quot;my event is &quot; + e);
   }
 
-  element.addEventListener( &#39;mousedown&#39;, onMouseDown, false );
+  element.addEventListener( &#39;mousedown&#39;, onMouseDown);
 }
 
 addDragability( jsobj, element );

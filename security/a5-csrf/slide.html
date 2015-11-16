@@ -55,7 +55,8 @@
           <div class="slide"><h1>Cross-Site Request Forgery (CSRF)</h1>
           <p><a href="/security/a5-csrf/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
-	  <div class='slide'><p>Die CSRF ist ein Angriff “über die Bande”:  Um Site C zu attackieren, wird auf Site B Code hinterlegt. Wenn Userin Alice mit Site B interagiert wird ohne ihr Wissen eine HTTP-Request an Site C geschickt. Da Alice bei C schon eingeloggt ist wird dieser Request “erfolgreich” durchgeführt.</p>
+	  <div class='slide'>
+<p>Die CSRF ist ein Angriff “über die Bande”:  Um Site C zu attackieren, wird auf Site B Code hinterlegt. Wenn Userin Alice mit Site B interagiert wird ohne ihr Wissen eine HTTP-Request an Site C geschickt. Da Alice bei C schon eingeloggt ist wird dieser Request “erfolgreich” durchgeführt.</p>
 
 <p>Das Problem tritt also potentiell bei allen Sites auf, bei denen
 man auf Dauer eingeloggt bleibt.</p>
@@ -87,7 +88,7 @@ eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
 
 
 <p>Je nachdem ob <code>GET</code> oder <code>POST</code>  verwendet wird, sieht der Code
-der Attacke verschieden aus. </p>
+der Attacke verschieden aus.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Attacke auf das Formular</small></h4>
@@ -168,6 +169,7 @@ if ($token_age &gt; 300)                      throw TokenException;
 
 <p>Die hier vorgeschlagene Lösung ist eine Variante von
 <a href="http://shiflett.org/articles/cross-site-request-forgeries">Shiflett, Chris(2004): Cross-Site Request Forgeries. In: PHP Architect.</a></p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/security/a5-csrf/">zurück zum Buch-Kapitel [esc]</a></p>

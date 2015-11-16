@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Das Apache-Modul mod_rewrite erlaubt das Umschreiben der URL. Normalerweise verweist die URL direkt auf eine Datei im Filesystem. Dabei wird nur die Apache-Konfigurationsanweisung DocumentRoot verwendet um den Hauptordner des Servers festzulegen:</p>
+			<a name='slide-1'></a>
+<p>Das Apache-Modul mod_rewrite erlaubt das Umschreiben der URL. Normalerweise verweist die URL direkt auf eine Datei im Filesystem. Dabei wird nur die Apache-Konfigurationsanweisung DocumentRoot verwendet um den Hauptordner des Servers festzulegen:</p>
 
 <div class="example">
 <pre class="lang-ruby prettyprint linenums">
@@ -115,6 +116,7 @@ RewriteRule ^person/(.*)   person.php?pid=$1  [L]
   <li><code>http://ich.multimediatechnology.at/mini/person.php?pid=2</code></li>
   <li><code>http://ich.multimediatechnology.at/mini/person.php?pid=gigsi/gagsi/gugsi</code></li>
 </ul>
+
 
 		
 			<div class="pagination">

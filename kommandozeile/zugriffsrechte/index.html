@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Die meisten Webserver werden auf UNIX-Systemen betrieben.
+			<a name='slide-1'></a>
+<p>Die meisten Webserver werden auf UNIX-Systemen betrieben.
 Das UNIX-Filesystem unterscheidet sich in einigen wichtigen
 Punkten von den Filesystemen von Windows (und Mac OS X), die
 sie vielleicht besser kennen.</p>
@@ -93,7 +94,7 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
 
 <p>Das erste Zeichen zeigt an ob es sich um eine Datei (“-“) oder einen Ordner (“d”) handelt.
 Hier sind es viele Ordner und drei Dateien. Danach folgen Informationen über Zugriffsrechte, und das Datum der
-letzten Änderung. </p>
+letzten Änderung.</p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
@@ -105,7 +106,7 @@ einer grafischen Oberfläche (hier am Beispiel von Dreamweaver).</p>
 
 <p><img src="/images/zugriffsrechte-dreamweaver.png" alt="Abbildung 137: UNIX Zugriffsrechte mit Dreamweaver setzen" /></p>
 
-<p>Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere). </p>
+<p>Es gibt drei Rechte (Lesen, Schreiben, Ausführen) und drei Gruppen von Usern die unterschieden werden (Eigentümer, Gruppe, Andere).</p>
 
 <p>Die drei Rechte werden als 3 Bits gespeichert und mit den Zeichen <code>r</code>, <code>w</code>, <code>x</code> und <code>-</code> dargestellt:
 <code>r</code> steht immer an erster Stelle, und steht für Lesen, <code>w</code> steht immer an zweiter 
@@ -117,7 +118,7 @@ Ein <code>-</code> in der jeweiligen Position zeigt an, dass ein Recht nicht ver
 <p>Für jedes Objekt im Filesystem (egal ob Datei, Ordner, Link, ..) gilt: 
 Das Objekt ist einem Account zugeordnet  (“Eigentümer” oder “owner” genannt)  und einer
 Gruppe.  In der Abbildung haben die Userin “bjelline” als Besitzerin und
-die Gruppe “apache” besondere Zugriffsrechte.  </p>
+die Gruppe “apache” besondere Zugriffsrechte.</p>
 
 <ul>
   <li>“r” oder “-“ steht für das “read”-Recht: darf ich diese Datei lesen?</li>
@@ -153,6 +154,7 @@ bash-3.2$ ls -la public_html/index.html
 <pre class="lang-shell prettyprint linenums">
 bash-3.2$ chmod 644 public_html/index.html 
 </pre></div>
+
 
 		
 			<div class="pagination">

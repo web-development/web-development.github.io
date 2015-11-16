@@ -56,7 +56,8 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Die OWASP beschreibt dieses Problem allgemein so:</p>
+			<a name='slide-1'></a>
+<p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>XSS-Schwachstellen treten dann auf, wenn die Anwendung von BenutzerIn X eingegebene Daten übernimmt und an den Browser anderer BenutzerInnen zurücksendet, ohne sie hinreichend zu validieren und zu escapen.</p>
@@ -84,7 +85,7 @@
 </ul>
 
 <p>Es ist also nicht die Site der Hackerin, die hier gefählich ist, sondern eine andere, scheinbar
-harmlose Seite. </p>
+harmlose Seite.</p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
@@ -97,7 +98,7 @@ Das ist ein seltener, aber sehr sicherer Fall.</p>
 <p>XSS vermeinden kann man mit zwei Verteidigungs-Linien:</p>
 
 <ul>
-  <li>Schon bei der Eingabe (mit einer white-list) alles Entfernen was nicht harmlos ist. </li>
+  <li>Schon bei der Eingabe (mit einer white-list) alles Entfernen was nicht harmlos ist.</li>
   <li>Bei der Ausgabe immer ein geeignetes Escaping verwenden</li>
 </ul>
 
@@ -120,8 +121,8 @@ also ganz leicht möglich Javascript in einem <code>onmouseover</code> Attribut 
 Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 
 <ol>
-  <li>in einer URL - <code>urlencode</code> </li>
-  <li>in HTML - <code>htmlspecialchars</code> </li>
+  <li>in einer URL - <code>urlencode</code></li>
+  <li>in HTML - <code>htmlspecialchars</code></li>
   <li>in Javascript, als Wert einer Variable - <code>json_encode</code></li>
 </ol>
 
