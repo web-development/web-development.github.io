@@ -100,15 +100,14 @@ Header-Zeilen geben.  Der Body ist beim Request meist leer.</p>
 
 <p>Hier ein Beispiel für einen Request:</p>
 
-<p><code>
-GET /~bjelline/u2/bestellung.html HTTP/1.1
+<pre><code>GET /~bjelline/u2/bestellung.html HTTP/1.1
 Host: users.fh-salzburg.ac.at
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 DNT: 1
 Cookie: _ga=GA1.3.1837452953.1440699405
-</code></p>
+</code></pre>
 
 <p>Die erste Zeile besteht aus: Methode, URL-Fragement und HTTP-Versionsnummer. 
 Die meist-verwendete Methode ist GET. Sie erinnern sich:
@@ -122,31 +121,30 @@ Server übertragen werden sollen. Das ist diese Methode.</p>
 
 <p>Hier ein Beispiel für eine Server-Antwort:</p>
 
-<p>```
-HTTP/1.1 200 OK
+<pre><code>HTTP/1.1 200 OK
 Date: Sun, 06 Mar 2016 21:43:16 GMT
 Server: Apache/2.2.15 (Scientific Linux)
 Last-Modified: Sun, 06 Mar 2016 20:47:07 GMT
 Content-Length: 543
-Content-Type: text/html</p>
+Content-Type: text/html
 
-<p>&lt;!DOCTYPE html&gt;</p>
-<html>
-  <head>
-    <meta charset="utf-8" />        
-    <title>Bestellung eines Flugzeugs</title>
-  </head>
-  <body>
-    <h1>Wieviele Flugzeuge dürfens denn sein?</h1>
-    <form action="bestellung.php" method="POST">            
-    <p>Anzahl: <br /><input name="anzahl" /></p>            
-    <p>Adresse:<br /> <textarea name="adresse"></textarea></p>            
-    <p>Preis: 1.000.000 €</p>            
-    <p><input type="submit" value="Bestellung absenden" /></p>
-    </form>
-  </body>
-</html>
-<p>```</p>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;        
+    &lt;title&gt;Bestellung eines Flugzeugs&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Wieviele Flugzeuge dürfens denn sein?&lt;/h1&gt;
+    &lt;form action="bestellung.php" method="POST"&gt;            
+    &lt;p&gt;Anzahl: &lt;br&gt;&lt;input name="anzahl"&gt;&lt;/p&gt;            
+    &lt;p&gt;Adresse:&lt;br&gt; &lt;textarea name="adresse"&gt;&lt;/textarea&gt;&lt;/p&gt;            
+    &lt;p&gt;Preis: 1.000.000 €&lt;/p&gt;            
+    &lt;p&gt;&lt;input type="submit" value="Bestellung absenden"&gt;&lt;/p&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 <p>Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.</p>
 
