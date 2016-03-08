@@ -62,22 +62,8 @@
 
 <h2 id="frontend">Frontend</h2>
 
-<p>Im “Frontend” gab es in den letzten Jahren einige Verbesserungen beim
-Datei-Upload, z.B. die Auswahl der Dateien die man hochladen will
-durch “Drag-and-Drop” auf den Browser</p>
-
-<p><img src="/images/drag-and-drop-upload.png" alt="New im Frontend: Drag and Drop in den Browser" /></p>
-
-<p>Dazu ist aber eine Javascript-API notwendig, die wir erst
-später kennen lernen.</p>
-
-
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
-
-
-
 <p>Die einfachste Version des Upload-Formulares verwendet eine input-Tag
-vom typ <code>file</code>:</p>
+vom Typ <code>file</code>:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular für den Datei-Upload</small></h4>
@@ -90,16 +76,16 @@ vom typ <code>file</code>:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
 <p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
 
-<p><img src="/images/image345.png" alt="Webformular mit Datei-Upload" /></p>
+<p><img src="/images/file-input.png" alt="Webformular mit Datei-Upload" /></p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="backend">Backend</h2>
 
@@ -118,17 +104,20 @@ Rechten des Account <code>apache</code> ausgeführt wird.  Ein guter erster Schr
 man den Server hacken will!</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="manahmen">Maßnahmen</h3>
 
-<p>Die Mindestanforderungen an ein Upload-Skript lauten also:
-* <strong>niemals</strong> hochgeladene Daten als Code interpretieren!
-* Vorsicht bei Daten, die im Webspace gespeichert werden!
-* Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!</p>
+<p>Die Mindestanforderungen an ein Upload-Skript lauten also:</p>
+
+<ul>
+  <li><strong>niemals</strong> hochgeladene Daten als Code interpretieren!</li>
+  <li>Vorsicht bei Daten, die im Webspace gespeichert werden!</li>
+  <li>Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!</li>
+</ul>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="implementierung">Implementierung</h3>
 
@@ -150,7 +139,7 @@ man den Server hacken will!</p>
 </dl>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="beispielcode">Beispielcode</h3>
 
@@ -164,7 +153,7 @@ $filename = basename($_FILES[&#39;bild&#39;][&#39;name&#39;]);
 $ext = substr($filename, -4);
 
 if( $ext != &#39;.jpg&#39; ) {
-   die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . substr($filename, -3) );
+   die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . $ext );
 }
 
 $uploadfile = $uploaddir . $filename;
@@ -183,7 +172,7 @@ print &#39;&lt;/pre&gt;&#39;;
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="zugriffsrechte-am-server">Zugriffsrechte am Server</h3>
 
@@ -199,7 +188,7 @@ hineinschreiben darf!</p>
       <li><a href="/php/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
     
     
-      <li><a href="/php/error/">Errors + Debugging</a></li>
+      <li><a href="/php/datei-upload-frontend/">Datei Upload - Frontend</a></li>
     
   </ul>
 </div>
@@ -625,6 +614,10 @@ hineinschreiben darf!</p>
                     
                       
                       <li class="active"><a href="/php/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload-frontend/">Datei Upload - Frontend</a></li>
                       
                     
                       
