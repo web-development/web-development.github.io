@@ -352,17 +352,18 @@ ganz ähnlich wie <code>personen.php</code>.</p>
 anzeigen.  Wie geht das?</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in Postgres</small></h4>
+<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in Postgres 9.4</small></h4>
 <pre class="lang-php prettyprint linenums">
 $query =$dbh-&gt;query(
-  &quot;SELECT * FROM person WHERE ifshow TABLESAMPLE SYSTEM 0.01;&quot;
+  &quot;SELECT * FROM projects WHERE NOT(draft) AND NOT(blocked) ORDER BY RANDOM() LIMIT 10&quot;
 );
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 </pre></div>
 
-<p>Diese Verwendung von <code>TABLESAMPLE</code> ist  eine Besondernheit von 
-Postgres<a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">*</a>, 
-In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
+<p>Ab Version 9.5 gibt es eine effizientere Methode mit
+<code>TABLESAMPLE</code> <a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">*</a>,</p>
+
+<p>In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
 
 </div>
 <div class='slide'>
