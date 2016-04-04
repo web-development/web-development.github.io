@@ -149,8 +149,8 @@ htmlspecialchars( $person-&gt;firstname );
 <div class="example">
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
-&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= htmlspecialchars( $person-&gt;firstname ); ?&gt;&quot;&gt;
+&lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ); ?&gt;&lt;/textarea&gt;
 </pre></div>
 
 </div>
