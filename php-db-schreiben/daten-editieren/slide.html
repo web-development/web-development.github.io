@@ -87,6 +87,11 @@ und bei Textareas als Inhalt des Tags:</p>
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner&lt;/textarea&gt;
 </pre></div>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder
 Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
 Beispiel in MySQL:</p>
@@ -144,7 +149,7 @@ htmlspecialchars( $person-&gt;firstname );
 <div class="example">
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;&lt;?php echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
 </pre></div>
 
@@ -308,6 +313,11 @@ erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</
 
 <p><img src="/images/tinymce.png" alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 
@@ -327,6 +337,11 @@ gestellt:</p>
 <pre class="lang-php prettyprint linenums">
 $description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 
 der <code>description</code> verzichten:</p>

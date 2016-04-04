@@ -163,8 +163,9 @@ try{
 
 } catch( Exception $e ) {
   include &quot;header.php&quot;;
-  echo &quot;&lt;h1&gt;Error&lt;/h1&gt;&quot; ;
-  echo &quot;&lt;p&gt;&quot; . $e-&gt;getMessage() . &quot;&lt;/p&gt;&quot;;
+  echo &quot;&lt;h1&gt;Problem mit der Datenbank&lt;/h1&gt;&quot; ;
+  echo &quot;&lt;p&gt;Bitte versuchen Sie es später wieder.&lt;/p&gt;&quot; ;
+  echo &quot;&lt;!--&quot; . $e-&gt;getMessage() . &quot;--&gt;&quot;;
   include &quot;footer.php&quot;;
   exit;
 }

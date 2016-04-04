@@ -88,6 +88,11 @@ und bei Textareas als Inhalt des Tags:</p>
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner&lt;/textarea&gt;
 </pre></div>
 
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Achtung: Falls in den Daten Anführungszeichen, kaufmännische Unds oder
 Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
 Beispiel in MySQL:</p>
@@ -115,7 +120,7 @@ MariaDB [portfolio_playground]&gt; select firstname,description from users where
 den Rest der Webseite verschwinden.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -136,7 +141,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -145,12 +150,12 @@ htmlspecialchars( $person-&gt;firstname );
 <div class="example">
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
 <pre class="lang-php prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;&lt;?php echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
+&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= echo htmlspecialchars( $person-&gt;firstname ) ?&gt;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?php echo htmlspecialchars( $person-&gt;description ) ?&gt;&lt;/textarea&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
@@ -181,7 +186,7 @@ exit;
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
@@ -196,7 +201,7 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -224,7 +229,7 @@ EOM;
 <p><img src="/images/html-escaped1.png" alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
@@ -232,7 +237,7 @@ angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
 wieder anzeigen?</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
@@ -259,7 +264,7 @@ BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
 vorhergehenden Suche noch ein Cookie haben.)</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -289,7 +294,7 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -300,7 +305,7 @@ z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 <p><img src="/images/html-escaped.png" alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
@@ -309,13 +314,18 @@ erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</
 
 <p><img src="/images/tinymce.png" alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
 
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+
+
 <p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 
 <p><img src="/images/aloha.png" alt="Aloha Editor" /></p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
 
@@ -328,6 +338,11 @@ gestellt:</p>
 <pre class="lang-php prettyprint linenums">
 $description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
 </pre></div>
+
+
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+
+
 
 <p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das escapen 
 der <code>description</code> verzichten:</p>
