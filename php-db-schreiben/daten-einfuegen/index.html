@@ -192,12 +192,13 @@ deutsche Fehlermeldungen ausgeben.</p>
 autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
 Schlüssels im neuen Datensatz mit 
 <code>lastInsertId</code><a href="http://php.net/manual/en/pdo.lastinsertid.php">*</a> 
-auslesen und weiter verwenden:</p>
+auslesen und weiter verwenden. Nur in Postgres ist dazu der
+Name der Sequenz nötig, in MySQL reicht der Aufruf von lastInsterId ohne Argument.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Primärschlüssel des neuen Datensatzes auslesen</small></h4>
 <pre class="lang-php prettyprint linenums">
-$id = $dbh-&gt;lastInsertId(); 
+$id = $dbh-&gt;lastInsertId(&#39;users_id_seq&#39;);
 header(&quot;Location: person.php?id=$id&quot;);
 </pre></div>
 
