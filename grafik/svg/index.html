@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 web-development"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 web-development"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 web-development"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9 web-development"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js web-development"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Lehrbuch Web-Development - Beispiel SVG</title>
+
+  <meta name="author" content="Brigitte Jellinek">
+  <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="generator" content="nanoc 3.1.6">
+
+  <link rel="shortcut icon" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <style>
+    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+        list-style-type: inherit !important;
+    }
+    ol.linenums {
+        margin-left: 50px !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+      <a href="http://github.com/web-development/web-development-textbook/"><img
+        style="position: fixed; top: 0; right: 0; border: 0;"
+        src="/images/forkme.png" alt="Fork me on GitHub"></a>
+  <header class="row">
+    <div class="jumbotron sub-header span8" id="booktitle">
+      <h1><a href="/" title="Web Development">Web Development</a></h1>
+      <p class="lead">Ein Lehrbuch für das Informatik oder Medien-Informatik Studium.</p>
+    </div>
+  </header>
+
+
+
+
+	<!-- body -->
+	<article id="body" class="row">
+		
+		<div class="span8">
+		
+			
+                          <div class="page-header">
+				<h2 class="title"><a name="slide-0"></a>Beispiel SVG</h2>
+                                <a href="/grafik/svg/slide.html">als Präsentation ▻</a>
+                          </div>
+			
+			
+			<a name='slide-1'></a>
+<svg width="200" height="200" style="float:left;">
+    <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
+    <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" />
+</svg>
+
+<p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
+World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
+zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
+
+<p>SVG wurde erstmals im September 2001 veröffentlicht, die aktuelle Version
+ist <a href="http://www.w3.org/TR/SVG11/">Version 1.2</a>, die seit Dezember 2008 vom W3C empfohlen wird, aktuell.</p>
+
+<p>SVG hat eine lange und wechselvolle Geschichte hinter sich: es wurde bereits im Jahr 2001 veröffentlicht.
+Für die Darstellung im Browser war aber damals die Installation eines Plugins notwendig. 
+Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer) wird SVG
+im Browser nativ dargestellt.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Einbindung von SVG in HTML (Inline-SVG)</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
+  &lt;rect    x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
+&lt;/svg&gt;
+</pre></div>
+
+<p>Mit SVG kann man zweidimensional zeichnen. Die grafischen Objekte werden
+- wie bei HTML - in einem DOM gespeichert und können manipuliert werden. Zur
+Darstellung im Browser werden sie mit dem <a href="http://de.wikipedia.org/wiki/Painter%27s_Algorithmus">Painters Algorithm</a> gezeichnet:
+“spätere” Objekte übermalen “frühere” Objekte. Deswegen überdeckt das blaue Rechteck
+im Beispiel den grünen Kreis.</p>
+
+<p>Inline SVG wird heute von den aktuellen Browsersn unterstütz, siehe
+<a href="http://caniuse.com/#feat=svg-html5">can i use</a></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h2 id="grundformen-in-svg">Grundformen in SVG</h2>
+
+<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
+simple geometrische Elemente definiert.</p>
+
+<svg width="700" height="200">
+<g transform="translate(10,30) scale(1.5,1.5)">
+  <rect width="66" height="30" x="21" y="32" stroke="#204a87" fill="#204a87" fill-opacity="0.6" stroke-width="2" />
+  <text x="21" y="82">Rechteck</text>
+  <circle cx="144" cy="38" r="18" stroke="#4e9a06" fill="#4e9a06" fill-opacity="0.6" stroke-width="2" />
+  <ellipse cx="170" cy="43" rx="27" ry="15" stroke="#73d216" fill="#73d216" fill-opacity="0.6" stroke-width="2" />
+  <text x="122" y="81">Kreis + Ellipse</text>
+</g>
+<g transform="translate(340,-137) scale(1.5,1.5)">
+  <path d="M 12,170 C 39,182 43,154 49,142 C 62,114 101,145 101,145" fill="#ef2929" fill-opacity="0.62" stroke="#a40000" stroke-width="2" />
+  <path d="M 149,109 L 149,127 L 127,144 L 140,172 L 188,167 L 191,119 L 149,109 z" fill="#edd400" fill-opacity="0.59" stroke="#c4a000" stroke-width="2" />
+  <text x="35" y="192">Pfad</text>
+  <text x="141" y="192">Polygon</text>
+</g>
+</svg>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h3 id="kreis-ellipse-rechteck">Kreis, Ellipse, Rechteck</h3>
+
+<p>Das Rechteck wird die Position seiner oberen linken Ecke, seiner Breite und seiner Höhe definiert. Der
+Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbradien.</p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Kreis und Ellipse</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;circle  cx=&quot;144&quot; cy=&quot;38&quot; r=&quot;18&quot; 
+        stroke=&quot;#4e9a06&quot; stroke-width=&quot;2&quot; 
+        fill=&quot;#4e9a06&quot;   fill-opacity=&quot;0.6&quot;  /&gt;
+&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
+        stroke=&quot;#73d216&quot; stroke-width=&quot;2&quot; 
+        fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
+<p>Viele Attribute kann man alternativ auch über CSS definieren.</p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Attribute per CSS</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;circle style=&quot;cx: 144px; cy: 38px; r: 18px; stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot;  /&gt;
+&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
+        style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h3 id="pfad-und-polygon">Pfad und Polygon</h3>
+
+<p>Für Pfade und Polygone wird eine Kurzschreibweise verwendet, bei der mehrere Punkte in
+ein einziges Attribut <code>d</code> des Tags geschreiben werden. Ein Pfad besteht aus Befehlen und Koordinaten.
+Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>SVG</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;path d=&quot;M 149,109 L 149,127 L 127 144    L 140,172    L 188,167 L 191,119 L 149,109 z&quot;
+      fill=&quot;#edd400&quot; fill-opacity=&quot;0.59&quot; stroke=&quot;#c4a000&quot; stroke-width=&quot;2&quot; /&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+
+
+<p>Wird der Befehl als Großbuchstaben geschrieben, dann werden die Koordinaten
+absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
+Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th style="text-align: center">Buchstabe</th>
+      <th style="text-align: left">Befehl</th>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left">Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">M,m</td>
+      <td style="text-align: left">MoveTo</td>
+      <td style="text-align: left">x y</td>
+      <td style="text-align: left">Gehe zu dem angegebenen Punkt ohne eine Linie zu ziehen</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">H,h</td>
+      <td style="text-align: left">HLineTo</td>
+      <td style="text-align: left">x</td>
+      <td style="text-align: left">Ziehe eine horizontale Linie zur angegebenen Koordinate</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">V,v</td>
+      <td style="text-align: left">VLineTo</td>
+      <td style="text-align: left">y</td>
+      <td style="text-align: left">Ziehe eine vertikale Linie zur angegebenen Koordinate</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Z,z</td>
+      <td style="text-align: left">Close Path</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Schliesse den Pfad (gehe zurück zum Anfangspunkt)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
+<p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
+wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
+
+<svg width="700" height="100">
+  <path d="M   0,10 l 50,50 50,-50 50,50 50,-50 50,50" stroke="red" stroke-width="2" fill="none" />
+  <path d="M 270,35 q 25,-50 50,0  25,50 50,0   q 25,-25 50,0  q 25,25 50,0" stroke="orange" stroke-width="2" fill="none" />
+</svg>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Beispiel für LineTo und Quadratic B</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;path d=&quot;M   0 10 l 50,50  50,-50 50,50 50,-50 50,50&quot; /&gt;
+&lt;path d=&quot;M 270 35 q 25,-50 50,0 25,50 50,0 q 25,-25 50,0 q 25,25 50,0&quot; /&gt;
+</pre></div>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th style="text-align: center">Buchstabe</th>
+      <th style="text-align: left">Befehl</th>
+      <th style="text-align: left">Parameter</th>
+      <th style="text-align: left">Beschreibung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">L,l</td>
+      <td style="text-align: left">LineTo</td>
+      <td style="text-align: left">(x y)+</td>
+      <td style="text-align: left">Ziehe gerade Linie zu den angegebenen Punken</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Q,q</td>
+      <td style="text-align: left">quadratic Bézier curveto</td>
+      <td style="text-align: left">(x1 y1 x y)+</td>
+      <td style="text-align: left">Kurve zu x,y mit x1,y1 als Stützpunkt der beiden Tangenten</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">C,c</td>
+      <td style="text-align: left">cubic Bézier curveto</td>
+      <td style="text-align: left"><nobr>(x1 y1 x2 y2 x y)+</nobr></td>
+      <td style="text-align: left">Kurve zu x,y mit x1,y1 und x2,y2 als Stützpunkte der Tangenten</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+<h3 id="text">Text</h3>
+
+<p>Mit dem Tag <code>text</code> kann Text in SVG gesetzt werden. Das ist
+an und für sich noch nicht sehr spannend:</p>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Text in SVG</small></h4>
+<pre class="lang-xml prettyprint linenums">
+    &lt;text x=&quot;122&quot; y=&quot;81&quot;&gt;Kreis + Ellipse&lt;/text&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
+
+<p>Mit dem Tag <code>textpath</code> kann der Text entlang eines
+beliebigen Pfades gesetzt werden.</p>
+
+<svg width="600" height="200">
+  <g transform="scale(0.5,0.5)">
+    <defs>
+      <path id="my_path" d="M 100,200 
+               C 200,100 300,  0 400,100
+               C 500,200 600,300 700,200
+               C 800,100 900,100 900,100" />
+    </defs>
+
+    <use xlink:href="#my_path" fill="none" stroke="gray" />
+    <text font-family="Verdana" font-size="42.5" fill="red">
+      <textpath xlink:href="#my_path">
+        Es geht hinauf, und hinunter, und wieder...
+      </textpath>
+    </text>
+  </g>
+</svg>
+
+<div class="example">
+<pre class="lang-xml prettyprint linenums">
+&lt;defs&gt;
+&lt;path id=&quot;my_path&quot; d=&quot;M 100,200 C 200,100 300,  0 400,100
+      C 500,200 600,300 700,200 C 800,100 900,100 900,100&quot; /&gt;
+&lt;/defs&gt;
+&lt;text font-family=&quot;Verdana&quot; font-size=&quot;42.5&quot; fill=&quot;red&quot; &gt;
+  &lt;textPath xlink:href=&quot;#my_path&quot;&gt;
+    Es geht hinauf, und hinunter, und wieder...
+  &lt;/textPath&gt;
+&lt;/text&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
+<h2 id="koordinaten-und-transformationen">Koordinaten und Transformationen</h2>
+
+<p>Koordinaten in SVG werden als reelle Zahlen angegeben,
+nicht als Ganzzahlen!  Es ist ein wirkliches Vektorformat.</p>
+
+<p>Das ursprüngliche Koordinatensystem beginnt in der linken oberen Ecke,
+die X-Achse zeigt nach rechts, die Y-Achse nach unten.  Mit dem <code>g</code> Tag
+können Elemente gruppiert werden. Dabei kann man auch ein neues
+lokales Koordinatensystem definieren.</p>
+
+<svg width="700" height="200">
+  <defs>
+      <marker id="pointy" viewbox="0 0 10 10" refx="0" refy="5" markerunits="strokeWidth" markerwidth="4" markerheight="3" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" />
+      </marker>
+  </defs>
+  <g transform="translate(10,10)">
+    <path d="M 0 0 L 200 0" stroke="black" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <path d="M 0 0 L 0 100" stroke="black" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <text x="215" y="5" font-family="Verdana" font-size="15" fill="black">x</text>
+    <text x="-5" y="125" font-family="Verdana" font-size="15" fill="black">y</text>
+  </g>
+  <g transform="rotate(-5) translate(50,30)" stroke="blue">
+    <path d="M 0 0 L 100 0" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <path d="M 0 0 L 0 100" stroke-width="2" stroke-linecap="square" marker-end="url(#pointy)" />
+    <text x="115" y="5" font-family="Verdana" font-size="15" fill="black">x</text>
+    <text x="-5" y="125" font-family="Verdana" font-size="15" fill="black">y</text>
+  </g>
+</svg>
+
+<div class="example">
+<h4 class="caption">Xml Code <small>Gruppe mit lokalem Koordinatensystem</small></h4>
+<pre class="lang-xml prettyprint linenums">
+&lt;g transform=&quot;rotate(-5) translate(50,30)&quot;&gt;
+  ...
+&lt;/g&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h2 id="mehr">Mehr</h2>
+
+<ul>
+  <li><a href="http://www.w3.org/TR/SVG11/">RFC zu SVG</a></li>
+  <li><a href="http://raphaeljs.com/">Raphael Javascript Library</a></li>
+  <li><a href="http://css-tricks.com/using-svg/">Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL</a></li>
+  <li><a href="http://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations/">Tutorial: CSS Animationen auf SVG anwenden</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/SVG/SVG_animation_with_SMIL">Tutorial: SMIL Animationen in SVG verwenden</a></li>
+</ul>
+
+		
+			<div class="pagination">
+  <ul>
+    
+      
+      
+      <li><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
+      
+      
+      
+      <li><a href="/grafik/2dcanvas/">2d Canvas</a></li>
+      
+    
+  </ul>
+</div>
+
+		</div>
+		
+		<!-- sidebar -->
+<div id="sidebar" class="span3 offset1">
+        <div class="page-header"> 
+        <h2>Kapitel</h2>
+        </div>
+
+        
+        <ul class="nav nav-list">
+        
+          
+          <li class=" "><a href="/das-web-und-html/">Das Web Und Html</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/geschichte/">Eine Kurze Geschichte des World Wide Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/html-grundkurs/">HTML Grundkurs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/das-web-und-html/upload/">Upload und Tools</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/css/">Css</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css/css-kurz/">Kurzvorstellung von Stylesheets</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/css/">Syntax von CSS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/properties/">Wichtige Properties</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/css-layout/">Css Layout</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/urls/">Urls</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/konfiguration/">Konfiguration Webserver</a></li>
+                      
+                    
+                      
+                      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/formulare/">Formulare</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/formulare/form/">Formulare</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/action/">Daten absenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/php/">Formular und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/formulare/javascript/">Formular und Javascript</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/javascript-dom/">Javascript Dom</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/dom/">DOM</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/canvas/">2D Canvas</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/formular-zeile/">Formular++</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/jquery/">Jquery</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/jquery/unobstrusive/">Unobstrusive Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/graceful/">Graceful Degradation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/schreibweise/">Besondere Javascript-Schreibwesen in jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/selektieren-manipulieren/">Selektieren und Manipulieren mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/interaktion/">Interaktion mit jQuery</a></li>
+                      
+                    
+                      
+                      <li ><a href="/jquery/formularpruerung/">Formulardaten Prüfen mit jQuery</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/kommandozeile/">Kommandozeile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/kommandozeile/">Kommandozeile</a></li>
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      
+                    
+                      
+                      <li ><a href="/kommandozeile/zugriffsrechte/">Zugriffsrechte</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/git/">Git</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/git/versionskontrolle/">Versionskontrolle</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-status/">Status von Git abfragen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/http/">Http</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/http/">HTTP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/tools/">Werkzeuge</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/anwendungsbeispiele/">Beispiele</a></li>
+                      
+                    
+                      
+                      <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php-vorbereitung/">Php Vorbereitung</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/was-ist-php/">Was ist PHP? Was passiert am Webserver?</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-vorbereitung/erstes-php-programm/">Das erste PHP-Programm</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php/">Php</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php/warnhinweis/">Warnhinweis</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/syntax/">Syntax von PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/dateien/">Dateien und Ordnern in PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/mail/">PHP und E-Mail</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload/">Datei Upload</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/datei-upload-frontend/">Datei Upload - Frontend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php/error/">Errors + Debugging</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php-db-lesen/">Php Db Lesen</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/db/">Datenbanken</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/start/">PHP und Datenbank</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/datenbank-lesen/">Lesen aus der Datenbank</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-lesen/effizent/">Effizient Arbeiten mit der DB</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/session/">Session</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/cookies/">Cookies</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/php-db-schreiben/">Php Db Schreiben</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/datenbank-schreiben/">Web-Applikation mit Schreibrecht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-loeschen/">Löschen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-einfuegen/">Einfügen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/daten-editieren/">Daten Bearbeiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/php-db-optimierung/">Php Db Optimierung</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/indexes/">Indexes</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/constraints/">Constraints</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/transaktionen/">Transaktionen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-optimierung/transaktionen-und-php/">Transaktionen und PHP</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class="active "><a href="/grafik/">Grafik</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/grafik/svg/">Beispiel SVG</a></li>
+                      
+                    
+                      
+                      <li ><a href="/grafik/2dcanvas/">2d Canvas</a></li>
+                      
+                    
+                      
+                      <li ><a href="/grafik/3dcanvas/">3d Canvas</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/javascript/">Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/module/">Module</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/style/">Stil + Tipps</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/applied-javascript/">Applied Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/jquery-vs-plain/">jQuery und reines Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/ajax-irrwege/">AJAX Irrwege</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-javascript/cors/">CORS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/security/">Security</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/json/">Json</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/json/syntax/">JSON Syntax</a></li>
+                      
+                    
+                      
+                      <li ><a href="/json/php/">JSON und PHP</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" separator"><a href="/xml/">Xml</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/dtd/">DTD</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-php/">XML und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xpath/">XPath</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/apache/">Apache</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/apache/konfigurieren/">Konfigurieren</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/wordpress/">Wordpress</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/security/">Security</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/backend/">Überblick Backend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/plugins/">Plugins verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/wordpress/permalinks/">Permalinks</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/qualitaet/">Qualitaet</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+        
+        </ul>
+
+</div>
+<!-- sidebar -->
+
+		
+	</article>
+	<!-- /body -->
+
+
+  <div class="row">
+    <div class="span12" id="legal">
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2016 von <a href="#">Brigitte Jellinek</a>.
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/grafik/svg.md">Kommentar zu dieser Seite</a></p>
+    </div>
+  </div>
+
+</div> <!-- class="container" -->
+
+<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script>
+  $(document).ready(function(){
+    function save_state(){
+      var stored = "";
+      $('ul.nav > li').each(function(i,e){
+        if( $(e).find("i").attr('class') == 'icon-plus' ) {
+          stored += "-";
+        }  else {
+          stored += "+";
+        }
+      });
+      localStorage.setItem('nav-state', stored);
+    }
+    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
+
+    // init state
+    var stored = localStorage.getItem('nav-state');
+    if ( stored ) {
+      var data = stored.split("");
+      $('ul.nav > li').each(function(i,e){
+        if( data[i] == "+" ) {
+          $(e).find(">ul").show();
+          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
+        } else {
+          $(e).find(">ul").hide();
+        }
+      });
+    } else {
+      $('ul.nav ul.sub').hide();
+    }
+    $('ul.nav li.active ul.sub').show();
+    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
+
+    $('ul.nav i').click(function(){
+      $this = $(this); 
+      $this.toggleClass('icon-plus').toggleClass('icon-minus');
+      $this.parent().next('ul').toggle();
+      save_state();
+      return false;
+    });
+  });
+</script>
+</body> 
+</html>
+
