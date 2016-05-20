@@ -63,7 +63,7 @@
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   function r1( s, x ) {
-    var result = &quot;&quot;;
+    let result = &quot;&quot;;
     while( x ) {
       result += s;
       x--;
@@ -72,7 +72,7 @@
   }
 
   r2 = function ( s, x ) {
-    var result = &quot;&quot;;
+    let result = &quot;&quot;;
     while( x ) {
       result += s;
       x--;
@@ -85,6 +85,42 @@
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 
+Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  ( s, x ) =&gt; {
+    let result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+</pre></div>
+
+<p>Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  ( s, x ) =&gt; s + &quot; mal &quot; + x;
+</pre></div>
+
+<p>Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
+die Argumente weglassen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  x =&gt; x + &quot; ist das beste&quot;;
+</pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
 
 <p>Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
 Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
@@ -93,32 +129,42 @@ Teile von Objekten oder Arrays definieren:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen in JSON</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  var objekt = {
+  objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
-    method_1 : function () {  console.log( &quot;method 1&quot; ) }
+    method_1 : function () {  console.log( &quot;method 1&quot; ); },
+    method_2 : x =&gt; x + &quot; ist das beste&quot;
   }
 </pre></div>
 
-
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
-
-
-
-<p>Es gibt auch mehrere Arten eine (schon definierte) Funktion aufzurufen: neben
-der klassischen Version mit den runden Klammern gibt es noch die beiden Methoden
-<code>call</code> und <code>apply</code>:</p>
+<p>Die beiden Methoden kann man ganz normal aufrufen:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Funktion aufrufen</small></h4>
+<h4 class="caption">Javascript Code <small>Methoden aufrufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  repeat(&quot;hallo &quot;, 10);
-  repeat.call(null, &quot;hallo &quot;, 10);
-  repeat.apply(null, [  &quot;hallo &quot;, 10 ]  );
+objekt.method_1();
+objekt.method_2(&quot;Schokolade&quot;);
 </pre></div>
 
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
+<p>Zusätzlich zum einfachen Aufruf mit Funktionsname, Klammern, Argumenten <code>f(x)</code>
+gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen: 
+<code>call</code> und <code>apply</code>:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Funktion r aufrufen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  r(&quot;hallo &quot;, 10);
+  r.call(null, &quot;hallo &quot;, 10);
+  r.apply(null, [  &quot;hallo &quot;, 10 ]  );
+</pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
 
@@ -148,7 +194,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="was-ist-this">Was ist this?</h2>
 
@@ -169,7 +215,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -194,29 +240,38 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
   // this.prop2 = 42
 </pre></div>
 
-
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
-
-
-
-<p>Eigentlich ist der erste Fall ein Spezialfall dieses zweiten Falles: wird eine Funktion ohne Objekt aufgerufen <code>f()</code>,
-dann nimmt Javascript ein implizites Objekt an:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>this in einer normalen Funktion (explizite Schreibweise)</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  window.f = function() {
-    console.log(&quot;this = &quot; + this);
-  }
-
-  window.f();
-
-  // output auf der Console:
-  // this = [object Window]
-</pre></div>
+<p>Achtung: Arrow Functions verhalten sich hier anders!</p>
 
 
 <a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
+<p>Wird eine Methode mit einer Arrow Function definiert, dann bezieht
+sich <code>this</code> nicht auf das aufrufende Objekt, sondern behält seinen
+Wert:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>this in einer Methode</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  var objekt = {
+    prop1 : &quot;string&quot;,
+    prop2 : 42,
+    f : () =&gt; {  
+      console.log( &quot;this = &quot; + this ) 
+      console.log( &quot;this.prop2 = &quot; + this.prop2 ) 
+    }
+  }
+
+  objekt.f();
+
+  // output auf der Console:
+  // this = [object Window]
+  // this.prop2 = 42
+</pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -235,11 +290,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
-<p>Bei Event-Handlern wird <code>this</code> anders gesetzt:</p>
+<p>Bei Event-Handlern wird <code>this</code> wieder anders gesetzt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
@@ -259,7 +314,7 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -283,7 +338,7 @@ und zwar als Argument:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -295,7 +350,7 @@ die Eigenschaften des MouseEvents zeigt:</p>
 <p><img src="/images/chrome-mouse-event.png" alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" /></p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
