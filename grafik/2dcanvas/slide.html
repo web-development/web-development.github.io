@@ -56,18 +56,79 @@
           <p><a href="/grafik/2dcanvas/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'>
-<div style="width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; color: red;"></div>
+<p>Der <code>canvas</code> Tag kann auf zwei Arten verwendet werden: für 2d und 3d Grafik.
+Als 2d Grafik ist der Canvas einfach ein Rechteck aus Pixeln, auf das
+man mit Javascript zeichnen und Bilder einkopieren kann:</p>
 
-<p>Mit HTML und CSS kann man grafisch arbeiten, sogar in 3d.</p>
+<p><img src="/images/2d-canvas.png" alt="Bild" /></p>
+
+<p>Das Koordinatensystem des Canvas beginnt links oben.</p>
 
 </div>
 <div class='slide'>
 
-<h2 id="mehr">Mehr</h2>
+<h2 id="canvas-und-javascript">Canvas und Javascript</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+var w = 250,
+    h = 250;
+var my_canvas = document.getElementById(&quot;c&quot;);
+var my_context = my_canvas.getContext(&quot;2d&quot;);
+
+my_canvas.width = w;
+my_canvas.height = h;
+my_context.strokeStyle = &quot;#4a4&quot;;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="text-setzen">Text setzen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+my_context.font = &quot;bold 12px sans-serif&quot;;
+my_context.fillText(&quot;hier bin ich&quot;, 30, 50);
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="linien-zeichnen">Linien Zeichnen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+my_context.moveTo(0,20);
+my_context.lineTo(w,20);
+
+for (var x = 0; x &lt;= w; x += 25) {
+    my_context.moveTo(w / 2, h / 2);
+    my_context.lineTo(x, h);
+}
+my_context.stroke();
+</pre></div>
+
+<p><a href="https://jsfiddle.net/bjelline/Gu83s/">fertiges bild</a></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="library">Library</h2>
+
+<p>Aufbauend auf den Canvas gibt es viele Libraries, z.B:</p>
+
+<ul>
+  <li><a href="http://jdan.github.io/isomer/">Library Isomer</a></li>
+</ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="tutorials">Tutorials</h2>
 
 <ul>
   <li><a href="http://diveintohtml5.info/canvas.html">Dive into Canvas</a></li>
-  <li><a href="http://jdan.github.io/isomer/">Library Isomer</a></li>
 </ul>
 </div>
           <div class="slide"><h1>Ende</h1>
