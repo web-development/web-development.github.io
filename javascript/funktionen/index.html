@@ -85,7 +85,8 @@
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 
-Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function</p>
+
+<p>Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
@@ -166,40 +167,10 @@ gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen:
 
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
-<h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
-
-<p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
-die man mit der ganz normalen Schreibweise setzten kann:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function repeat( s, x ) {
-    var result = &quot;&quot;;
-    while( x ) {
-      result += s;
-      if( repeat.sep &amp;&amp; x &gt; 1 ) result += repeat.sep;
-      x--;
-    }
-    console.log(result);
-    return result;
-  } 
-
-  repeat(&quot;x&quot;, 3);
-  // rückgabewert ist &quot;xxx&quot;;
-
-  repeat.sep = &quot;, &quot;;
-  repeat(&quot;x&quot;, 3);
-  // rückgabewert ist &quot;x, x, x&quot;;
-</pre></div>
-
-
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
-
 <h2 id="was-ist-this">Was ist this?</h2>
 
 <p>Die Variable <code>this</code> hat eine besondere Bedeutung in Javascript Funktionen.
-Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</code> auf das <code>window</code> Objekt:</p>
+Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this in einer normalen Funktion</small></h4>
@@ -208,14 +179,16 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
     console.log(&quot;this = &quot; + this);
   }
 
+  console.log(&quot;this = &quot; + this);
   f();
 
   // output auf der Console:
   // this = [object Window]
+  // this = [object Window]
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -243,7 +216,7 @@ Wird eine Funktion ganz normal im Browser aufgerufen, dann verweist <code>this</
 <p>Achtung: Arrow Functions verhalten sich hier anders!</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -267,11 +240,11 @@ Wert:</p>
 
   // output auf der Console:
   // this = [object Window]
-  // this.prop2 = 42
+  // this.prop2 = undefined
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -289,8 +262,17 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
   objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
 </pre></div>
 
+<p>Es gibt noch eine dritte method <code>bind</code> die nur <code>this</code> neu festsetzt,
+und die funktion sonst unverändert lässt:</p>
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">  
+  f2 = objekt.f.bind(anderes_objekt);
+  f2.(&quot;hallo &quot;, 10);
+</pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -314,11 +296,11 @@ Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
-<p>Die Funktion erhält aber noch mehr Informationen zum Event,
+<p>Die als Listener definierte Funktion erhält aber noch mehr Infos zum Event,
 und zwar als Argument:</p>
 
 <div class="example">
@@ -327,6 +309,7 @@ und zwar als Argument:</p>
   function f( ev ) {
     console.log(&quot;this = &quot; + this);
     console.log(&quot;ev = &quot; + ev);
+    console.log(&quot;ev.target = &quot; + ev.target);
   }
  
   document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
@@ -335,10 +318,11 @@ und zwar als Argument:</p>
   // output in der Console:
   // this = [object HTMLInputElement]
   // ev = [object MouseEvent]
+  // ev.target = [object HTMLInputElement]
 </pre></div>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -350,7 +334,7 @@ die Eigenschaften des MouseEvents zeigt:</p>
 <p><img src="/images/chrome-mouse-event.png" alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" /></p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -373,6 +357,44 @@ Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen.</p>
 <p>Innerhalb der Konstruktur-Funktion <code>Studiengang</code> ist bereits
 ein neues Objekt vorhanden, und über <code>this</code> zugänglich. Dieses
 Objekt ist auch automatisch Rückgabewert der Funktion.</p>
+
+<p>Arrow Funktionen können nicht als Constructor verwendet werden.
+Dafür gibt es in Javascript 2015 <code>class</code> und <code>constructor</code> als Alternative.</p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+<h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
+
+<p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
+die man mit der ganz normalen Schreibweise setzten kann:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function repeat( s, x ) {
+    var result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      if( repeat.sep &amp;&amp; x &gt; 1 ) result += repeat.sep;
+      x--;
+    }
+    console.log(result);
+    return result;
+  } 
+
+  repeat(&quot;x&quot;, 3);
+  // rückgabewert ist &quot;xxx&quot;;
+
+  repeat.sep = &quot;, &quot;;
+  repeat(&quot;x&quot;, 3);
+  // rückgabewert ist &quot;x, x, x&quot;;
+</pre></div>
 
 
 		
