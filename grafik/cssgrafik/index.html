@@ -57,18 +57,65 @@
 			
 			
 			<a name='slide-1'></a>
-<div style="width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; color: red;"></div>
+<div style="width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; color: red; margin: 10px 0px"></div>
 
 <p>Mit HTML und CSS kann man grafisch arbeiten, sogar in 3d.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h2 id="mehr">Mehr</h2>
+<h2 id="rechtecke-und-balkengrafik">Rechtecke und Balkengrafik</h2>
+
+<p>Block-Bildende Tags in HTML werden als Rechtecke dargestellt. Das
+alleine reicht schon aus um z.B. eine einfache Balkengrafik zu gestalten.</p>
+
+<p>Im Artikel <a href="http://alistapart.com/article/accessibledatavisualization">Accessible Data Visualization with Web Standards</a>
+beschreibt  Wilson Miner die Entwicklung solch einer Grafik:</p>
+
+<p><img src="/images/balken.png" alt="Bild der Balkengrafik" /></p>
+
+<p><a href="http://alistapart.com/d/accessibledata/example-barchart.html">Fertige Balkengrafik</a></p>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h2 id="css-und-formen">CSS und Formen</h2>
+
+<p>Mit etwas CSS kann man von den Rechtecken zu anderen Formen gelangen.
+Auf der Webseite <a href="https://css-tricks.com/examples/ShapesOfCSS/">CSS Tricks: The Shapes of CSS</a> beschreibt
+Chris Coyier wie man mit <code>border-radius</code> und transparenten rahmen
+Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
+
+<p><img src="/images/dreieck.png" alt="Bild der Dreiecks" /></p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+#triangle-up { 
+   width: 0; height: 0; 
+   border-left: 50px solid transparent; 
+   border-right: 50px solid transparent; 
+   border-bottom: 100px solid red; 
+} 
+</pre></div>
+
+<p>An einem Standard für CSS Shapes wird gearbeitet, es gibt aber noch
+keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Draft: CSS Shapes</a>.</p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h2 id="perspektive">Perspektive</h2>
+
+<p>Seit 2013 liegt der Standard für CSS Transforms vor, er
+ist aber immer noch ein “Draft”.  In den Browsern sind <a href="http://caniuse.com/#search=perspective">3D Transforms aber längst implementiert</a></p>
+
+<p><img src="/images/weather-app-transition.png" alt="Bild" /></p>
+
+<p>Von David DeSandro gibt es ein ausführliches <a href="http://desandro.github.io/3dtransforms/">Tutorial</a> dazu.</p>
 
 <ul>
-  <li><a href="http://www.w3.org/TR/SVG11://css-tricks.com/examples/ShapesOfCSS/">Shapes of CSS</a></li>
-  <li><a href="https://css-tricks.com/almanac/properties/p/perspective/">Perspective in CSS</a></li>
+  <li><a href="https://css-tricks.com/examples/ShapesOfCSS/">CSS Tricks: Shapes</a></li>
+  <li><a href="https://www.w3.org/TR/css-transforms-1/">Perspective in CSS</a></li>
 </ul>
 
 		
