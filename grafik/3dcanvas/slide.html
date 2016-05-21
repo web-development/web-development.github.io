@@ -57,16 +57,52 @@
           </div>
 	  <div class='slide'>
 <p>Wenn der <code>canvas</code> Tag in der 3d Variante verwendet wird,
-kommt wirklich die Grafikkarte mit ihrer ganzen Render-Pipeline zum einsatz
-um 3D Szenen zu rendern.</p>
+kommt wirklich die Grafikkarte mit ihrer ganzen Render-Pipeline zum Einsatz
+um 3D Szenen zu rendern. Diese API des Browsers wird
+‘'’WebGL’’’ genannt, und basiert auf  OpenGL ES 2.0.</p>
 
-<p>Das wird <a href="http://caniuse.com/#feat=webgl">von allen Browsern unterstütz</a>,
+<p>WebGL wird <a href="http://caniuse.com/#feat=webgl">von allen Browsern unterstützt</a>,
 sogar am Smartphone.</p>
 
 <ul>
   <li><a href="http://learningwebgl.com/blog/?page_id=1217">Learning WebGL</a></li>
-  <li><a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js">Library three.js</a></li>
 </ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="threejs">three.js</h2>
+
+<p>WebGL direkt zu programmieren ist sehr aufwändig. Die Library <code>three.js</code>
+ermöglicht die direkt arbeit mit 3d-Objekten, Materialien, Szenen, Kameras.</p>
+
+<canvas id="my_canvas" width="500" height="500"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.js"></script>
+
+<script src="/images/cube.js"></script>
+
+<ul>
+  <li><a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js">Library three.js</a></li>
+  <li><a href="https://github.com/cedricpinson/osgjs">Library osgjs</a> zum Import von Open Scenegraph</li>
+</ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="game-engines">Game Engines</h2>
+
+<p>Auf WebGL basieren viele Game Engines für das Web. z.B:</p>
+
+<p><img src="/images/turbulenz.png" alt="Physics Turbulenz" /></p>
+
+<p><a href="https://github.com/turbulenz/turbulenz_engine">Turbulenz</a></p>
+
+<p><img src="/images/goocreate.png" alt="Beispiel-Bild goo create" /></p>
+
+<p><a href="http://goocreate.com/">Goocreate</a></p>
+
+<p>siehe auch <a href="http://www.webgl-game-engines.com/">webgl-game-engines.com</a></p>
+
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/grafik/3dcanvas/">zurück zum Buch-Kapitel [esc]</a></p>

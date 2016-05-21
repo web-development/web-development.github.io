@@ -61,14 +61,21 @@
 Als 2d Grafik ist der Canvas einfach ein Rechteck aus Pixeln, auf das
 man mit Javascript zeichnen und Bilder einkopieren kann:</p>
 
-<p><img src="/images/2d-canvas.png" alt="Bild" /></p>
+<p><img src="/images/canvas.png" alt="Bild" /></p>
 
-<p>Das Koordinatensystem des Canvas beginnt links oben.</p>
+<p>Das Koordinatensystem des Canvas beginnt links oben. Es wird der “Painters Algorithm”
+verwendet: später gezeichnets übermalt früher gezeichnetes.  Egal ob Text, Linie,
+Bild, alles wird in einzelne Pixel verwandelt.  Man kann später nicht mehr identifizieren
+welches Pixel vom Text, oder welches vom Bild stammt.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h2 id="canvas-und-javascript">Canvas und Javascript</h2>
+<h3 id="canvas-und-javascript">Canvas und Javascript</h3>
+
+<p>Um den Canvas zu nutzen braucht es immer zwei Schritte:
+erst die DOM-Node des Canvas finden, dann den 2d-Kontext dieses
+Canvas:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -79,13 +86,12 @@ var my_context = my_canvas.getContext(&quot;2d&quot;);
 
 my_canvas.width = w;
 my_canvas.height = h;
-my_context.strokeStyle = &quot;#4a4&quot;;
 </pre></div>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
-<h2 id="text-setzen">Text setzen</h2>
+<h3 id="text-setzen">Text setzen</h3>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -96,7 +102,7 @@ my_context.fillText(&quot;hier bin ich&quot;, 30, 50);
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
-<h2 id="linien-zeichnen">Linien Zeichnen</h2>
+<h3 id="linien-zeichnen">Linien Zeichnen</h3>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -115,6 +121,29 @@ my_context.stroke();
 
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
+<h3 id="bild-kopieren">Bild kopieren</h3>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+var canvas = document.getElementById(&quot;e&quot;);
+var context = canvas.getContext(&quot;2d&quot;);
+var image = document.getElementById(&quot;the_img_tag&quot;);
+context.drawImage(image, 0, 0);
+</pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h3 id="tutorials">Tutorials</h3>
+
+<ul>
+  <li><a href="http://diveintohtml5.info/canvas.html">Dive into Canvas</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images">MDN Canvas Tutorial</a></li>
+</ul>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="library">Library</h2>
 
 <p>Aufbauend auf den Canvas gibt es viele Libraries, z.B:</p>
@@ -124,13 +153,20 @@ my_context.stroke();
 </ul>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
-<h2 id="tutorials">Tutorials</h2>
+<h2 id="webcam">Webcam</h2>
+
+<p>Mit der <code>getUserMedia</code> API kann man von einer Webcam entweder
+Standbilder oder Video Streams übertragen.  Die Kombination
+Webcam + 2d Canvas ermöglicht damit viele interessante Anwendungen.</p>
 
 <ul>
-  <li><a href="http://diveintohtml5.info/canvas.html">Dive into Canvas</a></li>
+  <li><a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">Tutorial zu getUserMedia</a></li>
+  <li><a href="https://github.com/cbrandolino/camvas">Library Camvas</a></li>
+  <li><a href="https://webcamtoy.com/">Webcamtoy</a></li>
 </ul>
+
 
 		
 			<div class="pagination">
