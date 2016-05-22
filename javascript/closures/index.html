@@ -68,66 +68,6 @@ auch Closures <a href="http://de.wikipedia.org/wiki/Closure">→</a>.</p>
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
-
-<p>In einer Funktion in Javascript sind lokale und globale
-Variablen sichtbar.  Da Funktionen auch innerhalb von
-Funktionen definiert werden können sind in folgendem Code
-die Variablen a, b und c in der innern Funktion f sichtbar</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  var a = 1;
-  function g( x ) {
-    var b = 2;
-    var s = &quot;Ein String aus g ... &quot;;
-    function f( y ) {
-      var c = 3;
-      return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-    }
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-  console.log(a);  // 1
-  console.log(b);  // ReferenceError: b is not defined
-  console.log(c);  // ReferenceError: c is not defined
-  console.log(x);  // ReferenceError: x is not defined
-  console.log(y);  // ReferenceError: y is not defined
-</pre></div>
-
-
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
-
-
-
-<p>Eine Besonderheit von Javascript ist das “Hochziehen” (hoisting): Alle
-Variablen-Deklarationen mit <code>var</code> werden an den Anfang der jeweiligen Funktion 
-vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function g( x ) {
-    var s = &quot;Ein String aus g ... &quot;;
-    function f( y ) {
-      var c = 3;
-      return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-    }
-    var b = 2; // var b wird hochgezogen zum Beginn von g()
-               // die Initialisierung b = 2 bleibt hier!
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-</pre></div>
-
-
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
-
 <h2 id="funktionen-und-lebenszeit-von-variablen">Funktionen und Lebenszeit von Variablen</h2>
 
 <p>Nach dem Aufruf einer Funktion verschwinden ihre lokalen Variablen,
@@ -153,7 +93,7 @@ bei einem neuen Aufruf sind die vorhergehenden Werte nicht mehr vorhanden:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -182,7 +122,7 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
 <p>Die Funktion f hat also immer noch zugriff auf die “alte” Variable b!</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -757,6 +697,10 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                       
                     
                       
+                      <li ><a href="/javascript/variablen/">Variablen und Scope</a></li>
+                      
+                    
+                      
                       <li ><a href="/javascript/funktionen/">Funktionen und this</a></li>
                       
                     
@@ -766,6 +710,10 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
                     
                       
                       <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript/vererbung/">Prototypen + Vererbung</a></li>
                       
                     
                       

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Prototypen + Vererbung - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Prototypen + Vererbung</h1>
+          <p><a href="/javascript/vererbung/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'>
+</div>
+<div class='slide'>
+
+<h2 id="vererbung">Vererbung</h2>
+
+<p>Eine Konstruktur-Funktion kann von einem Objekt erben, und zwar über den Prototypen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = &quot;sleeping&quot;;
+  }
+  Pet.prototype.log = function() {
+    console.log(&quot;i am &quot; + this.status + 
+      &quot;. &quot; + this.word + &quot;!&quot;);
+  }
+
+  // ----- Mammal ---------
+  function Mammal() {
+    this.legs = 4;
+  }
+  Mammal.prototype = new Pet();
+  Mammal.prototype.constructor = Mammal;
+
+  // ----- Dog --------
+  function Dog( b ) {
+    this.breed = b;
+    this.word = &quot;wau&quot;;
+  }
+  Dog.prototype = new Mammal();
+  Dog.prototype.constructor = Dog;
+
+  Dog.prototype.sit = function() {
+    this.status.set(&quot;sitting&quot;);
+  }
+
+  d = new Dog(&quot;beagle&quot;);
+  d.word    // direkt im Objekt gespeichert
+  d.legs    // im Prototyp von Dog gespeichert 
+            // (einem Mammal-Objekt)
+  d.status  // im Prototyp von mammal gespeichert 
+            // (einem Pet-Objekt)
+</pre></div>
+
+<p><a href="/images/js-vererbung-vis.html">Demo mit Visualisierung</a></p>
+
+<p>Diese Vererbungs-Kette über die Prototypen nenn man auf english “prototype chain”.</p>
+
+<p>Achtung: die Konstruktoren der übergeordenten Objekte werden nur einmal aufgerufen,
+das kann zu unerwarteten Effekten führen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  // ----- Pet ---------
+  function Pet() {
+    this.status = new Status();
+  }
+  // ....
+  Mammal.prototype = new Pet();
+  // ....
+  d1 = new Dog(&quot;Beagle&quot;);
+  d2 = new Dog(&quot;Schnauzer&quot;);
+  
+  d1.status === d2.status // es gibt nur ein Status-Objekt 
+                          // für alle Mammals!
+  d1.hasOwnProperty(&#39;status&#39;); // false
+
+  d1.status = new Status(&#39;playing&#39;);
+
+  d1.status === d2.status      // false
+  d1.hasOwnProperty(&#39;status&#39;); // true
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="das-wunder-des-dreibeinigen-hundes">Das Wunder des dreibeinigen Hundes</h2>
+
+<p>Der Schnauzer hat einen schrecklichen Unfall, und verliert ein Bein:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+d1 = new Dog(&quot;Beagle&quot;);
+d2 = new Dog(&quot;Schnauzer&quot;);
+d2.legs = 3;
+
+console.log(d1.legs); // 4 Beine von Mammal
+console.log(d2.legs); // 3 Beine 
+
+d1.hasOwnProperty(&#39;legs&#39;) // ... false
+d2.hasOwnProperty(&#39;legs&#39;) // ... true
+</pre></div>
+
+<p>Doch nun geschieht ein Wunder: wenn wir mit <code>delete</code> das
+Attribut <code>legs</code> aus <code>d2</code> entfernen hat er wieder 4 Beine - weil
+das im prototypen so gespeichert ist.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+delete(d2.legs);
+
+console.log(d2.legs);     // 4 Beine 
+d2.hasOwnProperty(&#39;legs&#39;) // ... false
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="vererbung-in-klassen-schreibweise">Vererbung in Klassen Schreibweise</h2>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+class Pet {
+  constructor() {
+    this.status = &quot;sleeping&quot;;
+  }
+  log() {
+    console.log(&quot;i am &quot; + this.status + 
+      &quot;. &quot; + this.word + &quot;!&quot;);
+  }
+}
+
+class Mammal extends Pet {
+  constructor() {
+    super();
+    this.legs = 4;
+  }
+}
+
+class Dog extends Mammal {
+  constructor (b) {
+    super();
+    this.breed = b;
+    this.word = &quot;wau&quot;;
+  }
+  sit() {
+    this.status = &quot;sitting&quot;;
+  }
+}
+
+
+d = new Dog(&quot;beagle&quot;);
+d.word    // direkt im Objekt gespeichert
+d.legs    // im Prototyp von Dog gespeichert 
+          // (einem Mammal-Objekt)
+d.status  // im Prototyp von mammal gespeichert 
+          // (einem Pet-Objekt)
+</pre></div>
+
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/javascript/vererbung/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>

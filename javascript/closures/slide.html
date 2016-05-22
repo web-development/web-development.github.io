@@ -67,66 +67,6 @@ auch Closures <a href="http://de.wikipedia.org/wiki/Closure">→</a>.</p>
 </div>
 <div class='slide'>
 
-<h2 id="funktionen-und-sichtbarkeit-von-variablen">Funktionen und Sichtbarkeit von Variablen</h2>
-
-<p>In einer Funktion in Javascript sind lokale und globale
-Variablen sichtbar.  Da Funktionen auch innerhalb von
-Funktionen definiert werden können sind in folgendem Code
-die Variablen a, b und c in der innern Funktion f sichtbar</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  var a = 1;
-  function g( x ) {
-    var b = 2;
-    var s = &quot;Ein String aus g ... &quot;;
-    function f( y ) {
-      var c = 3;
-      return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-    }
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-  console.log(a);  // 1
-  console.log(b);  // ReferenceError: b is not defined
-  console.log(c);  // ReferenceError: c is not defined
-  console.log(x);  // ReferenceError: x is not defined
-  console.log(y);  // ReferenceError: y is not defined
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Eine Besonderheit von Javascript ist das “Hochziehen” (hoisting): Alle
-Variablen-Deklarationen mit <code>var</code> werden an den Anfang der jeweiligen Funktion 
-vor-verlegt.  Folgender Code ist also gleichbedeutent:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function g( x ) {
-    var s = &quot;Ein String aus g ... &quot;;
-    function f( y ) {
-      var c = 3;
-      return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-    }
-    var b = 2; // var b wird hochgezogen zum Beginn von g()
-               // die Initialisierung b = 2 bleibt hier!
-    return s + f( x );
-  }
-
-  g(10);
-  // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-</pre></div>
-
-</div>
-<div class='slide'>
-
 <h2 id="funktionen-und-lebenszeit-von-variablen">Funktionen und Lebenszeit von Variablen</h2>
 
 <p>Nach dem Aufruf einer Funktion verschwinden ihre lokalen Variablen,
