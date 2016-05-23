@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Lehrbuch Web-Development - Beispiel SVG</title>
+  <title>Lehrbuch Web-Development - SVG - Vektor Grafik</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -51,7 +51,7 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Beispiel SVG</h2>
+				<h2 class="title"><a name="slide-0"></a>SVG - Vektor Grafik</h2>
                                 <a href="/grafik/svg/slide.html">als Präsentation ▻</a>
                           </div>
 			
@@ -364,6 +364,43 @@ lokales Koordinatensystem definieren.</p>
 
 
 <a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h2 id="svg-mit-javascript-erzeugen">SVG mit Javascript erzeugen</h2>
+
+<p>Der SVG-Tag kann direkt in einem HTML-Dokument verwendet werden, so wie auf dieser Seite.
+Wenn man SVG-Nodes mit Javascript in das DOM einfügen will braucht man
+eine neue Variante des <code>createElement</code> befehls: create Element with Namespace.
+Der Namespace für SVG ist <code>http://www.w3.org/2000/svg</code>.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+const svg = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;svg&quot;);
+svg.setAttribute(&quot;width&quot;, width);
+svg.setAttribute(&quot;height&quot;, height);
+
+document.getElementById(&#39;grafik&#39;).appendChild( svg );
+
+rect = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+svg.appendChild( rect );
+</pre></div>
+
+<p>Achtung: jQuery kennt nur Methoden zum Erzeugen von HTML, nicht von
+SVG. Aber man kann sich schnell eine SVG-Erzeugungs-Method bauen 
+(Lösung <a href="http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466">von Matthieu Charbonnier</a>)</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+function $s(elem) {
+  return $(document.createElementNS(&#39;http://www.w3.org/2000/svg&#39;, elem));
+}
+
+var $svg = $s(&quot;svg&quot;);
+var $circle = $s(&quot;circle&quot;).attr({...});
+$svg.append($circle);
+</pre></div>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -903,7 +940,7 @@ lokales Koordinatensystem definieren.</p>
                       
                     
                       
-                      <li class="active"><a href="/grafik/svg/">Beispiel SVG</a></li>
+                      <li class="active"><a href="/grafik/svg/">SVG - Vektor Grafik</a></li>
                       
                     
                       
