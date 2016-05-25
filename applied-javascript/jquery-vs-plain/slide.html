@@ -249,7 +249,7 @@ document.querySelector(&#39;h2&#39;)
 
 // Form-Element deaktivieren
 document.querySelector(&#39;input&#39;)
-  .disabled = &quot;disabled&quot;;
+  .disabled = true;
 
 // existiert nicht
 
@@ -312,15 +312,6 @@ Klassen setzen:</p>
 <h4 class="caption">Javascript Code <small>Klassen setzen</small></h4>
 <pre class="lang-javascript prettyprint linenums left">
 // Klassen setzen
-
-
-$(&#39;#foo&#39;).addClass(&#39;bar&#39;);
-$(&#39;#foo&#39;).removeClass(&#39;bar&#39;);
-$(&#39;#foo&#39;).toggle(&#39;bar&#39;);
-// Klassen abfragen
-$(&#39;#foo&#39;).hasClass(&#39;bar&#39;);
-</pre><pre class="lang-javascript prettyprint linenums right">
-// Klassen setzen
 var cl = d.querySelector(&#39;#foo&#39;)
            .classList;
 cl.add(&#39;bar&#39;);
@@ -328,6 +319,15 @@ cl.remove(&#39;bar&#39;);
 cl.toggle(&#39;bar&#39;);
 // Klassen abfragen
 cl.contains(&#39;bar&#39;);
+</pre><pre class="lang-javascript prettyprint linenums right">
+// Klassen setzen
+
+
+$(&#39;#foo&#39;).addClass(&#39;bar&#39;);
+$(&#39;#foo&#39;).removeClass(&#39;bar&#39;);
+$(&#39;#foo&#39;).toggle(&#39;bar&#39;);
+// Klassen abfragen
+$(&#39;#foo&#39;).hasClass(&#39;bar&#39;);
 </pre><div class="clearfix"></div></div>
 
 </div>
