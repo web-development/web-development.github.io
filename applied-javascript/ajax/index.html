@@ -284,147 +284,73 @@ beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element e
 
 <h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
 
-<p>In diesem Beispiel werden die Daten des Yahoo-Wetterberichts auf mehrere Arten in 
-einer Webseite angezeigt. Achtung: Dieses Beispiel benutzt zwar öffentlich zugänglich 
-Daten von der Yahoo-Webseite, diese können aber nicht direkt in Javascript geladen 
-werden! Wenn man es doch versucht erhält man in Firebug die Fehlermeldung „Access to restricted URI denied“:</p>
-
-<p>Man braucht am eigenen Server ein PHP-Programm das die Daten lädt und wiedergibt:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>backend um von yahoo den Wetterbericht zu laden</small></h4>
-<pre class="lang-php prettyprint linenums">
-  &lt;?php 
-    // Datei getweather.php
-    header (&quot;content-type: text/xml&quot;);
-    $url = &quot;http://weather.yahooapis.com/forecastrss?w=2502265&amp;u=c&quot;;
-    $xml=file_get_contents( $url );
-    if ( $xml == false ) {
-        echo &quot;&lt;error&gt;Could not read weather data from yahoo&lt;/error&gt;&quot;;
-    } else {
-        echo &quot;$xml&quot;;
-    }
-  ?&gt;
-</pre></div>
-
-<p>Der Aufruf der lokalen url <code>getweather.php</code> liefert jetzt die gleichen Daten wie die Yahoo 
-Wetterseite. Es handelt sich um Daten im XML-Format, hier ein Auszug:</p>
-
-<div class="example">
-<h4 class="caption">Xml Code <small>Yahoo Wetterbericht als XML</small></h4>
-<pre class="lang-xml prettyprint linenums">
-  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot; ?&gt;
-  &lt;rss version=&quot;2.0&quot; xmlns:yweather=&quot;http://xml.weather.yahoo.com/ns/rss/1.0&quot;  
-                     xmlns:geo=&quot;http://www.w3.org/2003/01/geo/wgs84_pos#&quot;&gt;
-  &lt;channel&gt;
-  &lt;description&gt;Yahoo! Weather for San Francisco, CA&lt;/description&gt;
-  &lt;geo:lat&gt;37.77&lt;/geo:lat&gt;
-  &lt;geo:long&gt;-122.42&lt;/geo:long&gt;
-  &lt;pubDate&gt;Mon, 19 Jan 2009 12:56 pm PST&lt;/pubDate&gt;
-  &lt;yweather:condition  text=&quot;Fair&quot;  code=&quot;34&quot;  temp=&quot;17&quot;  /&gt;
-  &lt;/rss&gt;
-&lt;!-- api3.weather.ac4.yahoo.com uncompressed Mon Jan 19 13:23:31 PST 2009 --&gt;
-</pre></div>
-
-<p>Im Tag <code>&lt;yweater:condition&gt;</code> ist die Temperatur gespeichert und ein Code der die 
-Wetterlage angibt. Unter diesem Code kann man bei Yahoo auch ein Bild zur Wetterlage 
-erhalten, z.B: zu den Codes 27, 33, 32 (mostly cloudy at night, fair at night, sunny) die 
-URLs</p>
+<p>In diesem Beispiel werden Wetter-Daten von zwei Quellen angezeigt. Dabei
+sieht man einen wichtigen Unterschied:</p>
 
 <ul>
-  <li><code>http://l.yimg.com/a/i/us/we/52/27.gif</code></li>
-  <li><code>http://l.yimg.com/a/i/us/we/52/33.gif</code></li>
-  <li><code>http://l.yimg.com/a/i/us/we/52/34.gif</code></li>
+  <li>auf http://openweathermap.org/ ist der Zugriff nur mit API key möglich, auch vom frontend aus</li>
+  <li>auf http://at-wetter.tk/ ist der Zugriff auch ohne API key möglich, aber nicht von einem fremden frontend aus, weil <a href="/cors/">CORS</a> nicht erlaubt  ist.</li>
 </ul>
 
-<p>und die Bilder</p>
 
-<p>Dies wiederspricht dem 2.REST-Prinzip (siehe nächstes Kapitel): dass nämlich direkt 
-URLs angegeben werden sollen, nicht so wie hier ein code, von dem man erst wieder 
-wissen muss, wie man ihn interpretiert.</p>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
-<p>In der Webseite werden die Daten per AJAX geladen, dabei wird eine callback-funktion angegeben:</p>
+<h3 id="direkter-zugriff-auf-eine-fremde-api">Direkter Zugriff auf eine fremde API</h3>
 
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$.get(&quot;getweather.php&quot;, handle_the_weather);
+<p>Um die API von http://openweathermap.org/ zu benutzen
+ist eine Anmeldung und ein API key notwendig.  Das ermöglicht
+eine Beschränkung der Zugriffe: am Server kann mitgezählt werden
+mit welchem API Key wie viele Zugriffe erfolgt sind, und je nach
+dem limitiert oder verrechnet werden.  Die Preise für die API
+sind nach Anzahl der Zugriffen gestaffelt, im Juni 2016 waren die Preise:</p>
 
-function handle_the_weather(data){
-   ...
-}
-</pre></div>
+<p><img src="/images/openweathermap-preise.png" alt="Preise von openweathermap.org" /></p>
 
-<p>Die Callback-Funktion erhält die geladenen Daten als Argument. Wenn die Daten im 
-XML oder HTML-Format sind kann man sie wieder mit jQuery behandeln: den Tag 
-<code>&lt;yweather:condition&gt;</code> auswählen und aus dem Tag die Attribute temp und code aus-
-lesen:</p>
+<p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
+mit gesendet werden:</p>
 
 <div class="example">
+<h4 class="caption">Javascript Code <small>Zugriff auf die openweathermap API</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  cond =  $(&quot;yweather\\:condition&quot;, data);
-  temp = cond.attr(&quot;temp&quot;);
-  code = cond.attr(&quot;code&quot;);
+$.get(&quot;http://api.openweathermap.org/data/2.5/weather?q=London,uk&amp;units=metric&amp;apikey=....&quot;, (data) =&gt; {
+  console.log(&quot;Daten von der API sind angekommen:&quot;);
+  console.log(data);
+  $(&#39;#output&#39;).append(`&lt;p&gt;Das Wetter in London ist ${data.weather[0].main}.&lt;p&gt;`);
+});
 </pre></div>
 
-<p>Der Code wird zum Anzeigen des Bildes von Yahoo verwendet:</p>
+<p>Die genaue Struktur der Daten und wie man sie zerlegt kann man entweder
+der Dokumentation entnehmen, oder einfach in der console erforschen.</p>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+<h2 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales backend</h2>
+
+<p>Die API von at-wetter.tk kann man nicht direkt vom eigenen Frontend abfrage.
+Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
+in manchen Browsern eine Meldung angezeigt:</p>
+
+<p><img src="/images/cors-error.png" alt="CORS Fehlermeldung" /></p>
+
+<p>Statt dessen muss man die Daten über das eigene Backend laden.</p>
+
+<p>In PHP ist der Zugriff auf die API ohne Problem möglich:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  cond =  $(&quot;yweather\\:condition&quot;, data);
-  $(&quot;#dasbild&quot;).attr(&quot;src&quot;, &quot;http://l.yimg.com/a/i/us/we/52/&quot; + code + &quot;.gif&quot;);
+<h4 class="caption">Php Code <small>zugriff auf die wetter-at.tk API</small></h4>
+<pre class="lang-php prettyprint linenums">
+$url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
+$text=file_get_contents( $url );
 </pre></div>
 
-<p>Die Temperatur wird doppelt verwendet: einmal wird sie einfach angezeigt:</p>
+<p>Die Daten die von der API geliefert werden sind nicht
+im JSON Format.  Das könnte jetzt das PHP-Script noch
+erledigen, und dann direkt JSON an das Frontend liefern.</p>
 
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  $(&quot;#temp&quot;).text( temp + &quot;°&quot; );
-</pre></div>
-
-<p>Und zweitens wird je nach Temperatur die Hintergrundfarbe der Webseite passend ge-
-  setzt:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  if( temp &lt; 0 ) {
-      color=&quot;blue&quot;;
-  } else if ( temp &lt; 10 ) {
-      color=&quot;green&quot;;
-  …
-  } else {
-      color=&quot;red&quot;;
-  }
-  $(&quot;body&quot;).css(&quot;background-color&quot;,color);
-</pre></div>
-
-<p>Hier der vollständige Javascript Code:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  $.get(&quot;getweather.php&quot;, handle_the_weather);
-
-  function handle_the_weather(data){
-      var cond, temp, code, color;
-      var cond =  $(&quot;yweather\\:condition&quot;, data);
-      temp = cond.attr(&quot;temp&quot;);
-      code = cond.attr(&quot;code&quot;);
-      $(&quot;#dasbild&quot;).attr(&quot;src&quot;, &quot;http://l.yimg.com/a/i/us/we/52/&quot; + code + 
-  &quot;.gif&quot;);
-      $(&quot;#temp&quot;).text( temp + &quot;°&quot; );
-      if( temp &lt; 0 ) {
-          color=&quot;blue&quot;;
-      } else if ( temp &lt; 10 ) {
-          color=&quot;green&quot;;
-      } else if ( temp &lt; 20 ) {
-          color=&quot;yellow&quot;;
-      } else if ( temp &lt; 30 ) {
-          color=&quot;orange&quot;;
-      } else {
-          color=&quot;red&quot;;
-      }
-      $(&quot;body&quot;).css(&quot;background-color&quot;,color);
-  }
-</pre></div>
+<p>Ein besonderes Problem bei JSON stellen Datum und Uhrzeit dar:
+Dafür gibt es keinen Standard.  Man kann Datum und Uhrzeit als String
+ausliefern, oder eine Epoch-Zahl  (Millisekunden seit dem 1.1.1970) liefern.</p>
 
 
 		
