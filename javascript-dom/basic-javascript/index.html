@@ -305,11 +305,24 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 
 <h3 id="variablen">Variablen</h3>
 
-<p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt.</p>
+<p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript war die Deklaration lange nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt.</p>
 
 <p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben.</p>
 
 <p><img src="/images/image264.png" alt="Abbildung 58: Javascript Console in Firebug" /></p>
+
+<p>Mit Javascript 2015 gibt nun drei Arten eine Variable zu deklarieren:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>deklaration</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var a;  // altmodisch
+
+let b;    // neumodisch, variable
+const c;  // neumodisch, konstante
+</pre></div>
+
+<p>Die Details zu <code>let</code> und <code>const</code> lernen Sie später im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
 
 
 <a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
@@ -335,6 +348,24 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 
 <a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
 
+<h3 id="strings">Strings</h3>
+
+<p>In Javascript gibt es drei Arten Strings zu schreiben.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>drei Arten Strings zu schreiben</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+a = &quot;Hallo&quot;; 
+b = &#39;Welt&#39;;
+c = `Hallo ${b}, der brutto Preis ist ${100 * 1.5}`;
+</pre></div>
+
+<p>Die letzte, genannt  <strong>template literals</strong>, erlaubt das einbinden von Variablen und das
+Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></p>
+
+
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+
 <h3 id="arrays">Arrays</h3>
 
 <p>Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>, …  Aber eigentlich sind Arrays schon Objekte.</p>
@@ -350,7 +381,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 </pre></div>
 
 
-<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
 
 
 
@@ -371,7 +402,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 </pre></div>
 
 
-<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
 
 <h3 id="objekte">Objekte</h3>
 
@@ -399,7 +430,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 </pre></div>
 
 
-<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
 
 <h3 id="zugriff-auf-eigenschaften">Zugriff auf Eigenschaften</h3>
 
@@ -420,7 +451,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 </pre></div>
 
 
-<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
+<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
 
 <h3 id="schleife-ber-eigenschaften">Schleife über Eigenschaften</h3>
 

@@ -304,11 +304,24 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 
 <h3 id="variablen">Variablen</h3>
 
-<p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript ist die Deklaration nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt.</p>
+<p>In andere Programmiersprachen müssen Variablen deklariert werden (ein Datentyp für die Variable wird festgelegt) und initialisiert werden (ein erster Wert wird in die Variable gespeichert). In Javascript war die Deklaration lange nicht nötig. Wenn eine Variable zum ersten Mal im Programm erwähnt wird, wird sie vom Interpreter angelegt.</p>
 
 <p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben.</p>
 
 <p><img src="/images/image264.png" alt="Abbildung 58: Javascript Console in Firebug" /></p>
+
+<p>Mit Javascript 2015 gibt nun drei Arten eine Variable zu deklarieren:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>deklaration</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+var a;  // altmodisch
+
+let b;    // neumodisch, variable
+const c;  // neumodisch, konstante
+</pre></div>
+
+<p>Die Details zu <code>let</code> und <code>const</code> lernen Sie später im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
 
 </div>
 <div class='slide'>
@@ -330,6 +343,24 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
 darüber nur noch floats.  Die Details
 können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="strings">Strings</h3>
+
+<p>In Javascript gibt es drei Arten Strings zu schreiben.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>drei Arten Strings zu schreiben</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+a = &quot;Hallo&quot;; 
+b = &#39;Welt&#39;;
+c = `Hallo ${b}, der brutto Preis ist ${100 * 1.5}`;
+</pre></div>
+
+<p>Die letzte, genannt  <strong>template literals</strong>, erlaubt das einbinden von Variablen und das
+Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></p>
 
 </div>
 <div class='slide'>
