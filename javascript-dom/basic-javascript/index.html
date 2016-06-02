@@ -453,19 +453,20 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 <a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
 
-<h3 id="schleife-ber-eigenschaften">Schleife über Eigenschaften</h3>
+<h3 id="einfache-schleife">Einfache Schleife</h3>
 
-<p>Mit dieser Schreibweise und der for-Schleife kann man über alle Eigenschaften eines Objektes iterieren:</p>
+<p>Neben der <code>while</code> und <code>for</code> Schleife mit index 
+gibt es in Javascript noch möglichkeiten über
+die Werte in einem Array zu iterieren <strong>ohne</strong> den
+index zu benötigen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  var i,t;
-  t = &quot;Das Objekt:\n&quot;;
-  for( i in c ) {
-      t += &quot;Eigenschaft = &quot; + i    + &quot;, &quot;;
-      t += &quot;Wert        = &quot; + c[i] + &quot;\n&quot;;
-  }   
-  alert(t);
+  let liste = [10, 20, 30];
+
+  for (let element of liste) {
+    console.log(element);
+  }
 </pre></div>
 
 
