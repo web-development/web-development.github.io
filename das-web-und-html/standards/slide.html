@@ -58,17 +58,16 @@
 	  <div class='slide'>
 <p>Für diese Lehrbuch ist eine technische Sicht auf das World Wide Web die relevante. 
 Das World Wide Web ist also ein verteiltes (Client/Server) Informationssystem, 
-das durch folgende drei Standards in der jeweils aktuellen Form definiert wird:</p>
+das durch folgende drei Standards definiert wird:</p>
 
 <ul>
-  <li>URL  <!-- XE "URL" -->   (Uniform Resource Locators) nach <a href="http://www.w3.org/Addressing/rfc1738.txt">RFC 1738</a></li>
-  <li>HTTP  <!-- XE "HTTP" -->   (Hypertext Transfer Protocol) nach <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616</a></li>
+  <li>URL  <!-- XE "URL" -->   (Uniform Resource Locators) ursprünglich <a href="http://www.w3.org/Addressing/rfc1738.txt">RFC 1738</a></li>
+  <li>HTTP  <!-- XE "HTTP" -->   (Hypertext Transfer Protocol) ursprünglich <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616</a></li>
   <li>HTML  <!-- XE "HTML" -->    <!-- XE "XHTML" -->   (Hypertext Markup Language)</li>
 </ul>
 
-<p>Wir befinden uns gerade im Übergang auf HTML 5. Noch ist der HTML 5 Standard
-nicht ganz fertig und ganz offiziell - aber er wird 
-schon von den gängigen Browsern umgetzt.</p>
+<p>Die aktuelle Version von HTTP ist 1.2, wir befinden uns gerade im Übergang auf HTTP 2.0
+HTML verwenden wir in der Version 5.</p>
 
 <p>Rund um diese drei Standards ordnen sich weitere wichtige Begriffe an:</p>
 
@@ -81,7 +80,7 @@ schon von den gängigen Browsern umgetzt.</p>
 Dienste in einem Computernetzwerk aufgebaut sein können: Ein Server ist ein Computer der 
 einen bestimmten Dienst anbietet, ein Client ist der „Kunde“, also der Computer der den 
 Dienst in Anspruch nimmt.
-Nach diesem Prinzip funktionieren Web, E-Mail, FTP:</p>
+Nach diesem Prinzip funktionieren Web, E-Mail, SFTP:</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <thead>
@@ -103,9 +102,9 @@ Nach diesem Prinzip funktionieren Web, E-Mail, FTP:</p>
       <td style="text-align: left">Mailserver – speichert E-Mail in verschiedenen Postfächern, leitet E- Mail weiter (an den Server der EmpfängerIn)</td>
     </tr>
     <tr>
-      <td style="text-align: left">FTP</td>
-      <td style="text-align: left">FTP-Client  <!-- XE "FTP" -->   – lädt Dateien von einem Server herunter oder auf einen Server hinauf</td>
-      <td style="text-align: left">FTP-Server – speichert Dateien</td>
+      <td style="text-align: left">SFTP</td>
+      <td style="text-align: left">SFTP-Client  <!-- XE "SFTP" -->   – lädt Dateien (verlüsselt) von einem Server herunter oder auf einen Server hinauf</td>
+      <td style="text-align: left">SFTP-Server – speichert Dateien</td>
     </tr>
   </tbody>
 </table>
@@ -128,7 +127,7 @@ mit grafischer Oberflächen stark zur Verbreitung des World Wide Web beigetragen
 die Browser Opera  <!-- XE "Opera" -->    <!-- XE "Browser:Opera" -->,   Mozilla  <!-- XE "Mozilla" -->    <!-- XE "Browser:Mozilla" --><br />
 und Chrome (in Versionen aus verschiedenen Jahren).</p>
 
-<p><img src="/images/browsers.png" alt="Abbildung 4: Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)" /></p>
+<p><img src="/images/browsers.png" alt="Webbrowser: Mosaic (1993), Opera(2004) und Mozilla(2004), Chrome(2011)" /></p>
 
 </div>
 <div class='slide'>
@@ -138,13 +137,13 @@ und Chrome (in Versionen aus verschiedenen Jahren).</p>
 <p>Alle eben erwähnten Browser haben gemeinsam, dass sie auf einem typischen „Büro-
 Computer“ eingesetzt werden, einem Computer mit grafischer Oberfläche und einem Farb-
 Monitor. 
-Es gibt aber auch „exotischere“ Browser. Abbildung 5 zeigt den Browser lynx,
+Es gibt aber auch „exotischere“ Browser. Die nächste Abbildung zeigt den Browser lynx,
 der nur Text darstellt, aber keine Bilder. Daneben sehen Sie eine 
 „Braille  <!-- XE "Braille" -->   Ausgabezeile“, ein Gerät, das eine Zeile Text in eine Zeile 
 Blindenschrift übersetzt. Mit diesem Webbrowser und diesem Ausgabegerät können Blinde 
 im Web surfen.</p>
 
-<p><img src="/images/anderebrowser.png" alt="Abbildung 5: Text-Only Browser &quot;links&quot; und Braille Ausgabegerät" /></p>
+<p><img src="/images/anderebrowser.png" alt="Text-Only Browser &quot;lynx&quot; und Braille Ausgabegerät" /></p>
 
 </div>
 <div class='slide'>
@@ -154,12 +153,12 @@ im Web surfen.</p>
 <p>In den letzten Jahren haben mobile Geräte mit Internetzugang stark an Bedeutung 
 zugenommen: Smartphones und Tablets.</p>
 
-<p><img src="/images/rise-and-fall-pc.png" alt="Abbildung 6a: Aufstieg und Fall des PCs, zitiert aus asymco.com/2012" /></p>
+<p><img src="/images/rise-and-fall-pc.png" alt="Aufstieg und Fall des PCs, zitiert aus asymco.com/2012" /></p>
 
 <p>Auf diesen neuen Geräten gibt es auch Webbrowser - teilweise spezialisierte Software (Android Browser), teilweise
 adaptionen der klassischen Desktop Browser (Firefox).</p>
 
-<p><img src="/images/image031.png" alt="Abbildung 6b: Browser auf mobilen Geräten: Handys und iPad, 2010" /></p>
+<p><img src="/images/image031.png" alt="Browser auf mobilen Geräten: Handys und iPad, 2010" /></p>
 
 </div>
 <div class='slide'>
@@ -180,7 +179,27 @@ die Seite zu groß / zu lang für das Browser-Fenster, dann erscheint ein Scroll
 dem englischen Wort Website  <!-- XE "Website" -->  . Eine Website besteht aus mehreren 
 Webseiten, die zusammen gehören und untereinander verlinkt sind. Achtung: es gibt kein Wort <strike>Webside</strike>.</p>
 
-<p><img src="/images/image033.png" alt="Abbildung 7: Ein Browser zeigt eine lange Webseite an" /></p>
+<p><img src="/images/image033.png" alt="Ein Browser zeigt eine lange Webseite an" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="webserver">Webserver</h2>
+
+<p>Als Webserver bezeichnet man entweder den ganzen Computer, 
+oder speziell nur die Software, die eine Webseite liefert.</p>
+
+<p>Es gibt zwei Open Source Projekte die
+meist als Webserver verwendet werden und auf allen
+Betriebssystemen laufen:</p>
+
+<ul>
+  <li>Apache</li>
+  <li>nginx</li>
+</ul>
+
+<p>Von Microsoft gibt es noch den Internet Information Server (IIS),
+der nur auf Windows läuft.</p>
 
 </div>
 <div class='slide'>
@@ -616,7 +635,9 @@ durchführen/beantworten zu können. Ein Protokoll mit dieser Eigenschafft nennt
 <h2 id="quellen-und-weiter-lektre">Quellen und weiter Lektüre</h2>
 
 <ul>
-  <li><a href="http://www.asymco.com/2012/01/17/the-rise-and-fall-of-personal-computing/">Aufstieg und Fall des PCs</a>  (Abbildung 6a)</li>
+  <li><a href="http://www.asymco.com/2012/01/17/the-rise-and-fall-of-personal-computing/">Aufstieg und Fall des PCs</a></li>
+  <li><a href="https://www.w3.org/TR/html5/">HTML5 Candidate Recommendation</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7540">RFC 7540 - HTTP/2</a></li>
 </ul>
 </div>
           <div class="slide"><h1>Ende</h1>
