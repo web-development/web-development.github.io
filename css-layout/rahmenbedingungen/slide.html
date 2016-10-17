@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Rahmenbedingungen für Layout - als Präsentation </title>
+	<title>Rahmenbedingungen - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -52,7 +52,7 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Rahmenbedingungen für Layout</h1>
+          <div class="slide"><h1>Rahmenbedingungen</h1>
           <p><a href="/css-layout/rahmenbedingungen/">zurück zum Buch-Kapitel [esc]</a></p>
           </div>
 	  <div class='slide'><p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle.</p>
@@ -90,9 +90,9 @@ die Größe des Browserfensters zu reagieren.</p>
 
 <p>Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.</p>
 
-<p><img src="/images/image097.png" alt="Abbildung 26: Statistik über die Bildschirmauflösung," /></p>
+<p><img src="/images/display-stats.png" alt="Abbildung 26: Statistik über die Bildschirmauflösung," /></p>
 
-<p>http://www.w3schools.com/browsers/browsers_display.asp</p>
+<p><a href="http://www.w3schools.com/browsers/browsers_display.asp">Datenquelle: w3schools</a></p>
 
 </div>
 <div class='slide'>
@@ -162,11 +162,11 @@ die Größe des Browserfensters zu reagieren.</p>
       <td>264 ppi</td>
     </tr>
     <tr>
-      <td>Apple iIPhone6</td>
-      <td> </td>
-      <td>1920x1080</td>
-      <td>5.5 in</td>
-      <td>401 ppi</td>
+      <td>Apple IPhone7</td>
+      <td>10/2016</td>
+      <td>1334×750</td>
+      <td>4.7 in</td>
+      <td>326 ppi</td>
     </tr>
     <tr>
       <td>Amazon Kindle Paperwhite</td>
@@ -190,11 +190,18 @@ die Größe des Browserfensters zu reagieren.</p>
       <td>254 ppi</td>
     </tr>
     <tr>
-      <td>Samsung Galaxy S6 Edge</td>
-      <td>1/2015</td>
-      <td>1440 x 2560</td>
+      <td>Samsung Galaxy S7</td>
+      <td>2/2016</td>
+      <td>2560×1440 pixel</td>
       <td>5.1 in</td>
       <td>577 ppi</td>
+    </tr>
+    <tr>
+      <td>12” Macbook ‘Retina’</td>
+      <td>03/2015</td>
+      <td>2304 × 1440</td>
+      <td>12 in</td>
+      <td>226 ppi</td>
     </tr>
   </tbody>
 </table>
@@ -232,178 +239,8 @@ die Größe des Browserfensters zu reagieren.</p>
   <li>Nur das verdient wirklich die Bezeichnung „Webdesign“.</li>
 </ol>
 
-</div>
-<div class='slide'>
-
-<h2 id="technische-umsetzung">Technische Umsetzung</h2>
-
-<p>Kleine Unterschiede im vorhandenen Platz kann man durch Zentrierung des Inhalts augleichen (siehe auch “Briefmarkenlayout”)</p>
-
-<p><img src="/images/image110.png" alt="Abbildung 28: Homepage der FH Salzburg (August 2012)" /></p>
-
-</div>
-<div class='slide'>
-
-
-
-<div class="example">
-<h4 class="caption">Css Code <small>fixen Breite und automatischer Seitenabstand ergeben eine Zentierung des Inhalts</small></h4>
-<pre class="lang-css prettyprint linenums">
-div#wrap {
-  width: 76em;
-  margin: 0 auto;
-}
-</pre></div>
-
-</div>
-<div class='slide'>
-
-<h2 id="responsive-design">Responsive Design</h2>
-
-<p>Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in “A List Apart” unter dem Begriff “Responsive Webdesign” popularisiert <a href="http://www.alistapart.com/articles/responsive-web-design/">→</a>.</p>
-
-<p><img src="/images/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="mobile-first">Mobile First</h2>
-
-<p>Luke Wroblewski schlug schon 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="mediaqueries">Mediaqueries</h2>
-
-<p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
-
-<div class="example">
-<h4 class="caption">Css Code <small>CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel</small></h4>
-<pre class="lang-css prettyprint linenums">
-@media screen and (max-width: 480px) {
-  .column {
-    float: none;
-  }
-  /* weitere Regeln für kleine Screens */
-}
-/* allgemein gültige Regeln */
-</pre></div>
-
-</div>
-<div class='slide'>
-
-<h2 id="bilder">Bilder</h2>
-<p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
-
-</div>
-<div class='slide'>
-
-<h3 id="pixel">Pixel</h3>
-<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
-
-<p><img src="/images/image117.png" alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" /></p>
-
-<p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
-dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
-
-<p><img src="/images/image119.png" alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" /></p>
-
-</div>
-<div class='slide'>
-
-<h3 id="vektor">Vektor</h3>
-
-<p>Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag:</p>
-
-<pre><code>&lt;img src="circle.svg"&gt;
-</code></pre>
-
-<p><img src="/images/circle.svg" alt="Abbildung: Kreis in SVG-Darstelllung" /></p>
-
-</div>
-<div class='slide'>
-
-<h3 id="svg-erstellen">SVG erstellen</h3>
-
-<p>SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder anderen Vektor-Programmen erstellen.</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot;
-    &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
-&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;
-     version=&quot;1.1&quot; baseProfile=&quot;full&quot; width=&quot;100%&quot; height=&quot;100%&quot;
-     preserveAspectRatio=&quot;xMinYMin meet&quot; viewBox=&quot;0 0 300 300&quot;&gt;
-    &lt;linearGradient id=&quot;orange_red&quot;
-        x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;
-        &lt;stop offset=&quot;0%&quot;
-            style=&quot;stop-color:rgb(255,255,0); stop-opacity:1&quot;/&gt;
-        &lt;stop offset=&quot;100%&quot; 
-            style=&quot;stop-color:rgb(255,0,0); stop-opacity:1&quot;/&gt;
-    &lt;/linearGradient&gt;
-    &lt;circle id=&quot;myCircle&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;100&quot; 
-       fill=&quot;url(#orange_red)&quot; /&gt;
-&lt;/svg&gt;
-</pre></div>
-
-<p>Das Attribut <code>preserveAspectRatio</code> im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.</p>
-
-</div>
-<div class='slide'>
-
-<h3 id="canvas">Canvas</h3>
-
-<p>Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="schriftgre">Schriftgröße</h2>
-<p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG –</p>
-
-<p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt.</p>
-
-<p><img src="/images/zeilenumbruch.png" alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="skalieren">Skalieren</h2>
-
-<p>Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei
-verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und
-verkleinert (heute default), oder nur der Text wird verändern, die Bilder aber bleiben gleich. 
-Hier das entsprechende Menü in Firefox.</p>
-
-<p><img src="/images/zoom.png" alt="Abbildung 32: Zoom Menü in Firefox" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="retina-displays">Retina Displays</h2>
-
-<p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor eine
-neue Herausforderung: soll man - wegen der Pixeldichte - riesige Bilder ausliefern?<br />
-Oder - weil es doch ein mobiles Gerät ist, und die Datenübertragung über
-das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
-
-<p>Dafür wurden die neuen attribute “srcset” und “sizes” entwickelt, diese
-werden aber derzeit noch nicht von allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
-
-<p>Mit Hilfe der Javascript Library <a href="http://scottjehl.github.io/picturefill/">picturefill</a> kann man 
-diese feature trotzdem schon verwenden, und so verschiedene Bilder für verschiedene Bildschirmauflösungen
-ausliefern.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="vertiefung">Vertiefung</h2>
-
-<ul>
-  <li><a href="http://blog.cloudfour.com/picking-responsive-tables-solution/">Responsive Tables</a></li>
-</ul>
+<p>Im nächsten Kapitel werden mit “Responsive Design” und “Responsive Images” die aktuellen
+Antworten im Web Design vorgestellt.</p>
 </div>
           <div class="slide"><h1>Ende</h1>
           <p><a href="/css-layout/rahmenbedingungen/">zurück zum Buch-Kapitel [esc]</a></p>

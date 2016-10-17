@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Responsive Design - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Responsive Design</h1>
+          <p><a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	  <div class='slide'>
+</div>
+<div class='slide'>
+
+<h2 id="responsive-design">Responsive Design</h2>
+
+<p>Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in “A List Apart” unter dem Begriff “Responsive Webdesign” popularisiert <a href="http://www.alistapart.com/articles/responsive-web-design/">→</a>.</p>
+
+<p><img src="/images/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="mobile-first">Mobile First</h3>
+
+<p>Luke Wroblewski schlug schon 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="mediaqueries">Mediaqueries</h3>
+
+<p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
+
+<div class="example">
+<h4 class="caption">Css Code <small>CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel</small></h4>
+<pre class="lang-css prettyprint linenums">
+@media screen and (max-width: 480px) {
+  .column {
+    float: none;
+  }
+  /* weitere Regeln für kleine Screens */
+}
+/* allgemein gültige Regeln */
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
+
+<p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="pixel">Pixel</h3>
+<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
+
+<p><img src="/images/image117.png" alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" /></p>
+
+<p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
+dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
+
+<p><img src="/images/image119.png" alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" /></p>
+
+</div>
+<div class='slide'>
+
+<h1 id="responsive-images">Responsive Images</h1>
+
+<p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
+Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?<br />
+Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
+das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
+
+<p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
+Ausser vom Internet Explorer wird das Attribut 2016 von 
+allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
+
+<p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
+der Browser entscheidet welche Version er lädt und darstellt.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;img src=&quot;salzburg.jpg&quot; style=&quot;width: 1353px; height: 461px;&quot;
+       srcset=&quot;salzburg.jpg, salzburg@2x.jpg 2x, salzburg@4x.jpg 4x&quot;&gt;
+</pre></div>
+
+<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel dargestellt.
+Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
+zur Verfügung, die der Browser laden und darstellen kann.</p>
+
+<p>Der folgende Screenshot wurde auf einem Macbook mit Retinadisplay erstellt,
+in der oberen Variante wird das “normale” Bild dargestellt, darunter das in
+der <strong>2x</strong> Version.</p>
+
+<p><img src="/images/vergleich.jpg" alt="Ausschnitt aus der Demo-Seite" /></p>
+
+<p>Die Demo-Seite zeigt drei Abstufungen:</p>
+
+<p><a href="/images/responsive-images.html">Demo-Seite für “Responsive Images”</a></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="vektor">Vektor</h3>
+
+<p>Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag:</p>
+
+<pre><code>&lt;img src="circle.svg"&gt;
+</code></pre>
+
+<p><img src="/images/circle.svg" alt="Abbildung: Kreis in SVG-Darstelllung" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="svg-erstellen">SVG erstellen</h3>
+
+<p>SVG-Dateien kann man im Code schreiben oder mit Inkscape, Adobe Illustrator oder anderen Vektor-Programmen erstellen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot;
+    &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;
+     version=&quot;1.1&quot; baseProfile=&quot;full&quot; width=&quot;100%&quot; height=&quot;100%&quot;
+     preserveAspectRatio=&quot;xMinYMin meet&quot; viewBox=&quot;0 0 300 300&quot;&gt;
+    &lt;linearGradient id=&quot;orange_red&quot;
+        x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;
+        &lt;stop offset=&quot;0%&quot;
+            style=&quot;stop-color:rgb(255,255,0); stop-opacity:1&quot;/&gt;
+        &lt;stop offset=&quot;100%&quot; 
+            style=&quot;stop-color:rgb(255,0,0); stop-opacity:1&quot;/&gt;
+    &lt;/linearGradient&gt;
+    &lt;circle id=&quot;myCircle&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;100&quot; 
+       fill=&quot;url(#orange_red)&quot; /&gt;
+&lt;/svg&gt;
+</pre></div>
+
+<p>Das Attribut <code>preserveAspectRatio</code> im svg-Tag bestimmt wie das Bild auf verschiedenen Größen dargestellt werden soll.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="canvas">Canvas</h3>
+
+<p>Der canvas-Tag bietet eine Leinwand, auf die mit Javascript in 2D oder 3D gezeichnet werden kann. Ohne Javascript ist er nur eine leere Leinwand, und wird deswegen hier noch nicht behandelt.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="schriftgre">Schriftgröße</h2>
+<p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG –</p>
+
+<p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt.</p>
+
+<p><img src="/images/zeilenumbruch.png" alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="skalieren">Skalieren</h2>
+
+<p>Beim Vergrößern und Verkleinern der Schriftgröße verwenden die Browser zwei
+verschiedene Methoden: entweder die Bilder werden mit der Schrift vergrößert und
+verkleinert (heute default), oder nur der Text wird verändern, die Bilder aber bleiben gleich. 
+Hier das entsprechende Menü in Firefox.</p>
+
+<p><img src="/images/zoom.png" alt="Abbildung 32: Zoom Menü in Firefox" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="vertiefung">Vertiefung</h2>
+
+<ul>
+  <li><a href="http://blog.cloudfour.com/picking-responsive-tables-solution/">Responsive Tables</a></li>
+</ul>
+</div>
+          <div class="slide"><h1>Ende</h1>
+          <p><a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a></p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
