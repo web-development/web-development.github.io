@@ -67,8 +67,8 @@
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var my_canvas = document.getElementById(&quot;c&quot;);
-var my_context = my_canvas.getContext(&quot;2d&quot;);
+let my_canvas = document.getElementById(&quot;c&quot;);
+let my_context = my_canvas.getContext(&quot;2d&quot;);
 </pre></div>
 
 <p>Wir verwenden erst einmal die 2-dimensionale Zeichenfläche des Canvas. Wenn Sie mehr von Computergrafik verstehen können Sie auch die 3d-Version, genannt „webgl“ verwenden.</p>
@@ -114,7 +114,7 @@ my_context.fillText(&quot;hier bin ich&quot;, 10, 50);
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var cat = document.getElementById(&quot;cat&quot;);   
+let cat = document.getElementById(&quot;cat&quot;);   
 my_context.drawImage(cat, 0, 0);
 </pre></div>
 
@@ -129,7 +129,7 @@ erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var cat = new Image();   
+let cat = new Image();   
 cat.src = &quot;images/cat.png&quot;;   
 cat.onload = function() {     
   my_context.drawImage(cat, 0, 0);   
