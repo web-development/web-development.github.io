@@ -111,7 +111,7 @@ node.replaceChild()
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-d = document.getElementById(&quot;person_25&quot;);
+let d = document.getElementById(&quot;person_25&quot;);
 d.setAttribute(&quot;style&quot;, &quot;display:none&quot;);
 </pre></div>
 
@@ -133,8 +133,8 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-inputs = document.querySelectorAll(&quot;input&quot;);
-i=0;
+let inputs = document.querySelectorAll(&quot;input&quot;);
+let i=0;
 while(i &lt; inputs.length) {
   console.log(&quot;input mit name &quot; + inputs[i].name );
   i++;
@@ -157,14 +157,14 @@ while(i &lt; inputs.length) {
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-vn = document.getElementById(&quot;v_25&quot;).firstChild.data;
+let vn = document.getElementById(&quot;v_25&quot;).firstChild.data;
 </pre></div>
 
 <p>oder – etwas kürzer – über die Eigenschaft textContent:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-vn = document.getElementById(&quot;v_25&quot;).textContent;
+let vn = document.getElementById(&quot;v_25&quot;).textContent;
 </pre></div>
 
 <p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte 
@@ -178,19 +178,19 @@ Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” 
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-node = document.createElement(&quot;h1&quot;);  
+let node = document.createElement(&quot;h1&quot;);  
        // erzeugt eine Node, Tag-Name angeben
 node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong&gt; bla&quot;;                
        // Zugriff auf den &quot;Inhalt&quot; der node als String, 
        // ist of schneller als DOM manipulation! 
 node.appendChild(newchild);     
        // fügt die newchild als Kind an 
-newnode = node.cloneNode()    
+let newnode = node.cloneNode()    
        // gibt eine Kopie der Node zurück, 
        // die Kopie ist noch nicht im DOM Baum eingefügt! 
 node.insertBefore(newchild, oldchild)    
        // fügt newchild als Kind von node ein, vor dem oldchild 
-oldchild = node.removeChild(child)    
+let oldchild = node.removeChild(child)    
        // löscht child als Kind von node, 
        // gibt es als &quot;frei schwebende&quot; node zurück 
 node.replaceChild(newchild, oldchild)  
@@ -241,8 +241,8 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  var first_pizza = document.querySelector(&quot;div.pizza&quot;);
-  var new_pizza = first_pizza.cloneNode(true);
+  let  first_pizza = document.querySelector(&quot;div.pizza&quot;);
+  let  new_pizza = first_pizza.cloneNode(true);
   first_pizza.insertBefore(new_pizza, null);
 </pre></div>
 
@@ -279,7 +279,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 &lt;/form&gt;
 &lt;script&gt;
   function setcolor( c ) {
-    b = document.getElementById(&#39;farbfeld&#39;);
+    let b = document.getElementById(&#39;farbfeld&#39;);
     b.style.backgroundColor = c
   }
 &lt;/script&gt;
@@ -304,7 +304,7 @@ müssen wir eine id hinzufügen:</p>
 &lt;/form&gt;
 &lt;script&gt;
   function setcolor( ev ) {
-    b = document.getElementById(&#39;farbfeld&#39;);
+    let b = document.getElementById(&#39;farbfeld&#39;);
     b.style.backgroundColor = &#39;red&#39;;
   }
   document.getElementById(&#39;r&#39;).addEventListener(&#39;click&#39;, setcolor);
@@ -341,7 +341,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 &lt;/form&gt;
 &lt;script&gt;
   function setcolor( ev ) {
-    b = document.getElementById(&#39;farbfeld&#39;);
+    let b = document.getElementById(&#39;farbfeld&#39;);
     b.style.backgroundColor = this.style.backgroundColor;
   }
   document.getElementById(&#39;r&#39;).addEventListener(&#39;click&#39;, setcolor);
@@ -387,8 +387,8 @@ zuständig für das click-event am spam <code>.removthis</code> definieren.</p>
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 function removeMe(e){
-  var me = e.target;
-  var my_pizza = me.parentNode.parentNode;
+  let me = e.target;
+  let my_pizza = me.parentNode.parentNode;
   my_pizza.parentNode.removeChild( my_pizza ); 
 }
 document.querySelector(&quot;.removethis&quot;)
