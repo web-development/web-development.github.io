@@ -289,10 +289,10 @@ erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist
 
 
 <p>Dieser Footer könnte auch eine statische HTML-Datei sein, 
-da hier gar keine Variablen oder PHP-Code verwendet warden:</p>
+da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Datei header.php</small></h4>
+<h4 class="caption">Php Code <small>Datei footer.php</small></h4>
 <pre class="lang-php prettyprint linenums">
   &lt;footer&gt;&amp;copy; 2012 Brigitte&lt;/footer&gt;
 &lt;/body&gt;
@@ -389,18 +389,38 @@ Variableninterpolation funktioniert.</p>
 
 
 
-<p>Variablen in PHP müssen nicht deklariert oder initialisiert werden. 
-PHP unterscheidet zwischen den Datentypen boolean, integer, 
-float, string, array, object, resource und NULL. 
-In einer Variablen können nacheinander verschiedene Datentypen 
-gespeichert werden, die Variable selbst hat also keinen Typ! 
-Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:</p>
+<p>PHP unterscheidet zwischen den Datentypen boolean, integer, 
+float, string, array, object, resource und NULL.</p>
+
+<p>In einer Variablen können nacheinander verschiedene Datentypen 
+gespeichert werden, die Variable selbst hat also keinen Typ!</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+&lt;?php
+  $foo = &quot;Hallo 🦄&quot;;   // $foo contains a string
+  $foo = 2;           // $foo now contains an integer (2)
+  $foo = 3.3;        // $foo now contins a float (3.3)
+?&gt;
+</pre></div>
+
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+
+
+<p>Variablen in PHP müssen nicht deklariert oder initialisiert werden.</p>
+
+<p>Seit PHP 7 <strong>kann</strong> man für Funktions-Parameter und Rückgabewerte
+einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.arguments.php#functions.arguments.type-declaration">PHP Dokumentation: Funktionsparameter</a>.</p>
+
+<p>Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 &lt;?php
   $foo = &quot;0&quot;;         // $foo is a string with one character (ASCII 48)
-  $foo += 2;          // $foo is now an integer (2)
+  $foo = $foo + 2;    // $foo is now an integer (2)
   $foo = $foo + 1.3;  // $foo is now a float (3.3)
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
   $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
@@ -408,7 +428,7 @@ Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
 
 
 
@@ -432,7 +452,7 @@ interpretiert seine beiden Operanden als Strings.</p>
 <p>Der Operator bestimmt also den Typ!</p>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
 
 
 
@@ -443,7 +463,7 @@ genau umgekehrt: da entscheidet der Datentyp<br />
 <p><img src="/images/php-javascript-plus.png" alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" /></p>
 
 
-<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h2 id="arrays">Arrays</h2>
 
@@ -465,7 +485,7 @@ for($i=0;$i&lt;count($foo);$i++) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
 
 
 
@@ -494,7 +514,7 @@ foreach( $foo as $key =&gt; $value ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
 
 
 
@@ -514,7 +534,7 @@ $foo[] = &quot;das Nächste&quot;;
 </pre></div>
 
 
-<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
 
 
 
@@ -527,7 +547,7 @@ gibt eine ganze Reihe von Sortier-Funktionen. Sie finden
 diese im Abschnitt <a href="http://at.php.net/manual/de/ref.array.php">→Array-Funktionen</a> der PHP-Doku.</p>
 
 
-<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
 
 <h2 id="funktionen-und-scope">Funktionen und Scope</h2>
 
@@ -546,7 +566,7 @@ $y = foo(20, &quot;Pfund&quot;);
 Rückgabewert ist leicht verständlich.</p>
 
 
-<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
 
 
 
@@ -572,7 +592,7 @@ möglich ist! Die Variable <code>$pi</code> ist in der Funktion nicht sichtbar,
 stattdessen wird mit einer neuen Variable <code>$pi</code> mit Default-Wert <code>0</code> gerechnet.</p>
 
 
-<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
 
 
 
@@ -593,8 +613,10 @@ echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 // korrekte Berechnung und Ausgabe
 </pre></div>
 
+<p>Siehe auch <a href="http://php.net/manual/de/language.variables.scope.php">PHP Dokumentation: Geltungsbereich von Variablen</a></p>
 
-<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
+
+<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
 
 
 
@@ -630,7 +652,7 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 </table>
 
 
-<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
+<a class='slide_break' name='slide-26' href='slide.html#slide-26'>▻</a>
 
 <h2 id="empfohlene-lektre">Empfohlene Lektüre</h2>
 
