@@ -62,11 +62,11 @@
       
     
       
-      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
       
     
       
-      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
       
     
       
@@ -74,23 +74,23 @@
       
     
       
-      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
       
     
       
-      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
       
     
       
-      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
       
     
       
-      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
       
     
       
-      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
       
     
       
@@ -103,22 +103,21 @@
 
 
 			<p>Die Sicherheit von Web Applikationen ist ein komplexes Thema.
-Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">OWASP Top 10 von 2010</a>
+Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die <a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">OWASP Top 10 von 2013</a>
 sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, Apache anwenden.</p>
 
 <p>Zehn Problemfelder die sie kennen sollten:</p>
 
 <ul>
   <li>A1 - Injection</li>
-  <li>A2 – Cross-Site Scripting (XSS)</li>
-  <li>A3 - Fehler in Authentifizierung und Session Management</li>
-  <li>A4 - Unsichere direkte Objekt-referenzen</li>
-  <li>A5 – Cross-Site Request Forgery (CSRF)</li>
-  <li>A6 – Sicherheits-relevante Fehlkonfiguration</li>
-  <li>A7 - Kryptografisch unsichere Speicherung</li>
-  <li>A8 - Mangelhafter URL-Zugriffsschutz</li>
-  <li>A9 - Unzureichende Absicherung der Transportschicht</li>
-  <li>A10 - Ungeprüfte Um- und Weiterleitungen</li>
+  <li>A2 - Fehler in Authentifizierung und Session Management</li>
+  <li>A3 – Cross-Site Scripting (XSS)</li>
+  <li>A4 - Unsichere direkte Objektreferenzen</li>
+  <li>A6 - Verlust der Vertraulichkeit sensibler Daten</li>
+  <li>A7 - Fehlerhafte Autorisierung auf  Anwendungsebene</li>
+  <li>A8 – Cross-Site Request Forgery (CSRF)</li>
+  <li>A9 - Nutzung von Komponenten mit bekannten Schwachstelle</li>
+  <li>A10 - Ungeprüfte Um- und Weiterleitungen</li>
 </ul>
 
 <p>Was Sie können sollten</p>
@@ -133,6 +132,12 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
   <li>Sie können erkennen, wenn eine Applikation den Zugriffsschutz nicht konsequent für jede URL überprüft, und das Problem beheben</li>
   <li>Sie können erkennen wann SSL verwendet werden sollte</li>
   <li>Sie können Sicherheitsprobleme bei der Weiterleitung an externe Seiten erkennen und vermeiden</li>
+</ul>
+
+<p>Quellen</p>
+
+<ul>
+  <li><a href="https://www.owasp.org/images/4/42/OWASP_Top_10_2013_DE_Version_1_0.pdf">OWASP Top 10, 2013, deutsche version</a></li>
 </ul>
 
 
@@ -773,11 +778,11 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                       
                     
                       
-                      <li ><a href="/security/a2-xss/">Cross Site Scripting (XSS)</a></li>
+                      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-auth/">Authentifizierung und Session-Management</a></li>
+                      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
                       
                     
                       
@@ -785,23 +790,23 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                       
                     
                       
-                      <li ><a href="/security/a5-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-krypto/">Kryptografisch unsichere Speicherung</a></li>
+                      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-url/">Mangelhafter URL-Zugriffsschutz</a></li>
+                      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-transport/">Unzureichende Absicherung der Transportschicht</a></li>
+                      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
                       
                     
                       
