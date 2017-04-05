@@ -103,9 +103,9 @@ und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 
 <p>Für dieses Problem gab es in PHP bis Version 5.3.0 eine <strong>einfache</strong> und <strong>falsche</strong> Lösung:</p>
 
-<p>Urspünglich veränderte PHP automatisch alle Daten die über GET, POST  und
-Cookies hereinkommen: vor alle Anführungszeichen wird ein Backslash eingefügt.
-Aus „That’s it“ wird also automatisch „That\’s it“ , das SQL-Statement
+<p>Urspünglich veränderte PHP automatisch alle Daten die über GET, POST und
+Cookies hereinkommen: Vor alle Anführungszeichen wird ein Backslash eingefügt.
+Aus „That’s it“ wird also automatisch „That\’s it“, das SQL-Statement
 funktioniert wieder:</p>
 
 <div class="example">
@@ -122,15 +122,15 @@ anderen Kontexten muss man ganz anders Escapen.</p>
 
 
 
-<p>Wenn Sie eine PHP Version größer als 5.4.0 verwenden brauchen
-Sie sich nicht mehr darum zu kümmern. Bei änternen Versionen 
+<p>Wenn Sie eine PHP-Version größer als 5.4.0 verwenden, brauchen
+Sie sich nicht mehr darum zu kümmern. Bei älteren Versionen 
 sollten Sie die <code>magic_quotes</code> abschalten:</p>
 
 <p><code caption="In der Apache Konfiguration: magic quotes abschalten">
 php_flag magic_quotes_gpc off
 </code></p>
 
-<p>Mit folgendem Programm können Sie testen ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
+<p>Mit folgendem Programm können Sie testen, ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
@@ -145,8 +145,8 @@ print_r($_POST);
 echo(&quot;&lt;/pre&gt;&quot;);
 </pre></div>
 
-<p>In Wirklichkeit konnte man die magic Quotes bis Verison nicht ganz abschalten, wie man in der
-PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>.
+<p>In Wirklichkeit konnte man die magic quotes bis Version nicht ganz abschalten, wie man in der
+PHP-Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>.
 Das Problem betrifft allerdings nur Array-Parameter.</p>
 
 </div>
@@ -154,7 +154,7 @@ Das Problem betrifft allerdings nur Array-Parameter.</p>
 
 <h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
-<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared Statements.</p>
+<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared statements.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
@@ -199,11 +199,11 @@ $sth-&gt;execute(
 
 
 
-<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen:  die
-Tabelle verlangt zum Beispiel in unter email einen eindeutigen Eintrag, wenn man
-hier einfach nichts eingibt gibt das einen Fehler.</p>
+<p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen: Die
+Tabelle verlangt, zum Beispiel, für email einen eindeutigen Eintrag. Wenn man
+hier einfach nichts eingibt, ergibt das einen Fehler.</p>
 
-<p>So weit sollten Sie es nicht kommen lasse: Sie sollten die Eingaben aus dem
+<p>So weit wollen Sie es nicht kommen lassen: Sie sollten die Eingaben aus dem
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
 deutsche Fehlermeldungen ausgeben.</p>
 
@@ -228,10 +228,10 @@ $id = $dbh-&gt;lastInsertId(&#39;users_id_seq&#39;);
 header(&quot;Location: person.php?id=$id&quot;);
 </pre></div>
 
-<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: nach dem
+<p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: Nach dem
 Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
-weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu
-angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
+weitergeleitet. Falls man danach auf „Reload“ drückt, wird der Datensatz zwar neu
+angezeigt, aber so verhindert, dass er ein zweites Mal eingefügt wird.</p>
 
 </div>
           <div class="slide"><h1>Einfügen</h1>
