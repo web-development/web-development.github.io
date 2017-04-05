@@ -143,11 +143,28 @@ Das Problem betrifft allerdings nur Array-Parameter.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
 <pre class="lang-php prettyprint linenums">
+
+// Variante 1: mySQL (mit NULL für den autoincrement id-Wert)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
       VALUES
-    (NULL,        ?,      ?,    ?,              ?)&quot;);
+    (NULL, ?, ?, ?, ?)&quot;);
+    
+// Variante 2: postgreSQL (mit DEFAULT für den autoincrement id-Wert)
+$sth = $dbh-&gt;prepare(
+  &quot;INSERT INTO users
+    (id,  firstname,surname,email,profile_visible)
+      VALUES
+    (DEFAULT, ?, ?, ?, ?)&quot;);
+
+// Variante 3: mySQL + postgreSQL (id-Wert weglassen)
+$sth = $dbh-&gt;prepare(
+  &quot;INSERT INTO users
+    (firstname, surname, email, profile_visible)
+      VALUES
+    (?, ?, ?, ?)&quot;);
+
 
 $sth-&gt;execute(
   array(
