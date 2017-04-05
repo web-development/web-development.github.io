@@ -50,12 +50,73 @@
 			
 			
 			<a name='slide-1'></a>
-<p>TODO</p>
+<p>“Constraints” sind absichtliche <strong>Einschränkungn</strong> die man den Daten
+auferlegen kann.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<p>Ein Constraint kennen Sie schon: Wenn man einen
+Primäreschlüssel definiert, dann soll dieser ja jeden Datensatz
+eindeutig identifizieren. Das heisst: der Primärschlüssel muss
+eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-SELECT * FROM `projects_roles_users` 
-WHERE user_id NOT IN (SELECT id FROM users)
+sql&gt; CREATE TABLE departments ( dep_name VARCHAR(20) PRIMARY KEY, … );
+completed in 23ms
+sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
+1 row(s) affected in 16ms
+sql&gt; INSERT INTO departments VALUES(&#39;Engineering&#39;)
+1 row(s) affected in 7ms
+sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
+[23505] ERROR: 
+  duplicate key value violates unique constraint &quot;departments_pkey&quot;
+  Detail: Key (name)=(Marketing) already exists.
+</pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
+<p>Ein  <strong>unique constraint</strong> kann man auch einer anderen Spalte,
+oder einer kombination von Spalten auferlegen.</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(20) UNIQUE,
+  email VARCHAR(220) UNIQUE
+);
+</pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
+
+<p>Bei einer Beziehung macht es Sinn, die existenz des Fremdschlüssels
+in der anderen Tabelle mit einem <strong>foreign key constraint</strong> sicher zu
+stellen.</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+CREATE TABLE departments (
+  dep_id SERIAL PRIMARY KEY,
+  dep_name VARCHAR(20)
+);
+CREATE TABLE employees (
+  name VARCHAR(20),
+  dep_id integer NULL REFERENCES departments(dep_id)
+);
+INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
+[23503] ERROR: insert or update on table &quot;employees&quot; 
+  violates foreign key constraint &quot;employees_dep_id_fkey&quot;
+  Detail: Key (dep_id)=(99) is not present in table &quot;departments&quot;.
 </pre></div>
 
 
