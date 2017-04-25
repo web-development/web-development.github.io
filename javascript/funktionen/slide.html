@@ -61,12 +61,47 @@
             <a href="/javascript/funktionen/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
+             | Nächste Präsentation <a href="/javascript/objekte//slide.html">Objekte + Klassen</a>
             
             </p>
           </div>
 	  <div class='slide'>
-<p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
+<p>In Javascript kann eine Funktion mit Namen definiert werden, oder anonym:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function r1( s, x ) {
+    let result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  function ( s, x ) {
+    let result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  // Aufruf:
+  r1(&#39;*&#39;, 10);
+</pre></div>
+
+<p>Die zweite Funktion kann aber nicht aufgerufen werden.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Damit man eine anonyme Funktion verwenden kann, muss sie erst
+auf eine Variable zugewiesen werden:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
@@ -88,6 +123,10 @@
     }
     return result;
   }
+
+  // Aufruf:
+  r1(&#39;*&#39;, 10);
+  r2(&#39;*&#39;, 10);
 </pre></div>
 
 </div>
@@ -95,12 +134,13 @@
 
 
 
-<p>Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function</p>
+<p>Seit Javascript 2015 gibt es doch eine weitere Schreibweise für anonyme 
+Funktionen: die Arrow Function</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  ( s, x ) =&gt; {
+  let f1 = ( s, x ) =&gt; {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -115,7 +155,7 @@
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  ( s, x ) =&gt; s + &quot; mal &quot; + x;
+  let f2 = ( s, x ) =&gt; s + &quot; mal &quot; + x;
 </pre></div>
 
 <p>Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
@@ -124,7 +164,7 @@ die Argumente weglassen:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  x =&gt; x + &quot; ist das beste&quot;;
+  let f3 = x =&gt; `${x} ist das beste`;
 </pre></div>
 
 </div>
@@ -133,17 +173,17 @@ die Argumente weglassen:</p>
 
 
 <p>Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
-Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
+Kombiniert mit der anonymen Schreibweise für Funktionen können wir so Funktionen als
 Teile von Objekten oder Arrays definieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen in JSON</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   objekt = {
-    prop1 : &quot;string&quot;,
+    prop1 : &quot;Schokolade&quot;,
     prop2 : 42,
     method_1 : function () {  console.log( &quot;method 1&quot; ); },
-    method_2 : x =&gt; x + &quot; ist das beste&quot;
+    method_2 : x =&gt; `${x} ist das beste`
   }
 </pre></div>
 
@@ -153,24 +193,8 @@ Teile von Objekten oder Arrays definieren:</p>
 <h4 class="caption">Javascript Code <small>Methoden aufrufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 objekt.method_1();
-objekt.method_2(&quot;Schokolade&quot;);
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Zusätzlich zum einfachen Aufruf mit Funktionsname, Klammern, Argumenten <code>f(x)</code>
-gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen: 
-<code>call</code> und <code>apply</code>:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Funktion r aufrufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  r(&quot;hallo &quot;, 10);
-  r.call(null, &quot;hallo &quot;, 10);
-  r.apply(null, [  &quot;hallo &quot;, 10 ]  );
+objekt.method_2(&quot;Eis&quot;);
+objekt.method_2(objekt.prop1);
 </pre></div>
 
 </div>
@@ -229,8 +253,9 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 
 
-<p>Wird eine Methode mit einer Arrow Function definiert, dann bezieht
-sich <code>this</code> nicht auf das aufrufende Objekt, sondern behält seinen
+<p>Eine Arrow Function hat nie ein eigenes this.
+Wird eine Methode mit einer Arrow Function definiert, dann bezieht
+sich <code>this</code> also nicht auf das aufrufende Objekt, sondern behält seinen
 Wert:</p>
 
 <div class="example">
@@ -250,34 +275,6 @@ Wert:</p>
   // output auf der Console:
   // this = [object Window]
   // this.prop2 = undefined
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Nun macht auch das erste Argument der Funktionen <code>call</code> und <code>apply</code> Sinn: das erste
-Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Verschiedene Arten eine Methode aufzurufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  objekt.f(&quot;hallo &quot;, 10);
-  objekt.f.call(objekt, &quot;hallo &quot;, 10);
-  objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
-  
-  objekt.f.call(anderes_objekt, &quot;hallo &quot;, 10);
-  objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
-</pre></div>
-
-<p>Es gibt noch eine dritte method <code>bind</code> die nur <code>this</code> neu festsetzt,
-und die funktion sonst unverändert lässt:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">  
-  f2 = objekt.f.bind(anderes_objekt);
-  f2.(&quot;hallo &quot;, 10);
 </pre></div>
 
 </div>
@@ -309,8 +306,29 @@ HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den But
 
 
 
-<p>Die als Listener definierte Funktion erhält aber noch mehr Infos zum Event,
-und zwar als Argument:</p>
+<p>Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>keine Argument an den event handler!</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function f( mein_argument ) {
+    console.log(&quot;this = &quot; + mein_argument); 
+    // funktioniert nicht wie erwartet !!!
+  }
+ 
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f(43) );
+
+  // hier wird die Funktion f aufgerufen, 
+  // der listener an das Event gebunden wird,
+  // das funktioniert so nicht !!!
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Die als Listener definierte Funktion erhält als Argument Infos zum Event:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
@@ -373,11 +391,6 @@ Dafür gibt es in Javascript 2015 <code>class</code> und <code>constructor</code
 </div>
 <div class='slide'>
 
-
-
-</div>
-<div class='slide'>
-
 <h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
 
 <p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
@@ -415,7 +428,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
             <a href="/javascript/funktionen/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
+             | Nächste Präsentation <a href="/javascript/objekte//slide.html">Objekte + Klassen</a>
             
             </p>
           </div>

@@ -56,6 +56,125 @@ Seit Javascript 2015 gibt es auch <code>let</code> und <code>const</code>.</p>
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
+<h2 id="sichtbarkeit-von-variablen-mit-let-und-konstanten-mit-const">Sichtbarkeit von Variablen mit <code>let</code> und Konstanten mit <code>const</code></h2>
+
+<p>let und const haben einen Block-Scope, können also auf kleiner
+Bereich beschränkt werden als Variablen mit var:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+function g() { // function - scope
+  if ( true ) { // block - scope
+    let x = ’foo ’;
+    var y = ’bar ’;
+  }
+  console.log(x); // ReferenceError : x is not defined
+  console.log(y); // y === ’bar ’
+}
+</pre></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h2 id="konstanten-mit-const">Konstanten mit <code>const</code></h2>
+
+<p>Da Javascript eine dynamische Sprache ist haben Konstanten  eine
+geringe Bedeutung. Für einfache Werte verhalten Sie sich wie erwartet:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+const x = 1;
+x = 2;  // Uncaught TypeError: Assignment to constant variable.
+</pre></div>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
+<p>Bei Objekten oder Arrays zeigt sich die Beschränktheit:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+const y = [1,2,3];
+y[0] = 100;  // einen Wert zu ändern ist erlaubt
+y.push(4);   // einen Wert hinzu zu fügen ist erlaubt
+y = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
+
+const z = { farbe: &#39;grün&#39;, anzahl : 4 }
+z[&#39;farbe&#39;] = &#39;rot&#39;;  // einen Wert zu ändern ist erlaubt
+z.kg = 12;           // einen Wert hinzu zu fügen ist erlaubt
+z = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
+</pre></div>
+
+<p>Den Inhalt des Objekts oder Arrays zu ändern ist erlaubt.
+Nur das Objekt oder Array ganz zu ersetzen ist verboten.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+<h2 id="objekt-konstant-machen-mit-objectfreeze">Objekt konstant machen mit <code>Object.freeze</code></h2>
+
+<p>Mit der Methode <code>Object.freeze</code> kann man den Inhalt eines Objekts
+oder Arrays konstant machen, aber nur “eine Ebene tief”: verschachtelte
+Objekte bzw. Arrays werden nicht geschützt</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+const y = [1,2,[3]];
+Object.freeze(y);
+y[0] = 100;  // Wert wird nicht verändert, bleibt 1, kein Fehler
+y.push(4);   // Uncaught TypeError: object is not extensible
+y[2][0] = 100;  // Verschachteltes Array kann geändert werden!
+y[2].push( 200 );   //               und kann erweitert werden!
+JSON.stringify(yy); // &quot;[1,2,[100,200]]&quot;
+
+const z = { farbe: &#39;grün&#39;, anzahl : 4, other : { a:1, b:2, c:3 } }
+Object.freeze(z);
+z[&#39;farbe&#39;] = &#39;rot&#39;; // Wert wird nicht verändert, kein Fehler
+z.kg = 12;          // Wert wird nicht hinzu gefügt, kein Fehler
+z.other.a = 100;    // Wert im verschachtelten Objekt kann geändert werden!
+</pre></div>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h2 id="kurz-schreibweise-fr-objekte--werte">Kurz-Schreibweise für Objekte + Werte</h2>
+
+<p>Wenn in der JSON Schreibweise eines Objekts eine Variable
+verwendet wird, die den gleichen Namen hat wie das Propertie das
+erzeugt werden soll, dann kann man die Schreibweise verkürzen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+let x = 10;
+let y = 12;
+let circle1 = { color: &#39;yellow&#39;, r: 25, x: x, y: y  }; // lang
+let circle2 = { color: &#39;yellow&#39;, r: 25, x,    y     }; // kurz
+</pre></div>
+
+
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+
+<h2 id="zuweisung-mit-desctructuring">Zuweisung mit Desctructuring</h2>
+
+<p>Auf der linken Seite einer Zuweisung kann die Array oder Objekt-Schreibweise
+von JSON verwendet werden um mehrere Variablen auf einmal zuzuweisen.</p>
+
+<p>Das kann sehr komplex werden, hier ein paar einfache Beispiele:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+let [x,y] = [10,12];  // zwei Werte werden an zwei Variablen zugewiesen
+let p     = [10,12];
+let [x1,y1] = p;      // zwei Werte werden an zwei Variablen zugewiesen
+let circle = { m: p, r: 20 };
+let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r 
+</pre></div>
+
+
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+
 <h2 id="sichtbarkeit-von-variablen-mit-var">Sichtbarkeit von Variablen mit var</h2>
 
 <p>In einer Funktion in Javascript sind lokale und globale
@@ -87,9 +206,9 @@ console.log(y);  // ReferenceError: y is not defined
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
-
+<h2 id="hoisting-von-variablen-mit-var">Hoisting von Variablen mit var</h2>
 
 <p>Eine Besonderheit von Javascript Variablen die mit <code>var</code> deklariert
 wurden ist das “Hochziehen” (auf englisch: hoisting): Alle
@@ -113,125 +232,6 @@ bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.</p>
 
   g(10);
   // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-</pre></div>
-
-
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
-
-<h2 id="sichtbarkeit-von-variablen-mit-let-und-konstanten-mit-const">Sichtbarkeit von Variablen mit <code>let</code> und Konstanten mit <code>const</code></h2>
-
-<p>let und const haben einen Block-Scope, können also auf kleiner
-Bereich beschränkt werden als Variablen mit var:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function g() { // function - scope
-  if ( true ) { // block - scope
-    let x = ’foo ’;
-    var y = ’bar ’;
-  }
-  console.log(x); // ReferenceError : x is not defined
-  console.log(y); // y === ’bar ’
-}
-</pre></div>
-
-
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
-
-<h2 id="konstanten-mit-const">Konstanten mit <code>const</code></h2>
-
-<p>Da Javascript eine dynamische Sprache ist haben Konstanten  eine
-geringe Bedeutung. Für einfache Werte verhalten Sie sich wie erwartet:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const x = 1;
-x = 2;  // Uncaught TypeError: Assignment to constant variable.
-</pre></div>
-
-
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
-
-
-
-<p>Bei Objekten oder Arrays zeigt sich die Beschränktheit:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const y = [1,2,3];
-y[0] = 100;  // einen Wert zu ändern ist erlaubt
-y.push(4);   // einen Wert hinzu zu fügen ist erlaubt
-y = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
-
-const z = { farbe: &#39;grün&#39;, anzahl : 4 }
-z[&#39;farbe&#39;] = &#39;rot&#39;;  // einen Wert zu ändern ist erlaubt
-z.kg = 12;           // einen Wert hinzu zu fügen ist erlaubt
-z = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
-</pre></div>
-
-<p>Den Inhalt des Objekts oder Arrays zu ändern ist erlaubt.
-Nur das Objekt oder Array ganz zu ersetzen ist verboten.</p>
-
-
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
-
-<h2 id="objekt-konstant-machen-mit-objectfreeze">Objekt konstant machen mit <code>Object.freeze</code></h2>
-
-<p>Mit der Methode <code>Object.freeze</code> kann man den Inhalt eines Objekts
-oder Arrays konstant machen, aber nur “eine Ebene tief”: verschachtelte
-Objekte bzw. Arrays werden nicht geschützt</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const y = [1,2,[3]];
-Object.freeze(y);
-y[0] = 100;  // Wert wird nicht verändert, bleibt 1, kein Fehler
-y.push(4);   // Uncaught TypeError: object is not extensible
-y[2][0] = 100;  // Verschachteltes Array kann geändert werden!
-y[2].push( 200 );   //               und kann erweitert werden!
-JSON.stringify(yy); // &quot;[1,2,[100,200]]&quot;
-
-const z = { farbe: &#39;grün&#39;, anzahl : 4, other : { a:1, b:2, c:3 } }
-Object.freeze(z);
-z[&#39;farbe&#39;] = &#39;rot&#39;; // Wert wird nicht verändert, kein Fehler
-z.kg = 12;          // Wert wird nicht hinzu gefügt, kein Fehler
-z.other.a = 100;    // Wert im verschachtelten Objekt kann geändert werden!
-</pre></div>
-
-
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
-
-<h2 id="kurz-schreibweise-fr-objekte--werte">Kurz-Schreibweise für Objekte + Werte</h2>
-
-<p>Wenn in der JSON Schreibweise eines Objekts eine Variable
-verwendet wird, die den gleichen Namen hat wie das Propertie das
-erzeugt werden soll, dann kann man die Schreibweise verkürzen:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let x = 10;
-let y = 12;
-let circle1 = { color: &#39;yellow&#39;, r: 25, x: x, y: y  }; // lang
-let circle2 = { color: &#39;yellow&#39;, r: 25, x,    y     }; // kurz
-</pre></div>
-
-
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
-
-<h2 id="zuweisung-mit-desctructuring">Zuweisung mit Desctructuring</h2>
-
-<p>Auf der linken Seite einer Zuweisung kann die Array oder Objekt-Schreibweise
-von JSON verwendet werden um mehrere Variablen auf einmal zuzuweisen.</p>
-
-<p>Das kann sehr komplex werden, hier ein paar einfache Beispiele:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let [x,y] = [10,12];  // zwei Werte werden an zwei Variablen zugewiesen
-let p     = [10,12];
-let [x1,y1] = p;      // zwei Werte werden an zwei Variablen zugewiesen
-let circle = { m: p, r: 20 };
-let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r 
 </pre></div>
 
 
@@ -799,23 +799,11 @@ let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r
                       
                     
                       
+                      <li ><a href="/javascript/objekte/">Objekte + Klassen</a></li>
+                      
+                    
+                      
                       <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/vererbung/">Prototypen + Vererbung</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
                       
                     
                       
@@ -964,6 +952,32 @@ let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r
                     
                       
                       <li ><a href="/xml/rss/">Beispiel RSS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/advanced-javascript/">Advanced Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                      <li ><a href="/advanced-javascript/regular-expressions/">Regular Expressions</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/vererbung/">Prototypen + Vererbung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
                       
                     
                   

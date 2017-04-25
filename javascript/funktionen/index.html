@@ -50,7 +50,42 @@
 			
 			
 			<a name='slide-1'></a>
-<p>Sie kennen schon mehrere Arten eine Funktion in Javascript zu definieren:</p>
+<p>In Javascript kann eine Funktion mit Namen definiert werden, oder anonym:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function r1( s, x ) {
+    let result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  function ( s, x ) {
+    let result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      x--;
+    }
+    return result;
+  }
+
+  // Aufruf:
+  r1(&#39;*&#39;, 10);
+</pre></div>
+
+<p>Die zweite Funktion kann aber nicht aufgerufen werden.</p>
+
+
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<p>Damit man eine anonyme Funktion verwenden kann, muss sie erst
+auf eine Variable zugewiesen werden:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
@@ -72,19 +107,24 @@
     }
     return result;
   }
+
+  // Aufruf:
+  r1(&#39;*&#39;, 10);
+  r2(&#39;*&#39;, 10);
 </pre></div>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
-<p>Seit Javascript 2015 gibt es doch eine Schriebweise: die Arrow Function</p>
+<p>Seit Javascript 2015 gibt es doch eine weitere Schreibweise für anonyme 
+Funktionen: die Arrow Function</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  ( s, x ) =&gt; {
+  let f1 = ( s, x ) =&gt; {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -99,7 +139,7 @@
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  ( s, x ) =&gt; s + &quot; mal &quot; + x;
+  let f2 = ( s, x ) =&gt; s + &quot; mal &quot; + x;
 </pre></div>
 
 <p>Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
@@ -108,26 +148,26 @@ die Argumente weglassen:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  x =&gt; x + &quot; ist das beste&quot;;
+  let f3 = x =&gt; `${x} ist das beste`;
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
 <p>Wir haben auch schon die JSON-Schreibweise von Arrays und Objekten kennen gelernt.
-Kombiniert mit der zweiten Schreibweise für Funktionen können wir so Funktionen als
+Kombiniert mit der anonymen Schreibweise für Funktionen können wir so Funktionen als
 Teile von Objekten oder Arrays definieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen in JSON</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   objekt = {
-    prop1 : &quot;string&quot;,
+    prop1 : &quot;Schokolade&quot;,
     prop2 : 42,
     method_1 : function () {  console.log( &quot;method 1&quot; ); },
-    method_2 : x =&gt; x + &quot; ist das beste&quot;
+    method_2 : x =&gt; `${x} ist das beste`
   }
 </pre></div>
 
@@ -137,24 +177,8 @@ Teile von Objekten oder Arrays definieren:</p>
 <h4 class="caption">Javascript Code <small>Methoden aufrufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 objekt.method_1();
-objekt.method_2(&quot;Schokolade&quot;);
-</pre></div>
-
-
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
-
-
-
-<p>Zusätzlich zum einfachen Aufruf mit Funktionsname, Klammern, Argumenten <code>f(x)</code>
-gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen: 
-<code>call</code> und <code>apply</code>:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Funktion r aufrufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  r(&quot;hallo &quot;, 10);
-  r.call(null, &quot;hallo &quot;, 10);
-  r.apply(null, [  &quot;hallo &quot;, 10 ]  );
+objekt.method_2(&quot;Eis&quot;);
+objekt.method_2(objekt.prop1);
 </pre></div>
 
 
@@ -213,8 +237,9 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 
 
-<p>Wird eine Methode mit einer Arrow Function definiert, dann bezieht
-sich <code>this</code> nicht auf das aufrufende Objekt, sondern behält seinen
+<p>Eine Arrow Function hat nie ein eigenes this.
+Wird eine Methode mit einer Arrow Function definiert, dann bezieht
+sich <code>this</code> also nicht auf das aufrufende Objekt, sondern behält seinen
 Wert:</p>
 
 <div class="example">
@@ -241,34 +266,6 @@ Wert:</p>
 
 
 
-<p>Nun macht auch das erste Argument der Funktionen <code>call</code> und <code>apply</code> Sinn: das erste
-Argument gibt das Objekt an, auf dem die Methode aufgerufen werden soll:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Verschiedene Arten eine Methode aufzurufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  objekt.f(&quot;hallo &quot;, 10);
-  objekt.f.call(objekt, &quot;hallo &quot;, 10);
-  objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
-  
-  objekt.f.call(anderes_objekt, &quot;hallo &quot;, 10);
-  objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
-</pre></div>
-
-<p>Es gibt noch eine dritte method <code>bind</code> die nur <code>this</code> neu festsetzt,
-und die funktion sonst unverändert lässt:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">  
-  f2 = objekt.f.bind(anderes_objekt);
-  f2.(&quot;hallo &quot;, 10);
-</pre></div>
-
-
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
-
-
-
 <p>Bei Event-Handlern wird <code>this</code> wieder anders gesetzt:</p>
 
 <div class="example">
@@ -289,12 +286,33 @@ und die funktion sonst unverändert lässt:</p>
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
 
 
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
+<p>Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>keine Argument an den event handler!</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function f( mein_argument ) {
+    console.log(&quot;this = &quot; + mein_argument); 
+    // funktioniert nicht wie erwartet !!!
+  }
+ 
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f(43) );
+
+  // hier wird die Funktion f aufgerufen, 
+  // der listener an das Event gebunden wird,
+  // das funktioniert so nicht !!!
+</pre></div>
+
+
 <a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
-<p>Die als Listener definierte Funktion erhält aber noch mehr Infos zum Event,
-und zwar als Argument:</p>
+<p>Die als Listener definierte Funktion erhält als Argument Infos zum Event:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
@@ -357,11 +375,6 @@ Dafür gibt es in Javascript 2015 <code>class</code> und <code>constructor</code
 
 <a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
 
-
-
-
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
-
 <h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
 
 <p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
@@ -400,7 +413,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
       
       
       
-      <li><a href="/javascript/closures/">Funktionen und Closures</a></li>
+      <li><a href="/javascript/objekte/">Objekte + Klassen</a></li>
       
     
   </ul>
@@ -954,23 +967,11 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
                       
                     
                       
+                      <li ><a href="/javascript/objekte/">Objekte + Klassen</a></li>
+                      
+                    
+                      
                       <li ><a href="/javascript/closures/">Funktionen und Closures</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/objekte/">Objekte + Prototypen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/regular-expressions/">Regular Expressions</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/vererbung/">Prototypen + Vererbung</a></li>
-                      
-                    
-                      
-                      <li ><a href="/javascript/event-und-closure/">Events und Closures</a></li>
                       
                     
                       
@@ -1119,6 +1120,32 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
                     
                       
                       <li ><a href="/xml/rss/">Beispiel RSS</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/advanced-javascript/">Advanced Javascript</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                      <li ><a href="/advanced-javascript/regular-expressions/">Regular Expressions</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/vererbung/">Prototypen + Vererbung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/event-und-closure/">Events und Closures</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
                       
                     
                   
