@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dynamisches Formular - als Präsentation </title>
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/deck.goto.css">
+        <link rel="stylesheet" href="/assets/css/deck.status.css">
+        <link rel="stylesheet" href="/assets/css/deck.hash.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+          /* google code prettify */
+          li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+              list-style-type: inherit !important;
+          }
+          li.L1, li.L3, li.L5, li.L7, li.L9 {
+            background: none repeat scroll 0 0 #EEFEEE;
+          }
+          ol.linenums {
+            margin-left: 80px !important;
+          }
+
+          /* deck */
+          h4.caption { color: #999999; }
+          h4.caption small { color: black; }
+          table.table-bordered {
+            border-collapse: separate;
+          }
+          table.table-bordered td,
+          table.table-bordered th
+          {
+            border: 2px white solid;
+            padding: 2px;
+          }
+
+          .slide img[src$=svg] {
+            width: 100%;
+          }
+        </style>
+  
+	
+	<!-- Any other extension CSS files go here. -->
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+	<script src="/assets/js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Create any number of elements with class slide within the container -->
+          <div class="slide"><h1>Dynamisches Formular</h1>
+            <p>
+            
+              
+              vorige Präsentation: <a href="/applied-jquery-and-css/landkarte//slide.html">Landkarte</a> |
+                        
+            <a href="/applied-jquery-and-css/dynamisches-formular/">zurück zum Buch-Kapitel [esc]</a>
+            
+              
+             | Nächste Präsentation <a href="/applied-jquery-and-css/ajax//slide.html">AJAX</a>
+            
+            </p>
+          </div>
+	  <div class='slide'>
+<div class="alert"><strong>ToDo</strong> fertig stellen </div>
+
+<p>Für die Bestellung von drei Pizzen müssen
+erst drei Zeilen zum Formular hinzu gefügt werden:</p>
+
+<p><img src="dynamic-pizza-form.png" alt="dynamic pizza form" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="dynamisches-formular-planen">Dynamisches Formular planen</h2>
+
+<p>Das Hinzufügen von zusätzlichen Zeilen bzw. Eingabeelementen
+kann man mit jQuery gut umsetzen. Achtung: die Eingabefelder
+brauchen eindeutige Namen.</p>
+
+<html>
+<li class="a_pizza">
+  <p>Pizza Sicilia</p>
+    <div class="flex-inner">
+      <label><input name="hot[2]" type="checkbox" /> Scharf</label>
+      <label><input name="cheese[2]" type="checkbox" /> mit extra Käse</label>
+      <label>für <input name="fuer[2]" placeholder="Christian" type="text" /></label>
+      <input name="pizza[2]" value="Pizza Sicilia" type="hidden" />
+  </div></li>
+<li class="a_pizza">
+  <p>Pizza Margherita</p>
+    <div class="flex-inner">
+      <label><input name="hot[1]" type="checkbox" /> Scharf</label>
+      <label><input name="cheese[1]" type="checkbox" /> mit extra Käse</label>
+      <label>für <input name="fuer[1]" placeholder="Christian" type="text" /></label>
+      <input name="pizza[1]" value="Pizza Margherita" type="hidden" />
+  </div>
+</li>      
+</html>
+
+<p>Wenn PHP die Daten entgegen nimmt speichert
+es sie gleich in Arrays:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+Array
+(
+    [pizza] =&gt; Array
+        (
+            [2] =&gt; Pizza ai Spinaci
+            [1] =&gt; Pizza Salami
+        )
+    [fuer] =&gt; Array
+        (
+            [2] =&gt; Brigitte
+            [1] =&gt; Gerlinde
+        )
+    [hot] =&gt; Array
+        (
+            [1] =&gt; on
+        )
+    [cheese] =&gt; Array
+        (
+            [2] =&gt; on
+        )
+)  
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="wert-aus-dem-select-tag-auslesen">Wert aus dem select-Tag auslesen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(&#39;#add_next_pizza&#39;).on(&#39;click&#39;, function( event ){
+    event.preventDefault();
+    let pizza_type = $(&#39;#next_pizza&#39;).val();
+    // ....
+  });  
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="html-einfgen">HTML einfügen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  // this verweist auf den angeklickten button
+  // Suche unter seinen Vorfahren den nächsten `li`-Tag
+  let $li = $(this).parents(&#39;li&#39;);
+
+  let template = `&lt;li class=&#39;a_pizza&#39;&gt;
+     &lt;p&gt;${pizza_type}&lt;/p&gt;
+     ...
+     &lt;/li&gt;`;
+
+  $li.after(template);
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="vertiefung">Vertiefung</h2>
+
+<ul>
+  <li><a href="http://opensource.faroemedia.com/selectator/">Homepage von Selectator</a></li>
+</ul>
+
+</div>
+          <div class="slide"><h1>Dynamisches Formular</h1>
+            <p>
+            
+              
+              vorige Präsentation: <a href="/applied-jquery-and-css/landkarte//slide.html">Landkarte</a> |
+                        
+            <a href="/applied-jquery-and-css/dynamisches-formular/">zurück zum Buch-Kapitel [esc]</a>
+            
+              
+             | Nächste Präsentation <a href="/applied-jquery-and-css/ajax//slide.html">AJAX</a>
+            
+            </p>
+          </div>
+	
+<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- Update these paths to point to the correct files. -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/deck.core.js"></script>
+<script src="/assets/js/deck.hash.js"></script>
+<script src="/assets/js/deck.goto.js"></script>
+<script src="/assets/js/deck.status.js"></script>
+
+<!-- Add any other extension JS files here -->
+<script src="/assets/js/deck.escape.js"></script>
+
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
