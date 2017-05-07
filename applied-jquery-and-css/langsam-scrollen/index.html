@@ -61,28 +61,24 @@ langsam zur Zielposition scrollen.</p>
 
 <h2 id="interne-links-mit-hash">Interne Links mit Hash</h2>
 
-<html>
-    <nav>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#menu">Speisekarte</a></li>
-      <li><a href="#order">Online Bestellen</a></li>
-      <li><a href="#guest">Gästebuch</a></li>
-      <li><a href="#newsletter">Newsletter</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-    </nav>
-
-    <!-- .... -->
-
-    <section id="order">
-       
-    <!-- .... -->
-
-    <footer id="contact">
-      
-&lt;/html&gt;
+<pre><code>&lt;nav&gt;
+  &lt;li&gt;&lt;a href="#hero"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#menu"&gt;Speisekarte&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#order"&gt;Online Bestellen&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#guest"&gt;Gästebuch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#newsletter"&gt;Newsletter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#contact"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+&lt;/nav&gt;
+....
+&lt;section id="order"&gt;
+....
+&lt;footer id="contact"&gt;
+</code></pre>
 
 
-## Normalen Link verhindern
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h2 id="normalen-link-verhindern">Normalen Link verhindern</h2>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -92,12 +88,15 @@ langsam zur Zielposition scrollen.</p>
       event.preventDefault();
       var hash = this.hash; // z.B. &#39;#order&#39;
 
+      ...
+    }
   }); 
 </pre></div>
 
 
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
-## Position der Textmarke errechnen
+<h2 id="position-der-textmarke-errechnen">Position der Textmarke errechnen</h2>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -105,19 +104,15 @@ $(hash).offset().top
 </pre></div>
 
 
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
-## Animation des Fensters 
+<h2 id="animation-des-fensters">Animation des Fensters</h2>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
    $(&quot;html,body&quot;).animate({scrollTop: pos}, 800);
 </pre></div>
 
-
-
-
-
-</footer></section></html>
 
 		
 			<div class="pagination">
@@ -923,11 +918,11 @@ $(hash).offset().top
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                   
