@@ -293,7 +293,27 @@ beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element e
 
 <h2 id="autocomplete-mit-jquery-ui">Autocomplete mit jQuery-UI</h2>
 
-<p>In der Library jquery-ui gibt es eine fertige <a href="https://jqueryui.com/autocomplete/#remote">autocomplete funktion</a>. So sieht der Beispiel-Code aus, der
+<p>In der Library jquery-ui gibt es eine fertige <a href="https://jqueryui.com/autocomplete/#remote">autocomplete funktion</a>. Um sie zu verwenden, zwei muss man sowohl CSS als auch Javascript
+einbinden:</p>
+
+<p>Auf https://code.jquery.com/ui/ findet man die Links zu:</p>
+
+<ul>
+  <li>Dem “base” Theme - das ist die CSS Datei</li>
+  <li>der aktuellen jquery UI version, minified - das ist die Javscript Datei.</li>
+</ul>
+
+<div class="example">
+<h4 class="caption">Css Code <small>einbindung des themes in einer css datei</small></h4>
+<pre class="lang-css prettyprint linenums">
+  @import &quot;https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css&quot;;
+</pre></div>
+
+<html>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</html>
+
+<p>So sieht der Beispiel-Code aus, der
 ein input feld <code>#birds</code> in ein autocomplete-feld verwandelt:</p>
 
 <div class="example">
@@ -332,8 +352,26 @@ werden ignoriert.</p>
 <p>Wenn die Daten erfolgreich vom Server geladen wurden, wird eine funktion aufgerufen (<code>select</code>).</p>
 
 <p>Zum Testen kann man das Backend zuerst faken: einfach eine statische JSON-Datei
-unter dem Namen <code>search.php</code> abspeichern, und schon funktioniert es.
-Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
+unter dem Namen <code>search.json</code> abspeichern, und schon funktioniert es.</p>
+
+<p>Oder eine ganz kleine PHP-Datei, die nur den richtigen Content-Type setzt,
+und dann statische Daten zurück gibt:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+  &lt;?php
+  header(&#39;Content-Type: application/json&#39;);
+  ?&gt;
+  [
+    {&quot;id&quot;:6552916,&quot;label&quot;:&quot;Salzbergen, DE&quot;},
+    {&quot;id&quot;:2842173,&quot;label&quot;:&quot;Salzböden, DE&quot;},
+    {&quot;id&quot;:2842172,&quot;label&quot;:&quot;Salzbrunn, DE&quot;},
+    {&quot;id&quot;:6554266,&quot;label&quot;:&quot;Salzburg, DE&quot;},
+    {&quot;id&quot;:2766824,&quot;label&quot;:&quot;Salzburg, AT&quot;},
+  ]
+</pre></div>
+
+<p>Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
 und die resultierenden Daten mit <a href="https://secure.php.net/manual/de/function.json-encode.php">json_encode</a> umwandeln.</p>
 
 </div>
@@ -419,6 +457,17 @@ $url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
 $text=file_get_contents( $url );
 ...
 </pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="ausblick">Ausblick</h2>
+
+<p>Das waren nur einige wenige Anwendungsbeispiele für AJAX,
+es gibt natürlich noch viel mehr.</p>
+
+<p>Aber bevor man sich in AJAX Abenteuer stürzt sollte man sich auch
+über die Probleme bewusst sein, dazu mehr im nächsten Kapitel.</p>
 
 </div>
           <div class="slide"><h1>AJAX</h1>
