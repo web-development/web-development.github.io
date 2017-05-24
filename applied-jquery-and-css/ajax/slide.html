@@ -291,6 +291,53 @@ beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element e
 </div>
 <div class='slide'>
 
+<h2 id="autocomplete-mit-jquery-ui">Autocomplete mit jQuery-UI</h2>
+
+<p>In der Library jquery-ui gibt es eine fertige <a href="https://jqueryui.com/autocomplete/#remote">autocomplete funktion</a>. So sieht der Beispiel-Code aus, der
+ein input feld <code>#birds</code> in ein autocomplete-feld verwandelt:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+$(&quot;#birds&quot;).autocomplete({
+  source: &quot;search.php&quot;,
+  minLength: 2,
+  select: function( event, ui ) {
+    console.log( &quot;Selected: &quot; + ui.item.value + &quot; aka &quot; + ui.item.id );
+  }
+});
+</pre></div>
+
+<p>Wenn nun in das eingabefeld mehr als 2 (Option <code>minLength</code>) Buchstaben
+eingetippt werden, dann wird ein HTTP Request and <code>source</code> geschickt,
+mit dem parameter <code>term</code>.  Also zum Beispiel:</p>
+
+<p><code>search.php?term=abc</code></p>
+
+<p>Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:</p>
+
+<json>
+  [
+    {"id":6552916,"label":"Salzbergen, DE"},
+    {"id":2842173,"label":"Salzböden, DE"},
+    {"id":2842172,"label":"Salzbrunn, DE"},
+    {"id":6554266,"label":"Salzburg, DE"},
+    {"id":2766824,"label":"Salzburg, AT"},
+  ]
+</json>
+
+<p>Die Attribute <code>id</code> und <code>label</code> des Objekts werden verwendet, alle anderen
+werden ignoriert.</p>
+
+<p>Wenn die Daten erfolgreich vom Server geladen wurden, wird eine funktion aufgerufen (<code>select</code>).</p>
+
+<p>Zum Testen kann man das Backend zuerst faken: einfach eine statische JSON-Datei
+unter dem Namen <code>search.php</code> abspeichern, und schon funktioniert es.
+Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
+und die resultierenden Daten mit <a href="https://secure.php.net/manual/de/function.json-encode.php">json_encode</a> umwandeln.</p>
+
+</div>
+<div class='slide'>
+
 <h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
 
 <p>In diesem Beispiel werden Wetter-Daten von zwei Quellen angezeigt. Dabei
@@ -321,7 +368,7 @@ mit gesendet werden:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Zugriff auf die openweathermap API</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-$.get(&quot;http://api.openweathermap.org/data/2.5/weather?q=London,uk&amp;apikey=....&quot;, 
+$.get(&quot;http://api.openweathermap.org/data/2.5/weather?&amp;units=metric&amp;q=London,uk&amp;apikey=....&quot;, 
   (data) =&gt; {
   console.log(&quot;Daten von der API sind angekommen:&quot;);
   console.log(data);
@@ -330,7 +377,14 @@ $.get(&quot;http://api.openweathermap.org/data/2.5/weather?q=London,uk&amp;apike
 </pre></div>
 
 <p>Die genaue Struktur der Daten und wie man sie zerlegt kann man entweder
-der Dokumentation entnehmen, oder einfach in der console erforschen.</p>
+<a href="https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2">der Dokumentation</a> entnehmen, oder einfach in der console erforschen.</p>
+
+<p>ABER ACHTUNG: diese API ist (gratis) nur über http zugänglich.
+Die resultierende Webseite kann wieder nur auf http veröffentlicht werden, nicht
+auf https.</p>
+
+<p>Um die openweahtermap api auch über https verwenden zu können
+ist die nächste Lösung notwendig:</p>
 
 </div>
 <div class='slide'>
@@ -350,6 +404,7 @@ in manchen Browsern eine Meldung angezeigt:</p>
 <div class="example">
 <h4 class="caption">Php Code <small>zugriff auf die wetter-at.tk API</small></h4>
 <pre class="lang-php prettyprint linenums">
+header(&#39;Content-Type: application/json&#39;);
 $url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
 $text=file_get_contents( $url );
 </pre></div>
