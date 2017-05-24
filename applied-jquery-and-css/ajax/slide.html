@@ -392,13 +392,21 @@ ist die nächste Lösung notwendig:</p>
 
 <h2 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales backend</h2>
 
-<p>Die API von at-wetter.tk kann man nicht direkt vom eigenen Frontend abfrage.
+<p>Manchmal kann man nicht vom Frontend direkt auf die API zugreifen.</p>
+
+<p>Einen Grund haben wir schon bei openweathermap gesehen: die API ist über
+http zugänglich, das frontend wird auf https gehosted.  So ist es verboten
+auf die API zuzugreifen.</p>
+
+<p>Der zweite mögliche Grund ist CORS.  Das tritt zum Beispiel bei der API
+ at-wetter.tk auf.
 Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
 in manchen Browsern eine Meldung angezeigt:</p>
 
 <p><img src="/images/cors-error.png" alt="CORS Fehlermeldung" /></p>
 
-<p>Statt dessen muss man die Daten über das eigene Backend laden.</p>
+<p>In beiden Fällen ist die Lösung dieselbe: man muss die Daten
+über das eigene Backend laden.</p>
 
 <p>In PHP ist der Zugriff auf die API ohne Problem möglich:</p>
 
@@ -406,17 +414,11 @@ in manchen Browsern eine Meldung angezeigt:</p>
 <h4 class="caption">Php Code <small>zugriff auf die wetter-at.tk API</small></h4>
 <pre class="lang-php prettyprint linenums">
 header(&#39;Content-Type: application/json&#39;);
+...
 $url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
 $text=file_get_contents( $url );
+...
 </pre></div>
-
-<p>Die Daten die von der API geliefert werden sind nicht
-im JSON Format.  Das könnte jetzt das PHP-Script noch
-erledigen, und dann direkt JSON an das Frontend liefern.</p>
-
-<p>Ein besonderes Problem bei JSON stellen Datum und Uhrzeit dar:
-Dafür gibt es keinen Standard.  Man kann Datum und Uhrzeit als String
-ausliefern, oder eine Epoch-Zahl  (Millisekunden seit dem 1.1.1970) liefern.</p>
 
 </div>
           <div class="slide"><h1>AJAX</h1>
