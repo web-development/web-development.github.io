@@ -12,6 +12,7 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css?v=1">
+  <link rel="stylesheet" href="/assets/css/prettify.min.css">
   <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
@@ -76,8 +77,10 @@ im Browser nativ dargestellt.</p>
 <h4 class="caption">Xml Code <small>Einbindung von SVG in HTML (Inline-SVG)</small></h4>
 <pre class="lang-xml prettyprint linenums">
 &lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
-  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
-  &lt;rect    x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 
+          stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
+  &lt;rect x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; 
+        stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
 &lt;/svg&gt;
 </pre></div>
 
@@ -143,10 +146,16 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 <div class="example">
 <h4 class="caption">Xml Code <small>Attribute per CSS</small></h4>
 <pre class="lang-xml prettyprint linenums">
-&lt;circle style=&quot;cx: 144px; cy: 38px; r: 18px; stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot;  /&gt;
-&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
-        style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
+&lt;circle r=&quot;80px&quot; cx=&quot;150px&quot; cy=&quot;100px&quot; 
+    style=&quot;stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot; /&gt;
+&lt;ellipse cx=&quot;390&quot; cy=&quot;100&quot; rx=&quot;300&quot; ry=&quot;80&quot; 
+    style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
 </pre></div>
+
+<svg width="700" height="200">
+<circle r="80px" cx="150px" cy="100px" style="stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;" />
+<ellipse cx="390" cy="100" rx="300" ry="80" style="stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;" />
+</svg>
 
 
 <a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
@@ -399,12 +408,11 @@ $svg.append($circle);
 
 <ul>
   <li><a href="http://www.w3.org/TR/SVG11/">RFC zu SVG</a></li>
-  <li><a href="http://raphaeljs.com/">Raphael Javascript Library</a></li>
+  <li><a href="http://snapsvg.io/">Snap Javascript Library für die Erzeugung von SVG</a></li>
   <li><a href="http://github.com/greensock/GreenSock-JS/">gsap Library for Animation in SVG</a></li>
   <li><a href="http://css-tricks.com/using-svg/">Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL</a></li>
-  <li><a href="http://tympanus.net/codrops/2013/02/06/interactive-infographic-with-svg-and-css-animations/">Tutorial: CSS Animationen auf SVG anwenden</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/SVG/SVG_animation_with_SMIL">Tutorial: SMIL Animationen in SVG verwenden</a></li>
 </ul>
+
 
 		
 			<div class="pagination">
@@ -1287,7 +1295,7 @@ $svg.append($circle);
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+<script src="/assets/js/run_prettify.min.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){
