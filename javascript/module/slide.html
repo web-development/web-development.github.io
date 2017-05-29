@@ -91,7 +91,7 @@ enthält z.B.</p>
   <li>für das Teilen von Inhalten auf Sozialen Netzwerkden, z.B. <a href="https://developers.connect.facebook.com/docs/reference/plugins/like/">Facebook-Like-Button</a></li>
   <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
   <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
-  <li>für das Einbinden einer Landkarte, z.B. <a href="http://mapquery.org/">Open Street Map mit MapQuery</a></li>
+  <li>für das Einbinden einer Landkarte, z.B. mit <a href="http://leafletjs.com/">Leaflet</a> oder <a href="http://openlayers.org/">Openlayers</a></li>
 </ul>
 
 <p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
@@ -145,6 +145,19 @@ APP.f = function(x) {
 
 APP.objekt = new APP.Ding();
 </pre><div class="clearfix"></div></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="nachteile-des-objekts-als-namensraum">Nachteile des Objekts als Namensraum</h2>
+
+<p>Wenn man modernes Javascript (z.B. ES6) oder ES5 mit “use strict” verwendet,
+dann erhält man Fehlermeldungen beim Zugriff auf nicht deklarierte Variablen.</p>
+
+<p>Das Objekt als Namensraum kann das nicht bieten: ein nicht existierendes Attribut des Objekt
+liefert einfach den Wert <code>undefined</code>, aber keinen Fehler:</p>
+
+<p><img src="/images/js-namensraum.png" alt="Kein Error im namensraum" /></p>
 
 </div>
 <div class='slide'>

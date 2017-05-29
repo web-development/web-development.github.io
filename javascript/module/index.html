@@ -74,7 +74,7 @@ enthält z.B.</p>
   <li>für das Teilen von Inhalten auf Sozialen Netzwerkden, z.B. <a href="https://developers.connect.facebook.com/docs/reference/plugins/like/">Facebook-Like-Button</a></li>
   <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
   <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
-  <li>für das Einbinden einer Landkarte, z.B. <a href="http://mapquery.org/">Open Street Map mit MapQuery</a></li>
+  <li>für das Einbinden einer Landkarte, z.B. mit <a href="http://leafletjs.com/">Leaflet</a> oder <a href="http://openlayers.org/">Openlayers</a></li>
 </ul>
 
 <p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
@@ -132,6 +132,19 @@ APP.objekt = new APP.Ding();
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
+<h2 id="nachteile-des-objekts-als-namensraum">Nachteile des Objekts als Namensraum</h2>
+
+<p>Wenn man modernes Javascript (z.B. ES6) oder ES5 mit “use strict” verwendet,
+dann erhält man Fehlermeldungen beim Zugriff auf nicht deklarierte Variablen.</p>
+
+<p>Das Objekt als Namensraum kann das nicht bieten: ein nicht existierendes Attribut des Objekt
+liefert einfach den Wert <code>undefined</code>, aber keinen Fehler:</p>
+
+<p><img src="/images/js-namensraum.png" alt="Kein Error im namensraum" /></p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h2 id="namensrume-anlegen">Namensräume anlegen</h2>
 
 <p>Namensräume können auch verschachtelt werden:</p>
@@ -145,7 +158,7 @@ GAME.Master = ...
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -177,7 +190,7 @@ if( GAME ) {
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="sofort-ausgewertete-funktionen">Sofort ausgewertete Funktionen</h2>
 
@@ -198,7 +211,7 @@ var g = (function(){
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -224,7 +237,7 @@ var g = (function(){
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -249,7 +262,7 @@ im Browser verfügbar ist.</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -275,7 +288,7 @@ von Erik Möller vor:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="module">Module</h2>
 

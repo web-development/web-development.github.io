@@ -466,20 +466,24 @@ animiert:</p>
         <animate attributeType="XML" attributeName="startOffset" from="1000" to="-600" dur="10s" repeatCount="indefinite" />
       </textPath>
     </text>
-&lt;/svg&gt;
+  </g>
+</svg>
 
+</div>
+<div class='slide'>
 
+<h2 id="svg-mit-javascript-erzeugen">SVG mit Javascript erzeugen</h2>
 
+</div>
+<div class='slide'>
 
-## SVG mit Javascript erzeugen
+<h3 id="createelement">createElement</h3>
 
-### createElement
+<p>Der SVG-Tag kann direkt in einem HTML-Dokument verwendet werden, wie auf dieser Seite.</p>
 
-Der SVG-Tag kann direkt in einem HTML-Dokument verwendet werden, wie auf dieser Seite.
-
-Wenn man SVG-Nodes mit Javascript in das DOM einfügen will braucht man
-eine neue Variante des `createElement` Befehls: create Element with Namespace.
-Der Namespace für SVG ist `http://www.w3.org/2000/svg`.
+<p>Wenn man SVG-Nodes mit Javascript in das DOM einfügen will braucht man
+eine neue Variante des <code>createElement</code> Befehls: create Element with Namespace.
+Der Namespace für SVG ist <code>http://www.w3.org/2000/svg</code>.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -493,12 +497,14 @@ rect = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;re
 svg.appendChild( rect );
 </pre></div>
 
+</div>
+<div class='slide'>
 
-### jQuery
+<h3 id="jquery">jQuery</h3>
 
-Achtung: jQuery kennt nur Methoden zum Erzeugen von HTML, nicht von
+<p>Achtung: jQuery kennt nur Methoden zum Erzeugen von HTML, nicht von
 SVG. Aber muss sich also eine separate SVG-Erzeugungs-Method bauen wenn
-man jQuery für SVG verwenden will.
+man jQuery für SVG verwenden will.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -511,16 +517,17 @@ var $circle = $s(&quot;circle&quot;).attr({...});
 $svg.append($circle);
 </pre></div>
 
+<p>Code <a href="http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466">von Matthieu Charbonnier</a>.</p>
 
-Code [von Matthieu Charbonnier](http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466).
-  
+</div>
+<div class='slide'>
 
-### Snap.svg
+<h3 id="snapsvg">Snap.svg</h3>
 
-Die Library Snap.svg kann SVG erzeugen, aber auch fertige SVG-Dateien
+<p>Die Library Snap.svg kann SVG erzeugen, aber auch fertige SVG-Dateien
 lesen und weiterverarbeiten. So kann man z.B. eine Illustration in einem
 Zeichenprogramm erstellen, und dann mit Snap ein eine Webseite
-einbauen und manipulieren.
+einbauen und manipulieren.</p>
 
 <svg version="1.1" id="crocodile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="312px" height="300px" viewBox="0 0 260 250" enable-background="new 0 0 260 250" xml:space="preserve">
   <g>
@@ -604,15 +611,20 @@ einbauen und manipulieren.
   </g>
 </svg>
 
+<p>Für fortgeschrittene Animationen kann  man zusätzlich die Library <a href="http://github.com/greensock/GreenSock-JS/">gsap</a> verwenden.</p>
 
-## Mehr
+</div>
+<div class='slide'>
 
-* [RFC zu SVG](http://www.w3.org/TR/SVG11/)
-* [Snap Javascript Library für die Erzeugung von SVG](http://snapsvg.io/)
-* [gsap Library for Animation in SVG](http://github.com/greensock/GreenSock-JS/)
-* [Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL](http://css-tricks.com/using-svg/)
+<h2 id="mehr">Mehr</h2>
 
-</g></svg>
+<ul>
+  <li><a href="http://www.w3.org/TR/SVG11/">RFC zu SVG</a></li>
+  <li><a href="http://snapsvg.io/">Snap Javascript Library für die Erzeugung von SVG</a></li>
+  <li><a href="http://github.com/greensock/GreenSock-JS/">gsap Library for Animation in SVG</a></li>
+  <li><a href="http://css-tricks.com/using-svg/">Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL</a></li>
+</ul>
+
 </div>
           <div class="slide"><h1>SVG - Vektor Grafik</h1>
             <p>

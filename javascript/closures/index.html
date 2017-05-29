@@ -57,7 +57,7 @@ auf die der Funktionalen Programmierung<a href="http://de.wikipedia.org/wiki/Fun
 
 <p>In diesem Kapitel lernen wir die Besonderheiten
 von Funktionen in Javascript kennen, darunter
-auch Closures <a href="http://de.wikipedia.org/wiki/Closure">→</a>.</p>
+auch Closures <a href="http://de.wikipedia.org/wiki/Closure">→</a> (Funktionsabschlüsse).</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
@@ -113,14 +113,14 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
   // output: ich bin eine Funktion und verwende b = 10
 </pre></div>
 
-<p>Die Funktion f hat also immer noch zugriff auf die “alte” Variable b!</p>
+<p>Die Funktion <code>f</code> hat also immer noch Zugriff auf die “alte” Variable <code>b</code>!</p>
 
 
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
-<p>Closure kann man zum Beispiel verwenden um einen Countdown zu erzeugen:</p>
+<p>Closures kann man zum Beispiel verwenden um einen Countdown zu erzeugen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Erzeuge eine Countdown-Funktion</small></h4>
@@ -133,10 +133,87 @@ inneren Funktion verwendet wird. Das nennt man eine Closure (deutsch: “Funktio
     }
   } 
   top10 = create_countdown(10);
+  top20 = create_countdown(20);
+
   while( i = top10() ) {
     console.log(&quot;und auf Platz &quot; + i + &quot; .... &quot;);
   }
 </pre></div>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
+<p>Wozu werden Closures verwendet?  Eine erste Anwendung sind Eventhandler.
+Betrachten wir eine Funktion die bei  <code>addEventListener</code> oder in jQuery bei <code>on</code>
+als Eventhanlder angegeben wird:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Eventhandler wird übergeben</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  button.on(&#39;click&#39;, do_something);
+</pre></div>
+
+<p>Die Funktion kann an dieser stelle keine Argumente
+erhalten, weil sie ja nicht <strong>aufgerufen</strong> werden soll,
+sondern nur <strong>übergeben</strong> werden soll!</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Eventhandler wird aufgerufen - funktioniert nicht!</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  button.on(&#39;click&#39;, do_something(10, &#39;Hallo&#39;));
+</pre></div>
+
+<p>Hier ein größeres Beispiel: Die Schriftart der Seite soll
+mittels 3 Buttons verändert werden können.  Die Buttons und die
+dazugehörigen Eventhandler werden dynamisch erzeugt:</p>
+
+<p><a href="/images/closure-for-event-broken.html">Demo: so funktioniert es nicht</a></p>
+
+<p>Als Eventhandler kann nur eine Funktion eingesetzt werden, die schon alle
+notwendigen Parameter enthält, und keine weiteren Argumente braucht.
+Diese Funktion erzeugt man zuerst, und verwendet dabei eine Closure
+um die Parameter zu speichern:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Eventhandler ist eine Closure, enthält Argumente schon</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function insert_button(text) {
+    return $(`&lt;button&gt;${text}&lt;/button&gt;`).insertAfter(&#39;h1&#39;);
+  }
+  
+  function makeSizer(size) {
+    return function() {
+      document.body.style.fontSize = size + &#39;px&#39;;
+    };
+  }
+
+  var b,f;
+
+  b = insert_button(&#39;Schrift 16&#39;);
+  f = makeSizer(16);
+  b.on(&#39;click&#39;, f);
+
+  b = insert_button(&#39;Schrift 14&#39;);
+  f = makeSizer(14);
+  b.on(&#39;click&#39;, f);
+
+  b = insert_button(&#39;Schrift 12&#39;);
+  f = makeSizer(12);
+  b.on(&#39;click&#39;, f);  
+</pre></div>
+
+<p><a href="/images/closure-for-event.html">Demo: so funktioniert es</a></p>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Closures"></a></li>
+</ul>
 
 
 		
