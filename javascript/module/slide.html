@@ -212,7 +212,7 @@ if( GAME ) {
 <h2 id="sofort-ausgewertete-funktionen">Sofort ausgewertete Funktionen</h2>
 
 <p>Eine andere Methode um den globalen Namensraum sauber zu halten
-sind die sogenannten “sofort augewerteten Funktionen” (“immediate funktions”).</p>
+sind die sogenannten “sofort augewerteten Funktionen” (“immediately invoked funktion” oder “immediate function”).</p>
 
 <p>Dabei wird eine Funktion definiert und sofort - und nur einmal - aufgerufen.
 Nur der Rückgabewert wird ein einer globalen Variable <code>g</code> gespeichert.</p>
@@ -232,75 +232,27 @@ var g = (function(){
 
 
 
-<p>Beispiel einer sofort ausgewerteten Funktion:</p>
+<p>Hier eine komplexere Version. Die vielen Variablen und Funktionen die innerhalb
+der sofort ausgewertete Funktion definiert sind, bleiben unsichtbar. Sie
+sind “von aussen” nicht zugänglich.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>sofort ausgwertete Funktion</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 var g = (function(){
   var a,b,c;
-  function d() {
+  function d(x) {
+    return 2*x;
   }
-  function Ding() {
-    return this;
+  function Ding(v) {
+    this.value = v;
   }
 
   a = 10;
   b = d( a );
-  c = new Ding();
+  c = new Ding(b);
 
   return a;
-})();
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Eine Verwendung von sofort ausgewerteten Funktionen sind
-Polyfills. Im Artikel <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">requestAnimationFrame for smart animating</a>
-stellt Paul Irish einen Polyfill für <code>requestAnimationFrame</code> vor:</p>
-
-<p>Dieses Funktion wir einmal aufgerufen und stellt sicher,
-dass unter <code>window.requestAnimationFrame</code> die jeweilige Implementierung 
-im Browser verfügbar ist.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Polyfill für requestAnimationFrame - einfache Version</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-    window.requestAnimFrame = (function(){
-      return  window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
-              window.mozRequestAnimationFrame    || 
-              window.oRequestAnimationFrame      || 
-              window.msRequestAnimationFrame;
-    })();
-</pre></div>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Im gleichen Artikel stellt Irish eine bessere Implementierung
-von Erik Möller vor:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Polyfill für requestAnimationFrame - Ausschnitt</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-(function() {
-    var lastTime = 0;
-    var vendors = [&#39;ms&#39;, &#39;moz&#39;, &#39;webkit&#39;, &#39;o&#39;];
-    for(var x = 0; x &lt; vendors.length &amp;&amp; !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+&#39;RequestAnimationFrame&#39;];
-    }
- 
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
-            // verwende setTimeout 
-            // ...
-        };
 })();
 </pre></div>
 
@@ -320,21 +272,32 @@ einem Namensraum und bietet die Möglichkeit von privaten und
 <h4 class="caption">Javascript Code <small>Schreibweise für ein Modul: ein Objekt</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 var APP = (function(){
-var a,b,f;      // private 
-var c,d,g;      // öffentlich
-f = function() {  // private Funktion
-};
-g = function() {  // öffentliche Funktion
-};
-return {
-  c: c,
-  d: d,  
-  g: g
-};
+  var a,b,f;      // private 
+  var c,d,g;      // öffentlich
+  f = function() {  
+    // private Funktion
+  };
+  g = function() {  
+    // öffentliche Funktion
+  };
+  return {
+    c: c,
+    d: d,  
+    g: g
+  };
 })();
 </pre></div>
 
-<div class="alert"><strong>ToDo</strong> fertig stellen </div>
+</div>
+<div class='slide'>
+
+<h2 id="siehe-auch">Siehe Auch</h2>
+
+<ul>
+  <li><a href="http://shop.oreilly.com/product/9780596806767.do">Stefanov(2010): Javascript Patterns</a>, Kapitel 5.</li>
+  <li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">Osmani(2012): Learning JavaScript Design Patterns</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">Wikipedia: Immediately-invoked function</a></li>
+</ul>
 </div>
           <div class="slide"><h1>Module</h1>
             <p>
