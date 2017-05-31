@@ -101,6 +101,7 @@ das SQL etwas “injiziert” wird.</p>
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
+
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt, darf sie
 verwendet werde. Das kann man auf verschiedene Arten prüfen, 
@@ -170,13 +171,74 @@ normale query zu wiederholen.</p>
 
 <a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
+<h3 id="sql-injection-gibt-es-nicht-nur-bei-delete">SQL Injection gibt es nicht nur bei DELETE</h3>
+
+<p>Wir haben diese Attacke am Beispil einer Löschoperation kennen gelert.
+Aber auch ein einfaches <code>SELECT</code> kann mittels SQL Injection missbraucht werden
+um zusätzliche Informationen aus der Datenbank auszulesen, die wir nicht
+vorgesehen haben.</p>
+
+<p>Die Attacke mit <code>1=1</code> ermöglicht das Lesen von Datensätzen aus derselben Tabelle:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+SELECT * FROM comments WHERE id=9 OR 1=1
+</pre></div>
+
+
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
+<p>Aber es gibt auch komplexere Attacken, die Daten aus anderen Tabellen oder
+ganz anderen Informationsquellen lesen:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>verwundbarer code</small></h4>
+<pre class="lang-php prettyprint linenums">
+$query = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
+$dbh-&gt;query($query);
+</pre></div>
+
+<p>&lt;plain caption”attacke”&gt;
+hallo’ UNTION SELECT id, password FROM users WHERE ‘’ LIKE ‘%
+&lt;/plain&gt;</p>
+
+<p>Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+  SELECT id, name FROM cities WHERE name = &#39;hallo&#39; 
+  UNTION 
+  SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%&#39;
+</pre></div>
+
+
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+
+
+
+<p>Wir hätten also nie <code>query</code> verwenden sollen, sondern von Anfang an
+immer prepared Statements!</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>sicherer code</small></h4>
+<pre class="lang-php prettyprint linenums">
+$query = &quot;SELECT id, name FROM cities WHERE name=?&quot;;
+$sth = $dbh-&gt;execute($query);
+$sth-&gt;execute($name);
+</pre></div>
+
+
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+
 <h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
 
 <p>Wir haben eine Sicherheitslücke geschlossen, aber es bleibt trotzdem noch viel
 zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="weiterfhrende-literatur">Weiterführende Literatur</h2>
 
