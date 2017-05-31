@@ -218,7 +218,7 @@ $dbh-&gt;query($query);
 </pre></div>
 
 <p>&lt;plain caption”attacke”&gt;
-hallo’ UNTION SELECT id, password FROM users WHERE ‘’ LIKE ‘%
+hallo’ UNION SELECT id, password FROM users WHERE ‘’ LIKE ‘%
 &lt;/plain&gt;</p>
 
 <p>Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:</p>
@@ -226,7 +226,7 @@ hallo’ UNTION SELECT id, password FROM users WHERE ‘’ LIKE ‘%
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
   SELECT id, name FROM cities WHERE name = &#39;hallo&#39; 
-  UNTION 
+  UNION 
   SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%&#39;
 </pre></div>
 
