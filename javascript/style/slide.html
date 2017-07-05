@@ -121,7 +121,7 @@ fertig gestellt ist kann man das Programm weiter verbessern: besser lesbar mache
 
 <p>Eine Veränderung am Programm, die die Funktionalität unverändert lässt, und andere Aspekte
 des Programmes verbessert, nennt man <strong>Refactoring</strong>. Dabei geht man in kleinen Schritten vor:
-zum Beispiel in einem Schritt einen constiablennamen verändern, im nächsten Schritt Code in
+zum Beispiel in einem Schritt einen variablennamen verändern, im nächsten Schritt Code in
 eine Funktion zusammen fassen, im nächsten Schritt einen Funktionsnamen ändern, … nach jedem
 einzelnen Schritt ist das Programm wieder funktionstüchtig.</p>
 
@@ -134,22 +134,22 @@ die üblen Stellen <strong>Code Smells</strong>.</p>
 </div>
 <div class='slide'>
 
-<h2 id="constiablen">constiablen</h2>
+<h2 id="variablen">Variablen</h2>
 
-<p>Der Name einer constiable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
-constiablen sollen so kurz wie möglich, aber nicht kürzer sein.</p>
+<p>Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
+Variablen sollen so kurz wie möglich, aber nicht kürzer sein.</p>
 
 </div>
 <div class='slide'>
 
-<h3 id="konvenelle-constiablennamen">Konvenelle constiablennamen</h3>
+<h3 id="konventionelle-variablennamen">Konventionelle Variablennamen</h3>
 
 <p>Aus der Mathematik wurde Konventionen übernommen, z.B. dass i,j,k als Zähler für Schleifen
 verwendet werden; x,y,z für Koordinaten. Diese Konvention muss man nicht einhalten,
 aber man sollte nicht gegen sie arbeiten:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Kurze constiablennamen und Konventionen aus der Mathematik</small></h4>
+<h4 class="caption">Javascript Code <small>Kurze Variablennamen und Konventionen aus der Mathematik</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 // gegen die Konvention
 const x=0;
@@ -181,7 +181,7 @@ while( i &lt; 10 ) {
 <h3 id="fixe-werte-durch-konstanten-ersetzen">Fixe Werte durch Konstanten ersetzen</h3>
 
 <p>Wenn in einem Programm dieselbe Zahl mehrmals vorkommt kann das ein Hinweis
-sein, dass man eine Konstante oder constiable verwenden sollte. Folgendes Programm
+sein, dass man eine Konstante oder variable verwenden sollte. Folgendes Programm
 zeichnet ein Rechteck in ein neu geschaffens SVG:</p>
 
 <div class="example">
@@ -242,7 +242,7 @@ es macht also Sinn eine Konstante zu verwenden:</p>
 <p>Nun kann man auch die Breite des Rahmens in einer Konstanten speichern:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Rechteck zeichnen - mit constiable für Rahmenbreite</small></h4>
+<h4 class="caption">Javascript Code <small>Rechteck zeichnen - mit variable für Rahmenbreite</small></h4>
 <pre class="lang-javascript prettyprint linenums">
   const svg_width  = 1024;
   const svg_height = 768;
@@ -295,7 +295,7 @@ const svg = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &qu
 svg.setAttribute(&quot;width&quot;,  svg_width);
 svg.setAttribute(&quot;height&quot;, svg_height);
 
-const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+let frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
 frame.setAttribute( &#39;x&#39;, 1 );
 frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
@@ -305,8 +305,8 @@ frame.setAttribute( &#39;stroke-width&#39;,  1);
 frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
 svg.appendChild( frame );
 
-const frame_border_width = 10;
-const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+let frame_border_width = 10;
+frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
 frame.setAttribute( &#39;x&#39;, 21 );
 frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
@@ -316,8 +316,8 @@ frame.setAttribute( &#39;stroke-width&#39;,  1);
 frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
 svg.appendChild( frame );
 
-const frame_border_width = 10;
-const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame_border_width = 10;
+frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
 frame.setAttribute( &#39;x&#39;, 41 );
 frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
@@ -339,7 +339,7 @@ document.querySelector(&quot;body&quot;).appendChild( svg );
 X-Koordinate ist, und diese stetig ansteigt, kann man hier eine 
 Schleife verwenden, um den Code wiederzuverwenden.</p>
 
-<p>Aus der Schleifenconstiable i = 0, 1, 2 kann ganz einfach
+<p>Aus der Schleifenvariable i = 0, 1, 2 kann ganz einfach
 die X-Koordinate x = 1, 21, 41 berechnet werden:</p>
 
 <p><code>x = i * 20 + 1;</code></p>
@@ -355,7 +355,6 @@ svg.setAttribute(&quot;height&quot;, svg_height);
 
 var i=0;
 while( i &lt; 3 ) {
-
   const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
   frame.setAttribute( &#39;x&#39;, i * 20 + 1 );
   frame.setAttribute( &#39;y&#39;, 1 );

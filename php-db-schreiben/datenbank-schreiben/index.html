@@ -97,7 +97,21 @@ Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
   </tbody>
 </table>
 
+<p>Warum wird hier manchmal GET und manchmal POST als Methode verwendet?
+Dazu gibt es im HTTP Protokoll eine ganz klare Vorschrift in
+<a href="https://tools.ietf.org/html/rfc2616#page-51">Kapitel 9.1 Safe and Idempotent Methods</a>:</p>
+
+<p>… the GET and HEAD methods SHOULD NOT have the significance of taking an action
+   other than retrieval. These methods ought to be considered “safe”.
+   This allows user agents [= browsers] to represent other methods, such as POST, PUT
+   and DELETE, in a special way, so that the user is made aware of the
+   fact that a possibly unsafe action is being requested.</p>
+
+<p>Wir verwenden also GET wenn nur Daten Abgefragt werden, und POST wenn
+Daten gelöscht, angelegt oder verändert werden.</p>
+
 <p>Bei der Implementierung dieser Applikation lernen wir Schritt für Schritt verschiedene Sicherheitprobleme kennen.</p>
+
 
 		
 			<div class="pagination">
@@ -972,7 +986,7 @@ Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2016 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2017 von <a href="#">Brigitte Jellinek</a>.
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-schreiben/datenbank-schreiben.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
