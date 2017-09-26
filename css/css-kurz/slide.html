@@ -146,14 +146,14 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 <pre class="lang-html prettyprint linenums">
 &lt;style type=&quot;text/css&quot;&gt;
   p {
-    font-family: Calibri, Helvetica, Arial, sans-serif; 
-    font-size: 13px;
+    font-family: Libertine, serif;
+    font-size: 22px;
   }
   h1,h2 {
-    font-family: &quot;Trebuchet MS&quot;, Verdana, Arial, sans-serif;
+    font-family: Biolinum, sans-serif;
   }
-  h1 { font-size: 24px; }
-  h2 { font-size: 20px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
   body { background-color: green; }
 &lt;/style&gt;
 </pre></div>
@@ -164,19 +164,17 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 <div class='slide'>
 
 <h2 id="interpretation">Interpretation</h2>
-<p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er. (Man kann Schriften auch verlinken - aber das ist mehr ein Thema für MMA).</p>
+<p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen, bzw. ob das Nachladen von Fonts wirklich klappt ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er.</p>
 
 <p>In Zeile 2 bis 5 werden zwei Anweisungen für Fließtext gegeben (HTML-Tag &lt;p&gt;): die Schriftfamilie in Zeile 3 und die Schriftgröße in Zeile 4.</p>
 
-<p>In Zeile 3 Vergleichen Sie Zeile 3 mit Zeile 7: Schriftnamen die ein Leerzeichen enthalten müssen in Anführungszeichen gesetzt werden, wie “Trebuchet MS” in Zeile 6.</p>
-
-<p>Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:</p>
+<p>Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:  <code>serif</code>,  <code>sans-serif</code>,  <code>cursive</code>, <code>fantasy</code>,   <code>monospace</code>.</p>
 
 </div>
 <div class='slide'>
 
-<h2 id="css-erforschen-mit-firebug">CSS erforschen mit Firebug</h2>
-<p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS hilft das Firefox Add-On „Firebug“.</p>
+<h2 id="css-erforschen-mit-developer-tools">CSS erforschen mit Developer Tools</h2>
+<p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS helfen die Developer Tools des Browsers.</p>
 
 <p><img src="/images/image072.png" alt="Abbildung 19: Firefox Add-On Firebug" /></p>
 
