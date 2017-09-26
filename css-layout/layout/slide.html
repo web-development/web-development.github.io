@@ -163,11 +163,6 @@ margin: 32px 0px
 </div>
 <div class='slide'>
 
-
-
-</div>
-<div class='slide'>
-
 <h2 id="zentrieren-mit-auto">Zentrieren mit Auto</h2>
 
 <p>Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
@@ -207,117 +202,29 @@ das Bild nach links, der Text rutscht rechts davon nach oben.</p>
 
 
 
-<p>Bei Bildern funktioniert float besonders einfach, weil das Bild schon eine fixe
-Breite hat. Wird ein anderer HTML-Tag mit float versehen muß man auch die Breite
-des Tags setzen um einen sichtbaren Effekt zu erzielen. Soll ein Absatz nach
-rechts gehen, dann muss man dafür die Breite noch setzen.</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-p { margin: 0px; }
-#slim { 
-    float:right;
-    width:33%;
-}
-</pre></div>
-
-<p><a href="/images/floatp.html">Beispiel als Demo-Seite</a></p>
-
-<p><img src="/images/image138.png" alt="Abbildung 38: Ein Absatz mit float" /></p>
+<p>Float wurde vor der Einführung von Flexbox und CSS Grid für viele
+Layout Aufgaben verwendet.  Heute kommt es nur noch in der hier
+beschriebenen Weise bei Bildern zum Einsatz.</p>
 
 </div>
 <div class='slide'>
 
+<h2 id="css-grid">CSS Grid</h2>
 
+<p>Um das Layout einer ganzen Seite zu gestalten arbeitet man
+mit einen Grid, einem Gitternetz dass man über die ganze Seite legt:</p>
 
-<p>Wenn viele Elemente mit <code>float</code> positioniert werden, die die gleiche Höhe haben,
-entsteht ein besonders flexibles Layout: im folgenden Beispiel 
-werden je nach zur Verfügung stehendem Platz drei oder vier Bilder nebeneinander dargestellt:</p>
-
-<p><img src="/images/image140.png" alt="Abbildung 39: Zwei Darstellungen der Bildergalerie mit float" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="absolute-positionierung">Absolute Positionierung</h2>
-<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung 
-herausgenommen und über dem restlichen Inhalt der Seite platziert. 
-Mit <code>top</code> und <code>left</code> kann die linke obere Ecke des Elements positioniert werden. 
-(oder mit <code>bottom</code> und <code>right</code> die rechte unter Ecke).
-In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
-einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
-
-<div class="example twopane">
-<pre class="lang-css prettyprint linenums left">
-#navi {
-  position: absolute;
-  width: 80px;
-  top:    0px;
-  left:   0px;
-}
-</pre><pre class="lang-css prettyprint linenums right">
-#content {
-  margin-left: 100px;
-}
-
-
-
-</pre><div class="clearfix"></div></div>
+<p><a href="/images/cssgrid.html">Demo-Seite</a></p>
 
 </div>
 <div class='slide'>
 
+<h2 id="flexbox">Flexbox</h2>
 
+<p>Flexbox erlaubt flexible Layouts, und wird für kleinere Komponenten
+in der Seite eingesetzt, zum Beisiel für eine Bildergallerie.</p>
 
-<p><img src="/images/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="koordinatensystem">Koordinatensystem</h2>
-
-<p>Die Koordinaten (<code>top</code> und <code>left</code>) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster.</p>
-
-<p>Ein Element mit der Eigenschaft <code>position: absolute</code> oder <code>position: relative</code> bildet für seine untergeordneten Elemente ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert.</p>
-
-<div class="example twopane">
-<pre class="lang-html prettyprint linenums left">
-&lt;div id=&quot;main&quot;&gt;
-  &lt;div id=&quot;content&quot;&gt;
-    &lt;h1&gt;Inhalt&lt;/h1&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div id=&quot;navi&quot;&gt;
-    &lt;p&gt;a&lt;/p&gt;
-    &lt;p&gt;b&lt;/p&gt;
-    &lt;p&gt;c&lt;/p&gt;
-    &lt;p&gt;d&lt;/p&gt;
-    &lt;p&gt;e&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre><pre class="lang-html prettyprint linenums right">
-#main {
-  border: 1px red solid;
-  position:relative;
-  width: 700px;
-  margin: 0px auto;
-} 
-#content {
-  margin-left: 120px;
-  background-color: yellow;
-}
-#navi {
-  position: absolute;
-  width: 80px;
-  top:0px;
-  left:0px;
-}
-</pre><div class="clearfix"></div></div>
-
-<p><a href="/images/koord.html">Beispiel-Seite</a></p>
+<p><a href="/images/flexbox.html">Demo-Seite</a></p>
 
 </div>
 <div class='slide'>
@@ -325,12 +232,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
 <h2 id="viele-methoden">Viele Methoden</h2>
 
 <p>Wie Sie gesehen haben gibt es viele CSS-Properties die
-das Layout beeinflussen.  Manche davon passen zusammen,
-andere widersprechen sich.  So macht es keinen Sinn 
-absolute Positionierung mit Float zu kombinieren.</p>
-
-<p>Mit der Zeit werden Sie Erfahrungen sammeln und auch Ihren
-eigenen Stil entwickeln.</p>
+das Layout beeinflussen.</p>
 </div>
           <div class="slide"><h1>CSS für Layout</h1>
             <p>

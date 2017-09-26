@@ -2,7 +2,7 @@
 <html lang="en" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Web-Applikation mit Schreibrecht</title>
+  <title>Lehrbuch Web-Development - CSS für Positionierung</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,67 +45,107 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Web-Applikation mit Schreibrecht</h2>
-                                <a href="/php-mysql-2/datenbank-schreiben/slide.html">als Präsentation ▻</a>
+				<h2 class="title"><a name="slide-0"></a>CSS für Positionierung</h2>
+                                <a href="/css-layout/positionierung/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
 			<a name='slide-1'></a>
-<script>document.location="/php-db-schreiben/datenbank-schreiben/";</script>
 
-<p>In diesem Kapitel werden wir die Web-Applikation weiter entwickeln:
-Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
+<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
-<p>Hier der Plan für die einzelnen Seiten dieser Applikation:</p>
+<h2 id="absolute-positionierung">Absolute Positionierung</h2>
+<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung 
+herausgenommen und über dem restlichen Inhalt der Seite platziert. 
+Mit <code>top</code> und <code>left</code> kann die linke obere Ecke des Elements positioniert werden. 
+(oder mit <code>bottom</code> und <code>right</code> die rechte unter Ecke).
+In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
+einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
 
-<table class="table table-condensed table-bordered" style="width:auto">
-  <tbody>
-    <tr>
-      <td>Titel</td>
-      <td>Dateiname</td>
-      <td>Methode / Parameter</td>
-      <td>Beschreibung</td>
-    </tr>
-    <tr>
-      <td>Person löschen</td>
-      <td>person_delete.php</td>
-      <td>POST id</td>
-      <td>Löscht die Person mit der angegeben id.</td>
-    </tr>
-    <tr>
-      <td>Person einfügen</td>
-      <td>person_new.php</td>
-      <td>GET</td>
-      <td>Zeigt Eingabeformular für eine neue Person</td>
-    </tr>
-    <tr>
-      <td>Person einfügen</td>
-      <td>person_new.php</td>
-      <td>POST isfemale,title,firstname,surname,email,type,profile_visible,description</td>
-      <td>Legt eine neue Person an.</td>
-    </tr>
-    <tr>
-      <td>Person bearbeiten</td>
-      <td>person_edit.php</td>
-      <td>GET id</td>
-      <td>Zeigt Bearbeitungs-Formuar an</td>
-    </tr>
-    <tr>
-      <td>Person bearbeiten</td>
-      <td>person_edit.php</td>
-      <td>POST id,isfemale,title,firstname,surname,email,type,profile_visible,description</td>
-      <td>Speichert neue Daten zur Person id</td>
-    </tr>
-  </tbody>
-</table>
+<div class="example twopane">
+<pre class="lang-css prettyprint linenums left">
+#navi {
+  position: absolute;
+  width: 80px;
+  top:    0px;
+  left:   0px;
+}
+</pre><pre class="lang-css prettyprint linenums right">
+#content {
+  margin-left: 100px;
+}
 
-<p>Bei der Implementierung dieser Applikation lernen wir Schritt für Schritt verschiedene Sicherheitprobleme kennen.</p>
+
+
+</pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
+<p><img src="/images/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
+
+
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h2 id="koordinatensystem">Koordinatensystem</h2>
+
+<p>Die Koordinaten (<code>top</code> und <code>left</code>) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster.</p>
+
+<p>Ein Element mit der Eigenschaft <code>position: absolute</code> oder <code>position: relative</code> bildet für seine untergeordneten Elemente ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert.</p>
+
+<div class="example twopane">
+<pre class="lang-html prettyprint linenums left">
+&lt;div id=&quot;main&quot;&gt;
+  &lt;div id=&quot;content&quot;&gt;
+    &lt;h1&gt;Inhalt&lt;/h1&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;navi&quot;&gt;
+    &lt;p&gt;a&lt;/p&gt;
+    &lt;p&gt;b&lt;/p&gt;
+    &lt;p&gt;c&lt;/p&gt;
+    &lt;p&gt;d&lt;/p&gt;
+    &lt;p&gt;e&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre><pre class="lang-html prettyprint linenums right">
+#main {
+  border: 1px red solid;
+  position:relative;
+  width: 700px;
+  margin: 0px auto;
+} 
+#content {
+  margin-left: 120px;
+  background-color: yellow;
+}
+#navi {
+  position: absolute;
+  width: 80px;
+  top:0px;
+  left:0px;
+}
+</pre><div class="clearfix"></div></div>
+
+<p><a href="/images/koord.html">Beispiel-Seite</a></p>
+
 
 		
 			<div class="pagination">
   <ul>
     
       
+      
+      <li><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+      
+      
+      
+      <li><a href="/urls/">URLs</a></li>
       
     
   </ul>
@@ -183,7 +223,7 @@ Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
               </ul>
             </li>
           
-          <li class=" "><a href="/css-layout/">Css Layout</a>
+          <li class="active "><a href="/css-layout/">Css Layout</a>
               <ul class="sub">
                 
                   
@@ -215,7 +255,7 @@ Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
                       
                     
                       
-                      <li ><a href="/css-layout/positionierung/">CSS für Positionierung</a></li>
+                      <li class="active"><a href="/css-layout/positionierung/">CSS für Positionierung</a></li>
                       
                     
                   
@@ -969,7 +1009,7 @@ Daten werden nicht nur angezeigt, sondern auch gelöscht und editiert.</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2017 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-mysql-2/datenbank-schreiben.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/css-layout/positionierung.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
