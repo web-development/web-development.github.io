@@ -230,15 +230,62 @@ b#impressum { background-color:#ddd; }   /* nix! */
 
 <h2 id="maeinheiten-in-stylesheets">Maßeinheiten in Stylesheets</h2>
 
-<p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten: vw (Hundertstel der Viewport-Breite), vh (Hunderstel der Viewport-Höhe), px (Pixel) , em (=Breite des Buchstaben M) , ex (Höhe des Buchstaben X),  % (Prozent), cm (Zentimeter), in (Inch).   Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.  <a href="/images/css-masse.html">Demo</a></p>
+<p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten:</p>
 
-<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil (jeweils Werte von 0 bis 255) in verschiedenen Schreibweisen: Dezimal <code>rgb(16,0,255)</code>, hexadezimal <code>#10F</code> oder zweistellig hexadezimal <code>#1000FF</code>. Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt: <code>rgba(153, 134, 117, 0.2);</code></p>
+<ul>
+  <li>vw (Hundertstel der Viewport-Breite),</li>
+  <li>vh (Hunderstel der Viewport-Höhe),</li>
+  <li>px (Pixel),</li>
+  <li>em (=Breite des Buchstaben M),</li>
+  <li>ex (Höhe des Buchstaben X),</li>
+  <li>% (Prozent),</li>
+  <li>cm (Zentimeter),</li>
+  <li>in (Inch).</li>
+</ul>
+
+<p>Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.  <a href="/images/css-masse.html">Demo</a></p>
+
+
+<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+
+<h3 id="farben">Farben</h3>
+
+<p>Farbangaben können auf mehrer Arten erfolgen: mit einigen Farbwörtern (red, green,…) oder mit der Angabe von rot-, grün- und blau-Anteil in verschiedenen Schreibweisen:</p>
+
+<ul>
+  <li>Dezimal <code>rgb(16,0,255)</code>,</li>
+  <li>hexadezimal <code>#10F</code> oder</li>
+  <li>zweistellig hexadezimal <code>#1000FF</code>.</li>
+</ul>
+
+<p>Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt:</p>
+
+<ul>
+  <li><code>rgba(153, 134, 117, 0.2);</code></li>
+</ul>
+
+
+<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+
+
 
 <p>Tool-Tipp: Mit den Developer Tools in Firefox kann man die Farben einer Webseite auslesen:</p>
 
 <p><img src="/images/css/pipette.png" alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" /></p>
 
-<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise <code>url(http://absolute.com/bild.gif)</code> oder <code>url(relativ/bild.gif)</code> zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
+
+<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+
+<h3 id="urls">URLs</h3>
+
+<p>Wird in einem Stylesheet auf eine URL verwiesen (z.B. auf die URL eines Hintergrundbildes), dann kommt die Schreibweise</p>
+
+<ul>
+  <li><code>url(http://absolute.com/bild.gif)</code> oder</li>
+  <li><code>url(relativ/bild.gif)</code></li>
+</ul>
+
+<p>zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
 
 
 		
