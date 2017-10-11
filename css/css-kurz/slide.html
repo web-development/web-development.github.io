@@ -79,6 +79,11 @@
 &lt;/body&gt;&lt;/html&gt;
 </pre></div>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Da es keine Stylesheets gab „erfand“ Netscape ab 1994 zusätzliche HTML-Tags, die die Darstellung der Webseite festlegen. Andere Browser übernahmen diese Tags von Netscape.</p>
 
 <div class="example">
@@ -90,6 +95,11 @@
 &lt;p&gt;&lt;font size=&quot;+1&quot;&gt;P&lt;/font&gt;rojekte und Praxissemster stellen schon während des Studiums die Verbindung...&lt;/p&gt;
 &lt;/body&gt;&lt;/html&gt;
 </pre></div>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Durch das Hinzufügen der Tags für Formatierung wurde der HTML-Code komplizierter und unübersichtlicher. Erst ab ab 1995 wurde endlich an den Standards für Stylesheets gearbeitet, seit den frühen 2000ern ist die Unterstützung in den gängigen Browsern vorhanden. So sieht nun eine HTML-Seite mit separatem Stylesheet aus:</p>
 
@@ -117,6 +127,11 @@ p:first-letter {
 }
 </pre></div>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Mit der Trennung von Stylesheet und HTML wurde HTML wieder einfacher und übersichtlicher. Besonders das nachträgliche Verändern der Gestaltung wurde vereinfacht. 
 Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 
@@ -126,10 +141,14 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
   <li>Arbeitsteilung zwischen DesignerInnen (die CSS erstellen) und RedakteuerInnen (die Inhalte erstellen)</li>
 </ul>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Aber Achtung: CSS ist nicht die Lösung jedes Problems:</p>
 
 <ul>
-  <li>Mit Stylesheets können Sie nur Elemente verändern, die schon in der HTML-Datei vorhanden sind. Es können keine neuen Elemente eingefügt werden.</li>
   <li>Um ein Stylesheet zu erstellen, muss die DesignerIn die HTML-Tags kennen, z. B. wissen, dass h1, h2, h3 für die Überschriften stehen.</li>
   <li>Damit das Stylesheet wirkt, muss die RedakteurIn, die das HTML-Dokument erstellt, die richtigen HTML-Tags verwenden, z. B. Überschriften wirklich mit h1, h2, h3 formatieren, und nicht mit b, i, font.</li>
 </ul>
@@ -158,22 +177,11 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 &lt;/style&gt;
 </pre></div>
 
-<p>An Hand dieses Beispieles werden nun die ersten Stylesheet-Befehle erklärt. Die Syntax von Stylesheets ist völlig anders als die von HTML.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="interpretation">Interpretation</h2>
-<p>Zuerst werden wir die Schriften im Dokument festlegen.  Achtung: Welche Schriften auf dem Endgerät zur Verfügung stehen, bzw. ob das Nachladen von Fonts wirklich klappt ist nicht bekannt, deswegen kann man mehrere Schriften angegeben. Diese Liste wird vom Browser von links nach rechts abgearbeitet,die erste Schrift die er findet, verwendet er.</p>
-
-<p>In Zeile 2 bis 5 werden zwei Anweisungen für Fließtext gegeben (HTML-Tag &lt;p&gt;): die Schriftfamilie in Zeile 3 und die Schriftgröße in Zeile 4.</p>
-
-<p>Das letzte Wort in Zeile 7 „sans-serif“ ist ein CSS-Kürzel für „irgendeine serifenlose Schrift“. Es empfiehlt sich am Ende einer Schriftliste ein solches Kürzel als Standardwert „wenn alle Stricke reißen“  anzugeben,dabei sind folgende Werte möglich:  <code>serif</code>,  <code>sans-serif</code>,  <code>cursive</code>, <code>fantasy</code>,   <code>monospace</code>.</p>
-
 </div>
 <div class='slide'>
 
 <h2 id="css-erforschen-mit-developer-tools">CSS erforschen mit Developer Tools</h2>
+
 <p>Sie haben nun einen kurzen Einblick in die Schreibweise und die Möglichkeiten von Stylesheets. Genug um Stylesheets von Webseiten zu lesen um neue Möglichkeiten kennen zu lernen. Beim Lesen und Verstehen von CSS helfen die Developer Tools des Browsers.</p>
 
 <p><img src="/images/image072.png" alt="Abbildung 19: Firefox Add-On Firebug" /></p>
