@@ -58,19 +58,15 @@
 
 <p>Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in “A List Apart” unter dem Begriff “Responsive Webdesign” popularisiert <a href="http://www.alistapart.com/articles/responsive-web-design/">→</a>.</p>
 
-<p><img src="/images/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
+<p>In diesem ersten Beispiel von responsive Design werden drei verschiedene Layouts
+für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben dabei gleich.</p>
+
+<p><img src="/images/css-layout/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
-<h3 id="mobile-first">Mobile First</h3>
 
-<p>Luke Wroblewski schlug schon 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
-
-
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
-
-<h3 id="mediaqueries">Mediaqueries</h3>
 
 <p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
 
@@ -79,7 +75,7 @@
 <pre class="lang-css prettyprint linenums">
 @media screen and (max-width: 480px) {
   .column {
-    float: none;
+    width: 100px;
   }
   /* weitere Regeln für kleine Screens */
 }
@@ -87,14 +83,26 @@
 </pre></div>
 
 
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+
+<h3 id="mobile-first">Mobile First</h3>
+
+<p>Luke Wroblewski schlug 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
+
+
 <a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+<h3 id="mediaqueries">Mediaqueries</h3>
+
+
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
 
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="pixel">Pixel</h3>
 <p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
@@ -107,17 +115,17 @@ dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
 <p><img src="/images/image119.png" alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" /></p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h1 id="responsive-images">Responsive Images</h1>
 
 <p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
-Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?<br />
+Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?
 Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 
 <p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
-Ausser vom Internet Explorer wird das Attribut 2016 von 
+Ausser vom Internet Explorer wird das Attribut 2016 von
 allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
 
 <p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
@@ -148,7 +156,7 @@ der <strong>2x</strong> Version.</p>
 <p><a href="/images/responsive-background-images.html">Demo-Seite für “Responsive Background Images”</a></p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="vektor">Vektor</h3>
 
@@ -160,7 +168,7 @@ der <strong>2x</strong> Version.</p>
 <p><img src="/images/circle.svg" alt="Abbildung: Kreis in SVG-Darstelllung" /></p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 <p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG –</p>
@@ -170,7 +178,7 @@ der <strong>2x</strong> Version.</p>
 <p><img src="/images/zeilenumbruch.png" alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" /></p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="skalieren">Skalieren</h2>
 
@@ -182,7 +190,7 @@ Hier das entsprechende Menü in Firefox.</p>
 <p><img src="/images/zoom.png" alt="Abbildung 32: Zoom Menü in Firefox" /></p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="vertiefung">Vertiefung</h2>
 
@@ -196,11 +204,11 @@ Hier das entsprechende Menü in Firefox.</p>
     
       
       
-      <li><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
+      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
       
       
       
-      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
+      <li><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
       
     
   </ul>
@@ -269,10 +277,6 @@ Hier das entsprechende Menü in Firefox.</p>
                       <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
                       
                     
-                      
-                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
-                      
-                    
                   
                 
               </ul>
@@ -290,15 +294,15 @@ Hier das entsprechende Menü in Firefox.</p>
                       
                     
                       
-                      <li class="active"><a href="/css-layout/responsive/">Responsive Design</a></li>
-                      
-                    
-                      
                       <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/css-layout/responsive/">Responsive Design</a></li>
                       
                     
                       

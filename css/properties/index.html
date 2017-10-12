@@ -67,13 +67,19 @@ h1,h2 {
   font-weight: bold;
   font-style: italic;
 
-  letter-spacing: 0.4em;  //  Abstand zw. Buchstaben
-  font-variant: small-caps;    // Kapitälchen
+  letter-spacing: 0.2ex;  //  Abstand zw. Buchstaben
   text-decoration: underline;  // unterstrichen
-  text-transform: uppercase;   // alles Großbuchstaben
   text-shadow: orange 0 -2px;  // Schatten Effekt
 }
+h1 {
+  text-transform: uppercase;   // alles Großbuchstaben
+}
+h2 {
+  font-variant: small-caps;    // Kapitälchen
+}
 </pre></div>
+
+<p><a href="/images/css/text-css.html">Demo</a></p>
 
 
 <a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
@@ -92,18 +98,13 @@ man Lizenzgebühren zahlen muss.</p>
 <a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="abstze">Absätze</h2>
-<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind in Abbildung 18 gezeigt:</p>
+<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind hier gezeigt:</p>
 
-<p><img src="/images/image066.png" alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" /></p>
+<p><img src="/images/css/absatz.png" alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" /></p>
 
 <p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
 
 <p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein.</p>
-
-
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
-
-
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
@@ -115,17 +116,15 @@ p {
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="box-model">Box Model</h2>
 
 <p>Jeder blockbildende Tag (z. B. h1, h2, p, blockquote, div, …) hat einen Rahmen, Innen- und Außenabstand. Diese werden mit den Deklarationen border, padding und margin festgelegt. Ein Hintergrundbild und/oder eine Hintergrundfarbe des Tags reicht immer bis zum Rahmen, aber nicht darüber hinaus.</p>
 
-<p><img src="/images/image083.png" alt="Abbildung 21: Darstellung des Box Models von hicksdesign.co.uk" /></p>
+<p><a href="/images/css/box.html">Demo</a></p>
 
-<p>Die Ausdehnung von margin, padding und border kann man besonders gut mit der Firefox-Erweiterung Firebug erforschen wie in Abbildung 22 gezeigt.</p>
-
-<p><img src="/images/image085.png" alt="Abbildung 22: margin, border, padding in Firebug" /></p>
+<p><img src="/images/css/boxmodel.png" alt="Darstellung des Box Models in den Firefox Developer Tools" /></p>
 
 <p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
 
@@ -174,7 +173,7 @@ button{
 sich noch viele ausführlichere Beispiele.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="absatz-mit-p">Absatz mit <code>&lt;p&gt;</code></h2>
 
@@ -183,7 +182,7 @@ sich noch viele ausführlichere Beispiele.</p>
 <p><img src="/images/image086.png" alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" /></p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h2>
 
@@ -275,10 +274,6 @@ sich noch viele ausführlichere Beispiele.</p>
                       <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
                       
                     
-                      
-                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
-                      
-                    
                   
                 
               </ul>
@@ -296,15 +291,15 @@ sich noch viele ausführlichere Beispiele.</p>
                       
                     
                       
-                      <li ><a href="/css-layout/responsive/">Responsive Design</a></li>
-                      
-                    
-                      
                       <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/responsive/">Responsive Design</a></li>
                       
                     
                       

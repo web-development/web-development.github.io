@@ -58,12 +58,12 @@
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
+              vorige Präsentation: <a href="/css-layout/navigation//slide.html">Navigationsmenü</a> |
                         
             <a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/css-layout/layout//slide.html">CSS für Layout</a>
+             | Nächste Präsentation <a href="/css-layout/interaktion//slide.html">CSS für Interaktion</a>
             
             </p>
           </div>
@@ -75,19 +75,15 @@
 
 <p>Große Unterschiede im Platz kann man mit Mediaqueries in CSS behandeln. Die Verwendung von Mediaqueries wurde 2010 in einem Artikel von Ethan Marcotte in “A List Apart” unter dem Begriff “Responsive Webdesign” popularisiert <a href="http://www.alistapart.com/articles/responsive-web-design/">→</a>.</p>
 
-<p><img src="/images/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
+<p>In diesem ersten Beispiel von responsive Design werden drei verschiedene Layouts
+für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben dabei gleich.</p>
+
+<p><img src="/images/css-layout/responsive.png" alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" /></p>
 
 </div>
 <div class='slide'>
 
-<h3 id="mobile-first">Mobile First</h3>
 
-<p>Luke Wroblewski schlug schon 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
-
-</div>
-<div class='slide'>
-
-<h3 id="mediaqueries">Mediaqueries</h3>
 
 <p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
 
@@ -96,12 +92,24 @@
 <pre class="lang-css prettyprint linenums">
 @media screen and (max-width: 480px) {
   .column {
-    float: none;
+    width: 100px;
   }
   /* weitere Regeln für kleine Screens */
 }
 /* allgemein gültige Regeln */
 </pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="mobile-first">Mobile First</h3>
+
+<p>Luke Wroblewski schlug 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="mediaqueries">Mediaqueries</h3>
 
 </div>
 <div class='slide'>
@@ -129,12 +137,12 @@ dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
 <h1 id="responsive-images">Responsive Images</h1>
 
 <p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
-Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?<br />
+Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?
 Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 
 <p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
-Ausser vom Internet Explorer wird das Attribut 2016 von 
+Ausser vom Internet Explorer wird das Attribut 2016 von
 allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
 
 <p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
@@ -211,12 +219,12 @@ Hier das entsprechende Menü in Firefox.</p>
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
+              vorige Präsentation: <a href="/css-layout/navigation//slide.html">Navigationsmenü</a> |
                         
             <a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/css-layout/layout//slide.html">CSS für Layout</a>
+             | Nächste Präsentation <a href="/css-layout/interaktion//slide.html">CSS für Interaktion</a>
             
             </p>
           </div>

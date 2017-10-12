@@ -50,51 +50,40 @@
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Wie in Kapitel 1 beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des Layouts von Webseiten spielt dabei die Bildschirmgröße bzw. die Auflösung eine wichtige Rolle.</p>
+			<a name='slide-1'></a><p>Wie im Kapitel <a href="/das-web-und-html/">Das Web und HTML</a>  beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des visuellen Layouts von Webseiten spielt dabei die die Auflösung und die Pixeldichte eine wichtige Rolle.</p>
 
 
 <a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="auflsung">Auflösung</h2>
-<p>Zuerst stellt sich die Frage: woher weiß ich, wie hoch die Auflösung am Computer meiner LeserIn ist?  Woher weiß ich, wie viel Platz im Browserfenster zur Verfügung steht?</p>
 
-<p>Die Antwort lautet: ich weiß es nicht, und es gibt keine zuverlässige Methode, mit der man diese Information in jedem Fall herausfinden kann. Es gibt eine Meßmethode mit Hilfe der Programmiersprache Javascript, mit der man die Größe des Browserfensters messen kann – das Ergebnis der Messung ist natürlich dadurch verfälscht, dass Browser ohne Javascript ganz aus der Messung herausfallen. Diese Beschränkung sollten Sie bei den folgenden Überlegungen immer beachten.</p>
+<p>Hier ein Überblick über mögliche Bildschirm-Auflösungen:</p>
 
-<p>Wir werden <code>Media Queries</code> kennen lernen - das ist eine Methode um in CSS auf
-die Größe des Browserfensters zu reagieren.</p>
-
-<p>Alle Messmethoden die uns zur Verfügung stehen sind unvollständig.</p>
-
-
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
-
-
-
-<p>Abbildung 25 zeigt einige derzeit (2015) mögliche Bildschirm-Auflösungen.</p>
-
-<p><img src="/images/Vector_Video_Standards2.svg" alt="Abbildung 25: einige mögliche Bildschirmauflösungen und Seitenverhältnisse 2011," /></p>
+<p><img src="/images/css-layout/Vector_Video_Standards2.svg" alt="Bildschirmauflösungen und Seitenverhältnisse" /></p>
 
 <p>basierend auf http://en.wikipedia.org/wiki/Image:Vector_Video_Standards2.svg</p>
 
 <p>Vergleichen Sie die höchsten hier dargestellte Auflösungen mit der geringsten Auflösungen. Da Breite und Höhe (mehr als) verdreifacht sind, steht bei der höchsten Auflösung also (mehr als) die neunfache Fläche zur Verfügung!</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
-<p>Abbildung 26 zeigt Statistiken über die Bildschirmauflösung von w3schools.org von 2000 bis 2011. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Auf Grund des Messverfahrens werden hier wahrscheinlich nur Desktops erfaßt, nicht mobile Geräte.</p>
+<p>Die typische Auflösung hat sich über Jahre stark verändert. Diese Statistik
+von w3schools.org reicht von 2000 bis 2016. In diesem Zeitraum hat sich die Mehrheit langsam von 800x600 (bis 2003) auf 1024x768 (bis 2008) und schließlich auf höhre Auflösungen verschoben. Achtung: Das
+war bevor mobile Endgeräte wichtig wurden.</p>
 
 <p><img src="/images/display-stats.png" alt="Abbildung 26: Statistik über die Bildschirmauflösung," /></p>
 
 <p><a href="http://www.w3schools.com/browsers/browsers_display.asp">Datenquelle: w3schools</a></p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="pixeldichte">Pixeldichte</h2>
 
-<p>Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabegerätes (24“ Desktop, 13“ Laptop, mobiles Endgerät) ist bei gleicher Pixel-Auflösung sehr unterschiedlich! Mobile Geräte haben eine geringe Auflösung, aber eine höhere Pixeldichte:</p>
+<p>Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabegerätes (24“ Desktop, 13“ Laptop, mobiles Endgerät) ist bei gleicher Pixel-Auflösung sehr unterschiedlich! Mobile Geräte haben oft eine  höhere Pixeldichte:</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <thead>
@@ -201,19 +190,19 @@ die Größe des Browserfensters zu reagieren.</p>
   </tbody>
 </table>
 
+<p>Hier findet man einen Faktor 6 zwischen hächster und geringster Pixeldichte.</p>
+
+
+<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+
+<h2 id="brutto-flche-vs-netto-flche">Brutto-Fläche vs. Netto-Fläche</h2>
+<p>Von diesen „Brutto-Angaben“ über die Größe der zur Verfügung stehenden Fläche sind nun noch der Platz für den Fensterrahmen des Browsers, für Scrollbalken, Symbolleisten, und eventuell eingeblendete Favoritenleisten abzuziehen, um den „netto“ verbleibenden Raum für die Gestaltung der Webseite zu erhalten.</p>
+
 
 <a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
 
-<h2 id="brutto-flche-vs-netto-flche">Brutto-Fläche vs. Netto-Fläche</h2>
-<p>Von diesen „Brutto-Angaben“ über die Größe der zur Verfügung stehenden Fläche sind nun noch der Platz für den Fensterrahmen des Browsers, für Scrollbalken, Symbolleisten, und eventuell eingeblendete Favoritenleisten abzuziehen, um den „netto“ verbleibenden Raum für die Gestaltung der Webseite zu erhalten. Abbildung 27 zeigt diese Problematik am Beispiel von Firefox.</p>
-
-<p><img src="/images/image100.png" alt="Abbildung 27: Platzbedarf von Browser-Elementen: firefox ohne Sidebar, Internet Explorer mit Favoriten" /></p>
-
-
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
-
 <h2 id="umgang-mit-der-problematik">Umgang mit der Problematik</h2>
-<p>Wie gehen WebdesignerInnen mit den verschiedenen Auflösungen um? Ein paar Varianten:</p>
+<p>Wie gehen WebdesignerInnen mit den verschiedenen Auflösungen und Pixeldichten um? Ein paar Varianten:</p>
 
 <ol>
   <li>Ignorieren und für die eigene Bildschirmauflösung entwerfen.  Manchmal in Kombination mit der Beschriftung „best viewed at 1600x1200“</li>
@@ -222,7 +211,7 @@ die Größe des Browserfensters zu reagieren.</p>
 </ol>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -247,7 +236,7 @@ Antworten im Web Design vorgestellt.</p>
       
       
       
-      <li><a href="/css-layout/responsive/">Responsive Design</a></li>
+      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
       
     
   </ul>
@@ -316,10 +305,6 @@ Antworten im Web Design vorgestellt.</p>
                       <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
                       
                     
-                      
-                      <li ><a href="/css/image-replacement/">Image Replacement</a></li>
-                      
-                    
                   
                 
               </ul>
@@ -337,15 +322,15 @@ Antworten im Web Design vorgestellt.</p>
                       
                     
                       
-                      <li ><a href="/css-layout/responsive/">Responsive Design</a></li>
-                      
-                    
-                      
                       <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/responsive/">Responsive Design</a></li>
                       
                     
                       

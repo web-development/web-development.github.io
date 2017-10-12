@@ -58,7 +58,7 @@
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/responsive//slide.html">Responsive Design</a> |
+              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
                         
             <a href="/css-layout/layout/">zurück zum Buch-Kapitel [esc]</a>
             
@@ -75,38 +75,77 @@
 
 <h3 id="text">Text</h3>
 
-<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In Abbildung 33 wurden &lt;p&gt; und &lt;em&gt;-Tags verwendet und mit folgendem Stylesheet formatiert:</p>
+<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In folgendem Beipiel wird
+der blockbindente Tag <code>p</code> und der inline-Tag <code>span</code> verwendet.</p>
 
 <pre><code>p { background-color:#CCCCCC; }
-em { background-color:#FFFF66; }
+span { background-color:#FFFF66; }
 </code></pre>
 
-<p>Bei der Darstellung im Browser kann der nicht-blockbildender Tag em dabei auf mehrere Zeilen verteilt werden und nimmt dann mehrere rechteckige Bereiche ein, der blockbildende Tag p wird immer als ein Rechteck dargestellt:</p>
+<p>Bei der Darstellung im Browser wird der Text innheralb der Paragraphen je nach
+zu verfügung stehenem Platz umgebrochen:</p>
 
-<p><img src="/images/image128.png" alt="Abbildung 33: Darstellung von blockbildenden und nicht-blockbildenden Tags" /></p>
+<div class="resizable">
+<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
+in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+I am a block level element - p for paragraph.
+</p>
+
+<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.  <span style="background-color: red;">Und ein span
+in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+
+</p>
+<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
+in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+I am a block level element - p for paragraph.
+</p>
+</div>
 
 </div>
 <div class='slide'>
 
 <h3 id="bild-im-text">Bild im Text</h3>
 
-<p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert.  Wenn Sie das Bild wie in Abbildung 34 mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout.</p>
+<p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert.  Wenn Sie das Bild wie hier mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout:</p>
 
-<p><img src="/images/image130.png" alt="Abbildung 34: Bild mitten im Absatz" /></p>
+<div class="resizable">
+  <p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+  I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. 
+  <img src="/images/css-layout/silhouette_hand.svg" style="height: 24px;" />
+  Das Bild der Hand stammt von <a href="https://commons.wikimedia.org/wiki/File:Silhouette_hand.svg">SimonWaldherr</a>.
+  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
+  I am a block level element - p for paragraph.
+  </p>
+</div>
 
 </div>
 <div class='slide'>
 
 <h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
 
-<p>Lange konnten Browser keine Wörter trennen und umbrechen, ein langes „Wort“
-konnte dadurch die Breite eines Elements überschreiten. In Abbildung 35 können Sie sehen, wie Microsoft Internet Explorer 7.0 eine lange URL nicht umbricht.</p>
+<p>Browser können lange Wörter umbrechen:</p>
 
-<p><img src="/images/image132.png" alt="Abbildung 35: Darstellung eines Absatzes mit Rahmen und fixer Breite, der lange Wörter enthält, in MSIE 7.0" /></p>
+<div class="resizable">
+  <p style="background-color:#ddd">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
+    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
+    <br />
+    Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
+    <br />
+    Dieser Absatz hat keine besondren CSS-Eigenschaften.
+  </p>
 
-<p>CSS bietet ab Version 3 verschiedene Möglichkeiten diese Fälle zu behandeln, z.b mit der Eigenschaft <code>text-overflow</code> <a href="http://css3clickchart.com/#text-overflow">→</a></p>
-
-<p>Derzeit ist es immer noch notwendig im Text die Soll-Bruchstellen als <code>&amp;shy;</code> einzutragen, damit der Browser dann den Zeilenumbruch korrekt durchführen kann. Die Library <a href="https://code.google.com/p/hyphenator/">hyphenator.js</a> bietet den Umbruch u.a. für englische und deutsche Texte an.</p>
+  <p style="background-color:#ddd" class="hyphenate">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
+    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
+    <br />
+        Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
+    <br />
+    Dieser Absatz hat keine die Eigenschaften  <kbd>  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;</kbd>
+  </p>
+</div>
 
 </div>
 <div class='slide'>
@@ -242,7 +281,7 @@ das Layout beeinflussen.</p>
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/responsive//slide.html">Responsive Design</a> |
+              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
                         
             <a href="/css-layout/layout/">zurück zum Buch-Kapitel [esc]</a>
             
