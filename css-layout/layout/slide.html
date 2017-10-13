@@ -152,59 +152,8 @@ I am a block level element - p for paragraph.
 
 <h2 id="width-und-auto">Width und Auto</h2>
 <p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit
-<code>width</code> kann eine andere Breite eines Blocks definiert werden:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-div#main {  width:500px; }
-</pre></div>
-
-<p>Je nach <code>box-sizing</code> müssen Sie die Werte von padding, border, margin dazu
-addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht: der default ist
-<code>box-sizing: content-box</code>.</p>
-
-</div>
-<div class='slide'>
-
-
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-box-sizing: content-box;
-width: 200px; 
-padding: 10px; 
-border-width: 10px; 
-margin: 32px 0px
-</pre></div>
-
-<p>Gesamtbreite inklusive Rahmen = 0px + 10px + 10px + 200px + 10px + 10px + 0px = 240px</p>
-
-<p><img src="/images/image134.png" alt="Abbildung 36: width im Box-Model mit box-sizing: content-box" /></p>
-
-</div>
-<div class='slide'>
-
-
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-box-sizing: border-box;
-width: 200px; 
-padding: 10px; 
-border-width: 10px; 
-margin: 32px 0px
-</pre></div>
-
-<p>Gesamtbreite inklusive Rahmen = 0px + 10px + 10px + 160px + 10px + 10px + 0px = 200px</p>
-
-<p><img src="/images/image134-border.png" alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="zentrieren-mit-auto">Zentrieren mit Auto</h2>
-
-<p>Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
+<code>width</code> kann eine andere Breite eines Blocks definiert werden:
+Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
 
 <p><a href="/images/width-auto.html">Demo-Seite dazu</a></p>
 
@@ -232,14 +181,9 @@ im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts,
 der Text rutscht links davon nach oben. Im dritten Absatz „floated“ 
 das Bild nach links, der Text rutscht rechts davon nach oben.</p>
 
-<p><a href="/images/float.html">Beispiel als Demo-Seite</a></p>
+<p><a href="/images/css-layout/float.html">Beispiel als Demo-Seite</a></p>
 
-<p><img src="/images/image136.png" alt="Abbildung 37: Bilder mit float" /></p>
-
-</div>
-<div class='slide'>
-
-
+<p><img src="/images/css-layout/float-img.png" alt="Bilder mit float" /></p>
 
 <p>Float wurde vor der Einführung von Flexbox und CSS Grid für viele
 Layout Aufgaben verwendet.  Heute kommt es nur noch in der hier
@@ -251,9 +195,107 @@ beschriebenen Weise bei Bildern zum Einsatz.</p>
 <h2 id="css-grid">CSS Grid</h2>
 
 <p>Um das Layout einer ganzen Seite zu gestalten arbeitet man
-mit einen Grid, einem Gitternetz das man über die ganze Seite legt:</p>
+mit einen Grid, einem Gitternetz das man über die ganze Seite legt.</p>
+
+<p><img src="/images/css-layout/grid.png" alt="Layout mit CSS Grid" /></p>
+
+<p>Das Grid wird normalerweise nicht angzeigt.  Die hier gezeigte Ansicht
+mit den strichlierten Linien kann man in den Firefox Developertools mit
+einem Klick auf das grid-symbol aktivieren:</p>
+
+<p><img src="/images/css-layout/switch-on-grid.png" alt="Grid Ansicht einschalten in Firefox" /></p>
 
 <p><a href="/images/cssgrid/">Demo-Seite</a></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="das-grid-definieren">Das Grid definieren</h3>
+
+<p>Das Grid wird über die Breiter der Spalten (columns) und die Höhe der
+Zeilen definiert (rows):</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.page_container {
+  display: grid;
+  grid-template-columns: 270px 5fr 3fr;
+  grid-template-rows: 60px 2fr 210px;
+}
+</pre></div>
+
+<p>Dabei kann die  neue Maßeinheit <code>fr</code> (für fraction, Bruchteil) verwendet werden:
+Nachdem von der Gesamtbreite die absoluten Breitenangaben abezogen wurden,
+wird der restliche Platz im Verhältnis der fractions verteilt.</p>
+
+<p>Also zum Beispiel:</p>
+
+<ul>
+  <li>Nehmen wir an es stehen für das oben definierte Grid 1280px in der Breite zur Verfügung</li>
+  <li>davon gehen 270px an die erste Spalte</li>
+  <li>bleiben 1010px</li>
+  <li>diese werden nun im Verhältnis 5 zu 3 auf Spalte zwei und drei verteilt</li>
+  <li>das ergibt 5 * ( 1010px / 8 ) = 631.25px für die zweite Spalte</li>
+  <li>und 3 * ( 1010px / 8 ) = 378.75px für die zweite Spalte</li>
+</ul>
+
+<p>Wenn Sie die Breite des Fensters für die <a href="/images/cssgrid/">Demo-Seite</a> ändern
+werden die neu berechneten Werte angezeigt.</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="areas-definieren">Areas definieren</h3>
+
+<p>Mit der Property <code>grid-template-areas</code> können nun Namen
+für die einzelnen Felder des Grids vergeben werden:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.page_container {
+  display: grid;
+
+  grid-template-columns: 270px 5fr 3fr;
+  grid-template-rows: 60px 2fr 210px;
+
+  grid-template-areas:  &quot;.              headlineArea     subheadArea&quot;
+                        &quot;portrait_area  descriptionArea  codeArea&quot;
+                        &quot;.              factsArea        sourceArea&quot;;
+}
+</pre></div>
+
+<p>Ein Punkt steht für ein Feld das frei bleibt.
+Eine Area kann auch mehrere Felder des Grids überspannen,
+muss aber immer in Rechteck bilden (keine beliebige Tetris-Form).</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  grid-template-areas:  &quot;headlineArea  headlineArea     subheadArea&quot;
+                        &quot;portraitArea  descriptionArea  codeArea&quot;
+                        &quot;factsArea     descriptionArea  sourceArea&quot;;
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="areas-mit-inhalt-belegen">Areas mit Inhalt belegen</h3>
+
+<p>Nun kann der Inhalt in das Grid - genauer: in die Area - eingefüllt werden.
+Das erfolgt rein in CSS, es ist keine Veränderung im HTML notwendig.</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+header {
+  grid-area: headlineArea;
+  background-color: #EBBB5B;
+  padding-top: 19px;
+}
+
+section#description {
+  grid-area: descriptionArea;
+  background-color: white;
+}
+</pre></div>
 
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Guide to CSS Grid</a></p>
 

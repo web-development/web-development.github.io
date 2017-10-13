@@ -192,6 +192,51 @@ sich noch viele ausführlichere Beispiele.</p>
 </div>
 <div class='slide'>
 
+<h3 id="box-sizing">Box Sizing</h3>
+
+<p>Je nach <code>box-sizing</code> müssen Sie die Werte von padding, border, margin dazu
+addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht: der default ist
+unpraktisch: bei <code>box-sizing: content-box</code> wird die Breiten-Angabe Width nur auf
+den Inhalt angewendet:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+box-sizing: content-box;
+width: 200px; 
+padding: 10px; 
+border-width: 10px; 
+margin: 32px 0px
+</pre></div>
+
+<p>Um die Gesamtbreite der sichtbaren Box auszurechnen muss man noch rahmen und padding
+dazu addieren:  10px + 10px + 200px + 10px + 10px = 240px</p>
+
+<p><img src="/images/image134.png" alt="Abbildung 36: width im Box-Model mit box-sizing: content-box" /></p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Viel praktischer ist <code>box-sizing: border-box</code>:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+box-sizing: border-box;
+width: 200px; 
+padding: 10px; 
+border-width: 10px; 
+margin: 32px 0px
+</pre></div>
+
+<p>Gesamtbreite inklusive Rahmen = 200px.
+Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
+
+<p><img src="/images/image134-border.png" alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" /></p>
+
+</div>
+<div class='slide'>
+
 <h2 id="absatz-mit-p">Absatz mit <code>&lt;p&gt;</code></h2>
 
 <p>Die Standard-Darstellung von Absätzen erklärt sich über den margin-top und margin-bottom des &lt;p&gt;-Tags:</p>
