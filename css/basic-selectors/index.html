@@ -135,38 +135,57 @@ siehe weiter Unten.)</p>
 
 <h2 id="links-formatieren">Links formatieren</h2>
 
-<p>Der &lt;a&gt;-Tag wird in HTML für zwei sehr unterschiedliche Dinge verwendet: zum Setzen von Links und zum Setzen von Textmarken (auch ‚Anker’ genannt):</p>
+<p>Der Browser unterscheidet bei der Darstellugn von Links zwischen denen  die schon einmal besucht wurden (visited) und neuen Links (link).</p>
 
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h1&gt;&lt;a name=&quot;unis&quot;&gt;&lt;/a&gt;Universitäten&lt;/h1&gt;
-  &lt;a href=&quot;http://www.uni-salzburg.at/&quot;&gt;Uni Salzburg&lt;/a&gt;
-</pre></div>
-
-<p>Textmarken sind normalerweise unsichtbar, Links sind normalerweise blau oder violett und unterstrichen.</p>
-
-<p>Um die Darstellung von Links zu verändern muss man in CSS als Selektor <code>:link</code>
-oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet dabei zwischen Links die schon einmal besucht wurden (visited) und neuen Links.</p>
+<p>Die Default Einstellung der Browser entspricht ungefähr folgendem CSS:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-  a:link, a:visited { text-decoration: none; }
-  a:link    {color:blue}
-  a:visited {color:#FF00FF }
+  a:any-link, a:-webkit-any-link { text-decoration: underline; }
+  a:link    { color:blue; }
+  a:visited { color:#FF00FF; }
 </pre></div>
+
+<p>Achtung: <code>:any-link</code> ist noch experimentell, und wird (im Herbst 2017) nur in Firefox
+schon in dieser Schreibweise akzeptiert.  In den anderen Browsern muss man noch
+die Schreibweise mit vorgestelltem <code>-webkit</code> verwenden.</p>
+
+
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+
+
 
 <p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-  a:link, a:visited { 
+  a:link, a:visited {
      background-image:    url(icon-link.gif);
      background-position: center right;
      background-repeat:   no-repeat;
-     padding-right:       9px; 
-  } 
+     padding-right:       9px;
+  }
 </pre></div>
 
+<p><a href="/images/css/link-icon.html">Demo</a></p>
+
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+<h3 id="interaktion">Interaktion</h3>
+
+<p>Die Pseudo-Klassen <code>:hover</code> und <code>:active</code> gelten  bevor ein Link wirklich geladen wird:
+<code>:hover</code> schlägt an wenn die Maus sich über dem Element befindet. Danache 
+wird <code>:active</code> wirksam, wenn der Link wirklich mit Klick oder Touch ausgelöst wird:</p>
+
+<p><a href="/images/css/hover-active.html">Demo</a></p>
+
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+
+<h2 id="und-noch-viel-mehr">Und noch viel mehr</h2>
+
+<p>Im Kapitel <a href="/css-layout/selektoren/">CSS Selektoren im Detail</a> geht es weiter.</p>
 
 		
 			<div class="pagination">
@@ -260,6 +279,10 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
                       
                     
                       
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
                       <li ><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
@@ -268,23 +291,19 @@ oder <code>:visited</code> als Selektoren verwenden. Der Browser unterscheidet d
                       
                     
                       
-                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
-                      
-                    
-                      
-                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
-                      
-                    
-                      
                       <li ><a href="/css-layout/responsive/">Responsive Design</a></li>
                       
                     
                       
-                      <li ><a href="/css-layout/interaktion/">CSS für Interaktion</a></li>
+                      <li ><a href="/css-layout/css-sprites/">CSS Sprites</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
                       
                     
                   
