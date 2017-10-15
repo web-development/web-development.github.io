@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - PHP und Datenbank</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>PHP und Datenbank</h2>
+				<h2 class="title"><a id="slide-0"></a>PHP und Datenbank</h2>
                                 <a href="/php-db-lesen/start/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Mit der Verwendung einer Datenbank wird der Aufruf einer
 Webseite noch einmal komplexer:  der Webserver ruft
 das PHP Programm auf, das PHP-Programm schickt eine
@@ -62,7 +62,7 @@ Anfrage an die Datenbank.</p>
 oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="datenbank-schnittstellen">Datenbank-Schnittstellen</h2>
 
@@ -71,7 +71,7 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 <a href="http://php.net/manual/de/book.pdo.php">PDO Dokumentation</a>.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="verbindungsaufbau">Verbindungsaufbau</h3>
 
@@ -101,7 +101,7 @@ Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
 <code>unix_socket</code> an.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -118,7 +118,7 @@ $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 die zuvor inkludiert wird.  Warum?</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="datenbank-zugangsdaten">Datenbank-Zugangsdaten</h3>
 
@@ -139,7 +139,7 @@ wir wollen den Code im Repository vielleicht
 veröffentlichen und die Zugangsdaten weiter geheimhalten.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="gitignore">.gitignore</h3>
 
@@ -148,7 +148,7 @@ wird der Dateiname in die Datei <code>.gitignore</code> eingetragen.
 <code>.gitignore</code> ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -170,7 +170,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen.</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -186,7 +186,7 @@ config.php
 <code>config.php</code> (egal in welchem Ordner) zu ignorieren.</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -209,7 +209,7 @@ Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde.
 Die sollte man ganz normal committen.</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="empfohlene-optionen-fr-den-verbindungsaufbau">Empfohlene Optionen für den Verbindungsaufbau</h3>
 
@@ -231,7 +231,7 @@ Objekt dargestellt werden. (Die Alternative wäre ein assoziatives Array.)</p>
 werden diese Optionen vorausgesetzt.</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h3 id="anweisung-an-die-datenbank">Anweisung an die Datenbank</h3>
 
@@ -248,7 +248,7 @@ $anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
 Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="abfrage-der-datenbank">Abfrage der Datenbank</h3>
 
@@ -1002,7 +1002,7 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

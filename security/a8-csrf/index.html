@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Cross-Site Request Forgery (CSRF)</title>
@@ -45,19 +45,19 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Cross-Site Request Forgery (CSRF)</h2>
+				<h2 class="title"><a id="slide-0"></a>Cross-Site Request Forgery (CSRF)</h2>
                                 <a href="/security/a8-csrf/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Die CSRF ist ein Angriff “über die Bande”:  Um Site C zu attackieren, wird auf Site B Code hinterlegt. Wenn Userin Alice mit Site B interagiert wird ohne ihr Wissen eine HTTP-Request an Site C geschickt. Da Alice bei C schon eingeloggt ist wird dieser Request “erfolgreich” durchgeführt.</p>
 
 <p>Das Problem tritt also potentiell bei allen Sites auf, bei denen
 man auf Dauer eingeloggt bleibt.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -78,7 +78,7 @@ eine Spenden-Plattform.  So könnte das Formular zum Spenden aussehen:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -100,7 +100,7 @@ der Attacke verschieden aus.</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="verteidigung-gegen-csrf">Verteidigung gegen CSRF</h2>
 
@@ -117,7 +117,7 @@ zur Session passt und noch gültig ist.  Ein Request der auf Grund eine CSRF-Att
 gesendet wurde hat dieses Token nicht und wird nicht bearbeitet.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -139,7 +139,7 @@ if (!isset($_SESSION[&#39;token&#39;])) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -158,7 +158,7 @@ if ($token_age &gt; 300)                      throw TokenException;
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="quellen">Quellen</h2>
 
@@ -898,7 +898,7 @@ if ($token_age &gt; 300)                      throw TokenException;
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

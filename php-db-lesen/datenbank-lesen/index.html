@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Lesen aus der Datenbank</title>
@@ -45,17 +45,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Lesen aus der Datenbank</h2>
+				<h2 class="title"><a id="slide-0"></a>Lesen aus der Datenbank</h2>
                                 <a href="/php-db-lesen/datenbank-lesen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
@@ -74,7 +74,7 @@ $anz_personen = $result-&gt;anzahl;
 um nur einen Datensatz zu lesen.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -90,7 +90,7 @@ $anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE 
 die Fehlersuche etwas schwieriger.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="viele-datenstze-lesen">Viele Datensätze lesen</h2>
 
@@ -112,7 +112,7 @@ dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
 Datenbank zu PHP übertragen.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -123,7 +123,7 @@ wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
 Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">*</a>.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -132,7 +132,7 @@ Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.
 nur sichtbare Profil angezeigt werden.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -169,7 +169,7 @@ Array
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -186,7 +186,7 @@ foreach($personen as $person) {
 <p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -206,7 +206,7 @@ hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
 mit <code>$person-&gt;id</code> erhalten!</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -240,7 +240,7 @@ mit <code>$person-&gt;id</code> erhalten!</p>
 der Applikation weiter gegeben.</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -254,7 +254,7 @@ dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
 behandelt werden muss.</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
 <p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen <code>person.php?id=586</code>
@@ -279,7 +279,7 @@ if( $person === FALSE ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -309,7 +309,7 @@ include &quot;header.php&quot;;
 </pre></div>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 
@@ -339,7 +339,7 @@ wir die Problematik einfach, und implementieren diese Seite
 ganz ähnlich wie <code>personen.php</code>.</p>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h2 id="zufllige-datenstze-auswhlen">Zufällige Datensätze auswählen</h2>
 
@@ -361,7 +361,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <p>In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h3 id="neue-befehle-in-diesem-kapitel">Neue Befehle in diesem Kapitel:</h3>
 
@@ -1112,7 +1112,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

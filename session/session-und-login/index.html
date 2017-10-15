@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Session und Login</title>
@@ -45,19 +45,19 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Session und Login</h2>
+				<h2 class="title"><a id="slide-0"></a>Session und Login</h2>
                                 <a href="/session/session-und-login/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
 Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 <p><img src="/images/stateless-http.svg" alt="HTTP als &quot;stateless protocol&quot;" /></p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -70,7 +70,7 @@ vom selben Browser ausgelöst wurden.</p>
 <p>Wir nennen diese Folge von Requests dann eine “Session”.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
@@ -95,7 +95,7 @@ vom selben Browser ausgelöst wurden.</p>
 <p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den Usernamen des angemeldeten Users zu speichern.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="struktur-der-applikation-mit-login">Struktur der Applikation mit Login</h3>
 
@@ -174,7 +174,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 </table>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="sessionstart">session_start</h3>
 
@@ -183,7 +183,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <p><img src="/images/image364.png" alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" /></p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="login">Login</h3>
 
@@ -206,7 +206,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 <p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="logout">Logout</h3>
 
@@ -220,7 +220,7 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -245,7 +245,7 @@ header(&quot;Location: index.php&quot;);
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="redirect--weiterleitung">Redirect / Weiterleitung</h3>
 
@@ -276,7 +276,7 @@ header(&quot;Location: index.php&quot;);
 <p><img src="/images/image366.png" alt="Abbildung 148: Login mit einer Weiterleitung" /></p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="neue-php-befehle">Neue PHP Befehle</h3>
 
@@ -1021,7 +1021,7 @@ header(&quot;Location: index.php&quot;);
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Events und Closures</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Events und Closures</h2>
+				<h2 class="title"><a id="slide-0"></a>Events und Closures</h2>
                                 <a href="/advanced-javascript/event-und-closure/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
 Ein SVG-Editor soll programmiert werden, mit dem man
 Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
@@ -61,7 +61,7 @@ die Notwendigkeit von Closures erläutert.</p>
 <p>Der Fokus in diesem Kapitel liegt auf der Drag und Drop Funktionalität.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="die-ausgangslage">Die Ausgangslage</h2>
 
@@ -73,7 +73,7 @@ jeweils Konstruktor-Funktionen angelegt, mit der Editor-, Rechteck-, und Kreis-O
 erzeugt werden können.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="editor">Editor</h3>
 
@@ -100,7 +100,7 @@ erzeugt werden können.</p>
 </ul>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -132,7 +132,7 @@ Editor.prototype.circle = function( x,y,r,att, text ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="circle-und-rectangle">Circle und Rectangle</h3>
 
@@ -179,7 +179,7 @@ ein.</p>
 </ul>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -215,7 +215,7 @@ Circle.prototype.setPosition = function ( position ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="drag-and-drop">Drag and Drop</h2>
 
@@ -228,7 +228,7 @@ Circle.prototype.setPosition = function ( position ) {
 </ul>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="mausposition">Mausposition</h3>
 
@@ -259,7 +259,7 @@ function cursorPoint(e) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="wiederholung-event-listener">Wiederholung: Event-Listener</h3>
 
@@ -283,7 +283,7 @@ element.addEventListener( &#39;mousedown&#39;, onMouseDown);
 weiteren Details.</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="problemstellung-vom-dom-element-zum-javascript-objekt">Problemstellung: vom DOM-Element zum Javascript-Objekt</h3>
 
@@ -307,7 +307,7 @@ Name des Attributs mit “data-“ beginnt.</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -332,7 +332,7 @@ und nur der String wurde gespeichert.</p>
 <p><strong>Es ist nicht möglich beliebige Javascript-Objekte in der DOM zu speicher!</strong></p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="lsungs-ansatz-mit-closure">Lösungs-Ansatz mit Closure</h3>
 
@@ -359,7 +359,7 @@ addDragability( other_jsobj, other_element );
 </pre></div>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h3 id="umsetzung">Umsetzung</h3>
 
@@ -1132,7 +1132,7 @@ function addDragability( jsobj, element ) {
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

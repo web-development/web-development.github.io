@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Basic Javascript</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Basic Javascript</h2>
+				<h2 class="title"><a id="slide-0"></a>Basic Javascript</h2>
                                 <a href="/javascript-dom/basic-javascript/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a><p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
+			<a id='slide-1'></a><p>Ein vollständiges Beispiel für eine Webseite mit Javascript-Programm, auch
 <a href="/images/farbfeld.html">live im browser</a>.</p>
 
 <div class="example">
@@ -80,7 +80,7 @@ function setcolor( c ) {
 <p>Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
 
@@ -92,7 +92,7 @@ function setcolor( c ) {
 </ul>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
 
@@ -106,7 +106,7 @@ function setcolor( c ) {
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
 <p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet
@@ -129,7 +129,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
 
@@ -154,7 +154,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="die-onevent---attribute">Die onevent - Attribute</h3>
 
@@ -163,7 +163,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Ein paar typische Events mit ihren typischen HTML-Tags:</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -175,7 +175,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -187,7 +187,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: onmouseout). (Achtung: funktioniert nicht auf Touch-Devices – so wie :hover)</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -199,7 +199,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll.</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -211,7 +211,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden. Falls der Javascript-Code false zurückgibt werden die Daten aber nicht versandt!</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -223,7 +223,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascript-Code false zurückgibt wird der Link aber nicht aktiviert!</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -235,7 +235,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -247,7 +247,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Nur auf Geräten mit Touchscreen.</p>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 
 
@@ -260,7 +260,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 verliert, bzw. wieder erhält.</p>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h2 id="syntax-von-javascript">Syntax von Javascript</h2>
 
@@ -269,7 +269,7 @@ verliert, bzw. wieder erhält.</p>
 <p>Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Funktionen existieren können, die zu diesem Objekt gehören.</p>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 
 
@@ -286,7 +286,7 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 </pre></div>
 
 
-<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
 
 
 
@@ -295,7 +295,7 @@ document.write(&quot;hi&quot;);  // die Methode write (über)schreibt die websei
 <p><img src="/images/image254.png" alt="Abbildung 57: Javascript-Beispiel in FireBug auf der Website http://everytimezone.com/" /></p>
 
 
-<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h3 id="variablen">Variablen</h3>
 
@@ -319,7 +319,7 @@ const c;  // neumodisch, konstante
 <p>Die Details zu <code>let</code> und <code>const</code> lernen Sie später im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
 
 
-<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
 
 <h3 id="datentypen">Datentypen</h3>
 
@@ -340,7 +340,7 @@ darüber nur noch floats.  Die Details
 können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
 
 
-<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
 
 <h3 id="strings">Strings</h3>
 
@@ -358,7 +358,7 @@ c = `Hallo ${b}, der brutto Preis ist ${100 * 1.5}`;
 Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></p>
 
 
-<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+<a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h3 id="arrays">Arrays</h3>
 
@@ -375,7 +375,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 </pre></div>
 
 
-<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+<a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
 
 
 
@@ -396,7 +396,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 </pre></div>
 
 
-<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+<a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
 
 <h3 id="objekte">Objekte</h3>
 
@@ -424,7 +424,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 </pre></div>
 
 
-<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
+<a class='slide_break' id='slide-24' href='slide.html#slide-24'>▻</a>
 
 <h3 id="zugriff-auf-eigenschaften">Zugriff auf Eigenschaften</h3>
 
@@ -445,7 +445,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 </pre></div>
 
 
-<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
+<a class='slide_break' id='slide-25' href='slide.html#slide-25'>▻</a>
 
 <h3 id="einfache-schleife">Einfache Schleife</h3>
 
@@ -1196,7 +1196,7 @@ index zu benötigen:</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Authentisierung</title>
@@ -45,17 +45,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Authentisierung</h2>
+				<h2 class="title"><a id="slide-0"></a>Authentisierung</h2>
                                 <a href="/apache/auth/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>In diesem Kapitel lernen Sie die Konfigurationsanweisungen
 für Authentisierung und für  Fehlermeldungen kennen.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="fehlermeldung">Fehlermeldung</h2>
 
@@ -66,7 +66,7 @@ für Authentisierung und für  Fehlermeldungen kennen.</p>
 <p><img src="/images/apache-404.png" alt="apache standard 404" /></p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -87,7 +87,7 @@ Nun wird bei jedem Zugriff auf eine nicht existierende URL die Fehlermeldung ang
 <p><img src="/images/apache-404-doppelt.png" alt="apache standard 404" /></p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="zugriffsbeschrnkung">Zugriffsbeschränkung</h2>
 
@@ -103,7 +103,7 @@ Allow from 10.
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -121,7 +121,7 @@ Allow from 10.
 <p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -142,7 +142,7 @@ Allow from 10.
 <p>Das Dollar-Zeichen am Ende des Patterns bedeutet, dass <code>bak</code> am Ende des Dateinamens stehen muß. Eine Datei mit Namen test.bak.txt wäre also nicht betroffen. Vor dem Punkt muß man einen Backslash <code>\</code> schreiben, weil der Punkt alleine als Joker gelten würde. Der Pattern <code>.bak$</code> (ohne Backslash) würde also auch den Dateinamen schlabberdibak oder bik_bak erkennen, weil der Punkt für das i oder den Unterstich stehen könnte.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="http-auth-mit-apache">HTTP Auth mit Apache</h2>
 
@@ -920,7 +920,7 @@ Allow from 10.
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

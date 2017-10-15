@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Dateien und Ordnern in PHP</title>
@@ -45,15 +45,15 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Dateien und Ordnern in PHP</h2>
+				<h2 class="title"><a id="slide-0"></a>Dateien und Ordnern in PHP</h2>
                                 <a href="/php/dateien/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
+			<a id='slide-1'></a><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="ordner-auflisten">Ordner auflisten</h2>
 <p>Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion <code>glob</code>. (Achtung: die Funktionen <code>opendir</code>, <code>readdir</code>, <code>closedir</code> gibt es auch, die sind aber komplizierter zu verwenden)</p>
@@ -94,7 +94,7 @@ asort( $alle_bilder )
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="datei-lesen">Datei lesen</h2>
 <p>Um eine Datei von PHP aus zu benutzen, muss man sie mit der Funktion <code>fopen</code> öffnen. Man erhält einen „handle“ mit dem man sich im Weiteren auf diese Datei bezeihen kann.</p>
@@ -127,7 +127,7 @@ fclose($handle);
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="datei-ber-schreiben">Datei (über-)schreiben</h2>
 <p>Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Hat Ihr PHP-Programm eine Datei gelöscht, dann ist diese Datei unwiederbringlich weg.</p>
@@ -157,7 +157,7 @@ if ( $status === FALSE ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="gleichzeitiger-schreibender-zugriff">Gleichzeitiger schreibender Zugriff</h2>
 <p>Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir können es jetzt noch nicht lösen.</p>
@@ -895,7 +895,7 @@ if ( $status === FALSE ) {
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

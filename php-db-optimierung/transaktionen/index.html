@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Transaktionen</title>
@@ -45,16 +45,16 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Transaktionen</h2>
+				<h2 class="title"><a id="slide-0"></a>Transaktionen</h2>
                                 <a href="/php-db-optimierung/transaktionen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Transaktionen auf Ebene von SQL, hier am Beispiel von Postgres gezeigt.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="acid">ACID</h2>
 
@@ -81,7 +81,7 @@ Transaktionen dürfen sich diese nicht gegenseitig beeinflussen.</p>
 Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bleiben.  Die Effekte von Transaktionen dürfen also nicht „mit der Zeit verblassen“ oder „aus Versehen verloren gehen“.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="commit">commit</h2>
 
@@ -97,7 +97,7 @@ COMMIT;
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="rollback">rollback</h2>
 
@@ -114,7 +114,7 @@ ROLLBACK;
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="tipp-nicht-auf-input-warten">Tipp: Nicht auf Input warten</h2>
 
@@ -128,7 +128,7 @@ COMMIT;
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="probleme-ohne-transaktionen">Probleme ohne Transaktionen</h2>
 
@@ -143,7 +143,7 @@ die folgenden Anomalie auftreten:</p>
 </ul>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="weniger-gute-transaktionen">Weniger gute Transaktionen</h2>
 
@@ -158,7 +158,7 @@ Werte sind (laut Postgres):</p>
 <p><strong>Serializable</strong> Die höchste Isolationsebene garantiert, dass die Wirkung parallel ablaufender Transaktionen exakt dieselbe ist wie sie die entsprechenden Transaktionen zeigen würden, liefen sie nacheinander in Folge ab</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="vertiefende-informationen">Vertiefende Informationen</h3>
 
@@ -899,7 +899,7 @@ Werte sind (laut Postgres):</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Regular Expressions</title>
@@ -45,18 +45,18 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Regular Expressions</h2>
+				<h2 class="title"><a id="slide-0"></a>Regular Expressions</h2>
                                 <a href="/advanced-javascript/regular-expressions/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
 eine besondere Schreibweise die es erlaubt in Strings nach Mustern zu suchen
 und Ersetzungen vorzunehmen.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -67,7 +67,7 @@ und Ersetzungen vorzunehmen.</p>
 <p>Basierend auf <a href="http://xkcd.com/208/">http://xkcd.com/208/</a> von Randall Munroe - verändert und verwendet unter der <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC</a> Lizenz</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -87,7 +87,7 @@ Mustersuche (en: pattern matching). Wenn ein Muster auf ein Zeichenkette zutriff
 sagt man auf Halb-Englisch: “der Pattern matched”.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="verwendung-von-regular-expressions">Verwendung von Regular Expressions</h2>
 
@@ -121,7 +121,7 @@ if( s.indexOf(&#39;greif&#39;) &gt; -1) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="zeichenkette">Zeichenkette</h2>
 
@@ -138,7 +138,7 @@ ist die Suche erfolgreich:</p>
 <p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list[]=&amp;list[]=hallo&amp;list[]=aber%20hallo!&amp;list[]=die%20hallobergrenze&amp;list[]=halo&amp;list[]=Hallo">RegEx Tester: /hallo/</a></p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="alternative">Alternative</h2>
 
@@ -153,7 +153,7 @@ entspricht also einem logischen “oder”;</p>
 <p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
 
@@ -183,7 +183,7 @@ if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="verankern">Verankern</h2>
 
@@ -200,7 +200,7 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 <p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=Maske&amp;list[]=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="zeichen-klassen">Zeichen-Klassen</h2>
 
@@ -217,7 +217,7 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 <p><a href="/images/match.html?pattern=hall%5C[oia%5C]&amp;listname=hallos&amp;list[]=&amp;list[]=halli&amp;list[]=hallo&amp;list[]=halla&amp;list[]=halloi&amp;list[]=hall&amp;list[]=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
 
@@ -233,7 +233,7 @@ stehen.</p>
 <p><a href="/images/match.html?pattern=%5C[a-z%5C]&amp;listname=buchstaben&amp;list[]=&amp;list[]=a&amp;list[]=b&amp;list[]=c&amp;list[]=x&amp;list[]=y&amp;list[]=z&amp;list[]=A&amp;list[]=.&amp;list[]=%25">RegEx Tester: /[a-z]/</a></p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
 
@@ -249,7 +249,7 @@ Klammer erwähnt werden:</p>
 <p><a href="/images/match.html?pattern=u%5C[%5E1234%5C]&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=usa">RegEx Tester: /u[^1234]/</a></p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
 
@@ -264,7 +264,7 @@ Klammer erwähnt werden:</p>
 <p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=u9&amp;list[]=usa">RegEx Tester: /u\d/</a></p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
 
@@ -279,7 +279,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 <p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list[]=&amp;list[]=NA&amp;list[]=MMT&amp;list[]=mmt&amp;list[]=%20%20%20&amp;list[]=___&amp;list[]=MMT-B">RegEx Tester: /^…$/</a></p>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="ein-echter-punkt">Ein echter Punkt</h2>
 
@@ -295,7 +295,7 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 <p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list[]=&amp;list[]=1&amp;list[]=1.1&amp;list[]=1.2&amp;list[]=1.3&amp;list[]=2&amp;list[]=2.1&amp;list[]=2.2&amp;list[]=35&amp;list[]=35.1">RegEx Tester: /^\d.\d$/</a></p>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
 
@@ -321,7 +321,7 @@ andere Alternative gewählt werden:</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d*$/</a></p>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
 
@@ -336,7 +336,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d+$/</a></p>
 
 
-<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h2 id="fragezeichen-operator-einmal-oder-keinmal">Fragezeichen-Operator: einmal oder keinmal</h2>
 
@@ -350,7 +350,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d?$/</a></p>
 
 
-<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h2 id="operatoren-sind-gierig">Operatoren sind gierig</h2>
 
@@ -367,7 +367,7 @@ möglichst lange Strings zu erfassen.</p>
 <p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
 
 
-<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
 
 
 
@@ -387,7 +387,7 @@ auch wenn es später im String noch weitere o’s geben würde.</p>
 <p><a href="/images/match.html?pattern=_%5C[%5E_%5C]*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 
-<a class='slide_break' name='slide-20' href='slide.html#slide-20'>▻</a>
+<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
 
 
 
@@ -403,7 +403,7 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 <p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
 
-<a class='slide_break' name='slide-21' href='slide.html#slide-21'>▻</a>
+<a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
 
@@ -422,7 +422,7 @@ z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit 
 Aber nichts komplizierteres.</p>
 
 
-<a class='slide_break' name='slide-22' href='slide.html#slide-22'>▻</a>
+<a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
 
 <h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
 
@@ -461,7 +461,7 @@ eine eigene Wissenschaft: die Computer-Linguistik, die arbeitet
 an dem Problem, hat es aber noch nicht gelöst.</p>
 
 
-<a class='slide_break' name='slide-23' href='slide.html#slide-23'>▻</a>
+<a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
 
 <h2 id="regex-in-php">RegEx in PHP</h2>
 
@@ -482,7 +482,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </pre></div>
 
 
-<a class='slide_break' name='slide-24' href='slide.html#slide-24'>▻</a>
+<a class='slide_break' id='slide-24' href='slide.html#slide-24'>▻</a>
 
 <h2 id="vertiefung">Vertiefung</h2>
 
@@ -493,7 +493,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 
-<a class='slide_break' name='slide-25' href='slide.html#slide-25'>▻</a>
+<a class='slide_break' id='slide-25' href='slide.html#slide-25'>▻</a>
 
 <h2 id="merchandize">Merchandize</h2>
 
@@ -1234,7 +1234,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

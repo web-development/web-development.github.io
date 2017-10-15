@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Ungeprüfte Um- und Weiterleitungen</title>
+  <title>Lehrbuch Web-Development - Ungeprüfte Um- und Weiterleitungen</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Ungeprüfte Um- und Weiterleitungen</h2>
+				<h2 class="title"><a id="slide-0"></a>Ungeprüfte Um- und Weiterleitungen</h2>
                                 <a href="/security/a10-redirect/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
@@ -58,7 +58,7 @@
 </blockquote>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -84,7 +84,7 @@ normalerweise keinen Zugriff hätte.</p>
 <p>http://www.example.com/boring.php?fwd=admin.jsp</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="weiterleitung-in-php">Weiterleitung in PHP</h2>
 
@@ -102,7 +102,7 @@ exit; /* fertig, nichts weiter ausgeben! */
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -118,7 +118,7 @@ header(&quot;Location: &quot; + $_GET[&#39;url&#39;] ); // so nicht programmiere
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -147,7 +147,7 @@ if ( array_key_exists( $_GET[&#39;url&#39;], $urls ) ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -886,7 +886,7 @@ if ( array_key_exists( $_GET[&#39;url&#39;], $urls ) ) {
                       
                     
                       
-                      <li class="active"><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li class="active"><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

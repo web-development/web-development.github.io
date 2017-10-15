@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS for layout: center content</title>
+
+	<style type="text/css">
+	    body { margin:0px; padding: 0px; background-color: #999; }
+		span { font-family: Consolas,"Courier New", Courier, monospace; }
+        #main {
+			background-color:#FFF;
+			border-left: 1px black solid;
+			border-top: 1px black solid;
+            margin: 0px auto;
+			padding: 0 30px 20px 30px;
+            width: 60%;
+            background-image: url(koord-sys.png);
+            background-repeat: no-repeat;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="main">
+        <h1>Zentrieren einer Box</h1>
+    
+        <p>Achtung: <span>text-align: center</span> funktioniert
+            nur für Text (no-na!), nicht für einen ganzen Block wie div.</p>
+        <p>In diesem Beispiel wird ein div-Tag mit Hilfe von margin auto zentriert.
+            Der div-Tag hat eine Breite kleiner 100%. Der verbleibende
+            Platz wird automatisch gleichmäßig verteilt.</p>
+            <pre>
+margin: 0px auto;
+width: 60%;
+</pre>
+
+
+        <p>you can only use <span>text-align: center</span> on
+        text (duh!) not on a block-level element like <span>div</span>.
+        The trick is to use the <span>margin</span> of the block-level 
+        element. With the value <span>auto</span> the available space
+        left and right of the element ist automatically distributed
+        equally.</p>
+
+  </div>
+</body>
+</html>

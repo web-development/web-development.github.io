@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Einfügen</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Einfügen</h2>
+				<h2 class="title"><a id="slide-0"></a>Einfügen</h2>
                                 <a href="/php-mysql-2/daten-einfuegen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <script>document.location="/php-db-schreiben/daten-einfuegen/";</script>
 
 <p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
@@ -63,7 +63,7 @@ $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 </pre></div>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -84,7 +84,7 @@ und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="die-falsche-lsung">die falsche Lösung</h3>
 
@@ -105,7 +105,7 @@ Andere Datenbanken haben anderen Quoting-Konventionen, in
 anderen Kontexten muss man ganz anders Escapen.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -137,7 +137,7 @@ PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes
 Das Problem betrifft allerdings nur Array-Parameter.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
@@ -165,7 +165,7 @@ $sth-&gt;execute(
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -180,7 +180,7 @@ deutsche Fehlermeldungen ausgeben.</p>
 <p><img src="/images/2fehlermeldungen.png" alt="Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" /></p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -929,7 +929,7 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

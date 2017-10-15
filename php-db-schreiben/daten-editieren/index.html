@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Daten Bearbeiten</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Daten Bearbeiten</h2>
+				<h2 class="title"><a id="slide-0"></a>Daten Bearbeiten</h2>
                                 <a href="/php-db-schreiben/daten-editieren/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
@@ -68,7 +68,7 @@ $person = $sth-&gt;fetch();
 </pre></div>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
 
@@ -83,7 +83,7 @@ und bei Textareas als Inhalt des Tags:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -114,7 +114,7 @@ MariaDB [portfolio_playground]&gt; select firstname,description from users where
 den Rest der Webseite verschwinden.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -135,7 +135,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -149,7 +149,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
@@ -180,7 +180,7 @@ exit;
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
@@ -195,7 +195,7 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
 
@@ -223,7 +223,7 @@ EOM;
 <p><img src="/images/html-escaped1.png" alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" /></p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
@@ -231,7 +231,7 @@ angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
 wieder anzeigen?</p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
@@ -258,7 +258,7 @@ BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
 vorhergehenden Suche noch ein Cookie haben.)</p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -288,7 +288,7 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -299,7 +299,7 @@ z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 <p><img src="/images/html-escaped.png" alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" /></p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
@@ -309,7 +309,7 @@ erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</
 <p><img src="/images/tinymce.png" alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" /></p>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 
 
@@ -319,7 +319,7 @@ Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 <p><img src="/images/aloha.png" alt="Aloha Editor" /></p>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 <h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
 
@@ -334,7 +334,7 @@ $description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&g
 </pre></div>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 
 
@@ -1091,7 +1091,7 @@ EOM;
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

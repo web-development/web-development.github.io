@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Konfiguration Webserver</title>
@@ -45,19 +45,19 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Konfiguration Webserver</h2>
+				<h2 class="title"><a id="slide-0"></a>Konfiguration Webserver</h2>
                                 <a href="/urls/konfiguration/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt.
 Andere Webserver, z.B: Internet Information Server von Microsoft oder nginx
 (ausgesprochen “engine x”) 
 verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="betriebssystem-des-webservers">Betriebssystem des Webservers</h2>
 <p>Viele Webserver werden auf einem UNIX-Betriebssystem betrieben. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.</p>
@@ -69,7 +69,7 @@ dann, wenn er <code>bild.jpg</code> geschreiben wird.</p>
 <code>bild.jpg</code> und <code>bild.JPG</code> sind zwei unterschiedliche Dateien!</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="webspace-und-ordner">Webspace und Ordner</h2>
 <p>Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient.</p>
@@ -87,7 +87,7 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 </code></pre>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h2 id="standard-dokument">Standard-Dokument</h2>
 
@@ -120,7 +120,7 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 <p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wird die Datei <code>default.htm</code> verwendet!</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="directory-index-datei-existiert-nicht">Directory Index Datei existiert nicht</h2>
 
@@ -135,7 +135,7 @@ Options -Indexes
 </code></pre>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="automatischer-webspace-fr-alle">Automatischer Webspace für Alle</h3>
 
@@ -170,7 +170,7 @@ Webspace ist im Unter-Ordner <code>public_html</code>:</p>
 </code></pre>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="relativer-link-dazu">relativer Link dazu</h2>
 
@@ -924,7 +924,7 @@ http://multimediatechnology.at/~fhs111111/test
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

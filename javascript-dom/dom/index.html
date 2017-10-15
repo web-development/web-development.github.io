@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - DOM</title>
@@ -45,14 +45,14 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>DOM</h2>
+				<h2 class="title"><a id="slide-0"></a>DOM</h2>
                                 <a href="/javascript-dom/dom/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
 <p>Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objecten vom Typ „node“. 
@@ -97,7 +97,7 @@ node.replaceChild()
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="simples-beispiel">Simples Beispiel</h3>
 
@@ -119,7 +119,7 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 <p>Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="selektieren">Selektieren</h3>
 
@@ -136,7 +136,7 @@ while(i &lt; inputs.length) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="text">Text</h3>
 
@@ -165,7 +165,7 @@ let vn = document.getElementById(&quot;v_25&quot;).textContent;
 Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="manipulation-des-dom">Manipulation des DOM</h2>
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
@@ -194,7 +194,7 @@ node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="einfgen">Einfügen</h3>
 
@@ -206,7 +206,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="duplizieren">Duplizieren</h3>
 
@@ -227,7 +227,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -243,7 +243,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 <p><a href="/images/moreformjs.html">Beispiel live im Browser</a></p>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="manipulieren-der-klassen">Manipulieren der Klassen</h2>
 
@@ -258,7 +258,7 @@ if( document.querySelector(&#39;#foo&#39;).classList.contains(&#39;bar&#39;) ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
 <p>Wir haben im Kapitel <a href="/javascript-dom/hintergrund/">Hintergründe</a> schon gesehen, 
@@ -282,7 +282,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 <p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen.</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="farb-beispiel">Farb-Beispiel</h3>
 
@@ -314,7 +314,7 @@ wie ein Aufruf der Methode, dann würde man schreiben: <code>setcolor()</code>.<
 <p>Hier gibt es keine einfache Möglichkeit ein Argument für die Farbe mit zu geben!</p>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -347,7 +347,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 <p>Programm <a href="/images/farbfeld-dom.html">live im browser</a></p>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h3 id="pizza-beispiel">Pizza-Beispiel</h3>
 
@@ -369,7 +369,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 </pre></div>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 
 
@@ -390,7 +390,7 @@ document.querySelector(&quot;.removethis&quot;)
 </pre></div>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h3 id="referenz">Referenz</h3>
 
@@ -1131,7 +1131,7 @@ document.querySelector(&quot;.removethis&quot;)
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

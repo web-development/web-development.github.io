@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Löschen</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Löschen</h2>
+				<h2 class="title"><a id="slide-0"></a>Löschen</h2>
                                 <a href="/php-mysql-2/daten-loeschen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <script>document.location="/php-db-schreiben/daten-loeschen/";</script>
 
 <p>Das Löschen könnte so einfach sein: Ein Programm mit namen <code>person_delete.php</code>,
@@ -65,7 +65,7 @@ $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );
 </pre></div>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -84,7 +84,7 @@ In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1<
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -100,7 +100,7 @@ Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil in
 das SQL etwas “injiziert” wird.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
@@ -119,7 +119,7 @@ if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -136,7 +136,7 @@ if( ! preg_match( &#39;/^\d+$/&#39;, $id ) ) {
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -155,7 +155,7 @@ Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schad
 anrichten.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 
 
@@ -170,7 +170,7 @@ $sth-&gt;execute(array($id));
 normale query zu wiederholen.</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
 
@@ -904,7 +904,7 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

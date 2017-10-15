@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - REST</title>
@@ -45,12 +45,12 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>REST</h2>
+				<h2 class="title"><a id="slide-0"></a>REST</h2>
                                 <a href="/qualitaet/rest/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Der Begriff Representational State Transfer - kurz “REST” - wurde von Roy Fielding 2000 in seiner Dissertation definiert .
 Fielding hat unter anderem an der HTTP-Spezifikation und an WebDAV
 mitgearbeitet. In seiner Dissertation stellt er grundlegende Überlegungen zur Architektur von
@@ -66,7 +66,7 @@ zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen,
 Zusammenspiel funktioniert?</strong></p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 
 
@@ -78,7 +78,7 @@ Infrastruktur des Web (Server, Browser, Proxies, Caches, etc.) einpassen und dav
 <p>Wenn man REST missachtet wird die Infrastruktur nicht funktionieren.</p>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
@@ -101,7 +101,7 @@ Darstellung in
 <p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung.</p>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="jedes-dokument-soll-eine-eindeutige-url-haben">Jedes Dokument soll eine eindeutige URL haben</h3>
 
@@ -126,7 +126,7 @@ waren die URLs:</p>
 <p>und so weiter. Das erfüllt schon das REST-Prinzip.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -162,7 +162,7 @@ einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit a
 denkt.</p>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="dokumente-sollen-links-auf-andere-dokument-enthalten">Dokumente sollen Links auf andere Dokument enthalten</h3>
 
@@ -177,7 +177,7 @@ URLs konstruieren muss.</p>
 <p>dieses Prinzip müssen Ihre Web-Applikationen auf jeden Fall erfüllen.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="http-methoden-get-post-put-delete">HTTP-Methoden GET, POST, PUT, DELETE</h3>
 
@@ -203,7 +203,7 @@ einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden.</p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="ein-dokument--mehrere-reprsentationen">Ein Dokument – mehrere Repräsentationen</h3>
 
@@ -226,7 +226,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
@@ -250,7 +250,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -274,7 +274,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
@@ -283,7 +283,7 @@ AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, abe
 oder JSON-Repräsentation abfragen.</p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 
 
@@ -310,7 +310,7 @@ Accept: application/xml
 </pre></div>
 
 
-<a class='slide_break' name='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -328,7 +328,7 @@ Accept: application/xml
 bei der Verwendung von Frameworks umsetzten.</p>
 
 
-<a class='slide_break' name='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
@@ -341,7 +341,7 @@ erhalte ich zum Beispiel folgende URL:</p>
 <p><code>http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&amp;find_code=WRD&amp;request=Web&amp;adjacent=N&amp;x=0&amp;y=0&amp;filter_code_1=WSP&amp;filter_request_1=&amp;filter_code_2=WEF&amp;filter_request_2=&amp;filter_code_5=WYR&amp;filter_request_5=&amp;filter_code_6=WYR&amp;filter_request_6=&amp;filter_code_7=WDA&amp;filter_request_7=&amp;filter_code_8=WZW&amp;filter_request_8=</code></p>
 
 
-<a class='slide_break' name='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 
 
@@ -351,7 +351,7 @@ mehr, sondern die Fehlermeldung:</p>
 <p><img src="/images/session-timeout-error.png" alt="Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State" /></p>
 
 
-<a class='slide_break' name='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 
 
@@ -361,7 +361,7 @@ Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
 Session.</p>
 
 
-<a class='slide_break' name='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
 
 
 
@@ -369,7 +369,7 @@ Session.</p>
 verwenden, wenn er unbedingt notwendig ist.</p>
 
 
-<a class='slide_break' name='slide-18' href='slide.html#slide-18'>▻</a>
+<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
 
 
 
@@ -384,7 +384,7 @@ BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den 
 <code>403 Access Denied</code>. Die BibliothekarIn hat aber Zugriff auf alle URLs dieser Form.</p>
 
 
-<a class='slide_break' name='slide-19' href='slide.html#slide-19'>▻</a>
+<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
 
 
 
@@ -1132,7 +1132,7 @@ gehen Sie möglichst sparsam damit um.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

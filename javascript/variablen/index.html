@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - Variablen und Scope</title>
@@ -45,17 +45,17 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>Variablen und Scope</h2>
+				<h2 class="title"><a id="slide-0"></a>Variablen und Scope</h2>
                                 <a href="/javascript/variablen/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Bis zum Jahre 2015 wurden Variablen in Javascript gar nicht oder mit <code>var</code> deklariert.
 Seit Javascript 2015 gibt es auch <code>let</code> und <code>const</code>.</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="sichtbarkeit-von-variablen-mit-let-und-konstanten-mit-const">Sichtbarkeit von Variablen mit <code>let</code> und Konstanten mit <code>const</code></h2>
 
@@ -75,7 +75,7 @@ function g() { // function - scope
 </pre></div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="konstanten-mit-const">Konstanten mit <code>const</code></h2>
 
@@ -89,7 +89,7 @@ x = 2;  // Uncaught TypeError: Assignment to constant variable.
 </pre></div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 
 
@@ -112,7 +112,7 @@ z = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
 Nur das Objekt oder Array ganz zu ersetzen ist verboten.</p>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h2 id="objekt-konstant-machen-mit-objectfreeze">Objekt konstant machen mit <code>Object.freeze</code></h2>
 
@@ -138,7 +138,7 @@ z.other.a = 100;    // Wert im verschachtelten Objekt kann geändert werden!
 </pre></div>
 
 
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="kurz-schreibweise-fr-objekte--werte">Kurz-Schreibweise für Objekte + Werte</h2>
 
@@ -155,7 +155,7 @@ let circle2 = { color: &#39;yellow&#39;, r: 25, x,    y     }; // kurz
 </pre></div>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="zuweisung-mit-desctructuring">Zuweisung mit Desctructuring</h2>
 
@@ -174,7 +174,7 @@ let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r
 </pre></div>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="sichtbarkeit-von-variablen-mit-var">Sichtbarkeit von Variablen mit var</h2>
 
@@ -207,7 +207,7 @@ console.log(y);  // ReferenceError: y is not defined
 </pre></div>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="hoisting-von-variablen-mit-var">Hoisting von Variablen mit var</h2>
 
@@ -968,7 +968,7 @@ bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   

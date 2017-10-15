@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js web-development">
+<html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
   <title>Lehrbuch Web-Development - CSS für Layout</title>
@@ -45,16 +45,16 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a name="slide-0"></a>CSS für Layout</h2>
+				<h2 class="title"><a id="slide-0"></a>CSS für Layout</h2>
                                 <a href="/css-layout/layout/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
-			<a name='slide-1'></a>
+			<a id='slide-1'></a>
 <p>Welche Gestaltungsmöglichkeiten bietet CSS nun?</p>
 
 
-<a class='slide_break' name='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h3 id="text">Text</h3>
 
@@ -65,8 +65,13 @@ der blockbindente Tag <code>p</code> und der inline-Tag <code>span</code> verwen
 span { background-color:#FFFF66; }
 </code></pre>
 
+
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
 <p>Bei der Darstellung im Browser wird der Text innheralb der Paragraphen je nach
-zu verfügung stehenem Platz umgebrochen:</p>
+zu verfügung stehenem Platz ‘'’umgebrochen’’’:</p>
 
 <div class="resizable">
 <p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
@@ -87,7 +92,7 @@ I am a block level element - p for paragraph.
 </div>
 
 
-<a class='slide_break' name='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="bild-im-text">Bild im Text</h3>
 
@@ -96,7 +101,7 @@ I am a block level element - p for paragraph.
 <div class="resizable">
   <p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
   I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. 
-  <img src="/images/css-layout/silhouette_hand.svg" style="height: 24px;" />
+  <img src="/images/css-layout/silhouette_hand.svg" style="height: 5ex;" alt="Hand!" />
   Das Bild der Hand stammt von <a href="https://commons.wikimedia.org/wiki/File:Silhouette_hand.svg">SimonWaldherr</a>.
   Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
   I am a block level element - p for paragraph.
@@ -104,11 +109,13 @@ I am a block level element - p for paragraph.
 </div>
 
 
-<a class='slide_break' name='slide-4' href='slide.html#slide-4'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 <h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
 
-<p>Browser können lange Wörter umbrechen:</p>
+<p>Browser können lange Wörter in mehreren Sprachen umbrechen.
+Die richtige Sprache stellt man mit dem Attribut <code>lang</code> ein,
+z.B. einfach am html-Tag:  <code>&lt;html lang="de"&gt;</code>.</p>
 
 <div class="resizable">
   <p style="background-color:#ddd">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
@@ -116,7 +123,7 @@ I am a block level element - p for paragraph.
     <br />
     Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
     <br />
-    Dieser Absatz hat keine besondren CSS-Eigenschaften.
+    <kbd>overflow-wrap: normal;</kbd> ist der Standardwert.
   </p>
 
   <p style="background-color:#ddd" class="hyphenate">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
@@ -124,39 +131,43 @@ I am a block level element - p for paragraph.
     <br />
         Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
     <br />
-    Dieser Absatz hat keine die Eigenschaften  <kbd>  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;</kbd>
+    <kbd>overflow-wrap: break-word;</kbd>
   </p>
 </div>
 
 
-<a class='slide_break' name='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="width-und-auto">Width und Auto</h2>
 <p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit
 <code>width</code> kann eine andere Breite eines Blocks definiert werden:
 Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
 
-<p><a href="/images/width-auto.html">Demo-Seite dazu</a></p>
+<div class="resizable">
+<div style="width: 60%; margin: 0 auto; background-color: #ddd;">
+<p>Der Margin wird links und rechts gleich verteilt mit "auto"</p>
+<p><kbd>
+div {<br />
+  width: 60%;<br />
+  margin-left:  auto;<br />
+  margin-right: auto;<br />
+}</kbd></p>
+</div>
+</div>
 
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-div#main {
-  width:500px; 
-  margin-left:  auto;
-  margin-right: auto;
-}
-</pre></div>
 
-
-<a class='slide_break' name='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="float">Float</h2>
 <p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen
 bietet die Deklaration <code>float</code> mit den Werten <code>left</code> und <code>right</code>. Damit wird 
 ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts 
 „rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“).</p>
+
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+
 
 <p>Hier sind drei Absätze zu sehen, die jeweils als Erstes ein Bild enthalten. 
 Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort 
@@ -168,12 +179,25 @@ das Bild nach links, der Text rutscht rechts davon nach oben.</p>
 
 <p><img src="/images/css-layout/float-img.png" alt="Bilder mit float" /></p>
 
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+
+
+
+<p>Werden statt Bildern andere Elemente gefloatat muss ausserdem
+noch eine Breite gesetzt werden:</p>
+
+<p><a href="/images/css-layout/floatp.html">Beispiel als Demo-Seite</a></p>
+
 <p>Float wurde vor der Einführung von Flexbox und CSS Grid für viele
-Layout Aufgaben verwendet.  Heute kommt es nur noch in der hier
-beschriebenen Weise bei Bildern zum Einsatz.</p>
+Layout Aufgaben verwendet und war die Grundlage Grid-Systemen wie
+z.B. <a href="https://getbootstrap.com/docs/4.0/layout/grid/#equal-width">Bootstrap</a>.</p>
+
+<p>Mit der Einführung von CSS Grid ist die Verwendung von <code>float</code> für
+diesen Zweck nicht mehr sinnvoll.</p>
 
 
-<a class='slide_break' name='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="css-grid">CSS Grid</h2>
 
@@ -191,12 +215,12 @@ einem Klick auf das grid-symbol aktivieren:</p>
 <p><a href="/images/cssgrid/">Demo-Seite</a></p>
 
 
-<a class='slide_break' name='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h3 id="das-grid-definieren">Das Grid definieren</h3>
 
 <p>Das Grid wird über die Breiter der Spalten (columns) und die Höhe der
-Zeilen definiert (rows):</p>
+Zeilen (rows) definiert:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
@@ -214,19 +238,23 @@ wird der restliche Platz im Verhältnis der fractions verteilt.</p>
 <p>Also zum Beispiel:</p>
 
 <ul>
-  <li>Nehmen wir an es stehen für das oben definierte Grid 1280px in der Breite zur Verfügung</li>
-  <li>davon gehen 270px an die erste Spalte</li>
-  <li>bleiben 1010px</li>
-  <li>diese werden nun im Verhältnis 5 zu 3 auf Spalte zwei und drei verteilt</li>
-  <li>das ergibt 5 * ( 1010px / 8 ) = 631.25px für die zweite Spalte</li>
-  <li>und 3 * ( 1010px / 8 ) = 378.75px für die zweite Spalte</li>
+  <li>1280px stehen für das oben definierte Grid in der Breite zur Verfügung</li>
+  <li>-270px für die erste Spalte</li>
+  <li>1010px verbleiben</li>
+</ul>
+
+<p>diese werden nun im Verhältnis 5 zu 3 auf Spalte zwei und drei verteilt:</p>
+
+<ul>
+  <li>5 * ( 1010px / 8 ) = 631.25px für die zweite Spalte</li>
+  <li>3 * ( 1010px / 8 ) = 378.75px für die zweite Spalte</li>
 </ul>
 
 <p>Wenn Sie die Breite des Fensters für die <a href="/images/cssgrid/">Demo-Seite</a> ändern
 werden die neu berechneten Werte angezeigt.</p>
 
 
-<a class='slide_break' name='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h3 id="areas-definieren">Areas definieren</h3>
 
@@ -235,31 +263,36 @@ für die einzelnen Felder des Grids vergeben werden:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-.page_container {
-  display: grid;
-
-  grid-template-columns: 270px 5fr 3fr;
-  grid-template-rows: 60px 2fr 210px;
-
-  grid-template-areas:  &quot;.              headlineArea     subheadArea&quot;
-                        &quot;portrait_area  descriptionArea  codeArea&quot;
-                        &quot;.              factsArea        sourceArea&quot;;
-}
+  grid-template-areas:
+    &quot;.              headlineArea     subheadArea&quot;
+    &quot;portraitArea   descriptionArea  codeArea&quot;
+    &quot;.              factsArea        sourceArea&quot;;
 </pre></div>
 
-<p>Ein Punkt steht für ein Feld das frei bleibt.
-Eine Area kann auch mehrere Felder des Grids überspannen,
-muss aber immer in Rechteck bilden (keine beliebige Tetris-Form).</p>
+<p>Die drei Strings stehen für  die drei Zeilen des Grids.
+Innerhalb der Strings gilt jedes Wort als ein Feld.
+Die Felder sind also durch Whitespace getrennt.</p>
+
+<p>Ein Punkt steht für ein Feld das frei bleibt.</p>
+
+
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
+<p>Eine Area kann auch mehrere Felder des Grids überspannen,
+muss aber immer in Rechteck bilden (keine beliebige Tetris-Form):</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-  grid-template-areas:  &quot;headlineArea  headlineArea     subheadArea&quot;
-                        &quot;portraitArea  descriptionArea  codeArea&quot;
-                        &quot;factsArea     descriptionArea  sourceArea&quot;;
+  grid-template-areas:
+    &quot;headlineArea  headlineArea     subheadArea&quot;
+    &quot;portraitArea  descriptionArea  codeArea&quot;
+    &quot;factsArea     descriptionArea  sourceArea&quot;;
 </pre></div>
 
 
-<a class='slide_break' name='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 <h3 id="areas-mit-inhalt-belegen">Areas mit Inhalt belegen</h3>
 
@@ -283,11 +316,16 @@ section#description {
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Guide to CSS Grid</a></p>
 
 
-<a class='slide_break' name='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+
+<h2 id="absolute-positionierung">Absolute Positionierung</h2>
+
+
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h2 id="flexbox">Flexbox</h2>
 
-<p>Flexbox erlaubt flexible Layouts, und wird für kleinere Komponenten
+<p>Flexbox arbeitet nur in einer Dimension. Es wird für kleinere Komponenten
 in der Seite eingesetzt, zum Beisiel für eine Bildergallerie.</p>
 
 <p><a href="/images/flexbox/">Demo-Seite</a></p>
@@ -295,7 +333,7 @@ in der Seite eingesetzt, zum Beisiel für eine Bildergallerie.</p>
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
 
 
-<a class='slide_break' name='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
 
 <h2 id="viele-methoden">Viele Methoden</h2>
 
@@ -1034,7 +1072,7 @@ das Layout beeinflussen.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
                       
                     
                   
