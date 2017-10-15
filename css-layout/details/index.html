@@ -51,7 +51,8 @@
 			
 			
 			<a id='slide-1'></a>
-<p>Welche Gestaltungsmöglichkeiten bietet CSS nun?</p>
+<p>In diesem Kapitel werden weitere Properties vorgestellt,
+die das Layout mit CSS ermöglichen.</p>
 
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
@@ -202,10 +203,23 @@ diesen Zweck nicht mehr sinnvoll.</p>
 <h2 id="fallen-bei-der-absoluten-positionierung">Fallen bei der absoluten Positionierung</h2>
 
 <p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung 
-herausgenommen und über dem restlichen Inhalt der Seite platziert. 
-Mit <code>top</code> und <code>left</code> kann die linke obere Ecke des Elements positioniert werden. 
-(oder mit <code>bottom</code> und <code>right</code> die rechte unter Ecke).
-In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
+herausgenommen und über dem restlichen Inhalt der Seite platziert.</p>
+
+<p>Wenn man nicht explizit ein Koordinatensystem  mit <code>position: relative</code> angibt,
+dann gilt die linke obere Ecke des Browserfensters als Ursprung.</p>
+
+<p>Das führt oft zu Verwirrung, zum Beipiel wenn der meiste Inhalt der Seite
+zentriert ist, sich also je nach Fensterbreite verschriebt, und dann ein Element
+absolut darauf platziert wird.</p>
+
+<p><a href="/images/css-layout/unkoordiniert.html">Beispiel-Seite</a></p>
+
+
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+
+
+
+<p>In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
 einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
 
 <div class="example twopane">
@@ -226,14 +240,14 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
 </pre><div class="clearfix"></div></div>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
-
-
-
-<p><img src="/images/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
-
-
 <a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
+<p><img src="/images/css-layout/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
+
+
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h2 id="koordinatensystem">Koordinatensystem</h2>
 
@@ -287,11 +301,11 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
     
       
       
-      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
+      <li><a href="/css-layout/">CSS - Layout</a></li>
       
       
       
-      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+      <li><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
       
     
   </ul>
@@ -373,15 +387,15 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
                       
                     
                       
+                      <li class="active"><a href="/css-layout/details/">Details zu Layout</a></li>
+                      
+                    
+                      
                       <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
-                      
-                    
-                      
-                      <li class="active"><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
                       

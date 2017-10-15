@@ -66,7 +66,7 @@ des HTML-Codes kann man den Validator des W3C verwenden:</p>
 
 <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
 
-<p><img src="/images/image050.png" alt="Abbildung 11:  Der HTML-Validator des World Wide Web Consortiums" /></p>
+<p><img src="/images/das-web-und-html/w3-validator.png" alt="Abbildung 11:  Der HTML-Validator des World Wide Web Consortiums" /></p>
 
 
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
@@ -77,7 +77,7 @@ des HTML-Codes kann man den Validator des W3C verwenden:</p>
 durcharbeiten und reparieren. Mit etwas Glück repariert man das erste Problem und viele 
 Folge-Fehler fallen damit auch weg.</p>
 
-<p><img src="/images/image052.png" alt="Abbildung 12:  Fehlermeldung des Validators" /></p>
+<p><img src="/images/das-web-und-html/w3-validator-error.png" alt="Abbildung 12:  Fehlermeldung des Validators" /></p>
 
 <p>Die Fehlermeldung in Abbildung 12 geht auf einen Tippfehler zurück: der schließende Tag 
 wurde falsch geschreiben.</p>
@@ -90,7 +90,7 @@ wurde falsch geschreiben.</p>
 <p>Wenn der Code dem HTML-Standard entspricht erscheint eine 
 Erfolgsmeldung:</p>
 
-<p><img src="/images/image053.png" alt="Abbildung 13:   Erfolgsmeldung des Validators" /></p>
+<p><img src="/images/das-web-und-html/w3-validator-ok.png" alt="Abbildung 13:   Erfolgsmeldung des Validators" /></p>
 
 <p>Bei der Verwendung von HTML5 erscheint aber immer noch ein Warning, dass
 der Validator experimentell sei. Das kann man ignorieren.</p>
@@ -144,60 +144,31 @@ Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähn
 
 
 
-<p>Achten Sie beim Upload darauf, dass die Ordnerstruktur  <!-- XE "Ordnerstruktur" -->   und die relative 
+<p>Achten Sie beim Upload darauf, dass die Ordnerstruktur   und die relative 
 Position der Dateien beibehalten wird; nur dann funktionieren die relativen
-Links!  <!-- XE "relativer Link"   -->  <!-- XE "Link:relativ" --></p>
+Links!</p>
 
-<p>PHPStorm und FireFTP bieten Hilfe beim Erhalt der Struktur. In der folgenden
-Abbildung wurde rechts
-(am lokalen Computer) eine Datei ausgewählt und dann der Button „Datei 
-bereitstellen“ gedrückt. Dreamweaver beachtet, dass die Datei lokal im Ordner html-ue1 
-liegt, und lädt Sie in den entsprechenden Ordner am Webserver hoch.</p>
+<p>PHPStorm und FireFTP bieten Hilfe beim Erhalt der Struktur. Sie können
+im linken Teil des Fensters eine Datei auswählen, und durch klicken des
+Buttons mit dem Pfeil nach rechts in den richtigen Ordner hochladen.</p>
 
-<p><img src="/images/dreamweaver-upload.png" alt="Abbildung 14: Site-Fenster von Dreamweaver – Upload einer Datei automatisch in den richtigen Ordner" /></p>
+<p>Mit Drag-and-Drop kann man es aber auch schaffen, die Datei in den falschen
+Ordner hochzuladen. Dann funktionieren die relativen Links nicht mehr.</p>
+
+<p><img src="/images/das-web-und-html/upload-falsch.png" alt="Upload einer Datei in den falschen Ordner" /></p>
 
 
 <a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
-<p>Diese Abbildung zeigt, was Sie nicht tun sollten: die Datei mit Drag-and-Drop in den falschen 
-Ordner am Webserver hinaufladen.  Dann funktionieren die relativen Links nicht mehr.</p>
+<p>Bevor Sie mit PHPStorm ihre Site hochladen können müssen Sie unter
+Tools → Deployment → Configuration die richtige Konfiguration eintragen:</p>
 
-<p><img src="/images/dreamweaver-upload-falsch.png" alt="Abbildung 15:  Upload mit Dreamweaver in den falschen Ordner" /></p>
+<p><img src="/images/das-web-und-html/phpstorm-upload-config.png" alt="Bearbeiten der Deployment-Konfiguration in PHPStrom" /></p>
 
 
 <a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
-
-
-
-<p>Bevor Sie mit WebStorm ihre Site hochladen können müssen Sie unter
-Tools → Deployment → Configuration die richtige Konfiguration eintragen:</p>
-
-<p><img src="/images/webstorm-deployment.png" alt="Bearbeiten der Deployment-Konfiguration in WebStrom" /></p>
-
-
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
-
-
-
-<p>Bevor Sie FTP im Dreamweaver Site-Fenster benutzen können müssen Sie 
-(Unter SITE → SITES VERWALTEN → BEARBEITEN → ERWEITERT → REMOTE-INFORMATIONEN) die richtige 
-Konfiguration eintragen.</p>
-
-<p><img src="/images/dreamweaver-upload-config.png" alt="Abbildung 16: Bearbeiten der FTP-Information in Dreamweaver" /></p>
-
-
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
-
-
-
-<p>Das Dateien-Fenster kann in Dreamweaver auf zwei Arten dargestellt werden:</p>
-
-<p><img src="/images/image064.png" alt="Abbildung 17: Dateien-Fenster in Dreamweaver: Umschalten zwischen 2 Ansichten + Upload" /></p>
-
-
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -300,15 +271,15 @@ wirklich unter der richtigen URL erreichbar ist.</p>
                       
                     
                       
+                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
+                      
+                    
+                      
                       <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
                       
                     
                       
                       <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
-                      
-                    
-                      
-                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
                       

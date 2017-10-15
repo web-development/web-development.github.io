@@ -115,7 +115,14 @@ man Lizenzgebühren zahlen muss.</p>
 <div class='slide'>
 
 <h2 id="abstze">Absätze</h2>
-<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch. Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes steuern, einige davon sind hier gezeigt:</p>
+
+<p>Wie immer in HTML erfolgt der Zeilenumbruch automatisch.
+Die Standard-Darstellung von Absätzen erklärt sich über den <code>margin-top</code> 
+und <code>margin-bottom</code> des <code>&amp;lt;p&amp;gt;</code>-Tags:</p>
+
+<p><img src="/images/css/p-default-margin.png" alt="Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" /></p>
+
+<p>Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes verändern, einige davon sind hier gezeigt:</p>
 
 <p><img src="/images/css/absatz.png" alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" /></p>
 
@@ -145,11 +152,6 @@ p {
 
 <p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
 
-<p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) auf
-den Inhalt, padding, border und margin muss man erst dazu zählen, um den
-Gesamt-Platzbedarf zu errechnen. Mit der Deklaration <code>box-sizing: border-box</code> 
-kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.</p>
-
 <div class="example">
 <pre class="lang-css prettyprint linenums">
   p {
@@ -164,6 +166,35 @@ kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breit
   background-color: #DDD;
   }
 </pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="border-box">border-box</h3>
+
+<p>Achtung: Im traditionelle Box model bezieht sich die Breite (width) auf
+den Inhalt, padding, border und margin muss man erst dazu zählen, um den
+Gesamt-Platzbedarf zu errechnen. Mit der Deklaration <code>box-sizing: border-box</code> 
+kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+box-sizing: border-box;
+width: 200px; 
+padding: 10px; 
+border-width: 10px; 
+margin: 32px 0px
+</pre></div>
+
+<p>Gesamtbreite inklusive Rahmen = 200px.
+Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
+
+<p><img src="/images/css/box-sizing-border-box.png" alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" /></p>
+
+</div>
+<div class='slide'>
+
+<h3 id="runde-ecken-und-schatten">Runde Ecken und Schatten</h3>
 
 <p>Mit CSS3 sind zusätzliche Effekte zum Box-Model dazu gekommen: abgerundete Ecken
 und Schatten:</p>
@@ -183,7 +214,7 @@ button{
 
 <p>So sieht’s aus:</p>
 
-<p><img src="/images/button-border-radius.png" alt="Beispiel wie der Button dargestellt wird" /></p>
+<p><button style="color: white;   text-shadow: 0 1px 1px black;  padding: 5px 30px;  background-color: red;  border: 1px solid maroon;   border-radius: 4px;   box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;">Test</button></p>
 
 <p>Das ist ein Beispiel aus Helmers:
 <a href="http://dev.opera.com/articles/view/beautiful-ui-styling-with-css3-text-shadow-box-shadow-and-border-radius/">Beautiful UI styling with CSS3 text-shadow, box-shadow, and border-radius</a>, dort finden
@@ -192,56 +223,10 @@ sich noch viele ausführlichere Beispiele.</p>
 </div>
 <div class='slide'>
 
-<h3 id="box-sizing">Box Sizing</h3>
-
-<p>Je nach <code>box-sizing</code> müssen Sie die Werte von padding, border, margin dazu
-addieren um den Gesamt-Platzbedarf zu errechnen, oder nicht: der default ist
-unpraktisch: bei <code>box-sizing: content-box</code> wird die Breiten-Angabe Width nur auf
-den Inhalt angewendet:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-box-sizing: content-box;
-width: 200px; 
-padding: 10px; 
-border-width: 10px; 
-margin: 32px 0px
-</pre></div>
-
-<p>Um die Gesamtbreite der sichtbaren Box auszurechnen muss man noch rahmen und padding
-dazu addieren:  10px + 10px + 200px + 10px + 10px = 240px</p>
-
-<p><img src="/images/image134.png" alt="Abbildung 36: width im Box-Model mit box-sizing: content-box" /></p>
-
-</div>
-<div class='slide'>
 
 
-
-<p>Viel praktischer ist <code>box-sizing: border-box</code>:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-box-sizing: border-box;
-width: 200px; 
-padding: 10px; 
-border-width: 10px; 
-margin: 32px 0px
-</pre></div>
-
-<p>Gesamtbreite inklusive Rahmen = 200px.
-Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
-
-<p><img src="/images/image134-border.png" alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="absatz-mit-p">Absatz mit <code>&lt;p&gt;</code></h2>
-
-<p>Die Standard-Darstellung von Absätzen erklärt sich über den margin-top und margin-bottom des &lt;p&gt;-Tags:</p>
-
-<p><img src="/images/image086.png" alt="Abbildung 23: Standard-Darstellung von Absätzen (&lt;p&gt;) im Browser" /></p>
+<p>Und nun die schlechte Nachricht: seitem Schatten ganz einfach mit CSS erzeugt werden
+können (laut <a href="https://caniuse.com/#search=box-shadow">caniuse</a> ca. 2009) sind sie out.  Seitdem ist <a href="https://de.wikipedia.org/wiki/Flat_Design">flat design</a> in (ca. 2010).</p>
 
 </div>
 <div class='slide'>
@@ -252,9 +237,14 @@ Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
 
 <p>Jeder Tag kann mittels CSS ein oder mehrere Hintergrundbilder erhalten (<code>background-image</code>). Als „Hintergrundbild“ in einer Webseite kann jedes Bild in einem Web-geeigneten Dateiformat (gif, jpg, png) dienen. Das Bild wird einfach dargestellt oder „gekachelt“ –horizontal und vertikal so oft wiederholt, bis es die ganze Fläche des Tags ausfüllt (<code>background-repeat</code>). Abbildung 24 wurde ein Bild mit drei Zahnrädern als Hintergrundbild verwendet, durch die Wiederholung werden sieben Zahnräder angezeigt.</p>
 
-<p><img src="/images/image088.png" alt="Abbildung 24: Beispiel für ein Hintergrundbild in einer Webseite" /></p>
+<div class="resizable" style="background-image: url(/images/css/trefoilknots.svg);">
+<p><b style="text-shadow: #CCC 1px 0 10px;">Trefoil Knot</b> - <b>Trefoil Knot</b></p>
+<p><span style="text-shadow: #CCC 1px 0 10px;">Ein Hintergrundbild von <a href="https://commons.wikimedia.org/wiki/User:AnonMoos/Gallery">AnonMoos</a>.</span> Ein Hintergrundbild von <a href="https://commons.wikimedia.org/wiki/User:AnonMoos/Gallery">AnonMoos</a>.</p>
+</div>
 
-<p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild immer noch lesbar sein! Im Beispiel in Abbildung 24 ist eine Linkfarbe zu hell bzw. das Hintergrundbild zu auffällig: Der Text „wurde schon besucht“ in der letzten Zeile ist kaum noch lesbar.</p>
+<p>Bitte beachten Sie: Der Inhalt der Seite sollte trotz Hintergrundbild
+immer noch lesbar sein! diesem Beispiel wurde auf Teile des
+Textes ein weisser <code>text-shadow</code> gelegt.  Erhöht er der Schatten die  Lesbarkeit?</p>
 
 </div>
           <div class="slide"><h1>Wichtige Properties</h1>
