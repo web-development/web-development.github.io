@@ -51,158 +51,14 @@
 			
 			
 			<a id='slide-1'></a>
-<p>Welche Gestaltungsmöglichkeiten bietet CSS nun?</p>
+<p>Welche Gestaltungsmöglichkeiten bietet CSS für das Layout einer Webseite?</p>
 
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h3 id="text">Text</h3>
-
-<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In folgendem Beipiel wird
-der blockbindente Tag <code>p</code> und der inline-Tag <code>span</code> verwendet.</p>
-
-<pre><code>p { background-color:#CCCCCC; }
-span { background-color:#FFFF66; }
-</code></pre>
-
-
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
-
-
-
-<p>Bei der Darstellung im Browser wird der Text innheralb der Paragraphen je nach
-zu verfügung stehenem Platz ‘'’umgebrochen’’’:</p>
-
-<div class="resizable">
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.
-</p>
-
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.  <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-
-</p>
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.
-</p>
-</div>
-
-
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
-
-<h3 id="bild-im-text">Bild im Text</h3>
-
-<p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert.  Wenn Sie das Bild wie hier mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout:</p>
-
-<div class="resizable">
-  <p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-  I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. 
-  <img src="/images/css-layout/silhouette_hand.svg" style="height: 5ex;" alt="Hand!" />
-  Das Bild der Hand stammt von <a href="https://commons.wikimedia.org/wiki/File:Silhouette_hand.svg">SimonWaldherr</a>.
-  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-  I am a block level element - p for paragraph.
-  </p>
-</div>
-
-
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
-
-<h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
-
-<p>Browser können lange Wörter in mehreren Sprachen umbrechen.
-Die richtige Sprache stellt man mit dem Attribut <code>lang</code> ein,
-z.B. einfach am html-Tag:  <code>&lt;html lang="de"&gt;</code>.</p>
-
-<div class="resizable">
-  <p style="background-color:#ddd">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
-    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
-    <br />
-    Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
-    <br />
-    <kbd>overflow-wrap: normal;</kbd> ist der Standardwert.
-  </p>
-
-  <p style="background-color:#ddd" class="hyphenate">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
-    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
-    <br />
-        Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
-    <br />
-    <kbd>overflow-wrap: break-word;</kbd>
-  </p>
-</div>
-
-
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
-
-<h2 id="width-und-auto">Width und Auto</h2>
-<p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit
-<code>width</code> kann eine andere Breite eines Blocks definiert werden:
-Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
-
-<div class="resizable">
-<div style="width: 60%; margin: 0 auto; background-color: #ddd;">
-<p>Der Margin wird links und rechts gleich verteilt mit "auto"</p>
-<p><kbd>
-div {<br />
-  width: 60%;<br />
-  margin-left:  auto;<br />
-  margin-right: auto;<br />
-}</kbd></p>
-</div>
-</div>
-
-
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
-
-<h2 id="float">Float</h2>
-<p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen
-bietet die Deklaration <code>float</code> mit den Werten <code>left</code> und <code>right</code>. Damit wird 
-ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts 
-„rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“).</p>
-
-
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
-
-
-
-<p>Hier sind drei Absätze zu sehen, die jeweils als Erstes ein Bild enthalten. 
-Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort 
-im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts, 
-der Text rutscht links davon nach oben. Im dritten Absatz „floated“ 
-das Bild nach links, der Text rutscht rechts davon nach oben.</p>
-
-<p><a href="/images/css-layout/float.html">Beispiel als Demo-Seite</a></p>
-
-<p><img src="/images/css-layout/float-img.png" alt="Bilder mit float" /></p>
-
-
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
-
-
-
-<p>Werden statt Bildern andere Elemente gefloatat muss ausserdem
-noch eine Breite gesetzt werden:</p>
-
-<p><a href="/images/css-layout/floatp.html">Beispiel als Demo-Seite</a></p>
-
-<p>Float wurde vor der Einführung von Flexbox und CSS Grid für viele
-Layout Aufgaben verwendet und war die Grundlage Grid-Systemen wie
-z.B. <a href="https://getbootstrap.com/docs/4.0/layout/grid/#equal-width">Bootstrap</a>.</p>
-
-<p>Mit der Einführung von CSS Grid ist die Verwendung von <code>float</code> für
-diesen Zweck nicht mehr sinnvoll.</p>
-
-
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
-
 <h2 id="css-grid">CSS Grid</h2>
-
-<p>Um das Layout einer ganzen Seite zu gestalten arbeitet man
-mit einen Grid, einem Gitternetz das man über die ganze Seite legt.</p>
+<p>Seit Frühjahr 2017 wird CSS Grid in Browsern unterstützt.
+Damit legt man ein Gitternetz über die ganze Seite:</p>
 
 <p><img src="/images/css-layout/grid.png" alt="Layout mit CSS Grid" /></p>
 
@@ -215,7 +71,7 @@ einem Klick auf das grid-symbol aktivieren:</p>
 <p><a href="/images/cssgrid/">Demo-Seite</a></p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h3 id="das-grid-definieren">Das Grid definieren</h3>
 
@@ -254,7 +110,7 @@ wird der restliche Platz im Verhältnis der fractions verteilt.</p>
 werden die neu berechneten Werte angezeigt.</p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
 <h3 id="areas-definieren">Areas definieren</h3>
 
@@ -276,7 +132,7 @@ Die Felder sind also durch Whitespace getrennt.</p>
 <p>Ein Punkt steht für ein Feld das frei bleibt.</p>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -292,7 +148,7 @@ muss aber immer in Rechteck bilden (keine beliebige Tetris-Form):</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="areas-mit-inhalt-belegen">Areas mit Inhalt belegen</h3>
 
@@ -316,12 +172,43 @@ section#description {
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Guide to CSS Grid</a></p>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="absolute-positionierung">Absolute Positionierung</h2>
 
+<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung
+herausgenommen und über dem restlichen Inhalt platziert.
+Dazu muss aber erst eine Koordinatensystem angelegt werden, auf das sich
+die Position bezieht. Das geschicht mit <code>position: relative</code> in einem übergeordneten
+Tag.</p>
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<div class="example twopane">
+<pre class="lang-html prettyprint linenums left">
+&lt;div class=&quot;project_partial&quot;&gt;
+  &lt;img src=&quot;cover.jpg&quot;&gt;
+  &lt;div class=&quot;badge&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre><pre class="lang-html prettyprint linenums right">
+.project_partial {
+  position: relative;
+  width: 160px;
+  height: 275px;
+  background-color: #292927;
+}
+.project_partial .badge {
+  position: absolute;
+  background-image: url(badge_topleft.png);
+  height: 170px;
+  width: 160px;
+  top: 0px
+  left: 0px
+}
+</pre><div class="clearfix"></div></div>
+
+<p><a href="/images/css-absolute/index.html">Beispiel-Seite</a></p>
+
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h2 id="flexbox">Flexbox</h2>
 
@@ -333,7 +220,7 @@ in der Seite eingesetzt, zum Beisiel für eine Bildergallerie.</p>
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="viele-methoden">Viele Methoden</h2>
 
@@ -350,7 +237,7 @@ das Layout beeinflussen.</p>
       
       
       
-      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+      <li><a href="/css-layout/details/">Details zu Layout</a></li>
       
     
   </ul>
@@ -440,6 +327,10 @@ das Layout beeinflussen.</p>
                       
                     
                       
+                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
+                      
+                    
+                      
                       <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
                       
                     
@@ -453,10 +344,6 @@ das Layout beeinflussen.</p>
                     
                       
                       <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
-                      
-                    
-                      
-                      <li ><a href="/css-layout/positionierung/">CSS für Positionierung</a></li>
                       
                     
                   
