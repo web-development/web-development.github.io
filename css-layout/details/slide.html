@@ -264,54 +264,6 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
 <p><img src="/images/css-layout/image142.png" alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" /></p>
 
 </div>
-<div class='slide'>
-
-<h2 id="koordinatensystem">Koordinatensystem</h2>
-
-<p>Die Koordinaten (<code>top</code> und <code>left</code>) beziehen sich normalerweise auf die linke obere Ecke des Browserfenster.</p>
-
-<p>Ein Element mit der Eigenschaft <code>position: absolute</code> oder <code>position: relative</code> bildet für seine untergeordneten Elemente ein neues Koordinationsystem. In folgendem Code definiert das main-div ein neues Koordinatensystem, das navi-div ist also in der linken oberen Ecke des main-div und nicht in der linken oberen Ecke des Browser-Fensters positioniert.</p>
-
-<div class="example twopane">
-<pre class="lang-html prettyprint linenums left">
-&lt;div id=&quot;main&quot;&gt;
-  &lt;div id=&quot;content&quot;&gt;
-    &lt;h1&gt;Inhalt&lt;/h1&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-    &lt;p&gt;Hier der Inhalt.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div id=&quot;navi&quot;&gt;
-    &lt;p&gt;a&lt;/p&gt;
-    &lt;p&gt;b&lt;/p&gt;
-    &lt;p&gt;c&lt;/p&gt;
-    &lt;p&gt;d&lt;/p&gt;
-    &lt;p&gt;e&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre><pre class="lang-html prettyprint linenums right">
-#main {
-  border: 1px red solid;
-  position:relative;
-  width: 700px;
-  margin: 0px auto;
-} 
-#content {
-  margin-left: 120px;
-  background-color: yellow;
-}
-#navi {
-  position: absolute;
-  width: 80px;
-  top:0px;
-  left:0px;
-}
-</pre><div class="clearfix"></div></div>
-
-<p><a href="/images/css-layout/koord.html">Beispiel-Seite</a></p>
-
-</div>
           <div class="slide"><h1>Details zu Layout</h1>
             <p>
             

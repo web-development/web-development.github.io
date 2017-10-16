@@ -11,8 +11,8 @@
   <meta name="generator" content="nanoc 3.8.0">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
-  <link rel="stylesheet" href="/assets/css/all.css?v=1">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <link rel="stylesheet" href="/assets/css/all.css">
+  <link rel="stylesheet" href="/assets/css/prettify.css">
   <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
@@ -57,7 +57,7 @@
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
 <h2 id="css-grid">CSS Grid</h2>
-<p>Seit Frühjahr 2017 wird CSS Grid in Browsern unterstützt.
+<p>Seit <a href="https://caniuse.com/#search=grid">Frühjahr 2017</a> wird CSS Grid in Browsern unterstützt.
 Damit legt man ein Gitternetz über die ganze Seite:</p>
 
 <p><img src="/images/css-layout/grid.png" alt="Layout mit CSS Grid" /></p>
@@ -210,15 +210,123 @@ Tag.</p>
 
 <h2 id="flexbox">Flexbox</h2>
 
+<p>Seit <a href="https://caniuse.com/#search=flex">2014</a> wird Flexbox in allen Browsern unterstützt.</p>
+
 <p>Flexbox arbeitet nur in einer Dimension. Es wird für kleinere Komponenten
-in der Seite eingesetzt, zum Beisiel für eine Bildergallerie.</p>
+in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 
 <p><a href="/images/flexbox/">Demo-Seite</a></p>
+
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+
+<h3 id="flexbox-definieren">Flexbox definieren</h3>
+
+<p>Der Container legt die Richtung fest: entweder horizontal (in einer Zeile = <code>row</code>) oder vertikal
+(in einer Spalte = <code>column</code>):</p>
+
+<div class="example twopane">
+<pre class="lang-html prettyprint linenums left">
+&lt;div class=&quot;project_partial&quot;&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre><pre class="lang-html prettyprint linenums right">
+.project {
+  display: flex;
+  flex-direction: row;
+}
+.project_partial {
+  width: 160px;
+  height: 275px;
+}
+</pre><div class="clearfix"></div></div>
+
+
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+
+<h3 id="platz-verteilen-oder-elemente-strecken">Platz verteilen oder Elemente strecken</h3>
+
+<p>Der Platz zwischen den Elementen kann auf verschiedene Art verteilt werden:
+linksbündig, rechtsbündig, zentriert, mit Platz dazwischen oder Platz rundum.</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.projects {
+    justify-content: flex-start;   /* alle möglichst weit links */
+}
+</pre></div>
+
+<p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-6">justify-content</a></p>
+
+<p>Oder die Elemente können sich ausdehnen, um den Platz einzunehmen:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.project_partial {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+</pre></div>
+
+<p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-10">flex-grow</a></p>
+
+
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+
+<h3 id="wrap">Wrap</h3>
+
+<p>Wenn zu viele Elemente für eine Zeile vorhanden sind, 
+können sie auf eine nächste Zeile umgebrochen werden:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+.projects {
+  flex-wrap: wrap;
+}
+</pre></div>
+
+
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+
+<h3 id="flexbox-verschachteln">Flexbox verschachteln</h3>
+
+<p>Wenn man vertikale und horizontale Flexboxen ineinander schachtelt
+kann man auch ein zweidimensionales Layout erzielen - so wie mit
+CSS Grid.  Das HTML Dokument muss aber dabei diese Struktur genau
+nachbauen.</p>
+
+<div class="resizable">
+  <div style="display:flex; flex-direction: row;">
+    <nav style="border: 5px green solid;margin-right: 1px;">
+      Navi Navi Navi Navi Navi Navi Navi Navi Navi
+    </nav>
+    <div style="display:flex; flex-direction: column; border: 5px green solid;padding: 1px;">
+      <section style="border: 5px #ddd solid;margin-bottom: 1px;">
+        <p><b>
+          Flexbox  in Flexbox
+        </b></p>
+      </section>
+      <section style="border: 5px #ddd solid;">
+        <p>
+          Wird eine Flexbox in eine Flexbox geschachtelt, dann
+          braucht das entsprechend verschachtelete HTML Tags.
+          Wäre hier nicht CSS Grid eine einfachere Lösung?
+          Das sollte man überlegen!
+        </p>
+      </section>
+    </div>
+  </div>
+</div>
 
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 <h2 id="viele-methoden">Viele Methoden</h2>
 
@@ -1106,7 +1214,7 @@ später sollten Sie noch <a href="/css-layout/details">weitere Details</a> kenne
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.min.js"></script>
+<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){
