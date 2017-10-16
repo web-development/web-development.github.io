@@ -58,12 +58,12 @@
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a> |
+              vorige Präsentation: <a href="/css-layout/responsive//slide.html">Responsive Design</a> |
                         
             <a href="/css-layout/navigation/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/urls//slide.html">URLs</a>
+             | Nächste Präsentation <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
             
             </p>
           </div>
@@ -85,7 +85,7 @@
 &lt;/nav&gt;
 </pre></div>
 
-<p>Ohne CSS wird die Liste ganz normal dargestellt <a href="/images/navi-demo.html">Demo</a>.</p>
+<p>Ohne CSS wird die Liste ganz normal dargestellt <a href="/images/navi/demo.html">Demo</a>.</p>
 
 </div>
 <div class='slide'>
@@ -95,13 +95,17 @@
 <p>Mit CSS kann man daraus ein vertikales Menü machen, dazu wird mit
 <code>list-style-type: none</code> der Listenpunkt <code>li</code> zu einem normalen Tag.</p>
 
+<p>Der Link selbst <code>a</code> wird mit <code>display:block</code> zu einem blockbildenden
+Element. Das hat den vorteil, dass das ganze Rechteck als Link wirkt,
+und nicht nur der Text.</p>
+
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-.unsichtbar {display:none;}
+.unsichtbar { display:none;}
 
 nav li {
    list-style-type:none;
-   margin-bottom:1px; 
+   margin-bottom:1px;
 }
 
 nav li a:link {
@@ -116,49 +120,54 @@ nav li a:link {
 
 <p>Der eigentliche Link wird zu einem blockbildenden Element gemacht.
 Damit ist dann das ganze Rechteck anklickbar, nicht nur der Text selbst.
-<a href="/images/navi-demo-1.html">Demo</a></p>
+<a href="/images/navi/demo-1.html">Demo</a></p>
 
 </div>
 <div class='slide'>
 
 <h2 id="horizontales-men">Horizontales Menü</h2>
 
-<p>Mit Hilfe von <code>float</code> kann man das Menü auch horizontal darstellen, dazu muß nur
-ein <code>float</code> eingefügt und der <code>margin</code> anders gesetzt werden:</p>
+<p>Mit Hilfe von <code>flex</code> kann man das Menü auch horizontal darstellen:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
+.unsichtbar {display:none;}
+nav ul {
+  padding-left: 0;
+  display:flex;
+}
+
 nav li {
-   list-style-type:none;
-   margin-right:1px; 
+  list-style-type:none;
+  margin-right: 1px;
 }
 
 nav li a:link {
-   text-decoration: none;
-   font-weight: bold;
-   display: block;
-   background: #6C6;
-   width: 6em;
-   padding: 0.2em;
-
-   float:left;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  background:#6C6;
+  width:6em;
+  padding: 0.2em;
 }
 </pre></div>
 
-<p><a href="/images/navi-demo-2.html">Demo</a></p>
+<p><a href="/images/navi/demo-2.html">Demo</a></p>
 
 </div>
 <div class='slide'>
 
 <h2 id="php-fr-navigationsmen">PHP für Navigationsmenü</h2>
-<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein. 
-Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man 
+<p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein.
+Dazu könnte man den Code in alle HTML-Dateien kopieren. Wenn man
 dann eine neue Seite einfügen will, muss man wiederum alle Seiten editieren.</p>
 
-<p>Deswegen bietet es sich an, bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen. 
-PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester intensiv beschäftigen werden.</p>
+<p>Deswegen bietet es sich an, bei dieser Gelegenheit von einfachem HTML auf PHP umzusteigen.
+PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester 
+intensiv beschäftigen werden.</p>
 
-<p>Dazu müssen alle HTML-Dateien die Endung .php erhalten, im Navigationsmenü sieht das dann so aus:</p>
+<p>Zur Umstellung müssen alle HTML-Dateien die Endung <code>.php</code> erhalten, 
+im Navigationsmenü sieht das dann so aus:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -178,7 +187,7 @@ PHP ist eine Programmiersprache am Webserver mit der wir uns im Sommersemester i
 
 
 
-<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert, 
+<p>Das Navigationsmenü wird nun in einer separaten Datei gespeichert,
 z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <code>include</code> eingebunden:</p>
 
 <div class="example">
@@ -211,12 +220,12 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
             <p>
             
               
-              vorige Präsentation: <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a> |
+              vorige Präsentation: <a href="/css-layout/responsive//slide.html">Responsive Design</a> |
                         
             <a href="/css-layout/navigation/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/urls//slide.html">URLs</a>
+             | Nächste Präsentation <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
             
             </p>
           </div>
