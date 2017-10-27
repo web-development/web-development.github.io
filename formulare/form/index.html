@@ -65,23 +65,25 @@ Suchmaschine Google und ein Bestellformular.</p>
 <h2 id="tags-fr-formulare">Tags für Formulare</h2>
 
 <p>Mit den  HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
-Formulare aufgebaut. Hier der Code für ein ein <a href="/images/form.html">einfaches Beispiel</a>:</p>
+Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
+
+<form method="get" action="/images/form/submitted.html">
+  Bitte schicken Sie den Newsletter an die E-Mail Adresse:
+  <input type="text" name="email" />
+  <input type="submit" value="Ja, ich will!" />
+</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
 <pre class="lang-html prettyprint linenums">
-    &lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
-      Bitte schicken Sie den Newsletter an die E-Mail Adresse:
-      &lt;input type=&quot;text&quot;   name=&quot;email&quot;&gt;
-      &lt;input type=&quot;submit&quot; value=&quot;Ja, ich will!&quot;&gt;
-    &lt;/form&gt;
+&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+  Bitte schicken Sie den Newsletter an die E-Mail Adresse:
+  &lt;input type=&quot;text&quot;   name=&quot;email&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Ja, ich will!&quot;&gt;
+&lt;/form&gt;
 </pre></div>
 
 <p>Der <code>form</code>-Tag ist „unsichtbar“ und dient nur dazu, die anderen Eingabefelder zu bündeln. Im action-Attribut des <code>form</code>-tag wird angegeben, an welche URL die Daten zur Verarbeitung geschickt werden.</p>
-
-<p>Im Browser sieht das oben gezeigte Formular so aus:</p>
-
-<p><img src="/images/image176.png" alt="Abbildung 45: Darstellung eines Web-Formulars im Browser" /></p>
 
 
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
@@ -100,17 +102,17 @@ Formulare aufgebaut. Hier der Code für ein ein <a href="/images/form.html">einf
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
     <tr>
-      <td>Textfeld</td>
-      <td><code>&lt;input type="text" name="mail"&gt;</code></td>
-      <td><input type="text" name="mail" /></td>
+      <td>Textfeld:</td>
+      <td><code>&lt;input type="text" name="vorname"&gt;</code></td>
+      <td><input type="text" name="vorname" /></td>
     </tr>
     <tr>
-      <td>Textfeld, E-Mail</td>
-      <td><code>&lt;input type="email" name="mail2"&gt;</code></td>
-      <td><input type="email" name="mail2" /></td>
+      <td>E-Mail:</td>
+      <td><code>&lt;input type="email" name="mail"&gt;</code></td>
+      <td><input type="email" name="mail" /></td>
     </tr>
     <tr>
-      <td>Passwort-Feld:</td>
+      <td>Passwortfeld:</td>
       <td><code>&lt;input type="password" name="meinpasswort"&gt;</code></td>
       <td><input type="password" name="meinpasswort" /></td>
     </tr>
@@ -145,12 +147,12 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
     </tr>
     <tr>
       <td>mit Placeholder</td>
-      <td><code>&lt;input placeholder="ich@some.net"&gt;</code></td>
+      <td><code>&lt;input placeholder="ich@some.net" type="email"&gt;</code></td>
       <td><input type="email" name="mail" placeholder="ich@some.net" /></td>
     </tr>
     <tr>
       <td>mit Eingabeprüfung (siehe <a href="http://html5pattern.com/">html5pattern</a>)</td>
-      <td><code>&lt;input pattern=".*@fh-salzburg\.ac\.at"&gt;</code></td>
+      <td><code>&lt;input pattern=".*@fh-salzburg\.ac\.at" type="email"&gt;</code></td>
       <td><input pattern=".*@fh-salzburg\.ac\.at" /></td>
     </tr>
   </tbody>
@@ -162,6 +164,8 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 <h2 id="janein-frage">Ja/Nein Frage</h2>
 
 <p>Für einzelne Fragen die mit Ja oder Nein zu beantworten sind wird das Eingabe-Element „checkbox“ verwendet</p>
+
+<form action="/images/form/submitted.html"><label><input type="checkbox" name="schlag" /> mit Schlagobers</label></form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Checkbox für Ja/Nein Frage</small></h4>
@@ -182,7 +186,16 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 <a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 
-Radiobuttons (die zusammen gehören) müssen denselben <code>name</code> haben.
+Radiobuttons:</p>
+
+<form action="/images/form/submitted.html">
+<label><input type="radio" name="size" value="XL" />XL</label>
+<label><input type="radio" name="size" value="L" />L</label>
+<label><input type="radio" name="size" value="M" />M</label>
+<label><input type="radio" name="size" value="S" checked="" />S</label>
+</form>
+
+<p>Radiobuttons (die zusammen gehören) müssen denselben <code>name</code> haben.
 Hier ist es wichtig die Beschriftung die zum jeweiligen Button gehört
 mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.</p>
 
@@ -195,14 +208,21 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt;S&lt;/label&gt;
 </pre></div>
 
-<p><img src="/images/image188.png" alt="screenshot" /></p>
-
 
 <a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 
 
-<p>Ein Menü ist platzsparend:</p>
+<p>Ein Menü mit <code>select</code> und <code>option</code> ist im Vergleich zu Radiobuttons platzsparend:</p>
+
+<form action="/images/form/submitted.html">
+<select name="size2">
+  <option>XL</option>
+  <option selected="">L</option>
+  <option>M</option>
+  <option>S</option>
+</select>
+</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
@@ -215,14 +235,22 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;/select&gt;
 </pre></div>
 
-<p><img src="/images/image190.png" alt="screenshot" /></p>
-
 
 <a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
-<p>Achtung: beim erstellen des Menüs muss man jede möglich Antwort bedenken!</p>
+<p>Achtung: beim Erstellen des Menüs muss man jede möglich Antwort bedenken. Auch die Möglichkeit keine Antwort zu geben:</p>
+
+<form action="/images/form/submitted.html">
+<select name="size3">
+  <option>---Bitte Auswählen---</option>
+  <option>XL</option>
+  <option>L</option>
+  <option>M</option>
+  <option>S</option>
+</select>
+</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit „leer“- Auswahl</small></h4>
@@ -236,14 +264,22 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;/select&gt;
 </pre></div>
 
-<p><img src="/images/image192.png" alt="screenshot" /></p>
-
 
 <a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 
 
-<p>Die Mehrfach-Auswahl erfolgt mit dem Drücken der Steuerungs-Taste:</p>
+<p>Die Mehrfach-Auswahl in einem Menü mit <code>select</code> und <code>option</code>
+erfolgt mit dem Drücken der Steuerungs-Taste.</p>
+
+<form action="/images/form/submitted.html">
+<select name="html" size="4" multiple="">
+  <option>im Code</option>
+  <option>Dreamweaver</option>
+  <option>GoLive</option>
+  <option>Frontpage</option>
+</select>
+</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Liste - ermöglicht Mehrfach-Auswahl</small></h4>
@@ -262,11 +298,6 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 <a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="spezialisierte-eingabefelder">Spezialisierte Eingabefelder</h2>
-
-<p>Mit HTML5 wurden neue Eingeabefelder eingeführt, die aber noch nicht von allen
-Browsern unterstützt werden. (Mit Hilfe von
-<a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills">Polyfills</a>
-kann man sie aber auf jeden Fall schon benutzen.)</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
@@ -312,6 +343,8 @@ kann man sie aber auf jeden Fall schon benutzen.)</p>
 
 <h2 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h2>
 
+<p>Den Zurücksetzen Button sollten Sie nur sehr selten einsetzen.</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Zurück: bitte nicht verwenden</small></h4>
 <pre class="lang-html prettyprint linenums">
@@ -320,7 +353,7 @@ kann man sie aber auf jeden Fall schon benutzen.)</p>
 
 <p><img src="/images/image198.png" alt="screenshot" /></p>
 
-<p>Den Zurücksetzen Button sollten Sie nur sehr selten einsetzen. Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
+<p>Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
 
 
 <a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
@@ -337,7 +370,9 @@ Beschriftung einfach als Text neben das Eingabefeld zu stellen:</p>
 E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;
 </pre></div>
 
-<p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört. Dass dieser Zusammenhang klar ist (auch für screen reader etc) stellt man mit dem <code>label</code>-Tag sicher:</p>
+<p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört.</p>
+
+<p>Diesen Zusammenhang stellt man mit dem <code>label</code>-Tag her:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit Label</small></h4>
