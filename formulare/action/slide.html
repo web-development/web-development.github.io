@@ -96,26 +96,31 @@ HTML-Code des Formulars aus:</p>
 
 <p>Achtung: diese Art die Daten zu senden ist sehr fehleranfällig: hierfür muß am Client-Computer nicht nur der Browser funktionieren, sondern auch das E-Mail Programm. Das E-Mail Programm muß richtig konfiguriert sein. Das ist auf vielen Computern am Internet nicht der Fall, oft werden die Daten also nicht erfolgreich versandt sondern gehen verloren.</p>
 
-<p><img src="/images/image225.png" alt="Abbildung 48: Formular per E-Mail oder über den Webserver senden" /></p>
+<p><img src="/images/formulare/mail-or-http.png" alt="Formular per E-Mail oder über den Webserver senden" /></p>
 
-<p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über den Webserver senden!</p>
+<p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über einen Webserver senden!</p>
 
 </div>
 <div class='slide'>
 
 <h2 id="daten-senden-mit-methode-get">Daten senden mit Methode GET</h2>
 
-<p>Wird im Form-Tag als Action eine URL mit http angegeben dann werden die Daten an den Webserver gesendet. Dabei gibt es zwei Methoden: GET und POST. GET ist die einfachere.</p>
+<p>Wird im Form-Tag als Action eine URL mit http(s) angegeben dann werden die Daten #an den Webserver gesendet. Dabei gibt es zwei Methoden: GET und POST. GET ist die einfachere.</p>
 
-<p>In Abbildung 49 sehen Sie ein (leicht vereinfachtes) Bestellformular für Flugzeuge das die Methode GET verwendet.</p>
+</div>
+<div class='slide'>
 
-<p><img src="/images/image230.png" alt="Abbildung 49: Formular mit Methode GET" /></p>
+
+
+<p>Hier sehen Sie ein (leicht vereinfachtes) Bestellformular für Flugzeuge das die Methode GET verwendet.</p>
+
+<p><img src="/images/formulare/action-get.png" alt="Formular mit Methode GET" /></p>
 
 <p>Wenn die UserIn auf „Bestellung absenden“ drückt, baut der Browser aus der
 action und den Namen und Werten der einzelnen Eingabefelder eine URL zusammen,
 die dann aufgerufen wird.</p>
 
-<p><img src="/images/image232.png" alt="Abbildung 50: URL einer GET-Anfrage" /></p>
+<p><img src="/images/formulare/action-got.png" alt="Abbildung 50: URL einer GET-Anfrage" /></p>
 
 </div>
 <div class='slide'>
@@ -144,7 +149,9 @@ http://localhost/php/test.php?anzahl=4&amp;adresse=Jakob+Haringer+Str.1%0D%0A502
 </ul>
 
 <p>Falls dabei Sonderzeichen vorkommen  (z.B. Leerzeichen, Zeilenumbrüche, Umlaute,
-Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert: Statt
+Fragezeichen, kaufmännisches Und) werden diese wie folgt encodiert:</p>
+
+<p>Statt
 Leerzeichen wird ein <code>+</code> oder <code>%20</code> gesetzt, bei allen anderen Zeichen wird ein <code>%</code>
 gefolgt von der Hexadezimaldarstellung des ASCII-Code gesetzt  (siehe rfc 2396).
 Diese Codierung nennt man URL-Encoding. (siehe
@@ -178,10 +185,20 @@ Gerade bei Suchmaschinen wird diese Möglichkeit oft genutzt: z.B. durch die Suc
 
 <p><img src="/images/image237.png" alt="Abbildung 51: Suchfeld von Firefox" /></p>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Wenn Sie eine Web-Applikation erstellen müssen Sie auch darauf gefasst sein,
 dass die UserInnen nicht nur ihre Web-Formulare verwenden, sondern auch URLs
 konstruieren und aufrufen. Die <strong>URL</strong> (und nicht das Formular) ist also eine
 <strong>öffentliche Schnittstelle</strong> zu Ihrem Programm!</p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Nun könnte man meinen: “Wenn ich die URL geheim halte ist es doch keine öffentliche Schnittstelle”.
 Das ist aber ein Trugschluss: auch eine “geheime” URL, die ich nie bewusst öffentlich mache
@@ -193,7 +210,7 @@ im Skype-Chat weitergegen habe, sind dritten bekannt, wie <a href="http://www.he
 Wenn ich eine Webseite vor Zugriffen schützen will brauche ich dazu Passwörter
 und https, siehe <a href="/http/http/#slide-18">Authentisieren nach RFC 2617</a>
 und <a href="/http/http/slide.html#slide-19">HTTPS</a>, beide im Kapitel HTTP, und 
-das <a href="/session/">Kapitel Session</a>.</p>
+das <a href="/session/">Kapitel über Sessions</a>.</p>
 
 </div>
 <div class='slide'>
@@ -214,7 +231,11 @@ das <a href="/session/">Kapitel Session</a>.</p>
 &lt;/form&gt;
 </pre></div>
 
-<p>Das gibt der KundIn die Chance ein „Gegenangebot“ zu senden (als „pricing attack“ bekannt):</p>
+</div>
+<div class='slide'>
+
+
+Das gibt der KundIn die Chance ein „Gegenangebot“ zu senden (als „pricing attack“ bekannt):</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">

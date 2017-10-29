@@ -68,6 +68,16 @@
             </p>
           </div>
 	  <div class='slide'>
+<p>Dies ist ein kleiner Vorgriff auf die serverseitig Programmierung mit PHP.
+Der PHP Code muss in einer Datei mit Endung <code>.php</code> gespeichert werden
+und von einem Webserver mit PHP-Interpreter gehostet werden.
+Mehr dazu dann im 2.Semester, bzw. im Kapitel <a href="/php/">PHP</a>.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="php-und-formulardaten">PHP und Formulardaten</h2>
+
 <p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die
 URL-Codierung aufgelöst und die Daten dann in mehreren superglobalen Arrays zur
 Verfügung gestellt. („Superglobal“ bedeutet, dass das Array in jedem Teil des
@@ -92,8 +102,8 @@ verwendet.</p>
     $anzahl  = $_GET[&#39;anzahl&#39;];
     $adresse = $_GET[&#39;adresse&#39;];
 
-    echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
-    echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
+    echo(&quot;&lt;p&gt;Bestellung über $anzahl Flugzeuge.&lt;/p&gt;&quot;);
+    echo(&quot;&lt;p&gt;Werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
 ?&gt;
 </pre></div>
 
@@ -109,10 +119,10 @@ verwendet.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>PHP-Befehl zum Versenden einer E-Mail</small></h4>
 <pre class="lang-php prettyprint linenums">
-mail(  
+mail(
  &quot;ich@fh-salzburg.ac.at&quot;,                        // To
  &quot;Bestellung von $anzahl Flugzeugen&quot;,       // Subject
- &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;  
+ &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;
 );
 </pre></div>
 
