@@ -67,10 +67,20 @@
             
             </p>
           </div>
-	  <div class='slide'><p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen
-Interaktions-Möglichkeiten gestalten: mit Links ermöglichen Sie der LeserIn die
-Navigation durch das Web. Formulare ermöglichen mehr Interaktion – aber immer
-noch in einem sehr strengen, sehr strukturierten Rahmen. Zwei
+	  <div class='slide'>
+<p>Mit Ihren bisherigen Kenntnissen können Sie schon Webseiten mit einfachen
+Interaktions-Möglichkeiten gestalten: mit <strong>Links</strong> ermöglichen Sie der LeserIn die
+Navigation durch das Web.</p>
+
+<p>Formulare ermöglichen mehr Interaktion – aber immer
+noch in einem sehr strengen, sehr strukturierten Rahmen.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Zwei
 typische Anwendungsgebiete für Web-Formulare sind: das Eingabeformular der
 Suchmaschine Google und ein Bestellformular.</p>
 
@@ -84,23 +94,30 @@ Suchmaschine Google und ein Bestellformular.</p>
 <p>Mit den  HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
 Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
-<form method="get" action="/images/form/submitted.html">
-  Bitte schicken Sie den Newsletter an die E-Mail Adresse:
-  <input type="text" name="email" />
-  <input type="submit" value="Ja, ich will!" />
-</form>
-
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
   Bitte schicken Sie den Newsletter an die E-Mail Adresse:
-  &lt;input type=&quot;text&quot;   name=&quot;email&quot;&gt;
+  &lt;input type=&quot;email&quot;  name=&quot;mail&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Ja, ich will!&quot;&gt;
 &lt;/form&gt;
 </pre></div>
 
 <p>Der <code>form</code>-Tag ist „unsichtbar“ und dient nur dazu, die anderen Eingabefelder zu bündeln. Im action-Attribut des <code>form</code>-tag wird angegeben, an welche URL die Daten zur Verarbeitung geschickt werden.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>So sieht das Formular im Browser aus:</p>
+
+<form method="get" action="/images/formulare/submitted.html">
+  Bitte schicken Sie den Newsletter an die E-Mail Adresse:
+  <input type="email" name="mail" />
+  <input type="submit" value="Ja, ich will!" />
+</form>
 
 </div>
 <div class='slide'>
@@ -119,17 +136,17 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
     <tr>
-      <td>Textfeld:</td>
+      <td>Textfeld</td>
       <td><code>&lt;input type="text" name="vorname"&gt;</code></td>
       <td><input type="text" name="vorname" /></td>
     </tr>
     <tr>
-      <td>E-Mail:</td>
+      <td>E-Mail</td>
       <td><code>&lt;input type="email" name="mail"&gt;</code></td>
       <td><input type="email" name="mail" /></td>
     </tr>
     <tr>
-      <td>Passwortfeld:</td>
+      <td>Passwortfeld</td>
       <td><code>&lt;input type="password" name="meinpasswort"&gt;</code></td>
       <td><input type="password" name="meinpasswort" /></td>
     </tr>
@@ -158,14 +175,14 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
       <td><input type="text" name="vorname" value="Lara" /></td>
     </tr>
     <tr>
-      <td>muss eingegeben werden</td>
-      <td><code>&lt;input type="email" name="nachname" required&gt;</code></td>
-      <td><input type="email" name="nachname" required="" /></td>
-    </tr>
-    <tr>
       <td>mit Placeholder</td>
       <td><code>&lt;input placeholder="ich@some.net" type="email"&gt;</code></td>
       <td><input type="email" name="mail" placeholder="ich@some.net" /></td>
+    </tr>
+    <tr>
+      <td>muss eingegeben werden</td>
+      <td><code>&lt;input type="email" name="nachname" required&gt;</code></td>
+      <td><input type="email" name="nachname" required="" /></td>
     </tr>
     <tr>
       <td>mit Eingabeprüfung (siehe <a href="http://html5pattern.com/">html5pattern</a>)</td>
@@ -182,15 +199,13 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 
 <p>Für einzelne Fragen die mit Ja oder Nein zu beantworten sind wird das Eingabe-Element „checkbox“ verwendet</p>
 
-<form action="/images/form/submitted.html"><label><input type="checkbox" name="schlag" /> mit Schlagobers</label></form>
-
 <div class="example">
 <h4 class="caption">Html Code <small>Checkbox für Ja/Nein Frage</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers&lt;/label&gt;
 </pre></div>
 
-<p><img src="/images/image186.png" alt="screenshot" /></p>
+<form action="/images/formulare/submitted.html"><label><input type="checkbox" name="schlag" /> mit Schlagobers</label></form>
 
 </div>
 <div class='slide'>
@@ -203,16 +218,8 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 <div class='slide'>
 
 
-Radiobuttons:</p>
 
-<form action="/images/form/submitted.html">
-<label><input type="radio" name="size" value="XL" />XL</label>
-<label><input type="radio" name="size" value="L" />L</label>
-<label><input type="radio" name="size" value="M" />M</label>
-<label><input type="radio" name="size" value="S" checked="" />S</label>
-</form>
-
-<p>Radiobuttons (die zusammen gehören) müssen denselben <code>name</code> haben.
+<p><strong>Radiobuttons</strong> (die zusammen gehören) müssen denselben <code>name</code> haben.
 Hier ist es wichtig die Beschriftung die zum jeweiligen Button gehört
 mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.</p>
 
@@ -225,21 +232,19 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt;S&lt;/label&gt;
 </pre></div>
 
+<form action="/images/formulare/submitted.html">
+<label><input type="radio" name="size" value="XL" />XL</label>
+<label><input type="radio" name="size" value="L" />L</label>
+<label><input type="radio" name="size" value="M" />M</label>
+<label><input type="radio" name="size" value="S" checked="" />S</label>
+</form>
+
 </div>
 <div class='slide'>
 
 
 
 <p>Ein Menü mit <code>select</code> und <code>option</code> ist im Vergleich zu Radiobuttons platzsparend:</p>
-
-<form action="/images/form/submitted.html">
-<select name="size2">
-  <option>XL</option>
-  <option selected="">L</option>
-  <option>M</option>
-  <option>S</option>
-</select>
-</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
@@ -252,22 +257,21 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;/select&gt;
 </pre></div>
 
+<form action="/images/formulare/submitted.html">
+<select name="size2">
+  <option>XL</option>
+  <option selected="">L</option>
+  <option>M</option>
+  <option>S</option>
+</select>
+</form>
+
 </div>
 <div class='slide'>
 
 
 
 <p>Achtung: beim Erstellen des Menüs muss man jede möglich Antwort bedenken. Auch die Möglichkeit keine Antwort zu geben:</p>
-
-<form action="/images/form/submitted.html">
-<select name="size3">
-  <option>---Bitte Auswählen---</option>
-  <option>XL</option>
-  <option>L</option>
-  <option>M</option>
-  <option>S</option>
-</select>
-</form>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit „leer“- Auswahl</small></h4>
@@ -281,6 +285,16 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 &lt;/select&gt;
 </pre></div>
 
+<form action="/images/formulare/submitted.html">
+<select name="size3">
+  <option>---Bitte Auswählen---</option>
+  <option>XL</option>
+  <option>L</option>
+  <option>M</option>
+  <option>S</option>
+</select>
+</form>
+
 </div>
 <div class='slide'>
 
@@ -289,27 +303,25 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 <p>Die Mehrfach-Auswahl in einem Menü mit <code>select</code> und <code>option</code>
 erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 
-<form action="/images/form/submitted.html">
-<select name="html" size="4" multiple="">
-  <option>im Code</option>
-  <option>Dreamweaver</option>
-  <option>GoLive</option>
-  <option>Frontpage</option>
-</select>
-</form>
-
 <div class="example">
 <h4 class="caption">Html Code <small>Liste - ermöglicht Mehrfach-Auswahl</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;select name=&quot;html&quot; size=&quot;4&quot; multiple&gt;
-  &lt;option&gt;im Code&lt;/option&gt;
-  &lt;option&gt;Dreamweaver&lt;/option&gt;
-  &lt;option&gt;GoLive&lt;/option&gt;
-  &lt;option&gt;Frontpage&lt;/option&gt;
+&lt;select name=&quot;htmleditor&quot; multiple&gt;
+  &lt;option&gt;vim&lt;/option&gt;
+  &lt;option&gt;PHPStorm&lt;/option&gt;
+  &lt;option&gt;Atom&lt;/option&gt;
+  &lt;option&gt;Sublime&lt;/option&gt;
 &lt;/select&gt;
 </pre></div>
 
-<p><img src="/images/image194.png" alt="screenshot" /></p>
+<form action="/images/formulare/submitted.html">
+<select name="htmleditor" multiple="">
+  <option>vim</option>
+  <option>PHPStorm</option>
+  <option>Atom</option>
+  <option>Sublime</option>
+</select>
+</form>
 
 </div>
 <div class='slide'>
@@ -324,6 +336,11 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
       <td><input type="date" min="2010-08-01" max="2011-08-31" value="2010-08-14" /></td>
     </tr>
     <tr>
+      <td>Uhrzeit</td>
+      <td><code>&lt;input type="time" min="9:00" max="18:00" value="12:30"&gt;</code></td>
+      <td><input type="time" min="9:00" max="18:00" value="12:30" /></td>
+    </tr>
+    <tr>
       <td>Range</td>
       <td><code>&lt;input type="range" min="0" max="50" value="10"&gt;</code></td>
       <td><input type="range" min="0" max="50" value="10" /></td>
@@ -336,8 +353,6 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
   </tbody>
 </table>
 
-<p><img src="/images/special.png" alt="screenshot" /></p>
-
 </div>
 <div class='slide'>
 
@@ -348,12 +363,26 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 <div class="example">
 <h4 class="caption">Html Code <small>Absende-Button</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;input type=&quot;submit&quot; value=&quot;drück mich!&quot;&gt;
+&lt;input type=&quot;text&quot; name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Bestellung Absenden&quot;&gt;
 </pre></div>
 
-<p><img src="/images/image196.png" alt="screenshot" /></p>
+<form action="/images/formulare/submitted.html">
+<input type="text" name="bestellung" value="100 Stück Fidget Spinner" />
+<input type="submit" value="Bestellung Absenden" />
+</form>
 
-<p>Neben dem Absende-Button gibt es noch andere Methoden wie ein Formular „abgesendet“ werden kann: Falls das Formular nur ein einziges Text-Eingabefeld hat, kann man in diesem Feld auf ENTER drücken um das Formular zu senden. Wenn das Formular ein Bild-Feld enthält (siehe unten) veranlasst ein Klick auf das Bild das Einsenden.</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Neben dem Absende-Button gibt es noch andere Methoden wie ein Formular „abgesendet“ werden kann:</p>
+
+<ul>
+  <li>Falls das Formular nur ein einziges Text-Eingabefeld hat, kann man in diesem Feld auf <strong>ENTER</strong> drücken um das Formular zu senden.</li>
+  <li>Wenn das Formular ein Bild-Feld enthält (siehe unten) veranlasst ein Klick auf das Bild das Einsenden.</li>
+</ul>
 
 </div>
 <div class='slide'>
@@ -365,10 +394,14 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 <div class="example">
 <h4 class="caption">Html Code <small>Zurück: bitte nicht verwenden</small></h4>
 <pre class="lang-html prettyprint linenums">
+&lt;input type=&quot;text&quot;  name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
 &lt;input type=&quot;reset&quot;  value=&quot;Zurücksetzen&quot;&gt;
 </pre></div>
 
-<p><img src="/images/image198.png" alt="screenshot" /></p>
+<form action="/images/formulare/submitted.html">
+<input type="text" name="bestellung" value="100 Stück Fidget Spinner" />
+<input type="reset" value="Zurücksetzen" />
+</form>
 
 <p>Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
 
@@ -389,22 +422,27 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 
 <p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört.</p>
 
-<p>Diesen Zusammenhang stellt man mit dem <code>label</code>-Tag her:</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Den Zusammenhang zwischen Eingabefeld und Beschriftung stellt man mit dem <code>label</code>-Tag her:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit Label</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;label&gt;E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;&lt;/label&gt;
+&lt;label&gt;E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot;&gt;&lt;/label&gt;
 </pre></div>
 
-<p>Falls der Beschriftungs-Tag weiter entfernt ist kann der label auf die ID des Eingabefeldes verweisen:</p>
+<p>Falls der Beschriftungs-Tag weiter entfernt ist kann der label auf die <strong>id</strong> des Eingabefeldes verweisen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit entferntem Label</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;label for=&quot;mail&quot;&gt;E-Mail&lt;/label&gt; 
+&lt;label for=&quot;mail&quot;&gt;E-Mail&lt;/label&gt;
 ....
-&lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot; placeholder=&quot;e-mail adresse&quot;&gt;
+&lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot;&gt;
 </pre></div>
 
 </div>
@@ -436,7 +474,7 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 </table>
 
 <p>Der Datei-Upload funktioniert nur wenn die Formular-Daten mit Methode POST und
-speziellem enctype an den Webserver geschickt werden.</p>
+speziellem enctype an den Webserver geschickt werden. Das werden wir später im Kapitel <a href="/php/datei-upload/">PHP und Datei Upload</a> behandeln.</p>
 
 </div>
 <div class='slide'>
@@ -447,14 +485,21 @@ speziellem enctype an den Webserver geschickt werden.</p>
 <h4 class="caption">Html Code <small>Visuelle Zusammenfassung mehrer Felder: fieldset + legend</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;fieldset&gt;
-  &lt;legend&gt;Kreditkarte&lt;/legend&gt;
-  &lt;input name=&quot;nr&quot; placeholder=&quot;0000 0000 0000 0000&quot;&gt;
-  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Master&quot;&gt; Master&lt;/label&gt;
-  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Visa&quot;&gt; Visa &lt;/label&gt;
+&lt;legend&gt;Kreditkarte&lt;/legend&gt;
+&lt;input name=&quot;nr&quot; placeholder=&quot;0000 0000 0000 0000&quot;&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Master&quot;&gt; Master&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Visa&quot;&gt; Visa&lt;/label&gt;
 &lt;/fieldset&gt;
 </pre></div>
 
-<p><img src="/images/fieldset.png" alt="screenshot" /></p>
+<form action="/images/formulare/submitted.html">
+<fieldset>
+<legend>Kreditkarte</legend>
+<input name="nr" placeholder="0000 0000 0000 0000" />
+<label><input type="radio" name="kk" value="Master" /> Master</label>
+<label><input type="radio" name="kk" value="Visa" /> Visa</label>
+</fieldset>
+</form>
 
 </div>
 <div class='slide'>
