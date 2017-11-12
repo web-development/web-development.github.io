@@ -70,20 +70,23 @@
     <p>Als „AJAX“ zum Nachladen von Daten – das macht das Web viel interaktiver und angenehmer in der Benutzung.</p>
   </li>
   <li>
-    <p>Mit Javascript können Webseiten auch „offline“ – also ohne Verbindung zum Internet und dem Webserver – im Browser weiterarbieten.</p>
+    <p>Mit Javascript können Webseiten auch „offline“ – also ohne Verbindung zum Internet und dem Webserver – weiterarbieten. Am Smartphone wird diese Art von Webseiten als  „progressive Web App“  bezeichnet.</p>
   </li>
   <li>
-    <p>Der Server Node JS ist ein (Web)Server, den man mit Javascript programmieren kann. Er wird besonders für realtime-applikationen im Web eingesetzt, z.B. für Spiele.</p>
+    <p>Der Server Node JS ist ein (Web)Server, den man mit Javascript programmieren kann. Er wird besonders für Realtime-Applikationen im Web eingesetzt, z.B. für Chats oder Spiele.</p>
   </li>
   <li>
-    <p>Javascript wird in einigen Programmen als Makro-Sprache verwendet, z.B. seit 2003 in Indesign und Illustrator.</p>
+    <p>Javascript wird in einigen Programmen als Makro-Sprache verwendet, z.B. in Indesign, Illustrator und in Unity.</p>
   </li>
   <li>
     <p>Die No-SQL Datenbanken CouchDB und MongoDB verwendet Javascript als Abfragesprache.</p>
   </li>
-  <li>
-    <p>Unter dem Namen Actionscript wird eine Variante von Javascript in Flash verwendet.</p>
-  </li>
+</ul>
+
+<p>Und nur noch historisch interessant:</p>
+
+<ul>
+  <li>Unter dem Namen Actionscript wurde früher eine Variante von Javascript in Flash verwendet.</li>
 </ul>
 
 
@@ -144,34 +147,44 @@
 
 <h2 id="geschichte-von-javascript">Geschichte von Javascript</h2>
 
-<p>Javascript wurde ursprünglich bei Netscape von Brendan Eich erfunden, und dann von verschiedenen Herstellern weiterentwickelt. Es war eines der Schlachtfelder im Browser-War: Microsoft und Netscape versuchten durch verschiedene Implementierungen die Position des eigenen Browsers zu verbessern und Webseiten im gegnerischen Browser unbrauchbar zu machen.</p>
+<p>Javascript wurde ursprünglich bei Netscape von Brendan Eich erfunden, und dann von verschiedenen Herstellern weiterentwickelt. Es war eines der Schlachtfelder im Browser-War: Microsoft und Netscape versuchten durch verschiedene Implementierungen die Position des eigenen Browsers zu verbessern und Webseiten im “gegnerischen” Browser unbrauchbar zu machen.</p>
 
 <p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Sie wird von der Arbeitsgruppe ECMA TC39, in der u.a. Personen von Browser-Herstellern vertreten sind weiter entwickelt.  Die aktuelle Version die Sie erlernen ist ‘'’ECMA Script 2015 / ES6’’’.</p>
 
-<p>Mit dem „Document Object Model“ (DOM) wurde der Zugriff auf die Webseite vereinheitlicht. Die Entwicklung dieser API liegt beim W3C. Libraries wie Prototype oder jQuery ebenen die letzten Unterschiede noch aus.</p>
+<p>Mit dem „Document Object Model“ (DOM) wurde der Zugriff auf die Webseite vereinheitlicht.
+Libraries wie jQuery ebenen die letzten Unterschiede in den Browser-Implementierungen noch aus.</p>
 
-<p>Lange Zeit waren kleine Javascript-Programme eine relative unabhängige Ergänzung für Web-Applikationen. Ein Beispiel dafür wäre ein Javascript-Kalender der die Eingabe eines Datums in ein Eingabefeld erleichtert.</p>
-
-<p>Seit 2005 wir unter dem Schlagwort AJAX Javascript eng mit der serverseitigen Webapplikation verzahnt: AJAX steht für asynchrones Nachladen von Teilen der Webseite über Javascript.</p>
-
-<p>Seit ca. 2008 sind offline-fähige Javascript-Applikationen möglich: Der Browser speichert alle notwendigen Teil der Website permanent ab, und kann die Applikation auch benutzen wenn keine Internetverbindung (mehr) besteht. Dies Applikationen haben z.B: auf dem iPad eine große Bedeutung.</p>
-
-<p><img src="/images/image252.png" alt="Abbildung 56: Offline Applikation everytimezone.com" /></p>
-
-<p>Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, …</p>
+<p>Die Entwicklung dieser API ist nun Teil von HTML5 und liegt beim W3C. Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, …</p>
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
+<h2 id="anwendung-von-javascript">Anwendung von Javascript</h2>
+
+<p>Lange Zeit waren kleine Javascript-Programme eine relative unabhängige Ergänzung für Web-Applikationen. Ein Beispiel dafür wäre ein <a href="https://datatables.net/">Data Table</a>
+der in eine HTML Tabelle die möglichkeit zum Sortieren nach eine Spalte einbaut.</p>
+
+<p>Große Web Applikationen wie outlook oder gmail zeigten aber bald, dass auch komplexe
+Programme im Browser möglich sind. Um diese umzusetzen gibt es heute clientseitige
+Frameworks wie Angular oder React.</p>
+
+<p>Web Applikationen wurden seit ca. 2008 Schritt für Schritt mehr und mehr offline-fähige.
+Heute nennt man solche Applikationen “Progressive Web Apps” (PWA). <a href="https://pwa.rocks">pwa.rocks</a>
+zeigt eine Sammlsung solcher Apps.</p>
+
+
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="document-object-model">Document Object Model</h2>
 
-<p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (die Webseite oder auch ein XML- Dokument) von einer objektorientierten Skriptsprache aus manipuliert werden kann. Am 1. Oktober 1998 wurde das DOM eine offizielle W3-Empfehlung (recommendation) in der Version 1. 0.</p>
+<p>Das Document Object Model (DOM) ist ein allgemeines Modell wie ein Dokument (die Webseite oder auch ein XML- Dokument) von einer objektorientierten Skriptsprache aus manipuliert werden kann.</p>
 
 <p>Das DOM einer Webseite kann man sich als Baum vorstellen, ähnlich der Ordnerstruktur im Dateisystem.  Sie kennen diese Idee schon von CSS und den CSS-Selektoren.</p>
 
-<p>In folgendem Beispiel ist der markierte <code>li</code>-Tag innerhalb des <code>ul</code>-Tags mit klasse <code>.sub</code>, der <code>li</code>-Tag enthält wiederum einen <code>a</code>-Tag.</p>
+<p>In folgendem Beispiel ist der markierte <code>a</code>-Tag innerhalb eines <code>li</code>-Tags, und
+der wiederum innerhalb eines  <code>uk</code>-Tag mit Klassen <code>nav</code> und <code>nav-list</code>.</p>
 
-<p><img src="/images/dom.png" alt="Abbildung: Bild des DOM, erzeugt mit dem DOM Inspektor von Mozilla" /></p>
+<p><img src="/images/javascript-dom/dom.png" alt="Abbildung: Bild des DOM, erzeugt mit den Firefox DeveloperTools" /></p>
 
 <p>Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:</p>
 
