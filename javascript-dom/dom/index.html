@@ -121,6 +121,24 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
+<h3 id="manipulieren-der-klassen">Manipulieren der Klassen</h3>
+
+<p>Statt den Style direkt zu manipulieren, könnte
+man eine Klasse setzen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+document.getElementById(&quot;person_25&quot;).classList.add(&#39;sichtbar&#39;);
+document.getElementById(&quot;person_25&quot;).classList.remove(&#39;sichtbar&#39;);
+document.getElementById(&quot;person_25&quot;).classList.toggle(&#39;sichtbar&#39;);
+if( document.getElementById(&quot;person_25&quot;).classList.contains(&#39;sichtbar&#39;) ) {
+  // wird nur ausgeführt falls person sichtbar
+}
+</pre></div>
+
+
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+
 <h3 id="selektieren">Selektieren</h3>
 
 <p>Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode <code>document.querySelectorAll()</code>:</p>
@@ -136,7 +154,7 @@ while(i &lt; inputs.length) {
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h3 id="text">Text</h3>
 
@@ -165,7 +183,7 @@ let vn = document.getElementById(&quot;v_25&quot;).textContent;
 Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="manipulation-des-dom">Manipulation des DOM</h2>
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
@@ -194,7 +212,7 @@ node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="einfgen">Einfügen</h3>
 
@@ -206,7 +224,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="duplizieren">Duplizieren</h3>
 
@@ -227,7 +245,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 
 
@@ -240,22 +258,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
   first_pizza.insertBefore(new_pizza, null);
 </pre></div>
 
-<p><a href="/images/javascript-dom/moreformjs.html">Beispiel live im Browser</a></p>
-
-
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
-
-<h2 id="manipulieren-der-klassen">Manipulieren der Klassen</h2>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.querySelector(&#39;#foo&#39;).classList.add(&#39;bar&#39;);
-document.querySelector(&#39;#foo&#39;).classList.remove(&#39;bar&#39;);
-document.querySelector(&#39;#foo&#39;).classList.toggle(&#39;bar&#39;);
-if( document.querySelector(&#39;#foo&#39;).classList.contains(&#39;bar&#39;) ) {
-  // 
-}
-</pre></div>
+<p><a href="/images/javascript-dom/example_js_add_to_form.html">Beispiel live im Browser</a></p>
 
 
 <a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
