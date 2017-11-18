@@ -145,7 +145,7 @@ z.B. einfach am html-Tag:  <code>&lt;html lang="de"&gt;</code>.</p>
 Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
 
 <div class="resizable">
-<div style="width: 60%; margin: 0 auto; background-color: #ddd;">
+<div style="max-width: 60%; margin: 0 auto; background-color: #ddd;">
 <p>Der Margin wird links und rechts gleich verteilt mit "auto"</p>
 <p><kbd>
 div {<br />
@@ -155,6 +155,11 @@ div {<br />
 }</kbd></p>
 </div>
 </div>
+
+<p>Statt einer fixen Breite  <code>width: 900px</code>  kann man eine maximale Breite
+mit <code>max-width: 900px</code> angeben.  Stehen weniger als 900px zur Verfügung
+dann wird diese CSS Anweisung ignoriert, und der Block nimmt wieder 100% der
+Breite ein.</p>
 
 
 <a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
