@@ -63,7 +63,7 @@ h1,h2 {
 body {
   margin-left: 150px;
   background-color: white;
-} 
+}
 p {
   text-align: justify;
 }
@@ -286,6 +286,29 @@ b#impressum { background-color:#ddd; }   /* nix! */
 </ul>
 
 <p>zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
+
+
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+
+<h3 id="variablen-in-css">Variablen in CSS</h3>
+
+<p>Für Werte die mehrmals verwendet werden kann man Variablen setzen:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+:root {
+  --important-color: darkcyan;
+  --text-on-important-color: darkcyan;
+}
+
+h1 {
+  color: var(--important-color);
+}
+nav {
+  background-color: var(--important-color);
+  color: var(--text-on-important-color);
+}
+</pre></div>
 
 
 		

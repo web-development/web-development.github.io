@@ -91,9 +91,9 @@ dem Usernamen und Passwort für die Datenbank.</p>
 als “Data Source Name” bezeichnet und enthält mehrere Informationen, die in
 einen String gepackt werden.</p>
 
-<p>Ein Beispiel für einen Postgres DSN ist <code>"psql:dbname=portfolio_playground;host=localhost"</code>.
-Ein DSN beginnt immer mit einem Kürzel für die Datebank, hier also <code>psql</code>.  Welche
-weiteren Teile der DSN anthält kann man in der <a href="http://www.php.net/manual/en/ref.pdo-psql.connection.php">Dokumentation des jeweiligen PDO Datenbank Treibers</a> nachlesen.</p>
+<p>Ein Beispiel für einen Postgres DSN ist <code>"pgsql:dbname=portfolio_playground;host=localhost"</code>.
+Ein DSN beginnt immer mit einem Kürzel für die Datebank, hier also <code>pgsql</code>.  Welche
+weiteren Teile der DSN anthält kann man in der <a href="http://www.php.net/manual/en/ref.pdo-pgsql.connection.php">Dokumentation des jeweiligen PDO Datenbank Treibers</a> nachlesen.</p>
 
 <p>Für den Postgres Treiber sind das der Name der Datenbank <code>dbname</code> und der <code>host</code>,
 eventuell der <code>port</code>.  Alternativ kann man die Verbindung statt über Host und
@@ -130,7 +130,7 @@ die zuvor inkludiert wird.  Warum?</p>
 $DB_NAME = &quot;portfolio_playground&quot;; 
 $DB_USER = &quot;mmtuser&quot;; 
 $DB_PASS = &quot;****&quot;;
-$DSN     = &quot;psql:dbname=$DB_NAME;host=localhost&quot;;
+$DSN     = &quot;pgsql:dbname=$DB_NAME;host=localhost&quot;;
 </pre></div>
 
 <p>Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
