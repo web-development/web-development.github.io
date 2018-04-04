@@ -230,7 +230,7 @@ Die sollte man ganz normal committen.</p>
 
 <h3 id="empfohlene-optionen-fr-den-verbindungsaufbau">Empfohlene Optionen für den Verbindungsaufbau</h3>
 
-<p>In folgenden Code werden noch zwei Optionen nach dem Verbindungsaufbau gesetzt:</p>
+<p>In folgenden Code werden mit der Methode <code>setAttribute</code> noch zwei Optionen nach dem Verbindungsaufbau gesetzt:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Optionen für den Verbindungs-Aufbau</small></h4>
@@ -238,11 +238,15 @@ Die sollte man ganz normal committen.</p>
 include &quot;config.php&quot;;
 $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+$dbh-&gt;setAttribute(PDO::ATTR_ERRMODE,            PDO::ERRMODE_EXCEPTION);
 </pre></div>
 
-<p>Mit der Methode <code>setAttribute</code> wird hier festgelegt,
+<p>Als “default fetch mode” wird hier festgelegt,
 dass die gelesenen Datensätze aus der Datenbank in PHP als
 Objekt dargestellt werden. (Die Alternative wäre ein assoziatives Array.)</p>
+
+<p>Und der “errormode” legt fest, dass Fehler die bei der Kommunikation
+mit der Datenbank auftreten eine Exception in PHP auslösen.</p>
 
 <p>Für die Applikation die in den nächsten 2 Kapitel beschreiben wird
 werden diese Optionen vorausgesetzt.</p>

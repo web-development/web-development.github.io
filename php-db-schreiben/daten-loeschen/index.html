@@ -59,7 +59,7 @@ das als Parameter die <code>id</code> der Person erhält, die gelöscht werden s
 <pre class="lang-php prettyprint linenums">
 $id   = $_POST[&#39;id&#39;];
 $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
-// NICHT so implementieren!
+// Beispielcode mit Sicherheitslücke - NICHT verwenden!
 </pre></div>
 
 
@@ -94,8 +94,8 @@ DELETE FROM users WHERE id=9 OR 1=1
 </pre></div>
 
 <p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese
-Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil in
-das SQL etwas “injiziert” wird.</p>
+Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil Alyssa
+es gschafft hat ihr SQL hinein zu “injiziert”.</p>
 
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
@@ -173,10 +173,18 @@ normale query zu wiederholen.</p>
 
 <h3 id="sql-injection-gibt-es-nicht-nur-bei-delete">SQL Injection gibt es nicht nur bei DELETE</h3>
 
-<p>Wir haben diese Attacke am Beispil einer Löschoperation kennen gelert.
+<p>Wir haben diese Attacke am Beispiel einer Löschoperation kennen gelernt.
 Aber auch ein einfaches <code>SELECT</code> kann mittels SQL Injection missbraucht werden
 um zusätzliche Informationen aus der Datenbank auszulesen, die wir nicht
 vorgesehen haben.</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>SELECT mit Sicherheitslücke!</small></h4>
+<pre class="lang-php prettyprint linenums">
+$id   = $_POST[&#39;id&#39;];
+$dbh-&gt;exec(&quot;SELECT * FROM comments WHERE id=$id&quot;);  
+// Beispielcode mit Sicherheitslücke - NICHT verwenden!
+</pre></div>
 
 <p>Die Attacke mit <code>1=1</code> ermöglicht das Lesen von Datensätzen aus derselben Tabelle:</p>
 
@@ -200,9 +208,11 @@ $query = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
 $dbh-&gt;query($query);
 </pre></div>
 
-<p>&lt;plain caption”attacke”&gt;
-hallo’ UNION SELECT id, password FROM users WHERE ‘’ LIKE ‘%
-&lt;/plain&gt;</p>
+<div class="example">
+<h4 class="caption">Shell Code <small>attacke</small></h4>
+<pre class="lang-shell prettyprint linenums">
+hallo&#39; UNION SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%
+</pre></div>
 
 <p>Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:</p>
 
@@ -226,7 +236,7 @@ immer prepared Statements!</p>
 <pre class="lang-php prettyprint linenums">
 $query = &quot;SELECT id, name FROM cities WHERE name=?&quot;;
 $sth = $dbh-&gt;execute($query);
-$sth-&gt;execute($name);
+$sth-&gt;execute( array($name) );
 </pre></div>
 
 
@@ -728,6 +738,10 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
                     
                       
                       <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      
+                    
+                      
+                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
                       
                     
                   

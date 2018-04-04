@@ -51,64 +51,14 @@
 			
 			
 			<a id='slide-1'></a>
-<p>Mit dem Selektor <code>:hover</code> wird eine CSS-Regel nur angewandt 
-wenn sich der Maus-Cursor über dem Element befindet. 
-<code>:focus</code> hat eine ähnliche Bedeutung bei der Steuerung mit der Tastatur.</p>
-
-<p>Achtung: auf Touch-Geräten wie Tables und Smartphones gibt 
-es derzeit kein <code>:hover</code>! Deswegen sollte man <code>:hover</code> nur zur 
-Dekoration, nicht aber für wichtige Funktionen verwenden!</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-div       { background-color: #ddd; }
-div:hover { background-color: red; }
-</pre></div>
-
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h2 id="hover-mit-bild">Hover mit Bild</h2>
-
-<p>Mit Hilfe von Hintergrundbildern kann man so zum Beispiel einen 
-kitschigen 3d-Button darstellen, der beim hovern „hineingedrückt“ wird.</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-div       { background-image: url(button-up.png);   }
-div:hover { background-image: url(button-down.png); }
-</pre></div>
-
-
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
-
-<h2 id="hover-mit-bild-1">Hover mit Bild</h2>
-
-<p>Beim Laden des zweiten Hintergrundbildes kann es dabei 
-zu einer Verzögerung kommen. Um das zu verhindern kann man die beiden 
-Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechseln:</p>
-
-<p><a href="/images/hover-image.html">Beispiel Bilder mit Hover</a></p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-#logo {
-  background-image: url(logo-fh-salzburg.png);
-  width: 135px;
-  height: 34px;
-  overflow: hidden;
-}
-#logo:hover {
-  background-position: 0 -34px;
-}
-</pre></div>
-
-
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
-
 <h2 id="css-sprites">CSS-Sprites</h2>
 
-<p>Eine extreme Anwendung dieses Prinzips nennt man CSS-Sprites: dabei werden möglichst viele Bilder in einer Bild-Datei zusammengefaßt. Falls viele kleine Icons verwendet werden, kann das die Darstellung der Webseite erheblich beschleunigen.</p>
+<p>Das Laden von vielen kleinen Icons über HTTP 1.1 kann sehr lange
+dauern. Wenn man alle Bilder in ein Bild vereinigt muss nur noch
+eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 
 <p><img src="/images/yahoo-spritemap.png" alt="Abbildung 42: CSS Sprites von Yahoo" /></p>
 
@@ -141,7 +91,7 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
       
       
       
-      <li><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
       
     
   </ul>
@@ -207,6 +157,10 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
                       
                     
                       
+                      <li ><a href="/css/css-sprites/">CSS Sprites</a></li>
+                      
+                    
+                      
                       <li ><a href="/css/basic-selectors/">CSS Selektoren</a></li>
                       
                     
@@ -243,11 +197,11 @@ Hintergrundbilder in einer Bilddatei speichern und nur den Bildausschnitt wechse
                       
                     
                       
-                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
                       
                     
                       
-                      <li ><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+                      <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
                       
                     
                   

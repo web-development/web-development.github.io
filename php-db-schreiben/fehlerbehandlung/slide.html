@@ -63,7 +63,7 @@
             <a href="/php-db-schreiben/fehlerbehandlung/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/php-db-optimierung//slide.html">Constraints und Transaktionen in der DB</a>
+             | Nächste Präsentation <a href="/php-db-schreiben/html-erlauben//slide.html">HTML erlauben</a>
             
             </p>
           </div>
@@ -144,15 +144,14 @@ $get_id = $_GET[&#39;id&#39;];
 try{
   include &quot;config.php&quot;;
 
-  if( ! $DB_NAME ) {
+  if( ! $DSN ) {
     throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
   }
 
-  $dbh = new PDO(&quot;mysql:dbname=$DB_NAME&quot;, $DB_USER, $DB_PASS);
+  $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
   /* das folgende Attribut aktiviert die Exceptions */
   $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-  $dbh-&gt;exec(&#39;SET CHARACTER SET utf8&#39;) ;
 
   $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
   $sth-&gt;execute(array($get_id));
@@ -208,7 +207,7 @@ gar nicht lohnt näher darauf einzugehen. Siehe
             <a href="/php-db-schreiben/fehlerbehandlung/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/php-db-optimierung//slide.html">Constraints und Transaktionen in der DB</a>
+             | Nächste Präsentation <a href="/php-db-schreiben/html-erlauben//slide.html">HTML erlauben</a>
             
             </p>
           </div>

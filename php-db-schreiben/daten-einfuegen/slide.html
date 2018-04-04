@@ -75,6 +75,7 @@
 <pre class="lang-php prettyprint linenums">
 $t = $_POST[&#39;title&#39;];
 $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
+// Beispielcode mit Sicherheitslücke - NICHT verwenden!
 </pre></div>
 
 </div>
@@ -87,37 +88,41 @@ $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-INSERT INTO projects (titel) VALUES (&#39;That&#39;s it&#39;)
+INSERT INTO projects (title) VALUES (&#39;That&#39;s it&#39;)
 </pre></div>
 
 <p>Das kann nicht funktionieren: das einfache Anführungszeichen beendet den String
-und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
+und es bleibt <code>s it</code> übrig. Die Fehlermeldung von Postgres lautet:</p>
 
 <div class="example">
 <pre class="lang-plain prettyprint linenums">
-#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;s it&#39;)&#39; at line 1
+ERROR:  syntax error at or near &quot;s&quot;
 </pre></div>
 
 </div>
 <div class='slide'>
 
-<h3 id="die-falsche-lsung">die falsche Lösung</h3>
+<h3 id="die-falsche-lsung">Die Falsche Lösung</h3>
 
 <p>Für dieses Problem gab es in PHP bis Version 5.3.0 eine <strong>einfache</strong> und <strong>falsche</strong> Lösung:</p>
 
 <p>Urspünglich veränderte PHP automatisch alle Daten die über GET, POST und
 Cookies hereinkommen: Vor alle Anführungszeichen wird ein Backslash eingefügt.
 Aus „That’s it“ wird also automatisch „That\’s it“, das SQL-Statement
-funktioniert wieder:</p>
+funktioniert jetzt für MySQL:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
 INSERT INTO werk (titel) VALUES (&#39;That\&#39;s it&#39;)
 </pre></div>
 
-<p>Diese Automatik funktioniert aber leider nur für einige Datenbanken.
-Andere Datenbanken haben anderen Quoting-Konventionen, in
-anderen Kontexten muss man ganz anders Escapen.</p>
+<p>Diese Automatik funktioniert aber leider <strong>nur</strong> für MySQL, 
+nicht aber für Postgres. Da müsste es heissen:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+INSERT INTO werk (titel) VALUES (&#39;That&#39;&#39;s it&#39;)
+</pre></div>
 
 </div>
 <div class='slide'>
@@ -147,14 +152,10 @@ print_r($_POST);
 echo(&quot;&lt;/pre&gt;&quot;);
 </pre></div>
 
-<p>In Wirklichkeit konnte man die magic quotes bis Version nicht ganz abschalten, wie man in der
-PHP-Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes.disabling.php">→</a>.
-Das Problem betrifft allerdings nur Array-Parameter.</p>
-
 </div>
 <div class='slide'>
 
-<h3 id="die-richtige-lsung">die richtige Lösung</h3>
+<h3 id="die-richtige-lsung">Die Richtige Lösung</h3>
 
 <p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared statements.</p>
 
@@ -176,7 +177,7 @@ $sth = $dbh-&gt;prepare(
       VALUES
     (DEFAULT, ?, ?, ?, ?)&quot;);
 
-// Variante 3: nur mySQL (mit NULL für den autoincrement id-Wert)
+// Variante 3: nur MySQL (mit NULL für den autoincrement id-Wert)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
@@ -201,8 +202,7 @@ $sth-&gt;execute(
 
 
 <p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen: Die
-Tabelle verlangt, zum Beispiel, für email einen eindeutigen Eintrag. Wenn man
-hier einfach nichts eingibt, ergibt das einen Fehler.</p>
+Tabelle verlangt für manche Spalten eine eingabe.</p>
 
 <p>So weit wollen Sie es nicht kommen lassen: Sie sollten die Eingaben aus dem
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
