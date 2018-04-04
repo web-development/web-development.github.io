@@ -217,30 +217,35 @@ EOM;
 
 <p>Markdown ist eine sehr simple Formatierungs-Sprache - viel einfacher als HTML.</p>
 
-<markdown caption="Beispiel für einen Text in Markdown">
+<div class="example">
+<h4 class="caption">Plain Code <small>Beispiel für einen Text in Markdown</small></h4>
+<pre class="lang-plain prettyprint linenums">
   ### Abspeichern von HTML
 
   Bevor wir das eingegeben HTML abspeichern, wollen wir es
   streng kontrollieren: Im Profil sollen nur die HTML-Tags
-  `<p>` und `<b>` verwendet werden können, mehr nicht. 
-&lt;/markdown&gt;
+  `&lt;p&gt;` und `&lt;b&gt;` verwendet werden können, mehr nicht. 
+</pre></div>
 
-Dieses Format wird in der Datenbank gespeichert. Erst bei
-der Ausgabe als HTML wird Markdown in HTML verwandelt.
+<p>Dieses Format wird in der Datenbank gespeichert. Erst bei
+der Ausgabe als HTML wird Markdown in HTML verwandelt.</p>
 
+</div>
+<div class='slide'>
 
-### Markdown eingeben
+<h3 id="markdown-eingeben">Markdown eingeben</h3>
 
-Für Markdown gibt es wieder eigene editoren, z.B. https://simplemde.com/
+<p>Für Markdown gibt es wieder eigene editoren, z.B. https://simplemde.com/</p>
 
-![Screenshot von SimpleMDE](simplemde.png)
+<p><img src="simplemde.png" alt="Screenshot von SimpleMDE" /></p>
 
+</div>
+<div class='slide'>
 
+<h3 id="markdown-darstellen">Markdown darstellen</h3>
 
-### Markdown darstellen
-
-Mit einem "Markdown Parser" wird das Markdown-Format gelesen und
-in HTML übersetzt:
+<p>Mit einem “Markdown Parser” wird das Markdown-Format gelesen und
+in HTML übersetzt:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
@@ -249,10 +254,6 @@ $Parsedown = new Parsedown();
 echo $Parsedown-&gt;text(&#39;## Hello HTML!&#39;);
 </pre></div>
 
-
-
-
-</b></p></markdown>
 </div>
           <div class="slide"><h1>HTML erlauben</h1>
             <p>
