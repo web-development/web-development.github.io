@@ -68,53 +68,24 @@
             </p>
           </div>
 	  <div class='slide'>
-<p>In Zusammenhang mit jQuery werden die Fachbegriffe „graceful degradation“, „progressive enhancement“  und „unobstrusive“ verwendet. Dahinter verbergen sich zwei verwandte, aber verschiedene Konzepte:</p>
+<p>In Zusammenhang mit jQuery werden die Fachbegriffe „graceful degradation“, „progressive enhancement“  und „unobstrusive“ verwendet. Dahinter verbergen sich zwei verwandte, aber verschiedene Konzepte.</p>
 
 </div>
 <div class='slide'>
 
-<h2 id="graceful-und-progressive">graceful und progressive</h2>
+<h2 id="unobstrusive-javascript">Unobstrusive Javascript</h2>
 
-<p>Die Library jQuery unterstützt das Prinzip der „graceful degradation“ – auch ohne Javascript sind Webseiten mit jQuery immer noch gut verwendbar. Dieses Prinzip wird auch „progressive enhancement“ genannt, und bezieht sich nicht nur auf Javascript, sondern auch auf andere „Zusatz-Technologien“ wie z.B. Flash.</p>
+<p>“obstrusive” bedeutet störend oder aufdringlich. Unobstrusive Javascript ist
+also Javascript dass nicht stört.  Und zwar den HTML-Code nicht stört.</p>
 
-<p>Die Idee ist dabei immer die Gleich: man baut die Webseite zuerst ohne Javascript, und fügt dann Javascript hinzu (ohne die Verwendbarkeit ohne Javscript zu zerstören). Der Inhalt (Content) der Webseite bleibt auch ohne Javascript zugänglich.</p>
-
-<p><img src="/images/image267.png" alt="Abbildung 60: Die Rolle von Content, Darstellung und Programmierung (Unobstrusive Javascript)" /></p>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Von dieser Herangehensweise profitieren nicht nur Blinde, Menschen mit veralteten Browsern oder exotischen Ausgabegeräte. Auch für Suchmaschinen wie Google oder andere Programme die die Information aus den Webseiten weiter verarbeiten ist dieses Prinzip hilfreich.</p>
-
-<p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie hier gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
-
-<p><img src="/images/image269.png" alt="Abbildung 61: Javascript deaktivieren mit QuickJava in Firefox" /></p>
-
-</div>
-<div class='slide'>
-
-<h2 id="grenzen-von-graceful-degradation">Grenzen von Graceful Degradation</h2>
-
-<p>Es gibt Websites, bei denen dieser Ansatz nicht funktionieren kann.
-z.B. für einen Shooter als Browsergame kann man nicht nicht eine
-Javascript-Freie Alternative anbieten.</p>
-
-<p>Für viele Apps funktioniert das aber.  Probieren Sie z.B. gmail ohne javascript
-aus, oder das Webmail der FH (zimbra).  Die Interaktion ist etwas
-umständlicher, aber man kann alle Features der Mail benutzen.</p>
-
-</div>
-<div class='slide'>
-
-<h2 id="unobstrusive">unobstrusive</h2>
-
-<p>Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery wird nur an einer Stelle, im Head des Dokuments eingebaut. Das nennt man „unobstrusive Javascript“.</p>
+<p>Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery wird nur an einer Stelle, im Head des Dokuments eingebaut.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;//code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script
+        src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
+        integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
+        crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
   &lt;script&gt;
   $(document).ready(function(){ 
         // Javascript code here 
@@ -131,7 +102,14 @@ umständlicher, aber man kann alle Features der Mail benutzen.</p>
 
 <h2 id="jquery-vom-cdn">jquery vom CDN</h2>
 
-<p>Die URL http://code.jquery.com/jquery-latest.js kann man für alle Webseiten die online sind verwenden: hinter code.jquery.com steht nicht nur ein Server, sondern das <a href="http://www.netdna.com/">NetDNA</a> CDN (Content Delivery Network). Nur wenn man offline Entwickeln will muss man die Library wirklich herunterladen.</p>
+<p>Unter <code>https://code.jquery.com/</code>  kann man jquery in verschiedenen Versionen beziehen, und den
+code auch direkt einbinden. Hinter <code>code.jquery.com</code> steht nicht nur ein Server, sondern das <a href="http://www.netdna.com/">NetDNA</a> CDN (Content Delivery Network).</p>
+
+<p>Der empfohlene Code zur Einbindung enthält eine Quersumme zur Sicherheit: so kann es
+nicht passieren, dass eine gefälchste Version von jQuery verwendet wird, die Schadcode enthält.</p>
+
+<p>Nur wenn man offline Entwickeln will, oder die Webseite offline funktioniern soll, muss man die Library wirklich herunterladen.</p>
+
 </div>
           <div class="slide"><h1>Unobstrusive Javascript</h1>
             <p>

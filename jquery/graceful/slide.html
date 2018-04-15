@@ -68,6 +68,46 @@
             </p>
           </div>
 	  <div class='slide'>
+</div>
+<div class='slide'>
+
+<h2 id="graceful-und-progressive">graceful und progressive</h2>
+
+<p>Die Library jQuery unterstützt das Prinzip der „graceful degradation“ – auch ohne Javascript sind Webseiten mit jQuery immer noch gut verwendbar. Dieses Prinzip wird auch „progressive enhancement“ genannt, und bezieht sich nicht nur auf Javascript, sondern auch auf andere „Zusatz-Technologien“ wie z.B. Flash.</p>
+
+<p>Die Idee ist dabei immer die Gleich: man baut die Webseite zuerst ohne Javascript, und fügt dann Javascript hinzu (ohne die Verwendbarkeit ohne Javscript zu zerstören). Der Inhalt (Content) der Webseite bleibt auch ohne Javascript zugänglich.</p>
+
+<p><img src="/images/image267.png" alt="Abbildung 60: Die Rolle von Content, Darstellung und Programmierung (Unobstrusive Javascript)" /></p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Von dieser Herangehensweise profitieren nicht nur Blinde, Menschen mit veralteten Browsern oder exotischen Ausgabegeräte. Auch für Suchmaschinen wie Google oder andere Programme die die Information aus den Webseiten weiter verarbeiten ist dieses Prinzip hilfreich.</p>
+
+<p>Um zu testen, ob das wirkliche funktioniert kann man ganz einfach mit dem Firefox-AddOn QuickJava testen. Wie hier gezeigt kann Javascript mit einem Klick deaktiviert werden.</p>
+
+<p><img src="/images/javascript-toggle.png" alt="Abbildung 61: Javascript deaktivieren mit Javascript Toggle in Firefox" /></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="grenzen-von-graceful-degradation">Grenzen von Graceful Degradation</h2>
+
+<p>Es gibt Websites, bei denen dieser Ansatz nicht funktionieren kann.
+z.B. für einen Shooter als Browsergame kann man nicht nicht eine
+Alternative ohne Javascript anbieten.</p>
+
+<p>Für viele Apps funktioniert das aber.  Probieren Sie z.B. gmail ohne javascript
+aus, oder das Webmail der FH (zimbra).  Die Interaktion ist etwas
+umständlicher, aber man kann alle Features der Mail benutzen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="ein-praktisches-beispiel">Ein praktisches Beispiel</h2>
+
 <p>Die Aufgabenstellung: ein einer langen Webseite sind mehrere Anker-Punkte
 mit <code>&lt;a name=...&gt;</code> gesetzt, über ein Navigationsmenü soll man diese erreichen
 können.  <a href="http://brigitte-jellinek.at">Diese Seite</a> zeigt ein funktionierendes
@@ -103,15 +143,6 @@ Beispiel (letzte Version).</p>
   z-index: 10;
   bottom: -1px;
 }
-
-
-
-
-
-
-
-
-
 </pre><div class="clearfix"></div></div>
 
 </div>
@@ -173,8 +204,8 @@ in manchen Browsern funktioniert das Scrollen der Seite mit <code>scrollTop</cod
 <p>Wir haben dabei beide Prinzipien gebrochen</p>
 
 <ul>
-  <li>kein progressive enhancement: Links funktionieren nicht mehr</li>
-  <li>kein unobstrusive javascript: Javascript-Code direkt in HTML-Attributen</li>
+  <li>kein Progressive Enhancement: Links funktionieren nicht mehr</li>
+  <li>kein Unobstrusive Javascript: Javascript-Code direkt in HTML-Attributen</li>
 </ul>
 
 </div>
@@ -197,31 +228,41 @@ programmieren:</p>
 &lt;/div&gt;
 </pre></div>
 
-<p>Die Funktion <code>scrollToMe</code> wird als Eventhandler implementiert:
-sie erwartet ein Event als Argument und die angeklickte Node
-in der Variablen <code>this</code>.  Ausserdem verwendet die Funktion
-die jQuery-Methode <code>preventDefault</code> um das “normale” Verhalten
-des Links zu unterbinden.</p>
-
-<p>In der letzten Zeile wird an alle Links in der Navigation
-die Funktion <code>scrollToMe</code> als Eventhandler für <code>click</code> angefügt.</p>
+<p>An diese Links wird ein neuer Eventhandler angefügt, abernicht mit <code>onclick</code>
+im HTML, sondern mit jquery.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Version 3</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 $(document).ready( function () {
-
-  function scrollToMe(event) {
-    var link = $(this).attr(&#39;href&#39;),
-        top  = $(link).offset().top;
-    $(&#39;body&#39;).animate({
-      scrollTop: top
-    }, 800);
-    event.preventDefault();
-  }
-
   $(&#39;#navigation a&#39;).on(&#39;click&#39;, scrollToMe);
 });
+</pre></div>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Die Funktion <code>scrollToMe</code> wird als Eventhandler implementiert:
+sie erwartet ein Event als Argument und die angeklickte Node
+in der Variablen <code>this</code>.</p>
+
+<p>Ausserdem verwendet die Funktion
+die jQuery-Methode <code>preventDefault</code> um das “normale” Verhalten
+des Links zu unterbinden.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Version 3</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function scrollToMe(event) {
+  var link = $(this).attr(&#39;href&#39;),
+      top  = $(link).offset().top;
+  $(&#39;body&#39;).animate({
+    scrollTop: top
+  }, 800);
+  event.preventDefault();
+}
 </pre></div>
 
 </div>
@@ -268,7 +309,7 @@ nur in solchen Browsern verwendet wird, wo sie auch funktioniert.</p>
 <p>Die erste Variante funktioniert nicht: die Selbstoffenbarung der Browser
 kann falsch sein, ich kenne nicht alle Browser und ihre Fähigkeiten.
 Siehe auch
-<a href="http://www.nczonline.net/blog/2009/12/29/feature-detection-is-not-browser-detection/">Zakas(2009): Feature detection is not browser detection. In NCZOnline.</a></p>
+<a href="https://learn.jquery.com/code-organization/feature-browser-detection/">Feature &amp; Browser Detection im jQuery learning center</a></p>
 
 <p>Die Funktion <code>scrollToMe</code> bleibt unverändert.
 Wir testen ob die Funktion scrollTop wirklich den Wert
@@ -293,19 +334,6 @@ if ( window.can_scroll ) $(&#39;#navigation a&#39;).on(&#39;click&#39;, scrollTo
 die im weiteren Code verwendet werden können - wird von der Library
 <a href="http://modernizr.com/">modernizr</a> für eine lange Liste von Features
 angeboten.</p>
-
-</div>
-<div class='slide'>
-
-
-
-<p>Nebenbemerkung: In ganz seltenen Fällen muss man doch Browser Detection machen.
-Eine Gute Library dafür ist <a href="http://api.html5please.com/">HTML5 please</a>.
-Damit kann man eine Liste von Features angeben die erfüllt sein
-müssen damit die Seite funktioniert.  Ist das nicht der Fall, dann
-wird eine entsprechende Meldung angezeigt</p>
-
-<p><img src="/images/html5please.png" alt="HTML5 please Fehlermeldung" /></p>
 
 </div>
 <div class='slide'>
@@ -345,11 +373,22 @@ dann verweist die URL die ich verwende wirklich wieder genauf auf das Ziel.</p>
 <p>Dieses Verhalten ist erstrebenswert, wird aber von der “animierten” Version
 derzeit nicht geliefert.</p>
 
-<p>Diese “Navigierbarkeit” ist auch ein klassisches Problem von AJAX-Applikationen,
-die Lösung die wir hier entwickeln funktioniert auch dort:</p>
+<p>(Diese “Navigierbarkeit” ist auch ein klassisches Problem von AJAX-Applikationen,
+die Lösung die wir hier entwickeln funktioniert auch dort)</p>
 
-<p>In die Funktion <code>scrollToMe</code> wird eine Zeile eingefügt.
-Mit dem History-Objekt kann man den Browser von Javascript aus “navigieren”:
+<p>In die Funktion <code>scrollToMe</code> wird eine Zeile eingefügt.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Version 4</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function scrollToMe(event) {
+  var link = $(this).attr(&#39;href&#39;);
+  ...
+  window.history.pushState( {}, &quot;Thema &quot; + link, link);
+}
+</pre></div>
+
+<p>Mit dem <code>window.history</code> Objekt kann man den Browser von Javascript aus “navigieren”:
 mit <code>history.back()</code> zum Beispiel einen Schritt zurück gehen.</p>
 
 <p>Mit <code>history.pushState()</code> kann man zu einer neuen Seite navigieren,
@@ -362,16 +401,6 @@ ersetzt, die Browser-History wird nicht länger.</p>
 <p>Beide Methoden erwarten drei Argumente - ein Objekt und zwei Strings - 
 aber nur das letzte Argument wird derzeit benutzt. Es ist ein String mit der
 URL die geladen werden soll.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Version 4</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function scrollToMe(event) {
-  var link = $(this).attr(&#39;href&#39;);
-  ...
-  window.history.pushState( {}, &quot;Thema &quot; + link, link);
-}
-</pre></div>
 
 </div>
 <div class='slide'>
@@ -389,13 +418,6 @@ Und zusätzlich gibt es eventuell noch eine schöne Animation.</p>
   <li>unobstrusive javascript - kein Javascript-Code im HTML</li>
 </ul>
 
-</div>
-<div class='slide'>
-
-
-
-<p>History auch in HTML4 Browsern verwenden:
-https://github.com/balupton/History.js/</p>
 </div>
           <div class="slide"><h1>Graceful Degradation</h1>
             <p>

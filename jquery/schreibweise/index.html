@@ -58,21 +58,21 @@
 <h2 id="mein-name-ist-dollar">Mein Name ist Dollar</h2>
 <p>In Javascript kann das Dollar-Zeichen in Bezeichnen (Variablennamen, Funktionsnamen) verwendet werden. jQuery nutzt diese Besondernheit von Javascript aus und definiert eine Funktion und ein Objekt mit dem Dollarzeichen als Namen. Hier eine kleine Lese-Schule:</p>
 
-<p>Eine Funktion mit dem Namen $ wird mit einem Argument aufgerufen, das Argument ist ein String:</p>
+<p>Eine Funktion mit dem Namen `$ wird mit einem Argument aufgerufen, das Argument ist ein String:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   $(&quot;a&quot;)
 </pre></div>
 
-<p>Eine Funktion mit dem Namen $ wird mit einem Argument aufgerufen, das Argument ist das document-Objekt:</p>
+<p>Eine Funktion mit dem Namen <code>$</code>  wird mit einem Argument aufgerufen, das Argument ist das document-Objekt:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   $(document)
 </pre></div>
 
-<p>Das Objekt mit dem Namen $ hat eine Methode get. Diese wird mit zwei Argumenten aufgerufen:</p>
+<p>Das Objekt mit dem Namen <code>$</code>  hat eine Methode `get. Diese wird mit zwei Argumenten aufgerufen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -83,7 +83,7 @@
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 <h2 id="chaining--eine-kette-von-methodenaufrufen">Chaining – eine Kette von Methodenaufrufen</h2>
-<p>Die meisten jQuery-Methoden geben wieder ein jQuery-Objekt zurück. In folgendem Code sind o1, o2, o3 jeweils jQuery-Objekte.  Jedes jQuery-Objekt bietet die Methoden addClass und append an.</p>
+<p>Die meisten jQuery-Methoden geben wieder ein jQuery-Objekt zurück. In folgendem Code sind <code>o1</code>, <code>o2</code>, <code>o3</code> jeweils jQuery-Objekte.  Jedes jQuery-Objekt bietet die Methoden addClass und append an.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -92,7 +92,7 @@
   o3 = o2.append(&quot;:&quot;);
 </pre></div>
 
-<p>Wenn man die “Zwischen-Objekte” o1, o2, o3 nicht wirklich noch einmal verwenden will, dann braucht man sie auch nicht in einer Variable zu speichern. Eine alternative Schreibweise ist dann:</p>
+<p>Wenn man die “Zwischen-Objekte” <code>o1</code>, <code>o2</code>, <code>o3</code> nicht wirklich noch einmal verwenden will, dann braucht man sie auch nicht in einer Variable zu speichern. Eine alternative Schreibweise ist dann:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -202,6 +202,15 @@
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   $(document).ready( function(){ 
+        // Your code here 
+  }); 
+</pre></div>
+
+<p>Seit ES6 kann man die anonyme Funktion noch kürzer schreiben, als Arrow Function:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  $(document).ready( () =&gt; { 
         // Your code here 
   }); 
 </pre></div>

@@ -73,7 +73,7 @@
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;).on(&#39;mouseover&#39;, function(){
+$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
   // code wird bei mouseover ausgeführt
 });
 </pre></div>
@@ -86,7 +86,7 @@ die Funktion <code>$</code> verwenden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;).on(&#39;mouseover&#39;, function(){
+$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
   $(this).find(&quot;span&quot;).show();
 });
 </pre></div>
