@@ -198,7 +198,17 @@ auch nur eine Version des Bildes einzubinden.</p>
 <h3 id="kleinste-version-eines-bildes-ausliefern">Kleinste Version eines Bildes ausliefern</h3>
 
 <p>Für alle Pixelformate gilt: je mehr Pixel, desto größer die Datei, desto länger
-die Ladezeit. Es macht also nie Sinn, eine größeres Bild auszuliefern, als
+die Ladezeit.</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+    227.886 pizza-500x333.jpg
+    756.789 pizza-1000x666.jpg
+  2.483.297 pizza-2000x1331.jpg
+  8.655.545 pizza-4000x2662.jpg
+</pre></div>
+
+<p>Es macht also nie Sinn, eine größeres Bild auszuliefern, als
 dann wirklich angezeigt wird.</p>
 
 <p><img src="/images/resolutions.jpg" alt="Vergleich der Auflösungen" /></p>
@@ -207,13 +217,6 @@ dann wirklich angezeigt wird.</p>
 verschiedene Varianten
 des Bildes für verschiedene Auflösungen und Pixeldichten, siehe
 <a href="/css-layout/responsive/index.html#slide-9">Kapitel Responsive Design</a>.</p>
-
-<p><code>
-    227.886 pizza-500x333.jpg
-    756.789 pizza-1000x666.jpg
-  2.483.297 pizza-2000x1331.jpg
-  8.655.545 pizza-4000x2662.jpg
-</code></p>
 
 </div>
 <div class='slide'>
@@ -226,10 +229,11 @@ Die Kompression von <code>png</code> funktioniert nur dann wirklich gut, wenn es
 Flächen gibt - was in Photos fast nie vorkommt. Meist ersetzt man heute <code>png</code> durch
 <code>svg</code>.</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
   8.655.545  pizza-4000x2662.jpg
  12.544.974  pizza-4000x2662.png
-</code></p>
+</pre></div>
 
 </div>
 <div class='slide'>
