@@ -142,7 +142,9 @@ let hash = this.hash; // z.B. &#39;#order&#39;
 <h2 id="zum-element-hin-scrollen">Zum Element hin Scrollen</h2>
 
 <p>Die DOM-Methode <a href="scrollIntoView">https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView</a>
-erledigt das eigentliche Scrollen zum Element hin.</p>
+erledigt das eigentliche Scrollen zum Element hin. (In 2017 ist die Option “smooth” in Safari
+und IE noch nicht implementiert. Hier würde ein <a href="polyfill">http://iamdustan.com/smoothscroll/</a> helfen - eine Javascript Libary
+die die fehlende Funktionalität implementiert.)</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">

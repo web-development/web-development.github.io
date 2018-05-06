@@ -201,16 +201,35 @@ auch nur eine Version des Bildes einzubinden.</p>
 die Ladezeit. Es macht also nie Sinn, eine größeres Bild auszuliefern, als
 dann wirklich angezeigt wird.</p>
 
-<p>Mit Responsive Images ist das sehr genau möglich: verschiedene Varianten
+<p><img src="/images/resolutions.jpg" alt="Vergleich der Auflösungen" /></p>
+
+<p>Mit Responsive Design und Responsive Images ist das sehr genau möglich:
+verschiedene Varianten
 des Bildes für verschiedene Auflösungen und Pixeldichten, siehe
-<a href="css-layout/responsive/index.html#slide-9">Kapitel Responsive Design</a>.</p>
+<a href="/css-layout/responsive/index.html#slide-9">Kapitel Responsive Design</a>.</p>
+
+<p><code>
+    227.886 pizza-500x333.jpg
+    756.789 pizza-1000x666.jpg
+  2.483.297 pizza-2000x1331.jpg
+  8.655.545 pizza-4000x2662.jpg
+</code></p>
 
 </div>
 <div class='slide'>
 
-<h3 id="jpeg-oder-xx-fr-photos-verwenden">jpeg oder xx für Photos verwenden</h3>
+<h3 id="jpeg-fr-photos-verwenden">jpeg für Photos verwenden</h3>
 
-<p>Das Bildformat jpeg eignet sich besonders gut für Farbverläufe und viele Farben.</p>
+<p>Das Bildformat <code>jpg</code> eignet sich besonders gut für Farbverläufe und viele Farben.
+<code>gif</code> kann nur 256 Farben darstellen, und ist daher für Photos nicht geeignet.
+Die Kompression von <code>png</code> funktioniert nur dann wirklich gut, wenn es einfärbige
+Flächen gibt - was in Photos fast nie vorkommt. Meist ersetzt man heute <code>png</code> durch
+<code>svg</code>.</p>
+
+<p><code>
+  8.655.545  pizza-4000x2662.jpg
+ 12.544.974  pizza-4000x2662.png
+</code></p>
 
 </div>
 <div class='slide'>
