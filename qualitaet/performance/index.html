@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Das Web - Qualitätskriterien</title>
+  <title>Lehrbuch Web-Development - Performance</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -38,81 +38,192 @@
 
 
 
-<!-- body -->
-	<article class="row">
-
+	<!-- body -->
+	<article id="body" class="row">
+		
 		<div class="span8">
-
+		
 			
                           <div class="page-header">
-                                <h2 class="title">Das Web - Qualitätskriterien</h2>
+				<h2 class="title"><a id="slide-0"></a>Performance</h2>
+                                <a href="/qualitaet/performance/slide.html">als Präsentation ▻</a>
                           </div>
 			
-
-                        <h3>In diesem Kapitel</h3>
-
-                        <p>In diesem abschließenden Kapitel blicken wir zurück und disskutieren verschiedene Qualitätskriterien für Websites und Web Applikationen</p>
-
-                        <ul class="sub">
-  
-    
-      
-    
-      
-      <li ><a href="/qualitaet/performance/">Performance</a></li>
-      
-    
-      
-      <li ><a href="/qualitaet/rest/">REST</a></li>
-      
-    
-  
-</ul>
-
-
-
 			
-<h3 id="was-sie-wissen-sollten">Was Sie wissen sollten</h3>
+			<a id='slide-1'></a>
+<p>Was verstehen wir unter “Web Performance”? Aus der Sicht einer BenutzerIn
+ist entscheidend wie viel Zeit benötigt wird, um eine Seite zu laden.
+Eine andere Frage wäre, wie viele UserInnen wir (mit akzeptabler Antwortzeit)
+auf einem bestimmten Server bedienen können.</p>
+
+
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<p>Folgende Kennzahlen werden oft betrachtet:</p>
 
 <ul>
-  <li>Ich bin mir bewusst, dass es verschiedene Qualitätskriterien für das Web gibt, die teilweise im Widerspruch zueinander stehen</li>
-  <li>Aus dem Bereich Design und Usability kenne ich Ästhetik, Ausrichtung am Zeilpublikum, Übersichtlichkeit, Reaktionszeit, Responsive Design als Qualitätskriterien</li>
-  <li>Aus dem Bereich Development kenne ich Code Qualität, Lesbarkeit und Wartbarkeit, Web Standards, Browser Kompatiblität, Graceful Degradation, Performance, Durchsatz, Skalierbarkeit und Sicherheit als Qualitätskriterien</li>
+  <li>page weight = Gesamtgröße der Webseite in Byte (HTML, CSS, Bilder, …)</li>
+  <li>time to first byte = Zeit (in ms) vom Absenden des HTTP Requests bis zur Ankunft des ersten Bytes des Responses</li>
+  <li>load time = Zeit bis das Event <code>load</code> in Javascript ausgelöst wird</li>
 </ul>
 
-<h3 id="was-sie-knnen-sollten">Was Sie können sollten</h3>
+<p>Google definiert als <a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics">User-centric Performance Metrics</a> noch weitere Kennzahlen für die Darstellung der Seite:</p>
+
+<p><img src="/images/perf-metrics-load-timeline.png" alt="Performance Metrics" /></p>
+
+
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+
+<h3 id="mythen-ber-performance">Mythen über Performance</h3>
+
+<p>Selbst wenn man sich mit dem Thema Performance noch nicht intensiv
+beschäftigt hat, so hat man doch schon Ideen wo Leistungsprobleme herkommen.
+Viele AnfängerInnen sind fasziniert von Details ihrer Programmiersprache wie:
+“Wird mein Programm langsamer wenn ich mehr Variablen verwende?”
+oder “ist String-Verkettung schneller als String-Interpolation?”.</p>
+
+<p>Diese “Mikrooptimierungen” sind in modernen Programmiersprachen fast nie
+notwendig. Mit PHP 7, postgres, Linux am Server können sie 150 <strong>gleichzeitig</strong>
+zugreifende UserInnen bedienen - also in Summe Tausende am Tag.</p>
+
+<p>Der Versuch, Code zu “optimieren”, wenn es kein Problem gibt, oder
+wenn man nicht weiss, wo das Problem liegt, ist zum Scheitern verurteilt.
+Der Code wird nicht besser, sondern schlechter.</p>
+
+
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
+<p>Donald Knuth hat das ziemlich eindringlich gesagt:</p>
+
+<p>“The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; <strong>premature optimization is the root of all evil</strong>” – <a href="https://en.wikiquote.org/wiki/Donald_Knuth#Computer_Programming_as_an_Art_.281974.29">Donald Knuth</a></p>
+
+<p>(Das eigentliche Problem ist, dass ProgrammiererInnen viel zu viel Zeit damit verbracht haben, sich über die Effizienz an den falschen Stellen und zur falschen Zeit Gedanken zu machen; <strong>vorzeitige Optimierung ist die Wurzel allen Übels</strong>.)</p>
+
+<p>Erst wenn sie die Performance des Systems gemessen haben,
+und herausgefunden haben wo das Problem liegt, können sie wirklich
+mit dem “optimieren” beginnen.</p>
+
+
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+
+<h3 id="messung-der-web-performance">Messung der Web Performance</h3>
+
+<p>Im Jahr 2007 veröffentlichte die Arbeitsgruppe “exceptional performance” bei Yahoo
+das Browser AddOn <code>yslow</code>. Es zeigte erstmals die Ladezeit der einzelnen Teile
+einer Webseite im sogenannten “Wasserfall Diagramm”:</p>
+
+<p><img src="/images/network-souders-2008.png" alt="displaying http downloads with yslow" /></p>
+
+<p>(Image from Steve Souders <a href="http://www.web2expo.com/webexsf2008/public/schedule/detail/3321">talk at Web 2.0 Expo</a> in April 2008)</p>
+
+<p>Jeder waagrechte Balken entspricht einer Ressource (html, css, js, bild, …)
+die über HTTP geladen wird. Die x-Achse ist eine gemeinsame Zeitleiste für alle
+Requests.</p>
+
+<p>Ein offensichtliches Ergebnis aus diesem Graphen: Das Backend,
+das das HTML erzeugt,
+ist nur für 5% der Ladezeit verantwortlich. 95% der Zeit
+werden mit dem Laden, Parsen und Darstellen von anderen Resourcen
+(css, javascript, bilder, …) verbracht.</p>
+
+<p>Diese Darstellung wurde später in die Developer Tools der verschiedenen
+Browser eingebaut, und wird auch im online tool
+<a href="https://webpagetest.org/">webpagetest</a> verwendet.</p>
+
+<h4 id="firefox-developer-tools">Firefox Developer Tools</h4>
+
+<p><img src="/images/network-view-firefox.png" alt="network view in firefox" /></p>
+
+<h4 id="chrome-developer-tools">Chrome Developer Tools</h4>
+
+<p><img src="/images/network-view-chrome.png" alt="network view in chrome" /></p>
+
+<h4 id="webpagetest">Webpagetest</h4>
+
+<p>Das Open Source Tool “Webpagetest” kann man unter der Adresse
+<a href="https://www.webpagetest.org/">https://www.webpagetest.org/</a>
+online benutzen. Die Ergebnisse bleiben auch online und können
+leicht mit anderen geteilt werden:</p>
+
+<p><img src="/images/webpagetest.org.png" alt="Webpagetest" /></p>
+
+<p><a href="https://www.webpagetest.org/result/180505_EK_1420fed93949da8afd2e6cba277019bd/">Beispiel Ergebnisseite</a></p>
+
+<h4 id="chrome-developer-tools-lighthouse-audit">Chrome Developer Tools: Lighthouse Audit</h4>
+
+<p><img src="/images/chrome-lighthouse.png" alt="lighthouse view in chrome" /></p>
+
+<p><img src="/images/chrome-lighthouse-2.png" alt="lighthouse view in chrome" /></p>
+
+
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h2 id="einfache-manahmen">Einfache Maßnahmen</h2>
+
+
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+
+<h3 id="bilderformat-svg-verwenden">Bilderformat SVG verwenden</h3>
+
+<p>Für Logos und Illustration eignet sich SVG besonders gut. Da
+es auf jeder Auflösung immer optimal aussieht braucht man
+auch nur eine Version des Bildes einzubinden.</p>
+
+<p><img src="/images/shapes.svg" alt="SVG Bild" /></p>
+
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+<h3 id="kleinste-version-eines-bildes-ausliefern">Kleinste Version eines Bildes ausliefern</h3>
+
+<p>Für alle Pixelformate gilt: je mehr Pixel, desto größer die Datei, desto länger
+die Ladezeit. Es macht also nie Sinn, eine größeres Bild auszuliefern, als
+dann wirklich angezeigt wird.</p>
+
+<p>Mit Responsive Images ist das sehr genau möglich: verschiedene Varianten
+des Bildes für verschiedene Auflösungen und Pixeldichten, siehe
+<a href="css-layout/responsive/index.html#slide-9">Kapitel Responsive Design</a>.</p>
+
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+
+<h3 id="jpeg-oder-xx-fr-photos-verwenden">jpeg oder xx für Photos verwenden</h3>
+
+<p>Das Bildformat jpeg eignet sich besonders gut für Farbverläufe und viele Farben.</p>
+
+
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+
+<h2 id="links">Links</h2>
 
 <ul>
-  <li>Ich kann für ein konkretes Projekt die verschiedenen Qualitätsansprüche gegeneinander Abwägen</li>
-  <li>Ich kann mit einem Kunden verschiedenen Qualitätsansprüche aushandeln</li>
+  <li><a href="https://www.youtube.com/watch?v=7gtf47D_bu0&amp;list=PLS3jzvALRSe6uP9gVfXLCG6nWo7M0hAJY">Ilya Grigorik: Crash Course Web Performance at Fluent 2013</a></li>
+  <li><a href="https://calendar.perfplanet.com/">Web Performance Adventkalender</a></li>
+  <li><a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics">Google: User Centric Performance Metrics</a></li>
 </ul>
 
-<h3 id="referenz">Referenz</h3>
-
-<ul>
-  <li><a href="http://vimeo.com/118697675">Marcy Sutton on A Web for Everybody</a></li>
-</ul>
-
-
-                        <div class="pagination">
+		
+			<div class="pagination">
   <ul>
     
       
       
-      <li><a href="/advanced-javascript/regular-expressions/">Regular Expressions</a></li>
+      <li><a href="/qualitaet/">Das Web - Qualitätskriterien</a></li>
       
       
       
-      <li><a href="/qualitaet/performance/">Performance</a></li>
+      <li><a href="/qualitaet/rest/">REST</a></li>
       
     
   </ul>
 </div>
 
-
-
 		</div>
-
+		
 		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
@@ -951,7 +1062,7 @@
                       
                     
                       
-                      <li ><a href="/qualitaet/performance/">Performance</a></li>
+                      <li class="active"><a href="/qualitaet/performance/">Performance</a></li>
                       
                     
                       
@@ -969,15 +1080,15 @@
 </div>
 <!-- sidebar -->
 
-
+		
 	</article>
-<!-- /body -->
+	<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2017 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/qualitaet/dex.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/qualitaet/performance.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
