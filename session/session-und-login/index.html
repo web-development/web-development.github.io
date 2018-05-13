@@ -54,7 +54,7 @@
 <p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
 Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
-<p><img src="/images/stateless-http.svg" alt="HTTP als &quot;stateless protocol&quot;" /></p>
+<p><img src='/images/stateless-http.svg'  alt="HTTP als &quot;stateless protocol&quot;" ></p>
 
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
@@ -65,7 +65,7 @@ Server kann nicht erkennen ob Requests zusammen gehören.</p>
 wir nun erkennen, dass mehrere Requests zusammen gehören,
 vom selben Browser ausgelöst wurden.</p>
 
-<p><img src="/images/stateful-http-with-cookies.svg" alt="HTTP mit cookies wird &quot;stateful&quot;" /></p>
+<p><img src='/images/stateful-http-with-cookies.svg'  alt="HTTP mit cookies wird &quot;stateful&quot;" ></p>
 
 <p>Wir nennen diese Folge von Requests dann eine “Session”.</p>
 
@@ -180,7 +180,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</p>
 
-<p><img src="/images/image364.png" alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" /></p>
+<p><img src='/images/image364.png'  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
@@ -189,7 +189,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
-<p><img src="/images/image365.png" alt="Abbildung 147: Login-Formular der Applikation" /></p>
+<p><img src='/images/image365.png'  alt="Abbildung 147: Login-Formular der Applikation" ></p>
 
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
@@ -273,7 +273,7 @@ header(&quot;Location: index.php&quot;);
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
-<p><img src="/images/image366.png" alt="Abbildung 148: Login mit einer Weiterleitung" /></p>
+<p><img src='/images/image366.png'  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
 
 
 <a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
