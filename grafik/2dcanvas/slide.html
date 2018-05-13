@@ -204,15 +204,20 @@ my_context.stroke();
 
 <h3 id="bild-kopieren">Bild kopieren</h3>
 
+<p>Achtung: das Laden des Originalbildes dauert lange. Wenn der Kopierbefehl <code>drawImage</code> zu früh durchgeführt wird ist das Bild noch nicht geladen und das leere Bild wird kopiert. Deswegen starten wir den Kopierbefehl erst beim <code>load</code> Event des  Bildes.</p>
+
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var canvas = document.getElementById(&quot;e&quot;);
-var context = canvas.getContext(&quot;2d&quot;);
-var image = document.getElementById(&quot;the_img_tag&quot;);
-context.drawImage(image, 0, 0);
+let canvas = document.getElementById(&quot;e&quot;);
+let context = canvas.getContext(&quot;2d&quot;);
+let image = document.getElementById(&quot;the_img_tag&quot;);
+image.addEventListener(&#39;load&#39;, function(){
+  context.drawImage(image, 0, 0);
+});
+the_img.src = &quot;/images/grafik/dolly.jpg&quot;;
 </pre></div>
 
-<p><img id="the_img_tag" src="/images/grafik/dolly.jpg" /></p>
+<p><img id="the_img_tag" /></p>
 
 <p>Bild von Dolly dem Klon-Schaf - Photograf <a href="https://www.flickr.com/photos/12793495@N05/3233344867/">Toni Barros</a>.</p>
 
