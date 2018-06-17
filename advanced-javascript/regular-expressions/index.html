@@ -82,7 +82,7 @@ bieten nur 3 Operatoren an.  Bei der Umsetzung in diversen UNIX-Tools und Progra
 wurden mehr und mehr Operatoren eingeführt. Zur unterscheidung nenne ich diese
 erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx.</p>
 
-<p>Regular Expressions nennt man of auch Muster (en: patterns), man spricht von
+<p>Regular Expressions nennt man oft auch Muster (en: patterns), man spricht von
 Mustersuche (en: pattern matching). Wenn ein Muster auf ein Zeichenkette zutrifft
 sagt man auf Halb-Englisch: “der Pattern matched”.</p>
 
@@ -135,7 +135,7 @@ ist die Suche erfolgreich:</p>
 /hallo/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list[]=&amp;list[]=hallo&amp;list[]=aber%20hallo!&amp;list[]=die%20hallobergrenze&amp;list[]=halo&amp;list[]=Hallo">RegEx Tester: /hallo/</a></p>
+<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D=&amp;list%5B%5D=hallo&amp;list%5B%5D=aber%20hallo!&amp;list%5B%5D=die%20hallobergrenze&amp;list%5B%5D=halo&amp;list%5B%5D=Hallo">RegEx Tester: /hallo/</a></p>
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
@@ -150,7 +150,7 @@ entspricht also einem logischen “oder”;</p>
 /en|sk|zh|us|uk/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
+<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
 
 
 <a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
@@ -164,7 +164,7 @@ entspricht also einem logischen “oder”;</p>
 /(de|fr)_(DE|CH)/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list[]=&amp;list[]=de_DE&amp;list[]=fr_DE&amp;list[]=de_CH&amp;list[]=fr_CH&amp;list[]=de_AT&amp;list[]=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
+<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list%5B%5D=&amp;list%5B%5D=de_DE&amp;list%5B%5D=fr_DE&amp;list%5B%5D=de_CH&amp;list%5B%5D=fr_CH&amp;list%5B%5D=de_AT&amp;list%5B%5D=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
 
 <p>Ausserdem stehen die von den Klammern gefundenen Teile des
 Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
@@ -197,7 +197,7 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 /^Ganzer String$/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list[]=&amp;list[]=en&amp;list[]=sk&amp;list[]=uk&amp;list[]=ukulele&amp;list[]=Maske&amp;list[]=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
 
 
 <a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
@@ -214,7 +214,7 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 
 <p>Achtung!  Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
 
-<p><a href="/images/match.html?pattern=hall%5C[oia%5C]&amp;listname=hallos&amp;list[]=&amp;list[]=halli&amp;list[]=hallo&amp;list[]=halla&amp;list[]=halloi&amp;list[]=hall&amp;list[]=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
+<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D=&amp;list%5B%5D=halli&amp;list%5B%5D=hallo&amp;list%5B%5D=halla&amp;list%5B%5D=halloi&amp;list%5B%5D=hall&amp;list%5B%5D=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
 
 
 <a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
@@ -230,7 +230,7 @@ stehen.</p>
 /[a-f]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5C[a-z%5C]&amp;listname=buchstaben&amp;list[]=&amp;list[]=a&amp;list[]=b&amp;list[]=c&amp;list[]=x&amp;list[]=y&amp;list[]=z&amp;list[]=A&amp;list[]=.&amp;list[]=%25">RegEx Tester: /[a-z]/</a></p>
+<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D=&amp;list%5B%5D=a&amp;list%5B%5D=b&amp;list%5B%5D=c&amp;list%5B%5D=x&amp;list%5B%5D=y&amp;list%5B%5D=z&amp;list%5B%5D=A&amp;list%5B%5D=.&amp;list%5B%5D=%25">RegEx Tester: /[a-z]/</a></p>
 
 
 <a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
@@ -246,7 +246,7 @@ Klammer erwähnt werden:</p>
 /[^aeiou]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=u%5C[%5E1234%5C]&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=usa">RegEx Tester: /u[^1234]/</a></p>
+<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
 
 
 <a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
@@ -261,7 +261,7 @@ Klammer erwähnt werden:</p>
 /\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list[]=&amp;list[]=u1&amp;list[]=u2&amp;list[]=u3&amp;list[]=u4&amp;list[]=u5&amp;list[]=u6&amp;list[]=u9&amp;list[]=usa">RegEx Tester: /u\d/</a></p>
+<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
 
 
 <a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
@@ -276,7 +276,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 /^...$/       genau drei Zeichen
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list[]=&amp;list[]=NA&amp;list[]=MMT&amp;list[]=mmt&amp;list[]=%20%20%20&amp;list[]=___&amp;list[]=MMT-B">RegEx Tester: /^…$/</a></p>
+<p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list%5B%5D=&amp;list%5B%5D=NA&amp;list%5B%5D=MMT&amp;list%5B%5D=mmt&amp;list%5B%5D=%20%20%20&amp;list%5B%5D=___&amp;list%5B%5D=MMT-B">RegEx Tester: /^…$/</a></p>
 
 
 <a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
@@ -292,7 +292,7 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 /\./     ein echter punkt
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list[]=&amp;list[]=1&amp;list[]=1.1&amp;list[]=1.2&amp;list[]=1.3&amp;list[]=2&amp;list[]=2.1&amp;list[]=2.2&amp;list[]=35&amp;list[]=35.1">RegEx Tester: /^\d.\d$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=1.1&amp;list%5B%5D=1.2&amp;list%5B%5D=1.3&amp;list%5B%5D=2&amp;list%5B%5D=2.1&amp;list%5B%5D=2.2&amp;list%5B%5D=35&amp;list%5B%5D=35.1">RegEx Tester: /^\d.\d$/</a></p>
 
 
 <a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
@@ -318,7 +318,7 @@ andere Alternative gewählt werden:</p>
 /\d*/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d*$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d*$/</a></p>
 
 
 <a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
@@ -333,7 +333,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 /\d+/  
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d+$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d+$/</a></p>
 
 
 <a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
@@ -347,7 +347,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 /\d?/  
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list[]=&amp;list[]=1&amp;list[]=12&amp;list[]=123&amp;list[]=&amp;list[]=1a&amp;list[]=a1">RegEx Tester: /^\d?$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
 
 
 <a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
@@ -364,7 +364,7 @@ möglichst lange Strings zu erfassen.</p>
 
 <p>Diese Eigenschaft sieht man sehr gut in folgendem Beispiel:</p>
 
-<p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
+<p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
 
 
 <a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
@@ -384,7 +384,7 @@ möglichst lange Strings zu erfassen.</p>
 die kein o sind, und dann ein zweites o.  Damit ist der Pattern beendet,
 auch wenn es später im String noch weitere o’s geben würde.</p>
 
-<p><a href="/images/match.html?pattern=_%5C[%5E_%5C]*_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
+<p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 
 <a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
@@ -400,7 +400,7 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 /o(.+?)o/    
 </pre></div>
 
-<p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list[]=&amp;list[]=zeugs%20und%20_bla_%20und%20zeugs&amp;list[]=_bla_%20und%20zeugs&amp;list[]=zeugs%20und%20_bla_&amp;list[]=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
+<p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
 
 <a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
@@ -455,10 +455,11 @@ s.replace(/Voldemort/g,
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
 </pre></div>
 
-<p>Dass ihr jeweils ein anderer Fall notwendig wäre
+<p>Dass im zweiten Satz ein anderer Fall notwendig wäre,
+und wie man das dann richtige formuliert, 
 kann eine Regular Expression nicht erkennen.  Dafür gibt es
-eine eigene Wissenschaft: die Computer-Linguistik, die arbeitet
-an dem Problem, hat es aber noch nicht gelöst.</p>
+eine eigene Wissenschaft: die <a href="https://de.wikipedia.org/wiki/Computerlinguistik">Computer-Linguistik</a> beschäftigt
+sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
 
 
 <a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
@@ -786,10 +787,6 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
                       
                     
                       
-                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
-                      
-                    
-                      
                       <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
                       
                     
@@ -799,6 +796,10 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
                     
                       
                       <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
                       
                     
                   
@@ -1206,43 +1207,55 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
                       
                     
                       
-                      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
+                      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
+                      <li ><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a7-url/">A5 - Autorisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
+                      <li ><a href="/security/a5-konfiguration/">A6 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
+                      <li ><a href="/security/a3-xss/">A7 - XSS</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
+                      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a9-logging-monitoring/">A10 - Monitoring</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Weiterleitungen</a></li>
                       
                     
                   
@@ -1355,6 +1368,14 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
                 
                   
                     
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/barrierefreiheit/">Barrierefreiheit</a></li>
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/datenschutz/">Datenschutz</a></li>
                       
                     
                       

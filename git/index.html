@@ -63,10 +63,6 @@
       
     
       
-      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
-      
-    
-      
       <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
       
     
@@ -78,6 +74,10 @@
       <li ><a href="/git/git-tools/">Tools für Git</a></li>
       
     
+      
+      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
+      
+    
   
 </ul>
 
@@ -85,24 +85,46 @@
 
 			
 <h3 id="was-sie-alle-wissen-sollten">Was Sie alle wissen sollten</h3>
+
 <ul>
   <li>Dass git ein Beispiel für ein Versionskontrollsystems (Version control system) ist.</li>
   <li>Dass mercurial und SVN andere VCSs sind die heute eingesetzt werden.</li>
+  <li>Dass das git-Repository auf meinem lokalen Entwicklungsrechner im Unter-Ordner .git gespeichert ist</li>
+</ul>
+
+<p>nur falls sie mit git über ssh arbeiten:</p>
+
+<ul>
   <li>Wie “public key cryptography” grob funktioniert</li>
   <li>Dass Sie Ihren private key geheim halten müssen</li>
 </ul>
 
 <h3 id="was-sie-alle-knnen-sollten">Was Sie alle können sollten</h3>
+
+<p>Die Funktionsweise von git beschreiben können, d.h:</p>
+
 <ul>
-  <li>Als Einzelperson mit einem git repository arbeiten, d.h.:</li>
-  <li>ein private/public key pair erzeugen</li>
-  <li>ihren ssh client so configurieren, dass er ihren private key verwendet</li>
+  <li>die Begriffe working copy, repository, remote repository erklären können</li>
+  <li>die Begriffe add, commit, push, pull, checkout und clone erklären können</li>
+</ul>
+
+<p>Als Einzelperson mit einem git repository arbeiten, d.h.:</p>
+
+<ul>
   <li>Ein git repository clonen</li>
   <li>Neue Dateien stagen, committen und pushen.</li>
   <li>Den Status des git repositories auf verschiedene Arten abfragen</li>
 </ul>
 
+<p>nur falls sie mit git über ssh arbeiten:</p>
+
+<ul>
+  <li>ein private/public key pair erzeugen</li>
+  <li>ihren ssh client so configurieren, dass er ihren private key verwendet</li>
+</ul>
+
 <h3 id="weitere-informationsquellen">Weitere Informationsquellen</h3>
+
 <ul>
   <li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/de/">Git Magic</a></li>
   <li><a href="http://book.git-scm.com/">Das git community book</a></li>
@@ -398,10 +420,6 @@
                       
                     
                       
-                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
-                      
-                    
-                      
                       <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
                       
                     
@@ -411,6 +429,10 @@
                     
                       
                       <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
                       
                     
                   
@@ -818,43 +840,55 @@
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
                       
                     
                       
-                      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
+                      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
+                      <li ><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a7-url/">A5 - Autorisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
+                      <li ><a href="/security/a5-konfiguration/">A6 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
+                      <li ><a href="/security/a3-xss/">A7 - XSS</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
+                      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a9-logging-monitoring/">A10 - Monitoring</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Weiterleitungen</a></li>
                       
                     
                   
@@ -967,6 +1001,14 @@
                 
                   
                     
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/barrierefreiheit/">Barrierefreiheit</a></li>
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/datenschutz/">Datenschutz</a></li>
                       
                     
                       

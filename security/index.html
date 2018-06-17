@@ -59,43 +59,55 @@
       
     
       
-      <li ><a href="/security/a1-injection/">Injection</a></li>
+      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
       
     
       
-      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
+      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
       
     
       
-      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
+      <li ><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
       
     
       
-      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
       
     
       
-      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+      <li ><a href="/security/a7-url/">A5 - Autorisierung</a></li>
       
     
       
-      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
+      <li ><a href="/security/a5-konfiguration/">A6 - Fehlkonfiguration</a></li>
       
     
       
-      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
+      <li ><a href="/security/a3-xss/">A7 - XSS</a></li>
       
     
       
-      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
       
     
       
-      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
+      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
       
     
       
-      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+      <li ><a href="/security/a9-logging-monitoring/">A10 - Monitoring</a></li>
+      
+    
+      
+      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzend</a></li>
+      
+    
+      
+      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+      
+    
+      
+      <li ><a href="/security/a10-redirect/">Weiterleitungen</a></li>
       
     
   
@@ -104,42 +116,24 @@
 
 
 			<p>Die Sicherheit von Web Applikationen ist ein komplexes Thema.
-Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die <a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">OWASP Top 10 von 2013</a>
+Die OWASP gibt dazu regelmäßig Empfehlungen heraus.  Die <a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">OWASP Top 10 von 2017</a>
 sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, Apache anwenden.</p>
-
-<p>Zehn Problemfelder die sie kennen sollten:</p>
-
-<ul>
-  <li>A1 - Injection</li>
-  <li>A2 - Fehler in Authentifizierung und Session Management</li>
-  <li>A3 – Cross-Site Scripting (XSS)</li>
-  <li>A4 - Unsichere direkte Objektreferenzen</li>
-  <li>A5 - Sicherheitsrelevante Fehlkonfiguration</li>
-  <li>A6 - Verlust der Vertraulichkeit sensibler Daten</li>
-  <li>A7 - Fehlerhafte Autorisierung auf  Anwendungsebene</li>
-  <li>A8 – Cross-Site Request Forgery (CSRF)</li>
-  <li>A9 - Nutzung von Komponenten mit bekannten Schwachstelle</li>
-  <li>A10 - Ungeprüfte Um- und Weiterleitungen</li>
-</ul>
 
 <p>Was Sie können sollten</p>
 
 <ul>
   <li>Sie können SQL-Injection Probleme erkennen und mittels prepared Statements vermeiden</li>
-  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen oder Säubern des Outputs vermeiden</li>
+  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen des Outputs vermeiden</li>
   <li>Sie können eine Authentisierung mit Passwort und Cookie in PHP implementieren, und dabei Session Fixation vermeiden</li>
   <li>Sie können CSRF Probleme erkennen und durch Verwendung eines CSRF Tokens vermeiden</li>
-  <li>Sie können die Apache-Konfiguration überprüfen und Sicherheitsprobleme erkennen</li>
   <li>Sie können Sicherheitsproblem beim Speichern von Passwörter und sensitiven Daten erkennen und  vermeiden</li>
   <li>Sie können erkennen, wenn eine Applikation den Zugriffsschutz nicht konsequent für jede URL überprüft, und das Problem beheben</li>
-  <li>Sie können erkennen wann SSL verwendet werden sollte</li>
-  <li>Sie können Sicherheitsprobleme bei der Weiterleitung an externe Seiten erkennen und vermeiden</li>
 </ul>
 
 <p>Quellen</p>
 
 <ul>
-  <li><a href="https://www.owasp.org/images/4/42/OWASP_Top_10_2013_DE_Version_1_0.pdf">OWASP Top 10, 2013, deutsche version</a></li>
+  <li><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">OWASP Top 10, 2017</a></li>
 </ul>
 
 
@@ -152,7 +146,7 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
       
       
       
-      <li><a href="/security/a1-injection/">Injection</a></li>
+      <li><a href="/security/a1-injection/">A1 - Injection</a></li>
       
     
   </ul>
@@ -428,10 +422,6 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                       
                     
                       
-                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
-                      
-                    
-                      
                       <li ><a href="/git/basic-git/">Einfacher Arbeitsablauf in Git</a></li>
                       
                     
@@ -441,6 +431,10 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                     
                       
                       <li ><a href="/git/git-tools/">Tools für Git</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/public-private-key/">Public und Private Key</a></li>
                       
                     
                   
@@ -848,43 +842,55 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">Injection</a></li>
+                      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
                       
                     
                       
-                      <li ><a href="/security/a2-auth/">Authentifizierung und Session-Management</a></li>
+                      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
+                      <li ><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzen</a></li>
+                      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-konfiguration/">Sicherheitsrelevante Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a7-url/">A5 - Autorisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-data/">Verlust der Vertraulichkeit sensibler Daten</a></li>
+                      <li ><a href="/security/a5-konfiguration/">A6 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-url/">Fehlerhafte Autorisierung auf Anwendungsebene</a></li>
+                      <li ><a href="/security/a3-xss/">A7 - XSS</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-csrf/">Cross-Site Request Forgery (CSRF)</a></li>
+                      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-komponenten/">Nutzung von Komponenten mit bekannten Schwachstellen</a></li>
+                      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a10-redirect/">Ungeprüfte Um- und Weiterleitungen</a></li>
+                      <li ><a href="/security/a9-logging-monitoring/">A10 - Monitoring</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzend</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+                      
+                    
+                      
+                      <li ><a href="/security/a10-redirect/">Weiterleitungen</a></li>
                       
                     
                   
@@ -997,6 +1003,14 @@ sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, A
                 
                   
                     
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/barrierefreiheit/">Barrierefreiheit</a></li>
+                      
+                    
+                      
+                      <li ><a href="/qualitaet/datenschutz/">Datenschutz</a></li>
                       
                     
                       

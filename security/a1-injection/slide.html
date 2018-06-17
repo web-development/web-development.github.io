@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 	<meta charset="utf-8">
-	<title>Injection - als Präsentation </title>
+	<title>A1 - Injection - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -54,7 +54,7 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Injection</h1>
+          <div class="slide"><h1>A1 - Injection</h1>
             <p>
             
               
@@ -63,24 +63,26 @@
             <a href="/security/a1-injection/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a2-auth//slide.html">Authentifizierung und Session-Management</a>
+             | Nächste Präsentation <a href="/security/a2-auth//slide.html">A2 - Authentifizierung</a>
             
             </p>
           </div>
 	  <div class='slide'>
+<p>Auf Platz 1 der OWASP Top 10 2017.</p>
+
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
   <p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection Schwachstellen sind weit verbreitet, besonders in altem Code; sie finden sich in SQL-, LDAP- und XPath-Anfragen, Systembefehlen, Programm-parametern usw.</p>
 </blockquote>
 
-<p>Wir haben im Kapitel <a href="/php-mysql-2/daten-loeschen/">PHP MYSQL 2 → Löschen</a> schon die SQL Injection behandelt.
+<p>Wir haben im Kapitel <a href="/php-db-schreiben/daten-loeschen/">PHP DB Schreiben → Löschen</a> schon SQL Injection behandelt.
 Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur Verfügung:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prepared Statements verhindern SQL Injection</small></h4>
 <pre class="lang-php prettyprint linenums">
-$query = $dbh-&gt;prepare(&quot;SELECT * FROM users WHERE id=?&quot;);
+$query = $dbh-&gt;prepare(&#39;SELECT * FROM users WHERE id=?&#39;);
 $query-&gt;execute(array( $_GET[&#39;pid&#39;] ) );
 </pre></div>
 
@@ -97,10 +99,26 @@ die als Input vom User/der Userin kommen werden mit <code>execute</code> an die 
 werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Prepared Statements mit benanntem </small></h4>
+<h4 class="caption">Php Code <small>Prepared Statements mit benanntem Parameter</small></h4>
 <pre class="lang-php prettyprint linenums">
-$stm = $dbh-&gt;prepare ( &quot;SELECT * FROM USERS WHERE USERNAME LIKE :name&quot; );
-$stm-&gt;bindParam(&quot;:name&quot;, $_POST[&#39;name&#39;] );
+$stm = $dbh-&gt;prepare ( &#39;SELECT * FROM USERS WHERE USERNAME LIKE :name&#39; );
+$stm-&gt;bindParam(&#39;:name&#39;, $_POST[&#39;name&#39;] );
+$stm-&gt;execute();
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="prepared-statement-falsch-verwenden">Prepared Statement falsch verwenden</h2>
+
+<p>Man kann auch mit prepared statments noch Code schreiben, der für Injections anfällig ist.
+Wenn man nämlich im String der an prepare übergeben wird Variablen einbettet:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Prepared Statements falsch gmacht</small></h4>
+<pre class="lang-php prettyprint linenums">
+$stm = $dbh-&gt;prepare ( &quot;UPDATE users SET newsletter = ? WHERE USERNAME = &#39;$name&#39;&quot; );
+$query-&gt;execute(array( $_GET[&#39;newsletter&#39;] ) );
 $stm-&gt;execute();
 </pre></div>
 
@@ -114,7 +132,7 @@ $stm-&gt;execute();
 <ol>
   <li>Den Interpreter gänzlich vermeiden, oder</li>
   <li>Eine Schnittstelle benutzen es dem Interpreter erlaubt zwischen Code und Daten zu unterscheiden (z.B., prepared statements, stored procedures in der Datenbank), oder</li>
-  <li>Den Input von der Userin/dem User geeignet codieren bevor er an den Interpreter weiter gegeben wird</li>
+  <li>Den Input von der Userin/dem User geeignet escapen bevor er an den Interpreter weiter gegeben wird</li>
 </ol>
 
 <p>Im dritten und schlechtesten Fall ist weiter zu beachten:</p>
@@ -132,7 +150,7 @@ $stm-&gt;execute();
 <p>Siehe auch <a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet">SQL Injection Prevention Cheat Sheet</a></p>
 
 </div>
-          <div class="slide"><h1>Injection</h1>
+          <div class="slide"><h1>A1 - Injection</h1>
             <p>
             
               
@@ -141,7 +159,7 @@ $stm-&gt;execute();
             <a href="/security/a1-injection/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a2-auth//slide.html">Authentifizierung und Session-Management</a>
+             | Nächste Präsentation <a href="/security/a2-auth//slide.html">A2 - Authentifizierung</a>
             
             </p>
           </div>

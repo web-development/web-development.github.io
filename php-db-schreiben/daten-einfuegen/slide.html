@@ -137,27 +137,12 @@ sollten Sie die <code>magic_quotes</code> abschalten:</p>
 php_flag magic_quotes_gpc off
 </code></p>
 
-<p>Mit folgendem Programm können Sie testen, ob auf dem Server magic quotes ein- oder ausgeschalten sind:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Testen ob magic quotes eingeschalten sind</small></h4>
-<pre class="lang-php prettyprint linenums">
-if (get_magic_quotes_gpc() ) {
-  echo &quot;mit magic quotes&quot;;
-} else {
-  echo &quot;ohne magic quotes&quot;;
-}
-echo(&quot;&lt;pre&gt;&quot;);
-print_r($_POST);
-echo(&quot;&lt;/pre&gt;&quot;);
-</pre></div>
-
 </div>
 <div class='slide'>
 
 <h3 id="die-richtige-lsung">Die Richtige Lösung</h3>
 
-<p>Wenn die magic quotes abgeschalten sind, kann man das SQL-Problem besser lösen: mit prepared statements.</p>
+<p>Wenn die magic quotes abgeschalten sind, kann man das Problem besser lösen: mit prepared statements.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
@@ -199,10 +184,10 @@ $sth-&gt;execute(
 </div>
 <div class='slide'>
 
-
+<h2 id="fehlerbehandlung">Fehlerbehandlung</h2>
 
 <p>Beim Einfügen in die Users-Tabelle kann es leicht zu Problemen kommen: Die
-Tabelle verlangt für manche Spalten eine eingabe.</p>
+Tabelle verlangt für manche Spalten eine Eingabe.</p>
 
 <p>So weit wollen Sie es nicht kommen lassen: Sie sollten die Eingaben aus dem
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,

@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 	<meta charset="utf-8">
-	<title>Cross-Site Request Forgery (CSRF) - als Präsentation </title>
+	<title>CSRF - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -54,20 +54,22 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Cross-Site Request Forgery (CSRF)</h1>
+          <div class="slide"><h1>CSRF</h1>
             <p>
             
               
-              vorige Präsentation: <a href="/security/a7-url//slide.html">Fehlerhafte Autorisierung auf Anwendungsebene</a> |
+              vorige Präsentation: <a href="/security/a4-referenz//slide.html">Unsichere direkte Objektreferenzend</a> |
                         
             <a href="/security/a8-csrf/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a9-komponenten//slide.html">Nutzung von Komponenten mit bekannten Schwachstellen</a>
+             | Nächste Präsentation <a href="/security/a10-redirect//slide.html">Weiterleitungen</a>
             
             </p>
           </div>
 	  <div class='slide'>
+<p>Auf Platz 8 der OWASP Top 10 2013. In den OWASP Top 10 2017 nicht mehr enthalten.</p>
+
 <p>Die CSRF ist ein Angriff “über die Bande”:  Um Site C zu attackieren, wird auf Site B Code hinterlegt. Wenn Userin Alice mit Site B interagiert wird ohne ihr Wissen eine HTTP-Request an Site C geschickt. Da Alice bei C schon eingeloggt ist wird dieser Request “erfolgreich” durchgeführt.</p>
 
 <p>Das Problem tritt also potentiell bei allen Sites auf, bei denen
@@ -183,16 +185,16 @@ if ($token_age &gt; 300)                      throw TokenException;
 <a href="http://shiflett.org/articles/cross-site-request-forgeries">Shiflett, Chris(2004): Cross-Site Request Forgeries. In: PHP Architect.</a></p>
 
 </div>
-          <div class="slide"><h1>Cross-Site Request Forgery (CSRF)</h1>
+          <div class="slide"><h1>CSRF</h1>
             <p>
             
               
-              vorige Präsentation: <a href="/security/a7-url//slide.html">Fehlerhafte Autorisierung auf Anwendungsebene</a> |
+              vorige Präsentation: <a href="/security/a4-referenz//slide.html">Unsichere direkte Objektreferenzend</a> |
                         
             <a href="/security/a8-csrf/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a9-komponenten//slide.html">Nutzung von Komponenten mit bekannten Schwachstellen</a>
+             | Nächste Präsentation <a href="/security/a10-redirect//slide.html">Weiterleitungen</a>
             
             </p>
           </div>

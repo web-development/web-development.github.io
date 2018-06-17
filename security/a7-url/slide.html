@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 	<meta charset="utf-8">
-	<title>Fehlerhafte Autorisierung auf Anwendungsebene - als Präsentation </title>
+	<title>A5 - Autorisierung - als Präsentation </title>
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Replace path with correct path to deck.core.css. -->
@@ -54,20 +54,22 @@
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Fehlerhafte Autorisierung auf Anwendungsebene</h1>
+          <div class="slide"><h1>A5 - Autorisierung</h1>
             <p>
             
               
-              vorige Präsentation: <a href="/security/a6-data//slide.html">Verlust der Vertraulichkeit sensibler Daten</a> |
+              vorige Präsentation: <a href="/security/a4-xee//slide.html">A4 - XXE</a> |
                         
             <a href="/security/a7-url/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a8-csrf//slide.html">Cross-Site Request Forgery (CSRF)</a>
+             | Nächste Präsentation <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
             
             </p>
           </div>
 	  <div class='slide'>
+<p>Auf Platz 5 der OWASP Top 10 2017.</p>
+
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
@@ -129,16 +131,128 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 </ul>
 
 </div>
-          <div class="slide"><h1>Fehlerhafte Autorisierung auf Anwendungsebene</h1>
+<div class='slide'>
+
+<h2 id="alter-text-von-unsichere-direkte-objektreferenzend">Alter Text von “Unsichere direkte Objektreferenzend”</h2>
+
+<p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
+
+<blockquote>
+  <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
+</blockquote>
+
+<p>Dieser Punkt hängt eng mit <a href="A8 - Mangelhafter URL-Zugriffsschutz">/security/a8-url/</a> zusammen.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="beispiel-fr-unsichere-direkte-referenz">Beispiel für unsichere direkte Referenz</h2>
+
+<p>Ich benutze ein Online Banking System. Die URL meines Kontos ist</p>
+
+<p><code>https://www.onlinebank.com/user?acct=6065</code></p>
+
+<p>Ich verändere die URL, und probiere aus ob ich so Zugang zu weiteren Konten erhalte:</p>
+
+<p><code>https://www.onlinebank.com/user?acct=6066</code></p>
+
+<p>Ich benutze ein Galerie um Fotos zu betrachten. Die URL für ein bestimmtes Bild ist</p>
+
+<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
+
+<p>Ich verändere die URL, und versuche so die Anzeige von interessanten Dateien im System zu verursachen:</p>
+
+<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
+
+</div>
+<div class='slide'>
+
+<h2 id="vermeidung-von-unsichere-direkten-referenzen">Vermeidung von unsichere direkten Referenzen</h2>
+
+<ul>
+  <li>Nicht die Keys aus der Datenbank preisgeben, sondern durch “slugs” ersetzen</li>
+  <li>Nicht die Dateinamen in der URL preisgeben, sondern einen Code. Das serverseite Programm selbst speichert die echten Dateinamen</li>
+</ul>
+
+<p>Und in jedem Fall:</p>
+
+<ul>
+  <li>Am Server prüfen ob genau diese UserIn Zugriff auf genau diese Ressource hat.</li>
+</ul>
+
+</div>
+<div class='slide'>
+
+<h2 id="slugs-statt-keys">Slugs statt Keys</h2>
+
+<p>Slugs sind lesbare Texte, die einen Datensatz eindeutig identifizieren. Sie werden in der URL
+statt IDs verwendet. Sie sind auch unter dem namen “friendly urls” und (z.B. in Wordpress) “permalinks” bekannt.</p>
+
+<p>Die Verwendung von Slugs hat mehrere Vorteile:</p>
+
+<ol>
+  <li>Das erraten eines weiteren Keys ist nicht so leicht wie bei Zahlen</li>
+  <li>URLs werden dadurch leichter lesbar und sind leichter zu erinnern</li>
+  <li>Auch Suchmaschinen lesen den Text des Slugs, die Seite kann auch unter den Stichwörtern des Slugs gefunden werden</li>
+</ol>
+
+<p>Mit folgender Konfigurations-Datei <code>.htaccess</code> wir der Apache-Webserver angewiesen
+beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Programm <code>view_item.php</code> mit dem Parameter 
+<code>slug=text-der-slug</code> aufzurufen:</p>
+
+<div class="example">
+<h4 class="caption">Plain Code <small>.htaccess</small></h4>
+<pre class="lang-plain prettyprint linenums">
+RewriteEngine on
+
+RewriteRule ^item/([-a-z]+) view_item.php?slug=$1
+</pre></div>
+
+<p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="kein-zugriff-auf-beliebige-dateien">Kein Zugriff auf beliebige Dateien</h2>
+
+<p>Die Erwähnung von Dateinamen als Parameter in der URL ist immer eine schlechte Idee.
+Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
+
+<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
+
+<p>Eine denkbar schlechte Implementiereung dieser Galerie wäre:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;img src=&quot;&lt;?= $_GET[&#39;img&#39;] ?&gt;&quot;&gt;
+  &lt;?php
+  include $_GET[&#39;text&#39;];  // nicht so programmieren!!!
+  ?&gt;
+</pre></div>
+
+<p>Mit diesem Programm kann man durch einfaches ändern der URL beliebige
+Dateien am Server “erforschen”.</p>
+
+<p>Gegen diese Art von Attacke kann man an mehreren Linien verteidigen:</p>
+
+<ul>
+  <li>Im Betriebssystem: das PHP Programm läuft unter dem User-Account des Webservers. Durch geeigenetes Setzen der Zugriffsrechte im Filesystem kann diesem User der Zugriff zu wichtigen Bereichen untersagt werden</li>
+  <li>In der PHP Konfiguration: Mit <code>open_basedir</code> kann in der Konfiguration festelegt werden, auf welche Dateien ein PHP-Programm zugreifen darf</li>
+  <li>In der Applikation selbst: mit einer whitelist wird nur der Zugriff auf ausgewählte Dateien erlaubt.</li>
+</ul>
+
+</div>
+          <div class="slide"><h1>A5 - Autorisierung</h1>
             <p>
             
               
-              vorige Präsentation: <a href="/security/a6-data//slide.html">Verlust der Vertraulichkeit sensibler Daten</a> |
+              vorige Präsentation: <a href="/security/a4-xee//slide.html">A4 - XXE</a> |
                         
             <a href="/security/a7-url/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/security/a8-csrf//slide.html">Cross-Site Request Forgery (CSRF)</a>
+             | Nächste Präsentation <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
             
             </p>
           </div>

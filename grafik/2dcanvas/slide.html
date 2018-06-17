@@ -136,8 +136,8 @@ aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 we
 <ul>
   <li>Verhältnis (virtuelle zu reale) Pixel aus <code>window.devicePixelRatio</code> auslesen</li>
   <li><code>scale</code> des Kontexts auf diesen Wert setzen (aber erst nach den folgenden beiden Schritten)</li>
-  <li><code>width</code> und <code>height</code> des Canvas auf die virtuelle (kleinere) Pixelzahl setzen</li>
-  <li><code>width</code> und <code>height</code> des Canvas Style auf die physikalische (größere) Pixelzahl setzen</li>
+  <li><code>width</code> und <code>height</code> des Canvas auf die  physikalische (größere) Pixelzahl setzen</li>
+  <li><code>width</code> und <code>height</code> des Canvas Style auf die virtuelle (kleinere) Pixelzahl setzen, mit ‘px’</li>
 </ul>
 
 <p>Achtung: beim Style erfolgt die Angabe mit Größeneinheit, also mit <code>px</code>, bei allen anderen Eigenschaften als reine Zahl!</p>
@@ -204,15 +204,20 @@ my_context.stroke();
 
 <h3 id="bild-kopieren">Bild kopieren</h3>
 
+<p>Achtung: das Laden des Originalbildes dauert lange. Wenn der Kopierbefehl <code>drawImage</code> zu früh durchgeführt wird ist das Bild noch nicht geladen und das leere Bild wird kopiert. Deswegen starten wir den Kopierbefehl erst beim <code>load</code> Event des  Bildes.</p>
+
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var canvas = document.getElementById(&quot;e&quot;);
-var context = canvas.getContext(&quot;2d&quot;);
-var image = document.getElementById(&quot;the_img_tag&quot;);
-context.drawImage(image, 0, 0);
+let canvas = document.getElementById(&quot;e&quot;);
+let context = canvas.getContext(&quot;2d&quot;);
+let image = document.getElementById(&quot;the_img_tag&quot;);
+image.addEventListener(&#39;load&#39;, function(){
+  context.drawImage(image, 0, 0);
+});
+the_img.src = &quot;/images/grafik/dolly.jpg&quot;;
 </pre></div>
 
-<p><img id="the_img_tag" src="/images/grafik/dolly.jpg" /></p>
+<p><img id="the_img_tag" /></p>
 
 <p>Bild von Dolly dem Klon-Schaf - Photograf <a href="https://www.flickr.com/photos/12793495@N05/3233344867/">Toni Barros</a>.</p>
 
@@ -234,7 +239,11 @@ context.drawImage(image, 0, 0);
 
 <ul>
   <li><a href="http://jdan.github.io/isomer/">Library Isomer</a></li>
+  <li><a href="http://phaser.io/">Phaser Game Engin</a></li>
+  <li><a href="http://impactjs.com/">Impact.js</a></li>
 </ul>
+
+<p><a href="https://news.ycombinator.com/item?id=17080985">Diskussion zu HTML5 Games auf Steam</a></p>
 
 <p>Mit der <code>getUserMedia</code> API kann man von einer Webcam entweder
 Standbilder oder Video Streams übertragen. Die Kombination
