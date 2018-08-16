@@ -238,7 +238,7 @@ Darstellung, Ersatztext).</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;neu.gif&quot; alt=&quot;Das ist neu!&quot;&gt;
+&lt;img src=&quot;neu.svg&quot; alt=&quot;Das ist neu!&quot;&gt;
 </pre></div>
 
 <p>Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben.</p>
@@ -249,14 +249,14 @@ beim nächsten Leerzeichen.</p>
 
 <div class="example twopane">
 <pre class="lang-html prettyprint linenums left">
-&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.gif&quot;&gt;
+&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
 
 
 
 </pre><pre class="lang-html prettyprint linenums right">
 &lt;img 
   alt=&quot;Das ist Neu!&quot; 
-  src=&quot;neu.gif&quot; 
+  src=&quot;neu.svg&quot; 
   width=50 height=15&gt;
 </pre><div class="clearfix"></div></div>
 
@@ -264,7 +264,7 @@ beim nächsten Leerzeichen.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.gif &gt;
+  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
 </pre></div>
 
 
@@ -293,7 +293,7 @@ unbekannte Attribute einfach ignoriert.</p>
 <pre class="lang-html prettyprint linenums">
 &lt;img  alt=&quot;Das ist Neu!&quot;
     bli=&quot;bla, blo&quot; 
-    src=&quot;neu.gif&quot;
+    src=&quot;neu.svg&quot;
     &gt;
 </pre></div>
 
@@ -527,13 +527,13 @@ absolute oder relative URL angeben:</p>
 <div class="example">
 <h4 class="caption">Html Code <small>Bilder</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;http://www.google.at/intl/de_at/images/logo.gif&quot; alt=&quot;Google&quot;&gt;  
-&lt;img src=&quot;neu.gif&quot;&gt; 
-&lt;img src=&quot;10prozent.gif&quot; alt=&quot;jetzt 10% verbilligt!&quot;&gt; 
+&lt;img src=&quot;http://www.google.at/intl/de_at/images/logo.svg&quot; alt=&quot;Google&quot;&gt;  
+&lt;img src=&quot;neu.svg&quot;&gt; 
+&lt;img src=&quot;10prozent.svg&quot; alt=&quot;jetzt 10% verbilligt!&quot;&gt; 
     (mit Ersatztext, weil das Bild wichtige Information enthält)
-&lt;img src=&quot;zierleiste.gif&quot; alt=&quot;&quot;&gt; 
+&lt;img src=&quot;zierleiste.svg&quot; alt=&quot;&quot;&gt; 
     (ohne Ersatztext, weil das Bild zur zur Dekoration dient)
-&lt;img src=&quot;neu.gif&quot; style=&quot;float:left;&quot; alt=&quot;neu&quot;&gt; 
+&lt;img src=&quot;neu.svg&quot; style=&quot;float:left;&quot; alt=&quot;neu&quot;&gt; 
     (Bild nach links, Text fließt rechts vorbei)
 </pre></div>
 
@@ -570,14 +570,15 @@ Gif“ enthält mehrere Bilder, die der Reihe nach angezeigt werden .</p>
 
 <p>Wurde früher für Bilder mit klaren Kanten, einfärbigen Flächen, wenigen 
 Farben verwendet, z. B. Comics, Logos.  Das macht man heute mit SVG.
-So bleiben nur die animierten gifs als Anwendungfall.</p>
+So bleiben nur die animierten gifs als Anwendungfall, und selbst die werden
+oft durch Video ersetzt.</p>
 
 
 <a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h3 id="jpg">jpg</h3>
 
-<p><img src='/images/das-web-und-html/example-jpg.jpg' srcset='/images/das-web-und-html/example-jpg.jpg 1x, /images/das-web-und-html/example-jpg@2x.jpg 2x'  alt="Beispiel für ein jpg Bild: verschiedene Kompression" ></p>
+<p><img src='/images/das-web-und-html/example-jpg.jpg' srcset='/images/das-web-und-html/example-jpg@2x.jpg 2x, /images/das-web-und-html/example-jpg.jpg 1x'  alt="Beispiel für ein jpg Bild: verschiedene Kompression" ></p>
 
 <p>(Bild von <a href="https://commons.wikimedia.org/wiki/File:Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png">Michael Gäbler und AzaToth</a>, CC-SA)</p>
 
@@ -586,6 +587,8 @@ Besonders geeignet für Bilder mit Farbverläufen, z. B. Photos.</p>
 
 <p>In Wirklichkeit würde man die Kompressionsrate nicht so extrem hoch
 setzen wie im linken Drittel des Bildes.</p>
+
+<p>Die Variante “progressive jpg” macht die Wartezeit beim Laden des Bildes interessanter:</p>
 
 
 <a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
@@ -600,6 +603,15 @@ Weniger Kompression als JPG, aber Alpha-Transparenz.</p>
 
 <a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
 
+<h3 id="weitere-formate">Weitere Formate</h3>
+
+<p>Es gibt noch viele weitere Bildformate die im Web benutzt werden können - mit etwas Aufwand.
+Aber für den Anfang reichen svg, gif, jpg und png aus. Diese Formate werden sicher von allen
+Browsern unterstützt.</p>
+
+
+<a class='slide_break' id='slide-24' href='slide.html#slide-24'>▻</a>
+
 
 
 <p>Ideal wäre, das Format auszuwählen, in dem das Bild nichts an Qualität verliert, und die 
@@ -611,7 +623,7 @@ Ausgabegeräte anbieten. Mit dem
 canvas-Tag und Javascript kann man Bilder zeichnen.</p>
 
 
-<a class='slide_break' id='slide-24' href='slide.html#slide-24'>▻</a>
+<a class='slide_break' id='slide-25' href='slide.html#slide-25'>▻</a>
 
 <h2 id="links">Links</h2>
 
@@ -628,11 +640,11 @@ Link zu Webseite im selben Ordner (relative URL)
 Link zu E-Mail Adresse
     &lt;a href=&quot;mailto:aa@bb.cc&quot;&gt;Mail&lt;/a&gt;
 Bild als Link
-    &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.gif&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.svg&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
 </pre></div>
 
 
-<a class='slide_break' id='slide-25' href='slide.html#slide-25'>▻</a>
+<a class='slide_break' id='slide-26' href='slide.html#slide-26'>▻</a>
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
@@ -680,7 +692,7 @@ Charactersets ist ebenfalls komplizierter.</p>
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
 
-<a class='slide_break' id='slide-26' href='slide.html#slide-26'>▻</a>
+<a class='slide_break' id='slide-27' href='slide.html#slide-27'>▻</a>
 
 <h2 id="listen">Listen</h2>
 
@@ -701,7 +713,7 @@ Liste.</p>
 </code></pre>
 
 
-<a class='slide_break' id='slide-27' href='slide.html#slide-27'>▻</a>
+<a class='slide_break' id='slide-28' href='slide.html#slide-28'>▻</a>
 
 <h2 id="tabellen">Tabellen</h2>
 
@@ -739,7 +751,7 @@ finden.  Dazu noch ein Literaturhinweis:</p>
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 
 
-<a class='slide_break' id='slide-28' href='slide.html#slide-28'>▻</a>
+<a class='slide_break' id='slide-29' href='slide.html#slide-29'>▻</a>
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
@@ -747,6 +759,7 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
   <li><a href="http://www.youtube.com/watch?v=MijmeoH9LT4">Characters, Symbols and the Unicode Miracle</a> YouTube Video von Computerphile</li>
   <li><a href="https://de.wikipedia.org/wiki/UTF-8">utf-8</a> in der deutschen Wikipedia</li>
 </ul>
+
 
 		
 			<div class="pagination">
@@ -1277,6 +1290,10 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                     
                       
                       <li ><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
+                      
+                    
+                      
+                      <li ><a href="/grafik/images/">Pixel-Bilder</a></li>
                       
                     
                       

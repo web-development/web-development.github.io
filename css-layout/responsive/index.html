@@ -115,65 +115,16 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <h3 id="pixel">Pixel</h3>
 
-<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind eigentlich für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
+<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind  für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
 
 <p><img src='/images/css-layout/pixel-image-zoom.png'  alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" ></p>
 
-<p>Aktuelle Browser sind aber sehr gut bei der verkleinerten Darstellung von Pixel-Bildern, man kann also
-dasselbe Pixel-Bild für verschiedene Darstellungen verwenden.</p>
-
-<p><img src='/images/css-layout/pixel-image-smaller.png'  alt="Abbildung 30: Pixel Bild wird vom Browser (Firefox) in 3 Stufen verkleinert dargestellt" ></p>
+<p>Die Verkleinerte Darstellung ist eine Verschwendung: Wenn ich ein Bild herunterladen muss, dass doppelt So breit und
+doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so viele Daten, und damit eine viermal
+so lange wartezeit!</p>
 
 
 <a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
-
-<h1 id="responsive-images">Responsive Images</h1>
-
-<p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
-Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?
-Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
-das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
-
-<p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
-Ausser vom Internet Explorer wird das Attribut 2016 von
-allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
-
-<p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
-der Browser entscheidet welche Version er lädt und darstellt.</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;img src=&quot;salzburg.jpg&quot; style=&quot;width: 1353px; height: 461px;&quot;
-       srcset=&quot;salzburg.jpg, salzburg@2x.jpg 2x, salzburg@4x.jpg 4x&quot;&gt;
-</pre></div>
-
-<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel dargestellt.
-Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
-zur Verfügung, die der Browser laden und darstellen kann.</p>
-
-
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
-
-
-
-<p>Der folgende Screenshot wurde auf einem Macbook mit Retinadisplay erstellt,
-in der oberen Variante wird das “normale” Bild dargestellt, darunter das in
-der <strong>2x</strong> Version.</p>
-
-<p><img src='/images/css-layout/vergleich.jpg'  alt="Ausschnitt aus der Demo-Seite" ></p>
-
-<p>Die Demo-Seite zeigt vier Abstufungen:</p>
-
-<p><a href="/images/responsive-images/index.html">Demo-Seite für “Responsive Images”</a></p>
-
-<p>Das kann man auch mit Hintergrundbilder machen:</p>
-
-<p><a href="/images/responsive-images/background.html">Demo-Seite für “Responsive Background Images”</a></p>
-
-<p>Zur Erzeugung von vielen Abstufungen kann man den <a href="http://www.responsivebreakpoints.com/">Responsive IMage Breakpoints Generator</a> verwenden.</p>
-
-
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h3 id="vektor">Vektor</h3>
 
@@ -185,18 +136,18 @@ der <strong>2x</strong> Version.</p>
 <p><img src='/images/circle.svg'  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 
-<p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination STRG + oder STRG –</p>
+<p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination <code>STRG +</code> oder <code>STRG –</code>.</p>
 
 <p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt.</p>
 
 <p><img src='/images/css-layout/zeilenumbruch.png'  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="zoomen">Zoomen</h2>
 
@@ -206,16 +157,7 @@ Dabei werden die CSS Pixel vergrößert bzw. verkleinert. Die Größe des
 Viewport und die CSS pixel-ratio verändern sich also, dadurch werden
 andere Mediaqueries schlagend.</p>
 
-
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
-
-<h2 id="vertiefung">Vertiefung</h2>
-
-<ul>
-  <li><a href="https://blog.ycombinator.com/how-to-use-responsive-images/">Responsive Images</a></li>
-  <li><a href="http://blog.cloudfour.com/picking-responsive-tables-solution/">Responsive Tables</a></li>
-  <li><a href="https://www.youtube.com/watch?v=6NcIJXTlugc">Bildgrößen verändern mit Seam Carving</a></li>
-</ul>
+<p>TODO: Typische Beispiele für Responsive Design</p>
 
 		
 			<div class="pagination">
@@ -746,6 +688,10 @@ andere Mediaqueries schlagend.</p>
                     
                       
                       <li ><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
+                      
+                    
+                      
+                      <li ><a href="/grafik/images/">Pixel-Bilder</a></li>
                       
                     
                       

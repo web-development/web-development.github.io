@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Kurz-Installation von Wordpress</title>
+  <title>Lehrbuch Web-Development - Pixel-Bilder</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,74 +45,81 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Kurz-Installation von Wordpress</h2>
-                                <a href="/wordpress/installation/slide.html">als Präsentation ▻</a>
+				<h2 class="title"><a id="slide-0"></a>Pixel-Bilder</h2>
+                                <a href="/grafik/images/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
 			<a id='slide-1'></a>
-<p>Voraussetzung ist, dass in Ihrem Webspace PHP und MySQL möglich sind.</p>
+<p>Im [/das-web-und-html/html-grundkurs/])(Grundkurs HTML) haben wir kurz drei 
+Bildformate kennen gelernt: gif, jpg und png.</p>
 
-<ol>
-  <li>Finden Sie heraus wie der Zugang zur Datenbank funktioniert: Datenbankname, Username, Passwort</li>
-  <li>Laden Sie die aktuelle Version von Wordpress von als zip-Datei auf Ihren Desktop-Computer herunter. Packen Sie die zip-Datei aus, dabei muss die Ordner-Struktur erhalten bleiben.</li>
-  <li>Laden Sie das Gesamtpaket (allen Dateien und Unterordner) auf Ihren Webspace hoch. Damit ist der Aufwändige teil erledigt, weiter geht es (fast) nur mit dem Browser weiter.</li>
-  <li>Öffnen Sie die Seite über den Webbrowser, folgen Sie den weiteren Anweisungen um einen ersten Account anzulegen.</li>
-</ol>
+<p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
+Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?
+Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
+das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
+<h1 id="responsive-images">Responsive Images</h1>
 
+<p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
+Ausser vom Internet Explorer wird das Attribut 2016 von
+allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
 
-<p>Sie werden in Schritt vier nach den Zugangsdaten für die Datenbank gefragt. Es geht hier um vier Angaben:</p>
+<p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
+der Browser entscheidet welche Version er lädt und darstellt.</p>
 
-<ul>
-  <li>Datenbankname</li>
-  <li>Username (für den Datenbank-Zugriff)</li>
-  <li>Passwort (für den Datenbank-Zugriff)</li>
-  <li>Datenbank Host (das ist immer „localhost“)</li>
-</ul>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;img src=&quot;salzburg.jpg&quot; style=&quot;width: 1353px; height: 461px;&quot;
+       srcset=&quot;salzburg.jpg, salzburg@2x.jpg 2x, salzburg@4x.jpg 4x&quot;&gt;
+</pre></div>
+
+<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel dargestellt.
+Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
+zur Verfügung, die der Browser laden und darstellen kann.</p>
 
 
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
 
 
-<p>Diese Daten werden am Ende in der Datei wp-config.php gespeichert, und zwar in folgender Form:</p>
+<p>Der folgende Screenshot wurde auf einem Macbook mit Retinadisplay erstellt,
+in der oberen Variante wird das “normale” Bild dargestellt, darunter das in
+der <strong>2x</strong> Version.</p>
 
-<div class="example">
-<h4 class="caption">Php Code <small>Datei wp-config.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-define(&#39;DB_NAME&#39;,     &#39;mein_db&#39;);    // The name of the database
-define(&#39;DB_USER&#39;,     &#39;ich&#39;);        // Your MySQL username
-define(&#39;DB_PASSWORD&#39;, &#39;sk9kejr7&#39;);   // ...and password
-define(&#39;DB_HOST&#39;,     &#39;localhost&#39;);    
-               // 99% chance you won&#39;t need to change this value
-</pre></div>
+<p><img src='/images/css-layout/vergleich.jpg'  alt="Ausschnitt aus der Demo-Seite" ></p>
+
+<p>Die Demo-Seite zeigt vier Abstufungen:</p>
+
+<p><a href="/images/responsive-images/index.html">Demo-Seite für “Responsive Images”</a></p>
+
+<p>Das kann man auch mit Hintergrundbilder machen:</p>
+
+<p><a href="/images/responsive-images/background.html">Demo-Seite für “Responsive Background Images”</a></p>
+
+<p>Zur Erzeugung von vielen Abstufungen kann man den <a href="http://www.responsivebreakpoints.com/">Responsive IMage Breakpoints Generator</a> verwenden.</p>
 
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
+<h1 id="moderne-bildformate">Moderne Bildformate</h1>
 
-
-<p>Wenn Sie mehrere Wordpresse mit nur einer Datenbank betreiben gibt es eine weitere Frage: den Tabellen Prefix – die verschiedenen Wordpresse legen jeweils ca. 12 Tabellen an, damit diese Tabellen nicht alle den gleichen Namen haben wird der Prefix verwendet: z.B. beim ersten Wordpress beginnt der Tabellenname immer mit wp_ beim zweiten mit devblog_.</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Datei wp-config.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-// You can have multiple installations in one database
-// if you give each a unique prefix
-$table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and underscores 
-</pre></div>
+<p>TODO: Ergänzen</p>
 
 
 <a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
+<h2 id="weitere-quellen">Weitere Quellen</h2>
 
-
-<p>Nach der Installation von Wordpress finden Sie das Backend im Ordner wp-admin (also z.B. http://meinblog.at/wp-admin/). Dieser Bereich ist nur mit Login zugänglich. Im Rahmen der Installation wurde ein Account angelegt den Sie verwenden können.</p>
-
+<ul>
+  <li><a href="https://blog.ycombinator.com/how-to-use-responsive-images/">Responsive Images</a></li>
+  <li><a href="http://blog.cloudfour.com/picking-responsive-tables-solution/">Responsive Tables</a></li>
+  <li><a href="https://www.youtube.com/watch?v=6NcIJXTlugc">Bildgrößen verändern mit Seam Carving</a></li>
+  <li><a href="https://images.guide/">images guide</a> von Addy Osmani</li>
+</ul>
 
 		
 			<div class="pagination">
@@ -120,11 +127,11 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
     
       
       
-      <li><a href="/wordpress/was-ist-wordpress/">Was ist Wordpress</a></li>
+      <li><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
       
       
       
-      <li><a href="/wordpress/security/">Security</a></li>
+      <li><a href="/grafik/svg/">SVG - Vektor Grafik</a></li>
       
     
   </ul>
@@ -634,7 +641,7 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
               </ul>
             </li>
           
-          <li class=" "><a href="/grafik/">Grafik</a>
+          <li class="active "><a href="/grafik/">Grafik</a>
               <ul class="sub">
                 
                   
@@ -646,7 +653,7 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
                       
                     
                       
-                      <li ><a href="/grafik/images/">Pixel-Bilder</a></li>
+                      <li class="active"><a href="/grafik/images/">Pixel-Bilder</a></li>
                       
                     
                       
@@ -878,7 +885,7 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
               </ul>
             </li>
           
-          <li class="active "><a href="/wordpress/">Wordpress</a>
+          <li class=" "><a href="/wordpress/">Wordpress</a>
               <ul class="sub">
                 
                   
@@ -890,7 +897,7 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
                       
                     
                       
-                      <li class="active"><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
+                      <li ><a href="/wordpress/installation/">Kurz-Installation von Wordpress</a></li>
                       
                     
                       
@@ -1020,7 +1027,7 @@ $table_prefix  = &#39;devblog_&#39;;      // Only numbers, letters, and undersco
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2018 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/wordpress/installation.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/grafik/images.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
