@@ -180,6 +180,11 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
       <td><input type="email" name="mail" placeholder="ich@some.net" /></td>
     </tr>
     <tr>
+      <td>mit Auto-Vervollständigung</td>
+      <td><code>&lt;input type="email" autocomplete="email"&gt;</code></td>
+      <td><input type="email" name="mail" autocomplete="email" /></td>
+    </tr>
+    <tr>
       <td>muss eingegeben werden</td>
       <td><code>&lt;input type="email" name="nachname" required&gt;</code></td>
       <td><input type="email" name="nachname" required="" /></td>
@@ -191,6 +196,15 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
     </tr>
   </tbody>
 </table>
+
+<p>Der <strong>Default Wert</strong> ist ein echter Wert, der beim Einsenden des Formulars gesendet wird.
+Der <strong>Placeholder</strong> hingegen wird nur angezeigt, gilt aber nicht als eingegeben Daten.</p>
+
+<p>Die <strong>Auto-Vervollständigung</strong> ist besonders bei beschränkten Eingabemöglichkeiten
+wie am Smartphone praktisch. Es gibt viele <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autocomplete">mögliche Werte</a>.</p>
+
+<p>Die Bedingungen <strong>required</strong> und <strong>pattern</strong> müssen erfüllt sein, sonst kann das
+Formular gar nicht abgesendet werden.</p>
 
 </div>
 <div class='slide'>
