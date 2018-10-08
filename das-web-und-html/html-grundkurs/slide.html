@@ -71,8 +71,7 @@
 Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie Intenet
 nachschlagen.</p>
 
-<p>HTML hat sich in den ca. 20 Jahren seines Bestehens weit entwickelt. Die Version 5, wurde im Jahr 2014 veröffentlicht und wird heute von allen
-Browsern unterstützt.</p>
+<p>HTML hat sich in den ca. 20 Jahren seines Bestehens weit entwickelt. Die Version 5 wurde im Jahr 2014 veröffentlicht und wird heute von allen Browsern unterstützt.</p>
 
 </div>
 <div class='slide'>
@@ -339,44 +338,6 @@ Webseite!!!!&lt;/p&gt;
 </div>
 <div class='slide'>
 
-<h3 id="graceful-degradation">Graceful Degradation</h3>
-
-<p>Bevor Sie also einen neuen Tag einsetzen, sollten Sie sich darüber klar sein, welche 
-Versionen der Browser diesen Tag darstellen und wie viel Prozent Ihres Zielpublikums schon 
-eine passende Browser-Version benutzen. Meist können Sie eine Seite so gestalten, dass 
-auch mit älteren Browsern der gesamte Inhalt lesbar ist.</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>In älteren Browser geht die Information verloren</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Zu den hüpfenden Terminen 
-sind noch Plätze im Kurs frei: 
-&lt;/p&gt; 
-&lt;ul&gt; 
-&lt;li&gt;&lt;jump&gt;Montag&lt;/jump&gt;&lt;/li&gt; 
-&lt;li&gt;Dienstag&lt;/li&gt; 
-&lt;ul&gt;
-</pre></div>
-
-<div class="example">
-<h4 class="caption">Html Code <small>In allen Browser wird die Information dargestellt</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Zu den markierten Terminen sind 
-noch Plätze im Kurs frei&lt;/p&gt; 
-&lt;ul&gt; 
-&lt;li&gt;&lt;jump&gt;Montag *&lt;/jump&gt;&lt;/li&gt; 
-&lt;li&gt;Dienstag&lt;/li&gt; 
-&lt;/ul&gt;
-</pre></div>
-
-<p>Diese Herangehensweise an Neuerungen nennt man „graceful degradation“.</p>
-
-<p>Hinweis: Der &lt;jump&gt;–Tag ist ein Scherz, den gibt es nicht wirklich, und wird es hoffentlich 
-nie geben.</p>
-
-</div>
-<div class='slide'>
-
 <h2 id="text-formatieren">Text formatieren</h2>
 
 <p>Die in diesem Kapitel gezeigten Tags finden Sie auch
@@ -416,7 +377,7 @@ Die blockbildenden Tags bleiben immer Rechtecke.</p>
 <h3 id="blockbildende-tags-fr-text">Blockbildende Tags für Text</h3>
 
 <p>Der Inhalt einens Absatzes (Paragraph) <code>p</code> wird
-je nach Schriftgröße und vorhanenem Platz neu umgebrochen.
+je nach Schriftgröße und vorhandenem Platz neu umgebrochen.
 Der Zeilenumbruch ist also nicht aufgabe des Autors, der Autorin,
 sondern des Webbrowsers.</p>
 
@@ -443,6 +404,11 @@ text text. Text und text text, text
 text. &lt;/p&gt;
 </pre></div>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Überschriften werden für die Strukturierung des Textes verwendet,
 mehr als 3 Ebenen braucht man selten:</p>
 
@@ -454,7 +420,7 @@ mehr als 3 Ebenen braucht man selten:</p>
 &lt;h3&gt;Überschriftstext&lt;/h3&gt;
 </pre></div>
 
-<p>Neu in HTML5 ist der <code>nav</code> Tag zur Auszeichnung von
+<p>Der <code>nav</code> Tag dient zur Auszeichnung von
 Navigations-Menüs. Achtung: dieser Tag hat erst mal
 keine sichtbare Wirkung.</p>
 
