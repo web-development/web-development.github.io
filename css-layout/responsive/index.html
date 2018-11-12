@@ -51,6 +51,9 @@
 			
 			
 			<a id='slide-1'></a>
+<p>Wie gehen wir mit der Herausforderung der verschiedenen 
+Auflösungen und Pixeldichten um?</p>
+
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
@@ -71,7 +74,7 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 <p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
 
 <div class="example">
-<h4 class="caption">Css Code <small>CSS mit Mediaqueries: Nur wenn Darstellung am Screen, und Breite kleiner gleich 480 Pixel</small></h4>
+<h4 class="caption">Css Code <small>CSS mit Mediaqueries</small></h4>
 <pre class="lang-css prettyprint linenums">
 @media screen and (max-width: 480px) {
   .column {
@@ -89,29 +92,44 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <p>Luke Wroblewski schlug 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
 
+<p><img src='/images/responsive/mobile-first.jpg'  alt="/images/responsive/mobile-first.jpg" ></p>
+
+<p><a href="https://www.flickr.com/photos/saucef/7184615025">Bild: (CC BY-NC) Sauce Babilonia</a></p>
+
 
 <a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
-<h3 id="mediaqueries">Mediaqueries</h3>
+<h3 id="mediaqueries-and-featurequeries">Mediaqueries and Featurequeries</h3>
 
-<p>siehe auch <a href="https://developer.mozilla.org/de/docs/Web/CSS/Media_Queries">MDN</a></p>
+<div class="example">
+<h4 class="caption">Css Code <small>CSS Medaqueries Beispiel</small></h4>
+<pre class="lang-css prettyprint linenums">
+@media print {
+  body { font-size: 10pt; }
+}
+
+@media screen {
+  body { font-size: 13px; }
+}  
+
+@supports not (display: grid) {
+  div {
+    float: right;
+  }
+}
+</pre></div>
+
+<p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
-
-<h3 id="featurequeries">Featurequeries</h3>
-
-<p>siehe auch <a href="https://developer.mozilla.org/de/docs/Web/CSS/@supports">MDN</a></p>
-
-
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
 
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h3 id="pixel">Pixel</h3>
 
@@ -124,7 +142,7 @@ doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so 
 so lange wartezeit!</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="vektor">Vektor</h3>
 
@@ -136,7 +154,7 @@ so lange wartezeit!</p>
 <p><img src='/images/circle.svg'  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 
@@ -147,7 +165,7 @@ so lange wartezeit!</p>
 <p><img src='/images/css-layout/zeilenumbruch.png'  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="zoomen">Zoomen</h2>
 
@@ -157,7 +175,125 @@ Dabei werden die CSS Pixel vergrößert bzw. verkleinert. Die Größe des
 Viewport und die CSS pixel-ratio verändern sich also, dadurch werden
 andere Mediaqueries schlagend.</p>
 
-<p>TODO: Typische Beispiele für Responsive Design</p>
+
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+
+<h2 id="beispiel">Beispiel</h2>
+
+<p>Die <a href="/images/cssgrid/#!/responsive">Demo Seite für CSS Grid</a> ist responsive.</p>
+
+<p><img src='/images/css-layout/example-responsive.png' srcset='/images/css-layout/example-responsive@2x.png 2x, /images/css-layout/example-responsive.png 1x, /images/css-layout/example-responsive@3x.png 3x'  alt="/images/css-layout/example-responsive.png" ></p>
+
+
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+
+
+
+<p>Für Smartphones ist kein Grid vorgesehen:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+@media screen and (max-width: 660px)  {
+  .page_container {
+    padding: 10px;
+    max-width: 80em;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  ...
+}
+</pre></div>
+
+
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+
+
+
+<p>Für Tablets gilt ein Grid mit zwei Spalten:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+@media screen and (min-width: 660px) and (max-width: 1150px)  {
+
+    .page_container {
+      display: grid;
+
+      grid-template-columns: 2fr 3fr;
+      grid-template-rows: 60px 403px 1fr 1fr 60px 3fr;
+
+      grid-template-areas:  &quot;w1        headline &quot;
+                            &quot;portrait  description&quot;
+                            &quot;w2        facts&quot;
+                            &quot;w2        navigation&quot;
+                            &quot;w2        stylename&quot;
+                            &quot;w2        css&quot;;
+    }
+    ....
+}
+</pre></div>
+
+
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+
+
+
+<p>für Desktops ein Grid mit drei Spalten:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+@media screen and (min-width: 1200px)  {
+
+    .page_container {
+      display: grid;
+
+      grid-template-columns: 270px 5fr 3fr;
+      grid-template-rows: 60px 2fr 210px;
+
+      grid-template-areas:  &quot;w1        headline     stylename&quot;
+                            &quot;portrait  description  css&quot;
+                            &quot;w2        facts        navigation&quot;;
+    }
+    ...
+}
+</pre></div>
+
+
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+
+
+
+<p>und als Easter Egg ist noch eine ganz verrücktes Grid dabei:</p>
+
+<p><img src='/images/css-layout/easteregg-responsive.png' srcset='/images/css-layout/easteregg-responsive@2x.png 2x, /images/css-layout/easteregg-responsive.png 1x'  alt="/images/css-layout/easteregg-responsive.png" ></p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+@media screen and (min-width: 1150px) and (max-width: 1200px) {
+
+    .page_container {
+      height:1200px;
+      width:1200px;
+
+      display: grid;
+
+      grid-template-columns: 140fr 131fr 152fr 283fr 190fr 166fr;
+      grid-template-rows: 114fr 306fr 305fr 131fr 129fr 70fr;
+
+      background-color: black;
+      grid-gap: 25px 25px;
+
+      grid-template-areas:  
+        &quot;w1    w1           w2           w2           headline  headline&quot;
+        &quot;w4    description  description  description  facts     facts&quot;
+        &quot;w5    description  description  description  portrait  w11&quot;
+        &quot;w5    navigation   navigation   w6           w7        w7&quot;
+        &quot;gelb  navigation   navigation   w8           css       css&quot;
+        &quot;gelb  w9           w9           stylename    css       css&quot;
+        &quot;gelb  w9           w9           w10          w10       w10&quot;;
+    }
+    ...
+}
+</pre></div>
 
 		
 			<div class="pagination">

@@ -138,7 +138,7 @@
     </tr>
     <tr>
       <td>Objektorientierung</td>
-      <td>Objekte und Prototypen</td>
+      <td>Objekte und Prototypen (Klassen als “syntactic sugar”)</td>
       <td>Objekte und Klassen</td>
     </tr>
     <tr>
@@ -153,8 +153,8 @@
     </tr>
     <tr>
       <td>Wer</td>
-      <td>Auch Web-DesignerInnen</td>
-      <td>Nur InformatikerInnen</td>
+      <td>Manchmal auch Web-DesignerInnen</td>
+      <td>Nur hauptberufliche ProgrammiererInnen</td>
     </tr>
   </tbody>
 </table>
@@ -166,12 +166,14 @@
 
 <p>Javascript wurde ursprünglich bei Netscape von Brendan Eich erfunden, und dann von verschiedenen Herstellern weiterentwickelt. Es war eines der Schlachtfelder im Browser-War: Microsoft und Netscape versuchten durch verschiedene Implementierungen die Position des eigenen Browsers zu verbessern und Webseiten im “gegnerischen” Browser unbrauchbar zu machen.</p>
 
-<p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Sie wird von der Arbeitsgruppe ECMA TC39, in der u.a. Personen von Browser-Herstellern vertreten sind weiter entwickelt.  Die aktuelle Version die Sie erlernen ist ‘'’ECMA Script 2015 / ES6’’’.</p>
+<p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Sie wird von der Arbeitsgruppe ECMA TC39, in der u.a. Personen von Browser-Herstellern vertreten sind weiter entwickelt.</p>
 
 <p>Mit dem „Document Object Model“ (DOM) wurde der Zugriff auf die Webseite vereinheitlicht.
 Libraries wie jQuery ebenen die letzten Unterschiede in den Browser-Implementierungen noch aus.</p>
 
 <p>Die Entwicklung dieser API ist nun Teil von HTML5 und liegt beim W3C. Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, …</p>
+
+<p>Die aktuelle Version die Sie erlernen ist die Untermenge von ‘‘ECMA Script ES8’’, die derzeit schon im Browsern unterstützt wird.</p>
 
 </div>
 <div class='slide'>
@@ -179,15 +181,15 @@ Libraries wie jQuery ebenen die letzten Unterschiede in den Browser-Implementier
 <h2 id="anwendung-von-javascript">Anwendung von Javascript</h2>
 
 <p>Lange Zeit waren kleine Javascript-Programme eine relative unabhängige Ergänzung für Web-Applikationen. Ein Beispiel dafür wäre ein <a href="https://datatables.net/">Data Table</a>
-der in eine HTML Tabelle die möglichkeit zum Sortieren nach eine Spalte einbaut.</p>
+der in eine HTML Tabelle die Möglichkeit zum Sortieren nach eine Spalte einbaut.</p>
 
 <p>Große Web Applikationen wie outlook oder gmail zeigten aber bald, dass auch komplexe
 Programme im Browser möglich sind. Um diese umzusetzen gibt es heute clientseitige
-Frameworks wie Angular oder React.</p>
+Frameworks wie React, Vue oder Angular.</p>
 
 <p>Web Applikationen wurden seit ca. 2008 Schritt für Schritt mehr und mehr offline-fähige.
 Heute nennt man solche Applikationen “Progressive Web Apps” (PWA). <a href="https://pwa.rocks">pwa.rocks</a>
-zeigt eine Sammlsung solcher Apps.</p>
+zeigt eine Sammlung solcher Apps.</p>
 
 </div>
 <div class='slide'>
@@ -201,7 +203,7 @@ zeigt eine Sammlsung solcher Apps.</p>
 <p>In folgendem Beispiel ist der markierte <code>a</code>-Tag innerhalb eines <code>li</code>-Tags, und
 der wiederum innerhalb eines  <code>uk</code>-Tag mit Klassen <code>nav</code> und <code>nav-list</code>.</p>
 
-<p><img src="/images/javascript-dom/dom.png" alt="Abbildung: Bild des DOM, erzeugt mit den Firefox DeveloperTools" /></p>
+<p><img src='/images/javascript-dom/dom.png' srcset='/images/javascript-dom/dom@2x.png 2x, /images/javascript-dom/dom.png 1x'  alt="Abbildung: Bild des DOM, erzeugt mit den Firefox DeveloperTools" ></p>
 
 <p>Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:</p>
 

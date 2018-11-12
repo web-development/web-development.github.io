@@ -56,20 +56,19 @@
 <div class="example">
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;head&gt;
 &lt;body id=&quot;farbfeld&quot;&gt;
-&lt;h1&gt;Farbwahl&lt;/h1&gt;
-&lt;form&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
-  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
-&lt;/form&gt;
-&lt;script&gt;
-function setcolor( c ) {
-  b = document.getElementById(&#39;farbfeld&#39;);
-  b.style.backgroundColor = c
-}
-&lt;/script&gt;
+  &lt;h1&gt;Farbwahl&lt;/h1&gt;
+  &lt;form&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
+  &lt;/form&gt;
+  &lt;script&gt;
+  function setcolor( c ) {
+    b = document.getElementById(&#39;farbfeld&#39;);
+    b.style.backgroundColor = c
+  }
+  &lt;/script&gt;
 &lt;/body&gt;
 </pre></div>
 
@@ -108,6 +107,15 @@ Mit dem <code>script</code>-Tag wird die externe Javascript-Datei eingebunden:</
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er 
 keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: 
 die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
+
+<p>Man kann das Javascript Programm auch von einem anderen Server laden, zum Beispiel von einem <a href="https://de.wikipedia.org/wiki/Content_Delivery_Network">CDN</a>.  Dann verwendet man zusätzlich noch das <code>integrity</code> attribut, um sicher zu Stellen dass genau der Javascript-Code geladen wird, den man haben wollte, und ihn niemand verändert hat:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot; integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</pre></div>
+
+<p><img src='images/javascript-dom/sri.png'  alt="" ></p>
 
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
@@ -200,9 +208,10 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;input type=&quot;button&quot; onclick=&quot;...&quot;&gt;
+  &lt;input type=&quot;submit&quot; onclick=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Das Programm muß <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Funktion des Buttons wirklich ausgeführt werden soll.</p>
+<p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Beim <code>type="submit"</code> muss das Javscript-Programm  <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Submit-Funktion  wirklich ausgeführt werden soll.</p>
 
 
 <a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
@@ -302,7 +311,7 @@ document.write(&quot;hi&quot;);
 <p>Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes Element in der Webseite auszuwählen, und dann die Eigenschaft <code>textContent</code>
 um den Text zu verändern:</p>
 
-<p><img src='/images/javascript-dom/js-console.png' srcset='/images/javascript-dom/js-console@2x.png 2x, /images/javascript-dom/js-console@3x.png 3x, /images/javascript-dom/js-console-vars.png 1x, /images/javascript-dom/js-console.png 1x'  alt="Abbildung 58: Javascript Console in Firebug: Manipulation von Wikipedia" ></p>
+<p><img src='/images/javascript-dom/js-console.png' srcset='/images/javascript-dom/js-console@2x.png 2x, /images/javascript-dom/js-console@3x.png 3x, /images/javascript-dom/js-console.png 1x'  alt="Abbildung 58: Javascript Console in Firebug: Manipulation von Wikipedia" ></p>
 
 
 <a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
@@ -313,17 +322,17 @@ um den Text zu verändern:</p>
 
 <p>Auch die folgenden Beispiele können Sie direkt in der Console ausprobieren wie in der Abbildung gezeigt: Wenn Sie einen Ausdruck eintippen wird er ausgewertet. Mit dem Befehl console.log( … ) können Sie direkt auf die Console schreiben.</p>
 
-<p><img src='/images/javascript-dom/js-console-vars.png'  alt="Abbildung 58: Javascript Console in Firebug" ></p>
+<p><img src='/images/javascript-dom/vars-in-js-console.png'  alt="Abbildung 58: Javascript Console in Firebug" ></p>
 
-<p>Mit Javascript 2015 gibt nun drei Arten eine Variable zu deklarieren:</p>
+<p>Ab Javascript 2015 (ES6) gibt drei Arten eine Variable zu deklarieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>deklaration</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-var a;  // altmodisch
+var a;  // alt
 
-let b;    // neumodisch, Variable
-const c;  // neumodisch, Konstante
+let b;    // neu, Variable
+const c;  // neu, Konstante
 </pre></div>
 
 <p>Die Details zu <code>let</code> und <code>const</code> lernen Sie später 
@@ -362,7 +371,7 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 <pre class="lang-javascript prettyprint linenums">
 a = &quot;Hallo&quot;;
 b = &#39;Welt&#39;;
-c = `Hallo ${b}, der brutto Preis ist ${100 * 1.5}`;
+c = `Hallo ${name}, der brutto Preis ist ${netto * 1.2}`;
 </pre></div>
 
 <p>Die letzte, genannt  <strong>template literals</strong>, erlaubt das einbinden von Variablen und das
@@ -373,9 +382,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 <h3 id="arrays">Arrays</h3>
 
-<p>Arrays in Javascript können wie in C mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>, …  Aber eigentlich sind Arrays schon Objekte.</p>
-
-<p>Für das Erzeugen des Arrays gibt es zwei Schreibweisen</p>
+<p>Arrays in Javascript können wie in C# mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>. Für das Erzeugen des Arrays gibt es zwei Schreibweisen</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -412,29 +419,34 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 <h3 id="objekte">Objekte</h3>
 
-<p>Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise mit geschwungenen Klammern eignet sich gut für einmalige Objekte. Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Klasse mit Konstruktor besser geeignet.</p>
+<p>Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise mit geschwungenen Klammern eignet sich gut für einmalige Objekte.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   var c;
   c = {&quot;farbe&quot; : &quot;rot&quot;, &quot;beschriftung&quot;: &quot;int pi == 3&quot;, &quot;verkauft&quot;: true};
 
-  // Construktor-Funktion
-  class Shirt {
-    constructor( f, b, v ) {
-      this.farbe        = f;
-      this.beschriftung = b;
-      this.verkauft     = v;
-    }
-  }
-  d = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
+  alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”  
 
-  alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”
+  alert(typeof c); // gibt  &quot;object&quot;  
+</pre></div>
+
+<p>Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Klasse mit Konstruktor besser geeignet.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  class Shirt {
+      constructor( f, b, v ) {
+          this.farbe        = f;
+          this.beschriftung = b;
+          this.verkauft     = v;
+      }
+  }
+  var d = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
+
   alert(&quot;Das Shirt ist &quot; + d.farbe ); // gibt “Das Shirt ist rot”
 
-  // typeof c === &quot;object&quot;
-  // c.constructor === Shirt
-  // d.constructor === Object
+  alert(typeof d); // gibt  &quot;object&quot;  
 </pre></div>
 
 
@@ -446,8 +458,9 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  alert(&quot;Das Shirt ist &quot; + c.farbe );
-  alert(&quot;Das Shirt ist &quot; + c[&quot;farbe&quot;] );
+  console.log(&quot;die Farbe des shrits ist&quot;)
+  console.log( c.farbe    );
+  console.log( c[&quot;farbe&quot;] );
 </pre></div>
 
 <p>In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Variable gespeichert sein:</p>
@@ -455,7 +468,8 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   e = &quot;beschriftung&quot;;
-  alert(&quot;Die Beschriftung lautet &quot; + c[e] );
+  console.log(&quot;Die Beschriftung lautet &quot;)
+  console.log( c[e] );
 </pre></div>
 
 
@@ -466,16 +480,89 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <p>Neben der <code>while</code> und <code>for</code> Schleife mit index
 gibt es in Javascript noch Möglichkeiten über
 die Werte in einem Array zu iterieren <strong>ohne</strong> den
-index zu benötigen:</p>
+index zu benötigen mit einer <code>for ... of</code> schleife:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
   let liste = [10, 20, 30];
 
   for (let element of liste) {
-    console.log(element);
+      console.log(element);
   }
 </pre></div>
+
+
+<a class='slide_break' id='slide-26' href='slide.html#slide-26'>▻</a>
+
+<h3 id="verzweigungen">Verzweigungen</h3>
+
+<p><code>if</code>, <code>else</code>, <code>else if</code> und die Operatoren für boolsche Werte funktionieren wie in c#:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  let windy = false;
+  let rainy = true;
+
+  if (! windy &amp;&amp; ( rainy || sunny )) {
+      console.log(&quot;Umbrella !&quot;);
+  } else {
+      console.log(&quot;No umbrella !&quot;);
+  }
+</pre></div>
+
+
+<a class='slide_break' id='slide-27' href='slide.html#slide-27'>▻</a>
+
+
+
+<p><code>switch</code> funktioniert genau wie in C#:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  switch (cardNr) {
+      case 14:
+          console.log(&quot;Ass&quot;);
+          break;
+      case 13:
+          console.log(&quot;Koenig&quot;);
+          break;
+      case 12:
+          console.log(&quot;Dame&quot;);
+          break;
+      case 11:
+          console.log(&quot;Bube&quot;);
+          break;
+      default:
+          console.log(`unbekannte Karte Nr. ${cardNr}`);
+          break;
+  }
+</pre></div>
+
+
+<a class='slide_break' id='slide-28' href='slide.html#slide-28'>▻</a>
+
+<h3 id="funktionen">Funktionen</h3>
+
+<p>Funktionen sind in Javascript etwas simpler als in C#, da die
+Typ-Deklarationen entfallen.  Das Keyword <code>function</code> wird vor dem neu
+definierten Funktionsnamen verwendet:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  function add( a, b ) { 
+      return a+b; 
+  }
+
+  console.log(40, 2);  // gibt 42
+</pre></div>
+
+
+<a class='slide_break' id='slide-29' href='slide.html#slide-29'>▻</a>
+
+<h3 id="konventionen">Konventionen</h3>
+
+<p>Sowohl für Variablen als auch für Funktionen wird meist “Camel Case” verwendet, mit
+einem kleinen Anfangsbuchstaben, z.b.  <code>addNumbers</code>,  <code>deleteAllTheListItems</code>.</p>
 
 
 		
