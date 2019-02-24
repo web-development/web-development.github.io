@@ -70,23 +70,54 @@
 	  <div class='slide'>
 <p>Diese Abbildung zeigt die wichtigsten Fachbegriffe von git:</p>
 
-<p><img src='/images/image356.png'  alt="Abbildung 141: Fachbegriffe und wichtigste Aktionen mit git" ></p>
+</div>
+<div class='slide'>
+
+
 
 <p>Als <strong>working copy</strong> werden die Dateien und Ordner bezeichnet, die auf meinem lokalen Rechner aktuell im Filsystem sichtbar sind. Mit diesen kann ich also „ganz normal“ arbeiten: editieren, im Browser betrachten, etc.</p>
 
-<p>Im <strong>lokalen Repository</strong> (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Im <strong>lokalen Repository</strong> (local repository) verwaltet und speichert git alle „alten Versionen“ der Dateien. Mein lokales Repository unterscheidet sich technisch nicht von anderen Repositories, die ich als remote Repositories ansprechen kann.
+Das local repository befindet sich im Ordner <strong>.git</strong></p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Wenn ich eine Veränderung an einer Datei vorgenommen habe, kann ich sie
-mit dem Befehl <strong>add</strong> in den Zustand <strong>staged</strong> versetzten.  Ich sammle Schritt
+mit dem Befehl <strong>add</strong> in den Zustand <strong>staged</strong> versetzten. Ich sammle Schritt
 für Schritt die Dateien zusammen, die ich gemeinsam <strong>committen</strong> will.</p>
+
+</div>
+<div class='slide'>
+
+
 
 <p>Mit dem Befehl <strong>commit</strong> werden die gestageden Dateien im lokalen Repository
 abgespeichert, und erhalten dort einen eindeutigen Hash und eine Meldund (die
 ich dazu eingebe).</p>
 
+</div>
+<div class='slide'>
+
+
+
 <p>Mit dem Befehl <strong>push</strong> kann ich die commits aus meinem lokalen Repository
-in ein anderes, remote Repository übertragen.  Meist hat man nur ein remote
+in ein anderes, remote Repository übertragen. Meist hat man nur ein remote
 Repository - als <strong>ein</strong> zentrales Repository.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p><img src='/images/image356.png'  alt="Abbildung 141: Fachbegriffe und wichtigste Aktionen mit git" ></p>
 
 </div>
 <div class='slide'>
@@ -95,7 +126,14 @@ Repository - als <strong>ein</strong> zentrales Repository.</p>
 
 <p>Wenn ein Webprojekt schon für die Arbeit mit git aufgesetzt ist, sieht der Arbeitsalltag z.B. so aus:</p>
 
-<p>Meine working copy ist direkt im Webspace meines lokalen Webserver gespeichert.  Ich nehme Änderungen an einer Datei „form.html“ und einer dazu gehörigen Datei „bestellung.php“ vor, teste über den lokalen Webserver ob alles  funktioniert. Wenn ich einen Zustand erreicht habe, der funktioniert dann ist es Zeit für einen Commit:</p>
+<p>Meine working copy ist direkt im Webspace meines lokalen Webserver gespeichert. Ich nehme Änderungen an einer Datei „form.html“ und einer dazu gehörigen Datei „bestellung.php“ vor, teste über den lokalen Webserver ob alles funktioniert.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Wenn ich einen Zustand erreicht habe, der funktioniert dann ist es Zeit für einen Commit:</p>
 
 <p>Zuerst muss ich entscheiden welche Dateien / Änderungen zum Commit gehören.</p>
 
@@ -108,13 +146,19 @@ Repository - als <strong>ein</strong> zentrales Repository.</p>
 <pre><code>  git commit –m 'bestellformular von get auf post umgestellt – wir sind restful!'
 </code></pre>
 
-<p>Damit habe ich meine Änderungen im lokalen Repository gespeichert. Nun kann ich das nächste Arbeitspaket angehen.  Wenn ich einige Arbeitspakete erledigt habe und meine Ergebnisse veröffentlichen will (egal ob in einem kleinen Team, oder auf github für die ganze Welt) führe ich einen push auf ein remote repository durch:</p>
+<p>Damit habe ich meine Änderungen im lokalen Repository gespeichert.</p>
+
+</div>
+<div class='slide'>
+
+
+
+<p>Nun kann ich das nächste Arbeitspaket angehen. Wenn ich einige Arbeitspakete erledigt habe und meine Ergebnisse veröffentlichen will (egal ob in einem kleinen Team, oder auf github für die ganze Welt) führe ich einen push auf ein remote repository durch:</p>
 
 <pre><code>git push origin master
 </code></pre>
 
-<p>Das erste Argument „origin“ ist der Name des remote Repositories, das zweite Argument ist der Branch der gepushed werden soll.  Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.</p>
-
+<p>Das erste Argument „origin“ ist der Name des remote Repositories, das zweite Argument ist der Branch der gepushed werden soll. Sie werden in diesem Semester immer nur mit einem remote repository und mit dem Branch master arbeiten.</p>
 </div>
           <div class="slide"><h1>Einfacher Arbeitsablauf in Git</h1>
             <p>
