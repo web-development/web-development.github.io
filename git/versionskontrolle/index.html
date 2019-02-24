@@ -50,22 +50,66 @@
                           </div>
 			
 			
-			<a id='slide-1'></a><p>Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die naive Lösung: wer das Dokument ändert speichert es unter einen neuen Versionsnummer:</p>
+			<a id='slide-1'></a>
+<p>Das Problem: mehrere Leute arbeiten gemeinsam an Code oder einem Dokument. Die naive Lösung: wer das Dokument ändert speichert es unter einen neuen Versionsnummer:</p>
 
-<p><img src='/images/image354.png'  alt="Abbildung 139: Dateien ohne Versionskontrollsystem - viele Kopien" ></p>
+<p><img src='/images/git/versionen.png'  alt=" Dateien offline, ohne Versionskontrollsystem - viele Kopien" ></p>
 
-<p>Diese Methode funktioniert aber nicht mehr, sobald zwei Personen gleichzeitig unabhängig voneinander Änderungen durchführen.</p>
+<p>Aber was, wenn zwei Personen gleichzeitig Änderungen durchführen wollen? Und nicht voneinander wissen?</p>
 
-<p>Die professionelle Lösung ist ein Versionskontrollsystem. 
-Diese System hilft bei der Verwaltung von Datei-Versionen. Alle Änderungen werden gespeichert, nichts kann verloren gehen.</p>
 
-<p>Mit einem Versionskontrollsystem ist ein freieres Arbeite
-möglich: Es wird einfacher  Veränderungen auszuprobieren -
+<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+
+
+
+<p>Ein Möglichkeit wäre, das gemeinsame Dokumen online zu editieren,
+z.B. in Wikipedia, Google Docs, Office.</p>
+
+<p><img src='/images/git/google-docs.jpg' srcset='/images/git/google-docs@2x.jpg 2x, /images/git/google-docs.jpg 1x'  alt="Dokument online editieren" ></p>
+
+<p><small><a href="https://www.flickr.com/photos/planeta/23178866399">Bild von Ron Mader, benutzt unter CC-SA</a></small></p>
+
+<p>Das funktioniert für einzelne Dokument schon ganz gut.</p>
+
+
+<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+
+
+
+<p>Es gibt auch online Entwicklungsumgebungen um gemeinsam an Code zu arbeiten,
+zum Beispiel cloud 9 (Teil von Amazon Web Services AWS):</p>
+
+<p><img src='/images/git/c9.png' srcset='/images/git/c9@2x.png 2x, /images/git/c9.png 1x'  alt="Code online entwickeln" ></p>
+
+<p>Aber der Quellcode unserer Programme und Webseiten ist komplizierter:
+es sind mehrere Dateien, die voneinander Abhängig sind. Wenn
+das Stylesheet geändert wird, muss vielleicht auch die HTML-Datei geändert
+werden.</p>
+
+<p>Wenn zwei Personen gleichzeitig editieren kommt das Programm schnell
+in einen Zustand wo es gar nicht mehr funktioniert.</p>
+
+<p>In der online Entwicklungsumgebungen muss man sehr intensiv zusammen arbeiten!</p>
+
+
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+
+
+
+<p>Es gibt auch eine Lösung, die auch für sehr viele ProgrammiererInnen,
+und für eine nicht so intensive zusammenarbeit funktioniert: Ein Versionskontrollsystem.</p>
+
+<p>Diese System hilft bei der Verwaltung von Datei-Versionen. Alle Änderungen werden gespeichert, nichts kann verloren gehen. Am eigenen Computer hat man
+jeweils eine Kopie aller Dateien, und es gibt eine Möglichkeit diese
+Dateien mit den anderen Versionen abzustimmen.</p>
+
+<p>Mit einem Versionskontrollsystem ist ein freieres Arbeiten
+möglich: Es wird einfacher Veränderungen auszuprobieren -
 in der Sicherheit, dass man sie rückgängig zu machen kann,
 bzw. an der anderen Version unabhängig weiter arbeiten kann.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
 
 
 
@@ -90,11 +134,11 @@ bzw. an der anderen Version unabhängig weiter arbeiten kann.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
-<p>Laut einer Umfrage von <code>github</code> hat sich im Jahr 2012 git gegenüber subversion
+<p>Laut einer Umfrage von <code>github</code> hat sich im Jahr spätestens im Jahr 2012 git gegenüber subversion
 durchgesetzt:</p>
 
 <p><img src='/images/git-and-subversion.png'  alt="Überblick über Versionskontrollsysteme aus der Wikipedia13" ></p>
