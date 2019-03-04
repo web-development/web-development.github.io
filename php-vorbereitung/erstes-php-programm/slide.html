@@ -83,7 +83,7 @@ folgendem Beispiel ist beides falsch:</p>
 
 <p><img src='/images/image327.png'  alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" ></p>
 
-<p>Wenn die URL mit <strong>file:///</strong> beginnt, öffnet der Browser die Datei
+<p>Wenn die URL mit <kbd>file:///</kbd> beginnt, öffnet der Browser die Datei
 direkt vom Filesystem, es ist keine Webserver involviert.  Dann kann PHP nicht
 funktionieren!</p>
 
@@ -132,7 +132,8 @@ Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 
 <h2 id="php-versionen">PHP Versionen</h2>
 <p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen 
-Sie z.B. dass PHP in der Version 5.0.5 verwendet wird.</p>
+Sie z.B. dass PHP in der Version 5.0.5 verwendet wird - eine veraltete Version. Im Jahr
+2019 sollten Sie nur mindestens PHP 7 verwenden.</p>
 
 <p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, 
 verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>. 
@@ -141,12 +142,14 @@ neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
 anpassen!</p>
 
 <p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen 
-aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeben:</p>
+aufgeführt, z.B. bei der Funktion <a href="http://php.net/manual/de/function.ldap-sort.php">ldap_sort</a> ist in der Dokumentation angegeben:</p>
 
-<pre><code>(PHP 4 &gt;= 4.2.0, PHP 5)
+<pre><code>PHP 4 &gt;= 4.2.0, PHP 5, PHP 7
+
+Warnung: Dieses Feature ist seit PHP 7.0.0 DEPRECATED (veraltet). Sich auf diese Funktion zu verlassen ist in keiner Weise empfehlenswert.
 </code></pre>
 
-<p>Die Funktion existiert also seit PHP 4 Version 4.2.0 und auch in PHP 5.</p>
+<p>Die Funktion existiert also seit PHP 4 Version 4.2.0 und wird nach PHP 7 abgeschafft.</p>
 
 </div>
 <div class='slide'>
@@ -156,9 +159,10 @@ aufgeführt, z.B. bei der Funktion array_fill() ist in der Dokumentation angegeb
 <p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen: 
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
 können Sie das nicht ändern!
-Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.
-Und Sie sollten auf Ihrem Entwicklungsrechner die gleiche PHP Version
-verwenden die am Webspace installiert ist.</p>
+Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
+
+<p>Auf dem Entwicklungsrechner verwendet man immer exakt die Version von PHP,
+die am Webspace installiert ist.</p>
 
 </div>
 <div class='slide'>
