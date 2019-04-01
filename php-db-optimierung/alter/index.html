@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Medien</title>
+  <title>Lehrbuch Web-Development - Änderungen an der Datenbank</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,42 +45,114 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Medien</h2>
-                                <a href="/wordpress/multimedia/slide.html">als Präsentation ▻</a>
+				<h2 class="title"><a id="slide-0"></a>Änderungen an der Datenbank</h2>
+                                <a href="/php-db-optimierung/alter/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
 			<a id='slide-1'></a>
-<p>Während Texte in Beiträgen und Seiten gespeichert werden, müssen Bild-, Audio-, und Video-Dateien („Attachments“) erst einmal separat hochgeladen werden. Direkt im Editor für Beiträge oder Seiten finden Sie den Link zum Uploader:</p>
+<p>Der erste Entwurf der Datenbank ist wahrscheinlich nicht der letzte.
+Während der Entwicklung werden neue Anforderungen an die Datenbank
+klar, und die Datenbank soll verändert werden.</p>
 
-<p><img src='/images/wordpress-media-upload.png'  alt="Abbildung 109: Menü für den Upload von Datei im Editor" ></p>
+<p>Ein Beispiel:  Zwischen Tabelle zimmerbuchung und zimmer besteht ein
+foreign key constraint:</p>
+
+<div class="example">
+<h4 class="caption">Sql Code <small>ein foreign key constraint</small></h4>
+<pre class="lang-sql prettyprint linenums">
+ \d zimmerbuchung
+             Table &quot;public.zimmerbuchung&quot;
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ zinr       | integer |           |          |
+ buchungsnr | integer |           |          |
+Foreign-key constraints:
+    &quot;zimmerbuchung_buchungsnr_fkey&quot; FOREIGN KEY (buchungsnr) REFERENCES buchung(buchungsnr)
+    &quot;zimmerbuchung_zinr_fkey&quot; FOREIGN KEY (zinr) REFERENCES zimmer(zinr)
+</pre></div>
+
+<p>Diesem Constraint fehlt das Attribut <code>on delete cascade</code>. Wie kann man
+das im Nachhinein ändern?</p>
 
 
 <a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
 
-<h3 id="speicherung-von-medien">Speicherung von Medien</h3>
 
-<p>Die hochgeladenen Dateien werden einen Unter-Ordner von wp-content/uploads hochgeladen, und haben damit euch eine entsprechende URL. Die folgnde Abbildung zeigt den relevanten Teil der Ordnerstruktur:</p>
 
-<p><img src='/images/wordpress-uploads.png'  alt="Abbildung 111: Ordnerstruktur für hochgeladene Attachment-Dateien (Audio, Video)" ></p>
+<p>Wir könnten die betroffenen Tabellen mit <code>DROP TABLE</code> löschen
+und neu anlegen.  Das funktioniert, solange noch keine wichtigen
+Daten in den Tabellen sind.</p>
+
+<p>Ist das Projekt aber einmal in Betrieb, dann ist diese Methode
+nicht mehr möglich.  Unsere ersten Kunden finden es sicher nicht
+gut wenn ihre Daten gelöscht werden.</p>
+
+<p>Wir können die Datenbank also nicht löschen und neu aufbauen,
+sondern müssen sie ändern.</p>
 
 
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
-<h3 id="zugriffsrechte">Zugriffsrechte</h3>
 
-<p>Bei der genauen Betrachtung dieser Dateien und Ordner erkennen Sie, dass Wordpress unter einem andere (UNIX) User arbeitet als Sie selbst. Meist hat dieser User einen Namen wie „www-data“ oder „apache“. Die Zugriffsrechte im upload-Ordner müssen also so gesetzt sein, dass dieser fremde User Dateien speichern darf!</p>
 
-<p>Hinweis: nur die Bilder (z.B. mit FTP) in den richtigen Ordner zu speichern ist nicht ausreichend, es ist auch ein Eintrag in der Datenbank notwendig.  Dieser Eintrag wird gemacht, wenn man den Wordpress Uploader verwendet.</p>
+<p>Zum Ändern des Datenbank-Schemas gibt es verschieden Befehle die meist mit <code>ALTER</code>
+beginnen, z.B: <a href="https://www.postgresql.org/docs/11/sql-altertable.html">ALTER TABLE</a>
+oder</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+ALTER TABLE distributors ADD COLUMN address varchar(30);
+ALTER TABLE distributors DROP COLUMN address RESTRICT;
+ALTER TABLE distributors
+    ALTER COLUMN address TYPE varchar(80),
+    ALTER COLUMN name TYPE varchar(100);
+ALTER TABLE distributors RENAME COLUMN address TO city;
+...
+</pre></div>
 
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
-<h3 id="einbinden-von-medien-in-beitrge-und-seiten">Einbinden von Medien in Beiträge und Seiten</h3>
+<h2 id="constraint-entfernen-und-neu-setzen">Constraint entfernen und neu setzen</h2>
 
-<p>Anschliessend können diese Dateien auf verschiedene Arten im Beiträge bzw. in der Seite eingebunden werden. Ein Bild kann als „Beitragsbild“ festgelegt werden, und wird dann bei manchen Themes besonders angezeigt.</p>
+<p>Mit diesen Befehlen können wir das alte Constraint entfernen,
+und dann neu setzen:</p>
 
-<p><img src='/images/wordpress-bild-einfuegen.png'  alt="Abbildung 112: Verwendung von Bildern in Wordpress" ></p>
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+ALTER TABLE zimmerbuchung
+DROP CONSTRAINT zimmerbuchung_zinr_fkey;
+
+ALTER TABLE zimmerbuchung
+add CONSTRAINT zimmerbuchung_zinr_fkey
+FOREIGN KEY (zinr) 
+REFERENCES zimmer(zinr)
+ON DELETE CASCADE;
+</pre></div>
+
+<p>Aber wie führen wir diese SQL Befehle am besten aus?</p>
+
+
+<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
+<p>So ein kleiner Änderungs-Schritt in der Datenbank wird auch Migration genannt.
+Wir müssen sicherstellen, dass die Migration sowohl auf dem Entwicklungsrechner
+als auch auf dem Production-Server durchgeführt wird.
+Migrations sind genau so wichtig
+wie der Programmcode, und sollten auch im Versionskontrollsystem erfasst werden.</p>
+
+<p>Bei Migrations ist die Reihenfolge wichtig.  Wir könnten sie
+also der Reihe nach in einer Daten speichern, oder einzelne Dateien anlegen
+deren Reihenfolge aus dem Dateinamen erkennbar ist, z.B:</p>
+
+<p><code>
+migration-1-add-description.sql
+migration-2-foreigen-key-zimmerbuchung.sql
+migration-3....
+</code></p>
 
 
 		
@@ -89,11 +161,11 @@
     
       
       
-      <li><a href="/wordpress/seiten/">Beiträge und Seiten</a></li>
+      <li><a href="/php-db-optimierung/">Änderungen, Constraints und Transaktionen in der DB</a></li>
       
       
       
-      <li><a href="/wordpress/themes-sidesbars-widgets/">Themes, Sidebars und Widgets verwenden</a></li>
+      <li><a href="/php-db-optimierung/indexes/">Indexes</a></li>
       
     
   </ul>
@@ -575,7 +647,7 @@
               </ul>
             </li>
           
-          <li class=" separator"><a href="/php-db-optimierung/">Php Db Optimierung</a>
+          <li class="active separator"><a href="/php-db-optimierung/">Php Db Optimierung</a>
               <ul class="sub">
                 
                   
@@ -583,7 +655,7 @@
                       
                     
                       
-                      <li ><a href="/php-db-optimierung/alter/">Änderungen an der Datenbank</a></li>
+                      <li class="active"><a href="/php-db-optimierung/alter/">Änderungen an der Datenbank</a></li>
                       
                     
                       
@@ -851,7 +923,7 @@
               </ul>
             </li>
           
-          <li class="active "><a href="/wordpress/">Wordpress</a>
+          <li class=" "><a href="/wordpress/">Wordpress</a>
               <ul class="sub">
                 
                   
@@ -879,7 +951,7 @@
                       
                     
                       
-                      <li class="active"><a href="/wordpress/multimedia/">Medien</a></li>
+                      <li ><a href="/wordpress/multimedia/">Medien</a></li>
                       
                     
                       
@@ -993,7 +1065,7 @@
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/wordpress/multimedia.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-optimierung/alter.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

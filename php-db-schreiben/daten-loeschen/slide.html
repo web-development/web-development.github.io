@@ -120,7 +120,7 @@ es gschafft hat ihr SQL hinein zu “injiziert”.</p>
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 
 <p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
-Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt, darf sie
+Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt darf diese
 verwendet werde. Das kann man auf verschiedene Arten prüfen, 
 z.B. mit der Funktion <code>filter_var</code>:</p>
 
@@ -132,6 +132,7 @@ if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
   echo(&quot;variable id is false!&quot;);
   exit;
 }
+$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
 </pre></div>
 
 </div>
@@ -139,7 +140,9 @@ if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
 
 
 
-<p>Oft sieht man auch Eingabeprüfungen mit Regular Expressions - die müssen Sie noch nicht verstehen:</p>
+<p>Oft sieht man auch Eingabeprüfungen mit Regular Expressions.
+Diese braucht man nur in Fällen wo es keinen fertigen
+Filter von <code>filter_var</code> gibt - also fast nie.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
