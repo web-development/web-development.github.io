@@ -58,12 +58,12 @@
             <p>
             
               
-              vorige Präsentation: <a href="/php-db-optimierung//slide.html">Änderungen, Constraints und Transaktionen in der DB</a> |
+              vorige Präsentation: <a href="/php-db-optimierung/constraints//slide.html">Constraints</a> |
                         
             <a href="/php-db-optimierung/alter/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/php-db-optimierung/indexes//slide.html">Indexes</a>
+             | Nächste Präsentation <a href="/php-db-optimierung/transaktionen//slide.html">Transaktionen</a>
             
             </p>
           </div>
@@ -148,7 +148,22 @@ REFERENCES zimmer(zinr)
 ON DELETE CASCADE;
 </pre></div>
 
-<p>Aber wie führen wir diese SQL Befehle am besten aus?</p>
+</div>
+<div class='slide'>
+
+
+
+<p>Leider gibt es nicht für Alles ein einfaches <code>ALTER</code> statement.
+Wenn man eine Tabelle mit einem <code>PRIMARY KEY</code> als <code>INTEGER</code> angelegt hat
+und im Nachhinein ein <code>SERIAL</code> daraus machen will ist das sehr viel Arbeit:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+-- CREATE TABLE gast (kunr INTEGER PRIMARY KEY, 
+CREATE SEQUENCE gast_kunr_seq OWNED BY gast.kunr;
+SELECT setval(&#39;gast_kunr_seq&#39;, coalesce(max(kunr), 1)) FROM gast;
+ALTER TABLE gast ALTER COLUMN kunr SET DEFAULT nextval(&#39;gast_kunr_seq&#39;);
+</pre></div>
 
 </div>
 <div class='slide'>
@@ -176,12 +191,12 @@ migration-3....
             <p>
             
               
-              vorige Präsentation: <a href="/php-db-optimierung//slide.html">Änderungen, Constraints und Transaktionen in der DB</a> |
+              vorige Präsentation: <a href="/php-db-optimierung/constraints//slide.html">Constraints</a> |
                         
             <a href="/php-db-optimierung/alter/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/php-db-optimierung/indexes//slide.html">Indexes</a>
+             | Nächste Präsentation <a href="/php-db-optimierung/transaktionen//slide.html">Transaktionen</a>
             
             </p>
           </div>

@@ -131,10 +131,25 @@ REFERENCES zimmer(zinr)
 ON DELETE CASCADE;
 </pre></div>
 
-<p>Aber wie führen wir diese SQL Befehle am besten aus?</p>
-
 
 <a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+
+
+
+<p>Leider gibt es nicht für Alles ein einfaches <code>ALTER</code> statement.
+Wenn man eine Tabelle mit einem <code>PRIMARY KEY</code> als <code>INTEGER</code> angelegt hat
+und im Nachhinein ein <code>SERIAL</code> daraus machen will ist das sehr viel Arbeit:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+-- CREATE TABLE gast (kunr INTEGER PRIMARY KEY, 
+CREATE SEQUENCE gast_kunr_seq OWNED BY gast.kunr;
+SELECT setval(&#39;gast_kunr_seq&#39;, coalesce(max(kunr), 1)) FROM gast;
+ALTER TABLE gast ALTER COLUMN kunr SET DEFAULT nextval(&#39;gast_kunr_seq&#39;);
+</pre></div>
+
+
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 
 
@@ -161,11 +176,11 @@ migration-3....
     
       
       
-      <li><a href="/php-db-optimierung/">Änderungen, Constraints und Transaktionen in der DB</a></li>
+      <li><a href="/php-db-optimierung/constraints/">Constraints</a></li>
       
       
       
-      <li><a href="/php-db-optimierung/indexes/">Indexes</a></li>
+      <li><a href="/php-db-optimierung/transaktionen/">Transaktionen</a></li>
       
     
   </ul>
@@ -655,15 +670,15 @@ migration-3....
                       
                     
                       
-                      <li class="active"><a href="/php-db-optimierung/alter/">Änderungen an der Datenbank</a></li>
-                      
-                    
-                      
                       <li ><a href="/php-db-optimierung/indexes/">Indexes</a></li>
                       
                     
                       
                       <li ><a href="/php-db-optimierung/constraints/">Constraints</a></li>
+                      
+                    
+                      
+                      <li class="active"><a href="/php-db-optimierung/alter/">Änderungen an der Datenbank</a></li>
                       
                     
                       
