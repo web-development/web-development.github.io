@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - A5 - Autorisierung</title>
+  <title>Lehrbuch Web-Development - A5 - Zugriffskontrolle</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,18 +45,18 @@
 		
 			
                           <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>A5 - Autorisierung</h2>
+				<h2 class="title"><a id="slide-0"></a>A5 - Zugriffskontrolle</h2>
                                 <a href="/security/a7-url/slide.html">als Präsentation ▻</a>
                           </div>
 			
 			
 			<a id='slide-1'></a>
-<p>Auf Platz 5 der OWASP Top 10 2017.</p>
+<p>Auf Platz 5 der OWASP Top 10 2017: <strong>Fehler in der Zugriffskontrolle</strong></p>
 
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
 
 <blockquote>
-  <p>Die meisten betroffenen Anwendungen realisieren Zugriffsberechtigungen nur durch das Anzeigen  oder Ausblenden von Funktionen in der Benutzeroberfläche. Allerdings muss auch beim direkten Zugriff auf eine geschützte Funktion eine Prüfung der Zugriffsberechtigung auf dem Server stattfinden, ansonsten können Angreifer durch gezieltes Manipulieren von Anfragen ohne Autorisierung trotzdem auf diese zugreifen.</p>
+  <p>[…] Anwendungen realisieren Zugriffsberechtigungen nur durch das Anzeigen oder Ausblenden von Funktionen in der Benutzeroberfläche. Allerdings muss auch beim direkten Zugriff auf eine geschützte Funktion eine Prüfung der Zugriffsberechtigung auf dem Server stattfinden, ansonsten können Angreifer durch gezieltes Manipulieren von Anfragen ohne Autorisierung trotzdem auf diese zugreifen.</p>
 </blockquote>
 
 
@@ -83,6 +83,27 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 
 <a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
 
+<h2 id="beispiele">Beispiele</h2>
+
+<p>Ich benutze ein Online Banking System. Die URL meines Kontos ist</p>
+
+<p><code>https://www.onlinebank.com/user?acct=6065</code></p>
+
+<p>Ich verändere die URL, und probiere aus ob ich so Zugang zu weiteren Konten erhalte:</p>
+
+<p><code>https://www.onlinebank.com/user?acct=6066</code></p>
+
+<p>Ich benutze ein Galerie um Fotos zu betrachten. Die URL für ein bestimmtes Bild ist</p>
+
+<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
+
+<p>Ich verändere die URL, und versuche so die Anzeige von interessanten Dateien im System zu verursachen:</p>
+
+<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
+
+
+<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+
 <h2 id="jede-php-datei-jede-url-ist-ein-einstiegspunkt">Jede PHP-Datei, Jede URL ist ein Einstiegspunkt</h2>
 
 <p>Jede einzelne PHP-Datei die im Webspace liegt kann auch direkt
@@ -102,53 +123,7 @@ PHP-Datei zuerst die Zugriffsrechte zu prüfen.</p>
 Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
-
-<h2 id="mehr">Mehr</h2>
-
-<p>Die OWASP bietet noch vertiefende Informationen zu diesem Thema an:</p>
-
-<ul>
-  <li><a href="http://www.owasp.org/index.php/Guide_to_Authorization">OWASP Development Guide: Chapter on Authorization</a></li>
-  <li><a href="http://www.owasp.org/index.php/Testing_for_Path_Traversal">OWASP Testing Guide: Testing for Path Traversal</a></li>
-</ul>
-
-
 <a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
-
-<h2 id="alter-text-von-unsichere-direkte-objektreferenzend">Alter Text von “Unsichere direkte Objektreferenzend”</h2>
-
-<p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
-
-<blockquote>
-  <p>Webanwendungen nutzen oft den internen Namen oder die Kennung eines Objektes, um auf dieses zu verweisen. BenutzerInnen können Parameter ändern, um diese Schwachstellen zu entdecken.</p>
-</blockquote>
-
-<p>Dieser Punkt hängt eng mit <a href="A8 - Mangelhafter URL-Zugriffsschutz">/security/a8-url/</a> zusammen.</p>
-
-
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
-
-<h2 id="beispiel-fr-unsichere-direkte-referenz">Beispiel für unsichere direkte Referenz</h2>
-
-<p>Ich benutze ein Online Banking System. Die URL meines Kontos ist</p>
-
-<p><code>https://www.onlinebank.com/user?acct=6065</code></p>
-
-<p>Ich verändere die URL, und probiere aus ob ich so Zugang zu weiteren Konten erhalte:</p>
-
-<p><code>https://www.onlinebank.com/user?acct=6066</code></p>
-
-<p>Ich benutze ein Galerie um Fotos zu betrachten. Die URL für ein bestimmtes Bild ist</p>
-
-<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
-
-<p>Ich verändere die URL, und versuche so die Anzeige von interessanten Dateien im System zu verursachen:</p>
-
-<p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
-
-
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="vermeidung-von-unsichere-direkten-referenzen">Vermeidung von unsichere direkten Referenzen</h2>
 
@@ -164,7 +139,7 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
 <h2 id="slugs-statt-keys">Slugs statt Keys</h2>
 
@@ -180,7 +155,7 @@ statt IDs verwendet. Sie sind auch unter dem namen “friendly urls” und (z.B.
 </ol>
 
 <p>Mit folgender Konfigurations-Datei <code>.htaccess</code> wir der Apache-Webserver angewiesen
-beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Programm <code>view_item.php</code> mit dem Parameter 
+beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Programm <code>view_item.php</code> mit dem Parameter
 <code>slug=text-der-slug</code> aufzurufen:</p>
 
 <div class="example">
@@ -188,13 +163,13 @@ beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Pro
 <pre class="lang-plain prettyprint linenums">
 RewriteEngine on
 
-RewriteRule ^item/([-a-z]+) view_item.php?slug=$1
+RewriteRule ^item/([-a-z]+) view_item.php?slug=\$1
 </pre></div>
 
 <p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
 
 <h2 id="kein-zugriff-auf-beliebige-dateien">Kein Zugriff auf beliebige Dateien</h2>
 
@@ -225,6 +200,17 @@ Dateien am Server “erforschen”.</p>
   <li>In der Applikation selbst: mit einer whitelist wird nur der Zugriff auf ausgewählte Dateien erlaubt.</li>
 </ul>
 
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+<h2 id="mehr">Mehr</h2>
+
+<p>Die OWASP bietet noch vertiefende Informationen zu diesem Thema an:</p>
+
+<ul>
+  <li><a href="http://www.owasp.org/index.php/Guide_to_Authorization">OWASP Development Guide: Chapter on Authorization</a></li>
+  <li><a href="http://www.owasp.org/index.php/Testing_for_Path_Traversal">OWASP Testing Guide: Testing for Path Traversal</a></li>
+</ul>
 
 		
 			<div class="pagination">
@@ -946,7 +932,7 @@ Dateien am Server “erforschen”.</p>
                       
                     
                       
-                      <li class="active"><a href="/security/a7-url/">A5 - Autorisierung</a></li>
+                      <li class="active"><a href="/security/a7-url/">A5 - Zugriffskontrolle</a></li>
                       
                     
                       
