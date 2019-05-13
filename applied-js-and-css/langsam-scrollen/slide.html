@@ -63,7 +63,7 @@
             <a href="/applied-js-and-css/langsam-scrollen/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/applied-js-and-css/responsive-images//slide.html">Responsive Images</a>
+             | Nächste Präsentation <a href="/applied-js-and-css/landkarte//slide.html">Landkarte</a>
             
             </p>
           </div>
@@ -146,14 +146,29 @@ let hash = this.hash; // z.B. &#39;#order&#39;
 <h2 id="zum-element-hin-scrollen">Zum Element hin Scrollen</h2>
 
 <p>Die DOM-Methode <a href="scrollIntoView">https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView</a>
-erledigt das eigentliche Scrollen zum Element hin. (In 2017 ist die Option “smooth” in Safari
-und IE noch nicht implementiert. Hier würde ein <a href="polyfill">http://iamdustan.com/smoothscroll/</a> helfen - eine Javascript Libary
-die die fehlende Funktionalität implementiert.)</p>
+erledigt das eigentliche Scrollen zum Element hin.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 document.querySelector(hash).scrollIntoView({ behavior: &quot;smooth&quot; });
 </pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="kompatibilitt">Kompatibilität</h2>
+
+<p>Die Funktion scrollIntoView wird nicht von allen Browsern implementiert.
+Woher kann ich das wissen? Wie kann ich damit umgehen.</p>
+
+<p>Ein guter Startpunkt für diese Fragen ist die Webseite “can i use”. Hier kann
+man für verschiedene HTML, CSS, JavaScript Features nachlesen welche
+Browser dieses Feature unterstützen. In diesem Fall unter <a href="https://caniuse.com/#search=scrollintoview">https://caniuse.com/#search=scrollintoview</a>.</p>
+
+<p>Bei caniuse lernen wi: in 2019 ist die Option “smooth” in Safari
+und IE noch nicht implementiert. Unter dem Tab “Resourcse” liefert die Seite
+auch gleich eine Lösung: Ein <a href="polyfill">http://iamdustan.com/smoothscroll/</a> - eine Javascript Libary
+die die fehlende Funktionalität implementiert: <a href="http://iamdustan.com/smoothscroll/">smooth scroll behavior polyfill</a>.</p>
 
 </div>
 <div class='slide'>
@@ -170,7 +185,7 @@ sondern weiterhin die URL <code>http://users.multimediatechnology.at/~fhs0000/pi
 <p>Ohne Korrekte URL funktioniert die Navigation nicht wie erwartet:</p>
 
 <p>z.B. Lisa liest einen Eintrag im Gästebuch, findet ihn witzig, und schickt den
-Link weiter an Bart. Wenn Bart die URL verwendet landet er aber ganz oben auf
+Link weiter an Bart. Wenn Bart die URL verwendet, landet er aber ganz oben auf
 der Seite, und versteht nicht was Lisa so witzig findet.</p>
 
 <p>z.B. Homer betrachtet gerade seinen Kontostand im Online-Banking und ist deprimiert.
@@ -178,8 +193,8 @@ Um seine Laune zu heben will er eine Pizza bestellen, und tippt die URL der Pizz
 Im Navigationsmenü klickt auf “Speisekarte”, sucht sich eine Pizza aus, und klickt danach auf “Online Bestellen”.
 Er hat aber schon wieder vergessen welche Pizza er wollte, und verwendet den “Zurück”-Button des Browsers
 um zur Speisekarte zurück zu gehen. Statt dessen landet er aber wieder im Online-Banking.
-(Für den “Zurück”-Button zählt eine Seite nur, wenn sie eine eigene URL hat. Da die Klicks
-im Navigationsmenü der Pizzaria-Seite die URL nicht verändert haben zählen sie nicht ).</p>
+Denn für den “Zurück”-Button zählt eine Seite nur, wenn sie eine eigene URL hat. Da die Klicks
+im Navigationsmenü der Pizzaria-Seite die URL nicht verändert haben zählen sie nicht.</p>
 
 <p>Wenn wir die erwartete Funktionsweise des Browsers wiederherstellen wollen,
 müssen wir die korrekte URL setzen.</p>
@@ -233,7 +248,7 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
             <a href="/applied-js-and-css/langsam-scrollen/">zurück zum Buch-Kapitel [esc]</a>
             
               
-             | Nächste Präsentation <a href="/applied-js-and-css/responsive-images//slide.html">Responsive Images</a>
+             | Nächste Präsentation <a href="/applied-js-and-css/landkarte//slide.html">Landkarte</a>
             
             </p>
           </div>

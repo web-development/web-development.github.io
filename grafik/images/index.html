@@ -51,11 +51,16 @@
 			
 			
 			<a id='slide-1'></a>
-<p>Im [/das-web-und-html/html-grundkurs/])(Grundkurs HTML) haben wir kurz drei 
-Bildformate kennen gelernt: gif, jpg und png.</p>
+<p>Im <a href="/das-web-und-html/html-grundkurs/">Grundkurs HTML</a> haben wir als
+erstes Bildformat <code>svg</code> gennen gelernt. Für Photos kann man aber
+kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>jpg</code>.</p>
 
-<p>Mobile Geräte mit sehr hoher Pixeldichte stellen das Web Design vor ein
-Dilemma: soll ich - wegen der Pixeldichte - riesige Bilder ausliefern?
+<p>Genau mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
+Grundeigenschaft des Web:</p>
+
+<p>Mobile Geräte mit sehr <a href="/css-layout/rahmenbedingungen/#slide-4">hoher Pixeldichte</a>
+stellen das Web Design vor ein
+Dilemma: soll ich - wegen der hochen Auflösung und Pixeldichte - riesige Bilder ausliefern?
 Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
 das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 
@@ -65,7 +70,7 @@ das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
 <h1 id="responsive-images">Responsive Images</h1>
 
 <p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
-Ausser vom Internet Explorer wird das Attribut 2016 von
+Ausser vom Internet Explorer wird das Attribut seit 2017 von
 allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
 
 <p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
@@ -77,8 +82,8 @@ der Browser entscheidet welche Version er lädt und darstellt.</p>
        srcset=&quot;salzburg.jpg, salzburg@2x.jpg 2x, salzburg@4x.jpg 4x&quot;&gt;
 </pre></div>
 
-<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel dargestellt.
-Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
+<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel (hier 1353 mal 461 Pixel)
+dargestellt. Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
 zur Verfügung, die der Browser laden und darstellen kann.</p>
 
 
@@ -105,9 +110,48 @@ der <strong>2x</strong> Version.</p>
 
 <a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
 
-<h1 id="moderne-bildformate">Moderne Bildformate</h1>
+<h1 id="bilder-erzeugen">Bilder erzeugen</h1>
 
-<p>TODO: Ergänzen</p>
+<p>Auf Mac und Unix kann man die “imagemagick” command line tools
+benutzen um die nötigen Bild-Varianten zu erstellen: mit <code>identify</code>
+kann man Größe und Format von Bildern feststellen, mit <code>mogrify -geometry</code>
+kann man die Größe eines Bildes verändern:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ identify reviews*
+reviews.jpg JPEG 7117x4090 7117x4090+0+0 8-bit sRGB 45.56MB 0.000u 0:00.000
+
+\$ cp reviews.jpg reviews-4000x.jpg
+
+\$ mogrify -geometry 4000x reviews-4000x.jpg
+
+\$ identify reviews-4000x.jpg
+reviews-4000x.jpg JPEG 4000x2299 4000x2299+0+0 8-bit sRGB 13.94MB 0.010u 0:00.019
+
+\$ cp reviews-4000x.jpg reviews-2000x.jpg
+
+\$ mogrify -geometry 50% reviews-2000x.jpg
+
+\$ identify reviews-2000x.jpg
+reviews-2000x.jpg JPEG 2000x1150 2000x1150+0+0 8-bit sRGB 3.584MB 0.000u 0:00.009
+
+\$ cp reviews-2000x.jpg reviews-1000x.jpg
+
+\$ mogrify -geometry 50% reviews-1000x.jpg
+
+\$ identify reviews\*
+reviews-1000x.jpg JPEG 1000x575 1000x575+0+0 8-bit sRGB 839KB 0.000u 0:00.000
+reviews-2000x.jpg JPEG 2000x1150 2000x1150+0+0 8-bit sRGB 3.584MB 0.000u 0:00.000
+reviews-4000x.jpg JPEG 4000x2299 4000x2299+0+0 8-bit sRGB 13.94MB 0.000u 0:00.000
+reviews.jpg JPEG 7117x4090 7117x4090+0+0 8-bit sRGB 45.56MB 0.000u 0:00.000
+
+\$ du -h reviews\*
+820K reviews-1000x.jpg
+3,4M reviews-2000x.jpg
+13M reviews-4000x.jpg
+43M reviews.jpg  
+</pre></div>
 
 
 <a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
@@ -730,10 +774,6 @@ der <strong>2x</strong> Version.</p>
                     
                       
                       <li ><a href="/applied-js-and-css/langsam-scrollen/">Langsam Scrollen</a></li>
-                      
-                    
-                      
-                      <li ><a href="/applied-js-and-css/responsive-images/">Responsive Images</a></li>
                       
                     
                       
