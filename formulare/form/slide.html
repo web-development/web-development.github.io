@@ -91,7 +91,7 @@ Suchmaschine Google und ein Bestellformular.</p>
 
 <h2 id="tags-fr-formulare">Tags für Formulare</h2>
 
-<p>Mit den  HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
+<p>Mit den HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
 Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
 <div class="example">
@@ -124,7 +124,7 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
 <h2 id="eingabefelder">Eingabefelder</h2>
 
-<p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf.</p>
+<p>Innerhalb des <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf.</p>
 
 </div>
 <div class='slide'>
@@ -152,8 +152,8 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
     </tr>
     <tr>
       <td>mehrzeiliges Textfeld</td>
-      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit.  &lt;/textarea&gt;</code></td>
-      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit.  </textarea></td>
+      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit. &lt;/textarea&gt;</code></td>
+      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit. </textarea></td>
     </tr>
   </tbody>
 </table>
@@ -336,6 +336,29 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
   <option>Sublime</option>
 </select>
 </form>
+
+</div>
+<div class='slide'>
+
+<h2 id="textfelder-mit-vorschlgen">Textfelder mit Vorschlägen</h2>
+
+<p>Das Textfeld mit <code>datalist</code> kombiniert die Bequemlichkeit
+eines Menüs mit der Flexiblität eines Textfeldes: Man bekommt
+Vorschläge angeboten, kann aber auch etwas eintippen
+was nicht in der <code>datalist</code> angeführt ist.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Textfeld mit Datalist</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot; /&gt;
+&lt;datalist id=&quot;list-of-cities&quot;&gt;
+    &lt;option value=&quot;Salzburg&quot;&gt;
+    &lt;option value=&quot;Wien&quot;&gt;
+    &lt;option value=&quot;München&quot;&gt;
+    &lt;option value=&quot;Innsbruck&quot;&gt;
+    &lt;option value=&quot;Linz&quot;&gt;
+&lt;/datalist&gt;
+</pre></div>
 
 </div>
 <div class='slide'>

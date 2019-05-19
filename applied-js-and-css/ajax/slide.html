@@ -70,7 +70,7 @@
 	  <div class='slide'>
 <p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
 wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
-(URL eintippen, Link anklicken), oder um Ressourcen nachzuladen
+(URL eintippen, Link anklicken), oder um Ressourcen zu laden
 die zu einem HTML-Dokument gehören.</p>
 
 <p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
@@ -85,17 +85,20 @@ verwendet werden: Asynchrone Requests.</p>
 diesem Kapitel lernen Sie was das genau bedeutet, und dass sich hinter dem X
 zum Schluss auch andere Format verbergen können</p>
 
-<p>Ein Beispiel für die Verwendung von AJAX ist das in Abbildung 50 gezeigte Eingabefeld:
+<p>Ein Beispiel für die Verwendung von AJAX ist das in der Abbildung unten
+gezeigte Eingabefeld:
 schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserver
 geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Namen. Diese Liste
 wird mit Javascript in einer <code>div</code> unterhalb des Eingabefelds angezeigt:</p>
 
 <p><img src='/images/image375.png'  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
 
-<p>Mit AJAX wird hier eine HTTP-Anfrage gesendet. Der Unterschied zu einer
-„normalen“ HTTP-Anfrage: Bei einer „normalen“ HTTP-Anfrage schaltet der Browser auf
-„Warten“, eine neue vollständige Webseite wird geladen und angezeigt.
-Asynchron heisst: der Request wird abgesetzt, das Javascript-Programm läuft sofort
+<p>Mit AJAX wird hier eine HTTP-Anfrage gesendet.</p>
+
+<p>Bei einer „normalen“ HTTP-Anfrage schaltet der Browser auf
+„Warten“, eine neue vollständige Webseite wird geladen und angezeigt.</p>
+
+<p>Asynchron heisst hier: der Request wird abgesetzt, das Javascript-Programm läuft sofort
 weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort
 des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen und ein
 Javascript-Programm fügt die Daten in die Seite ein.</p>
@@ -135,10 +138,12 @@ Befehl3();                         // kurz darauf
 Befehl4();
 </pre></div>
 
-<p><code>Befehl3</code> kann sofort ausgeführt werden, egal ob und wie schnell der Server antwortet.
-Wenn die Daten vom Server schließlich einlangen wird die Funktion handle_data
-aufgerufen und die Daten zu verarbeiten. Das kann z.B. gleichzeitig mit <code>Befehl4</code>
-erfolgen.</p>
+<p><code>Befehl3</code> und <code>Befehl4</code> können sofort ausgeführt werden,
+egal ob und wie schnell der Server antwortet. Das Javascript-Programm (befehle 1 bis 4)
+läuft vollständig ab.</p>
+
+<p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handle_data</code>
+aufgerufen und die Daten zu verarbeiten.</p>
 
 </div>
 <div class='slide'>
@@ -161,7 +166,11 @@ Eingabefeld löst ein Javascript-Programm aus, das einen AJAX-Request absetzt.
 Am Netzwerk ist das ein ganz normaler HTTP Request, für den Server gibt
 es keinen Unterschied zu jedem anderen Request.</p>
 
-<p>Was anders ist, ist das Verhalten des Browsers: Wenn die Daten des Response
+<p>Was anders ist, ist das Verhalten des Browsers: Das Absenden des Requests
+bleibt die Webseite bestehen und bleibt interaktiv - das Absenden passiert
+meist von der UserIn unbemerkt.</p>
+
+<p>Wenn die Daten des Response
 einlangen wird <strong>nicht</strong> die Seite gelöscht, sondern es wird eine
 Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
 Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
@@ -176,12 +185,7 @@ die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.<
 
 <p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server
 können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
-Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.
-Das wichtigste Javascript-Konstrukt für AJAX ist das XMLHTTPRequestObject., das der
-Javascript-Interpreter des Browsers zur Verfügungs stellt. Leider gibt es bei diesem
-Objekt Unterschiede zwischen den Browsern. Um diese Unannehmlichkeiten zu
-vermeiden, sollte man fertige Libraries verwenden, die die Browser-Unterschiede
-verbergen.</p>
+Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
 
 </div>
 <div class='slide'>
@@ -196,147 +200,200 @@ eingebunden.</p>
 <pre class="lang-html prettyprint linenums">
 &lt;html&gt;
 &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;AJAX counter&lt;/title&gt;
-  &lt;style&gt;
-      p#counter_zeile { display: none; }
-  &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;Webseite&lt;/h1&gt;
 
   &lt;p&gt;mit total viel Inhalt&lt;/p&gt;
 
-  &lt;p id=&quot;counter_zeile&quot;&gt;Counter: &lt;span id=&quot;counter_zahl&quot;&gt;?&lt;/span&gt;&lt;/p&gt;
-
   &lt;script&gt;
-    window.addEventListener(&#39;load&#39;, loadCounterWithAjax);
-
-    function loadCounterWithAjax() {
-      document.getElementById(&#39;counter_zeile&#39;).style.display = &quot;block&quot;;
-      var ajax_request = new XMLHttpRequest();
-      ajax_request.addEventListener(&#39;load&#39;, handleCounterData);
-      ajax_request.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
-      ajax_request.send();
-      console.log(&quot;Request wurde gesendet&quot;);
-    }
-
     function handleCounterData() {
       console.log(&quot;Response wurde empfangen&quot;);
-      document.getElementById(&#39;counter_zahl&#39;).innerHTML = 
-        this.responseText;
+      let counter = this.responseText;
+      // counter enhält jetzt den output des php programms
     }
+
+    let ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.addEventListener(&quot;load&quot;, handleCounterData);
+    ajaxRequest.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
+    ajaxRequest.send(); 
+    console.log(&quot;abgesendet, sofort weiter&quot;;   
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
 
-<p>Für den Fall das Javascript nicht funktioniert wird die ganze Counter-Zeile nicht
-angezeigt (display:none als style). Falls Javascript funktioniert wird die
-Zeile eingeblendet.</p>
-
 <p>Das <code>XMLHttpRequest</code> Objekt liefert verschiedene Events, hier wird nur für das <code>load</code> Event
-eine Funktion als Listener angebracht. Mit der <code>open</code> methode wird der HTTP-Request
+eine Funktion als Listener angebracht. Mit der <code>open</code> Methode wird der HTTP-Request
 konfiguriert, aber erst mit <code>send</code> wirklich abgeschickt. Da er Request asynchron erfolgt
-geht der Javascript-Interpreter sofort von Zeile 23 in Zeile 24 weiter, und wartet
-nicht auf den HTTP-Response.</p>
+geht der Javascript-Interpreter sofort von <code>send</code> weiter zu <code>console.log</code> in der nächsten
+Zeile.</p>
 
 <p>Erst sehr viel später, wenn der HTTP-Response vorliegt, wird die Funktion
 <code>handleCounterData</code> aufgerufen. Die Funktion erhält das <code>XMLHttpRequest</code> Objekt
-in der Variable <code>this</code>.</p>
+in der Variable <code>this</code> und kann aus <code>this.responseText</code> die Antwort auslesen.</p>
 
 </div>
 <div class='slide'>
 
-<h2 id="simples-beispiel">Simples Beispiel</h2>
+<h2 id="fetch-und-promises">Fetch und Promises</h2>
 
-<p>TODO: jQuery entfernen!</p>
-
-<p>jQuery bietet einige Vereinfachungen gegenüber Javascript:
-die Funktion <code>load</code> erledigt nicht nur den AJAX Request, sondern
-auch das Einfügen des Rückgabewerts in eine DOM Node:</p>
+<p>In modernem Javascript, in allen Browsern <a href="https://caniuse.com/#search=fetch">ausser Internet Explorer</a>, gibt es
+eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a>.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
-  &lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;AJAX counter&lt;/title&gt;
-    &lt;style&gt;
-        p#counter_zeile { display: none; }
-    &lt;/style&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Webseite&lt;/h1&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;AJAX counter&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Webseite&lt;/h1&gt;
 
-    &lt;p&gt;total viel Inhalt&lt;/p&gt;
+  &lt;p&gt;mit total viel Inhalt&lt;/p&gt;
 
-    &lt;p id=&quot;counter_zeile&quot;&gt;Counter: &lt;span id=&quot;counter_zahl&quot;&gt;?&lt;/span&gt;&lt;/p&gt;
-
-    &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-    $(document).ready(function(){
-        $(&quot;p#counter_zeile&quot;).show();
-        $(&quot;#counter_zahl&quot;).load(&quot;counter_ajax.php&quot;);
-    });
-    &lt;/script&gt;
-
-  &lt;/body&gt;
-  &lt;/html&gt;
+  &lt;script&gt;
+    fetch(&quot;counter_ajax.php&quot;)
+      .then(function(response) {
+        console.log(&quot;Response wird empfangen&quot;);
+        let counter = response.text();
+        return counter;
+      })
+      .then(function(counter) {
+        console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
+        // ...
+      }); 
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre></div>
 
-<p>Die ganze Arbeit macht hier jQuery in der Zeile</p>
-
-<p><code>$("#counter_zahl").load("counter_ajax.php");</code></p>
-
-<p>Das Element mit der ID counter_zahl wird ausgewählt. Mit dem Load-Befehl wird eine
-AJAX-Anfrage an die angegebene URL abgesetzt. Wenn der HTTP-Response
-beim Browser ankommt, werden die gelieferten Daten in das ausgewählte Element eingefügt.
-(Die gelieferten Daten sollten also reiner Text oder ein HTML-Fragment sein.)</p>
+<p>Mit <code>fetch</code> wird die Reihenfolge des Ablaufs klarer, aber der Ablauf
+wird auch komplizierter: ein weiterer asynchroner Verarbeitungsschritt
+kommt dazu: das auslesen des Textes aus dem Response.</p>
 
 </div>
 <div class='slide'>
 
-<h2 id="autocomplete-mit-jquery-ui">Autocomplete mit jQuery-UI</h2>
+<h2 id="promises">Promises</h2>
 
-<p>In der Library jquery-ui gibt es eine fertige <a href="https://jqueryui.com/autocomplete/#remote">autocomplete funktion</a>. Um sie zu verwenden, zwei muss man sowohl CSS als auch Javascript
-einbinden:</p>
+<p>Der Rückgabewert der funktion <code>fetch</code> ist eine <strong>Promise</strong>: ein Objekt,
+das den Umgang mit einer asynchrone Operation einfacher machen soll.
+Es ist ein Platzhalter für das Ergebnis der Operation, das noch nicht
+bekannt ist. In anderen Programmiersprachen ist die Promise auch als
+Future oder Deferred bekannt, siehe <a href="https://en.wikipedia.org/wiki/Futures_and_promises">wikipedia</a>.</p>
 
-<p>Auf https://code.jquery.com/ui/ findet man die Links zu:</p>
-
-<ul>
-  <li>Dem “base” Theme - das ist die CSS Datei</li>
-  <li>der aktuellen jquery UI version, minified - das ist die Javscript Datei.</li>
-</ul>
-
-<div class="example">
-<h4 class="caption">Css Code <small>einbindung des themes in einer css datei</small></h4>
-<pre class="lang-css prettyprint linenums">
-  @import &quot;https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css&quot;;
-</pre></div>
-
-<html>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-</html>
-
-<p>So sieht der Beispiel-Code aus, der
-ein input feld <code>#birds</code> in ein autocomplete-feld verwandelt:</p>
+<p>Mit der Methode <code>then()</code> kann eine Funktion als Callback angegeben
+werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;#birds&quot;).autocomplete({
-  source: &quot;search.php&quot;,
-  minLength: 2,
-  select: function( event, ui ) {
-    console.log( &quot;Selected: &quot; + ui.item.value + &quot; aka &quot; + ui.item.id );
-  }
-});
+fetch(&quot;counter_ajax.php&quot;)
+  .then(function(response) {
+    console.log(&quot;Response wird empfangen&quot;);
+    // tu ws mit response response
+  })
 </pre></div>
 
-<p>Wenn nun in das eingabefeld mehr als 2 (Option <code>minLength</code>) Buchstaben
-eingetippt werden, dann wird ein HTTP Request and <code>source</code> geschickt,
-mit dem parameter <code>term</code>. Also zum Beispiel:</p>
+</div>
+<div class='slide'>
 
-<p><code>search.php?term=abc</code></p>
+<h3 id="chaining">Chaining</h3>
+
+<p>Angenommen mit dem Ergebnis einer asynchronen Operation
+soll
+eine weitere asynchrone Operation aufgerufen werden.</p>
+
+<p>Mit Promises funktionert das mittels “aneinanderhängen” mit <code>then</code>:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+fetch(&quot;counter_ajax.php&quot;)
+  .then(function(response) {
+    console.log(&quot;Response wird empfangen&quot;);
+    let counter = response.text();
+    return counter;
+  })
+  .then(function(counter) {
+    console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
+    // ...
+  }); 
+</pre></div>
+
+<p>Dieser Code kann mit Arrow-Functions noch kürzer werden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(function(counter) {
+    console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
+    // tu was mit counter
+  });
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
+
+<p>Für die Fehlerbehandlung gibt es zwei Schreibweisen, die
+üblichere ist die Verwendet von <code>catch</code>:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(function(counter) {
+    console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
+    // tu was mit counter
+  }).catch(error) {
+    console.log(error);
+  };
+</pre></div>
+
+<p>Aber Achtung: wenn der HTTP-Response z.B. 404 oder 500 ist, löst das noch
+keinen Error aus, der mit <code>catch</code> gefangen werden kann. Das müsste
+man selbst behandeln:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+fetch(&quot;counter_ajax.php&quot;)
+  .then(function(response){ 
+    if (response.status !== 200) {
+        throw new Error(&quot;Not 200 response&quot;);
+    } 
+    return response.text(); 
+  }).then(function(counter) {
+    console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
+    // tu was mit counter
+  }).catch(error) {
+    console.log(error);
+  };
+</pre></div>
+
+<p>Siehe auch</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="autocomplete">Autocomplete</h2>
+
+<p>Wir werden in diesem Beispiel ein Autocomplete-Feld bauen.
+Beginnen wir mit dem Backend:</p>
+
+</div>
+<div class='slide'>
+
+<h3 id="backend">Backend</h3>
+
+<p>Am Server</p>
+
+<p><code>search.php?query=a</code></p>
 
 <p>Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:</p>
 

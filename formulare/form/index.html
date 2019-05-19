@@ -74,7 +74,7 @@ Suchmaschine Google und ein Bestellformular.</p>
 
 <h2 id="tags-fr-formulare">Tags für Formulare</h2>
 
-<p>Mit den  HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
+<p>Mit den HTML-Tags <code>form</code>, <code>input</code>, <code>textarea</code>, <code>option</code>, <code>select</code> werden
 Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
 <div class="example">
@@ -107,7 +107,7 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
 <h2 id="eingabefelder">Eingabefelder</h2>
 
-<p>Innerhalb des  <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf.</p>
+<p>Innerhalb des <code>form</code>-Tag bauen Sie das Formular aus verschiedenen Eingabeelementen und den „normalen“ HTML-Tags auf.</p>
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
@@ -135,8 +135,8 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
     </tr>
     <tr>
       <td>mehrzeiliges Textfeld</td>
-      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit.  &lt;/textarea&gt;</code></td>
-      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit.  </textarea></td>
+      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit. &lt;/textarea&gt;</code></td>
+      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit. </textarea></td>
     </tr>
   </tbody>
 </table>
@@ -323,6 +323,29 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 
 <a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
+<h2 id="textfelder-mit-vorschlgen">Textfelder mit Vorschlägen</h2>
+
+<p>Das Textfeld mit <code>datalist</code> kombiniert die Bequemlichkeit
+eines Menüs mit der Flexiblität eines Textfeldes: Man bekommt
+Vorschläge angeboten, kann aber auch etwas eintippen
+was nicht in der <code>datalist</code> angeführt ist.</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Textfeld mit Datalist</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot; /&gt;
+&lt;datalist id=&quot;list-of-cities&quot;&gt;
+    &lt;option value=&quot;Salzburg&quot;&gt;
+    &lt;option value=&quot;Wien&quot;&gt;
+    &lt;option value=&quot;München&quot;&gt;
+    &lt;option value=&quot;Innsbruck&quot;&gt;
+    &lt;option value=&quot;Linz&quot;&gt;
+&lt;/datalist&gt;
+</pre></div>
+
+
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+
 <h2 id="spezialisierte-eingabefelder">Spezialisierte Eingabefelder</h2>
 
 <table class="table table-condensed table-bordered" style="width:auto">
@@ -351,7 +374,7 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 </table>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 <h2 id="absenden">Absenden</h2>
 
@@ -370,7 +393,7 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 </form>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
 
 
 
@@ -382,7 +405,7 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
 
 <h2 id="zurcksetzen-nein-danke">Zurücksetzen? Nein Danke!</h2>
 
@@ -403,7 +426,7 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 <p>Warum? Denken Sie an Ihre eigene Erfahrung mit Web-Formularen zurück: Wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „super, alles gelöscht, genau das wollte ich“, und wie oft haben Sie auf einen Zurücksetzen Button gedrückt und dann gedacht „Mist, das war ja gar nicht der Absende-Button, jetzt muss ich alles noch mal tippen.“</p>
 
 
-<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
+<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
 
 <h2 id="label">Label</h2>
 
@@ -420,7 +443,7 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 <p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört.</p>
 
 
-<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
+<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
 
 
 
@@ -443,7 +466,7 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 </pre></div>
 
 
-<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
+<a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
 
 <h2 id="weitere-eingabefelder">Weitere Eingabefelder</h2>
 
@@ -474,7 +497,7 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 speziellem enctype an den Webserver geschickt werden. Das werden wir später im Kapitel <a href="/php/datei-upload/">PHP und Datei Upload</a> behandeln.</p>
 
 
-<a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
+<a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
 
 <h2 id="ordnung">Ordnung</h2>
 
@@ -499,7 +522,7 @@ speziellem enctype an den Webserver geschickt werden. Das werden wir später im 
 </form>
 
 
-<a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
+<a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
 
 <h2 id="links">Links</h2>
 
