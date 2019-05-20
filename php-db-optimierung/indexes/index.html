@@ -77,7 +77,7 @@ Time: 674.327 ms
 
 
 
-<p>Warum dauert diese Abfrage so lange?  Das können wir mit dem Befehl <code>EXPLAIN</code> erforschen:</p>
+<p>Warum dauert diese Abfrage so lange? Das können wir mit dem Befehl <code>EXPLAIN</code> erforschen:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
@@ -144,6 +144,72 @@ Time: 0.775 ms
 
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+
+<h2 id="index-fr-volltexsuche">Index für Volltexsuche</h2>
+
+<p>Für Abfragen mit <code>LIKE</code> hilft ein normaler Index nicht.
+Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
+
+<p>Hier ein Beispiel: eine Tabelle mit Namen und Länderkürzel von ca. 170.000 Städten:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+# explain analyze SELECT concat(name,&#39;,&#39;,country) as label FROM city WHERE name ILIKE &#39;Salz%&#39;  ORDER BY name LIMIT 150;
+                                                      QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=3065.44..3065.48 rows=17 width=43) (actual time=1698.352..1698.370 rows=24 loops=1)
+   -&gt;  Sort  (cost=3065.44..3065.48 rows=17 width=43) (actual time=1698.350..1698.357 rows=24 loops=1)
+         Sort Key: name
+         Sort Method: quicksort  Memory: 26kB
+         -&gt;  Seq Scan on city  (cost=0.00..3065.09 rows=17 width=43) (actual time=1303.415..1679.370 rows=24 loops=1)
+               Filter: ((name)::text ~~* &#39;Salz%&#39;::text)
+               Rows Removed by Filter: 168780
+ Planning time: 1.086 ms
+ Execution time: 1698.456 ms
+(9 rows)
+</pre></div>
+
+
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+
+
+
+<p>Nun legen wir einen Index an:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
+</pre></div>
+
+
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+
+
+<p>Danach ist die Abfage wesentlich schneller:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+# explain analyze SELECT concat(name,&#39;,&#39;,country) as label FROM city WHERE name ILIKE &#39;Salz%&#39;  ORDER BY name LIMIT 150;
+                                                                QUERY PLAN
+------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=113.93..113.97 rows=17 width=43) (actual time=0.936..0.948 rows=24 loops=1)
+   -&gt;  Sort  (cost=113.93..113.97 rows=17 width=43) (actual time=0.935..0.940 rows=24 loops=1)
+         Sort Key: name
+         Sort Method: quicksort  Memory: 26kB
+         -&gt;  Bitmap Heap Scan on city  (cost=52.13..113.58 rows=17 width=43) (actual time=0.751..0.845 rows=24 loops=1)
+               Recheck Cond: ((name)::text ~~* &#39;Salz%&#39;::text)
+               Rows Removed by Index Recheck: 13
+               Heap Blocks: exact=11
+               -&gt;  Bitmap Index Scan on trgm_idx_city_name  (cost=0.00..52.13 rows=17 width=0) (actual time=0.676..0.676 rows=37 loops=1)
+                     Index Cond: ((name)::text ~~* &#39;Salz%&#39;::text)
+ Planning time: 0.962 ms
+ Execution time: 1.006 ms
+(12 rows)
+</pre></div>
+
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
@@ -973,11 +1039,11 @@ Time: 0.775 ms
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                   

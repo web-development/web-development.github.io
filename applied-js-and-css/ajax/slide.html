@@ -391,62 +391,91 @@ Beginnen wir mit dem Backend:</p>
 
 <h3 id="backend">Backend</h3>
 
-<p>Am Server</p>
+<p>Am Server befindet sich eine Datenbank mit ca. 170.000 Städten.
+Mit der Anfrage</p>
 
-<p><code>search.php?query=a</code></p>
+<p><code>search.php?term=w</code></p>
 
-<p>Die Antwort muss ein JSON-Dokument sein: Ein Array von Objekten:</p>
+<p>Werden nur die Städte die mit w beginnen geladen,
+und als JSON-Array zurück gegeben:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  [
-    {&quot;id&quot;:6552916,&quot;label&quot;:&quot;Salzbergen, DE&quot;},
-    {&quot;id&quot;:2842173,&quot;label&quot;:&quot;Salzböden, DE&quot;},
-    {&quot;id&quot;:2842172,&quot;label&quot;:&quot;Salzbrunn, DE&quot;},
-    {&quot;id&quot;:6554266,&quot;label&quot;:&quot;Salzburg, DE&quot;},
-    {&quot;id&quot;:2766824,&quot;label&quot;:&quot;Salzburg, AT&quot;},
-  ]
+[
+    &quot;Wa,GH&quot;,
+    &quot;WaKeeney,US&quot;,
+    &quot;Waabs,DE&quot;,
+    &quot;Waaia,AU&quot;,
+    &quot;Waajid,SO&quot;,
+    &quot;Waake,DE&quot;,
+    &quot;Waakirchen,DE&quot;,
+    &quot;Waal,DE&quot;,
+    ...
+    &quot;Wüstenzell,DE&quot;,
+    &quot;Wüstheuterode,DE&quot;,
+    &quot;Wāhan Murad,PK&quot;,
+    &quot;Wān Yampēng,MM&quot;,
+    &quot;Wŏnsŏngil-tong,KR&quot;,
+    &quot;Włocławek,PL&quot;,
+    &quot;Włodawa,PL&quot;,
+    &quot;Włoszczowa,PL&quot;,
+    &quot;Wāsiţ,EG&quot;,
+    &quot;Wąwolnica,PL&quot;
+]
 </pre></div>
 
-<p>Die Attribute <code>id</code> und <code>label</code> des Objekts werden verwendet, alle anderen
-werden ignoriert.</p>
+<p>Das sind ca. 5000 Namen.</p>
 
-<p>Wenn die Daten erfolgreich vom Server geladen wurden, wird eine funktion aufgerufen (<code>select</code>).</p>
-
-<p>Zum Testen kann man das Backend zuerst faken: einfach eine statische JSON-Datei
-unter dem Namen <code>search.json</code> abspeichern, und schon funktioniert es.</p>
-
-<p>Oder eine ganz kleine PHP-Datei, die nur den richtigen Content-Type setzt,
-und dann statische Daten zurück gibt:</p>
+<p>Beim Lesen aus der Datenbank wird ein Volltext-Index verwendet (siehe
+<a href="/php-db-optimierung/indexes/">Datenbank optimieren: Indexes</a>). Das
+sieht man aber weder der SQL-Query noch dem PHP an:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-  &lt;?php
-  header(&#39;Content-Type: application/json&#39;);
-  ?&gt;
-  [
-    {&quot;id&quot;:6552916,&quot;label&quot;:&quot;Salzbergen, DE&quot;},
-    {&quot;id&quot;:2842173,&quot;label&quot;:&quot;Salzböden, DE&quot;},
-    {&quot;id&quot;:2842172,&quot;label&quot;:&quot;Salzbrunn, DE&quot;},
-    {&quot;id&quot;:6554266,&quot;label&quot;:&quot;Salzburg, DE&quot;},
-    {&quot;id&quot;:2766824,&quot;label&quot;:&quot;Salzburg, AT&quot;},
-  ]
+$term = filter_var($_GET[&#39;term&#39;], FILTER_SANITIZE_STRING) . &#39;%&#39;;
+$sth-&gt;execute(array($term));
+$cities = $sth-&gt;fetchAll(PDO::FETCH_COLUMN);
 </pre></div>
 
-<p>Wenn das klappt, kann  z.b. eine echte Datenbank-Abfrage programmieren,
-und die resultierenden Daten mit <a href="https://secure.php.net/manual/de/function.json-encode.php">json_encode</a> umwandeln.</p>
+<p>Der Output des PHP-Programmes ist JSON. Das muss mit dem HTTP Header <code>Content-Type</code>
+angekündgt werden:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+header(&#39;Content-Type: application/json&#39;);
+echo json_encode($cities);
+</pre></div>
 
 </div>
 <div class='slide'>
 
-<h2 id="jquery-beispiel-mit-callback-funktion">jQuery Beispiel mit Callback-Funktion</h2>
+<h3 id="frontend">Frontend</h3>
+
+<p>Für das Frontend kann man eine fertige Library verwenden,
+z.B. <a href="https://github.com/Pixabay/JavaScript-autoComplete/">JavaScript-autoComplete</a>:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+new autoComplete({
+    selector: &#39;#cityinput&#39;,
+    source: function(term, handle_response){
+      // schicke suchwort &#39;term&#39; ans backend
+      // wenn die datenvorliegen, rufe die funktion handle_response auf           
+    }
+});
+</pre></div>
+
+</div>
+<div class='slide'>
+
+<h2 id="ajax-beispiel-mit-api">AJAX Beispiel mit API</h2>
 
 <p>In diesem Beispiel werden Wetter-Daten von zwei Quellen angezeigt. Dabei
 sieht man einen wichtigen Unterschied:</p>
 
 <ul>
   <li>auf http://openweathermap.org/ ist der Zugriff nur mit API key möglich, auch vom frontend aus</li>
-  <li>auf http://at-wetter.tk/ ist der Zugriff auch ohne API key möglich, aber nicht von einem fremden frontend aus, weil <a href="/cors/">CORS</a> nicht erlaubt ist.</li>
+  <li>auf http://at-wetter.tk/ ist der Zugriff auch ohne API key möglich, aber nicht von einem fremden Frontend aus, weil <a href="/cors/">CORS</a> nicht erlaubt ist.</li>
 </ul>
 
 </div>
@@ -469,12 +498,8 @@ mit gesendet werden:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Zugriff auf die openweathermap API</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-$.get(&quot;http://api.openweathermap.org/data/2.5/weather?&amp;units=metric&amp;q=London,uk&amp;apikey=....&quot;, 
-  (data) =&gt; {
-  console.log(&quot;Daten von der API sind angekommen:&quot;);
-  console.log(data);
-  $(&#39;#output&#39;).append(`&lt;p&gt;Das Wetter in London ist ${data.weather[0].main}.&lt;p&gt;`);
-});
+fetch(&quot;http://api.openweathermap.org/data/2.5/weather?&amp;units=metric&amp;q=London,uk&amp;apikey=....&quot;)
+.then(function...
 </pre></div>
 
 <p>Die genaue Struktur der Daten und wie man sie zerlegt kann man entweder
@@ -490,7 +515,7 @@ ist die nächste Lösung notwendig:</p>
 </div>
 <div class='slide'>
 
-<h2 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales backend</h2>
+<h3 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h3>
 
 <p>Manchmal kann man nicht vom Frontend direkt auf die API zugreifen.</p>
 
@@ -499,7 +524,7 @@ http zugänglich, das frontend wird auf https gehosted. So ist es verboten
 auf die API zuzugreifen.</p>
 
 <p>Der zweite mögliche Grund ist CORS. Das tritt zum Beispiel bei der API
-at-wetter.tk auf.
+<code>at-wetter.tk</code> auf.
 Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
 in manchen Browsern eine Meldung angezeigt:</p>
 
