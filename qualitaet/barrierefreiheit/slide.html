@@ -69,10 +69,10 @@
           </div>
 	  <div class='slide'>
 <p>Der deutsche Begriff „Barrierefreiheit“ entspricht dem englischen
-Begriff „Accessability“.  Ein Tipp zur Recherche: der englische Begriff wird manchmal als 
+Begriff „Accessability“. Ein Tipp zur Recherche: der englische Begriff wird manchmal als
 a11y abgekürzt - a, gefolgt von 11 Buchstaben, gefolgt von y.</p>
 
-<p>Barrierefreiheit ist ein Thema das 
+<p>Barrierefreiheit ist ein Thema das
 von Stadtplanung und Architektur bis zur Gestaltung einzelner
 Produkte und Dienstleistungen viele Fachgebiete betrifft.</p>
 
@@ -91,7 +91,7 @@ können“ - <a href="https://de.wikipedia.org/wiki/Barrierefreies_Internet">Wik
 <h2 id="alle-profitieren-von-barrierefreiheit">Alle profitieren von Barrierefreiheit</h2>
 
 <p>Nun könnte man meinen: es gibt nur wenige behinderte Menschen; Barrierefreiheit ist
-also ein Rand-Thema, das kann ich ignorieren.   Das wäre aber ein Fehlschluss.</p>
+also ein Rand-Thema, das kann ich ignorieren. Das wäre aber ein Fehlschluss.</p>
 
 <p>Alle Menschen erleben - wenn nicht permanent, dann vorübergehend - Einschränkungen.</p>
 
@@ -102,7 +102,7 @@ stellt das gut dar (verwendet unter CC)</p>
 
 <p>Es gibt vielleicht wenig Menschen, die nur einen Arm haben. Aber es gibt
 schon sehr viel mehr Menschen die vorübergehend nur einen Arm benutzen können,
-z.B. weil ein Arm im Gips ist.  Und es gibt sehr viele Menschen, die gerade
+z.B. weil ein Arm im Gips ist. Und es gibt sehr viele Menschen, die gerade
 nur einen Arm frei haben.</p>
 
 </div>
@@ -130,7 +130,7 @@ als Web ProgrammiererInnen relevant sind:</p>
   <li>Wahrnehmbar (Perceivable) - Information und Interface muss so dargestellt werden, dass die BenutzerInnen es wahrnehmen können.</li>
   <li>Bedienbar (Operable) - Interface und Navigation müssen verwendbar sein.</li>
   <li>Verständlich (Understandable) - Information und Interface müssen verständlich sein.</li>
-  <li>Robust (Robust) - Der Inhalt muss von verschiedenen Geräten darstellbar sein, nicht nur heute, sondern auch in der Zukunft. Wenn die Technik  weiter entwickelt wird, muss der Inhalt zugänglich bleiben.</li>
+  <li>Robust (Robust) - Der Inhalt muss von verschiedenen Geräten darstellbar sein, nicht nur heute, sondern auch in der Zukunft. Wenn die Technik weiter entwickelt wird, muss der Inhalt zugänglich bleiben.</li>
 </ul>
 
 <p>WCAG definiert drei “Konformitätsstufen”: A, AA, AAA.</p>
@@ -142,7 +142,7 @@ als Web ProgrammiererInnen relevant sind:</p>
 
 <p>Von der Webseite <a href="https://www.digitales.oesterreich.gv.at/barrierefreiheit">Digitales Österreich</a>, die vom “Bundesministerium für Digitalisierung und Wirtschaftsstandort” betrieben wird:</p>
 
-<p>Öffentliche Stellen in Österreich müssen seit 22. Dezember 2016 WCAG  2.0 ‘'’AA’’‘-Konform sein.</p>
+<p>Öffentliche Stellen in Österreich müssen seit 22. Dezember 2016 WCAG 2.0 ‘'’AA’’‘-Konform sein.</p>
 
 </div>
 <div class='slide'>
@@ -156,9 +156,9 @@ als Web ProgrammiererInnen relevant sind:</p>
 
 <p>Das <code>lang</code>-Attribut hilft bei der Interpretation der natürlichen Sprache. Das wird
 vom Browser selbst verwendet um Anführungszeichen (wenn sie mit dem <code>q</code>-Tag gesetzt sind),
-und Datumsangaben darzustellen. Ebenso von  Vorleseprogrammen,  Suchmaschinen,  Übersetzungsprogrammen, ….</p>
+und Datumsangaben darzustellen. Ebenso von Vorleseprogrammen, Suchmaschinen, Übersetzungsprogrammen, ….</p>
 
-<p>Den Standardwert setzt man  im <code>html</code>-Tag. In jedem Tag kann man lokal die Sprache ändern:</p>
+<p>Den Standardwert setzt man im <code>html</code>-Tag. In jedem Tag kann man lokal die Sprache ändern:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -171,6 +171,7 @@ und Datumsangaben darzustellen. Ebenso von  Vorleseprogrammen,  Suchmaschinen,  
     &lt;h1&gt;Meine Lieblingsbücher&lt;/h1&gt;
 
     &lt;p lang=&quot;en&quot;&gt;Neal Stephenson: &lt;q&gt;Diamond Age&lt;/q&gt;&lt;/p&gt;
+
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
@@ -189,7 +190,7 @@ um diesen Überblick zu schaffen.</p>
 <p>Damit das funktioniert, muss man die HTML-Tags korrekt verwenden, oder - falls das nicht geht - die
 rolle explizit definieren:</p>
 
-<table class="table table-condensed table-bordered" style="width:auto">
+<table>
   <thead>
     <tr>
       <th>Rolle</th>
@@ -250,7 +251,7 @@ rolle explizit definieren:</p>
   </tbody>
 </table>
 
-<div class="example">
+<div class="example table table-condensed table-bordered" style="width:auto">
 <pre class="lang-html prettyprint linenums">
 &lt;form role=&quot;search&quot;&gt;
   &lt;input type=&quot;search&quot; aria-label=&quot;search text&quot; size=&quot;20&quot;&gt;
@@ -265,12 +266,12 @@ rolle explizit definieren:</p>
 
 <h3 id="textformatierung">Textformatierung</h3>
 
-<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2018 verwenden z.B. Die <a href="https://www.zeit.de/2016/51/bundesteilhabegesetz-inklusion-barrierefreiheit-gleichstellung">Zeit Online</a> 20px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 21px, 
+<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2019 verwenden z.B. Die <a href="https://www.zeit.de/2016/51/bundesteilhabegesetz-inklusion-barrierefreiheit-gleichstellung">Zeit Online</a> 20px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 21px,
 <a href="http://www.zeldman.com/2016/12/14/font-size-widgets/">Jeffrey Zeldman</a> 24px.</p>
 
 <p>Ein Zeilenabstand 1.5x (mit <code>line-height</code> festgelegt) erhöht die Lesbarkeit.</p>
 
-<p>Im Web gibt es weiterhin Probleme mit Blocksatz, Flattersatz (“linksbündig”) führt zu 
+<p>Im Web gibt es weiterhin Probleme mit Blocksatz, Flattersatz (“linksbündig”) führt zu
 zuverlässigeren Ergebnissen.</p>
 
 <p>Die Zeilenlänge sollte man von der Schriftgröße abhängig machen, oder gleich die relativ neue
@@ -306,12 +307,11 @@ p {
   <li><a href="https://de.wikipedia.org/wiki/Design_f%C3%BCr_Alle">Design für Alle</a></li>
   <li><a href="https://de.udacity.com/course/web-accessibility--ud891">Udacity Kurs: Web Accessability by Google</a></li>
   <li><a href="https://www.youtube.com/watch?v=fGLp_gfMMGU&amp;list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g">YouTube: a11ycats</a></li>
-  <li>Kalbag, Laura. Accessibility for everyone.  A Book Apart, 2017. ISBN-13: 978-1937557614.</li>
+  <li>Kalbag, Laura. Accessibility for everyone. A Book Apart, 2017. ISBN-13: 978-1937557614.</li>
   <li><a href="https://a11yweekly.com/">Accessability Weekly, Newsletter</a></li>
   <li><a href="http://adrianroselli.com/2017/08/whats-new-in-wcag-2-1.html">What’s new in WCAG 2.1</a></li>
   <li><a href="https://marcysutton.com/talk/radically-accessible-internet-applications-beyond-tellerrand/">Marcy Sutton: Radically Accessible Internet Applications</a></li>
 </ul>
-
 </div>
           <div class="slide"><h1>Barrierefreiheit</h1>
             <p>
