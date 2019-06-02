@@ -73,15 +73,15 @@
     <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" opacity="0.75" />
 </svg>
 
-<p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom 
-World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung 
+<p>Scalable Vector Graphics (SVG, engl. „skalierbare Vektorgrafik“) ist die vom
+World Wide Web Consortium (W3C) empfohlene Spezifikation zur Beschreibung
 zweidimensionaler Vektorgrafiken. SVG ist ein Beispiel für XML.</p>
 
 <p>SVG wurde erstmals im September 2001 veröffentlicht, die aktuelle Version
 ist <a href="http://www.w3.org/TR/SVG11/">Version 1.2</a>, die seit Dezember 2008 vom W3C empfohlen wird, aktuell.</p>
 
 <p>SVG hat eine lange und wechselvolle Geschichte hinter sich: es wurde bereits im Jahr 2001 veröffentlicht.
-Für die Darstellung im Browser war aber damals die Installation eines Plugins notwendig. 
+Für die Darstellung im Browser war aber damals die Installation eines Plugins notwendig.
 Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer) wird SVG
 im Browser nativ dargestellt.</p>
 
@@ -101,11 +101,14 @@ im Browser nativ dargestellt.</p>
 &lt;/svg&gt;
 </pre></div>
 
-<p>Mit SVG kann man zweidimensional zeichnen. Die grafischen Objekte werden
-- wie bei HTML - in einem DOM gespeichert und können manipuliert werden. Zur
+<p>Mit SVG kann man zweidimensional zeichnen. Die grafischen Objekte werden</p>
+
+<ul>
+  <li>wie bei HTML - in einem DOM gespeichert und können manipuliert werden. Zur
 Darstellung im Browser werden sie mit dem <a href="http://de.wikipedia.org/wiki/Painter%27s_Algorithmus">Painters Algorithm</a> gezeichnet:
 “spätere” Objekte übermalen “frühere” Objekte. Deswegen überdeckt das blaue Rechteck
-im Beispiel den grünen Kreis.</p>
+im Beispiel den grünen Kreis.</li>
+</ul>
 
 <p>Inline SVG wird heute von den aktuellen Browsersn unterstütz, siehe
 <a href="http://caniuse.com/#feat=svg-html5">can i use</a></p>
@@ -115,7 +118,7 @@ im Beispiel den grünen Kreis.</p>
 
 <h2 id="grundformen-in-svg">Grundformen in SVG</h2>
 
-<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden 
+<p>Mit den Tags <code>circle</code>, <code>rect</code>, <code>ellipse</code>, <code>path</code> und <code>polygon</code> werden
 simple geometrische Elemente definiert.</p>
 
 <svg width="700" height="200">
@@ -202,7 +205,7 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
 Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
 
-<table class="table table-condensed table-bordered" style="width:auto">
+<table>
   <thead>
     <tr>
       <th style="text-align: center">Buchstabe</th>
@@ -239,10 +242,7 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
   </tbody>
 </table>
 
-</div>
-<div class='slide'>
-
-
+<p class="table table-condensed table-bordered" style="width:auto">§</p>
 
 <p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
@@ -259,7 +259,7 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 &lt;path d=&quot;M 270 35 q 25,-50 50,0 25,50 50,0 q 25,-25 50,0 q 25,25 50,0&quot; /&gt;
 </pre></div>
 
-<table class="table table-condensed table-bordered" style="width:auto">
+<table>
   <thead>
     <tr>
       <th style="text-align: center">Buchstabe</th>
@@ -293,9 +293,9 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 </div>
 <div class='slide'>
 
-<h3 id="farbe">Farbe</h3>
+<h3 class="table table-condensed table-bordered" style="width:auto" id="farbe">Farbe</h3>
 
-<p>Farben werden wie in HTML mit hex-code definiert. Zusätzlich kann für jedes Objekt eine alpha-Transparenz mit <code>opacity</code> gesetzt werden.  Bei der ersten Abbildung mit dem kleinen blauen Quadrat war das:</p>
+<p>Farben werden wie in HTML mit hex-code definiert. Zusätzlich kann für jedes Objekt eine alpha-Transparenz mit <code>opacity</code> gesetzt werden. Bei der ersten Abbildung mit dem kleinen blauen Quadrat war das:</p>
 
 <pre><code>fill="#204a87" opacity="0.75"
 </code></pre>
@@ -312,7 +312,7 @@ In diesem Beispiel wird ein radialer gradient definiert und auf ein Objekte ange
   &lt;/radialGradient&gt;
 </pre></div>
 
-<p>Der Effekt wirkt ganz verschieden, wenn man ihn auf ein Quadrat oder einen 
+<p>Der Effekt wirkt ganz verschieden, wenn man ihn auf ein Quadrat oder einen
 Pfad mit Sonnenstrahlen anwendet:</p>
 
 <svg width="700" height="300">
@@ -372,6 +372,7 @@ beliebigen Pfades gesetzt werden.</p>
         Es geht hinauf, und hinunter, und wieder...
       </textPath>
     </text>
+
   </g>
 </svg>
 
@@ -394,10 +395,10 @@ beliebigen Pfades gesetzt werden.</p>
 <h2 id="koordinaten-und-transformationen">Koordinaten und Transformationen</h2>
 
 <p>Koordinaten in SVG werden als reelle Zahlen angegeben,
-nicht als Ganzzahlen!  Es ist ein wirkliches Vektorformat.</p>
+nicht als Ganzzahlen! Es ist ein wirkliches Vektorformat.</p>
 
 <p>Das ursprüngliche Koordinatensystem beginnt in der linken oberen Ecke,
-die X-Achse zeigt nach rechts, die Y-Achse nach unten.  Mit dem <code>g</code> Tag
+die X-Achse zeigt nach rechts, die Y-Achse nach unten. Mit dem <code>g</code> Tag
 können Elemente gruppiert werden. Dabei kann man auch ein neues
 lokales Koordinatensystem definieren.</p>
 
@@ -611,7 +612,16 @@ einbauen und manipulieren.</p>
   </g>
 </svg>
 
-<p>Für fortgeschrittene Animationen kann  man zusätzlich die Library <a href="http://github.com/greensock/GreenSock-JS/">gsap</a> verwenden.</p>
+<p>Für fortgeschrittene Animationen kann man zusätzlich die Library <a href="http://github.com/greensock/GreenSock-JS/">gsap</a> verwenden.</p>
+
+</div>
+<div class='slide'>
+
+<h2 id="svg-optimieren">SVG Optimieren</h2>
+
+<p>Unter der Adresse <a href="https://jakearchibald.github.io/svgomg/">https://jakearchibald.github.io/svgomg/</a> kann man SVGs hochladen, optimieren und wieder herunterladen:</p>
+
+<p><img src='images/grafik/svgomg.png'  alt="" ></p>
 
 </div>
 <div class='slide'>
@@ -626,7 +636,6 @@ einbauen und manipulieren.</p>
   <li><a href="http://css-tricks.com/using-svg/">Tutorial: SVG in Webseiten verwenden: Hintergrundbild, Bild, Data-URL</a></li>
   <li><a href="https://moviecode.tumblr.com/post/72085619482/in-an-episode-of-doctor-who-the-doctor-is-seen">SVG in the movies</a></li>
 </ul>
-
 </div>
           <div class="slide"><h1>SVG - Vektor Grafik</h1>
             <p>
