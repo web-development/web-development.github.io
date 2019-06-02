@@ -104,9 +104,9 @@ draw(my_context);
 
 <p>Zur Erinnerung: wir rechnen in Webseite meist in virtuellen Pixeln. Wenn wir die Breite des Canvas auf 770 einstellen sind das virtuelle Pixel.</p>
 
-<p>Im einfachen Fall setzt  der Browser diese virtuellen Pixel  1:1 in physikalische Pixel um.  Dann spricht man von einer <code>devicePixelRatio</code> von 1.</p>
+<p>Im einfachen Fall setzt der Browser diese virtuellen Pixel 1:1 in physikalische Pixel um. Dann spricht man von einer <code>devicePixelRatio</code> von 1.</p>
 
-<p>Auf Geräten mit besonders hoher Auflösung verwendet der Browser zum Beispiel eine <code>devicePixelRatio</code> von 2.  Aus den 770 Pixel Breite werden also 1540 Pixel.  Als Koordinatensystem im canvas werden
+<p>Auf Geräten mit besonders hoher Auflösung verwendet der Browser zum Beispiel eine <code>devicePixelRatio</code> von 2. Aus den 770 Pixel Breite werden also 1540 Pixel. Als Koordinatensystem im canvas werden
 aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 werden nicht mehr angezeigt.</p>
 
 
@@ -119,7 +119,7 @@ aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 we
 <ul>
   <li>Verhältnis (virtuelle zu reale) Pixel aus <code>window.devicePixelRatio</code> auslesen</li>
   <li><code>scale</code> des Kontexts auf diesen Wert setzen (aber erst nach den folgenden beiden Schritten)</li>
-  <li><code>width</code> und <code>height</code> des Canvas auf die  physikalische (größere) Pixelzahl setzen</li>
+  <li><code>width</code> und <code>height</code> des Canvas auf die physikalische (größere) Pixelzahl setzen</li>
   <li><code>width</code> und <code>height</code> des Canvas Style auf die virtuelle (kleinere) Pixelzahl setzen, mit ‘px’</li>
 </ul>
 
@@ -143,8 +143,8 @@ const my_context = my_canvas.getContext(&quot;2d&quot;);
 let ratio = window.devicePixelRatio;
 my_context.scale(ratio, ratio);
 
-my_canvas.width = w * ratio;
-my_canvas.height = h * ratio;
+my*canvas.width = w * ratio;
+my*canvas.height = h * ratio;
 
 my_canvas.style.width = `${w}px`;
 my_canvas.style.height = `${h}px`;
@@ -187,7 +187,7 @@ my_context.stroke();
 
 <h3 id="bild-kopieren">Bild kopieren</h3>
 
-<p>Achtung: das Laden des Originalbildes dauert lange. Wenn der Kopierbefehl <code>drawImage</code> zu früh durchgeführt wird ist das Bild noch nicht geladen und das leere Bild wird kopiert. Deswegen starten wir den Kopierbefehl erst beim <code>load</code> Event des  Bildes.</p>
+<p>Achtung: das Laden des Originalbildes dauert lange. Wenn der Kopierbefehl <code>drawImage</code> zu früh durchgeführt wird ist das Bild noch nicht geladen und das leere Bild wird kopiert. Deswegen starten wir den Kopierbefehl erst beim <code>load</code> Event des Bildes.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -223,7 +223,7 @@ the_img.src = &quot;/images/grafik/dolly.jpg&quot;;
 
 <ul>
   <li><a href="http://jdan.github.io/isomer/">Library Isomer</a></li>
-  <li><a href="http://phaser.io/">Phaser Game Engin</a></li>
+  <li><a href="http://phaser.io/">Phaser Game Engine</a></li>
   <li><a href="http://impactjs.com/">Impact.js</a></li>
 </ul>
 
@@ -235,7 +235,6 @@ Webcam + 2d Canvas ermöglicht damit viele interessante Anwendungen.</p>
 
 <ul>
   <li><a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">Tutorial zu getUserMedia</a></li>
-  <li><a href="https://github.com/cbrandolino/camvas">Library Camvas</a></li>
   <li><a href="https://webcamtoy.com/">Webcamtoy</a></li>
 </ul>
 
