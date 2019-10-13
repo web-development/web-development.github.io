@@ -51,7 +51,7 @@
 			
 			
 			<a id='slide-1'></a>
-<p>Wie gehen wir mit der Herausforderung der verschiedenen 
+<p>Wie gehen wir mit der Herausforderung der verschiedenen
 Auflösungen und Pixeldichten um?</p>
 
 
@@ -109,13 +109,13 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 }
 
 @media screen {
-  body { font-size: 13px; }
-}  
+body { font-size: 13px; }
+}
 
 @supports not (display: grid) {
-  div {
-    float: right;
-  }
+div {
+float: right;
+}
 }
 </pre></div>
 
@@ -124,16 +124,31 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
 
+<h3 id="css-pixel-vs-physikalische-pixel">CSS Pixel vs. Physikalische Pixel</h3>
+
+<p>Die Pixel in CSS sind keine “echten” Pixel, sondern
+entsprechen dem, was das menschliche Auge ungefähr als Punkt erkennen kann:
+1/96 eines Inch.</p>
+
+<p>Siehe <a href="https://drafts.csswg.org/css-values-4/#reference-pixel">Spezifikation: reference pixel</a></p>
+
+<p>Wenn ein Ausgabegerät eine höhere Pixeldichte hat, kann
+ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
+bei einer “Device Pixel Ratio” von 2.</p>
+
+
+<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+
 <h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
 
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
 
 <h3 id="pixel">Pixel</h3>
 
-<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind  für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
+<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
 
 <p><img src='/images/css-layout/pixel-image-zoom.png'  alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" ></p>
 
@@ -141,8 +156,10 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so viele Daten, und damit eine viermal
 so lange wartezeit!</p>
 
+<p>Es gibt eine moderne Lösung für diese Problematik <a href="/grafik/images/">Responsive Images</a> - diese werden wir später genauer kennen lernen.</p>
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+
+<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
 
 <h3 id="vektor">Vektor</h3>
 
@@ -154,7 +171,7 @@ so lange wartezeit!</p>
 <p><img src='/images/circle.svg'  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
 
 <h2 id="schriftgre">Schriftgröße</h2>
 
@@ -165,7 +182,7 @@ so lange wartezeit!</p>
 <p><img src='/images/css-layout/zeilenumbruch.png'  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
 
 <h2 id="zoomen">Zoomen</h2>
 
@@ -176,7 +193,7 @@ Viewport und die CSS pixel-ratio verändern sich also, dadurch werden
 andere Mediaqueries schlagend.</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
 
 <h2 id="beispiel">Beispiel</h2>
 
@@ -185,7 +202,7 @@ andere Mediaqueries schlagend.</p>
 <p><img src='/images/css-layout/example-responsive.png' srcset='/images/css-layout/example-responsive@3x.png 3x, /images/css-layout/example-responsive.png 1x, /images/css-layout/example-responsive@2x.png 2x'  alt="/images/css-layout/example-responsive.png" ></p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
 
 
 
@@ -205,7 +222,7 @@ andere Mediaqueries schlagend.</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
 
 
 
@@ -229,11 +246,12 @@ andere Mediaqueries schlagend.</p>
                             &quot;w2        css&quot;;
     }
     ....
+
 }
 </pre></div>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
 
 
 
@@ -254,11 +272,12 @@ andere Mediaqueries schlagend.</p>
                             &quot;w2        facts        navigation&quot;;
     }
     ...
+
 }
 </pre></div>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
 
 
 
@@ -282,7 +301,7 @@ andere Mediaqueries schlagend.</p>
       background-color: black;
       grid-gap: 25px 25px;
 
-      grid-template-areas:  
+      grid-template-areas:
         &quot;w1    w1           w2           w2           headline  headline&quot;
         &quot;w4    description  description  description  facts     facts&quot;
         &quot;w5    description  description  description  portrait  w11&quot;
@@ -292,8 +311,10 @@ andere Mediaqueries schlagend.</p>
         &quot;gelb  w9           w9           w10          w10       w10&quot;;
     }
     ...
+
 }
 </pre></div>
+
 
 		
 			<div class="pagination">
@@ -305,7 +326,7 @@ andere Mediaqueries schlagend.</p>
       
       
       
-      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
       
     
   </ul>
@@ -395,19 +416,19 @@ andere Mediaqueries schlagend.</p>
                       
                     
                       
-                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
-                      
-                    
-                      
-                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
-                      
-                    
-                      
                       <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
                       
                     
                       
                       <li class="active"><a href="/css-layout/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/layout/">CSS für Layout</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
                       
