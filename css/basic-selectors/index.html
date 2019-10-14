@@ -141,14 +141,22 @@ siehe weiter Unten.)</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-  a:any-link, a:-webkit-any-link { text-decoration: underline; }
+  a:any-link { text-decoration: underline; }
   a:link    { color:blue; }
   a:visited { color:#FF00FF; }
 </pre></div>
 
-<p>Achtung: <code>:any-link</code> ist noch experimentell, und wird (im Herbst 2017) nur in Firefox
-schon in dieser Schreibweise akzeptiert.  In den anderen Browsern muss man noch
-die Schreibweise mit vorgestelltem <code>-webkit</code> verwenden.</p>
+<p>Achtung: <code>:any-link</code> ist noch experimentell, und wird (im Herbst 2019) von
+Internet Explorer und Edge noch nicht akzeptiert. Siehe <a href="https://caniuse.com/#search=%3Aany-link">caniuse</a>.</p>
+
+<p>Für Internet Explorer und Edge müsste man also schreiben:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  a:link, a:visited { text-decoration: underline; }
+  a:link    { color:blue; }
+  a:visited { color:#FF00FF; }
+</pre></div>
 
 
 <a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
