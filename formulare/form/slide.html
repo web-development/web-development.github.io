@@ -146,14 +146,19 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
       <td><input type="email" name="mail" /></td>
     </tr>
     <tr>
+      <td>Telefonnummer</td>
+      <td><code>&lt;input type="tel" name="tel"&gt;</code></td>
+      <td><input type="tel" name="tel" /></td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td><code>&lt;input type="url" name="url"&gt;</code></td>
+      <td><input type="url" name="url" /></td>
+    </tr>
+    <tr>
       <td>Passwortfeld</td>
       <td><code>&lt;input type="password" name="meinpasswort"&gt;</code></td>
       <td><input type="password" name="meinpasswort" /></td>
-    </tr>
-    <tr>
-      <td>mehrzeiliges Textfeld</td>
-      <td><code>&lt;textarea name="zitat"&gt;In a hole in the ground there lived a Hobbit. &lt;/textarea&gt;</code></td>
-      <td><textarea name="zitat">In a hole in the ground there lived a Hobbit. </textarea></td>
     </tr>
   </tbody>
 </table>
@@ -161,6 +166,17 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 <p>Achtung: das Passwort-Feld schützt nur vor neugierigen Blicken auf den Monitor.
 Die eingegebenen Daten werden dann genau so übertragen wie aus alle anderen
 Eingabefeldern - normalerweise unverschlüsselt.</p>
+
+<p>Für größere Mengen Text gibt es <code>textarea</code>:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;textarea name=&quot;zitat&quot;&gt;In a hole in the ground 
+there lived a Hobbit. &lt;/textarea&gt;
+</pre></div>
+
+<textarea name="zitat">In a hole in the ground
+there lived a Hobbit. </textarea>
 
 </div>
 <div class='slide'>
@@ -200,8 +216,7 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 <p>Der <strong>Default Wert</strong> ist ein echter Wert, der beim Einsenden des Formulars gesendet wird.
 Der <strong>Placeholder</strong> hingegen wird nur angezeigt, gilt aber nicht als eingegeben Daten.</p>
 
-<p>Die <strong>Auto-Vervollständigung</strong> ist besonders bei beschränkten Eingabemöglichkeiten
-wie am Smartphone praktisch. Es gibt viele <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autocomplete">mögliche Werte</a>.</p>
+<p>Die <strong>Auto-Vervollständigung</strong> teilt dem Browser mit welche (alten) Eingabewerte in Frage kommen. Es gibt viele <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values">mögliche Werte</a>.</p>
 
 <p>Die Bedingungen <strong>required</strong> und <strong>pattern</strong> müssen erfüllt sein, sonst kann das
 Formular gar nicht abgesendet werden.</p>
@@ -240,17 +255,17 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 <div class="example">
 <h4 class="caption">Html Code <small>Radiobuttons</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt;XL&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt;L&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt;M&lt;/label&gt;
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt;S&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt; XL&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt; L&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt; M&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt; S&lt;/label&gt;
 </pre></div>
 
 <form action="/images/formulare/submitted.html">
-<label><input type="radio" name="size" value="XL" />XL</label>
-<label><input type="radio" name="size" value="L" />L</label>
-<label><input type="radio" name="size" value="M" />M</label>
-<label><input type="radio" name="size" value="S" checked="" />S</label>
+<label><input type="radio" name="size" value="XL" /> XL</label>
+<label><input type="radio" name="size" value="L" /> L</label>
+<label><input type="radio" name="size" value="M" /> M</label>
+<label><input type="radio" name="size" value="S" checked="" /> S</label>
 </form>
 
 </div>
@@ -258,7 +273,8 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 
 
 
-<p>Ein Menü mit <code>select</code> und <code>option</code> ist im Vergleich zu Radiobuttons platzsparend:</p>
+<p>Ein Menü mit <code>select</code> und <code>option</code> ist im Vergleich zu Radiobuttons platzsparend,
+hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
@@ -345,12 +361,12 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 <p>Das Textfeld mit <code>datalist</code> kombiniert die Bequemlichkeit
 eines Menüs mit der Flexiblität eines Textfeldes: Man bekommt
 Vorschläge angeboten, kann aber auch etwas eintippen
-was nicht in der <code>datalist</code> angeführt ist.</p>
+was nicht in der <code>datalist</code> angeführt ist. Siehe <a href="/images/formulare/datalist.html">Demo</a>.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Textfeld mit Datalist</small></h4>
 <pre class="lang-html prettyprint linenums">
-&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot; /&gt;
+&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot;&gt;
 &lt;datalist id=&quot;list-of-cities&quot;&gt;
     &lt;option value=&quot;Salzburg&quot;&gt;
     &lt;option value=&quot;Wien&quot;&gt;
@@ -367,6 +383,11 @@ was nicht in der <code>datalist</code> angeführt ist.</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <tbody>
+    <tr>
+      <td>Farbe</td>
+      <td><code>&lt;input type="color" name="farbe"&gt;</code></td>
+      <td><input type="color" name="farbe" /></td>
+    </tr>
     <tr>
       <td>Datum</td>
       <td><code>&lt;input type="date" min="2010-08-01" max="2011-08-31" value="2010-08-14"&gt;</code></td>
@@ -518,6 +539,8 @@ speziellem enctype an den Webserver geschickt werden. Das werden wir später im 
 
 <h2 id="ordnung">Ordnung</h2>
 
+<p>Siehe <a href="/images/formulare/fieldset.html">Demo</a>.</p>
+
 <div class="example">
 <h4 class="caption">Html Code <small>Visuelle Zusammenfassung mehrer Felder: fieldset + legend</small></h4>
 <pre class="lang-html prettyprint linenums">
@@ -528,15 +551,6 @@ speziellem enctype an den Webserver geschickt werden. Das werden wir später im 
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Visa&quot;&gt; Visa&lt;/label&gt;
 &lt;/fieldset&gt;
 </pre></div>
-
-<form action="/images/formulare/submitted.html">
-<fieldset>
-<legend>Kreditkarte</legend>
-<input name="nr" placeholder="0000 0000 0000 0000" />
-<label><input type="radio" name="kk" value="Master" /> Master</label>
-<label><input type="radio" name="kk" value="Visa" /> Visa</label>
-</fieldset>
-</form>
 
 </div>
 <div class='slide'>

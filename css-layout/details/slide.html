@@ -131,25 +131,26 @@ I am a block level element - p for paragraph.
 
 <h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
 
-<p>Browser können lange Wörter in mehreren Sprachen umbrechen.
+<p>Browser können lange Wörter in mehreren Sprachen umbrechen wenn
+man in CSS <code>hyphens: auto</code> aktiviert.
 Die richtige Sprache stellt man mit dem Attribut <code>lang</code> ein,
 z.B. einfach am html-Tag: <code>&lt;html lang="de"&gt;</code>.</p>
 
 <div class="resizable">
-  <p style="background-color:#ddd">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
+  <p style="background-color:#ddd; hyphens: none;">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
     im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
     <br />
     Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
     <br />
-    <kbd>overflow-wrap: normal;</kbd> ist der Standardwert.
+    <kbd>hyphens: none;</kbd> ist der Standardwert.
   </p>
 
-  <p style="background-color:#ddd" class="hyphenate">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
+  <p style="background-color:#ddd; hypens: auto;">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
     im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
     <br />
         Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
     <br />
-    <kbd>overflow-wrap: break-word;</kbd>
+    <kbd>hyphens: auto;</kbd>
   </p>
 </div>
 
