@@ -38,21 +38,19 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Wichtige Properties</h2>
-                                <a href="/css/properties/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Wichtige Properties
+      </h2>
+      <a href="/css/properties/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="schrift">Schrift</h2>
 
@@ -82,7 +80,7 @@ h2 {
 <p><a href="/images/css/text-css.html">Demo</a></p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="webfonts">Webfonts</h2>
 
@@ -95,7 +93,7 @@ bietet <a href="http://www.google.com/webfonts">http://www.google.com/webfonts</
 man Lizenzgebühren zahlen muss.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="abstze">Absätze</h2>
 
@@ -103,11 +101,11 @@ man Lizenzgebühren zahlen muss.</p>
 Die Standard-Darstellung von Absätzen erklärt sich über den <code>margin-top</code> 
 und <code>margin-bottom</code> des <code>&amp;lt;p&amp;gt;</code>-Tags:</p>
 
-<p><img src='/images/css/p-default-margin.png' srcset='/images/css/p-default-margin@2x.png 2x, /images/css/p-default-margin.png 1x'  alt="Standard-Darstellung von Absätzen (p-Tag) im Browser" ></p>
+<p><img src="/images/css/p-default-margin.png" srcset="/images/css/p-default-margin@2x.png 2x, /images/css/p-default-margin.png 1x"  alt="Standard-Darstellung von Absätzen (p-Tag) im Browser" ></p>
 
 <p>Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes verändern, einige davon sind hier gezeigt:</p>
 
-<p><img src='/images/css/absatz.png'  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" ></p>
+<p><img src="/images/css/absatz.png"  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" ></p>
 
 <p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
 
@@ -123,7 +121,7 @@ p {
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="box-model">Box Model</h2>
 
@@ -131,7 +129,7 @@ p {
 
 <p><a href="/images/css/box.html">Demo</a></p>
 
-<p><img src='/images/css/boxmodel.png' srcset='/images/css/boxmodel.png 1x, /images/css/boxmodel@2x.png 2x'  alt="Darstellung des Box Models in den Firefox Developer Tools" ></p>
+<p><img src="/images/css/boxmodel.png" srcset="/images/css/boxmodel.png 1x, /images/css/boxmodel@2x.png 2x"  alt="Darstellung des Box Models in den Firefox Developer Tools" ></p>
 
 <p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
 
@@ -151,7 +149,7 @@ p {
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="border-box">border-box</h3>
 
@@ -172,10 +170,10 @@ margin: 32px 0px
 <p>Gesamtbreite inklusive Rahmen = 200px.
 Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
 
-<p><img src='/images/css/box-sizing-border-box.png'  alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" ></p>
+<p><img src="/images/css/box-sizing-border-box.png"  alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" ></p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="runde-ecken-und-schatten">Runde Ecken und Schatten</h3>
 
@@ -204,7 +202,7 @@ button{
 sich noch viele ausführlichere Beispiele.</p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -212,7 +210,7 @@ sich noch viele ausführlichere Beispiele.</p>
 können (laut <a href="https://caniuse.com/#search=box-shadow">caniuse</a> ca. 2009) sind sie out.  Seitdem ist <a href="https://de.wikipedia.org/wiki/Flat_Design">flat design</a> in (ca. 2010).</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h2>
 
@@ -230,8 +228,14 @@ können (laut <a href="https://caniuse.com/#search=box-shadow">caniuse</a> ca. 2
 Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  Lesbarkeit?</p>
 
 
-		
-			<div class="pagination">
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
+<h2 id="siehe-auch">Siehe Auch</h2>
+
+<ul>
+  <li><a href="https://www.w3.org/Style/CSS/all-properties.html">Alle CSS Properties</a></li>
+</ul>
+ <div class="pagination">
   <ul>
     
       
@@ -246,9 +250,9 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -427,6 +431,10 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1098,6 +1106,30 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1132,14 +1164,13 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/css/properties.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1149,7 +1180,6 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

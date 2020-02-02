@@ -38,24 +38,22 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Lesen aus der Datenbank</h2>
-                                <a href="/php-db-lesen/datenbank-lesen/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Lesen aus der Datenbank
+      </h2>
+      <a href="/php-db-lesen/datenbank-lesen/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Für die Applikation müssen wir nun auf verschiedene
 Arten Daten aus der Datenbank lesen.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
@@ -74,7 +72,7 @@ $anz_personen = $result-&gt;anzahl;
 um nur einen Datensatz zu lesen.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -90,7 +88,7 @@ $anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE 
 die Fehlersuche etwas schwieriger.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="viele-datenstze-lesen">Viele Datensätze lesen</h2>
 
@@ -112,7 +110,7 @@ dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
 Datenbank zu PHP übertragen.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
@@ -123,7 +121,7 @@ wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
 Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">*</a>.</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
@@ -132,7 +130,7 @@ Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.
 nur sichtbare Profil angezeigt werden.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -169,7 +167,7 @@ Array
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -186,7 +184,7 @@ foreach($personen as $person) {
 <p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
@@ -206,7 +204,7 @@ hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
 mit <code>$person-&gt;id</code> erhalten!</p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 
 
@@ -240,7 +238,7 @@ mit <code>$person-&gt;id</code> erhalten!</p>
 der Applikation weiter gegeben.</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 
@@ -254,7 +252,7 @@ dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
 behandelt werden muss.</p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
 <p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen <code>person.php?id=586</code>
@@ -279,7 +277,7 @@ if( $person === FALSE ) {
 </pre></div>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 
 
@@ -309,7 +307,7 @@ include &quot;header.php&quot;;
 </pre></div>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 
@@ -339,7 +337,7 @@ wir die Problematik einfach, und implementieren diese Seite
 ganz ähnlich wie <code>personen.php</code>.</p>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h2 id="zufllige-datenstze-auswhlen">Zufällige Datensätze auswählen</h2>
 
@@ -361,7 +359,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <p>In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="neue-befehle-in-diesem-kapitel">Neue Befehle in diesem Kapitel:</h3>
 
@@ -379,9 +377,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
   <li><a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">COUNT(*)</a></li>
   <li><a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">TABLESAMPLE</a></li>
 </ul>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -396,9 +392,9 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -577,6 +573,10 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1248,6 +1248,30 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1282,14 +1306,13 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-lesen/datenbank-lesen.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1299,7 +1322,6 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

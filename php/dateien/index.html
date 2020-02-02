@@ -38,22 +38,20 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Dateien und Ordnern in PHP</h2>
-                                <a href="/php/dateien/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Dateien und Ordnern in PHP
+      </h2>
+      <a href="/php/dateien/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>In diesem Kapitel wird beschreiben, wie PHP mit Dateien und Ordnern arbeiten kann und welche Web-spezifischen Probleme dabei auftreten.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="ordner-auflisten">Ordner auflisten</h2>
 <p>Um herauszufinden, welche Dateien (und Unter-Ordner) sich in einem Ordner befinden, verwendet man die Funktion <code>glob</code>. (Achtung: die Funktionen <code>opendir</code>, <code>readdir</code>, <code>closedir</code> gibt es auch, die sind aber komplizierter zu verwenden)</p>
@@ -94,7 +92,7 @@ asort( $alle_bilder )
 </pre></div>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="datei-lesen">Datei lesen</h2>
 <p>Um eine Datei von PHP aus zu benutzen, muss man sie mit der Funktion <code>fopen</code> öffnen. Man erhält einen „handle“ mit dem man sich im Weiteren auf diese Datei bezeihen kann.</p>
@@ -127,7 +125,7 @@ fclose($handle);
 </pre></div>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="datei-ber-schreiben">Datei (über-)schreiben</h2>
 <p>Bevor Sie beginnen mit PHP Dateien zu (über-)schreiben, zu löschen oder zu verschieben ein Warnhinweis: Es wird ernst. Hier gibt es keinen Papierkorb. Hat Ihr PHP-Programm eine Datei gelöscht, dann ist diese Datei unwiederbringlich weg.</p>
@@ -157,14 +155,12 @@ if ( $status === FALSE ) {
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="gleichzeitiger-schreibender-zugriff">Gleichzeitiger schreibender Zugriff</h2>
 <p>Achtung: was passiert wenn zwei Zugriffe genau gleichzeitig erfolgen? Zwei Apache-Prozesse führen jeweils das PHP-Programm aus und versuchen, in die gleiche Datei zu schreiben!  Diese Problem existiert, wir können es jetzt noch nicht lösen.</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -179,9 +175,9 @@ if ( $status === FALSE ) {
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -360,6 +356,10 @@ if ( $status === FALSE ) {
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1031,6 +1031,30 @@ if ( $status === FALSE ) {
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1065,14 +1089,13 @@ if ( $status === FALSE ) {
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php/dateien.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1082,7 +1105,6 @@ if ( $status === FALSE ) {
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

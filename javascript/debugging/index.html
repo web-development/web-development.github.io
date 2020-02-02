@@ -38,50 +38,48 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Debugging</h2>
-                                <a href="/javascript/debugging/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Debugging
+      </h2>
+      <a href="/javascript/debugging/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Ein paar Tipps für die Fehlersuche im Code.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="ohne-werkzeuge">Ohne Werkzeuge</h2>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h3 id="check-ist-das-die-selbe-datei">Check: ist das die selbe Datei?</h3>
+<h3 id="check-ist-das-dieselbe-datei">Check: Ist das dieselbe Datei?</h3>
 
-<p>Du hat den fehler behoben, aber das Programm funktioniert immer noch nicht?</p>
+<p>Du hast den Fehler behoben, aber das Programm funktioniert immer noch nicht?</p>
 
 <p>Dann prüfe mal nach, ob nicht folgendes passiert ist:</p>
 
 <ul>
-  <li>du editierst Datei <code>x</code></li>
-  <li>du testest das Programm in datei <code>y</code></li>
+  <li>Du editierst Datei <code>x</code></li>
+  <li>Du testest das Programm in Datei <code>y</code></li>
 </ul>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="problem-eingrenzen">Problem eingrenzen</h3>
 
 <p>Du hast keine Ahnung wo in Deinem Code ein Problem auftritt?
 Vor 5 Minuten hat es noch funktioniert?</p>
 
-<p>Für folgendes vorgehen brauchst Du nur den ganz normalen Editor,
-und ein extra-Fenster zur Aufbewahrung von gelöschtem Code.</p>
+<p>Für folgendes Vorgehen brauchst Du nur den ganz normalen Editor,
+und ein weiteres Fenster zur Aufbewahrung von gelöschtem Code.</p>
 
 <p>Lösche den Code den Du neu dazu geschreiben hast.
 Jetzt geht es wieder? Dann füg ca. die Hälfte des
@@ -99,16 +97,16 @@ sofort zum Absturz bringt”. Was gegen diesen fehler auch hilft:
 das hilft den git commit zu finden in dem ein Problem zum ersten mal auftritt.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="console">Console</h2>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="log">log</h3>
 
-<p>Der einfache <code>console.log</code> befehl kann mit style-anweisungen formatiert werden:</p>
+<p>Der einfache <code>console.log</code> Befehl kann mit Style-Anweisungen formatiert werden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -116,7 +114,7 @@ console.log(&quot;This is %cMy stylish message&quot;, &quot;color: yellow; font-
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="dir">dir</h3>
 
@@ -128,7 +126,7 @@ console.dir(o);
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h3 id="table">table</h3>
 
@@ -139,7 +137,7 @@ console.dir(o);
 console.table([&quot;apples&quot;, &quot;oranges&quot;, &quot;bananas&quot;]);
 </pre></div>
 
-<p><img src='/images/javascript/console-table.png' srcset='/images/javascript/console-table.png 1x, /images/javascript/console-table@2x.png 2x, /images/javascript/console-table-array-of-objects.png 1x'  alt="" ></p>
+<p><img src="/images/javascript/console-table.png" srcset="/images/javascript/console-table.png 1x, /images/javascript/console-table@2x.png 2x, /images/javascript/console-table-array-of-objects.png 1x"  alt="" ></p>
 
 <p>oder komplexere Tabellen:</p>
 
@@ -152,10 +150,10 @@ var emily = new Person(&quot;Emily&quot;, &quot;Jones&quot;);
 console.table([john, jane, emily]);
 </pre></div>
 
-<p><img src='/images/javascript/console-table-array-of-objects.png'  alt="" ></p>
+<p><img src="/images/javascript/console-table-array-of-objects.png"  alt="" ></p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="group">group</h3>
 
@@ -173,14 +171,14 @@ console.log(&quot;was neues&quot;);
 
 <p>Jetzt kann an entweder die ganze Information sehen:</p>
 
-<p><img src='/images/javascript/console-group.png' srcset='/images/javascript/console-group@2x.png 2x, /images/javascript/console-group.png 1x'  alt="" ></p>
+<p><img src="/images/javascript/console-group.png" srcset="/images/javascript/console-group@2x.png 2x, /images/javascript/console-group.png 1x"  alt="" ></p>
 
 <p>Oder die Gruppe zusammen klappen:</p>
 
-<p><img src='/images/javascript/consolegroup2.png' srcset='/images/javascript/consolegroup2.png 1x, /images/javascript/consolegroup2@2x.png 2x'  alt="" ></p>
+<p><img src="/images/javascript/consolegroup2.png" srcset="/images/javascript/consolegroup2.png 1x, /images/javascript/consolegroup2@2x.png 2x"  alt="" ></p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="trace">trace</h3>
 
@@ -196,7 +194,7 @@ von welcher Funktion aufgerufen wurde, um schließlich bei dieser
 Codezeile zu landen.</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="variablen-in-der-console">Variablen in der Console</h2>
 
@@ -211,63 +209,63 @@ einfacher in der Weiterverarbeitung.</p>
 <p>Siehe weitere Web Console Helpers in <a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Helpers">Firefox</a> und <a href="https://developers.google.com/web/tools/chrome-devtools/console/utilities">Chrome</a>.</p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="debugger">Debugger</h2>
 
 <p>In den Developer Tools im Browser ist ein Debugger eingebaut:</p>
 
-<p><img src='/images/javascript/jsdebug.png' srcset='/images/javascript/jsdebugstopped@2x.png 2x, /images/javascript/jsdebugdetailstopped@2x.png 2x, /images/javascript/jsdebug.png 1x, /images/javascript/jsdebug-panes-2@2x.png 2x, /images/javascript/jsdebug-panes-3@2x.png 2x, /images/javascript/jsdebug@2x.png 2x, /images/javascript/jsdebug-panes-2.png 1x, /images/javascript/jsdebug-panes-1@2x.png 2x, /images/javascript/jsdebug-panes-1.png 1x, /images/javascript/jsdebugdetailstopped.png 1x, /images/javascript/jsdebug-panes-3.png 1x, /images/javascript/jsdebugstopped.png 1x'  alt="Debugger im Browser" ></p>
+<p><img src="/images/javascript/jsdebug-1.png" srcset="/images/javascript/jsdebug-1.png 1x, /images/javascript/jsdebug-1@2x.png 2x"  alt="Debugger im Browser" ></p>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="dateien">Dateien</h3>
 
 <p>Der linke Teil des Debuggers zeigt die JavaScript Dateien an:</p>
 
-<p><img src='/images/javascript/jsdebug-pane-1.png'  alt="Debugger im Browser: Dateien" ></p>
+<p><img src="/images/javascript/jsdebug-panes-1.png" srcset="/images/javascript/jsdebug-panes-1@2x.png 2x, /images/javascript/jsdebug-panes-1.png 1x"  alt="Debugger im Browser: Dateien" ></p>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h3 id="quelltext">Quelltext</h3>
 
 <p>Der mittlere Teil des Debuggers zeigt den Sourcecode an:</p>
 
-<p><img src='/images/javascript/jsdebug-pane-2.png'  alt="Debugger im Browser: Quelltext" ></p>
+<p><img src="/images/javascript/jsdebug-panes-2.png" srcset="/images/javascript/jsdebug-panes-2@2x.png 2x, /images/javascript/jsdebug-panes-2.png 1x"  alt="Debugger im Browser: Quelltext" ></p>
 
 <p>Hier kann man Haltepunkte = Breakpoints setzen, indem man eine Zeile anklickt.
 In diesem Bild ist ein Breakpoint auf Zeile 29 gesetzt.</p>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h3 id="steuerung">Steuerung</h3>
 
 <p>Der rechte Teil des Debuggers enhält die Steuerung:</p>
 
-<p><img src='/images/javascript/jsdebug-pane-3.png'  alt="Debugger im Browser: Steuerung" ></p>
+<p><img src="/images/javascript/jsdebug-panes-3.png" srcset="/images/javascript/jsdebug-panes-3@2x.png 2x, /images/javascript/jsdebug-panes-3.png 1x"  alt="Debugger im Browser: Steuerung" ></p>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="haltepunkte">Haltepunkte</h3>
 
 <p>Bei den Haltepunkten wird das Programm jeweils angehalten.
 Das wird sowohl im Browserfenster als auch im Debugger angezeigt:</p>
 
-<p><img src='/images/javascript/jsdebugstopped.png' srcset='/images/javascript/jsdebugstopped@2x.png 2x, /images/javascript/jsdebugstopped.png 1x'  alt="Debugger im Browser" ></p>
+<p><img src="/images/javascript/jsdebugstopped.png" srcset="/images/javascript/jsdebugstopped@2x.png 2x, /images/javascript/jsdebugstopped.png 1x"  alt="Debugger im Browser" ></p>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 
 
 <p>In diesem Zustand kann man den Inhalt von Variablen ansehen,
-und mit der Steuerung das Programm Fortsetzen:</p>
+und mit der Steuerung das Programm fortsetzen:</p>
 
-<p><img src='/images/javascript/jsdebugdetailstopped.png' srcset='/images/javascript/jsdebugdetailstopped@2x.png 2x, /images/javascript/jsdebugdetailstopped.png 1x'  alt="Debugger im Browser" ></p>
+<p><img src="/images/javascript/jsdebugdetailstopped.png" srcset="/images/javascript/jsdebugdetailstopped@2x.png 2x, /images/javascript/jsdebugdetailstopped.png 1x"  alt="Debugger im Browser" ></p>
 
 <p>Im Sourcecode werden die Werte von Variablen direkt eingeblendet.</p>
 
@@ -275,7 +273,7 @@ und mit der Steuerung das Programm Fortsetzen:</p>
 als auch das normale Fortsetzen mit dem Play-Button.</p>
 
 
-<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 
 
@@ -284,11 +282,11 @@ Zustand des Programms erhalten, er ersetzt unzählige Console-Meldungen
 die man sonst schreiben müsste.</p>
 
 
-<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
+<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
 <h2 id="weitere-themen">Weitere Themen</h2>
 
-<p>Im talk <a href="https://www.youtube.com/watch?v=TtsvMRxmfGA">Essential JavaScript debugging tools for the modern detective</a> stellt Rebecca Hill noch weitere Themen vor:</p>
+<p>Im Talk <a href="https://www.youtube.com/watch?v=TtsvMRxmfGA">Essential JavaScript debugging tools for the modern detective</a> stellt Rebecca Hill noch weitere Themen vor:</p>
 
 <ul>
   <li>Extensions für VSCode zur Verbindung mit dem Debugger</li>
@@ -300,7 +298,7 @@ die man sonst schreiben müsste.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
+<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 <h2 id="quellen">Quellen</h2>
 
@@ -308,9 +306,7 @@ die man sonst schreiben müsste.</p>
   <li><a href="https://developer.mozilla.org/de/docs/Web/API/Console#Outputting_text_to_the_console">MDN: Text-Ersetzung in der console</a></li>
   <li><a href="https://developer.mozilla.org/de/docs/Web/API/Console">MDN: console</a></li>
 </ul>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -325,9 +321,9 @@ die man sonst schreiben müsste.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -506,6 +502,10 @@ die man sonst schreiben müsste.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1177,6 +1177,30 @@ die man sonst schreiben müsste.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1211,14 +1235,13 @@ die man sonst schreiben müsste.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/javascript/debugging.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1228,7 +1251,6 @@ die man sonst schreiben müsste.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Apache</h2>
-                                <a href="/php-vorbereitung/apache/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a><p>Apache ist eine Webserver-Software. Es ist freie Software (free as in freedom,
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Apache
+      </h2>
+      <a href="/php-vorbereitung/apache/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Apache ist eine Webserver-Software. Es ist freie Software (free as in freedom,
 not free as in beer). Das Apache-Projekt startete 1995 um statt NCSA Webserver, der schon durch viele Patches verbessert wurde, einen neuen Webserver von Grund auf zu programmieren. Der Name leitet sich aber noch von „a patchy webserver“ ab.</p>
 
 <p>Im Gegensatz zu anderen freien Software Projekten waren in der Apache Group von Anfang an Programmierer aus großen Firmen vertreten, und zwar im offiziellen Auftrag dieser Firmen.</p>
@@ -59,7 +57,7 @@ not free as in beer). Das Apache-Projekt startete 1995 um statt NCSA Webserver, 
 wichtige Open Source Software Projekte.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="apache-und-php-und-datenbank">Apache und PHP und Datenbank</h2>
 
@@ -76,7 +74,7 @@ Erfahrung mit dem Installieren auf Mac hat kann alternativ auch
 verwenden.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="apache-und-datenbank-starten">Apache und Datenbank starten</h2>
 <p>Wenn die Installation von Apache und Postgres funktioniert hat, findet
@@ -87,19 +85,19 @@ sind „Server“ (oder, wie es unter Windows heisst: „Dienste“).</p>
 <p>Mit dem MAPP/WAPP/LAPP Paket wird ein Control Panel installiert,
 über das man Webserver und Datenbank starten kann:</p>
 
-<p><img src='/images/php-vorbereitung/mapp-stack-panel.png' srcset='/images/php-vorbereitung/mapp-stack-panel.png 1x, /images/php-vorbereitung/mapp-stack-panel@2x.png 2x'  alt="MAPP Control Panel" ></p>
+<p><img src="/images/php-vorbereitung/mapp-stack-panel.png" srcset="/images/php-vorbereitung/mapp-stack-panel.png 1x, /images/php-vorbereitung/mapp-stack-panel@2x.png 2x"  alt="MAPP Control Panel" ></p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="apache-als-windows-dienst">Apache als Windows-Dienst</h2>
 <p>Unter Systemsteuerung -&gt; Verwaltung -&gt; Dienste findet man eine Liste aller
 bereits installierten Dienste und kann diese starten und anhalten.</p>
 
-<p><img src='/images/image326.png'  alt="Abbildung 124: Dienste von Windows: MySQL und Apache2 sind schon gestartet" ></p>
+<p><img src="/images/image326.png"  alt="Abbildung 124: Dienste von Windows: MySQL und Apache2 sind schon gestartet" ></p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="webserver-stoppen">Webserver stoppen</h2>
 <p>Egal wie man Apache gestartet hat: erst mit einem Browser kann man die Funktionstüchtigkeit des Webservers wirklich testen. Als URL verwendet man http://localhost/.</p>
@@ -109,9 +107,7 @@ Wer gleichzeitig mit vielen anderen Programmen arbeitet und extrem wenig
 Hauptspeicher im Computer hat, sollte die Server also nach Gebrauch wieder
 beenden.</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -126,9 +122,9 @@ beenden.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -307,6 +303,10 @@ beenden.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -978,6 +978,30 @@ beenden.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1012,14 +1036,13 @@ beenden.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-vorbereitung/apache.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1029,7 +1052,6 @@ beenden.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

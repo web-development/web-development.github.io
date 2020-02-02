@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Fixe Kopfzeile mit Animation</h2>
-                                <a href="/applied-js-and-css/header/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Fixe Kopfzeile mit Animation
+      </h2>
+      <a href="/applied-js-and-css/header/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Beim Scrollen einer Webseite soll der Header fix am oberen
 Rand des Fenster bleiben. In der Ausgangsposition darf er etwas
 mehr Platz vebrauchen, sobald er fixiert ist soll er aber kleiner werden.</p>
@@ -58,13 +56,13 @@ mehr Platz vebrauchen, sobald er fixiert ist soll er aber kleiner werden.</p>
 <p>In folgendem Bild sind drei Zustände beim Scrollen
 untereinander abgebildet:</p>
 
-<p><img src='/images/pizza-phases.jpg' srcset='/images/pizza-phases@2x.jpg 2x, /images/pizza-phases.jpg 1x'  alt="screenshot" ></p>
+<p><img src="/images/pizza-phases.jpg" srcset="/images/pizza-phases@2x.jpg 2x, /images/pizza-phases.jpg 1x"  alt="screenshot" ></p>
 
 <p>Um diesen Effekt zu erreichen brauchen wir eine Briese CSS Animation
 und ein Event, das mit Javascript behandelt wird.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="header-fixieren">Header fixieren</h2>
 
@@ -87,7 +85,7 @@ header{
 </pre></div>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="style-verndern-nein-danke">Style verändern? Nein Danke!</h2>
 
@@ -115,7 +113,7 @@ nur eine Klasse zu setzen:</p>
 <p><code>&lt;header class="shrunk"&gt;</code></p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="klasse-vorbereiten">Klasse vorbereiten</h2>
 
@@ -135,7 +133,7 @@ header.shrunk {
 sondern erst später.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="klasse-anwenden">Klasse anwenden</h2>
 
@@ -150,7 +148,7 @@ ob die Anwendung der Klasse das gewünschte Ergebnis erzielt:</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="transition-vorbereiten">Transition vorbereiten</h2>
 
@@ -180,7 +178,7 @@ header {
 So lange wird er übergang von der einen zur anderen Version des headers dauern.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="srollen">Srollen</h2>
 
@@ -197,7 +195,7 @@ window.pageYOffset
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="scroll-event-behandeln">Scroll Event behandeln</h2>
 
@@ -220,15 +218,13 @@ setzen oder entfernen.</p>
 Browser (laut CSS-Anweisung) angewandt.</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="fertig">Fertig</h2>
 
 <p>Wenn alles funktioniert hat kann man jetzt beim Scrollen (egal ob mit Scrollbar, Maus, Touchscreen oder
 Keyboard) sehen wie sich der Header verwandelt.</p>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -243,9 +239,9 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -424,6 +420,10 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1095,6 +1095,30 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1129,14 +1153,13 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/header.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1146,7 +1169,6 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

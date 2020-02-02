@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Daten absenden</h2>
-                                <a href="/formulare/action/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Daten absenden
+      </h2>
+      <a href="/formulare/action/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Was passiert, wenn Sie ein Formular ausfüllen und auf den Absende-Button
 drücken? Meist werden Sie an den Webserver zur weiteren Verarbeitung geschickt.
 Diese action wird direkt im <code>&lt;form&gt;</code>-Tag angegeben.</p>
@@ -64,7 +62,7 @@ Diese action wird direkt im <code>&lt;form&gt;</code>-Tag angegeben.</p>
 zum Beispiel ein PHP-Programm.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="daten-an-e-mail-senden">Daten an E-Mail senden</h2>
 
@@ -79,34 +77,34 @@ HTML-Code des Formulars aus:</p>
 
 <p>Achtung: diese Art die Daten zu senden ist sehr fehleranfällig: hierfür muß am Client-Computer nicht nur der Browser funktionieren, sondern auch das E-Mail Programm. Das E-Mail Programm muß richtig konfiguriert sein. Das ist auf vielen Computern am Internet nicht der Fall, oft werden die Daten also nicht erfolgreich versandt sondern gehen verloren.</p>
 
-<p><img src='/images/formulare/mail-or-http.png'  alt="Formular per E-Mail oder über den Webserver senden" ></p>
+<p><img src="/images/formulare/mail-or-http.png"  alt="Formular per E-Mail oder über den Webserver senden" ></p>
 
 <p>Deswegen sollten Sie diese Methode nicht verwenden, sondern immer über einen Webserver senden!</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="daten-senden-mit-methode-get">Daten senden mit Methode GET</h2>
 
 <p>Wird im Form-Tag als Action eine URL mit http(s) angegeben dann werden die Daten #an den Webserver gesendet. Dabei gibt es zwei Methoden: GET und POST. GET ist die einfachere.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
 <p>Hier sehen Sie ein (leicht vereinfachtes) Bestellformular für Flugzeuge das die Methode GET verwendet.</p>
 
-<p><img src='/images/formulare/action-get.png'  alt="Formular mit Methode GET" ></p>
+<p><img src="/images/formulare/action-get.png"  alt="Formular mit Methode GET" ></p>
 
 <p>Wenn die UserIn auf „Bestellung absenden“ drückt, baut der Browser aus der
 action und den Namen und Werten der einzelnen Eingabefelder eine URL zusammen,
 die dann aufgerufen wird.</p>
 
-<p><img src='/images/formulare/action-got.png'  alt="Abbildung 50: URL einer GET-Anfrage" ></p>
+<p><img src="/images/formulare/action-got.png"  alt="Abbildung 50: URL einer GET-Anfrage" ></p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="url-der-get-anfrage">URL der GET-Anfrage</h2>
 
@@ -141,7 +139,7 @@ Diese Codierung nennt man URL-Encoding. (siehe
 <a href="http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.1">HTML 4.01 Specification</a>.)</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="url-als-programm-schnittstelle">URL als Programm-Schnittstelle</h2>
 
@@ -161,15 +159,15 @@ http://www.google.com/search?q=Schokolade
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 Gerade bei Suchmaschinen wird diese Möglichkeit oft genutzt: z.B. durch die Suchfelder, die in den Browsern eingebaut sind:</p>
 
-<p><img src='/images/image237.png'  alt="Abbildung 51: Suchfeld von Firefox" ></p>
+<p><img src="/images/image237.png"  alt="Abbildung 51: Suchfeld von Firefox" ></p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -179,7 +177,7 @@ konstruieren und aufrufen. Die <strong>URL</strong> (und nicht das Formular) ist
 <strong>öffentliche Schnittstelle</strong> zu Ihrem Programm!</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
@@ -196,7 +194,7 @@ und <a href="/http/http/slide.html#slide-19">HTTPS</a>, beide im Kapitel HTTP, u
 das <a href="/session/">Kapitel über Sessions</a>.</p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="pricing-attack">Pricing Attack</h2>
 
@@ -215,7 +213,7 @@ das <a href="/session/">Kapitel über Sessions</a>.</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 Das gibt der KundIn die Chance ein „Gegenangebot“ zu senden (als „pricing attack“ bekannt):</p>
@@ -231,9 +229,7 @@ verkauft.</p>
 
 <p>Merke: Alle Eingaben die eine Web-Applikation erhält sind mit extremer Skepsis zu betrachten!</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -248,9 +244,9 @@ verkauft.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -429,6 +425,10 @@ verkauft.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1100,6 +1100,30 @@ verkauft.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1134,14 +1158,13 @@ verkauft.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/formulare/action.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1151,7 +1174,6 @@ verkauft.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

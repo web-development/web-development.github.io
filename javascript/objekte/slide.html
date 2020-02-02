@@ -1,80 +1,96 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Objekte + Klassen - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Objekte + Klassen - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Objekte + Klassen</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript/funktionen//slide.html">Funktionen und this</a> |
-                        
-            <a href="/javascript/objekte/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Objekte + Klassen</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript/funktionen//slide.html">Funktionen und this</a> | 
+        <a href="/javascript/objekte/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
 Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
 z.B. in Java, C++, C#, PHP diese Objekte immer in Klassen organisiert sind, ist das in Javascript nicht
 zwingend der Fall.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ein-einzelnes-objekt">Ein einzelnes Objekt</h2>
 
@@ -95,7 +111,7 @@ console.log( hs.alter() );  // 20
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="konstruktur-funktion-fr-mehrere-gleiche-objekte">Konstruktur-Funktion für mehrere gleiche Objekte</h2>
 
@@ -131,7 +147,7 @@ mmtb.constructor === Studiengang;
 hs.constructor === Object;
 </pre></div>
 
-<p><img src='/images/objekt-mit-objekt-und-constructor.png'  alt="Abbildung: Objekt mit Konstruktor" ></p>
+<p><img src="/images/objekt-mit-objekt-und-constructor.png"  alt="Abbildung: Objekt mit Konstruktor" ></p>
 
 <p>Dieser Konstruktor wird auch verwendet, um die Frage <code>instanceof</code> zu beantworten:</p>
 
@@ -148,7 +164,7 @@ geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <
 Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="klassen">Klassen</h2>
 
@@ -186,7 +202,7 @@ mmtb.toString();  // ruft toString Methode auf
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="vererbung">Vererbung</h2>
 
@@ -231,48 +247,47 @@ d.status  // sleeping
 </pre></div>
 
 </div>
-          <div class="slide"><h1>Objekte + Klassen</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript/funktionen//slide.html">Funktionen und this</a> |
-                        
-            <a href="/javascript/objekte/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Objekte + Klassen</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript/funktionen//slide.html">Funktionen und this</a> | 
+        <a href="/javascript/objekte/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript/closures//slide.html">Funktionen und Closures</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

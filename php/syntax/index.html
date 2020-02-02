@@ -38,22 +38,22 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Syntax von PHP</h2>
-                                <a href="/php/syntax/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Syntax von PHP
+      </h2>
+      <a href="/php/syntax/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
+
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="html-und-php">HTML und PHP</h2>
+
 <p>Ein erstes längeres Beispiel zeigt wie eng HTML und PHP vermischt werden:</p>
 
 <div class="example">
@@ -81,14 +81,14 @@
 &lt;/html&gt;
 </pre></div>
 
-<p>Der Quellcode besteht hier aus einem HTML-Dokument, in dem in 
-Zeile 09 bis 19 PHP eingebettet ist. In den Zeilen 10 bis 14 
-werden nur Berechnungen durchgeführt, diese Zeilen haben keine 
-Auswirkung auf das resultierende HTML-Dokument. In den Zeile 
+<p>Der Quellcode besteht hier aus einem HTML-Dokument, in dem in
+Zeile 09 bis 19 PHP eingebettet ist. In den Zeilen 10 bis 14
+werden nur Berechnungen durchgeführt, diese Zeilen haben keine
+Auswirkung auf das resultierende HTML-Dokument. In den Zeile
 15 und 17 wird mit der echo() – Funktion ein Output erstellt.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -113,11 +113,11 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 <p>Welcher Teil des Dokuments statisch war und welcher von PHP berechnet wurde ist nicht mehr erkennbar.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
-<p>Ein PHP-Dokument kann mehrere Einbettungen enthalten, dabei können 
+<p>Ein PHP-Dokument kann mehrere Einbettungen enthalten, dabei können
 sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
 
 <div class="example">
@@ -142,14 +142,14 @@ sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
       $i++;
     }
   ?&gt;
-      
+
   &lt;p&gt;Und ein gutes nächstes Jahr!&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
 
-<p>Diese Schreibweise widerspricht den Lese-Gewohnheiten von ProgrammiererInnen: 
-diese Art von Verschachtelung (geschwungenen Klammern in PHP vs. HTML-Tags) 
+<p>Diese Schreibweise widerspricht den Lese-Gewohnheiten von ProgrammiererInnen:
+diese Art von Verschachtelung (geschwungenen Klammern in PHP vs. HTML-Tags)
 ist in den meisten Sprachen verboten.</p>
 
 <p>z.B. in HTML ist diese Verschachtelung falsch: <code>&lt;b&gt;fett &lt;i&gt;und&lt;/b&gt; kursiv&lt;/i&gt;</code></p>
@@ -157,14 +157,14 @@ ist in den meisten Sprachen verboten.</p>
 <p>In PHP wird diese Schreibweise aber oft verwendet.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
-<p>Es gibt auch eine alternative 
-Schreibweise für die Kontrollstrukturen, die besser zu unseren 
-Lesegewohnheiten passt: Statt der öffnenden geschwungenen Klammer 
-wird ein Doppelpunkt geschrieben, das Ende der Schleife wird 
+<p>Es gibt auch eine alternative
+Schreibweise für die Kontrollstrukturen, die besser zu unseren
+Lesegewohnheiten passt: Statt der öffnenden geschwungenen Klammer
+wird ein Doppelpunkt geschrieben, das Ende der Schleife wird
 mit einem eigenen Schlüsselwort (endwhile, endif, endfor) markiert:</p>
 
 <div class="example">
@@ -182,21 +182,21 @@ mit einem eigenen Schlüsselwort (endwhile, endif, endfor) markiert:</p>
     $i++;
   endwhile;
 ?&gt;
-  
+
 &lt;p&gt;Und ein gutes nächstes Jahr!&lt;/p&gt;
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
-<p>Bei größeren Projekten empfiehlt sich aber auf jeden Fall die 
+<p>Bei größeren Projekten empfiehlt sich aber auf jeden Fall die
 möglichst starke Trennung von Programm-Logik und Darstellung.</p>
 
 <p>Der erste Schritt in diese Richtung wäre, die Berechnung an den Anfang der Datei zu stellen.</p>
 
-<p>Welcher Teil schon als Ausgabe zählt und in das HTML-Dokument eingebettet 
+<p>Welcher Teil schon als Ausgabe zählt und in das HTML-Dokument eingebettet
 wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.</p>
 
 <div class="example">
@@ -228,12 +228,13 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="includes">Includes</h2>
-<p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die 
-Verwendung von <code>include</code> um Duplizierung von Code zu vermeiden. 
-PHP-Code, der mehrmals verwendet wird, 
+
+<p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die
+Verwendung von <code>include</code> um Duplizierung von Code zu vermeiden.
+PHP-Code, der mehrmals verwendet wird,
 kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden:</p>
 
 <div class="example">
@@ -248,18 +249,18 @@ kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden:</p>
 ?&gt;
 </pre></div>
 
-<p>Wenn diese Datei direkt aufgerufen wird  (http://www.meinhost.at/phpfunctions.php) 
-erscheint kein Output, aber auch keine Fehlermeldung 404 
+<p>Wenn diese Datei direkt aufgerufen wird (http://www.meinhost.at/phpfunctions.php)
+erscheint kein Output, aber auch keine Fehlermeldung 404
 wie bei einer nicht existierenden Seite.</p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
-<p>Der Anfang und das Ende einer Webseite (head inklusive Titel, Navigation, footer) 
-können z.B. in Dateien <code>header.php</code> und <code>footer.php</code> ausgelagert werden. 
-Im Header wird hier ein klein wenig PHP  verwendet, um 
+<p>Der Anfang und das Ende einer Webseite (head inklusive Titel, Navigation, footer)
+können z.B. in Dateien <code>header.php</code> und <code>footer.php</code> ausgelagert werden.
+Im Header wird hier ein klein wenig PHP verwendet, um
 den Titel der Seite dynamisch generieren zu können:</p>
 
 <div class="example">
@@ -280,16 +281,16 @@ den Titel der Seite dynamisch generieren zu können:</p>
   &lt;h1&gt;&lt;?php echo $pagetitle ?&gt;&lt;/h1&gt;
 </pre></div>
 
-<p>Wenn diese Seite direkt aufgerufen wird (http://www.meinhost.at/header.php) 
-erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist 
+<p>Wenn diese Seite direkt aufgerufen wird (http://www.meinhost.at/header.php)
+erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist
 (undefined) wir sie behandelt als ob sie den leeren String enthält: die Überschrift ist leer.</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
-<p>Dieser Footer könnte auch eine statische HTML-Datei sein, 
+<p>Dieser Footer könnte auch eine statische HTML-Datei sein,
 da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
@@ -301,7 +302,7 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 
 
@@ -326,17 +327,18 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 ?&gt;
 </pre></div>
 
-<p>Und wieder gilt: die „Zusammensetzung“ erfolgt am Server. 
-Im Client landet nur der fertige HTML-Code. Die UserIn 
-kann nicht erkennen, dass die Seite ursprünglich 
+<p>Und wieder gilt: die „Zusammensetzung“ erfolgt am Server.
+Im Client landet nur der fertige HTML-Code. Die UserIn
+kann nicht erkennen, dass die Seite ursprünglich
 aus mehreren Dateien bestand.</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="variablen-und-typen">Variablen und Typen</h2>
-<p>Variablennamen in PHP beginnen mit einem Dollar-Zeichen. Warum? 
-Sie haben im Beispielprogramm schon gesehen, 
+
+<p>Variablennamen in PHP beginnen mit einem Dollar-Zeichen. Warum?
+Sie haben im Beispielprogramm schon gesehen,
 wie Variablen einfach in Strings eingebettet werden können:</p>
 
 <div class="example">
@@ -344,15 +346,15 @@ wie Variablen einfach in Strings eingebettet werden können:</p>
 echo &quot;$entfernung km in $h:$min sind $kmh km/h&quot;;
 </pre></div>
 
-<p>Das ist nur möglich weil die Variablennamen mit einem besonderen 
+<p>Das ist nur möglich weil die Variablennamen mit einem besonderen
 Zeichen gekennzeichnet sind.</p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 
 
-<p>Es gibt in PHP eine 
+<p>Es gibt in PHP eine
 zweite Schreibweise für Strings: einfache Anführungszeichen.
 Diese Variante erlaubt keine Variablen:</p>
 
@@ -362,7 +364,7 @@ echo &#39;Bei einfachen Anführungszeichen ist ein $ einfach ein $&#39;;
 </pre></div>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 
 
@@ -386,14 +388,14 @@ man beide Arten von Anführungszeichen gefahrlos verwenden.
 Variableninterpolation funktioniert.</p>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 
 
-<p>PHP unterscheidet zwischen den Datentypen boolean, integer, 
+<p>PHP unterscheidet zwischen den Datentypen boolean, integer,
 float, string, array, object, resource und NULL.</p>
 
-<p>In einer Variablen können nacheinander verschiedene Datentypen 
+<p>In einer Variablen können nacheinander verschiedene Datentypen
 gespeichert werden, die Variable selbst hat also keinen Typ!</p>
 
 <div class="example">
@@ -406,7 +408,7 @@ gespeichert werden, die Variable selbst hat also keinen Typ!</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 
 
@@ -429,7 +431,7 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 </pre></div>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 
 
@@ -443,33 +445,33 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 ?&gt;
 </pre></div>
 
-<p>Die Addition mit <code>+</code> interpretiert beide Summanden als Zahl. 
-Falls ein Summand ein String ist, wird am Beginn 
+<p>Die Addition mit <code>+</code> interpretiert beide Summanden als Zahl.
+Falls ein Summand ein String ist, wird am Beginn
 des Strings nach einer Zahl gesucht und diese verwendet.</p>
 
-<p>Der Punkt-Operator fügt Strings zusammen und 
+<p>Der Punkt-Operator fügt Strings zusammen und
 interpretiert seine beiden Operanden als Strings.</p>
 
 <p>Der Operator bestimmt also den Typ!</p>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 
 
-<p>In Javascript ist es 
+<p>In Javascript ist es
 genau umgekehrt: da entscheidet der Datentyp<br />
 über die Bedeutung des Operators:</p>
 
-<p><img src='/images/php-javascript-plus.png'  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
+<p><img src="/images/php-javascript-plus.png"  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
 
 
-<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h2 id="arrays">Arrays</h2>
 
-<p>Arrays in PHP können auf ähnliche Art verwendet werden 
-wie in C++ (und C, und Java, und Ruby,…) und verhalten 
+<p>Arrays in PHP können auf ähnliche Art verwendet werden
+wie in C++ (und C, und Java, und Ruby,…) und verhalten
 sich auf den ersten Blick auch wie erwartet:</p>
 
 <div class="example">
@@ -481,24 +483,24 @@ $foo[0] = &quot;Halli&quot;;
 $foo[1] = &quot;Hallo&quot;;
 
 for($i=0;$i&lt;count($foo);$i++) {
-  echo(&quot;Der $i. Wert im Array ist $foo[$i]&lt;br /&gt;&quot;);
+echo(&quot;Der $i. Wert im Array ist $foo[$i]&lt;br&gt;&quot;);
 }
 </pre></div>
 
 
-<a class='slide_break' id='slide-19' href='slide.html#slide-19'>▻</a>
+<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
 
 
-<p>Auf den zweiten Blick sind Arrays in PHP aber wesentlich 
-komplexer: nicht nur Integers sind als Index zulässig, 
-sondern auch Strings, es handelt sich also um 
-assoziative Arrays in denen ein Schlüssel 
+<p>Auf den zweiten Blick sind Arrays in PHP aber wesentlich
+komplexer: nicht nur Integers sind als Index zulässig,
+sondern auch Strings, es handelt sich also um
+assoziative Arrays in denen ein Schlüssel
 mit einem Wert assoziiert wird.</p>
 
-<p>Mit der <code>foreach</code> Schleife kann man Schlüssel und Wert auslesen. 
-Dabei wird offenbar, dass die Reihenfolge des Einfügens 
-ins Array erhalten geblieben ist: Die 
+<p>Mit der <code>foreach</code> Schleife kann man Schlüssel und Wert auslesen.
+Dabei wird offenbar, dass die Reihenfolge des Einfügens
+ins Array erhalten geblieben ist: Die
 Schlüssel-Wert-Paare sind im Array weiterhin geordnet!</p>
 
 <div class="example">
@@ -510,16 +512,16 @@ $foo[0] = &quot;Halli&quot;;
 $foo[1] = &quot;Hallo&quot;;
 
 foreach( $foo as $key =&gt; $value ) {
-    echo(&quot;Zum Schlüssel $key ist der Wert $value gespeichert&lt;br /&gt;&quot;);
+    echo(&quot;Zum Schlüssel $key ist der Wert \$value gespeichert&lt;br /&gt;&quot;);
 }
 </pre></div>
 
 
-<a class='slide_break' id='slide-20' href='slide.html#slide-20'>▻</a>
+<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 
 
-<p>Mit der Schreibweise <code>$foo[]</code> kann ein Wert unter der 
+<p>Mit der Schreibweise <code>$foo[]</code> kann ein Wert unter der
 kleinsten (noch nicht verwendet) Integer-Zahl als Schlüssel gespeichert werden:</p>
 
 <div class="example">
@@ -535,20 +537,20 @@ $foo[] = &quot;das Nächste&quot;;
 </pre></div>
 
 
-<a class='slide_break' id='slide-21' href='slide.html#slide-21'>▻</a>
+<a class="slide_break" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
 
 
 
-<p>Das Array in PHP ist also ein wesentlich komplexerer Datentyp 
-als ein Array in anderen Programmiersprachen – 
+<p>Das Array in PHP ist also ein wesentlich komplexerer Datentyp
+als ein Array in anderen Programmiersprachen –
 es verbindet Eigenschaften von Arrays mit denen von Hashmaps.</p>
 
-<p>Ein Array zu sortieren ist entsprechend kompliziert; es 
-gibt eine ganze Reihe von Sortier-Funktionen. Sie finden 
+<p>Ein Array zu sortieren ist entsprechend kompliziert; es
+gibt eine ganze Reihe von Sortier-Funktionen. Sie finden
 diese im Abschnitt <a href="http://at.php.net/manual/de/ref.array.php">→Array-Funktionen</a> der PHP-Doku.</p>
 
 
-<a class='slide_break' id='slide-22' href='slide.html#slide-22'>▻</a>
+<a class="slide_break" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
 
 <h2 id="funktionen-und-scope">Funktionen und Scope</h2>
 
@@ -563,15 +565,15 @@ $x = foo(10);
 $y = foo(20, &quot;Pfund&quot;);
 </pre></div>
 
-<p>Die Schreibweise von Funktionen inklusive Argumentliste und 
+<p>Die Schreibweise von Funktionen inklusive Argumentliste und
 Rückgabewert ist leicht verständlich.</p>
 
 
-<a class='slide_break' id='slide-23' href='slide.html#slide-23'>▻</a>
+<a class="slide_break" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
 
 
 
-<p>Eine Falle 
+<p>Eine Falle
 für erfahrene ProgrammiererInnen ist das Scoping von globalen Variablen:</p>
 
 <div class="example">
@@ -587,17 +589,17 @@ echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 // ergibt 0 !
 </pre></div>
 
-<p>Dieses Programm funktioniert nicht wie erwartet, da innerhalb 
-einer Funktion kein Zugriff auf die außerhalb definierten Variablen 
-möglich ist! Die Variable <code>$pi</code> ist in der Funktion nicht sichtbar, 
+<p>Dieses Programm funktioniert nicht wie erwartet, da innerhalb
+einer Funktion kein Zugriff auf die außerhalb definierten Variablen
+möglich ist! Die Variable <code>$pi</code> ist in der Funktion nicht sichtbar,
 stattdessen wird mit einer neuen Variable <code>$pi</code> mit Default-Wert <code>0</code> gerechnet.</p>
 
 
-<a class='slide_break' id='slide-24' href='slide.html#slide-24'>▻</a>
+<a class="slide_break" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
 
 
 
-<p>Mit dem Keyword global wird die Variable „in die Funktion eingeladen“ 
+<p>Mit dem Keyword global wird die Variable „in die Funktion eingeladen“
 und ist dann auch innerhalb der Funktion sichtbar, lesbar und veränderbar.</p>
 
 <div class="example">
@@ -617,12 +619,12 @@ echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 <p>Siehe auch <a href="http://php.net/manual/de/language.variables.scope.php">PHP Dokumentation: Geltungsbereich von Variablen</a></p>
 
 
-<a class='slide_break' id='slide-25' href='slide.html#slide-25'>▻</a>
+<a class="slide_break" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
 
 
 
-<p>Ausgenommen von dieser Regelung sind die sogenannten „superglobals“. 
-Das sind Variablen, die auf jeden Fall sichtbar sind. Vier davon 
+<p>Ausgenommen von dieser Regelung sind die sogenannten „superglobals“.
+Das sind Variablen, die auf jeden Fall sichtbar sind. Vier davon
 werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
@@ -653,17 +655,14 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 </table>
 
 
-<a class='slide_break' id='slide-26' href='slide.html#slide-26'>▻</a>
+<a class="slide_break" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
 
 <h2 id="empfohlene-lektre">Empfohlene Lektüre</h2>
 
 <ul>
   <li>Kapitel <a href="http://www.phptherightway.com/pages/The-Basics.html">The Basics</a> aus “PHP the Right Way”</li>
 </ul>
-
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -678,9 +677,9 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -859,6 +858,10 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1530,6 +1533,30 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1564,14 +1591,13 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php/syntax.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1581,7 +1607,6 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

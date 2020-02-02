@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>REST - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>REST - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>REST</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/qualitaet/performance//slide.html">Performance</a> |
-                        
-            <a href="/qualitaet/rest/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>REST</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/qualitaet/performance//slide.html">Performance</a> | 
+        <a href="/qualitaet/rest/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Der Begriff Representational State Transfer - kurz “REST” - wurde von Roy Fielding 2000 in seiner Dissertation definiert .
 Fielding hat unter anderem an der HTTP-Spezifikation und an WebDAV
 mitgearbeitet. In seiner Dissertation stellt er grundlegende Überlegungen zur Architektur von
@@ -80,7 +96,7 @@ zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen,
 Zusammenspiel funktioniert?</strong></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -92,7 +108,7 @@ Infrastruktur des Web (Server, Browser, Proxies, Caches, etc.) einpassen und dav
 <p>Wenn man REST missachtet wird die Infrastruktur nicht funktionieren.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -115,7 +131,7 @@ Darstellung in
 <p>Im Folgenden finden Sie zu jedem dieser Punkte eine kurze Erklärung.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="jedes-dokument-soll-eine-eindeutige-url-haben">Jedes Dokument soll eine eindeutige URL haben</h3>
 
@@ -140,7 +156,7 @@ waren die URLs:</p>
 <p>und so weiter. Das erfüllt schon das REST-Prinzip.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -176,7 +192,7 @@ einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit a
 denkt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="dokumente-sollen-links-auf-andere-dokument-enthalten">Dokumente sollen Links auf andere Dokument enthalten</h3>
 
@@ -191,7 +207,7 @@ URLs konstruieren muss.</p>
 <p>dieses Prinzip müssen Ihre Web-Applikationen auf jeden Fall erfüllen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="http-methoden-get-post-put-delete">HTTP-Methoden GET, POST, PUT, DELETE</h3>
 
@@ -217,7 +233,7 @@ einsetzen.  Erst mit Frameworks wie Ruby on Rails oder dem ZEND Framework für
 PHP werden sie die anderen Methoden verwenden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="ein-dokument--mehrere-reprsentationen">Ein Dokument – mehrere Repräsentationen</h3>
 
@@ -240,7 +256,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -264,7 +280,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -288,7 +304,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -297,7 +313,7 @@ AJAXifizieren will: ich kann die schon vorhandenen Ressourcen weiter nutzen, abe
 oder JSON-Repräsentation abfragen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -324,7 +340,7 @@ Accept: application/xml
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -342,7 +358,7 @@ Accept: application/xml
 bei der Verwendung von Frameworks umsetzten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
@@ -355,17 +371,17 @@ erhalte ich zum Beispiel folgende URL:</p>
 <p><code>http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&amp;find_code=WRD&amp;request=Web&amp;adjacent=N&amp;x=0&amp;y=0&amp;filter_code_1=WSP&amp;filter_request_1=&amp;filter_code_2=WEF&amp;filter_request_2=&amp;filter_code_5=WYR&amp;filter_request_5=&amp;filter_code_6=WYR&amp;filter_request_6=&amp;filter_code_7=WDA&amp;filter_request_7=&amp;filter_code_8=WZW&amp;filter_request_8=</code></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
 <p>Wenn ich diese URL zwei Tage später wieder verwende erhalte ich keine Antwort
 mehr, sondern die Fehlermeldung:</p>
 
-<p><img src='/images/session-timeout-error.png'  alt="Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State" ></p>
+<p><img src="/images/session-timeout-error.png"  alt="Abbildung 52: Fehlermeldung von ALEPHINO, einer Webapplikation mit zuviel State" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -375,7 +391,7 @@ Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
 Session.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -383,7 +399,7 @@ Session.</p>
 verwenden, wenn er unbedingt notwendig ist.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -398,7 +414,7 @@ BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den 
 <code>403 Access Denied</code>. Die BibliothekarIn hat aber Zugriff auf alle URLs dieser Form.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -417,45 +433,44 @@ Verwenden Sie nur die php-SESSION um den Zustand der Applikation zu speichern, u
 gehen Sie möglichst sparsam damit um.</p>
 
 </div>
-          <div class="slide"><h1>REST</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/qualitaet/performance//slide.html">Performance</a> |
-                        
-            <a href="/qualitaet/rest/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>REST</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/qualitaet/performance//slide.html">Performance</a> | 
+        <a href="/qualitaet/rest/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

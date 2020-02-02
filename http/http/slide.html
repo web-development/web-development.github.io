@@ -1,79 +1,95 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>HTTP - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTTP - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>HTTP</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http/tcpip-und-dns//slide.html">TCP/IP und DNS</a> |
-                        
-            <a href="/http/http/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/tools//slide.html">Werkzeuge</a>
-            
-            </p>
-          </div>
-	  <div class='slide'><p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. 
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>HTTP</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http/tcpip-und-dns//slide.html">TCP/IP und DNS</a> | 
+        <a href="/http/http/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/tools//slide.html">Werkzeuge</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. 
 HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. 
 Im <a href="/das-web-und-html/standards/">Kapitel „Drei Standards definieren das Web“</a> 
 wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
 <p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich.</p>
@@ -88,16 +104,16 @@ wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten
 </ol>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
-<p><img src='/images/http-sequence-diagram.svg'  alt="zwei http requests" ></p>
+<p><img src="/images/http-sequence-diagram.svg"  alt="zwei http requests" ></p>
 
 <p>Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="aufbau-von-request-und-response">Aufbau von Request und Response</h2>
 <p>Jede Anfrage des Clients und jede Antwort des Servers besteht aus einer ersten Zeile 
@@ -106,7 +122,7 @@ Header und Body funktionieren ähnlich wie bei einer E-Mail, es kann viele
 Header-Zeilen geben.  Der Body ist beim Request meist leer.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -127,7 +143,7 @@ bei Web-Formularen muss man die Methode angeben, mit der die Daten an den
 Server übertragen werden sollen. Das ist diese Methode.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -164,14 +180,14 @@ Content-Type: text/html
 Siehe http://httpstatus.es/</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="header">Header</h2>
 
 <p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="host">Host</h3>
 
@@ -185,7 +201,7 @@ erreichbar ist.  Das ist fast immer der Fall, dieser Header ist also fast immer
 notwendig.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="user-agent">User-Agent</h3>
 
@@ -201,7 +217,7 @@ Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die 
 <p>(Siehe <a href="http://webaim.org/blog/user-agent-string-history/">History of the browser user-agent string</a>.)</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="referer">Referer</h3>
 
@@ -210,7 +226,7 @@ zuvor angezeigt? URL der vorigen Seite — falls von dort ein Link hierher verfo
 wurde oder ein FORM gesendet wurde.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="date-server">Date, Server</h3>
 
@@ -225,7 +241,7 @@ Webserver-Software.  Wenn Sie Statistiken über den Marktanteil der verschiedene
 Server sehen, dann basieren diese auf dieser Angabe.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="content-type">Content-Type</h3>
 
@@ -247,48 +263,47 @@ sie hier häufig antreffen sind:</p>
 </ul>
 
 </div>
-          <div class="slide"><h1>HTTP</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http/tcpip-und-dns//slide.html">TCP/IP und DNS</a> |
-                        
-            <a href="/http/http/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/tools//slide.html">Werkzeuge</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>HTTP</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http/tcpip-und-dns//slide.html">TCP/IP und DNS</a> | 
+        <a href="/http/http/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/tools//slide.html">Werkzeuge</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

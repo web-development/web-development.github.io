@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Public und Private Key - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Public und Private Key - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Public und Private Key</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/git/git-tools//slide.html">Tools für Git</a> |
-                        
-            <a href="/git/public-private-key/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http//slide.html">HTTP</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Public und Private Key</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/git-tools//slide.html">Tools für Git</a> | 
+        <a href="/git/public-private-key/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http//slide.html">HTTP</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Sie kennen Passwörter als eine Methode, wie Sie sich am Computer “ausweisen” können:
 wie Sie beweisen können, dass Sie die Person sind, die Zugriff auf den Server haben soll.</p>
 
@@ -76,7 +92,7 @@ das zu verstehen hier ein kurzer Einblick in
 Asymmetrische Kryptosysteme.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="public-key-cryptography">Public Key Cryptography</h2>
 
@@ -90,14 +106,14 @@ hat jetzt einen kleinern Umfang, aber das Grundproblem bleibt bestehen.</p>
 <p>Bei einem asymmetrischen Verschlüsselungsverfahren gibt es zwei verschiedene
 Schlüssel: einen öffentlichen und einen privaten:</p>
 
-<p><img src='/images/public_key_crypto.svg'  alt="Ver- und Entschlüsseln" ></p>
+<p><img src="/images/public_key_crypto.svg"  alt="Ver- und Entschlüsseln" ></p>
 
 <p>Diese Art der Verschlüsselung wird im Internet z.B. für die Verschlüsselung
 und Signierung von E-Mail mit <a href="https://de.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> verwendet,
 oder für die Authentifizierung beim Login mit <a href="https://de.wikipedia.org/wiki/Ssh">SSH</a>.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="authentisierung-fr-ssh-mit-private-und-public-key">Authentisierung für SSH mit private und public key</h2>
 
@@ -108,10 +124,10 @@ Kommandozeile verfügbar zu machen, z.B. zur Fernwartung eines in einem entfernt
 
 <p>Die Authentisierung kann dabei entweder über ein Passwort oder mit private/public keys erfolgen.</p>
 
-<p><img src='/images/ssh_login_with_public_key.svg'  alt="Authentisierung für SSH mit private/public key" ></p>
+<p><img src="/images/ssh_login_with_public_key.svg"  alt="Authentisierung für SSH mit private/public key" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -145,7 +161,7 @@ The key&#39;s randomart image is:
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -200,7 +216,7 @@ Datei <code>~/.ssh/authorized_keys</code> installieren, bzw. falls die Datei sch
 als zusätzliche Zeile an die Datei anfügen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="authentisierung-fr-gitlab-mit-private-und-public-key">Authentisierung für gitlab mit private und public key</h2>
 
@@ -214,10 +230,10 @@ SSH: der private Key liegt als Datei <code>.ssh/id_rsa</code> in Ihrem Homeverze
 <p>Die Installation am Server wird mit gitlab etwas anders als bei ssh alleine:
 Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p>
 
-<p><img src='/images/gitlab-public-key.png'  alt="public key hochladen auf gitlab" ></p>
+<p><img src="/images/gitlab-public-key.png"  alt="public key hochladen auf gitlab" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="weiterfhrende-literatur">Weiterführende Literatur</h2>
 
@@ -227,48 +243,47 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
   <li><a href="https://help.github.com/articles/generating-ssh-keys">Generating SSH Keys</a> - englischsprachige Erklärung speziell für github</li>
 </ul>
 </div>
-          <div class="slide"><h1>Public und Private Key</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/git/git-tools//slide.html">Tools für Git</a> |
-                        
-            <a href="/git/public-private-key/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http//slide.html">HTTP</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Public und Private Key</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/git-tools//slide.html">Tools für Git</a> | 
+        <a href="/git/public-private-key/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http//slide.html">HTTP</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

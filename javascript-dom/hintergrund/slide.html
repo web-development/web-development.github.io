@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Hintergründe - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hintergründe - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Hintergründe</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a> |
-                        
-            <a href="/javascript-dom/hintergrund/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Hintergründe</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a> | 
+        <a href="/javascript-dom/hintergrund/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom/graceful//slide.html">Graceful Degradation</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="anwendungsgebiet">Anwendungsgebiet</h2>
 
@@ -78,7 +94,7 @@
 <p>Laut <a href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a> ist Javascript auf Platz 6 oder 7 der Programmiersprachen, aber bei <a href="https://insights.stackoverflow.com/survey/2018/#technology">Stackoverflow</a> ist es die beliebteste Programmiersprache.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="typische-verwendung">Typische Verwendung</h2>
 
@@ -109,7 +125,7 @@
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="javascript-und-java">Javascript und Java</h2>
 <p>Es gibt noch eine zweite Programmiersprache mit sehr ähnlichem Namen: Java. Die beiden zu verwechseln ist recht peinlich. Die Verwechslung ist übrigens beabsichtigt: Im Jahr 1995 gab es einen großen Hype rund um Java, Netscape wollte davon profitieren und nannte die neue Skriptsprache im Browser „Javascript“.</p>
@@ -162,7 +178,7 @@
 </table>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="geschichte-von-javascript">Geschichte von Javascript</h2>
 
@@ -178,7 +194,7 @@ Libraries wie jQuery ebenen die letzten Unterschiede in den Browser-Implementier
 <p>Die aktuelle Version die Sie erlernen ist die Untermenge von ‘‘ECMA Script ES8’’, die derzeit schon im Browsern unterstützt wird.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="anwendung-von-javascript">Anwendung von Javascript</h2>
 
@@ -194,7 +210,7 @@ Heute nennt man solche Applikationen “Progressive Web Apps” (PWA). <a href="
 zeigt eine Sammlung solcher Apps.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="document-object-model">Document Object Model</h2>
 
@@ -205,7 +221,7 @@ zeigt eine Sammlung solcher Apps.</p>
 <p>In folgendem Beispiel ist der markierte <code>a</code>-Tag innerhalb eines <code>li</code>-Tags, und
 der wiederum innerhalb eines  <code>ul</code>-Tag mit Klassen <code>nav</code> und <code>nav-list</code>.</p>
 
-<p><img src='/images/javascript-dom/dom.png' srcset='/images/javascript-dom/dom@2x.png 2x, /images/javascript-dom/dom.png 1x'  alt="Abbildung: Bild des DOM, erzeugt mit den Firefox DeveloperTools" ></p>
+<p><img src="/images/javascript-dom/dom.png" srcset="/images/javascript-dom/dom@2x.png 2x, /images/javascript-dom/dom.png 1x"  alt="Abbildung: Bild des DOM, erzeugt mit den Firefox DeveloperTools" ></p>
 
 <p>Wenn man mit Javascript irgendeinen Teil der Webseite verändern will verändert man diesen Baum. Mögliche Veränderungen wären:</p>
 
@@ -216,48 +232,47 @@ der wiederum innerhalb eines  <code>ul</code>-Tag mit Klassen <code>nav</code> u
 </ul>
 
 </div>
-          <div class="slide"><h1>Hintergründe</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a> |
-                        
-            <a href="/javascript-dom/hintergrund/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Hintergründe</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a> | 
+        <a href="/javascript-dom/hintergrund/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom/graceful//slide.html">Graceful Degradation</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

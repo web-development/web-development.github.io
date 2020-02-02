@@ -38,21 +38,19 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>CSS Sprites</h2>
-                                <a href="/css/css-sprites/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        CSS Sprites
+      </h2>
+      <a href="/css/css-sprites/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="css-sprites">CSS-Sprites</h2>
 
@@ -60,7 +58,7 @@
 dauern. Wenn man alle Bilder in ein Bild vereinigt muss nur noch
 eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 
-<p><img src='/images/css/yahoo-spritemap.png'  alt="Abbildung 42: CSS Sprites von Yahoo" ></p>
+<p><img src="/images/css/yahoo-spritemap.png"  alt="Abbildung 42: CSS Sprites von Yahoo" ></p>
 
 <p>So könnte der CSS Code aussehen:</p>
 
@@ -80,9 +78,7 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 }
 </pre></div>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -97,9 +93,9 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -278,6 +274,10 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -949,6 +949,30 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -983,14 +1007,13 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/css/css-sprites.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1000,7 +1023,6 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

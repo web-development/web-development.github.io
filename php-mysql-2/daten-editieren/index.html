@@ -38,25 +38,23 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Daten Bearbeiten</h2>
-                                <a href="/php-mysql-2/daten-editieren/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Daten Bearbeiten
+      </h2>
+      <a href="/php-mysql-2/daten-editieren/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <script>document.location="/php-db-schreiben/daten-editieren/";</script>
 
 <p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
-<p><img src='/images/person_edit.png'  alt="Formular zum Bearbeiten einer Person" ></p>
+<p><img src="/images/person_edit.png"  alt="Formular zum Bearbeiten einer Person" ></p>
 
 <p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement,
 da die ID aus dem GET-Parameter gelesen wurde:</p>
@@ -70,7 +68,7 @@ $person = $sth-&gt;fetch();
 </pre></div>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
 
@@ -111,7 +109,7 @@ MariaDB [portfolio_playground]&gt; select firstname,description from users where
 den Rest der Webseite verschwinden.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -132,7 +130,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
@@ -146,7 +144,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
@@ -177,7 +175,7 @@ exit;
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
@@ -192,7 +190,7 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -217,10 +215,10 @@ EOM;
 
 <p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
 
-<p><img src='/images/html-escaped1.png'  alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" ></p>
+<p><img src="/images/html-escaped1.png"  alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" ></p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
@@ -228,7 +226,7 @@ angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
 wieder anzeigen?</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
@@ -255,7 +253,7 @@ BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
 vorhergehenden Suche noch ein Cookie haben.)</p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 
 
@@ -285,7 +283,7 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 
@@ -293,25 +291,25 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 „wirkt nicht“:</p>
 
-<p><img src='/images/html-escaped.png' srcset='/images/html-escaped1.png 1x, /images/html-escaped.png 1x'  alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" ></p>
+<p><img src="/images/html-escaped.png" srcset="/images/html-escaped1.png 1x, /images/html-escaped.png 1x"  alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" ></p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
 <p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE
 erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
 
-<p><img src='/images/tinymce.png' srcset='/images/tinymce.png 1x, /images/tinymce@2x.png 2x'  alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" ></p>
+<p><img src="/images/tinymce.png" srcset="/images/tinymce.png 1x, /images/tinymce@2x.png 2x"  alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" ></p>
 
 <p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 
-<p><img src='/images/aloha.png'  alt="Aloha Editor" ></p>
+<p><img src="/images/aloha.png"  alt="Aloha Editor" ></p>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
 
@@ -345,9 +343,7 @@ echo &lt;&lt;&lt;EOM
 EOM;
 </pre></div>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -356,9 +352,9 @@ EOM;
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -537,6 +533,10 @@ EOM;
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1208,6 +1208,30 @@ EOM;
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1242,14 +1266,13 @@ EOM;
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-mysql-2/daten-editieren.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1259,7 +1282,6 @@ EOM;
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

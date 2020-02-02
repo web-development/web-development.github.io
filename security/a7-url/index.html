@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>A5 - Zugriffskontrolle</h2>
-                                <a href="/security/a7-url/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        A5 - Zugriffskontrolle
+      </h2>
+      <a href="/security/a7-url/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Auf Platz 5 der OWASP Top 10 2017: <strong>Fehler in der Zugriffskontrolle</strong></p>
 
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
@@ -60,7 +58,7 @@
 </blockquote>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="nur-was-serverseitig-geprft-wird-ist-sicher">Nur was serverseitig geprüft wird ist sicher</h2>
 
@@ -81,7 +79,7 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 </ul>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="beispiele">Beispiele</h2>
 
@@ -102,7 +100,7 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 <p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="jede-php-datei-jede-url-ist-ein-einstiegspunkt">Jede PHP-Datei, Jede URL ist ein Einstiegspunkt</h2>
 
@@ -123,7 +121,7 @@ PHP-Datei zuerst die Zugriffsrechte zu prüfen.</p>
 Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="vermeidung-von-unsichere-direkten-referenzen">Vermeidung von unsichere direkten Referenzen</h2>
 
@@ -139,7 +137,7 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="slugs-statt-keys">Slugs statt Keys</h2>
 
@@ -169,7 +167,7 @@ RewriteRule ^item/([-a-z]+) view_item.php?slug=\$1
 <p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="kein-zugriff-auf-beliebige-dateien">Kein Zugriff auf beliebige Dateien</h2>
 
@@ -201,7 +199,7 @@ Dateien am Server “erforschen”.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -211,9 +209,7 @@ Dateien am Server “erforschen”.</p>
   <li><a href="http://www.owasp.org/index.php/Guide_to_Authorization">OWASP Development Guide: Chapter on Authorization</a></li>
   <li><a href="https://www.owasp.org/index.php/Testing_Directory_traversal/file_include_(OTG-AUTHZ-001)">OWASP Testing Guide: Testing for Path Traversal</a></li>
 </ul>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -228,9 +224,9 @@ Dateien am Server “erforschen”.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -409,6 +405,10 @@ Dateien am Server “erforschen”.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1080,6 +1080,30 @@ Dateien am Server “erforschen”.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1114,14 +1138,13 @@ Dateien am Server “erforschen”.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a7-url.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1131,7 +1154,6 @@ Dateien am Server “erforschen”.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

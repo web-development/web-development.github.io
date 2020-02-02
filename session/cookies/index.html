@@ -38,23 +38,21 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Cookies</h2>
-                                <a href="/session/cookies/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Cookies
+      </h2>
+      <a href="/session/cookies/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Bis jetzt war jeder Zugriff auf die Webapplikation unabhängig von jedem anderen
 Zugriff: die PHP-Applikation weiß nicht, ob 10 verschiedene Leute die Homepage
 abrufen oder ob eine Person die Seite 10 mal lädt.</p>
 
-<p><img src='/images/stateless-http.svg'  alt="HTTP als &quot;stateless protocol&quot;" ></p>
+<p><img src="/images/stateless-http.svg"  alt="HTTP als &quot;stateless protocol&quot;" ></p>
 
 <p>Das ist eine Grundeigenschaft von HTTP: es ist „stateless“ (zustandslos).  Das
 Gegenteil davon wäre „stateful“ (zustandsbehaftet).</p>
@@ -64,7 +62,7 @@ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
 „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="cookies">Cookies</h2>
 
@@ -73,14 +71,14 @@ sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Da
 die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver
 wieder mitsendet.</p>
 
-<p><img src='/images/image363.png'  alt="Cookie wird gesetzt und bei jedem weiteren Request gesendet" ></p>
+<p><img src="/images/image363.png"  alt="Cookie wird gesetzt und bei jedem weiteren Request gesendet" ></p>
 
 <p>Der Browser sendet nie ein Cookie an einen anderen Webserver
 als den von dem er es erhalten hat. Er kann aber viele verschiedene Cookies von
 verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -105,7 +103,7 @@ Set-Cookie: style=wurscht; expires=Tue, 29-Mar-2005 19:30:42 GMT; path=/admin/
 </pre></div>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="cookies-in-php">Cookies in PHP</h3>
 
@@ -116,7 +114,7 @@ wurden im Array <code>$_COOKIES</code><a href="http://php.net/manual/en/reserved
 <p>Neue Cookies können Sie mit <code>setcookie()</code><a href="http://www.php.net/manual/en/function.setcookie.php">*</a> setzen.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
@@ -144,7 +142,7 @@ Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die
 neuen Cookies in Javascript über document.cookie lesbar!</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="libraries-fr-cookies-in-javascript">Libraries für Cookies in Javascript</h3>
 
@@ -156,9 +154,7 @@ es zwei gute Libraries:</p>
   <li>jQuery Plugin <a href="https://github.com/carhartl/jquery-cookie">jquery-cookies</a></li>
 </ul>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -173,9 +169,9 @@ es zwei gute Libraries:</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -354,6 +350,10 @@ es zwei gute Libraries:</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1025,6 +1025,30 @@ es zwei gute Libraries:</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1059,14 +1083,13 @@ es zwei gute Libraries:</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/session/cookies.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1076,7 +1099,6 @@ es zwei gute Libraries:</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

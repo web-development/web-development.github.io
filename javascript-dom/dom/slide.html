@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>DOM - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>DOM - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>DOM</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a> |
-                        
-            <a href="/javascript-dom/dom/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom/canvas//slide.html">2D Canvas</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>DOM</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a> | 
+        <a href="/javascript-dom/dom/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom/canvas//slide.html">2D Canvas</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
 <p>Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objecten vom Typ „node“. 
@@ -114,7 +130,7 @@ node.replaceChild()
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="simples-beispiel">Simples Beispiel</h3>
 
@@ -136,7 +152,7 @@ document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &
 <p>Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="manipulieren-der-klassen">Manipulieren der Klassen</h3>
 
@@ -154,7 +170,7 @@ if( document.getElementById(&quot;person_25&quot;).classList.contains(&#39;sicht
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="selektieren">Selektieren</h3>
 
@@ -171,7 +187,7 @@ while(i &lt; inputs.length) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="text">Text</h3>
 
@@ -200,7 +216,7 @@ let vn = document.getElementById(&quot;v_25&quot;).textContent;
 Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="manipulation-des-dom">Manipulation des DOM</h2>
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
@@ -229,7 +245,7 @@ node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="einfgen">Einfügen</h3>
 
@@ -241,7 +257,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="duplizieren">Duplizieren</h3>
 
@@ -262,7 +278,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -278,7 +294,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 <p><a href="/images/javascript-dom/example_js_add_to_form.html">Beispiel live im Browser</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="einfgen-von-event-handlern">Einfügen von Event Handlern</h2>
 <p>Wir haben im Kapitel <a href="/javascript-dom/hintergrund/">Hintergründe</a> schon gesehen, 
@@ -302,7 +318,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 <p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="farb-beispiel">Farb-Beispiel</h3>
 
@@ -334,7 +350,7 @@ wie ein Aufruf der Methode, dann würde man schreiben: <code>setcolor()</code>.<
 <p>Hier gibt es keine einfache Möglichkeit ein Argument für die Farbe mit zu geben!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -367,13 +383,13 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 <p>Programm <a href="/images/javascript-dom/farbfeld-dom.html">live im browser</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="pizza-beispiel">Pizza-Beispiel</h3>
 
 <p>Hier wieder am Beispiel des Pizza-Bestellformulars: mit einem kleinen „x“ in der rechten obere Ecke soll man eine Pizza löschen können.</p>
 
-<p><img src='/images/javascript-dom/pizza-x.png'  alt="Abbildung 59: Pizza löschen mit Klick auf das x in der rechten oberen Ecke" ></p>
+<p><img src="/images/javascript-dom/pizza-x.png"  alt="Abbildung 59: Pizza löschen mit Klick auf das x in der rechten oberen Ecke" ></p>
 
 <p>Im HTML-Code fügen wir dafür einen span-Tag ein:</p>
 
@@ -389,7 +405,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -410,7 +426,7 @@ document.querySelector(&quot;.removethis&quot;)
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="referenz">Referenz</h3>
 
@@ -419,48 +435,47 @@ document.querySelector(&quot;.removethis&quot;)
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a> im Mozilla Developer Network</li>
 </ul>
 </div>
-          <div class="slide"><h1>DOM</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a> |
-                        
-            <a href="/javascript-dom/dom/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom/canvas//slide.html">2D Canvas</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>DOM</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/javascript-dom/basic-javascript//slide.html">Basic Javascript</a> | 
+        <a href="/javascript-dom/dom/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom/canvas//slide.html">2D Canvas</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

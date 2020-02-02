@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>XPath</h2>
-                                <a href="/xml/xpath/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        XPath
+      </h2>
+      <a href="/xml/xpath/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>XPath ist eine Abfrage-Sprache zu XML, ähnlich zu
 einer Pfadangabe im Dateisystem.  Aber während eine
 Pfadangabe nur ungefähr 3 Features kennt (“..” für den
@@ -58,7 +56,7 @@ Pfadangabe nur ungefähr 3 Features kennt (“..” für den
 hat XPath dutzende, wenn nicht hunderte Features.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="xpath-intro">XPath Intro</h2>
 
@@ -70,7 +68,7 @@ hat XPath dutzende, wenn nicht hunderte Features.</p>
 </ul>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="xpath-in-php--simplexml">XPath in PHP / SimpleXML</h2>
 
@@ -94,7 +92,7 @@ zu einem Bestimmten Bild <a href="http://de.wikipedia.org/w/api.php?action=query
 </pre></div>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
@@ -115,7 +113,7 @@ echo &quot;&lt;img src=&#39;$bild_url&#39;&gt;&quot;;
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="xpath-in-javascript">XPath in Javascript</h2>
 
@@ -135,7 +133,7 @@ while (thisNode) {
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
@@ -161,7 +159,7 @@ if (thisNode) {
 <p>Siehe <a href="https://developer.mozilla.org/en-US/docs/Introduction_to_using_XPath_in_JavaScript">Introduction to using XPath in JavaScript</a></p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="wo-wird-xpath-im-web-development-verwendet">Wo wird XPath im Web Development verwendet?</h2>
 
@@ -173,9 +171,7 @@ Wie sagt man dem Browser welchen Link, welches Eingabefeld, welchen Knopf man me
 Mit XPath (siehe <a href="http://docs.seleniumhq.org/docs/02_selenium_ide.jsp#locating-by-xpath">Selenium Dokumentation</a>)
 oder mit CSS Selektoren oder mit einer ID.</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -190,9 +186,9 @@ oder mit CSS Selektoren oder mit einer ID.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -371,6 +367,10 @@ oder mit CSS Selektoren oder mit einer ID.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1042,6 +1042,30 @@ oder mit CSS Selektoren oder mit einer ID.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1076,14 +1100,13 @@ oder mit CSS Selektoren oder mit einer ID.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/xml/xpath.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1093,7 +1116,6 @@ oder mit CSS Selektoren oder mit einer ID.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

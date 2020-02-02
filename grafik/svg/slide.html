@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>SVG - Vektor Grafik - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>SVG - Vektor Grafik - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>SVG - Vektor Grafik</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/grafik/images//slide.html">Pixel-Bilder</a> |
-                        
-            <a href="/grafik/svg/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/grafik/2dcanvas//slide.html">2d Canvas</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>SVG - Vektor Grafik</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/grafik/images//slide.html">Pixel-Bilder</a> | 
+        <a href="/grafik/svg/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/grafik/2dcanvas//slide.html">2d Canvas</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <svg width="200" height="200" style="float:left;">
     <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="#4e9a06" />
     <rect x="80" y="100" width="90" height="90" stroke="black" stroke-width="2" fill="#204a87" opacity="0.75" />
@@ -86,7 +102,7 @@ Aber erst seit 2005 (Firefox, Opera), 2006 (Webkit) bzw. 2011 (Internet Explorer
 im Browser nativ dargestellt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -114,7 +130,7 @@ im Beispiel den grünen Kreis.</li>
 <a href="http://caniuse.com/#feat=svg-html5">can i use</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="grundformen-in-svg">Grundformen in SVG</h2>
 
@@ -141,7 +157,7 @@ simple geometrische Elemente definiert.</p>
 </svg>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="kreis-ellipse-rechteck">Kreis, Ellipse, Rechteck</h3>
 
@@ -160,7 +176,7 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -181,7 +197,7 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 </svg>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="pfad-und-polygon">Pfad und Polygon</h3>
 
@@ -197,7 +213,7 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -291,7 +307,7 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 </table>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 class="table table-condensed table-bordered" style="width:auto" id="farbe">Farbe</h3>
 
@@ -336,7 +352,7 @@ Pfad mit Sonnenstrahlen anwendet:</p>
 </svg>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="text">Text</h3>
 
@@ -350,7 +366,7 @@ an und für sich noch nicht sehr spannend:</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -390,7 +406,7 @@ beliebigen Pfades gesetzt werden.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="koordinaten-und-transformationen">Koordinaten und Transformationen</h2>
 
@@ -431,7 +447,7 @@ lokales Koordinatensystem definieren.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="animation">Animation</h2>
 
@@ -471,12 +487,12 @@ animiert:</p>
 </svg>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="svg-mit-javascript-erzeugen">SVG mit Javascript erzeugen</h2>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="createelement">createElement</h3>
 
@@ -499,7 +515,7 @@ svg.appendChild( rect );
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="jquery">jQuery</h3>
 
@@ -521,7 +537,7 @@ $svg.append($circle);
 <p>Code <a href="http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466">von Matthieu Charbonnier</a>.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="snapsvg">Snap.svg</h3>
 
@@ -615,16 +631,16 @@ einbauen und manipulieren.</p>
 <p>Für fortgeschrittene Animationen kann man zusätzlich die Library <a href="http://github.com/greensock/GreenSock-JS/">gsap</a> verwenden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="svg-optimieren">SVG Optimieren</h2>
 
 <p>Unter der Adresse <a href="https://jakearchibald.github.io/svgomg/">https://jakearchibald.github.io/svgomg/</a> kann man SVGs hochladen, optimieren und wieder herunterladen:</p>
 
-<p><img src='images/grafik/svgomg.png'  alt="" ></p>
+<p><img src="images/grafik/svgomg.png"  alt="" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="mehr">Mehr</h2>
 
@@ -637,48 +653,47 @@ einbauen und manipulieren.</p>
   <li><a href="https://moviecode.tumblr.com/post/72085619482/in-an-episode-of-doctor-who-the-doctor-is-seen">SVG in the movies</a></li>
 </ul>
 </div>
-          <div class="slide"><h1>SVG - Vektor Grafik</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/grafik/images//slide.html">Pixel-Bilder</a> |
-                        
-            <a href="/grafik/svg/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/grafik/2dcanvas//slide.html">2d Canvas</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>SVG - Vektor Grafik</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/grafik/images//slide.html">Pixel-Bilder</a> | 
+        <a href="/grafik/svg/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/grafik/2dcanvas//slide.html">2d Canvas</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

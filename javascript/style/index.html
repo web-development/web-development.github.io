@@ -38,24 +38,22 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Stil + Tipps</h2>
-                                <a href="/javascript/style/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Stil + Tipps
+      </h2>
+      <a href="/javascript/style/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Dieses Kapitel richtet sich speziell an Personen mit wenig Programmier-Erfahrung.
 Viele hier erwähnten Punkte sind nicht spezifisch für Javascascript.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="menschenfreundliche-programmierung">Menschenfreundliche Programmierung</h2>
 
@@ -91,7 +89,7 @@ verständlich und manche weniger leicht.</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="refactoring">Refactoring</h2>
 
@@ -115,15 +113,15 @@ passenden log-message machen.</p>
 die üblen Stellen <strong>Code Smells</strong>.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="variablen">Variablen</h2>
 
-<p>Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben. 
+<p>Der Name einer Variable soll Auskunft über ihre Bedeutung, ihre Rolle im Programm geben.
 Variablen sollen so kurz wie möglich, aber nicht kürzer sein.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="konventionelle-variablennamen">Konventionelle Variablennamen</h3>
 
@@ -143,10 +141,6 @@ while( x &lt; 10 ) {
   drawStarAt( i,k );
   x++;
 }
-
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
-
-
 // mit der Konvention
 const i=0;
 const x,y;
@@ -159,7 +153,7 @@ while( i &lt; 10 ) {
 </pre></div>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="fixe-werte-durch-konstanten-ersetzen">Fixe Werte durch Konstanten ersetzen</h3>
 
@@ -174,21 +168,21 @@ zeichnet ein Rechteck in ein neu geschaffens SVG:</p>
   svg.setAttribute(&quot;width&quot;,  1024);
   svg.setAttribute(&quot;height&quot;, 768);
 
-  const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
-  frame.setAttribute( &#39;x&#39;, 0 );
-  frame.setAttribute( &#39;y&#39;, 0 );
-  frame.setAttribute( &#39;width&#39;, 1024 );
-  frame.setAttribute( &#39;height&#39;, 768 );
-  frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-  frame.setAttribute( &#39;stroke-width&#39;, 1 );
-  frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
-  svg.appendChild( frame );
+const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame.setAttribute( &#39;x&#39;, 0 );
+frame.setAttribute( &#39;y&#39;, 0 );
+frame.setAttribute( &#39;width&#39;, 1024 );
+frame.setAttribute( &#39;height&#39;, 768 );
+frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
+frame.setAttribute( &#39;stroke-width&#39;, 1 );
+frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
+svg.appendChild( frame );
 
-  document.querySelector(&quot;body&quot;).appendChild( svg );
+document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -204,21 +198,21 @@ es macht also Sinn eine Konstante zu verwenden:</p>
   svg.setAttribute(&quot;width&quot;,  svg_width);
   svg.setAttribute(&quot;height&quot;, svg_height);
 
-  const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
-  frame.setAttribute( &#39;x&#39;, 0 );
-  frame.setAttribute( &#39;y&#39;, 0 );
-  frame.setAttribute( &#39;width&#39;, svg_width );
-  frame.setAttribute( &#39;height&#39;, svg_height );
-  frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-  frame.setAttribute( &#39;stroke-width&#39;, 1 );
-  frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
-  svg.appendChild( frame );
+const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame.setAttribute( &#39;x&#39;, 0 );
+frame.setAttribute( &#39;y&#39;, 0 );
+frame.setAttribute( &#39;width&#39;, svg_width );
+frame.setAttribute( &#39;height&#39;, svg_height );
+frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
+frame.setAttribute( &#39;stroke-width&#39;, 1 );
+frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
+svg.appendChild( frame );
 
-  document.querySelector(&quot;body&quot;).appendChild( svg );
+document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -233,35 +227,38 @@ es macht also Sinn eine Konstante zu verwenden:</p>
   svg.setAttribute(&quot;width&quot;,  svg_width);
   svg.setAttribute(&quot;height&quot;, svg_height);
 
-  const frame_border_width = 10;
-  const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
-  frame.setAttribute( &#39;x&#39;, frame_border_width/2 );
-  frame.setAttribute( &#39;y&#39;, frame_border_width/2 );
-  frame.setAttribute( &#39;width&#39;, svg_width - frame_border_width );
-  frame.setAttribute( &#39;height&#39;, svg_height  - frame_border_width  );
-  frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-  frame.setAttribute( &#39;stroke-width&#39;,  frame_border_width  );
-  frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
-  svg.appendChild( frame );
+const frame_border_width = 10;
+const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame.setAttribute( &#39;x&#39;, frame_border_width/2 );
+frame.setAttribute( &#39;y&#39;, frame_border_width/2 );
+frame.setAttribute( &#39;width&#39;, svg_width - frame_border_width );
+frame.setAttribute( &#39;height&#39;, svg_height - frame_border_width );
+frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
+frame.setAttribute( &#39;stroke-width&#39;, frame_border_width );
+frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
+svg.appendChild( frame );
 
-  document.querySelector(&quot;body&quot;).appendChild( svg );
+document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="code-wiederverwenden">Code wiederverwenden</h2>
 
-<p>Ein ganz wichtiger <strong>Code Smell</strong> ist kopierter Code:  die gleichen Zeilen finde 
+<p>Ein ganz wichtiger <strong>Code Smell</strong> ist kopierter Code: die gleichen Zeilen finde
 ich an mehreren Stellen im Programm. Je größer der wiederholte Teil, desto schlimmer.</p>
 
 <p>Im schlimmsten Fall ist kopierter Code ein Hinweis darauf, dass der Code
 gar nicht verstanden, sondern nur wiederverwendet wurde. Diese Art ein Programm
-zu erzeugen nennt man <a href="http://en.wikipedia.org/wiki/Cargo_cult_programming">Cargo Cult Programming</a> 
-- das Verwenden oder Nachahmen von Technik die man nicht versteht <a href="https://www.google.com/search?q=Cargo+cult+airplane&amp;tbm=isch">Bilder</a>.</p>
+zu erzeugen nennt man <a href="http://en.wikipedia.org/wiki/Cargo_cult_programming">Cargo Cult Programming</a></p>
+
+<ul>
+  <li>das Verwenden oder Nachahmen von Technik die man nicht versteht <a href="https://www.google.com/search?q=Cargo+cult+airplane&amp;tbm=isch">Bilder</a>.</li>
+</ul>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="schleife-statt-kopierterm-code">Schleife statt kopierterm Code</h3>
 
@@ -284,7 +281,7 @@ frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
 frame.setAttribute( &#39;height&#39;, 20 );
 frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-frame.setAttribute( &#39;stroke-width&#39;,  1);
+frame.setAttribute( &#39;stroke-width&#39;, 1);
 frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
 svg.appendChild( frame );
 
@@ -295,7 +292,7 @@ frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
 frame.setAttribute( &#39;height&#39;, 20 );
 frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-frame.setAttribute( &#39;stroke-width&#39;,  1);
+frame.setAttribute( &#39;stroke-width&#39;, 1);
 frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
 svg.appendChild( frame );
 
@@ -306,7 +303,7 @@ frame.setAttribute( &#39;y&#39;, 1 );
 frame.setAttribute( &#39;width&#39;, 20 );
 frame.setAttribute( &#39;height&#39;, 20 );
 frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-frame.setAttribute( &#39;stroke-width&#39;,  1);
+frame.setAttribute( &#39;stroke-width&#39;, 1);
 frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
 svg.appendChild( frame );
 
@@ -314,12 +311,12 @@ document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 
 <p>Da der einzige Unterschied zwischen den kopierten Code-Zeilen die
-X-Koordinate ist, und diese stetig ansteigt, kann man hier eine 
+X-Koordinate ist, und diese stetig ansteigt, kann man hier eine
 Schleife verwenden, um den Code wiederzuverwenden.</p>
 
 <p>Aus der Schleifenvariable i = 0, 1, 2 kann ganz einfach
@@ -338,31 +335,31 @@ svg.setAttribute(&quot;height&quot;, svg_height);
 
 var i=0;
 while( i &lt; 3 ) {
-  const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
-  frame.setAttribute( &#39;x&#39;, i * 20 + 1 );
-  frame.setAttribute( &#39;y&#39;, 1 );
-  frame.setAttribute( &#39;width&#39;, 20 );
-  frame.setAttribute( &#39;height&#39;, 20 );
-  frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-  frame.setAttribute( &#39;stroke-width&#39;,  1);
-  frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
-  svg.appendChild( frame );
+const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame.setAttribute( &#39;x&#39;, i \* 20 + 1 );
+frame.setAttribute( &#39;y&#39;, 1 );
+frame.setAttribute( &#39;width&#39;, 20 );
+frame.setAttribute( &#39;height&#39;, 20 );
+frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
+frame.setAttribute( &#39;stroke-width&#39;, 1);
+frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
+svg.appendChild( frame );
 
-  i++;
+i++;
 }
 
 document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="funktion-statt-kopiertem-code">Funktion statt kopiertem Code</h3>
 
 <p>Eine noch bessere Art der Wiederverwertung von Code ist die
 Funktion. Dabei muss man sich entscheiden, welche Argumente
 die Funktion akzeptieren soll. Nur die X-Koordinate?<br />
-X-, Y-Koordinate, Länge und Breite?  Je nachdem in welcher
+X-, Y-Koordinate, Länge und Breite? Je nachdem in welcher
 Weise der Code wieder verwendet werden soll ergeben sich andere
 Argumente.</p>
 
@@ -375,27 +372,27 @@ Argumente.</p>
   svg.setAttribute(&quot;width&quot;,  svg_width);
   svg.setAttribute(&quot;height&quot;, svg_height);
 
-  function addRect( svg, x,y,w,h ) {
-    const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
-    frame.setAttribute( &#39;x&#39;, x);
-    frame.setAttribute( &#39;y&#39;, y );
-    frame.setAttribute( &#39;width&#39;,w);
-    frame.setAttribute( &#39;height&#39;, h);
-    frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
-    frame.setAttribute( &#39;stroke-width&#39;,  1);
-    frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
-    svg.appendChild( frame );
-  }
+function addRect( svg, x,y,w,h ) {
+const frame = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;rect&quot;);
+frame.setAttribute( &#39;x&#39;, x);
+frame.setAttribute( &#39;y&#39;, y );
+frame.setAttribute( &#39;width&#39;,w);
+frame.setAttribute( &#39;height&#39;, h);
+frame.setAttribute( &#39;stroke&#39;, &#39;black&#39; );
+frame.setAttribute( &#39;stroke-width&#39;, 1);
+frame.setAttribute( &#39;fill&#39;, &#39;red&#39; );
+svg.appendChild( frame );
+}
 
-  addRect( svg,  1, 1, 20, 20 );
-  addRect( svg, 21, 1, 20, 20 );
-  addRect( svg, 41, 1, 20, 20 );
+addRect( svg, 1, 1, 20, 20 );
+addRect( svg, 21, 1, 20, 20 );
+addRect( svg, 41, 1, 20, 20 );
 
-  document.querySelector(&quot;body&quot;).appendChild( svg );
+document.querySelector(&quot;body&quot;).appendChild( svg );
 </pre></div>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h2 id="quellen">Quellen</h2>
 
@@ -409,15 +406,13 @@ Argumente.</p>
 
 <p>Das Beispiel für nicht-lesbaren Code wurde mit dem Google Closure Compiler erzeugt.
 (Achtung: “Closure” ist hier ein Eigenname - ein sehr verwirrender Eigenname. Stellen
-Sie sich vor man würde ein Modell eines Autos nach einem Bauteil benennen, 
+Sie sich vor man würde ein Modell eines Autos nach einem Bauteil benennen,
 z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
 
 <ul>
   <li><a href="http://closure-compiler.appspot.com/home">Google Closure Compiler</a></li>
 </ul>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -432,9 +427,9 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -613,6 +608,10 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1284,6 +1283,30 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1318,14 +1341,13 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/javascript/style.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1335,7 +1357,6 @@ z.B. ‘Opel Kurbelwelle’, ‘VW Fensterheber’, ‘Fiat Zündkerze’)</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

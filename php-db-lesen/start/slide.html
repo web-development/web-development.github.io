@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>PHP und Datenbank - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>PHP und Datenbank - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>PHP und Datenbank</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/php-db-lesen/db//slide.html">Datenbanken</a> |
-                        
-            <a href="/php-db-lesen/start/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>PHP und Datenbank</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/php-db-lesen/db//slide.html">Datenbanken</a> | 
+        <a href="/php-db-lesen/start/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Mit der Verwendung einer Datenbank wird der Aufruf einer
 Webseite noch einmal komplexer:  der Webserver ruft
 das PHP Programm auf, das PHP-Programm schickt eine
 Anfrage an die Datenbank.</p>
 
-<p><img src='/images/php-db.svg'  alt="Webseite wird von PHP erzeugt, mit DB-Abfrage" ></p>
+<p><img src="/images/php-db.svg"  alt="Webseite wird von PHP erzeugt, mit DB-Abfrage" ></p>
 
 <p>Ob der Datenbank-Server und der Webserver auf dem selben Computer laufen
 oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="datenbank-schnittstellen">Datenbank-Schnittstellen</h2>
 
@@ -88,7 +104,7 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 <a href="http://php.net/manual/de/book.pdo.php">PDO Dokumentation</a>.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="verbindungsaufbau">Verbindungsaufbau</h3>
 
@@ -118,7 +134,7 @@ Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
 <code>unix_socket</code> an.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -135,7 +151,7 @@ $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 die zuvor inkludiert wird.  Warum?</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="datenbank-zugangsdaten">Datenbank-Zugangsdaten</h3>
 
@@ -156,7 +172,7 @@ wir wollen den Code im Repository vielleicht
 veröffentlichen und die Zugangsdaten weiter geheimhalten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="gitignore">.gitignore</h3>
 
@@ -165,7 +181,7 @@ wird der Dateiname in die Datei <code>.gitignore</code> eingetragen.
 <code>.gitignore</code> ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -187,7 +203,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>Hier erkennt git die datei <code>config.php</code> als neue Datei, die wir in Zukunft vielleicht mit <code>git add</code> hinzufügen wollen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -203,7 +219,7 @@ config.php
 <code>config.php</code> (egal in welchem Ordner) zu ignorieren.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -226,7 +242,7 @@ Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde.
 Die sollte man ganz normal committen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="empfohlene-optionen-fr-den-verbindungsaufbau">Empfohlene Optionen für den Verbindungsaufbau</h3>
 
@@ -252,7 +268,7 @@ mit der Datenbank auftreten eine Exception in PHP auslösen.</p>
 werden diese Optionen vorausgesetzt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="anweisung-an-die-datenbank">Anweisung an die Datenbank</h3>
 
@@ -269,7 +285,7 @@ $anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
 Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="abfrage-der-datenbank">Abfrage der Datenbank</h3>
 
@@ -291,48 +307,47 @@ Methoden an, mit denen man dann wirklich die Daten aus der DB holen kann.</p>
 <p>Doch bevor wir hier ins Detail gehen werden wir uns
 im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
 </div>
-          <div class="slide"><h1>PHP und Datenbank</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/php-db-lesen/db//slide.html">Datenbanken</a> |
-                        
-            <a href="/php-db-lesen/start/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>PHP und Datenbank</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/php-db-lesen/db//slide.html">Datenbanken</a> | 
+        <a href="/php-db-lesen/start/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

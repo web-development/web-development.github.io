@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Navigationsmenü - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Navigationsmenü - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Navigationsmenü</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css-layout/details//slide.html">Details zu Layout</a> |
-                        
-            <a href="/css-layout/navigation/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Navigationsmenü</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css-layout/details//slide.html">Details zu Layout</a> | 
+        <a href="/css-layout/navigation/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Wenn man mit CSS ein Navigationsmenü gestaltet dann sollte man von einem HTML-Code ausgehen der auch ohne CSS gut benutzbar bleibt ( „graceful degradation“), und der nur mit CSS umgestaltet wird.</p>
 
 <p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links in einem <code>nav</code> Tag:</p>
@@ -87,7 +103,7 @@
 <p>Ohne CSS wird die Liste ganz normal dargestellt <a href="/images/navi/demo.html">Demo</a>.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="vertikales-men">Vertikales Menü</h2>
 
@@ -122,7 +138,7 @@ Damit ist dann das ganze Rechteck anklickbar, nicht nur der Text selbst.
 <a href="/images/navi/demo-1.html">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="horizontales-men">Horizontales Menü</h2>
 
@@ -156,7 +172,7 @@ nav li a:link {
 <p><a href="/images/navi/demo-2.html">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="responsive-navigation-mit-burger-men">Responsive Navigation mit Burger Menü</h2>
 
@@ -164,7 +180,7 @@ nav li a:link {
 Navigationsmenüs nicht gut geeignet.  Dort reduziert man das Navigationsmenü
 auf einen einzigen Button, der dann das Navigationsmenü ein- bzw. ausblendet:</p>
 
-<p><img src='/images/css-layout/burger-menu.png' srcset='/images/css-layout/burger-menu@2x.png 2x, /images/css-layout/burger-menu.png 1x'  alt="Burger Menu in Action" ></p>
+<p><img src="/images/css-layout/burger-menu.png" srcset="/images/css-layout/burger-menu@2x.png 2x, /images/css-layout/burger-menu.png 1x"  alt="Burger Menu in Action" ></p>
 
 <p>Als Symbol für diese Art von Menü werden oft drei vertikale Stricke verwendet,
 auch  <a href="https://de.wikipedia.org/wiki/Hamburger-Men%C3%BC-Icon">Hamburger Icon</a>
@@ -173,7 +189,7 @@ genannt.</p>
 <p><a href="/images/navi/demo-4.html">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="php-fr-navigationsmen">PHP für Navigationsmenü</h2>
 <p>Das Navigationsmenü sollte natürlich in allen Seiten der Site gleich vorhanden sein.
@@ -201,7 +217,7 @@ im Navigationsmenü sieht das dann so aus:</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -216,17 +232,17 @@ z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <co
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="server-side">Server Side</h2>
 
 <p>Das Einfügen der inkuldierten Datei erfolgt auf dem Server. 
 Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und merkt von der Inkludierung nichts. Mit ANSICHT → SEITENQUELLTEXT ANZEIGEN kann man den PHP-Code nicht sehen.</p>
 
-<p><img src='/images/php/view-source.png'  alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" ></p>
+<p><img src="/images/php/view-source.png"  alt="Abbildung 41: Original PHP-Datei am Server und Quelltext-Ansicht im Webbrowser" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ergebnis">Ergebnis</h2>
 
@@ -234,48 +250,47 @@ Der Client erhält das vollständige HTML-Dokument inklusive Navigation, und mer
 ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
 
 </div>
-          <div class="slide"><h1>Navigationsmenü</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css-layout/details//slide.html">Details zu Layout</a> |
-                        
-            <a href="/css-layout/navigation/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Navigationsmenü</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css-layout/details//slide.html">Details zu Layout</a> | 
+        <a href="/css-layout/navigation/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css-layout/selektoren//slide.html">CSS Selektoren im Detail</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

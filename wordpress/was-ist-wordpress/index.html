@@ -38,20 +38,18 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Was ist Wordpress</h2>
-                                <a href="/wordpress/was-ist-wordpress/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
-<p><a href="/images/wordpress-default.jpg"><img src='/images/wordpress-default.jpg'  alt="Wordpress Homepage mit dem Standard Theme" ></a></p>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Was ist Wordpress
+      </h2>
+      <a href="/wordpress/was-ist-wordpress/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
+<p><a href="/images/wordpress-default.jpg"><img src="/images/wordpress-default.jpg"  alt="Wordpress Homepage mit dem Standard Theme" ></a></p>
 
 <p>Wordpress ist PHP-Applikation die für das Schreiben eines Blogs gedacht war. Im Laufe
 der Jahre wurde es zu einem Content Management System ausgebaut, das auch für andere
@@ -69,7 +67,7 @@ an Hand von vier Beispielen:</p>
 
 <p>Wordpress ist freie Software, d.h. nicht nur ist die Software gratis, sondern auch der source code ist zugänglich und unter der GNU General Public Licence 2 erhältlich.  Wordpress braucht PHP und eine MySQL Datenbank.</p>
 
-<p><img src='/images/photomatt.png'  alt="Blog von photomatt" ></p>
+<p><img src="/images/photomatt.png"  alt="Blog von photomatt" ></p>
 
 <p>Der ursprüngliche Autor / Programmierer von Wordpress ist Matt Mullenweg (auch bekannt unter dem Namen <a href="https://ma.tt/about/">photomatt</a>).</p>
 
@@ -77,9 +75,7 @@ an Hand von vier Beispielen:</p>
 
 <p>Matt + Automattic sind ein Beispiel dafür, dass man Software als freie Software gratis verteilen kann, und trotzdem sein Geld damit verdienen kann.</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -94,9 +90,9 @@ an Hand von vier Beispielen:</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -275,6 +271,10 @@ an Hand von vier Beispielen:</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -946,6 +946,30 @@ an Hand von vier Beispielen:</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -980,14 +1004,13 @@ an Hand von vier Beispielen:</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/wordpress/was-ist-wordpress.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -997,7 +1020,6 @@ an Hand von vier Beispielen:</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

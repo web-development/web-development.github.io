@@ -1,78 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Responsive Design - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Responsive Design - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Responsive Design</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
-                        
-            <a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css-layout/layout//slide.html">CSS für Layout</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Responsive Design</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> | 
+        <a href="/css-layout/responsive/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css-layout/layout//slide.html">CSS für Layout</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Wie gehen wir mit der Herausforderung der verschiedenen
 Auflösungen und Pixeldichten um?</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="responsive-design">Responsive Design</h2>
 
@@ -81,10 +97,10 @@ Auflösungen und Pixeldichten um?</p>
 <p>In diesem ersten Beispiel von responsive Design werden drei verschiedene Layouts
 für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben dabei gleich.</p>
 
-<p><img src='/images/css-layout/responsive.png'  alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" ></p>
+<p><img src="/images/css-layout/responsive.png"  alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -103,18 +119,18 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="mobile-first">Mobile First</h3>
 
 <p>Luke Wroblewski schlug 2009 unter dem Slogan “Mobile First” vor, zuerst die mobile Version der Website zu gestalten, und davon dann die “größeren” Versionen abzuleiten <a href="http://www.lukew.com/ff/entry.asp?933">→</a>.</p>
 
-<p><img src='/images/responsive/mobile-first.jpg'  alt="/images/responsive/mobile-first.jpg" ></p>
+<p><img src="/images/responsive/mobile-first.jpg"  alt="/images/responsive/mobile-first.jpg" ></p>
 
 <p><a href="https://www.flickr.com/photos/saucef/7184615025">Bild: (CC BY-NC) Sauce Babilonia</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="mediaqueries-and-featurequeries">Mediaqueries and Featurequeries</h3>
 
@@ -165,7 +181,7 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 <p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="css-pixel-vs-physikalische-pixel">CSS Pixel vs. Physikalische Pixel</h3>
 
@@ -180,20 +196,20 @@ ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
 bei einer “Device Pixel Ratio” von 2.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
 
 <p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="pixel">Pixel</h3>
 
 <p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
 
-<p><img src='/images/css-layout/pixel-image-zoom.png'  alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" ></p>
+<p><img src="/images/css-layout/pixel-image-zoom.png"  alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" ></p>
 
 <p>Die Verkleinerte Darstellung ist eine Verschwendung: Wenn ich ein Bild herunterladen muss, dass doppelt So breit und
 doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so viele Daten, und damit eine viermal
@@ -202,7 +218,7 @@ so lange wartezeit!</p>
 <p>Es gibt eine moderne Lösung für diese Problematik <a href="/grafik/images/">Responsive Images</a> - diese werden wir später genauer kennen lernen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="vektor">Vektor</h3>
 
@@ -211,10 +227,10 @@ so lange wartezeit!</p>
 <pre><code>&lt;img src="circle.svg"&gt;
 </code></pre>
 
-<p><img src='/images/circle.svg'  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
+<p><img src="/images/circle.svg"  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="schriftgre">Schriftgröße</h2>
 
@@ -222,10 +238,10 @@ so lange wartezeit!</p>
 
 <p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt.</p>
 
-<p><img src='/images/css-layout/zeilenumbruch.png'  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
+<p><img src="/images/css-layout/zeilenumbruch.png"  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zoomen">Zoomen</h2>
 
@@ -236,16 +252,16 @@ Viewport und die CSS pixel-ratio verändern sich also, dadurch werden
 andere Mediaqueries schlagend.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="beispiel">Beispiel</h2>
 
 <p>Die <a href="/images/cssgrid/#!/responsive">Demo Seite für CSS Grid</a> ist responsive.</p>
 
-<p><img src='/images/css-layout/example-responsive.png' srcset='/images/css-layout/example-responsive@3x.png 3x, /images/css-layout/example-responsive.png 1x, /images/css-layout/example-responsive@2x.png 2x'  alt="/images/css-layout/example-responsive.png" ></p>
+<p><img src="/images/css-layout/example-responsive.png" srcset="/images/css-layout/example-responsive@3x.png 3x, /images/css-layout/example-responsive.png 1x, /images/css-layout/example-responsive@2x.png 2x"  alt="/images/css-layout/example-responsive.png" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -265,7 +281,7 @@ andere Mediaqueries schlagend.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -294,7 +310,7 @@ andere Mediaqueries schlagend.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -320,13 +336,13 @@ andere Mediaqueries schlagend.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
 <p>und als Easter Egg ist noch eine ganz verrücktes Grid dabei:</p>
 
-<p><img src='/images/css-layout/easteregg-responsive.png' srcset='/images/css-layout/easteregg-responsive@2x.png 2x, /images/css-layout/easteregg-responsive.png 1x'  alt="/images/css-layout/easteregg-responsive.png" ></p>
+<p><img src="/images/css-layout/easteregg-responsive.png" srcset="/images/css-layout/easteregg-responsive@2x.png 2x, /images/css-layout/easteregg-responsive.png 1x"  alt="/images/css-layout/easteregg-responsive.png" ></p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
@@ -359,48 +375,47 @@ andere Mediaqueries schlagend.</p>
 </pre></div>
 
 </div>
-          <div class="slide"><h1>Responsive Design</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> |
-                        
-            <a href="/css-layout/responsive/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css-layout/layout//slide.html">CSS für Layout</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Responsive Design</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css-layout/rahmenbedingungen//slide.html">Rahmenbedingungen</a> | 
+        <a href="/css-layout/responsive/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css-layout/layout//slide.html">CSS für Layout</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Public und Private Key</h2>
-                                <a href="/git/public-private-key/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Public und Private Key
+      </h2>
+      <a href="/git/public-private-key/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Sie kennen Passwörter als eine Methode, wie Sie sich am Computer “ausweisen” können:
 wie Sie beweisen können, dass Sie die Person sind, die Zugriff auf den Server haben soll.</p>
 
@@ -59,7 +57,7 @@ das zu verstehen hier ein kurzer Einblick in
 Asymmetrische Kryptosysteme.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="public-key-cryptography">Public Key Cryptography</h2>
 
@@ -73,14 +71,14 @@ hat jetzt einen kleinern Umfang, aber das Grundproblem bleibt bestehen.</p>
 <p>Bei einem asymmetrischen Verschlüsselungsverfahren gibt es zwei verschiedene
 Schlüssel: einen öffentlichen und einen privaten:</p>
 
-<p><img src='/images/public_key_crypto.svg'  alt="Ver- und Entschlüsseln" ></p>
+<p><img src="/images/public_key_crypto.svg"  alt="Ver- und Entschlüsseln" ></p>
 
 <p>Diese Art der Verschlüsselung wird im Internet z.B. für die Verschlüsselung
 und Signierung von E-Mail mit <a href="https://de.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> verwendet,
 oder für die Authentifizierung beim Login mit <a href="https://de.wikipedia.org/wiki/Ssh">SSH</a>.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="authentisierung-fr-ssh-mit-private-und-public-key">Authentisierung für SSH mit private und public key</h2>
 
@@ -91,10 +89,10 @@ Kommandozeile verfügbar zu machen, z.B. zur Fernwartung eines in einem entfernt
 
 <p>Die Authentisierung kann dabei entweder über ein Passwort oder mit private/public keys erfolgen.</p>
 
-<p><img src='/images/ssh_login_with_public_key.svg'  alt="Authentisierung für SSH mit private/public key" ></p>
+<p><img src="/images/ssh_login_with_public_key.svg"  alt="Authentisierung für SSH mit private/public key" ></p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
@@ -128,7 +126,7 @@ The key&#39;s randomart image is:
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
@@ -183,7 +181,7 @@ Datei <code>~/.ssh/authorized_keys</code> installieren, bzw. falls die Datei sch
 als zusätzliche Zeile an die Datei anfügen.</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="authentisierung-fr-gitlab-mit-private-und-public-key">Authentisierung für gitlab mit private und public key</h2>
 
@@ -197,10 +195,10 @@ SSH: der private Key liegt als Datei <code>.ssh/id_rsa</code> in Ihrem Homeverze
 <p>Die Installation am Server wird mit gitlab etwas anders als bei ssh alleine:
 Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p>
 
-<p><img src='/images/gitlab-public-key.png'  alt="public key hochladen auf gitlab" ></p>
+<p><img src="/images/gitlab-public-key.png"  alt="public key hochladen auf gitlab" ></p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="weiterfhrende-literatur">Weiterführende Literatur</h2>
 
@@ -209,9 +207,7 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
   <li><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Public-key Cryptography</a> in der Englischen Wikipedia</li>
   <li><a href="https://help.github.com/articles/generating-ssh-keys">Generating SSH Keys</a> - englischsprachige Erklärung speziell für github</li>
 </ul>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -226,9 +222,9 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -407,6 +403,10 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1078,6 +1078,30 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1112,14 +1136,13 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/git/public-private-key.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1129,7 +1152,6 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

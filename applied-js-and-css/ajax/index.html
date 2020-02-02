@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>AJAX</h2>
-                                <a href="/applied-js-and-css/ajax/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        AJAX
+      </h2>
+      <a href="/applied-js-and-css/ajax/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
 wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
 (URL eintippen, Link anklicken), oder um Ressourcen zu laden
@@ -60,7 +58,7 @@ die zu einem HTML-Dokument gehören.</p>
 verwendet werden: Asynchrone Requests.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="was-ist-ajax">Was ist AJAX?</h2>
 
@@ -74,7 +72,7 @@ schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserve
 geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Namen. Diese Liste
 wird mit Javascript in einer <code>div</code> unterhalb des Eingabefelds angezeigt:</p>
 
-<p><img src='/images/image375.png'  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
+<p><img src="/images/image375.png"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
 
 <p>Mit AJAX wird hier eine HTTP-Anfrage gesendet.</p>
 
@@ -87,7 +85,7 @@ des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen un
 Javascript-Programm fügt die Daten in die Seite ein.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h3 id="im-javascript-programm">Im Javascript Programm</h3>
 
@@ -129,7 +127,7 @@ läuft vollständig ab.</p>
 aufgerufen und die Daten zu verarbeiten.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="http">HTTP</h3>
 
@@ -159,10 +157,10 @@ Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
 Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
 die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
 
-<p><img src='/images/ajax-sequence-diagram.svg'  alt="AJAX Ablauf" ></p>
+<p><img src="/images/ajax-sequence-diagram.svg"  alt="AJAX Ablauf" ></p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
 
@@ -171,7 +169,7 @@ können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
 Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="simples-javascript-beispiel">Simples Javascript Beispiel</h2>
 
@@ -219,7 +217,7 @@ Zeile.</p>
 in der Variable <code>this</code> und kann aus <code>this.responseText</code> die Antwort auslesen.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="fetch-und-promises">Fetch und Promises</h2>
 
@@ -260,7 +258,7 @@ wird auch komplizierter: ein weiterer asynchroner Verarbeitungsschritt
 kommt dazu: das auslesen des Textes aus dem Response.</p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="promises">Promises</h2>
 
@@ -283,7 +281,7 @@ fetch(&quot;counter_ajax.php&quot;)
 </pre></div>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="chaining">Chaining</h3>
 
@@ -320,7 +318,7 @@ fetch(&quot;counter_ajax.php&quot;)
 </pre></div>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
 
@@ -362,7 +360,7 @@ fetch(&quot;counter_ajax.php&quot;)
 <p>Siehe auch</p>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="autocomplete">Autocomplete</h2>
 
@@ -370,7 +368,7 @@ fetch(&quot;counter_ajax.php&quot;)
 Beginnen wir mit dem Backend:</p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="backend">Backend</h3>
 
@@ -430,7 +428,7 @@ echo json_encode($cities);
 </pre></div>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="frontend">Frontend</h3>
 
@@ -449,7 +447,7 @@ new autoComplete({
 </pre></div>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h2 id="ajax-beispiel-mit-api">AJAX Beispiel mit API</h2>
 
@@ -462,7 +460,7 @@ sieht man einen wichtigen Unterschied:</p>
 </ul>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h3 id="direkter-zugriff-auf-eine-fremde-api">Direkter Zugriff auf eine fremde API</h3>
 
@@ -473,7 +471,7 @@ mit welchem API Key wie viele Zugriffe erfolgt sind, und je nach
 dem limitiert oder verrechnet werden. Die Preise für die API
 sind nach Anzahl der Zugriffen gestaffelt, im Mai 2017 waren die Preise:</p>
 
-<p><img src='/images/openweathermap-preise.png'  alt="Preise von openweathermap.org" ></p>
+<p><img src="/images/openweathermap-preise.png"  alt="Preise von openweathermap.org" ></p>
 
 <p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
 mit gesendet werden:</p>
@@ -496,7 +494,7 @@ auf https.</p>
 ist die nächste Lösung notwendig:</p>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h3>
 
@@ -511,7 +509,7 @@ auf die API zuzugreifen.</p>
 Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
 in manchen Browsern eine Meldung angezeigt:</p>
 
-<p><img src='/images/cors-error.png'  alt="CORS Fehlermeldung" ></p>
+<p><img src="/images/cors-error.png"  alt="CORS Fehlermeldung" ></p>
 
 <p>In beiden Fällen ist die Lösung dieselbe: man muss die Daten
 über das eigene Backend laden.</p>
@@ -529,7 +527,7 @@ $text=file_get_contents( $url );
 </pre></div>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h2 id="ausblick">Ausblick</h2>
 
@@ -538,9 +536,7 @@ es gibt natürlich noch viel mehr.</p>
 
 <p>Aber bevor man sich in AJAX Abenteuer stürzt sollte man sich auch
 über die Probleme bewusst sein, dazu mehr im nächsten Kapitel.</p>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -555,9 +551,9 @@ es gibt natürlich noch viel mehr.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -736,6 +732,10 @@ es gibt natürlich noch viel mehr.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1407,6 +1407,30 @@ es gibt natürlich noch viel mehr.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1441,14 +1465,13 @@ es gibt natürlich noch viel mehr.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/ajax.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1458,7 +1481,6 @@ es gibt natürlich noch viel mehr.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

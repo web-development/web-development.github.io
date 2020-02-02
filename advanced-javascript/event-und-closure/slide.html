@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Events und Closures - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Events und Closures - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Events und Closures</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> |
-                        
-            <a href="/advanced-javascript/event-und-closure/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Events und Closures</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> | 
+        <a href="/advanced-javascript/event-und-closure/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Dieses Kapitel ist ein Tutorial zu folgenden Projekt:
 Ein SVG-Editor soll programmiert werden, mit dem man
 Kreise und Rechtecke im Browser erzeugen und positioniern kann.</p>
@@ -78,7 +94,7 @@ die Notwendigkeit von Closures erläutert.</p>
 <p>Der Fokus in diesem Kapitel liegt auf der Drag und Drop Funktionalität.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="die-ausgangslage">Die Ausgangslage</h2>
 
@@ -90,7 +106,7 @@ jeweils Konstruktor-Funktionen angelegt, mit der Editor-, Rechteck-, und Kreis-O
 erzeugt werden können.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="editor">Editor</h3>
 
@@ -117,7 +133,7 @@ erzeugt werden können.</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -149,7 +165,7 @@ Editor.prototype.circle = function( x,y,r,att, text ) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="circle-und-rectangle">Circle und Rectangle</h3>
 
@@ -196,7 +212,7 @@ ein.</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -232,7 +248,7 @@ Circle.prototype.setPosition = function ( position ) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="drag-and-drop">Drag and Drop</h2>
 
@@ -245,7 +261,7 @@ Circle.prototype.setPosition = function ( position ) {
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="mausposition">Mausposition</h3>
 
@@ -276,7 +292,7 @@ function cursorPoint(e) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="wiederholung-event-listener">Wiederholung: Event-Listener</h3>
 
@@ -300,7 +316,7 @@ element.addEventListener( &#39;mousedown&#39;, onMouseDown);
 weiteren Details.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="problemstellung-vom-dom-element-zum-javascript-objekt">Problemstellung: vom DOM-Element zum Javascript-Objekt</h3>
 
@@ -324,7 +340,7 @@ Name des Attributs mit “data-“ beginnt.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -349,7 +365,7 @@ und nur der String wurde gespeichert.</p>
 <p><strong>Es ist nicht möglich beliebige Javascript-Objekte in der DOM zu speicher!</strong></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="lsungs-ansatz-mit-closure">Lösungs-Ansatz mit Closure</h3>
 
@@ -376,7 +392,7 @@ addDragability( other_jsobj, other_element );
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="umsetzung">Umsetzung</h3>
 
@@ -417,48 +433,47 @@ function addDragability( jsobj, element ) {
 
 <div class="alert"><strong>ToDo</strong> fertigen Code zeigen - später</div>
 </div>
-          <div class="slide"><h1>Events und Closures</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> |
-                        
-            <a href="/advanced-javascript/event-und-closure/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Events und Closures</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> | 
+        <a href="/advanced-javascript/event-und-closure/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

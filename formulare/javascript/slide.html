@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Formular und Javascript - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Formular und Javascript - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Formular und Javascript</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/formulare/php//slide.html">Formular und PHP</a> |
-                        
-            <a href="/formulare/javascript/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Formular und Javascript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/formulare/php//slide.html">Formular und PHP</a> | 
+        <a href="/formulare/javascript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Die Details von Javascript werden in den nächsten Kaptieln, hier geht es nur um ein erstes Kennenlernen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="javascript-einbetten">Javascript Einbetten</h2>
 <p>Javascript kann innerhalb des <code>&lt;script&gt;</code>-Tags irgendwo in den HTML-Code eingefügt werden.</p>
@@ -91,20 +107,20 @@
 <p>Ohne Output merkt man aber gar nichts davon, das dieses Programm läuft.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="konsole">Konsole</h3>
 
 <p>In den Developer Tools von Firefox kann man die Variablen auslesen:</p>
 
-<p><img src='/images/formulare/ff-console-variable.png' srcset='/images/formulare/ff-console-variable@2x.png 2x, /images/formulare/ff-console-variable.png 1x'  alt="Mit Firefox Developer Tools den Wert einzelnen Javascript-Variablen  auslesen" ></p>
+<p><img src="/images/formulare/ff-console-variable.png" srcset="/images/formulare/ff-console-variable@2x.png 2x, /images/formulare/ff-console-variable.png 1x"  alt="Mit Firefox Developer Tools den Wert einzelnen Javascript-Variablen  auslesen" ></p>
 
 <p>In Google Chrome gibt es ebenfalls eine Console, das entsprechende Fenster wird geöffnet wenn Sie irgendwo in der Webseite mit der rechten Maustaste klicken, und „Element überprüfen“ auswählen:</p>
 
-<p><img src='/images/formulare/chrome-console-variable.png' srcset='/images/formulare/chrome-console-variable@2x.png 2x, /images/formulare/chrome-console-variable.png 1x'  alt="Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" ></p>
+<p><img src="/images/formulare/chrome-console-variable.png" srcset="/images/formulare/chrome-console-variable@2x.png 2x, /images/formulare/chrome-console-variable.png 1x"  alt="Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="popup-fenster">Popup-Fenster</h2>
 <p>Mit den Befehlen <code>alert</code>, <code>confirm</code> und <code>prompt</code> können Sie kleine Popup-Fenster öffnen:</p>
@@ -117,12 +133,12 @@ var ja_nein = confirm(&quot;sollen die daten nicht gelöscht werden?&quot;);
 var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe löscht alles&quot;);
 </pre></div>
 
-<p><img src='/images/formulare/popups.png'  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" ></p>
+<p><img src="/images/formulare/popups.png"  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" ></p>
 
 <p>Achtung: So können Sie zwar bei gutgläubigen Menschen Herzinfarkte auslösen, aber Sie können mit Javascript nicht wirklich Dateien löschen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="formulare">Formulare</h2>
 
@@ -142,18 +158,18 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
-<p><img src='/images/formulare/manipulate-form-js.png' srcset='/images/formulare/manipulate-form-js@2x.png 2x, /images/formulare/manipulate-form-js.png 1x'  alt="Mit Firefox Developer Tools Formulare und Eingabefelder auslesen" ></p>
+<p><img src="/images/formulare/manipulate-form-js.png" srcset="/images/formulare/manipulate-form-js@2x.png 2x, /images/formulare/manipulate-form-js.png 1x"  alt="Mit Firefox Developer Tools Formulare und Eingabefelder auslesen" ></p>
 
 <p>Mit <code>document.getElementById</code> kann man also das einen bestimmten Tag  ansprechen, wenn man die id kennt.</p>
 
 <p>Jedes Eingabefeld bietet mit value den aktuell eingegeben Wert (als String) an, hier z.B. <code>document.getElementById("hochschule").value</code>.  Die letzten beiden Zeilen in der Konsole zeigen, dass es auch umgekehrt funktioniert: man kann auch Werte ins Eingabefeld hineinschreiben, der neue Werte wird sofort im Browser angezeigt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ereignisse-und-ereignisgesteuerte-programmierung">Ereignisse und Ereignisgesteuerte Programmierung</h2>
 <p>Javascript entstand als Programmiersprache für das „Frontend“, für die
@@ -163,7 +179,7 @@ Programmierung. Dieser Stil kommt immer Einsatz, wenn es um Schnittstellen zu Me
 und auf die Eingaben von Menschen reagiert werden soll.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="events-im-browser">Events im Browser</h2>
 
@@ -180,19 +196,19 @@ und auf die Eingaben von Menschen reagiert werden soll.</p>
 werden Sie mit viel weniger Events auskommen!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="beispiel">Beispiel</h2>
 
 <p>Ein Beispiel für ereignisgesteuerte Programmierung mit einem Web-Formular: Das Bestellformular für Bücher soll automatisch den Gesamtpreis berechnen.</p>
 
-<p><img src='/images/image248.png'  alt="Abbildung 55: Bestellformular für Bücher mit Berechnung" ></p>
+<p><img src="/images/image248.png"  alt="Abbildung 55: Bestellformular für Bücher mit Berechnung" ></p>
 
 <p>Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis
 multipliziert werden und in die rechte Spalte geschrieben werden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="schritt-eine-berechnung">1.Schritt: eine Berechnung</h3>
 
@@ -214,7 +230,7 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -231,7 +247,7 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 <span id="out"></span></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -252,7 +268,7 @@ Multiplikation zugewisen. Dabei wir die Zahl (z.B. 300) wieder in einen String
 zurückverwandelt (z.B. “300”).</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -281,7 +297,7 @@ function compute() {
 <p>Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -317,7 +333,7 @@ wie viel ist 10 plus 20?
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -342,7 +358,7 @@ wie viel ist 10 plus 20?
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="formular-prfen">Formular prüfen</h2>
 <p>Mit HTML5 kann man mit den Attributen <code>required</code> und <code>pattern</code> einfache Prüfungen
@@ -353,7 +369,7 @@ sind.</p>
 <p><a href="/images/formulare/form.html#required_and_pattern">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -372,7 +388,7 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <p>Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -404,48 +420,47 @@ function formularok() {
 </pre></div>
 
 </div>
-          <div class="slide"><h1>Formular und Javascript</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/formulare/php//slide.html">Formular und PHP</a> |
-                        
-            <a href="/formulare/javascript/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Formular und Javascript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/formulare/php//slide.html">Formular und PHP</a> | 
+        <a href="/formulare/javascript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/javascript-dom//slide.html">Javascript und das Document Object Model (DOM)</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

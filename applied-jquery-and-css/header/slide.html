@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Fixe Kopfzeile mit Animation - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fixe Kopfzeile mit Animation - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Fixe Kopfzeile mit Animation</h1>
-            <p>
-                        
-            <a href="/applied-jquery-and-css/header/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Fixe Kopfzeile mit Animation</h1>
+      <p>
+        
+        <a href="/applied-jquery-and-css/header/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Beim Scrollen einer Webseite soll der Header fix am oberen
 Rand des Fenster bleiben. In der Ausgangsposition darf er etwas
 mehr Platz vebrauchen, sobald er fixiert ist soll er aber kleiner werden.</p>
@@ -69,13 +87,13 @@ mehr Platz vebrauchen, sobald er fixiert ist soll er aber kleiner werden.</p>
 <p>In folgendem Bild sind drei Zustände beim Scrollen
 untereinander abgebildet:</p>
 
-<p><img src='/images/pizza-phases.jpg' srcset='/images/pizza-phases@2x.jpg 2x, /images/pizza-phases.jpg 1x'  alt="screenshot" ></p>
+<p><img src="/images/pizza-phases.jpg" srcset="/images/pizza-phases@2x.jpg 2x, /images/pizza-phases.jpg 1x"  alt="screenshot" ></p>
 
 <p>Um diesen Effekt zu erreichen brauchen wir eine Briese CSS Animation
 und ein Event, das mit Javascript behandelt wird.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="header-fixieren">Header fixieren</h2>
 
@@ -96,7 +114,7 @@ header{
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="klasse-vorbereiten">Klasse Vorbereiten</h2>
 
@@ -113,7 +131,7 @@ header.shrunk {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="transition-vorbereiten">Transition vorbereiten</h2>
 
@@ -140,7 +158,7 @@ header {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="srollen">Srollen</h2>
 
@@ -157,7 +175,7 @@ window.pageYOffset
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="scroll-event-behandeln">Scroll Event behandeln</h2>
 
@@ -189,49 +207,50 @@ liest den <code>pageYOffset</code> aus, und setzt je nach Ergebnis die Klasse:</
 Browser (laut CSS-Anweisung) angewandt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="fertig">Fertig</h2>
 
 <p>Wenn alles funktioniert hat kann man jetzt beim Scrollen (egal ob mit Scrollbar, Maus, Touchscreen oder
 Keyboard) sehen wie sich der Header verwandelt.</p>
 </div>
-          <div class="slide"><h1>Fixe Kopfzeile mit Animation</h1>
-            <p>
-                        
-            <a href="/applied-jquery-and-css/header/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Fixe Kopfzeile mit Animation</h1>
+      <p>
+        
+        <a href="/applied-jquery-and-css/header/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

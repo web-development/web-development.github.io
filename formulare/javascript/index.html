@@ -38,23 +38,21 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Formular und Javascript</h2>
-                                <a href="/formulare/javascript/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Formular und Javascript
+      </h2>
+      <a href="/formulare/javascript/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Am Beispiel eines Formular werden wir nun einfaches Javascript kennen lernen. Die Details von Javascript werden in den nächsten Kaptieln, hier geht es nur um ein erstes Kennenlernen.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="javascript-einbetten">Javascript Einbetten</h2>
 <p>Javascript kann innerhalb des <code>&lt;script&gt;</code>-Tags irgendwo in den HTML-Code eingefügt werden.</p>
@@ -74,20 +72,20 @@
 <p>Ohne Output merkt man aber gar nichts davon, das dieses Programm läuft.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h3 id="konsole">Konsole</h3>
 
 <p>In den Developer Tools von Firefox kann man die Variablen auslesen:</p>
 
-<p><img src='/images/formulare/ff-console-variable.png' srcset='/images/formulare/ff-console-variable@2x.png 2x, /images/formulare/ff-console-variable.png 1x'  alt="Mit Firefox Developer Tools den Wert einzelnen Javascript-Variablen  auslesen" ></p>
+<p><img src="/images/formulare/ff-console-variable.png" srcset="/images/formulare/ff-console-variable@2x.png 2x, /images/formulare/ff-console-variable.png 1x"  alt="Mit Firefox Developer Tools den Wert einzelnen Javascript-Variablen  auslesen" ></p>
 
 <p>In Google Chrome gibt es ebenfalls eine Console, das entsprechende Fenster wird geöffnet wenn Sie irgendwo in der Webseite mit der rechten Maustaste klicken, und „Element überprüfen“ auswählen:</p>
 
-<p><img src='/images/formulare/chrome-console-variable.png' srcset='/images/formulare/chrome-console-variable@2x.png 2x, /images/formulare/chrome-console-variable.png 1x'  alt="Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" ></p>
+<p><img src="/images/formulare/chrome-console-variable.png" srcset="/images/formulare/chrome-console-variable@2x.png 2x, /images/formulare/chrome-console-variable.png 1x"  alt="Mit Chrome den Wert einzelnen Javascript-Variablen  auslesen" ></p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="popup-fenster">Popup-Fenster</h2>
 <p>Mit den Befehlen <code>alert</code>, <code>confirm</code> und <code>prompt</code> können Sie kleine Popup-Fenster öffnen:</p>
@@ -100,12 +98,12 @@ var ja_nein = confirm(&quot;sollen die daten nicht gelöscht werden?&quot;);
 var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe löscht alles&quot;);
 </pre></div>
 
-<p><img src='/images/formulare/popups.png'  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" ></p>
+<p><img src="/images/formulare/popups.png"  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" ></p>
 
 <p>Achtung: So können Sie zwar bei gutgläubigen Menschen Herzinfarkte auslösen, aber Sie können mit Javascript nicht wirklich Dateien löschen.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="formulare">Formulare</h2>
 
@@ -125,18 +123,18 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
-<p><img src='/images/formulare/manipulate-form-js.png' srcset='/images/formulare/manipulate-form-js@2x.png 2x, /images/formulare/manipulate-form-js.png 1x'  alt="Mit Firefox Developer Tools Formulare und Eingabefelder auslesen" ></p>
+<p><img src="/images/formulare/manipulate-form-js.png" srcset="/images/formulare/manipulate-form-js@2x.png 2x, /images/formulare/manipulate-form-js.png 1x"  alt="Mit Firefox Developer Tools Formulare und Eingabefelder auslesen" ></p>
 
 <p>Mit <code>document.getElementById</code> kann man also das einen bestimmten Tag  ansprechen, wenn man die id kennt.</p>
 
 <p>Jedes Eingabefeld bietet mit value den aktuell eingegeben Wert (als String) an, hier z.B. <code>document.getElementById("hochschule").value</code>.  Die letzten beiden Zeilen in der Konsole zeigen, dass es auch umgekehrt funktioniert: man kann auch Werte ins Eingabefeld hineinschreiben, der neue Werte wird sofort im Browser angezeigt.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="ereignisse-und-ereignisgesteuerte-programmierung">Ereignisse und Ereignisgesteuerte Programmierung</h2>
 <p>Javascript entstand als Programmiersprache für das „Frontend“, für die
@@ -146,7 +144,7 @@ Programmierung. Dieser Stil kommt immer Einsatz, wenn es um Schnittstellen zu Me
 und auf die Eingaben von Menschen reagiert werden soll.</p>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="events-im-browser">Events im Browser</h2>
 
@@ -163,19 +161,19 @@ und auf die Eingaben von Menschen reagiert werden soll.</p>
 werden Sie mit viel weniger Events auskommen!</p>
 
 
-<a class='slide_break' id='slide-9' href='slide.html#slide-9'>▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="beispiel">Beispiel</h2>
 
 <p>Ein Beispiel für ereignisgesteuerte Programmierung mit einem Web-Formular: Das Bestellformular für Bücher soll automatisch den Gesamtpreis berechnen.</p>
 
-<p><img src='/images/image248.png'  alt="Abbildung 55: Bestellformular für Bücher mit Berechnung" ></p>
+<p><img src="/images/image248.png"  alt="Abbildung 55: Bestellformular für Bücher mit Berechnung" ></p>
 
 <p>Wenn in ein Anzahl-Feld ein neuer Wert eingegeben wird soll dieser mit dem Preis
 multipliziert werden und in die rechte Spalte geschrieben werden.</p>
 
 
-<a class='slide_break' id='slide-10' href='slide.html#slide-10'>▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="schritt-eine-berechnung">1.Schritt: eine Berechnung</h3>
 
@@ -197,7 +195,7 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-11' href='slide.html#slide-11'>▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 
@@ -214,7 +212,7 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 <span id="out"></span></p>
 
 
-<a class='slide_break' id='slide-12' href='slide.html#slide-12'>▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 
 
@@ -235,7 +233,7 @@ Multiplikation zugewisen. Dabei wir die Zahl (z.B. 300) wieder in einen String
 zurückverwandelt (z.B. “300”).</p>
 
 
-<a class='slide_break' id='slide-13' href='slide.html#slide-13'>▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 
 
@@ -264,7 +262,7 @@ function compute() {
 <p>Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.</p>
 
 
-<a class='slide_break' id='slide-14' href='slide.html#slide-14'>▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 
 
@@ -300,7 +298,7 @@ wie viel ist 10 plus 20?
 </pre></div>
 
 
-<a class='slide_break' id='slide-15' href='slide.html#slide-15'>▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 
 
@@ -325,7 +323,7 @@ wie viel ist 10 plus 20?
 </pre></div>
 
 
-<a class='slide_break' id='slide-16' href='slide.html#slide-16'>▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h2 id="formular-prfen">Formular prüfen</h2>
 <p>Mit HTML5 kann man mit den Attributen <code>required</code> und <code>pattern</code> einfache Prüfungen
@@ -336,7 +334,7 @@ sind.</p>
 <p><a href="/images/formulare/form.html#required_and_pattern">Demo</a></p>
 
 
-<a class='slide_break' id='slide-17' href='slide.html#slide-17'>▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 
 
@@ -355,7 +353,7 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <p>Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten.</p>
 
 
-<a class='slide_break' id='slide-18' href='slide.html#slide-18'>▻</a>
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 
 
@@ -386,9 +384,7 @@ function formularok() {
 &lt;/body&gt;
 </pre></div>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -403,9 +399,9 @@ function formularok() {
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -584,6 +580,10 @@ function formularok() {
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1255,6 +1255,30 @@ function formularok() {
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1289,14 +1313,13 @@ function formularok() {
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/formulare/javascript.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1306,7 +1329,6 @@ function formularok() {
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

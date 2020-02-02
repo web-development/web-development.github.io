@@ -1,78 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>2d Canvas - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>2d Canvas - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>2d Canvas</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/grafik/svg//slide.html">SVG - Vektor Grafik</a> |
-                        
-            <a href="/grafik/2dcanvas/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/grafik/3dcanvas//slide.html">3d Canvas</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>2d Canvas</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/grafik/svg//slide.html">SVG - Vektor Grafik</a> | 
+        <a href="/grafik/2dcanvas/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/grafik/3dcanvas//slide.html">3d Canvas</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Der <code>canvas</code> Tag kann auf zwei Arten verwendet werden: für 2d und 3d Grafik.
 Als 2d Grafik ist der Canvas einfach ein Rechteck aus Pixeln, auf das
 man mit Javascript zeichnen kann, und in das man Pixel-Bilder hineinkopieren kann:</p>
 
-<p><img src='/images/canvas.png'  alt="Bild" ></p>
+<p><img src="/images/canvas.png"  alt="Bild" ></p>
 
 <p>Das Koordinatensystem des Canvas beginnt links oben. Es wird der “Painters Algorithm”
 verwendet: später gezeichnets übermalt früher gezeichnetes. Egal ob Text, Linie,
@@ -80,7 +96,7 @@ Bild, alles wird in einzelne Pixel verwandelt. Man kann später nicht mehr ident
 welches Pixel vom Text, oder welches vom Bild stammt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="canvas-und-javascript">Canvas und Javascript</h3>
 
@@ -104,18 +120,18 @@ draw(my_context);
 <canvas id="c1" style="width:770px; height: 50px"></canvas>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
 <p>Achtung: auf Geräten mit besonder hoher Auflösung erscheinen die Canvas-Zeichnungen unscharf. Die folgenden Screenshots zeigen den Effekt vergrößert:</p>
 
-<p><img src='/images/grafik/canvas-retina-vergleich.png'  alt="Vergleich Canvas mit korrekten einstellungen für retina displays mit default darstellung" ></p>
+<p><img src="/images/grafik/canvas-retina-vergleich.png"  alt="Vergleich Canvas mit korrekten einstellungen für retina displays mit default darstellung" ></p>
 
 <p>Um eine optimale Darstellung zu erreichen ist mehr Code notwendig.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -127,7 +143,7 @@ draw(my_context);
 aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 werden nicht mehr angezeigt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -147,7 +163,7 @@ aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 we
 <canvas id="c2" style="width:770px; height: 50px"></canvas>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -170,7 +186,7 @@ draw(my_context);
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="text-setzen">Text setzen</h3>
 
@@ -183,7 +199,7 @@ my_context.fillText(&quot;hier bin ich&quot;, 30, 50);
 <canvas id="c3" style="width:770px; height: 50px"></canvas>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="linien-zeichnen">Linien Zeichnen</h3>
 
@@ -200,7 +216,7 @@ my_context.stroke();
 <canvas id="c4" style="width:770px; height: 50px"></canvas>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="bild-kopieren">Bild kopieren</h3>
 
@@ -224,7 +240,7 @@ the_img.src = &quot;/images/grafik/dolly.jpg&quot;;
 <canvas id="c5" style="width:770px; height: 50px"></canvas>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="referenz">Referenz</h2>
 
@@ -258,48 +274,47 @@ Webcam + 2d Canvas ermöglicht damit viele interessante Anwendungen.</p>
 <script src="/images/grafik/canvas.js"></script>
 
 </div>
-          <div class="slide"><h1>2d Canvas</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/grafik/svg//slide.html">SVG - Vektor Grafik</a> |
-                        
-            <a href="/grafik/2dcanvas/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/grafik/3dcanvas//slide.html">3d Canvas</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>2d Canvas</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/grafik/svg//slide.html">SVG - Vektor Grafik</a> | 
+        <a href="/grafik/2dcanvas/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/grafik/3dcanvas//slide.html">3d Canvas</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

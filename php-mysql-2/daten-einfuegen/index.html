@@ -38,19 +38,17 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Einfügen</h2>
-                                <a href="/php-mysql-2/daten-einfuegen/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Einfügen
+      </h2>
+      <a href="/php-mysql-2/daten-einfuegen/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <script>document.location="/php-db-schreiben/daten-einfuegen/";</script>
 
 <p>Hier das einfachste Programm, das ein neues Werk speichert:</p>
@@ -63,7 +61,7 @@ $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 </pre></div>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 
 
@@ -84,7 +82,7 @@ und es bleibt <code>s it</code> übrig. Die Fehlermeldung von MySQL lautet:</p>
 </pre></div>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h3 id="die-falsche-lsung">die falsche Lösung</h3>
 
@@ -105,7 +103,7 @@ Andere Datenbanken haben anderen Quoting-Konventionen, in
 anderen Kontexten muss man ganz anders Escapen.</p>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
@@ -137,7 +135,7 @@ PHP Doku nachlesen kann<a href="http://at.php.net/manual/de/security.magicquotes
 Das Problem betrifft allerdings nur Array-Parameter.</p>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="die-richtige-lsung">die richtige Lösung</h3>
 
@@ -165,7 +163,7 @@ $sth-&gt;execute(
 </pre></div>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
@@ -177,10 +175,10 @@ hier einfach nichts eingibt gibt das einen Fehler.</p>
 Webformular schon vor dem INSERT prüfen und dann ausführliche, vollständige,
 deutsche Fehlermeldungen ausgeben.</p>
 
-<p><img src='/images/2fehlermeldungen.png'  alt="Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" ></p>
+<p><img src="/images/2fehlermeldungen.png"  alt="Fehlermeldung der Datenbank vs. selbst gestaltete Fehlermeldung" ></p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -202,9 +200,7 @@ Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
 weitergeleitet. Falls man danach auf „Reload“ drückt wird der Datensatz neu
 angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
 
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -213,9 +209,9 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -394,6 +390,10 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1065,6 +1065,30 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1099,14 +1123,13 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-mysql-2/daten-einfuegen.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1116,7 +1139,6 @@ angezeigt, aber keinesfalls ein zweites Mal eingefügt.</p>
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

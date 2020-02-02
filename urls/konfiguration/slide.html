@@ -1,80 +1,96 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Konfiguration Webserver - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Konfiguration Webserver - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Konfiguration Webserver</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/urls/absolut-relativ//slide.html">Absolute und relative URLs</a> |
-                        
-            <a href="/urls/konfiguration/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/urls/tipps//slide.html">Pragmatische Tipps</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Konfiguration Webserver</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/urls/absolut-relativ//slide.html">Absolute und relative URLs</a> | 
+        <a href="/urls/konfiguration/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/urls/tipps//slide.html">Pragmatische Tipps</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt.
 Andere Webserver, z.B: Internet Information Server von Microsoft oder nginx
 (ausgesprochen “engine x”) 
 verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="betriebssystem-des-webservers">Betriebssystem des Webservers</h2>
 <p>Viele Webserver werden auf einem UNIX-Betriebssystem betrieben. Die UNIX-Dateisysteme unterscheiden bei Datei- und Ordnernamen zwischen Groß- und Kleinschreibung, sind also „case-sensitive“. Der Rechner auf dem Sie Webseiten erstellen läuft wahrscheinlich unter Windows oder MacOS; dort sind die Dateisysteme „case-insensitive“.</p>
@@ -86,7 +102,7 @@ dann, wenn er <code>bild.jpg</code> geschreiben wird.</p>
 <code>bild.jpg</code> und <code>bild.JPG</code> sind zwei unterschiedliche Dateien!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="webspace-und-ordner">Webspace und Ordner</h2>
 <p>Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient.</p>
@@ -104,7 +120,7 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 </code></pre>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="standard-dokument">Standard-Dokument</h2>
 
@@ -137,13 +153,13 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
 <p>Achtung: die Konfiguration ist am Internet Information Server normalerweise anders, dort wird die Datei <code>default.htm</code> verwendet!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="directory-index-datei-existiert-nicht">Directory Index Datei existiert nicht</h2>
 
 <p>Was passiert wenn keine Datei mit dem richtigen Namen vorhanden ist? entweder eine Auflistung der Dateien im Ordner oder eine Fehlermeldung.</p>
 
-<p><img src='/images/urls/apache-directory-index.png'  alt="Abbildung 43: Zugriff auf einen Ordner ohne Standard-Dokument (index.html): Auflistung oder Fehlermeldung" ></p>
+<p><img src="/images/urls/apache-directory-index.png"  alt="Abbildung 43: Zugriff auf einen Ordner ohne Standard-Dokument (index.html): Auflistung oder Fehlermeldung" ></p>
 
 <p>Die entsprechenden Apache-Konfigurationsanweisung dazu sind:</p>
 
@@ -152,7 +168,7 @@ Options -Indexes
 </code></pre>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="automatischer-webspace-fr-alle">Automatischer Webspace für Alle</h3>
 
@@ -187,7 +203,7 @@ Webspace ist im Unter-Ordner <code>public_html</code>:</p>
 </code></pre>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="relativer-link-dazu">relativer Link dazu</h2>
 
@@ -209,48 +225,47 @@ http://multimediatechnology.at/~fhs111111/test
 </code></pre>
 
 </div>
-          <div class="slide"><h1>Konfiguration Webserver</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/urls/absolut-relativ//slide.html">Absolute und relative URLs</a> |
-                        
-            <a href="/urls/konfiguration/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/urls/tipps//slide.html">Pragmatische Tipps</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Konfiguration Webserver</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/urls/absolut-relativ//slide.html">Absolute und relative URLs</a> | 
+        <a href="/urls/konfiguration/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/urls/tipps//slide.html">Pragmatische Tipps</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

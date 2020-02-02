@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>DTD - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>DTD - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>DTD</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/xml/wohlgeformtes-xml//slide.html">wohlgeformtes XML</a> |
-                        
-            <a href="/xml/dtd/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/xml/xml-und-php//slide.html">XML und PHP</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>DTD</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/xml/wohlgeformtes-xml//slide.html">wohlgeformtes XML</a> | 
+        <a href="/xml/dtd/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/xml/xml-und-php//slide.html">XML und PHP</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Eine Dokumenttypdefinition (DTD) wird für SGML und XML verwendet, um 
 die Grammatik festzulegen.  Ein XML Dokument das einer DTD entspricht
 heisst “gültig” (englisch: “valid”).</p>
@@ -80,7 +96,7 @@ wurde diese DTD auch wirklich in der <a href="http://www.w3.org/TR/REC-html32-19
 sondern nur die wichtigsten Regeln.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="doctype">Doctype</h2>
 
@@ -102,7 +118,7 @@ heisst ebenfalls <code>&lt;serie&gt;</code>:</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="tags">Tags</h2>
 
@@ -110,7 +126,7 @@ heisst ebenfalls <code>&lt;serie&gt;</code>:</p>
 festgelegt. <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#elemdecls">→ XML: Element Type Declarations</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="leeres-element">Leeres Element</h3>
 
@@ -127,7 +143,7 @@ oder mit einem Ende-Tag  <code>&lt;br&gt;&lt;/br&gt;</code>.<br />
 Diese beiden Schreibweisen sind gleichbedeutend.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="element-mit-text-inhalt">Element mit Text-Inhalt</h3>
 
@@ -143,7 +159,7 @@ es nur reinen Text enthalten, aber keine weiteren Tags.</p>
 aber <code>&lt;option&gt;&lt;b&gt;nur&lt;/b&gt; grün&lt;/option&gt;</code> nicht, da Tags verboten sind.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="kinder-element-element-content">Kinder-Element (“Element Content”)</h3>
 
@@ -184,7 +200,7 @@ Keine anderen Tags, keine andere Reihenfolge, kein Text ist erlaubt.</p>
 <p>Zeile 4: Hier wird wieder das Plus-Zeichen verwendet, umd “mindestens eins bis beliebig viele” anzuzeigen. Diesmal bezieht sich das Plus aber auf die Auswahl in der Klammer: es kann also eine bliebige Kombination von <code>dt</code> und <code>dd</code> Tags sein.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="gemischter-inhalt-mixed-content">Gemischter Inhalt (“Mixed Content”)</h3>
 
@@ -204,7 +220,7 @@ enthalten, aber diese in beliebiger Reihenfolge und Anzahl, mit beliebigem
 reinen Text dazwischen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="attribute">Attribute</h2>
 
@@ -226,7 +242,7 @@ einen Default.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="default">Default</h3>
 
@@ -253,7 +269,7 @@ einen Default.</p>
 würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</code> erkennen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="attributtypen-cdata-und-liste">Attributtypen: CDATA und Liste</h3>
 
@@ -277,7 +293,7 @@ würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</co
 <p>(Beide Attribute gibt es in HTML wirklich.)</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="attributtypen-fr-ids">Attributtypen für IDs</h3>
 
@@ -315,7 +331,7 @@ würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</co
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="prfen-von-validem-xml">Prüfen von validem XML</h2>
 
@@ -326,50 +342,49 @@ Dieses Programm prüft die Wohlgeformtheit und die Validtät.</p>
 
 <p>Zum Beispiel in einem Editor wie “Netbeans”:</p>
 
-<p><img src='/images/xml-valid-netbeans.png'  alt="XML Prüfung mit netbeans" ></p>
+<p><img src="/images/xml-valid-netbeans.png"  alt="XML Prüfung mit netbeans" ></p>
 </div>
-          <div class="slide"><h1>DTD</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/xml/wohlgeformtes-xml//slide.html">wohlgeformtes XML</a> |
-                        
-            <a href="/xml/dtd/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/xml/xml-und-php//slide.html">XML und PHP</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>DTD</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/xml/wohlgeformtes-xml//slide.html">wohlgeformtes XML</a> | 
+        <a href="/xml/dtd/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/xml/xml-und-php//slide.html">XML und PHP</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

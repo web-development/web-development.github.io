@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>AJAX - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>AJAX - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>AJAX</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> |
-                        
-            <a href="/applied-js-and-css/ajax/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>AJAX</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> | 
+        <a href="/applied-js-and-css/ajax/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
 wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
 (URL eintippen, Link anklicken), oder um Ressourcen zu laden
@@ -77,7 +93,7 @@ die zu einem HTML-Dokument gehören.</p>
 verwendet werden: Asynchrone Requests.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="was-ist-ajax">Was ist AJAX?</h2>
 
@@ -91,7 +107,7 @@ schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserve
 geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Namen. Diese Liste
 wird mit Javascript in einer <code>div</code> unterhalb des Eingabefelds angezeigt:</p>
 
-<p><img src='/images/image375.png'  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
+<p><img src="/images/image375.png"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
 
 <p>Mit AJAX wird hier eine HTTP-Anfrage gesendet.</p>
 
@@ -104,7 +120,7 @@ des Servers vorliegt wird die normale Darstellung der Seite kurz unterbrochen un
 Javascript-Programm fügt die Daten in die Seite ein.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="im-javascript-programm">Im Javascript Programm</h3>
 
@@ -146,7 +162,7 @@ läuft vollständig ab.</p>
 aufgerufen und die Daten zu verarbeiten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="http">HTTP</h3>
 
@@ -176,10 +192,10 @@ Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
 Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
 die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
 
-<p><img src='/images/ajax-sequence-diagram.svg'  alt="AJAX Ablauf" ></p>
+<p><img src="/images/ajax-sequence-diagram.svg"  alt="AJAX Ablauf" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
 
@@ -188,7 +204,7 @@ können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
 Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="simples-javascript-beispiel">Simples Javascript Beispiel</h2>
 
@@ -236,7 +252,7 @@ Zeile.</p>
 in der Variable <code>this</code> und kann aus <code>this.responseText</code> die Antwort auslesen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="fetch-und-promises">Fetch und Promises</h2>
 
@@ -277,7 +293,7 @@ wird auch komplizierter: ein weiterer asynchroner Verarbeitungsschritt
 kommt dazu: das auslesen des Textes aus dem Response.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="promises">Promises</h2>
 
@@ -300,7 +316,7 @@ fetch(&quot;counter_ajax.php&quot;)
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="chaining">Chaining</h3>
 
@@ -337,7 +353,7 @@ fetch(&quot;counter_ajax.php&quot;)
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
 
@@ -379,7 +395,7 @@ fetch(&quot;counter_ajax.php&quot;)
 <p>Siehe auch</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="autocomplete">Autocomplete</h2>
 
@@ -387,7 +403,7 @@ fetch(&quot;counter_ajax.php&quot;)
 Beginnen wir mit dem Backend:</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="backend">Backend</h3>
 
@@ -447,7 +463,7 @@ echo json_encode($cities);
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="frontend">Frontend</h3>
 
@@ -466,7 +482,7 @@ new autoComplete({
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ajax-beispiel-mit-api">AJAX Beispiel mit API</h2>
 
@@ -479,7 +495,7 @@ sieht man einen wichtigen Unterschied:</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="direkter-zugriff-auf-eine-fremde-api">Direkter Zugriff auf eine fremde API</h3>
 
@@ -490,7 +506,7 @@ mit welchem API Key wie viele Zugriffe erfolgt sind, und je nach
 dem limitiert oder verrechnet werden. Die Preise für die API
 sind nach Anzahl der Zugriffen gestaffelt, im Mai 2017 waren die Preise:</p>
 
-<p><img src='/images/openweathermap-preise.png'  alt="Preise von openweathermap.org" ></p>
+<p><img src="/images/openweathermap-preise.png"  alt="Preise von openweathermap.org" ></p>
 
 <p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
 mit gesendet werden:</p>
@@ -513,7 +529,7 @@ auf https.</p>
 ist die nächste Lösung notwendig:</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h3>
 
@@ -528,7 +544,7 @@ auf die API zuzugreifen.</p>
 Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
 in manchen Browsern eine Meldung angezeigt:</p>
 
-<p><img src='/images/cors-error.png'  alt="CORS Fehlermeldung" ></p>
+<p><img src="/images/cors-error.png"  alt="CORS Fehlermeldung" ></p>
 
 <p>In beiden Fällen ist die Lösung dieselbe: man muss die Daten
 über das eigene Backend laden.</p>
@@ -546,7 +562,7 @@ $text=file_get_contents( $url );
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ausblick">Ausblick</h2>
 
@@ -556,48 +572,47 @@ es gibt natürlich noch viel mehr.</p>
 <p>Aber bevor man sich in AJAX Abenteuer stürzt sollte man sich auch
 über die Probleme bewusst sein, dazu mehr im nächsten Kapitel.</p>
 </div>
-          <div class="slide"><h1>AJAX</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> |
-                        
-            <a href="/applied-js-and-css/ajax/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>AJAX</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> | 
+        <a href="/applied-js-and-css/ajax/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

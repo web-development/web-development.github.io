@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>TCP/IP und DNS - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>TCP/IP und DNS - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>TCP/IP und DNS</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http//slide.html">HTTP</a> |
-                        
-            <a href="/http/tcpip-und-dns/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/http//slide.html">HTTP</a>
-            
-            </p>
-          </div>
-	  <div class='slide'><p>Um das Protokoll des Web zu verstehen erst ein paar Grundsätzliche Informationen zur Funktionsweise des Internet. Genaueres erfahren Sie in einer seperaten Lehrveranstaltung zum Thema Computer-Netwerke.</p>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>TCP/IP und DNS</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http//slide.html">HTTP</a> | 
+        <a href="/http/tcpip-und-dns/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/http//slide.html">HTTP</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Um das Protokoll des Web zu verstehen erst ein paar Grundsätzliche Informationen zur Funktionsweise des Internet. Genaueres erfahren Sie in einer seperaten Lehrveranstaltung zum Thema Computer-Netwerke.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="das-internet">Das Internet</h2>
 
@@ -87,7 +103,7 @@ Firmen, Universitäten, Schulen, Vereinen, Privatpersonen.</p>
 implementieren. Zwischen den Netzen vermitteln <strong>Router</strong> die Pakete von einem Netz zum nächsten.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="ip-adressen">IP-Adressen</h3>
 
@@ -99,7 +115,7 @@ RIPE vergibt die Adressen an die Internet-Provider in Europa.
 In der Whois-Datenbank von RIPE kann man die „Besitzer“ von IP-Adressen herausfinden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="ip--das-internetprotokoll">IP – das Internetprotokoll</h3>
 
@@ -114,7 +130,7 @@ Paket weiterleitet.  Beim Ziel-Host langen die Pakete ein – es gibt aber
 keine Garantie, dass alle ankommen oder dass sie in der richtigen Reihenfolge ankommen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="tcp---transmission-control-protocol">TCP - Transmission Control Protocol</h3>
 
@@ -131,7 +147,7 @@ der Pakete und meldet zurück falls Pakete fehlen.</p>
 in richtiger Reihenfolge oder eine Fehlermeldung.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="dns--domain-name-system">DNS – Domain Name System</h3>
 
@@ -150,48 +166,47 @@ werden von IANA verwaltet und können über Whois abgefragt werden.
 Für die Domain .at ist die Firma nic.at zuständig.</p>
 
 </div>
-          <div class="slide"><h1>TCP/IP und DNS</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http//slide.html">HTTP</a> |
-                        
-            <a href="/http/tcpip-und-dns/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/http//slide.html">HTTP</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>TCP/IP und DNS</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http//slide.html">HTTP</a> | 
+        <a href="/http/tcpip-und-dns/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/http//slide.html">HTTP</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

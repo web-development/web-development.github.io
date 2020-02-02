@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Syntax von CSS - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Syntax von CSS - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Syntax von CSS</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css/css-kurz//slide.html">Kurzvorstellung von Stylesheets</a> |
-                        
-            <a href="/css/css/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css/properties//slide.html">Wichtige Properties</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Syntax von CSS</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css/css-kurz//slide.html">Kurzvorstellung von Stylesheets</a> | 
+        <a href="/css/css/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css/properties//slide.html">Wichtige Properties</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Ein Beispiel</p>
 
 <div class="example">
@@ -87,20 +103,20 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
-<p><img src='/images/css/rules-declarations.png' srcset='/images/css/rules-declarations.png 1x, /images/css/rules-declarations@2x.png 2x'  alt="" ></p>
+<p><img src="/images/css/rules-declarations.png" srcset="/images/css/rules-declarations.png 1x, /images/css/rules-declarations@2x.png 2x"  alt="" ></p>
 
-<p>Eine Stylesheet-Regel („Rule“)  besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann.</p>
+<p>Eine Stylesheet-Regel („Rule“) besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann.</p>
 
 <p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Sie können auch mehrere Elemente durch ein Komma trennen. In diesem Falle werden für alle Elemente die selben Style -Angaben definiert, (siehe h1,h2 in obigem Beispiel).</p>
 
 <p>Sie können beliebig Zeilenumbrüche und Whitespace einfügen, beides wird ignoriert.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="style-fr-mehrere-seiten">Style für mehrere Seiten</h3>
 
@@ -114,11 +130,11 @@ p {
 <p>Diese Zeile sollte innerhalb des head Bereiches der HTML-Datei stehen (da sonst die Darstellung der Seite verzögert werden kann). <code>mysyle.css</code> könnte etwa so aussehen wie im vorigen Beispiel.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="style-fr-eine-seite">Style für eine Seite</h3>
 
-<p>Wenn Sie einen Style  nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches.</p>
+<p>Wenn Sie einen Style nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -131,7 +147,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="style-fr-einen-tag">Style für einen Tag</h3>
 
@@ -145,7 +161,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="gltigkeitsbereich-einer-style-angabe">Gültigkeitsbereich einer Style Angabe</h3>
 
@@ -154,13 +170,14 @@ p {
 <p>Was passiert nun, wenn die verschiedenen Style-Deklarationen sich widersprechen? Die Angaben bei einem einzelnen Tag haben immer Vorrang. danach folgen die lokalen Angabe im head Bereich und erst zum Schluß die externe Datei. „Je näher beim Tag desto stärker wirkt es.“</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="klassen-ids-spans-und-divs">Klassen, IDs, SPANs und DIVs</h2>
+
 <p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="klassen">Klassen</h3>
 
@@ -188,7 +205,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="ids">ids</h3>
 
@@ -209,7 +226,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="kombinationen">Kombinationen</h3>
 
@@ -220,20 +237,20 @@ p {
 .wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
 p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
 
-b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
+b.wichtig { color: yellow; } /_ nur der Tag b mit der Klasse wichtig _/
 
-#impressum { background-color:#ddd; }   /* nur der Tag mit der id #impressum */
-p#impressum { background-color:#ddd; } /* == nur der p-Tag mit der id #impressum */
+#impressum { background-color:#ddd; } /_ nur der Tag mit der id #impressum _/
+p#impressum { background-color:#ddd; } /_ == nur der p-Tag mit der id #impressum _/
 
-b#impressum { background-color:#ddd; }   /* nix! */
+b#impressum { background-color:#ddd; } /_ nix! _/
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="div-und-span">div und span</h3>
 
-<p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die  beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
+<p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -243,27 +260,30 @@ b#impressum { background-color:#ddd; }   /* nix! */
 <p>Die Worte „besonders interessante“ erscheinen rot.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="maeinheiten-in-stylesheets">Maßeinheiten in Stylesheets</h2>
 
-<p>Für Längen- und Größen-Angaben gibt es mehrere Maßeinheiten:</p>
+<p>Für Längen- und Größen-Angaben gibt es viele Maßeinheiten:</p>
 
 <ul>
   <li>vw (Hundertstel der Viewport-Breite),</li>
   <li>vh (Hunderstel der Viewport-Höhe),</li>
   <li>px (Pixel),</li>
-  <li>em (=Breite des Buchstaben M),</li>
-  <li>ex (Höhe des Buchstaben X),</li>
+  <li>rem (Höhe des Großbuchstaben M im root-Element),</li>
+  <li>em (Höhe des Großbuchstaben M im Eltern-Element),</li>
+  <li>ex (Höhe des Kleinbuchstaben x im Eltern-Element),</li>
+  <li>ch (Breite eines Buchstaben)</li>
   <li>% (Prozent),</li>
   <li>cm (Zentimeter),</li>
-  <li>in (Inch).</li>
+  <li>in (Inch)</li>
+  <li>und noch <a href="https://developer.mozilla.org/de/docs/Web/CSS/length">viele mehr</a></li>
 </ul>
 
-<p>Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man derzeit nur bei der Ausgabe auf Papier sinnvoll verwenden.  <a href="/images/css-masse.html">Demo</a></p>
+<p>Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man nur bei der Ausgabe auf Papier sinnvoll verwenden. <a href="/images/css-masse.html">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="farben">Farben</h3>
 
@@ -282,16 +302,16 @@ b#impressum { background-color:#ddd; }   /* nix! */
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
 <p>Tool-Tipp: Mit den Developer Tools in Firefox kann man die Farben einer Webseite auslesen:</p>
 
-<p><img src='/images/css/pipette.png' srcset='/images/css/pipette.png 1x, /images/css/pipette@2x.png 2x'  alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" ></p>
+<p><img src="/images/css/pipette.png" srcset="/images/css/pipette.png 1x, /images/css/pipette@2x.png 2x"  alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="urls">URLs</h3>
 
@@ -305,7 +325,7 @@ b#impressum { background-color:#ddd; }   /* nix! */
 <p>zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="variablen-in-css">Variablen in CSS</h3>
 
@@ -319,57 +339,56 @@ b#impressum { background-color:#ddd; }   /* nix! */
 }
 
 h1 {
-  color: var(--important-color);
+color: var(--important-color);
 }
 nav {
-  background-color: var(--important-color);
-  color: var(--text-on-important-color);
+background-color: var(--important-color);
+color: var(--text-on-important-color);
 }
 </pre></div>
 
 </div>
-          <div class="slide"><h1>Syntax von CSS</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css/css-kurz//slide.html">Kurzvorstellung von Stylesheets</a> |
-                        
-            <a href="/css/css/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css/properties//slide.html">Wichtige Properties</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Syntax von CSS</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css/css-kurz//slide.html">Kurzvorstellung von Stylesheets</a> | 
+        <a href="/css/css/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css/properties//slide.html">Wichtige Properties</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

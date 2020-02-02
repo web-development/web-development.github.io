@@ -1,78 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Beispiele - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Beispiele - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Beispiele</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http/tools//slide.html">Werkzeuge</a> |
-                        
-            <a href="/http/anwendungsbeispiele/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/php-erzeugt//slide.html">PHP erzeugt nicht nur HTML</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Beispiele</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http/tools//slide.html">Werkzeuge</a> | 
+        <a href="/http/anwendungsbeispiele/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/php-erzeugt//slide.html">PHP erzeugt nicht nur HTML</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Wie wird HTTP nun von Browsern und Servern verwendet?
 Ein paar Beispiele:</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
 <p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten.</p>
@@ -101,7 +117,7 @@ Ein paar Beispiele:</p>
 <p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -114,14 +130,14 @@ Ein paar Beispiele:</p>
 
 <p>Accept-Language würde dem Aushandeln der Sprache dienen. Dazu müssten die UserInnen aber im Browser die Sprach-Präferenz konfigurieren:</p>
 
-<p><img src='/images/image335.png'  alt="Abbildung 132: Festlegen der Sprach-Präferenz im Browser Firefox" ></p>
+<p><img src="/images/image335.png"  alt="Abbildung 132: Festlegen der Sprach-Präferenz im Browser Firefox" ></p>
 
 <p>Da aber kaum jemand diese Konfiguration vornimmt wird die Sprach-Aushandlung kaum verwendet. Einziges mir bekanntes Beispiel einer Webseite die unter der gleichen URL in verschiedenen Sprachen erhältlich ist ist die Homepage von Debian:</p>
 
-<p><img src='/images/image336.png'  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" ></p>
+<p><img src="/images/image336.png"  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
 <p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
@@ -141,7 +157,7 @@ Ein paar Beispiele:</p>
 <p>Die Antwort des Servers unterscheidet sich nicht zwischen GET und POST (außer Sie haben das in PHP absichtlich so programmiert).</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
 <p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht.</p>
@@ -181,12 +197,12 @@ Ein paar Beispiele:</p>
 <p>und so weiter.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
 <p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
 
-<p><img src='/images/image337.png'  alt="Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern" ></p>
+<p><img src="/images/image337.png"  alt="Abbildung 134: Eingabefenster für HTTP Authentisierung in verschiedenen Browsern" ></p>
 
 <p>Falls eine Authentisierung über diese Methode stattgefunden hat, finden Sie den Usernamen in PHP in der Variable <code>$_SERVER['PHP_AUTH_USER']</code>.</p>
 
@@ -237,7 +253,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 </code></pre>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="https">HTTPS</h2>
 <p>HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen.</p>
@@ -251,12 +267,12 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 <p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="proxies">Proxies</h2>
 <p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
 
-<p><img src='/images/image343.png'  alt="Abbildung 135: Proxy-Konfiguration in Firefox: Extras - Einstellungen - Erweitert - Netzwerk – Verbindung" ></p>
+<p><img src="/images/image343.png"  alt="Abbildung 135: Proxy-Konfiguration in Firefox: Extras - Einstellungen - Erweitert - Netzwerk – Verbindung" ></p>
 
 <p>Ist ein Proxy konfiguriert dann baut der Browser die HTTP-Verbindung nicht direkt zum Zielrechner auf, sondern zum Proxy, und verändert die Form der ersten Zeile der HTTP-Anfrage: die vollständige URL wird angegebe:</p>
 
@@ -266,48 +282,47 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 <p>Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden.</p>
 
 </div>
-          <div class="slide"><h1>Beispiele</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/http/tools//slide.html">Werkzeuge</a> |
-                        
-            <a href="/http/anwendungsbeispiele/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/http/php-erzeugt//slide.html">PHP erzeugt nicht nur HTML</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Beispiele</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/http/tools//slide.html">Werkzeuge</a> | 
+        <a href="/http/anwendungsbeispiele/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/http/php-erzeugt//slide.html">PHP erzeugt nicht nur HTML</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

@@ -1,90 +1,106 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Regular Expressions - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Regular Expressions - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Regular Expressions</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a> |
-                        
-            <a href="/advanced-javascript/regular-expressions/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/qualitaet//slide.html">Das Web - Qualitätskriterien</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Regular Expressions</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a> | 
+        <a href="/advanced-javascript/regular-expressions/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/mobile//slide.html">Mobile</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
 eine besondere Schreibweise die es erlaubt in Strings nach Mustern zu suchen
 und Ersetzungen vorzunehmen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
 <p>Mit Regular Expressions kann man die Welt retten:</p>
 
-<p><img src='/images/regex-hero.png'  alt="" ></p>
+<p><img src="/images/regex-hero.png"  alt="" ></p>
 
 <p>Basierend auf <a href="http://xkcd.com/208/">http://xkcd.com/208/</a> von Randall Munroe - verändert und verwendet unter der <a href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC</a> Lizenz</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -104,7 +120,7 @@ Mustersuche (en: pattern matching). Wenn ein Muster auf ein Zeichenkette zutriff
 sagt man auf Halb-Englisch: “der Pattern matched”.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="verwendung-von-regular-expressions">Verwendung von Regular Expressions</h2>
 
@@ -138,7 +154,7 @@ if( s.indexOf(&#39;greif&#39;) &gt; -1) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zeichenkette">Zeichenkette</h2>
 
@@ -155,7 +171,7 @@ ist die Suche erfolgreich:</p>
 <p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D=&amp;list%5B%5D=hallo&amp;list%5B%5D=aber%20hallo!&amp;list%5B%5D=die%20hallobergrenze&amp;list%5B%5D=halo&amp;list%5B%5D=Hallo">RegEx Tester: /hallo/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="alternative">Alternative</h2>
 
@@ -170,7 +186,7 @@ entspricht also einem logischen “oder”;</p>
 <p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
 
@@ -200,7 +216,7 @@ if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="verankern">Verankern</h2>
 
@@ -217,7 +233,7 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 <p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zeichen-klassen">Zeichen-Klassen</h2>
 
@@ -234,7 +250,7 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 <p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D=&amp;list%5B%5D=halli&amp;list%5B%5D=hallo&amp;list%5B%5D=halla&amp;list%5B%5D=halloi&amp;list%5B%5D=hall&amp;list%5B%5D=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
 
@@ -250,7 +266,7 @@ stehen.</p>
 <p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D=&amp;list%5B%5D=a&amp;list%5B%5D=b&amp;list%5B%5D=c&amp;list%5B%5D=x&amp;list%5B%5D=y&amp;list%5B%5D=z&amp;list%5B%5D=A&amp;list%5B%5D=.&amp;list%5B%5D=%25">RegEx Tester: /[a-z]/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
 
@@ -266,7 +282,7 @@ Klammer erwähnt werden:</p>
 <p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
 
@@ -281,7 +297,7 @@ Klammer erwähnt werden:</p>
 <p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
 
@@ -296,7 +312,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 <p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list%5B%5D=&amp;list%5B%5D=NA&amp;list%5B%5D=MMT&amp;list%5B%5D=mmt&amp;list%5B%5D=%20%20%20&amp;list%5B%5D=___&amp;list%5B%5D=MMT-B">RegEx Tester: /^…$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ein-echter-punkt">Ein echter Punkt</h2>
 
@@ -312,7 +328,7 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 <p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=1.1&amp;list%5B%5D=1.2&amp;list%5B%5D=1.3&amp;list%5B%5D=2&amp;list%5B%5D=2.1&amp;list%5B%5D=2.2&amp;list%5B%5D=35&amp;list%5B%5D=35.1">RegEx Tester: /^\d.\d$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
 
@@ -338,7 +354,7 @@ andere Alternative gewählt werden:</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d*$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
 
@@ -353,7 +369,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d+$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="fragezeichen-operator-einmal-oder-keinmal">Fragezeichen-Operator: einmal oder keinmal</h2>
 
@@ -367,7 +383,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 <p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="operatoren-sind-gierig">Operatoren sind gierig</h2>
 
@@ -384,7 +400,7 @@ möglichst lange Strings zu erfassen.</p>
 <p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -404,7 +420,7 @@ auch wenn es später im String noch weitere o’s geben würde.</p>
 <p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -420,7 +436,7 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 <p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
 
@@ -439,7 +455,7 @@ z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit 
 Aber nichts komplizierteres.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
 
@@ -479,7 +495,7 @@ eine eigene Wissenschaft: die <a href="https://de.wikipedia.org/wiki/Computerlin
 sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="regex-in-php">RegEx in PHP</h2>
 
@@ -500,7 +516,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="vertiefung">Vertiefung</h2>
 
@@ -511,7 +527,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="merchandize">Merchandize</h2>
 
@@ -520,48 +536,47 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
   <li><a href="http://www.spreadshirt.de/to-be-or-not-to-be-that-is-the-question-t-shirts-C4408A14434558/">to be or not to be T-Shirt</a></li>
 </ul>
 </div>
-          <div class="slide"><h1>Regular Expressions</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a> |
-                        
-            <a href="/advanced-javascript/regular-expressions/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/qualitaet//slide.html">Das Web - Qualitätskriterien</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Regular Expressions</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/vererbung//slide.html">Prototypen + Vererbung</a> | 
+        <a href="/advanced-javascript/regular-expressions/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/mobile//slide.html">Mobile</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

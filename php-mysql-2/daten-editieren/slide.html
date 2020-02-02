@@ -1,73 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Daten Bearbeiten - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Daten Bearbeiten - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Daten Bearbeiten</h1>
-            <p>
-                        
-            <a href="/php-mysql-2/daten-editieren/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Daten Bearbeiten</h1>
+      <p>
+        
+        <a href="/php-mysql-2/daten-editieren/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
+    <div class="slide">
 <script>document.location="/php-db-schreiben/daten-editieren/";</script>
 
 <p>Wir wollen einen Datensatz aus der Datenbank laden, in einem Formular zur
 Bearbeitung anbieten, und dann wieder in der Datenbank speichern.</p>
 
-<p><img src='/images/person_edit.png'  alt="Formular zum Bearbeiten einer Person" ></p>
+<p><img src="/images/person_edit.png"  alt="Formular zum Bearbeiten einer Person" ></p>
 
 <p>Das Lesen des Datensatzes aus der Datenbank erfolgt nun auch mit einem prepared Statement,
 da die ID aus dem GET-Parameter gelesen wurde:</p>
@@ -81,7 +99,7 @@ $person = $sth-&gt;fetch();
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="das-bearbeitungs-formular">Das Bearbeitungs-Formular</h3>
 
@@ -122,7 +140,7 @@ MariaDB [portfolio_playground]&gt; select firstname,description from users where
 den Rest der Webseite verschwinden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -143,7 +161,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -157,7 +175,7 @@ htmlspecialchars( $person-&gt;firstname );
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="verarbeitung-des-post-request">Verarbeitung des POST-Request</h3>
 
@@ -188,7 +206,7 @@ exit;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="escapen-von-html">Escapen von HTML</h2>
 <p>Das Escapen der Daten für HTML hätten wir von Anfang an bei jeder Ausgabe von Daten aus der Datenbank durchführen müssen. Wir haben bisher einfach die Daten direkt mit echo ausgegeben:</p>
@@ -203,7 +221,7 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -228,10 +246,10 @@ EOM;
 
 <p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
 
-<p><img src='/images/html-escaped1.png'  alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" ></p>
+<p><img src="/images/html-escaped1.png"  alt="Korrekte Darstellung eines Datensatzes mit kleiner-Zeichen" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="darstellen-von-html">Darstellen von HTML</h2>
 <p>Im letzten Beispielen wurde der eingegebene HTML-Tag sichtbar auf der Webseite
@@ -239,7 +257,7 @@ angezeigt. Wie kann man HTML-Tags eingeben, abspeichern, und als HTML-Tags
 wieder anzeigen?</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="gefahren">Gefahren</h3>
 <p>Zuerst eine Warnung: Die Anzeige von HTML das von Fremden eingegeben wurde ist
@@ -266,7 +284,7 @@ BesucherInnen schon (weil Sie bei gmail.com eingeloggt sind oder von einer
 vorhergehenden Suche noch ein Cookie haben.)</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -296,7 +314,7 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 <p>Lassen Sie niemals, niemals, niemals zu, dass Fremde Javascript in Ihre Site einspeisen können!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -304,25 +322,25 @@ kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!<
 z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 „wirkt nicht“:</p>
 
-<p><img src='/images/html-escaped.png' srcset='/images/html-escaped1.png 1x, /images/html-escaped.png 1x'  alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" ></p>
+<p><img src="/images/html-escaped.png" srcset="/images/html-escaped1.png 1x, /images/html-escaped.png 1x"  alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
 <p>Die Eingabe des HTML-Codes können Sie mit einem Javascript-Editor wie TinyMCE
 erleichtern. TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</p>
 
-<p><img src='/images/tinymce.png' srcset='/images/tinymce.png 1x, /images/tinymce@2x.png 2x'  alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" ></p>
+<p><img src="/images/tinymce.png" srcset="/images/tinymce.png 1x, /images/tinymce@2x.png 2x"  alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" ></p>
 
 <p>Mit HTML5 gibt es auch die Möglichkeit ohne Textfeld, mit content-editable einen
 Editor zu erstellen. Ein Beispiel dafür ist der Aloha Editor:</p>
 
-<p><img src='/images/aloha.png'  alt="Aloha Editor" ></p>
+<p><img src="/images/aloha.png"  alt="Aloha Editor" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="behandlugn-von-eingegebenem-html">Behandlugn von eingegebenem HTML</h3>
 
@@ -357,42 +375,43 @@ EOM;
 </pre></div>
 
 </div>
-          <div class="slide"><h1>Daten Bearbeiten</h1>
-            <p>
-                        
-            <a href="/php-mysql-2/daten-editieren/">zurück zum Buch-Kapitel [esc]</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>Daten Bearbeiten</h1>
+      <p>
+        
+        <a href="/php-mysql-2/daten-editieren/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

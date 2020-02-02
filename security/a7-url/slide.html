@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>A5 - Zugriffskontrolle - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>A5 - Zugriffskontrolle - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>A5 - Zugriffskontrolle</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/security/a4-xee//slide.html">A4 - XXE</a> |
-                        
-            <a href="/security/a7-url/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>A5 - Zugriffskontrolle</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a4-xee//slide.html">A4 - XXE</a> | 
+        <a href="/security/a7-url/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 <p>Auf Platz 5 der OWASP Top 10 2017: <strong>Fehler in der Zugriffskontrolle</strong></p>
 
 <p>Die OWASP beschreibt dieses Problem allgemein so:</p>
@@ -77,7 +93,7 @@
 </blockquote>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="nur-was-serverseitig-geprft-wird-ist-sicher">Nur was serverseitig geprüft wird ist sicher</h2>
 
@@ -98,7 +114,7 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="beispiele">Beispiele</h2>
 
@@ -119,7 +135,7 @@ sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist
 <p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd</code></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="jede-php-datei-jede-url-ist-ein-einstiegspunkt">Jede PHP-Datei, Jede URL ist ein Einstiegspunkt</h2>
 
@@ -140,7 +156,7 @@ PHP-Datei zuerst die Zugriffsrechte zu prüfen.</p>
 Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="vermeidung-von-unsichere-direkten-referenzen">Vermeidung von unsichere direkten Referenzen</h2>
 
@@ -156,7 +172,7 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="slugs-statt-keys">Slugs statt Keys</h2>
 
@@ -186,7 +202,7 @@ RewriteRule ^item/([-a-z]+) view_item.php?slug=\$1
 <p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="kein-zugriff-auf-beliebige-dateien">Kein Zugriff auf beliebige Dateien</h2>
 
@@ -218,7 +234,7 @@ Dateien am Server “erforschen”.</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="mehr">Mehr</h2>
 
@@ -229,48 +245,47 @@ Dateien am Server “erforschen”.</p>
   <li><a href="https://www.owasp.org/index.php/Testing_Directory_traversal/file_include_(OTG-AUTHZ-001)">OWASP Testing Guide: Testing for Path Traversal</a></li>
 </ul>
 </div>
-          <div class="slide"><h1>A5 - Zugriffskontrolle</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/security/a4-xee//slide.html">A4 - XXE</a> |
-                        
-            <a href="/security/a7-url/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>A5 - Zugriffskontrolle</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a4-xee//slide.html">A4 - XXE</a> | 
+        <a href="/security/a7-url/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a5-konfiguration//slide.html">A6 - Fehlkonfiguration</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Wichtige Properties - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wichtige Properties - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>Wichtige Properties</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css/css//slide.html">Syntax von CSS</a> |
-                        
-            <a href="/css/properties/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css/css-sprites//slide.html">CSS Sprites</a>
-            
-            </p>
-          </div>
-	  <div class='slide'>
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Wichtige Properties</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css/css//slide.html">Syntax von CSS</a> | 
+        <a href="/css/properties/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css/css-sprites//slide.html">CSS Sprites</a>
+        
+      </p>
+    </div>
+    <div class="slide">
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="schrift">Schrift</h2>
 
@@ -99,7 +115,7 @@ h2 {
 <p><a href="/images/css/text-css.html">Demo</a></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="webfonts">Webfonts</h2>
 
@@ -112,7 +128,7 @@ bietet <a href="http://www.google.com/webfonts">http://www.google.com/webfonts</
 man Lizenzgebühren zahlen muss.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="abstze">Absätze</h2>
 
@@ -120,11 +136,11 @@ man Lizenzgebühren zahlen muss.</p>
 Die Standard-Darstellung von Absätzen erklärt sich über den <code>margin-top</code> 
 und <code>margin-bottom</code> des <code>&amp;lt;p&amp;gt;</code>-Tags:</p>
 
-<p><img src='/images/css/p-default-margin.png' srcset='/images/css/p-default-margin@2x.png 2x, /images/css/p-default-margin.png 1x'  alt="Standard-Darstellung von Absätzen (p-Tag) im Browser" ></p>
+<p><img src="/images/css/p-default-margin.png" srcset="/images/css/p-default-margin@2x.png 2x, /images/css/p-default-margin.png 1x"  alt="Standard-Darstellung von Absätzen (p-Tag) im Browser" ></p>
 
 <p>Mit CSS können Sie verschiedene Aspekte des Absatz-Layoutes verändern, einige davon sind hier gezeigt:</p>
 
-<p><img src='/images/css/absatz.png'  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" ></p>
+<p><img src="/images/css/absatz.png"  alt="Abbildung 18: Absatz mit CSS Formatanweisungen: text-indent und line-height" ></p>
 
 <p>Mit <code>text-align</code> können Sie die Ausrichtung des Texts im Absatz festlegen: <code>left</code>, <code>right</code>, <code>center</code> oder <code>justify</code> (Blocksatz). Blocksatz wurd am Web bis jetzt wenig verwendet, da die Browser lange keine Silbentrennung durchführten. Dadurch entstanden bei Blocksatz oft häßliche Löcher im Text. Seit dem Jahr 2011 unterstützen erste Browser die Silbentrennung, damit wird <code>justify</code> besser verwendbar.</p>
 
@@ -140,7 +156,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="box-model">Box Model</h2>
 
@@ -148,7 +164,7 @@ p {
 
 <p><a href="/images/css/box.html">Demo</a></p>
 
-<p><img src='/images/css/boxmodel.png' srcset='/images/css/boxmodel.png 1x, /images/css/boxmodel@2x.png 2x'  alt="Darstellung des Box Models in den Firefox Developer Tools" ></p>
+<p><img src="/images/css/boxmodel.png" srcset="/images/css/boxmodel.png 1x, /images/css/boxmodel@2x.png 2x"  alt="Darstellung des Box Models in den Firefox Developer Tools" ></p>
 
 <p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
 
@@ -168,7 +184,7 @@ p {
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="border-box">border-box</h3>
 
@@ -189,10 +205,10 @@ margin: 32px 0px
 <p>Gesamtbreite inklusive Rahmen = 200px.
 Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
 
-<p><img src='/images/css/box-sizing-border-box.png'  alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" ></p>
+<p><img src="/images/css/box-sizing-border-box.png"  alt="Abbildung 36a: width im Box-Model mit box-sizing: border-box" ></p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="runde-ecken-und-schatten">Runde Ecken und Schatten</h3>
 
@@ -221,7 +237,7 @@ button{
 sich noch viele ausführlichere Beispiele.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -229,7 +245,7 @@ sich noch viele ausführlichere Beispiele.</p>
 können (laut <a href="https://caniuse.com/#search=box-shadow">caniuse</a> ca. 2009) sind sie out.  Seitdem ist <a href="https://de.wikipedia.org/wiki/Flat_Design">flat design</a> in (ca. 2010).</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="farben-hintergrundfarben-hintergrundbilder">Farben, Hintergrundfarben, Hintergrundbilder</h2>
 
@@ -247,48 +263,55 @@ können (laut <a href="https://caniuse.com/#search=box-shadow">caniuse</a> ca. 2
 Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  Lesbarkeit?</p>
 
 </div>
-          <div class="slide"><h1>Wichtige Properties</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/css/css//slide.html">Syntax von CSS</a> |
-                        
-            <a href="/css/properties/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/css/css-sprites//slide.html">CSS Sprites</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+<div class="slide">
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+<h2 id="siehe-auch">Siehe Auch</h2>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+<ul>
+  <li><a href="https://www.w3.org/Style/CSS/all-properties.html">Alle CSS Properties</a></li>
+</ul>
+</div>
+    <div class="slide">
+      <h1>Wichtige Properties</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/css/css//slide.html">Syntax von CSS</a> | 
+        <a href="/css/properties/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/css/css-sprites//slide.html">CSS Sprites</a>
+        
+      </p>
+    </div>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>

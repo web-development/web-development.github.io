@@ -38,26 +38,24 @@
 
 
 
-	<!-- body -->
-	<article id="body" class="row">
-		
-		<div class="span8">
-		
-			
-                          <div class="page-header">
-				<h2 class="title"><a id="slide-0"></a>Langsam Scrollen</h2>
-                                <a href="/applied-js-and-css/langsam-scrollen/slide.html">als Präsentation ▻</a>
-                          </div>
-			
-			
-			<a id='slide-1'></a>
+<!-- body -->
+<article id="body" class="row">
+  <div class="span8">
+    
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Langsam Scrollen
+      </h2>
+      <a href="/applied-js-and-css/langsam-scrollen/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Das Ziel dieser Übung ist: Wenn ein “interner” Link, ein Link zu einer Textmarke
 in derselben Seite, angeklickt wird, dann soll das Fenster
 langsam zur Zielposition scrollen, so dass man besser nachvollziehen kann
 dass der Link innerhalb der Seite erfolgte.</p>
 
 
-<a class='slide_break' id='slide-2' href='slide.html#slide-2'>▻</a>
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="interne-links-mit-hash">Interne Links mit Hash</h2>
 
@@ -92,7 +90,7 @@ unten auf derselben Seite.</p>
 <p>Die Lösung: langsam scrollen.</p>
 
 
-<a class='slide_break' id='slide-3' href='slide.html#slide-3'>▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="normalen-link-verhindern">Normalen Link verhindern</h2>
 
@@ -124,7 +122,7 @@ let hash = this.hash; // z.B. &#39;#order&#39;
 </pre></div>
 
 
-<a class='slide_break' id='slide-4' href='slide.html#slide-4'>▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="zum-element-hin-scrollen">Zum Element hin Scrollen</h2>
 
@@ -137,7 +135,7 @@ document.querySelector(hash).scrollIntoView({ behavior: &quot;smooth&quot; });
 </pre></div>
 
 
-<a class='slide_break' id='slide-5' href='slide.html#slide-5'>▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
@@ -154,7 +152,7 @@ auch gleich eine Lösung: Ein <a href="polyfill">http://iamdustan.com/smoothscro
 die die fehlende Funktionalität implementiert: <a href="http://iamdustan.com/smoothscroll/">smooth scroll behavior polyfill</a>.</p>
 
 
-<a class='slide_break' id='slide-6' href='slide.html#slide-6'>▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="der-browser-funktioniert-nicht-mehr">Der Browser funktioniert nicht mehr</h2>
 
@@ -183,7 +181,7 @@ im Navigationsmenü der Pizzaria-Seite die URL nicht verändert haben zählen si
 müssen wir die korrekte URL setzen.</p>
 
 
-<a class='slide_break' id='slide-7' href='slide.html#slide-7'>▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="korrekte-url-setzen">Korrekte URL setzen</h2>
 
@@ -214,16 +212,14 @@ window.history.pushState({}, &quot;&quot;, hash);
 </pre></div>
 
 
-<a class='slide_break' id='slide-8' href='slide.html#slide-8'>▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="fertig">Fertig</h2>
 
 <p>Wenn wir alles richtig programmiert haben funktioniert nun das Navigations-Menü
 wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und die URLs
 ändern sich.</p>
-
-		
-			<div class="pagination">
+ <div class="pagination">
   <ul>
     
       
@@ -238,9 +234,9 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
   </ul>
 </div>
 
-		</div>
-		
-		<!-- sidebar -->
+  </div>
+
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -419,6 +415,10 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
                     
                       
                       <li ><a href="/javascript-dom/hintergrund/">Hintergründe</a></li>
+                      
+                    
+                      
+                      <li ><a href="/javascript-dom/graceful/">Graceful Degradation</a></li>
                       
                     
                       
@@ -1090,6 +1090,30 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
               </ul>
             </li>
           
+          <li class=" "><a href="/mobile/">Mobile</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/mobile/responsive/">Responsive Design</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
+                      
+                    
+                      
+                      <li ><a href="/mobile/cordova/">Cordova</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
           <li class=" "><a href="/qualitaet/">Qualitaet</a>
               <ul class="sub">
                 
@@ -1124,14 +1148,13 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
 </div>
 <!-- sidebar -->
 
-		
-	</article>
-	<!-- /body -->
+</article>
+<!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
         <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/langsam-scrollen.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
@@ -1141,7 +1164,6 @@ wieder: bei klick wird langsam zum entsprechenden Teil der seite gescrollt, und 
 </div> <!-- class="container" -->
 
 <script src="/assets/js/scripts.js?v=1"></script>
-<script src="/assets/js/run_prettify.js"></script>
 <script>
   $(document).ready(function(){
     function save_state(){

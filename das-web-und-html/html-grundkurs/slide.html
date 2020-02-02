@@ -1,80 +1,96 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>HTML Grundkurs - als Präsentation </title>
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/transition-theme.css" type="text/css">
-  <link rel="stylesheet" href="/assets/css/deck.goto.css">
-  <link rel="stylesheet" href="/assets/css/deck.status.css">
-  <link rel="stylesheet" href="/assets/css/deck.hash.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/prettify.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML Grundkurs - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
 
-  <style>
-    /* google code prettify */
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
         list-style-type: inherit !important;
-    }
-    li.L1, li.L3, li.L5, li.L7, li.L9 {
-      background: none repeat scroll 0 0 #EEFEEE;
-    }
-    ol.linenums {
-      margin-left: 80px !important;
-    }
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
 
-    /* deck */
-    h4.caption { color: #999999; }
-    h4.caption small { color: black; }
-    table.table-bordered {
-      border-collapse: separate;
-    }
-    table.table-bordered td,
-    table.table-bordered th
-    {
-      border: 2px white solid;
-      padding: 2px;
-    }
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
 
-    .slide img[src$=svg] {
-      width: 100%;
-    }
-  </style>
-  
-	
-	<!-- Any other extension CSS files go here. -->
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="/assets/js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
 
-<!-- Create any number of elements with class slide within the container -->
-          <div class="slide"><h1>HTML Grundkurs</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/das-web-und-html/bnf//slide.html">BNF</a> |
-                        
-            <a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/das-web-und-html/upload//slide.html">Upload und Tools</a>
-            
-            </p>
-          </div>
-	  <div class='slide'><p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>HTML Grundkurs</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/das-web-und-html/bnf//slide.html">BNF</a> | 
+        <a href="/das-web-und-html/html-grundkurs/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/das-web-und-html/upload//slide.html">Upload und Tools</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Wir werden HTML in der Version 5 verwendet. Die wichtigsten HTML-Tags (Links, Bilder, 
 Tabellen, Formulare) werden Sie bald auswendig können. Alle Details können Sie Intenet
 nachschlagen.</p>
 
 <p>HTML hat sich in den ca. 20 Jahren seines Bestehens weit entwickelt. Die Version 5 wurde im Jahr 2014 veröffentlicht und wird heute von allen Browsern unterstützt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -86,7 +102,7 @@ auch zu XHTML – lassen Sie sich davon nicht verwirren, sondern lernen
 sie nur aktuelle HTML5.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="arbeitsablauf">Arbeitsablauf</h2>
 <p>Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:</p>
@@ -106,7 +122,7 @@ sie nur aktuelle HTML5.</p>
 </ul>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zeichensatz">Zeichensatz</h2>
 
@@ -117,7 +133,7 @@ im selben Dokument nicht auch grieschische, hebräische, arabische, japanische
 Zeichen darstellen.  Mit utf-8 hat man den gesamten Zeichensatz der Menschheit
 zur Verfügung. Mein Empfehlung lautet: immer utf-8 verwenden.</p>
 
-<p><img src='/images/das-web-und-html/charset-auswahl.png'  alt="Auswahl des Charactersets „Unicode“  " ></p>
+<p><img src="/images/das-web-und-html/charset-auswahl.png"  alt="Auswahl des Charactersets „Unicode“  " ></p>
 
 <p>Diese Abbildung zeigt wie die Charactersets in Windows- und Mac-Programmen
 dargestellt werden. Links im Bild, in Notepad, wird ISO 8859-1 als ANIS
@@ -125,7 +141,7 @@ bezeichnet. Rechts im Bild, im Mac-Programm Textwrangler, ist die Bezeichnung
 klarer.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="sonderzeichen">Sonderzeichen</h2>
 
@@ -192,7 +208,7 @@ verwenden:</p>
 </table>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="html-tags">HTML-Tags</h2>
 
@@ -208,7 +224,7 @@ geschrieben werden:  <code>&lt;br /&gt;</code> In HTML5 schreibt man diesen Tag 
 </ol>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="whitespace">Whitespace</h2>
 
@@ -233,7 +249,7 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 </pre><div class="clearfix"></div></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="zeilenumbruch">Zeilenumbruch</h2>
 
@@ -243,7 +259,7 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 durchführt, um den Text im vorhandenen Platz optimal darzustellen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="attribute">Attribute</h2>
 
@@ -284,7 +300,7 @@ beim nächsten Leerzeichen.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
@@ -298,7 +314,7 @@ jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Notepade, vim, Dreamwe
 <p>Probleme mit nicht kompatiblen Seiten kann man auf <a href="https://webcompat.com/">webcompat</a> melden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="unbekannte-attribute">Unbekannte Attribute</h3>
 
@@ -318,7 +334,7 @@ unbekannte Attribute einfach ignoriert.</p>
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="unbekannte-tags">Unbekannte Tags</h3>
 
@@ -340,7 +356,7 @@ Webseite!!!!&lt;/p&gt;
 </pre><div class="clearfix"></div></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="text-formatieren">Text formatieren</h2>
 
@@ -376,7 +392,7 @@ Die inline-Tags werden je nach Platzbedarf umgebrochen und auf mehrere Zeilen ve
 Die blockbildenden Tags bleiben immer Rechtecke.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="blockbildende-tags-fr-text">Blockbildende Tags für Text</h3>
 
@@ -409,7 +425,7 @@ text. &lt;/p&gt;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -458,7 +474,7 @@ schwimmen auf dem See&lt;/blockquote&gt;
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="nicht-blockbildende-tags-fr-text">Nicht-Blockbildende Tags für Text</h3>
 
@@ -475,7 +491,7 @@ und eine &lt;em&gt;interessante&lt;/em&gt; Sache.         (betont, meist kursiv)
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -496,7 +512,7 @@ Eine &lt;i&gt;schräge&lt;/i&gt; Sache                    (VERALTET!)
 <p>Heute verwendet man CSS im <code>style</code>-Attribut statt dessen.  Das lernen wir später.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="bilder">Bilder</h2>
 
@@ -522,26 +538,26 @@ jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <
 „Web Developer“ kann man testen wie die Seite mit ALT statt Bildern aussieht. 
 Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberichts.</p>
 
-<p><img src='/images/das-web-und-html/wetter-alt.png'  alt="Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)" ></p>
+<p><img src="/images/das-web-und-html/wetter-alt.png"  alt="Abbildung 10: Wetterbericht mit Bildern und ohne Bilder (nur ALT-Texte)" ></p>
 
 <p>Als Datenformate für <img />-Bilder werden ein Vektor-Format und drei Pixel-Formate von vielen Browsern 
 unterstützt:</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="svg">svg</h3>
 
-<p><img src='/images/das-web-und-html/example-svg.svg'  alt="Beispiel für ein SVG Bild: rechteck und kreis" ></p>
+<p><img src="/images/das-web-und-html/example-svg.svg"  alt="Beispiel für ein SVG Bild: rechteck und kreis" ></p>
 
 <p>Vektor-Format, das Bild kann beliebig groß oder klein dargestellt werden.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="gif">gif</h3>
 
-<p><img src='/images/das-web-und-html/example-gif.gif'  alt="Beispiel für ein gif Bild: Animation" ></p>
+<p><img src="/images/das-web-und-html/example-gif.gif"  alt="Beispiel für ein gif Bild: Animation" ></p>
 
 <p>(Bild: Internet Meme, Quelle unbekannt)</p>
 
@@ -554,11 +570,11 @@ So bleiben nur die animierten gifs als Anwendungfall, und selbst die werden
 oft durch Video ersetzt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="jpg">jpg</h3>
 
-<p><img src='/images/das-web-und-html/example-jpg.jpg' srcset='/images/das-web-und-html/example-jpg@2x.jpg 2x, /images/das-web-und-html/example-jpg.jpg 1x'  alt="Beispiel für ein jpg Bild: verschiedene Kompression" ></p>
+<p><img src="/images/das-web-und-html/example-jpg.jpg" srcset="/images/das-web-und-html/example-jpg@2x.jpg 2x, /images/das-web-und-html/example-jpg.jpg 1x"  alt="Beispiel für ein jpg Bild: verschiedene Kompression" ></p>
 
 <p>(Bild von <a href="https://commons.wikimedia.org/wiki/File:Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png">Michael Gäbler und AzaToth</a>, CC-SA)</p>
 
@@ -571,17 +587,17 @@ setzen wie im linken Drittel des Bildes.</p>
 <p>Die Variante “progressive jpg” macht die Wartezeit beim Laden des Bildes interessanter:</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="png">png</h3>
 
-<p><img src='/images/das-web-und-html/example-png.png'  alt="Beispiel für ein PNG Bild: Würfel mit Alpha-Transparnz" ></p>
+<p><img src="/images/das-web-und-html/example-png.png"  alt="Beispiel für ein PNG Bild: Würfel mit Alpha-Transparnz" ></p>
 
 <p>(Bild von <a href="https://commons.wikimedia.org/wiki/File:PNG_transparency_demonstration_1.png">Ed g2s</a>, CC-SA)
 Weniger Kompression als JPG, aber Alpha-Transparenz.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h3 id="weitere-formate">Weitere Formate</h3>
 
@@ -590,7 +606,7 @@ Aber für den Anfang reichen svg, gif, jpg und png aus. Diese Formate werden sic
 Browsern unterstützt.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 
 
@@ -603,7 +619,7 @@ Ausgabegeräte anbieten. Mit dem
 canvas-Tag und Javascript kann man Bilder zeichnen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="links">Links</h2>
 
@@ -624,7 +640,7 @@ Bild als Link
 </pre></div>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
@@ -672,7 +688,7 @@ Charactersets ist ebenfalls komplizierter.</p>
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="listen">Listen</h2>
 
@@ -693,7 +709,7 @@ Liste.</p>
 </code></pre>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="tabellen">Tabellen</h2>
 
@@ -731,7 +747,7 @@ finden.  Dazu noch ein Literaturhinweis:</p>
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 
 </div>
-<div class='slide'>
+<div class="slide">
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
@@ -741,48 +757,47 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 </ul>
 
 </div>
-          <div class="slide"><h1>HTML Grundkurs</h1>
-            <p>
-            
-              
-              vorige Präsentation: <a href="/das-web-und-html/bnf//slide.html">BNF</a> |
-                        
-            <a href="/das-web-und-html/html-grundkurs/">zurück zum Buch-Kapitel [esc]</a>
-            
-              
-             | Nächste Präsentation <a href="/das-web-und-html/upload//slide.html">Upload und Tools</a>
-            
-            </p>
-          </div>
-	
-<!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
-<!-- deck.status snippet -->
-<p class="deck-status">
-  <span class="deck-status-current"></span>
-  /
-  <span class="deck-status-total"></span>
-</p>
+    <div class="slide">
+      <h1>HTML Grundkurs</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/das-web-und-html/bnf//slide.html">BNF</a> | 
+        <a href="/das-web-und-html/html-grundkurs/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/das-web-und-html/upload//slide.html">Upload und Tools</a>
+        
+      </p>
+    </div>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
 
-<!-- Update these paths to point to the correct files. -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/deck.core.js"></script>
-<script src="/assets/js/deck.hash.js"></script>
-<script src="/assets/js/deck.goto.js"></script>
-<script src="/assets/js/deck.status.js"></script>
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
-<!-- Add any other extension JS files here -->
-<script src="/assets/js/deck.escape.js"></script>
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
 
-<script src="/assets/js/run_prettify.min.js"></script>
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-  $(function() {
-    $.deck('.slide');
-  });
-</script>
-</body>
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
 </html>
