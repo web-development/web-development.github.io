@@ -87,8 +87,11 @@ zahlt sich aus!</p>
 
 <p><a href="http://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck">Reguläre Ausdrücke</a> sind
 ein Konzept aus der Theoretischen Informatik. Diese ursprünglichen regulären Ausdrücke
-bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt. Zur Unterscheidung nenne ich diese
-erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx.</p>
+bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt.</p>
+
+<p>Zur Unterscheidung nenne ich diese
+erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx,
+und den Degriff aus der theoretischen Informatik “Reguläre Ausdruck”.</p>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -173,6 +176,192 @@ entspricht also einem logischen “oder”;</p>
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
+<h2 id="verankern">Verankern</h2>
+
+<p>Mit den Zeichen Zirkumflex <code>^</code> und Dollar <code>$</code> kann die Suche am
+Anfang bzw. Ende der Strings verankert werden.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/^Am Anfang war/
+/dann leben sie noch heute.$/
+/^Ganzer String$/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+
+<p>Achtung: der Zirkumflex <code>^</code> hat auch noch andere Bedeutungen (wenn er nicht am Anfang des Patterns steht).</p>
+
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="zeichen-klassen">Zeichen-Klassen</h2>
+
+<p>Wenn für ein Zeichen im String mehrere Zeichen zur
+Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character class”) zusammen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[aeiou]/
+</pre></div>
+
+<p>Achtung! Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
+
+<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D=&amp;list%5B%5D=halli&amp;list%5B%5D=hallo&amp;list%5B%5D=halla&amp;list%5B%5D=halloi&amp;list%5B%5D=hall&amp;list%5B%5D=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
+
+
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+
+<h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
+
+<p>Mit einem Bindestrich <code>-</code> innerhalb der Klasse kann
+man einen Bereich von Zeichen angeben, die im Zeichensatz hintereinander
+stehen.</p>
+
+<p>Die folgenden beiden pattern sind also gleichbedeutend:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[abcdef]/
+/[a-f]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D=&amp;list%5B%5D=a&amp;list%5B%5D=b&amp;list%5B%5D=c&amp;list%5B%5D=x&amp;list%5B%5D=y&amp;list%5B%5D=z&amp;list%5B%5D=A&amp;list%5B%5D=.&amp;list%5B%5D=%25">RegEx Tester: /[a-z]/</a></p>
+
+
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+
+<h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
+
+<p>Mit dem Zirkumflex <code>^</code> kann man das Komplement der Zeichen-Klasse bilden,
+es werden dann alle Zeichen gematched die <strong>nicht</strong> in der eckigen
+Klammer erwähnt werden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/[^aeiou]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
+
+<p>Achtung: das war die zweite Bedeutung des Zirkumflex <code>^</code>, wenn er am Anfang der Klasse steht.</p>
+
+
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+
+<h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d/       eine Ziffer, entspricht /[0-9]/
+/\D/       keine Ziffer, entspricht /[^0-9]/
+/\w/       Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
+/\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
+
+
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
+
+<p>Der Plus-Operator ähnelt dem Stern-Operator, allerdings
+muss das Zeichen mindestens einmal vorkommen.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d+/  
+</pre></div>
+
+<p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d+/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /\d+/</a></p>
+
+<p>Wenn man sich den Operator als Schleife vorstellt kann
+bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
+andere Alternative gewählt werden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/(do|re|mi)+/
+</pre></div>
+
+
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+
+<h2 id="bung">Übung</h2>
+
+<p>Eine kurze Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
+
+
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+
+<h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
+
+<p>Der Punkt <code>.</code> steht für <strong>ein</strong> beliebiges Zeichen. Achtung, Verwechslungsgefahr:
+bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/^...$/       genau drei Zeichen
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list%5B%5D=&amp;list%5B%5D=NA&amp;list%5B%5D=MMT&amp;list%5B%5D=mmt&amp;list%5B%5D=%20%20%20&amp;list%5B%5D=___&amp;list%5B%5D=MMT-B">RegEx Tester: /^…$/</a></p>
+
+
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
+
+<h2 id="ein-echter-punkt">Ein echter Punkt</h2>
+
+<p>Da der Punkt <code>.</code> eine besondere Bedeutung in einer Regular Expression
+hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
+Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\./     ein echter punkt
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=1.1&amp;list%5B%5D=1.2&amp;list%5B%5D=1.3&amp;list%5B%5D=2&amp;list%5B%5D=2.1&amp;list%5B%5D=2.2&amp;list%5B%5D=35&amp;list%5B%5D=35.1">RegEx Tester: /^\d.\d$/</a></p>
+
+
+<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
+
+<h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
+
+<p>Wir kennen schon den Plus-Operator. Der Stern-Operator erlaubt auch null Wiederholungen.</p>
+
+<p>Der Stern-Operator dient auch der Vervielfältigung: das davor stehende Zeichen
+kann nullmal, einmal oder mehrmals vorkommen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/i*/  
+</pre></div>
+
+
+<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
+
+<h2 id="fragezeichen-operator-einmal-oder-keinmal">Fragezeichen-Operator: einmal oder keinmal</h2>
+
+<p>Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d?/  
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
+
+
+<a class="slide_break" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
+
 <h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
 
 <p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
@@ -201,174 +390,14 @@ if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
 </pre></div>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
 
-<h2 id="verankern">Verankern</h2>
+<h2 id="bung-1">Übung</h2>
 
-<p>Mit den Zeichen Zirkumflex <code>^</code> und Dollar <code>$</code> kann die Suche am
-Anfang bzw. Ende der Strings verankert werden.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/^Am Anfang war/
-/dann leben sie noch heute.$/
-/^Ganzer String$/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+<p>Eine längere Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
 
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-<h2 id="zeichen-klassen">Zeichen-Klassen</h2>
-
-<p>Wenn für ein Zeichen im String mehrere Zeichen zur
-Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character class”) zusammen:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[aeiou]/
-</pre></div>
-
-<p>Achtung! Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
-
-<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D=&amp;list%5B%5D=halli&amp;list%5B%5D=hallo&amp;list%5B%5D=halla&amp;list%5B%5D=halloi&amp;list%5B%5D=hall&amp;list%5B%5D=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
-
-
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
-
-<h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
-
-<p>Mit einem Bindestrich <code>-</code> innerhalb der Klasse kann
-man einen Bereich von Zeichen angeben, die im Zeichensatz hintereinander
-stehen.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[a-f]/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D=&amp;list%5B%5D=a&amp;list%5B%5D=b&amp;list%5B%5D=c&amp;list%5B%5D=x&amp;list%5B%5D=y&amp;list%5B%5D=z&amp;list%5B%5D=A&amp;list%5B%5D=.&amp;list%5B%5D=%25">RegEx Tester: /[a-z]/</a></p>
-
-
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
-
-<h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
-
-<p>Mit dem Zirkumflex <code>^</code> kann man das Komplement der Zeichen-Klasse bilden,
-es werden dann alle Zeichen gematched die <strong>nicht</strong> in der eckigen
-Klammer erwähnt werden:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[^aeiou]/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
-
-
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
-
-<h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d/       eine Ziffer, entspricht /[0-9]/
-/\D/       keine Ziffer, entspricht /[^0-9]/
-/\w/       Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
-/\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
-
-
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
-
-<h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
-
-<p>Der Punkt <code>.</code> steht für <strong>ein</strong> beliebiges Zeichen. Achtung, Verwechslungsgefahr:
-bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/^...$/       genau drei Zeichen
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list%5B%5D=&amp;list%5B%5D=NA&amp;list%5B%5D=MMT&amp;list%5B%5D=mmt&amp;list%5B%5D=%20%20%20&amp;list%5B%5D=___&amp;list%5B%5D=MMT-B">RegEx Tester: /^…$/</a></p>
-
-
-<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
-
-<h2 id="ein-echter-punkt">Ein echter Punkt</h2>
-
-<p>Da der Punkt <code>.</code> eine besondere Bedeutung in einer Regular Expression
-hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
-Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\./     ein echter punkt
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=1.1&amp;list%5B%5D=1.2&amp;list%5B%5D=1.3&amp;list%5B%5D=2&amp;list%5B%5D=2.1&amp;list%5B%5D=2.2&amp;list%5B%5D=35&amp;list%5B%5D=35.1">RegEx Tester: /^\d.\d$/</a></p>
-
-
-<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
-
-<h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
-
-<p>Der Stern-Operator dient der Vervielfältigung: das davor stehende Zeichen
-kann beliebig oft Wiederholt werden, also null-mal, ein-mal oder mehr-mals vorkommen:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/i*/  
-</pre></div>
-
-<p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.
-Wenn man sich den Operator als Schleif vorstellt kann
-bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
-andere Alternative gewählt werden:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/(do|re|mi)*/
-/\d*/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d*$/</a></p>
-
-
-<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
-
-<h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
-
-<p>Der Plus-Operator ähnelt dem Stern-Operator, allerdings
-muss das Zeichen mindestens einmal vorkommen.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d+/  
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d+$/</a></p>
-
-
-<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
-
-<h2 id="fragezeichen-operator-einmal-oder-keinmal">Fragezeichen-Operator: einmal oder keinmal</h2>
-
-<p>Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d?/  
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
-
-
-<a class="slide_break" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
+<a class="slide_break" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
 
 <h2 id="operatoren-sind-gierig">Operatoren sind gierig</h2>
 
@@ -385,7 +414,7 @@ möglichst lange Strings zu erfassen.</p>
 <p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
 
 
-<a class="slide_break" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
+<a class="slide_break" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
 
 
 
@@ -405,7 +434,7 @@ auch wenn es später im String noch weitere o’s geben würde.</p>
 <p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 
-<a class="slide_break" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
+<a class="slide_break" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
 
 
 
@@ -421,7 +450,7 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 <p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
 
-<a class="slide_break" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
+<a class="slide_break" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
 
 <h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
 
@@ -443,7 +472,7 @@ z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit 
 Aber nichts komplizierteres.</p>
 
 
-<a class="slide_break" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
+<a class="slide_break" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
 
 <h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
 
@@ -483,7 +512,7 @@ eine eigene Wissenschaft: die <a href="https://de.wikipedia.org/wiki/Computerlin
 sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
 
 
-<a class="slide_break" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
+<a class="slide_break" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
 
 <h2 id="regex-in-php">RegEx in PHP</h2>
 
@@ -505,7 +534,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </pre></div>
 
 
-<a class="slide_break" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
+<a class="slide_break" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
 
 <h2 id="tools">Tools</h2>
 
@@ -514,7 +543,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 
-<a class="slide_break" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
+<a class="slide_break" id="slide-30" href="slide.html#slide-30"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 30">▻</a>
 
 <h2 id="vertiefung">Vertiefung</h2>
 
@@ -525,7 +554,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 
-<a class="slide_break" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
+<a class="slide_break" id="slide-31" href="slide.html#slide-31"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 31">▻</a>
 
 <h2 id="merchandize">Merchandize</h2>
 

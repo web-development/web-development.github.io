@@ -122,8 +122,11 @@ zahlt sich aus!</p>
 
 <p><a href="http://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck">Reguläre Ausdrücke</a> sind
 ein Konzept aus der Theoretischen Informatik. Diese ursprünglichen regulären Ausdrücke
-bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt. Zur Unterscheidung nenne ich diese
-erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx.</p>
+bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt.</p>
+
+<p>Zur Unterscheidung nenne ich diese
+erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx,
+und den Degriff aus der theoretischen Informatik “Reguläre Ausdruck”.</p>
 
 </div>
 <div class="slide">
@@ -208,36 +211,6 @@ entspricht also einem logischen “oder”;</p>
 </div>
 <div class="slide">
 
-<h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
-
-<p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/(de|fr)_(DE|CH)/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list%5B%5D=&amp;list%5B%5D=de_DE&amp;list%5B%5D=fr_DE&amp;list%5B%5D=de_CH&amp;list%5B%5D=fr_CH&amp;list%5B%5D=de_AT&amp;list%5B%5D=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
-
-<p>Ausserdem stehen die von den Klammern gefundenen Teile des
-Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
-liefert ein Array als Rückgabewert, an der Stelle 0 ist der
-gesamte gefundene String gespeichert, auf 1, 2, 3 der Reihe
-nach die gefundnen Gruppen:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-locale = &quot;de_CH&quot;;
-if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
-  console.log(&quot;gesamt:  &quot; + match[0]);
-  console.log(&quot;sprache: &quot; + match[1]);
-  console.log(&quot;land:    &quot; + match[2]);
-}
-</pre></div>
-
-</div>
-<div class="slide">
-
 <h2 id="verankern">Verankern</h2>
 
 <p>Mit den Zeichen Zirkumflex <code>^</code> und Dollar <code>$</code> kann die Suche am
@@ -251,6 +224,8 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 </pre></div>
 
 <p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+
+<p>Achtung: der Zirkumflex <code>^</code> hat auch noch andere Bedeutungen (wenn er nicht am Anfang des Patterns steht).</p>
 
 </div>
 <div class="slide">
@@ -278,8 +253,11 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 man einen Bereich von Zeichen angeben, die im Zeichensatz hintereinander
 stehen.</p>
 
+<p>Die folgenden beiden pattern sind also gleichbedeutend:</p>
+
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
+/[abcdef]/
 /[a-f]/
 </pre></div>
 
@@ -301,6 +279,8 @@ Klammer erwähnt werden:</p>
 
 <p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
 
+<p>Achtung: das war die zweite Bedeutung des Zirkumflex <code>^</code>, wenn er am Anfang der Klasse steht.</p>
+
 </div>
 <div class="slide">
 
@@ -315,6 +295,44 @@ Klammer erwähnt werden:</p>
 </pre></div>
 
 <p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
+
+<p>Der Plus-Operator ähnelt dem Stern-Operator, allerdings
+muss das Zeichen mindestens einmal vorkommen.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d+/  
+</pre></div>
+
+<p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/\d+/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /\d+/</a></p>
+
+<p>Wenn man sich den Operator als Schleife vorstellt kann
+bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
+andere Alternative gewählt werden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/(do|re|mi)+/
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="bung">Übung</h2>
+
+<p>Eine kurze Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
 
 </div>
 <div class="slide">
@@ -352,41 +370,15 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 
 <h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
 
-<p>Der Stern-Operator dient der Vervielfältigung: das davor stehende Zeichen
-kann beliebig oft Wiederholt werden, also null-mal, ein-mal oder mehr-mals vorkommen:</p>
+<p>Wir kennen schon den Plus-Operator. Der Stern-Operator erlaubt auch null Wiederholungen.</p>
+
+<p>Der Stern-Operator dient auch der Vervielfältigung: das davor stehende Zeichen
+kann nullmal, einmal oder mehrmals vorkommen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 /i*/  
 </pre></div>
-
-<p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.
-Wenn man sich den Operator als Schleif vorstellt kann
-bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
-andere Alternative gewählt werden:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/(do|re|mi)*/
-/\d*/
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd*$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d*$/</a></p>
-
-</div>
-<div class="slide">
-
-<h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
-
-<p>Der Plus-Operator ähnelt dem Stern-Operator, allerdings
-muss das Zeichen mindestens einmal vorkommen.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d+/  
-</pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd%2B$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d+$/</a></p>
 
 </div>
 <div class="slide">
@@ -401,6 +393,43 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 </pre></div>
 
 <p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
+
+<p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+/(de|fr)_(DE|CH)/
+</pre></div>
+
+<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list%5B%5D=&amp;list%5B%5D=de_DE&amp;list%5B%5D=fr_DE&amp;list%5B%5D=de_CH&amp;list%5B%5D=fr_CH&amp;list%5B%5D=de_AT&amp;list%5B%5D=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
+
+<p>Ausserdem stehen die von den Klammern gefundenen Teile des
+Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
+liefert ein Array als Rückgabewert, an der Stelle 0 ist der
+gesamte gefundene String gespeichert, auf 1, 2, 3 der Reihe
+nach die gefundnen Gruppen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+locale = &quot;de_CH&quot;;
+if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
+  console.log(&quot;gesamt:  &quot; + match[0]);
+  console.log(&quot;sprache: &quot; + match[1]);
+  console.log(&quot;land:    &quot; + match[2]);
+}
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="bung-1">Übung</h2>
+
+<p>Eine längere Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
 
 </div>
 <div class="slide">
