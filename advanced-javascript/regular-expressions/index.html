@@ -264,12 +264,11 @@ Klammer erwähnt werden:</p>
 
 <h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
 
-<p>Der Plus-Operator ähnelt dem Stern-Operator, allerdings
-muss das Zeichen mindestens einmal vorkommen.</p>
+<p>Der Plus-Operator erlaubt eine Wiederholung des vorigen Zeichens. Um also <code>"i"</code> und <code>"iiii"</code> und <code>"wir sind die Ritter die ni sagen"</code> zu matchen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-/\d+/  
+/i+/  
 </pre></div>
 
 <p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
@@ -279,7 +278,7 @@ muss das Zeichen mindestens einmal vorkommen.</p>
 /\d+/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /\d+/</a></p>
+<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a123">RegEx Tester: /\d+/</a></p>
 
 <p>Wenn man sich den Operator als Schleife vorstellt kann
 bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
@@ -461,33 +460,40 @@ finden will, braucht es das global-Flag:</p>
 m = &quot;Nana nana nana nana batman&quot;.match(/na/);
 // findet das erste na
 m = &quot;Nana nana nana nana batman&quot;.match(/na/g);
-// findet alle 7 na
-&lt;javascript&gt;
+// findet alle 7 nax
+</pre></div>
 
-## Warnhinweis: Was RegEx nicht kann
 
-Mit dem letzten Beispiel könnte man nun in Versuchung kommen
+<a class="slide_break" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
+
+<h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
+
+<p>Mit dem letzten Beispiel könnte man nun in Versuchung kommen
 verschachtelte Ausdrücke wie HTML, XML, mathematische Ausdrücke, Programmiersprachen
-mit Hilfe von RegEx zu parsen.
+mit Hilfe von RegEx zu parsen.</p>
 
-Das funktioniert aber nicht. Das müssten Sie an dieser Stelle
-einfach mal glauben - den Beweis überlassen wir der &quot;Theoretischen Informatik&quot;.
+<p>Das funktioniert aber nicht. Das müssten Sie an dieser Stelle
+einfach mal glauben - den Beweis überlassen wir der “Theoretischen Informatik”.</p>
 
-Die Frage ob das geht kommt immer wieder auf StackOverflow,
-hier ist die [Standard Antwort](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags#answer-1732454).
+<p>Die Frage ob das geht kommt immer wieder auf StackOverflow,
+hier ist die <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags#answer-1732454">Standard Antwort</a>.</p>
 
-Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
-verwenden Sie dafür einen der vielen fertigen Parser.
+<p>Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
+verwenden Sie dafür einen der vielen fertigen Parser.</p>
 
-Wenn Sie aus einem längeren HTML-Dokument &quot;unverschachtelte&quot; Teile wie
-z.B. `&lt;img&gt;` Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
-Aber nichts komplizierteres.
+<p>Wenn Sie aus einem längeren HTML-Dokument “unverschachtelte” Teile wie
+z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
+Aber nichts komplizierteres.</p>
 
-## Ersetzen mit Regular Expression in Javascript
 
-Ein häufiger Anwendungsfall von RegEx ist &quot;Suchen und Ersetzen&quot;
+<a class="slide_break" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
 
-&lt;javascript&gt;
+<h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
+
+<p>Ein häufiger Anwendungsfall von RegEx ist “Suchen und Ersetzen”</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
 s = &quot;Voldemort hat keine Nase&quot;;
 s.replace(/Voldemort/, 
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
@@ -520,7 +526,7 @@ eine eigene Wissenschaft: die <a href="https://de.wikipedia.org/wiki/Computerlin
 sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
 
 
-<a class="slide_break" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
+<a class="slide_break" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
 
 <h2 id="regex-in-php">RegEx in PHP</h2>
 
@@ -542,7 +548,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </pre></div>
 
 
-<a class="slide_break" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
+<a class="slide_break" id="slide-30" href="slide.html#slide-30"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 30">▻</a>
 
 <h2 id="tools">Tools</h2>
 
@@ -551,7 +557,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 
-<a class="slide_break" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
+<a class="slide_break" id="slide-31" href="slide.html#slide-31"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 31">▻</a>
 
 <h2 id="vertiefung">Vertiefung</h2>
 
@@ -562,7 +568,7 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </ul>
 
 
-<a class="slide_break" id="slide-30" href="slide.html#slide-30"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 30">▻</a>
+<a class="slide_break" id="slide-32" href="slide.html#slide-32"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 32">▻</a>
 
 <h2 id="merchandize">Merchandize</h2>
 
