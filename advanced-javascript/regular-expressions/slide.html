@@ -124,9 +124,7 @@ zahlt sich aus!</p>
 ein Konzept aus der Theoretischen Informatik. Diese ursprünglichen regulären Ausdrücke
 bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt.</p>
 
-<p>Zur Unterscheidung nenne ich diese
-erweiterten Ausdrücke mit dem englischen Begriff Regular Expressions oder kurz RegEx,
-und den Degriff aus der theoretischen Informatik “Reguläre Ausdruck”.</p>
+<p>Diese Kapitel beschreibt die praktische Umsetzung, und nicht den Begriff aus der theoretischen Informatik.</p>
 
 </div>
 <div class="slide">
@@ -487,34 +485,44 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 </div>
 <div class="slide">
 
-<h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
+<h2 id="mehrmals-suchen">Mehrmals suchen</h2>
 
-<p>Mit dem letzten Beispiel könnte man nun in Versuchung kommen
-verschachtelte Ausdrücke wie HTML, XML, mathematische Ausdrücke, Programmiersprachen
-mit Hilfe von RegEx zu parsen.</p>
-
-<p>Das funktioniert aber nicht. Das müssten Sie an dieser Stelle
-einfach mal glauben - den Beweis überlassen wir der “Theoretischen Informatik”.</p>
-
-<p>Die Frage ob das geht kommt immer wieder auf StackOverflow,
-hier ist die <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags#answer-1732454">Standard Antwort</a>.</p>
-
-<p>Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
-verwenden Sie dafür einen der vielen fertigen Parser.</p>
-
-<p>Wenn Sie aus einem längeren HTML-Dokument “unverschachtelte” Teile wie
-z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
-Aber nichts komplizierteres.</p>
-
-</div>
-<div class="slide">
-
-<h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
-
-<p>Ein häufiger Anwendungsfall von RegEx ist “Suchen und Ersetzen”</p>
+<p>Alle bisher geschriebenen Patterns werden mit der Funktion <code>match</code>
+einmal gesucht. Wenn ich in einem string aber mehrere Vorkommen
+finden will, braucht es das global-Flag:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
+m = &quot;Nana nana nana nana batman&quot;.match(/na/);
+// findet das erste na
+m = &quot;Nana nana nana nana batman&quot;.match(/na/g);
+// findet alle 7 na
+&lt;javascript&gt;
+
+## Warnhinweis: Was RegEx nicht kann
+
+Mit dem letzten Beispiel könnte man nun in Versuchung kommen
+verschachtelte Ausdrücke wie HTML, XML, mathematische Ausdrücke, Programmiersprachen
+mit Hilfe von RegEx zu parsen.
+
+Das funktioniert aber nicht. Das müssten Sie an dieser Stelle
+einfach mal glauben - den Beweis überlassen wir der &quot;Theoretischen Informatik&quot;.
+
+Die Frage ob das geht kommt immer wieder auf StackOverflow,
+hier ist die [Standard Antwort](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags#answer-1732454).
+
+Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
+verwenden Sie dafür einen der vielen fertigen Parser.
+
+Wenn Sie aus einem längeren HTML-Dokument &quot;unverschachtelte&quot; Teile wie
+z.B. `&lt;img&gt;` Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
+Aber nichts komplizierteres.
+
+## Ersetzen mit Regular Expression in Javascript
+
+Ein häufiger Anwendungsfall von RegEx ist &quot;Suchen und Ersetzen&quot;
+
+&lt;javascript&gt;
 s = &quot;Voldemort hat keine Nase&quot;;
 s.replace(/Voldemort/, 
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
