@@ -79,7 +79,7 @@
         >
          
         | Nächste Präsentation
-        <a href="/git//slide.html">GIT</a>
+        <a href="/kommandozeile/bild-und-video//slide.html">Bild und Video</a>
         
       </p>
     </div>
@@ -101,7 +101,7 @@ insbesondere auch die Zugriffsrechte:</p>
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten inklusive geheimer Dateien</small></h4>
 <pre class="lang-shell prettyprint linenums">
-bash-3.2$ ls -la
+$ ls -la
 total 12
 drwxr-xr-x   14 bjelline staff  476 Mär  2 09:29 .
 drwxr-xr-x+ 232 bjelline staff 7888 Mär  2 09:29 ..
@@ -168,20 +168,35 @@ auflisten, aber keine neuen Dateien anlegen.</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
-bash-3.2$ ls -la public_html/index.html 
+$ ls -la public_html/index.html 
 -rw------- 1 bjelline bjelline 20 Nov  6  2012 public_html/index.html
 
-bash-3.2$ chmod go+r public_html/index.html
+$ chmod go+r public_html/index.html
 
-bash-3.2$ ls -la public_html/index.html 
+$ ls -la public_html/index.html 
 -rw-r--r-- 1 bjelline bjelline 20 Nov  6  2012 public_html/index.html
 </pre></div>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
-bash-3.2$ chmod 644 public_html/index.html 
+$ chmod 644 public_html/index.html 
 </pre></div>
 
+</div>
+<div class="slide">
+
+<h2 id="sticky">Sticky</h2>
+
+<p>Wenn man das sticky bit am Directory setzt, dann wird
+jede Datei die in das Directory kopiert wird automatisch
+dem Owner gehören.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ chmod g+s img
+</pre></div>
+
+<p><img src="images/kommandozeile/better-permissions-explained.png"  alt="Wie man das Stick bit am Directory setzt und Warum" ></p>
 </div>
     <div class="slide">
       <h1>Zugriffsrechte</h1>
@@ -193,7 +208,7 @@ bash-3.2$ chmod 644 public_html/index.html
         >
          
         | Nächste Präsentation
-        <a href="/git//slide.html">GIT</a>
+        <a href="/kommandozeile/bild-und-video//slide.html">Bild und Video</a>
         
       </p>
     </div>
