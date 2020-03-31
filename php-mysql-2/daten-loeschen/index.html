@@ -101,7 +101,8 @@ das SQL etwas “injiziert” wird.</p>
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
-<p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
+
+<p>Dieses Problem kann man vermeiden, indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt, darf sie
 verwendet werde. Das kann man auf verschiedene Arten prüfen, 
 z.B. mit der Funktion <code>filter_var</code>:</p>
@@ -145,9 +146,11 @@ Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen.</p>
 ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. Dieses
 SQL-Statement wird vom Datenbank-Server sofort geparset und compiliert.</p>
 
-<p>Mit <code>execute</code><a href="http://www.php.net/manual/en/pdostatement.execute.php">*</a> 
-wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten
-ersetzt.  Das Schöne daran: es wird dabei nicht mehr ein SQL-Statement als
+<p>Im zweiten Schritt wird mit <code>execute</code><a href="http://www.php.net/manual/en/pdostatement.execute.php">*</a> 
+das Statement wirklich ausgeführt, dabei werden die Platzhalter durch echte Daten
+ersetzt.</p>
+
+<p>Das Schöne daran: es wird dabei nicht mehr ein SQL-Statement als
 String gebaut, sondern die einzufügenden Daten werden binär an den
 Datenbankserver übertragen. Darin enthaltene SQL-Fragement können keinen Schaden
 anrichten.</p>
@@ -161,14 +164,55 @@ anrichten.</p>
 <h4 class="caption">Php Code <small>DELETE mit prepared statement</small></h4>
 <pre class="lang-php prettyprint linenums">
 $sth = $dbh-&gt;prepare(&quot;DELETE FROM users WHERE id = ?&quot;);
-$sth-&gt;execute(array($id));
-</pre></div>
+// Schritt 1: SQL-Statement wird vom Datenbank-Server geparset und compiliert. 
 
-<p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine
-normale query zu wiederholen.</p>
+$sth-&gt;execute(array($id));
+// Schritt 2: nur die Daten werden an den Datenbank-Server übertragen
+// und das fertige Statement wird ausgeführt
+</pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h3 id="prepared-statements-und-performance">Prepared Statements und Performance</h3>
+
+<p>Nach einem <code>prepare</code> kann 
+<code>execute</code>  auch mehrfach ausgeführt werden. Das ist effektiver als eine
+normale query zu wiederholen.</p>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+<h3 id="sql-injection-auch-bei-select">SQL-Injection auch bei SELECT</h3>
+
+<p>In <a href="/php-db-lesen/datenbank-lesen/#slide-12">Lesen aus der Datenbank </a> haben
+wir User-Input in einem Select-Statement verwendet:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
+<pre class="lang-php prettyprint linenums">
+$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
+$stm = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible AND id=$id&quot;);
+$person = $stm-&gt;fetch();
+if( $person === FALSE ) {
+  die(&quot;&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;&quot;);
+}
+</pre></div>
+
+<p>Auch dieser Code ist für SQL-Injection anfällig. Was passiert bei
+folgendem Aufruf?</p>
+
+<p><code>index.php?id=1;DROP+TABLE+users</code>`</p>
+
+<p>Das Ergebnis ist ein SQL Statement:</p>
+
+<p><code>SELECT * FROM users WHERE profile_visible AND id=1;DROP TABLE users</code>`</p>
+
+<p>Deswegen sollte man auch bei reinen Abfragen immer prepared statements
+verwenden!</p>
+
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="authorisierung-nicht-vergessen">Authorisierung nicht vergessen!</h3>
 

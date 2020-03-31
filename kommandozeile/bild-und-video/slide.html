@@ -185,6 +185,19 @@ hochzeit_800.jpg JPEG 800x533 800x533+0+0 8-bit sRGB 555496B 0.000u 0:00.000
 </div>
 <div class="slide">
 
+<h3 id="aus-standbildern-ein-animiertes-gif-machen">Aus Standbildern ein Animiertes GIF machen</h3>
+
+<p>Aus mehreren Standbildern - in diesem Beispiel mehreren png-dateien
+kann imagemagic ein animiertes gif machen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+convert -delay 7 -loop 0 -alpha set -dispose previous *.png sprite.gif
+</pre></div>
+
+</div>
+<div class="slide">
+
 <h3 id="mehr-ber-image-magick">Mehr über image magick</h3>
 
 <p>Das waren sehr einfache Beispiele.
