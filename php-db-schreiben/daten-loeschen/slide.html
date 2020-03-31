@@ -272,7 +272,7 @@ immer prepared Statements!</p>
 <h4 class="caption">Php Code <small>sicherer code</small></h4>
 <pre class="lang-php prettyprint linenums">
 $query = &quot;SELECT id, name FROM cities WHERE name=?&quot;;
-$sth = $dbh-&gt;execute($query);
+$sth = $dbh-&gt;prepare($query);
 $sth-&gt;execute( array($name) );
 </pre></div>
 
