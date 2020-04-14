@@ -125,15 +125,16 @@ vom selben Browser ausgelöst wurden.</p>
   </li>
 </ul>
 
-<p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den Usernamen des angemeldeten Users zu speichern.</p>
+<p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den <code>username</code> der angemeldeten Person zu speichern.</p>
 
 </div>
 <div class="slide">
 
 <h3 id="struktur-der-applikation-mit-login">Struktur der Applikation mit Login</h3>
 
-<p>Die folgende Tabelle zeigt alle nochmal alle Seiten der Applikation im Überblick. 
-Diesmal ist auch die Methode angegeben, da login.php verschiedene Aufgaben hat,
+<p>Die folgende Tabelle zeigt die Seiten der Applikation, die für
+das Login nötig sind. 
+Diesmal ist auch die Methode angegeben, da <code>login.php</code> verschiedene Aufgaben hat,
 je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
@@ -147,13 +148,6 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Home</td>
-      <td>GET</td>
-      <td><code>index.php</code></td>
-      <td> </td>
-      <td>Zeigt Gesamtzahl der Personen und Werke an.</td>
-    </tr>
     <tr>
       <td>Login Formular</td>
       <td>GET</td>
@@ -175,34 +169,6 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
       <td> </td>
       <td>Löschte Session und Session-Cookie, dann Redirect zu index.php</td>
     </tr>
-    <tr>
-      <td>Personen</td>
-      <td>GET</td>
-      <td><code>personen.php</code></td>
-      <td> </td>
-      <td>Zeigt 10 zufällig ausgewählt Personen an, mit Links zu  person.php</td>
-    </tr>
-    <tr>
-      <td>Details zu einer Person</td>
-      <td>GET</td>
-      <td><code>person.php</code></td>
-      <td>id (Schlüssel der Person)</td>
-      <td>Zeigt Details zu einer bestimmten Person an: Anzahl der Werke und Username</td>
-    </tr>
-    <tr>
-      <td>Werke</td>
-      <td>GET</td>
-      <td><code>werke.php</code></td>
-      <td> </td>
-      <td>Zeigt 10 zufällig ausgewählt Werke an, mit Links zu werk.php</td>
-    </tr>
-    <tr>
-      <td>Details zu einem Werk</td>
-      <td>GET</td>
-      <td><code>werk.php</code></td>
-      <td>id (Schlüssel des Werks)</td>
-      <td>Zeigt Details zu einer bestimmten Werk an: Titel, Datum der Publikation, eventuell eine Liste der Beteiligten Personen und ihrer Rollen</td>
-    </tr>
   </tbody>
 </table>
 
@@ -211,7 +177,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <h3 id="sessionstart">session_start</h3>
 
-<p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit und den Namen des eingeloggten Users an:</p>
+<p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit  an:</p>
 
 <p><img src="/images/image364.png"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
 

@@ -163,6 +163,42 @@ convert -delay 7 -loop 0 -alpha set -dispose previous *.png sprite.gif
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
+<h3 id="collagen">Collagen</h3>
+
+<p>Mehrere Bilder nebeneinander zusammenfügen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+convert left.jpg right.jpg +append side_by_side.jpg
+</pre></div>
+
+<p>Mehrere Bilder untereinander zusammenfügen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+convert top.jpg bottom.jpg -append above_and_below.jpg
+</pre></div>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h3 id="meta-information-ber-rotation-entfernen">Meta-Information über Rotation entfernen</h3>
+
+<p>Handy-Photos können Information über die Orientierung
+des Bildes enhalten.  Falls die Kamera am Kopf steht wenn
+man das Bild macht, dann wird im Bild gespeichert dass es um 180° 
+gedreht angezeigt werden soll.  Das fukntioniert aber nicht immer.</p>
+
+<p>Folgender Befehl rückt das Bild gerade und entfernt die Meta-Information:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+convert IMG_20180830_110737.jpg -auto-orient -strip aufrecht.jpg
+</pre></div>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
 <h3 id="mehr-ber-image-magick">Mehr über image magick</h3>
 
 <p>Das waren sehr einfache Beispiele.
@@ -176,14 +212,14 @@ convert -delay 7 -loop 0 -alpha set -dispose previous *.png sprite.gif
 verwendet werden. z.B. <a href="https://www.php.net/manual/de/book.imagick.php">PHP</a>, <a href="https://github.com/dlemstra/Magick.NET">C#</a>, <a href="https://www.npmjs.com/package/imagemagick-native">node.js</a></p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="videoverarbeitung-mit-ffmpeg">Videoverarbeitung mit ffmpeg</h2>
 
 <p><a href="https://www.ffmpeg.org/">ffmpeg</a> kann auf apple mit <code>brew install ffmpeg</code> installiert werden.</p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="video-schneiden">Video schneiden</h3>
 
@@ -197,7 +233,7 @@ $ ffmpeg -ss 00:40:00.0 -i  Besprechung.mp4 -c copy -t 00:01:00.0 Besprechung.mp
 <p><a href="/images/kommandozeile/ffout3.txt">output</a></p>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="ein-standbild-aus-einem-video-entnehmen">Ein Standbild aus einem Video entnehmen</h3>
 
@@ -216,7 +252,7 @@ $ ffmpeg -ss 0:20:00  -i  Besprechung.mp4 -vframes 1 -q:v 2 output.jpg
 welchen Ausschnitt des Bildschirms ausgeschnitten werden soll.</p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="ein-video-auf-ein-kleineres-rechteck-beschneiden">Ein Video auf ein kleineres Rechteck beschneiden</h3>
 

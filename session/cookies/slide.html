@@ -129,6 +129,27 @@ Set-Cookie: style=gelb; path=/admin/
 Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/
 </pre></div>
 
+</div>
+<div class="slide">
+
+
+
+<p>Mit dem Zusatz <code>Secure</code> wird ein Cookie niemals über eine unverschlüsselte (<code>http</code>) Verbindung
+gesendet, sondern nur über <code>https</code>.</p>
+
+<p>Der Zusatz <code>HttpOnly</code> zeigt an, dass das Cookie nicht von JavaScript aus gelesen oder
+verändert werden kann.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+Set-Cookie: style=gelb; expires=Tue, 29-Mar-2015 19:30:42 GMT; path=/admin/;  Secure; HttpOnly
+</pre></div>
+
+</div>
+<div class="slide">
+
+
+
 <p>Die einzige Art ein Cookie zu löschen ist ein Cookie mit gleichem Namen und
 Ablaufdatum in der Vergangenheit zu setzen:</p>
 
@@ -153,8 +174,8 @@ wurden im Array <code>$_COOKIES</code><a href="http://php.net/manual/en/reserved
 
 <h3 id="cookies-in-javascript">Cookies in Javascript</h3>
 
-<p>Im Client können Cookies mit Javascript gelesen und geschrieben werden. Dies
-funktioniert über eine Zuweisung an die Eigenschaft document.cookie.</p>
+<p>Im Client können Cookies (ausser <code>HttpOnly</code>) mit Javascript gelesen und geschrieben werden. Dies
+funktioniert über eine Zuweisung an die Eigenschaft <code>document.cookie</code>.</p>
 
 <p>Achtung: beim lesenden Zugriff auf diese Eigenschaft enthält man einen String
 mit allen Cookies die gerade gültig sind.</p>
@@ -167,14 +188,13 @@ auf den Wert den man aus document.cookie auslesen kann:</p>
 <pre class="lang-javascript prettyprint linenums">
 alert(document.cookie);  // Zeigt die gültigen Cookies
 
-document.cookie = &quot;farbe:grün&quot;; document.cookie = &quot;anzahl: 3&quot;; 
-document.cookie = &quot;passwort: total super geheimes aber recht langes passwort&quot;;
-alert(document.cookie);  // Zeigt immer noch die ALTEN Cookies !!!
+document.cookie = &quot;farbe=grün&quot;; document.cookie = &quot;anzahl=3&quot;; 
+document.cookie = &quot;passwort=total super geheimes aber recht langes passwort&quot;;
 </pre></div>
 
 <p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten
-Cookies mit gesendet: erst wenn die Antwort wieder dargestellt wird, sind die
-neuen Cookies in Javascript über document.cookie lesbar!</p>
+Cookies mit gesendet und haben eventuell einen Auswirkung auf das
+Verhalten des Servers.</p>
 
 </div>
 <div class="slide">
