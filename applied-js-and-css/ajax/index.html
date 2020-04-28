@@ -129,7 +129,99 @@ aufgerufen und die Daten zu verarbeiten.</p>
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h3 id="http">HTTP</h3>
+<h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
+
+<p>Achtung: ein laufendes Javascript programm wird nie unterbrochen.
+Im letzten Code-Beispiel wird es nie passieren, dass zwischen Befehl3
+und Befehl4 niemals etwas anderes (z.B. handle_data) passieren!</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function handle_data(Antwort) {  
+   ... 
+} 
+ 
+Befehl1();
+Befehl2();
+asynchron_laden(url, handle_data);  // dauert kurz 
+Befehl3();                         // kurz darauf
+Befehl4();
+</pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h3 id="asynchrones-beispiel-settimeout">Asynchrones Beispiel: setTimeout</h3>
+
+<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden) 
+ausführen lassen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;3 Sekunden später&quot;, Date.now());
+}
+
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 3000);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+
+
+<p>Was passiert nun, wenn man den Timeout auf 0 setzt?</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;0 Sekunden später?&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+
+
+<p>Antwort: das Javascript-Programm wird nicht unterbrochen!</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+
+// Output in der Konsole:
+// tick 1588059630667
+// tock 1588059630668
+// tick 1588059630668
+// tock 1588059630668
+// nicht 0 Sekunden später 1588059630669
+</pre></div>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h3 id="asynchrone-http-requests">Asynchrone HTTP Requests</h3>
 
 <p>Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
 wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
@@ -160,7 +252,7 @@ die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.<
 <p><img src="/images/ajax-sequence-diagram.svg"  alt="AJAX Ablauf" ></p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
 
@@ -169,7 +261,7 @@ können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
 Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="simples-javascript-beispiel">Simples Javascript Beispiel</h2>
 
@@ -200,7 +292,7 @@ eingebunden.</p>
     ajaxRequest.addEventListener(&quot;load&quot;, handleCounterData);
     ajaxRequest.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
     ajaxRequest.send(); 
-    console.log(&quot;abgesendet, sofort weiter&quot;;   
+    console.log(&quot;abgesendet, sofort weiter&quot;);   
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -217,7 +309,7 @@ Zeile.</p>
 in der Variable <code>this</code> und kann aus <code>this.responseText</code> die Antwort auslesen.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="fetch-und-promises">Fetch und Promises</h2>
 
@@ -248,6 +340,7 @@ eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a hre
         console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
         // ...
       }); 
+    console.log(&quot;abgesendet, sofort weiter&quot;);   
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -258,7 +351,7 @@ wird auch komplizierter: ein weiterer asynchroner Verarbeitungsschritt
 kommt dazu: das auslesen des Textes aus dem Response.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="promises">Promises</h2>
 
@@ -277,11 +370,12 @@ fetch(&quot;counter_ajax.php&quot;)
   .then(function(response) {
     console.log(&quot;Response wird empfangen&quot;);
     // tu ws mit response response
-  })
+  });
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="chaining">Chaining</h3>
 
@@ -289,7 +383,7 @@ fetch(&quot;counter_ajax.php&quot;)
 soll
 eine weitere asynchrone Operation aufgerufen werden.</p>
 
-<p>Mit Promises funktionert das mittels “aneinanderhängen” mit <code>then</code>:</p>
+<p>Mit Promises funktionert das mittels “aneinanderhängen” = “chaining” mit <code>then</code>:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -303,6 +397,7 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
     // ...
   }); 
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 <p>Dieser Code kann mit Arrow-Functions noch kürzer werden:</p>
@@ -315,10 +410,11 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
   });
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
 
@@ -332,9 +428,10 @@ fetch(&quot;counter_ajax.php&quot;)
   .then(function(counter) {
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
-  }).catch(error) {
+  }).catch(function(error) {
     console.log(error);
-  };
+  });
+console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 <p>Aber Achtung: wenn der HTTP-Response z.B. 404 oder 500 ist, löst das noch
@@ -345,6 +442,7 @@ man selbst behandeln:</p>
 <pre class="lang-javascript prettyprint linenums">
 fetch(&quot;counter_ajax.php&quot;)
   .then(function(response){ 
+    console.log(&quot;response status is&quot;, response.status);
     if (response.status !== 200) {
         throw new Error(&quot;Not 200 response&quot;);
     } 
@@ -352,15 +450,16 @@ fetch(&quot;counter_ajax.php&quot;)
   }).then(function(counter) {
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
-  }).catch(error) {
+  }).catch(function(error) {
     console.log(error);
-  };
+  });
+  console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 <p>Siehe auch</p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h2 id="autocomplete">Autocomplete</h2>
 
@@ -368,7 +467,7 @@ fetch(&quot;counter_ajax.php&quot;)
 Beginnen wir mit dem Backend:</p>
 
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="backend">Backend</h3>
 
@@ -428,7 +527,7 @@ echo json_encode($cities);
 </pre></div>
 
 
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h3 id="frontend">Frontend</h3>
 
@@ -447,7 +546,7 @@ new autoComplete({
 </pre></div>
 
 
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h2 id="ajax-beispiel-mit-api">AJAX Beispiel mit API</h2>
 
@@ -460,7 +559,7 @@ sieht man einen wichtigen Unterschied:</p>
 </ul>
 
 
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
 <h3 id="direkter-zugriff-auf-eine-fremde-api">Direkter Zugriff auf eine fremde API</h3>
 
@@ -494,7 +593,7 @@ auf https.</p>
 ist die nächste Lösung notwendig:</p>
 
 
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 <h3 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h3>
 
@@ -527,7 +626,7 @@ $text=file_get_contents( $url );
 </pre></div>
 
 
-<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+<a class="slide_break" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
 
 <h2 id="ausblick">Ausblick</h2>
 

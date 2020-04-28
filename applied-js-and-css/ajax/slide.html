@@ -164,7 +164,99 @@ aufgerufen und die Daten zu verarbeiten.</p>
 </div>
 <div class="slide">
 
-<h3 id="http">HTTP</h3>
+<h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
+
+<p>Achtung: ein laufendes Javascript programm wird nie unterbrochen.
+Im letzten Code-Beispiel wird es nie passieren, dass zwischen Befehl3
+und Befehl4 niemals etwas anderes (z.B. handle_data) passieren!</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function handle_data(Antwort) {  
+   ... 
+} 
+ 
+Befehl1();
+Befehl2();
+asynchron_laden(url, handle_data);  // dauert kurz 
+Befehl3();                         // kurz darauf
+Befehl4();
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="asynchrones-beispiel-settimeout">Asynchrones Beispiel: setTimeout</h3>
+
+<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden) 
+ausführen lassen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;3 Sekunden später&quot;, Date.now());
+}
+
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 3000);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+</div>
+<div class="slide">
+
+
+
+<p>Was passiert nun, wenn man den Timeout auf 0 setzt?</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;0 Sekunden später?&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+</div>
+<div class="slide">
+
+
+
+<p>Antwort: das Javascript-Programm wird nicht unterbrochen!</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+
+// Output in der Konsole:
+// tick 1588059630667
+// tock 1588059630668
+// tick 1588059630668
+// tock 1588059630668
+// nicht 0 Sekunden später 1588059630669
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="asynchrone-http-requests">Asynchrone HTTP Requests</h3>
 
 <p>Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
 wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
@@ -235,7 +327,7 @@ eingebunden.</p>
     ajaxRequest.addEventListener(&quot;load&quot;, handleCounterData);
     ajaxRequest.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
     ajaxRequest.send(); 
-    console.log(&quot;abgesendet, sofort weiter&quot;;   
+    console.log(&quot;abgesendet, sofort weiter&quot;);   
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -283,6 +375,7 @@ eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a hre
         console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
         // ...
       }); 
+    console.log(&quot;abgesendet, sofort weiter&quot;);   
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -312,7 +405,8 @@ fetch(&quot;counter_ajax.php&quot;)
   .then(function(response) {
     console.log(&quot;Response wird empfangen&quot;);
     // tu ws mit response response
-  })
+  });
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 </div>
@@ -324,7 +418,7 @@ fetch(&quot;counter_ajax.php&quot;)
 soll
 eine weitere asynchrone Operation aufgerufen werden.</p>
 
-<p>Mit Promises funktionert das mittels “aneinanderhängen” mit <code>then</code>:</p>
+<p>Mit Promises funktionert das mittels “aneinanderhängen” = “chaining” mit <code>then</code>:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -338,6 +432,7 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
     // ...
   }); 
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 <p>Dieser Code kann mit Arrow-Functions noch kürzer werden:</p>
@@ -350,6 +445,7 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
   });
+console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 </div>
@@ -367,9 +463,10 @@ fetch(&quot;counter_ajax.php&quot;)
   .then(function(counter) {
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
-  }).catch(error) {
+  }).catch(function(error) {
     console.log(error);
-  };
+  });
+console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 <p>Aber Achtung: wenn der HTTP-Response z.B. 404 oder 500 ist, löst das noch
@@ -380,6 +477,7 @@ man selbst behandeln:</p>
 <pre class="lang-javascript prettyprint linenums">
 fetch(&quot;counter_ajax.php&quot;)
   .then(function(response){ 
+    console.log(&quot;response status is&quot;, response.status);
     if (response.status !== 200) {
         throw new Error(&quot;Not 200 response&quot;);
     } 
@@ -387,9 +485,10 @@ fetch(&quot;counter_ajax.php&quot;)
   }).then(function(counter) {
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
-  }).catch(error) {
+  }).catch(function(error) {
     console.log(error);
-  };
+  });
+  console.log(&quot;abgesendet, sofort weiter&quot;);   
 </pre></div>
 
 <p>Siehe auch</p>
