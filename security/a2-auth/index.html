@@ -87,7 +87,7 @@ von Usernamen genau so geheim halten wie die Passwörter.</p>
 <h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
 
 <p>Das Protokoll HTTP ist stateless. Wenn man trotzdem UserInnen authentifizieren
-will, dann muss bei jedem Request eine authentifizierende Information, zum Beispiel eine Session-ID,
+will,  muss bei jedem Request eine authentifizierende Information, zum Beispiel eine Session-ID,
 mitgeschickt werden. Dies geschieht zum Beispiel in einem Cookie.</p>
 
 <p>Wenn es gelingt diese Information abzuhören und wieder zu verwenden,
@@ -96,9 +96,10 @@ Art der Angriffs nennt man “Replay Attacke” - ein Request wird abehört und
 gleich wieder verwendet.</p>
 
 <p>Um Passwörter ebenso wie Session Ids und Cookies vor dem Abhören zu
-schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/TLS möglich.
-Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
-Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln.</p>
+schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/TLS möglich.</p>
+
+<p>Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
+Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln:</p>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -107,14 +108,15 @@ Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschl�
 
 <p>Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management zu implementieren. Man sollte nicht auf eigene Lösungen setzen - Diese haben dann oft Fehler bei Abmeldung und Passwortmanagement, bei der Wiedererkennung der BenutzerInnen, bei Timeouts, Sicherheitsabfragen usw. Das Auffinden dieser Fehler kann sehr schwierig sein, besonders wenn es sich um individuelle Implementierungen handelt.</p>
 
-<p>PHP liefert bereits ein fertiges Session-System.</p>
+<p>PHP liefert nur ein Session-System. Frameworks wie <a href="https://symfony.com/doc/current/security.html#c-encoding-passwords">Symphony</a> oder <a href="https://laravel.com/docs/7.x/authentication">Laravel</a> liefern
+fertige Lösungen für den gesamten Login Prozess.</p>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-<h2 id="passwrter-nicht-lesbar-speichern">Passwörter nicht lesbar speichern</h2>
+<h2 id="selbst-implementieren-passwrter-speichern">Selbst implementieren: Passwörter speichern</h2>
 
-<p>Passwörter sollten niemals in der Datenbank gespeichert werden.
+<p>Passwörter sollten niemals im Klartext in der Datenbank gespeichert werden.
 Statt dessen wir nur ein <strong>Hash</strong> des Passworts gespeichert.</p>
 
 <p>Beim Login wir das eingegebene Passwort dann wieder mit derselben Hash-Funktion
@@ -129,15 +131,15 @@ behandelt, und mit dem gespeicherten Wert verglichen.</p>
 
 <h2 id="neue-session-bei-login--logout--neuen-rechten">Neue Session bei Login / Logout / neuen Rechten</h2>
 
-<p>Die “Session Fixation” Attacke funktioniert mit der Session Id. Ein Beispiel:</p>
+<p>Die “Session Fixation” Attacke funktioniert mit der Session ID. Ein Beispiel:</p>
 
 <p>Alyssa P. Hacker sendet einen Link an Peter Publikum. Dieser Link führt
-zur Bank von Peter Publikum, und gibt schon eine Session Id vor. Wenn sich
-Peter Publikum nun bei seinem Online-Banking einloggt, die Session Id aber
+zur Bank von Peter Publikum, und gibt schon eine Session ID vor. Wenn sich
+Peter Publikum nun bei seinem Online-Banking einloggt, die Session ID aber
 gleich bleibt, dann kann Alyssa P. Hacker mit der gleichen Session die Online Banking
 Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 
-<p>Um diese Art der Attacke zu vermeiden muss man beim Login und Logout jeweils eine neue Session starten.</p>
+<p>Um diese Art der Attacke zu vermeiden kann man beim Login und Logout jeweils eine neue Session starten.</p>
 
 <p>In PHP geht das mit folgenden Befehlen:</p>
 

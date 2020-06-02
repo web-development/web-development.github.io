@@ -115,18 +115,17 @@
 
 
 
-			
+			<div id="slide-1" title="Folie Nr. 1"></div>
 <p>Die Sicherheit von Web Applikationen ist ein komplexes Thema.
 Die OWASP gibt dazu regelmäßig Empfehlungen heraus. Die <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project">OWASP Top 10 von 2017</a>
-sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, MySQL, Apache anwenden.</p>
+sind die Grundlage für dieses Kapitel. Wir werden es speziell auf PHP, Postgres, Apache anwenden.</p>
 
 <p>Was Sie können sollten</p>
 
 <ul>
   <li>Sie können SQL-Injection Probleme erkennen und mittels prepared Statements vermeiden</li>
-  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen des Outputs vermeiden</li>
-  <li>Sie können eine Authentisierung mit Passwort und Cookie in PHP implementieren, und dabei Session Fixation vermeiden</li>
-  <li>Sie können CSRF Probleme erkennen und durch Verwendung eines CSRF Tokens vermeiden</li>
+  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen des Outputs und eine Content Security Policy vermeiden</li>
+  <li>Sie können eine Authentisierung mit Passwort und Cookie in PHP implementieren</li>
   <li>Sie können Sicherheitsproblem beim Speichern von Passwörter und sensitiven Daten erkennen und vermeiden</li>
   <li>Sie können erkennen, wenn eine Applikation den Zugriffsschutz nicht konsequent für jede URL überprüft, und das Problem beheben</li>
 </ul>
@@ -142,9 +141,8 @@ auf die Gegemaßnahmen beschränken.</p>
 <p>Quellen</p>
 
 <ul>
-  <li><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">OWASP Top 10, 2017</a></li>
+  <li><a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/">OWASP Top 10, 2017</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a></li>
-  <li><a href="https://caniuse.com/#feat=feature-policy">Feature Policy</a></li>
 </ul>
 
 

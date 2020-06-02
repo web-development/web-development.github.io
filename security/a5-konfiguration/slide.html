@@ -104,12 +104,12 @@ Entwicklung (Development) und Systemadmistration (Operations).</p>
 
 <ul>
   <li>Physikalische Sicherheit (Wer kann den Server ein- und ausschalten, zerlegen,…)</li>
-  <li>Virtualisierungs-Schicht</li>
-  <li>Betriebssystem, z.B. CentOS, Debian</li>
-  <li>Datenbank, z.B. MySQL, MongoDB</li>
+  <li>Virtualisierungs-Schicht, z.B. VMWare</li>
+  <li>Betriebssystem, z.B. Ubuntu, CentOS, Debian</li>
+  <li>Datenbank, z.B. PosgreSQL, MySQL, MongoDB</li>
   <li>Interpreter, z.B. PHP, Ruby</li>
-  <li>Webserver, z.B. Apache</li>
-  <li>Framework, z.B. ZEND Framework, Rails</li>
+  <li>Webserver, z.B. Apache, nginx</li>
+  <li>Framework, z.B. Laravel, Rails</li>
   <li>Fremd-Applikation, z.B. Wordpress, Redmine</li>
   <li>Selbstgeschreibene Applikation</li>
 </ul>
@@ -132,12 +132,7 @@ ist zu klären wer für welche Schicht zuständig ist.</p>
   <li>Produktions-Server: Sicherheit wichtiger als Bequemlichkeit, Logging / Monitoring ja, aber nicht öffentlich zugänglich</li>
 </ul>
 
-<p>Dafür gibt es oft schon fertige Konfigurationen, oder Tutorials</p>
-
-<ul>
-  <li><a href="https://www.owasp.org/index.php/OWASP_Backend_Security_Project_PostgreSQL_Hardening">PostgreSQL Hardening</a></li>
-  <li><a href="https://paragonie.com/blog/2017/12/2018-guide-building-secure-php-software">The 2018 Guide to Building Secure PHP Software</a></li>
-</ul>
+<p>Dafür gibt es oft schon fertige Konfigurationen, oder Tutorials. Ein guter Suchbegriff ist “hardening”.</p>
 
 </div>
 <div class="slide">
@@ -146,21 +141,13 @@ ist zu klären wer für welche Schicht zuständig ist.</p>
 
 <p>Keine Software ist sicher, in jeder Software werden Sicherheitsprobleme
 entdeckt. Die relevante Fragen sind: werden Sicherheitsprobleme die
-bekannt werden möglichst schnell behoben? Und in folge: Wenn ein Update
+bekannt werden möglichst schnell behoben? Und in Folge: Wenn ein Update
 zur Verfügung steht, wird es möglichst schnell installiert?</p>
 
 <ul>
   <li><a href="http://www.heise.de/security/">Heise Security</a></li>
 </ul>
 
-</div>
-<div class="slide">
-
-<h2 id="meine-verantwortung">Meine Verantwortung</h2>
-
-<p>An dieser Stelle sollten Sie sich fragen: bei den Webprojekten, an
-denen Sie beteiligt waren … wer ist für welchen Teil der Konfiguration / Updates
-zuständig? Wo liegt Ihre persönliche Verantwortung?</p>
 </div>
     <div class="slide">
       <h1>A6 - Fehlkonfiguration</h1>

@@ -57,13 +57,13 @@
   <p>XSS-Schwachstellen treten dann auf, wenn die Anwendung von BenutzerIn X eingegebene Daten übernimmt und an den Browser anderer BenutzerInnen zurücksendet, ohne sie hinreichend zu validieren und zu escapen.</p>
 </blockquote>
 
-<p>Wenn meine Seite eine XSS-Schwachstelle enthält könnte folgendes geschehen:</p>
+<p>Als mögliche Auswirkung einer XSS-Schwachstelle beschreibt die OWASP:</p>
 
 <blockquote>
   <p>Cookies (und damit auch Sessions) von BenutzerInnen meiner Seite können gestohlen werden, die Darstellung der Webseite kann verfälscht werden, eine automatische Weiterleitung auf andere Seiten, z.B. Malware-Seiten kann eingebaut werden.</p>
 </blockquote>
 
-<p>Der schlimmste Fall wäre die Installation eines sogenannten XSS Proxies, der es der AngreiferIn ermöglicht die Browser von BesucherInnen ferzusteuern.</p>
+<p>Der schlimmste Fall wäre die Installation eines sogenannten XSS Proxies, der es der AngreiferIn ermöglicht die Browser von BesucherInnen fernzusteuern.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
@@ -74,7 +74,7 @@
 
 <ul>
   <li>Hilda Harmlos stellt eine Webseite mit XSS-Schwachstelle aufs Netz, zum Beispiel mit einem Forum.</li>
-  <li>Alyssa P. Hacker erstellt einen Forum-Eintrag der die XSS-Schwachstelle ausnutzt.</li>
+  <li>Alyssa P. Hacker erstellt einen Forum-Eintrag, der die XSS-Schwachstelle ausnutzt.</li>
   <li>Peter Publikum will das Forum lesen, und wird dabei attackiert.</li>
 </ul>
 
@@ -140,12 +140,45 @@ richtige Escape-Funktion wählen.</p>
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
+<h2 id="content-security-policy">Content Security Policy</h2>
+
+<p>Eine Content Security Policy wird als Header im HTTP Response oder als
+META-Tag in HTML and den Client übermittelt.  Aktuelle Browser halten die Policy ein.</p>
+
+<p>Ein Beispiel für den HTTP Header: <code>Content-Security-Policy: default-src https:</code></p>
+
+<p>Im HTML Code kann man den Meta-Tag mit Attribut <code>http-equiv</code> verwenden,
+um dieselbe Policy zu setzen:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+    &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src https:&quot;&gt;
+</pre></div>
+
+<p>Diese Policy bewirkt zwei Dinge:</p>
+
+<ul>
+  <li>explizit: das Laden von weiteren Resourcen für diese Webseite (Bilder, Fonts, Javascript) wird nur über https erfolgen</li>
+  <li>implizit: script-Tags im HTML und der JavaScript-Befehl <code>eval</code> sind deaktiviert</li>
+</ul>
+
+<p>Falls man script-Tags im HTML zulassen will, kann man die option <code>unsave-inline</code> verwenden:</p>
+
+<p><code>
+Content-Security-Policy: default-src https: 'unsafe-inline'
+</code></p>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
 <h2 id="mehr">Mehr</h2>
 
 <ul>
   <li>Siehe <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md">XSS (Cross Site Scripting) Prevention Cheat Sheet</a></li>
-  <li>Wir haben das Problem zuerst besprochen im Kaptiel <a href="https://web-development.github.io/php-db-schreiben/daten-editieren/">PHP Datenbank: Daten Bearbeiten</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a></li>
+  <li>Wir haben das Problem zuerst besprochen im Kaptiel <a href="https://web-development.github.io/php-db-schreiben/daten-editieren/">PHP DB Schreiben: Daten Bearbeiten</a></li>
 </ul>
+
  <div class="pagination">
   <ul>
     

@@ -93,7 +93,8 @@
 </blockquote>
 
 <p>Wir haben im Kapitel <a href="/php-db-schreiben/daten-loeschen/">PHP DB Schreiben → Löschen</a> schon SQL Injection behandelt.
-Zur Verhinderung von SQL-Injection steht uns in PHP die Prepared Statements zur Verfügung:</p>
+Zur Verhinderung von SQL-Injection stellen Datenbanken Prepared Statements zur Verfügung. In PHP
+können wir sie so verwenden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prepared Statements verhindern SQL Injection</small></h4>
@@ -102,9 +103,11 @@ $query = $dbh-&gt;prepare(&#39;SELECT * FROM users WHERE id=?&#39;);
 $query-&gt;execute(array( $_GET[&#39;pid&#39;] ) );
 </pre></div>
 
-<p>Mit dem <code>prepare</code> wird das SQL-Statement bereits vor-kompiliert. Die Daten,
+<p>Mit dem <code>prepare</code> wird das SQL-Statement an die Datenbank geschickt,
+und dort bereits vor-kompiliert. Die Daten, 
 die als Input vom User/der Userin kommen werden mit <code>execute</code> an die Datenbank
-übergeben, können aber nicht mehr als SQL interpretiert werden.</p>
+übergeben.  In diesem zweiten Schritt können sie aber nur mehr als
+Daten, nicht mehr als SQL interpretiert werden.</p>
 
 </div>
 <div class="slide">
@@ -138,6 +141,8 @@ $query-&gt;execute(array( $_GET[&#39;newsletter&#39;] ) );
 $stm-&gt;execute();
 </pre></div>
 
+<p><img src="/images/security/fire-extinguisher-fire.jpg"  alt="" ></p>
+
 </div>
 <div class="slide">
 
@@ -160,10 +165,12 @@ $stm-&gt;execute();
 <p>Unabhängig von den oben genannten Punkt gilt noch die Empfehlung:</p>
 
 <ul>
-  <li>Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungen Injection minimiert werden.</li>
+  <li>
+    <p>Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungen Injection minimiert werden.</p>
+  </li>
+  <li>Wir haben das Problem zuerst besprochen im Kaptiel <a href="https://web-development.github.io/php-db-schreiben/daten-loeschen/">PHP DB Schreiben: Löschen</a></li>
+  <li>Siehe auch <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.md">SQL Injection Prevention Cheat Sheet</a></li>
 </ul>
-
-<p>Siehe auch <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.md">SQL Injection Prevention Cheat Sheet</a></p>
 </div>
     <div class="slide">
       <h1>A1 - Injection</h1>
