@@ -50,50 +50,139 @@
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
 <p>Im <a href="/das-web-und-html/html-grundkurs/">Grundkurs HTML</a> haben wir als
-erstes Bildformat <code>svg</code> gennen gelernt. Für Photos kann man aber
-kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>jpg</code>.</p>
+erstes Bildformat <code>svg</code> gennen gelernt. Das ist praktisch, weil es
+auf jeder Bildschirmgröße gut funktioneirt.</p>
 
-<p>Genau mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
-Grundeigenschaft des Web:</p>
+<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>jpg</code>.
+Mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
+Grundeigenschaft des Web:  Sowohl <a href="/css-layout/rahmenbedingungen/#slide-4">Auflösung als auch Pixeldichte</a> variieren stark.</p>
 
-<p>Mobile Geräte mit sehr <a href="/css-layout/rahmenbedingungen/#slide-4">hoher Pixeldichte</a>
-stellen das Web Design vor ein
-Dilemma: soll ich - wegen der hochen Auflösung und Pixeldichte - riesige Bilder ausliefern?
-Oder - weil es ein mobiles Gerät ist, und die Datenübertragung über
-das Handy-Netz so langsam und teuer ist - doch kleine Bilder ausliefern?</p>
+<p>Besonders Mobile Geräte mit sehr <a href="/css-layout/rahmenbedingungen/#slide-4">hoher Pixeldichte</a>
+stellen das Web Design vor ein Dilemma:</p>
+
+<ul>
+  <li>hohen Auflösung und Pixeldichte - soll ich riesige Bilder ausliefern?</li>
+  <li>Datenübertragung über das Handy-Netz ist langsam und teuer - kleine Bilder ausliefern?</li>
+</ul>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h1 id="responsive-images">Responsive Images</h1>
+<h2 id="wiederholung-css-pixel-vs-physikalische-pixel">Wiederholung: CSS Pixel vs. Physikalische Pixel</h2>
 
-<p>Um dieses Dilemma zu umgehen wurde das neue Attribute “srcset” für den <strong>img</strong>-Tag entwickelt.
-Ausser vom Internet Explorer wird das Attribut seit 2017 von
-allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
+<p>Die Pixel in CSS sind keine “echten” Pixel, sondern
+entsprechen dem, was das menschliche Auge ungefähr als Punkt erkennen kann:
+1/96 eines Inch.</p>
 
-<p>Mit diesem Attribut kann man mehrere Varianten eines Bildes hinterlegen,
-der Browser entscheidet welche Version er lädt und darstellt.</p>
+<p>Siehe <a href="https://drafts.csswg.org/css-values-4/#reference-pixel">Spezifikation: reference pixel</a></p>
 
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;img src=&quot;salzburg.jpg&quot; style=&quot;width: 1353px; height: 461px;&quot;
-       srcset=&quot;salzburg.jpg, salzburg@2x.jpg 2x, salzburg@4x.jpg 4x&quot;&gt;
-</pre></div>
-
-<p>Das Bild wird immer mit der gleichen Größe an virtuellen Pixel (hier 1353 mal 461 Pixel)
-dargestellt. Es stehen aber noch Versionen mit doppelter und vierfacher Höhe und Breite
-zur Verfügung, die der Browser laden und darstellen kann.</p>
+<p>Wenn ein Ausgabegerät eine höhere Pixeldichte hat, kann
+ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
+bei einer “Device Pixel Ratio” von 2.</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="responsive-images">Responsive Images</h2>
+
+<p>Wer soll die Entscheidung treffen welche Auflösung eines Bildes die Beste ist? Wir, beim Erstellen der Webseite? Nein, wir haben nicht genug Informationen. Diese Entscheidung trifft der Browser.</p>
+
+<p>Wann trifft der Browser diese Entscheidung? Möglichst früh!  Schon während die HTML-Seite noch
+geladen wird soll der Browser möglichst viel Information haben um die Entscheidung zu treffen.
+Daraus ergibt sich, dass wir hier nicht Javascript verwenden können, oder CSS das aus einer
+separaten Datei geladen wird.  Die nötige Information muss direkt im HTML-Code vorhanden sein.</p>
+
+<p>Wir bieten Bilder in verschiedenen Größen also mittels HTML an.</p>
 
 
-<p>Der folgende Screenshot wurde auf einem Macbook mit Retinadisplay erstellt,
-in der oberen Variante wird das “normale” Bild dargestellt, darunter das in
-der <strong>2x</strong> Version.</p>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<p><img src="/images/css-layout/vergleich.jpg"  alt="Ausschnitt aus der Demo-Seite" ></p>
+<h2 id="srcset-attribut">srcset-Attribut</h2>
+
+<p>Das Attribute “srcset” für den <strong>img</strong>-Tag ermöglicht es mehrere
+Varianten des Bildes anzugeben.
+Ausser vom Internet Explorer wird das Attribut seit 2017 von
+allen Browsern unterstützt <a href="http://caniuse.com/#feat=srcset">caniuse srcset</a>.</p>
+
+<p>Der Browser entscheidet welche Version er lädt und darstellt.</p>
+
+<p>In folgendem Beispiel wird nur zwischen einfacher und doppelter
+Pixeldichte unterschieden, und in den beiden Varianten
+des Bildes wird die Bildgröße angezeigt:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+   &lt;img 
+     src=&quot;/images/responsive-wald.jpg&quot; 
+     srcset=&quot;/images/responsive-wald.jpg 1x, /images/responsive-wald@2x.jpg 2x&quot;  
+     alt=&quot;Wald&quot; &gt;
+</pre></div>
+
+<p><img src="/images/responsive-wald.jpg"  alt="Wald" ></p>
+
+<p>Untersuchen Sie das Bild mit den Developer Tools ihres Browsers! Welche
+Version wird bei Ihnen angezeigt? Testen Sie das auf verschiedenen
+Monitoren, am Handy, am Tablet!</p>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="srcset-und-sizes">srcset und sizes</h2>
+
+<p>Dieser Code stammt aus der Seite <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes">Responsive images</a> in MDN:</p>
+
+<p>Im Attribut <code>srcset</code> kann man auch andere Angaben zum Bild
+verwenden um die verschiedenen Variaten unterscheiden. Hier
+wird <code>w</code> verwendet. Dieser Wert muss den Pixel-Dimensionen des Bildes entsprechen.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img srcset=&quot;elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w&quot;
+     src=&quot;elva-fairy-480w.jpg&quot;
+     alt=&quot;Elva dressed as a fairy&quot;&gt;
+</pre></div>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+
+
+<p>Mit dem Attribut <code>sizes</code> kann man Mediaqueries verwenden
+um anzugeben welche Bild-Variante verwendet werden soll:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img srcset=&quot;elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w&quot;
+     sizes=&quot;(max-width: 600px) 480px,
+            800px&quot;
+     src=&quot;elva-fairy-480w.jpg&quot;
+     alt=&quot;Elva dressed as a fairy&quot;&gt;            
+</pre></div>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+
+
+<p>Die Angaben müssen nicht exakt übereinstimmen, der Browser ist klug
+genug um das nächst-größere Bild zu laden, falls es kein exakt passendes gibt:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;img srcset=&quot;elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w&quot;
+     sizes=&quot;(max-width: 600px) 400px,
+            700px&quot;
+     src=&quot;elva-fairy-480w.jpg&quot;
+     alt=&quot;Elva dressed as a fairy&quot;&gt;            
+</pre></div>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="weitere-beispiele">Weitere Beispiele:</h2>
 
 <p>Die Demo-Seite zeigt vier Abstufungen:</p>
 
@@ -103,17 +192,17 @@ der <strong>2x</strong> Version.</p>
 
 <p><a href="/images/responsive-images/background.html">Demo-Seite für “Responsive Background Images”</a></p>
 
-<p>Zur Erzeugung von vielen Abstufungen kann man den <a href="http://www.responsivebreakpoints.com/">Responsive IMage Breakpoints Generator</a> verwenden.</p>
+<p>Zur Erzeugung von vielen Abstufungen kann man den <a href="http://www.responsivebreakpoints.com/">Responsive Image Breakpoints Generator</a> verwenden.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
-<h1 id="bilder-erzeugen">Bilder erzeugen</h1>
+<h2 id="bilder-erzeugen">Bilder erzeugen</h2>
 
-<p>Auf Mac und Unix kann man die “imagemagick” command line tools
+<p>Man kann man die “imagemagick” command line tools
 benutzen um die nötigen Bild-Varianten zu erstellen: mit <code>identify</code>
-kann man Größe und Format von Bildern feststellen, mit <code>mogrify -geometry</code>
-kann man die Größe eines Bildes verändern:</p>
+kann man Größe und Format von Bildern feststellen, mit <code>convert ... -geometry ...</code>
+kann man ein neues Bilde mit anderer (kleinere) Dimensionen erzeugen:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
@@ -127,16 +216,12 @@ reviews.jpg JPEG 7117x4090 7117x4090+0+0 8-bit sRGB 45.56MB 0.000u 0:00.000
 \$ identify reviews-4000x.jpg
 reviews-4000x.jpg JPEG 4000x2299 4000x2299+0+0 8-bit sRGB 13.94MB 0.010u 0:00.019
 
-\$ cp reviews-4000x.jpg reviews-2000x.jpg
-
-\$ mogrify -geometry 50% reviews-2000x.jpg
+\$ convert reviews-4000x.jpg -geometry 2000x reviews-2000x.jpg
 
 \$ identify reviews-2000x.jpg
 reviews-2000x.jpg JPEG 2000x1150 2000x1150+0+0 8-bit sRGB 3.584MB 0.000u 0:00.009
 
-\$ cp reviews-2000x.jpg reviews-1000x.jpg
-
-\$ mogrify -geometry 50% reviews-1000x.jpg
+\$ convert reviews-2000x.jpg -geometry 1000x reviews-1000x.jpg
 
 \$ identify reviews\*
 reviews-1000x.jpg JPEG 1000x575 1000x575+0+0 8-bit sRGB 839KB 0.000u 0:00.000
@@ -152,7 +237,7 @@ reviews.jpg JPEG 7117x4090 7117x4090+0+0 8-bit sRGB 45.56MB 0.000u 0:00.000
 </pre></div>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
