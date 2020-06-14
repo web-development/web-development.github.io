@@ -95,7 +95,7 @@ unten auf derselben Seite.</p>
 <h2 id="normalen-link-verhindern">Normalen Link verhindern</h2>
 
 <p>Als ersten Schritt setzen wir einen EventListener
-umd das <code>click</code> event
+um das <code>click</code> event
 abzufangen, und mit <code>preventDefault</code> das “normale” Verhalten des Links zu
 unterbinden.</p>
 
@@ -126,7 +126,7 @@ let hash = this.hash; // z.B. &#39;#order&#39;
 
 <h2 id="zum-element-hin-scrollen">Zum Element hin Scrollen</h2>
 
-<p>Die DOM-Methode <a href="scrollIntoView">https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView</a>
+<p>Die DOM-Methode <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView">scrollIntoView</a>
 erledigt das eigentliche Scrollen zum Element hin.</p>
 
 <div class="example">
@@ -140,15 +140,15 @@ document.querySelector(hash).scrollIntoView({ behavior: &quot;smooth&quot; });
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
 <p>Die Funktion scrollIntoView wird nicht von allen Browsern implementiert.
-Woher kann ich das wissen? Wie kann ich damit umgehen.</p>
+Woher kann ich das wissen? Wie kann man damit umgehen?</p>
 
 <p>Ein guter Startpunkt für diese Fragen ist die Webseite “can i use”. Hier kann
 man für verschiedene HTML, CSS, JavaScript Features nachlesen welche
 Browser dieses Feature unterstützen. In diesem Fall unter <a href="https://caniuse.com/#search=scrollintoview">https://caniuse.com/#search=scrollintoview</a>.</p>
 
-<p>Bei caniuse lernen wi: in 2019 ist die Option “smooth” in Safari
-und IE noch nicht implementiert. Unter dem Tab “Resourcse” liefert die Seite
-auch gleich eine Lösung: Ein <a href="polyfill">http://iamdustan.com/smoothscroll/</a> - eine Javascript Libary
+<p>Bei caniuse lernen wir: die Option “smooth” ist in Safari
+und IE nicht implementiert. Unter dem Tab “Resourcse” liefert die Seite
+auch gleich eine Lösung: Ein <a href="http://iamdustan.com/smoothscroll/">polyfill</a> - eine Javascript Libary
 die die fehlende Funktionalität implementiert: <a href="http://iamdustan.com/smoothscroll/">smooth scroll behavior polyfill</a>.</p>
 
 
@@ -190,7 +190,7 @@ und in Javascript durch das <code>window.history</code> Objekt dargestellt. Auf 
 Objekt hat man aber nicht vollen Zugriff: sonst könnte ja jede Webseite
 die BesucherInnen ausspionieren und herausfinden wo sie vorher waren.</p>
 
-<p>Einige wenige <a href="Manipulationen">https://developer.mozilla.org/en-US/docs/Web/API/History_API</a>
+<p>Einige wenige <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">Manipulationen</a>
 des History Objekts sind erlaubt: mit den Methoden <code>back()</code>, <code>forward()</code> und <code>go()</code> kann
 man von Javascript aus die “Vorwärts” und “Zurück” Buttons bedienen.</p>
 
@@ -204,7 +204,8 @@ die angezeigt werden soll. Es reicht eine relative URL, in unserem Fall nur das 
 und die id.</p>
 
 <p>Das erste Argument von pushState muss ein Objekt sein (es reicht ein leeres Objekt),
-das zweite Argument muss ein String sein (es reicht ein leerer String):</p>
+das zweite Argument muss ein String sein (es reicht ein leerer String), das dritte
+Argument ist die relative URL:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
