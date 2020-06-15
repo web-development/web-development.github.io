@@ -56,26 +56,42 @@ auch verschlechtern.</p>
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="schlechte-verwendung-von-ajax">Schlechte Verwendung von AJAX</h2>
+<h2 id="ajax-statt-links---die-idee">AJAX statt Links - die Idee</h2>
 
-<p>Stellen Sie sich vor Sie haben eine Website mit 8 statischen HTML-Seiten, die
-durch einfache Links verbunden sind. Wenn man AJAX kennen lernt, kommt man vielleicht
-auf die Idee: statt normaler Links lädt man die neue Seite nur noch mit AJAX und ersetzt dann den Inhalt der aktuellen Seite. Was spricht
-dafür?</p>
+<p>Stellen Sie sich vor Sie haben eine Website mit 5 statischen HTML-Seiten, die
+durch einfache Links verbunden sind.</p>
+
+<p><a href="/images/ajax-good/">Demo Seite</a></p>
+
+<p>Wenn man AJAX kennen lernt, kommt man vielleicht
+auf die Idee: statt normaler Links lädt man die neue Seite nur noch mit AJAX und ersetzt dann den Inhalt der aktuellen Seite. Was spricht dafür?</p>
 
 <ul>
-  <li>Das Anzeigen der einzelnen Seite geht schneller, da nur der Inhalt, nicht aber z.B. der HTML <code>&lt;head&gt;</code> ausgetauscht werden muß. Damit entfällt meist auch das Laden von CSS und Javascript ressourcen.</li>
+  <li>Keine Code-Wiederholung: head, footer muss nur einmal, in der erste Seite, gespeichert werden</li>
+  <li>die einzelnen Seite wir kleiner, das Laden der Seite entsprechend schneller</li>
+  <li>es entfällt das erneute checken/laden von CSS und Javascript Ressourcen.</li>
 </ul>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h2 id="beispiel">Beispiel</h2>
 
 <p>Nun surfen wir durch diese Site und beobachten in den Developer Tools welche http-Requests
 gemacht werden: <a href="/images/ajax-bad/">Demo Seite</a></p>
 
-<p><img src="/images/ajax-bad.png" srcset="/images/ajax-bad.png 1x, /images/ajax-bad@2x.png 2x"  alt="AJAX statt normaler Links - eine schlechte Idee" ></p>
+<p><img src="/images/ajax-bad.png" srcset="/images/ajax-bad.png 1x, /images/ajax-bad@2x.png 2x"  alt="AJAX statt normaler Links - in den developer tools" ></p>
 
 <p>Beim Anklicken des „Links“ wird jeweils ein GET
 Request abgesetzt. Aber: die URL in der Adresszeile des Browsers bleibt immer
-gleich. Keine der „Seiten“ hat eine eigene URL.
-Das hat viele Auswirkungen, unter anderem:</p>
+gleich. Keine der „Seiten“ hat eine eigene URL.</p>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="keine-url-viele-probleme">Keine URL, viele Probleme</h2>
+
+<p>Das hat viele Auswirkungen, unter anderem:</p>
 
 <ul>
   <li>Man kann keinen Link zu einer bestimmten Seite setzen – nur zur „Startseite“</li>
@@ -87,9 +103,9 @@ Das hat viele Auswirkungen, unter anderem:</p>
 Version ohne AJAX (ganz normale Links) besser wäre.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-
+<h2 id="single-page-apps">Single Page Apps</h2>
 
 <p>Um das Problem der “fehlendes URLs” zu lösen gibt es in der
 “History API” die Methoden <code>pushState</code> und <code>replaceState</code>.</p>
@@ -102,7 +118,7 @@ verlinken, Lesezeichen setzen, u.s.w. wieder.</p>
 man “Single Page Apps” (SPA).</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
