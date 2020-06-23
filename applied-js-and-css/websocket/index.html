@@ -72,7 +72,8 @@ einer dauerhaften Verbindung zwischen Client und Server.</p>
 <p>Aber nach dem ersten Request wird die TCP Verbindung auf Dauer aufrechterhalten,
 und Client und Server wechseln in das eigentlih Websocket Protokoll:</p>
 
-<p>```
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
 GET /chat HTTP/1.1
 Host: server.example.com
 Upgrade: websocket
@@ -80,14 +81,14 @@ Connection: Upgrade
 Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
 Origin: http://example.com
 Sec-WebSocket-Protocol: chat, superchat
-Sec-WebSocket-Version: 13</p>
+Sec-WebSocket-Version: 13
 
-<p>HTTP/1.1 101 Switching Protocols
+HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 Sec-WebSocket-Protocol: chat 
-```</p>
+</pre></div>
 
 <p>Nach diesem ersten Austausch müssen sowohl Server als auch Client
 jederzeit mit eingehenden Nachrichten umgehen.</p>
@@ -121,94 +122,90 @@ umgewandelt wird:</p>
 Backend-Programmiersprachen verwenden.  Wir nutzen die Gelegenheit
 um <code>node.js</code> kennen zu lernen. Damit kann man das Backend in JavaScript programmieren.</p>
 
+<p>Ryan Dahl hat node.js im Jahr 2009 herausgebracht. Es war nicht die erste
+Möglichkeit JavaScript am Server zu Verwenden, aber die erste die echten Erfolge hatte.</p>
+
+<p>Node und der dazugehöriger package manager <code>npm</code> werden heute nicht
+nur im Backend Development verwendet, sondern auch sehr viel als Werkzeug
+für das Frontend Development.</p>
+
+<p>Für Node zu programmieren ist nicht einfach: wie im Browser, so wird auch in
+Node viel mit Asynchronen Aufrufen gearbeitet.</p>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="glitch">glitch</h2>
+
 <p>Node.js kann man <a href="https://nodejs.org/en/download/">am eigenen Rechner installieren</a>, das
 ist aber für diese Beispiel nicht nötig. Wir verwenden <a href="https://glitch.com/">https://glitch.com/</a>:</p>
 
 <p><img src="/images/websockets/glitch.png" srcset="/images/websockets/glitch.png 1x, /images/websockets/glitch@2x.png 2x"  alt="" ></p>
 
-<p>Damit enfällt das nochladen des Codes auf einen Server.</p>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h2 id="socketio">Socket.io</h2>
-
-<p>socket.io
-Library for both server and client side JS code
-Needs express as a basis</p>
-
-<p>WARNING: 
-socket.io will automatically host some files needed on the client side under the URL /socket.io/  Do not attempt to change this!</p>
-
-<p>Load in client:</p>
-
-<p><code>
-&lt;script src="socket.io/socket.io.js"&gt;&lt;/script&gt;
-</code></p>
+<p>Damit enfällt das hochladen des Codes auf einen Server.</p>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
-<h2 id="overview">Overview</h2>
+<h2 id="socketio">Socket.io</h2>
 
-<p>```
-const app = require(‘express’)();
-const http = require(‘http’).Server(app);
-const io = require(‘socket.io’)(http);
-const port = process.env.PORT || 5000;</p>
-
-<p>app.use(express.static(‘public’));</p>
-
-<p>http.listen(port, function(){
-  console.log(“webserver started”);
-});</p>
-
-<p>io.on(…)</p>
-
-<p>// export app so we can test it
-exports = module.exports = app;</p>
-
-<p>```</p>
+<p><code>socket.io</code> ist eine JavaScript Library für die Client und die Server-Seite
+von Websocket verbindungen. 
+```</p>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="client">Client</h2>
 
-<p>```</p>
-<ul id="messages"></ul>
-<form action="">
-  <input id="m" autocomplete="off" /><button>Send</button>
-</form>
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<p>Am Client ist bereits eine Eingabefeld für Chat-Messages vorhanden.
+Alle Chat-Messages sollen in der Liste mit der id <code>messages</code> angezeigt werden:</p>
 
-<script src="socket.io/socket.io.js"></script>
-
-<p>```</p>
-
-<p>Sending messages to the server:</p>
-
-<p><code>
-&lt;script&gt;
-  var socket = io();
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-&lt;/script&gt;
-</code></p>
-
-<p>Recieving messages from the server:</p>
-
-<p><code>
-  socket.on('chat message', function(msg){
-    $('#messages').append($('&lt;li&gt;').text(msg));
-  });
-</code></p>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;ul id=&quot;messages&quot;&gt;&lt;/ul&gt;
+&lt;form action=&quot;&quot;&gt;
+  &lt;input id=&quot;m&quot; autocomplete=&quot;off&quot; /&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Senden&quot; /&gt;
+&lt;/form&gt;
+&lt;script src=&quot;socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
+</pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="an-den-server-senden">An den Server senden:</h2>
+
+<p>Zuerst senden:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+var socket = io();
+let form = document.getElementsByTagName(&#39;form&#39;)[0];
+let input = document.getElementById(&#39;m&#39;);
+form.addEventListener(&#39;submit&#39;, function() {  
+  socket.emit(&#39;chat message&#39;, $(&#39;#m&#39;).val());
+  m.value=&quot;&quot;;
+  return false;
+});
+</pre></div>
+
+<p>Dann empfangen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  let list = document.getElementById(&#39;messages&#39;);
+
+  socket.on(&#39;chat message&#39;, function(msg){
+    let li = document.createElement(&#39;li&#39;);
+    li.text = msg;
+    list.appendChild(li);   
+    list.scrollTop = list.scrollHeight;
+  });
+</pre></div>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="server">Server</h2>
 
@@ -228,7 +225,7 @@ io.on(‘connection’, function(socket){
 ```</p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="testing-the-server">Testing the Server</h2>
 
@@ -251,7 +248,7 @@ describe(“Auction Server”,function(){
 <p>```</p>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="see-also">See Also</h2>
 
