@@ -184,7 +184,7 @@ var socket = io();
 let form = document.getElementsByTagName(&#39;form&#39;)[0];
 let input = document.getElementById(&#39;m&#39;);
 form.addEventListener(&#39;submit&#39;, function() {  
-  socket.emit(&#39;chat message&#39;, $(&#39;#m&#39;).val());
+  socket.emit(&#39;chat message&#39;, m.value );
   m.value=&quot;&quot;;
   return false;
 });
