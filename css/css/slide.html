@@ -109,11 +109,13 @@ p {
 
 <p><img src="/images/css/rules-declarations.png" srcset="/images/css/rules-declarations.png 1x, /images/css/rules-declarations@2x.png 2x"  alt="" ></p>
 
+<p>Sie können beliebig Zeilenumbrüche und Whitespace einfügen, beides wird ignoriert.</p>
+
 <p>Eine Stylesheet-Regel („Rule“) besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann.</p>
 
-<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Sie können auch mehrere Elemente durch ein Komma trennen. In diesem Falle werden für alle Elemente die selben Style -Angaben definiert, (siehe h1,h2 in obigem Beispiel).</p>
+<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Es gibt aber auch komplexere Selektoren, wie im Beipiel “h1,h2”.</p>
 
-<p>Sie können beliebig Zeilenumbrüche und Whitespace einfügen, beides wird ignoriert.</p>
+<p>Eine Deklaration besteht immer aus einem property, gefolgt von einem doppelpunkt, einem Wert und einem Strickpunkt. Der Wert kann wie im Beispiel bei der ersten Deklaration gezeigt komplex aufgebaut sein.</p>
 
 </div>
 <div class="slide">
@@ -176,6 +178,11 @@ p {
 
 <p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite.</p>
 
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+p { background-color: #ddd; }
+</pre></div>
+
 </div>
 <div class="slide">
 
@@ -188,7 +195,14 @@ p {
 .wichtig { color: red; }
 </pre></div>
 
-<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt. Jedem normalen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class.</p>
+<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt.</p>
+
+</div>
+<div class="slide">
+
+
+
+<p>Jedem beliebigen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -236,13 +250,12 @@ p {
 <pre class="lang-css prettyprint linenums">
 .wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
 p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
+b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
 
-b.wichtig { color: yellow; } /_ nur der Tag b mit der Klasse wichtig _/
+#impressum { background-color:#ddd; }  /* nur der Tag mit der id #impressum */
+p#impressum { background-color:#ddd; } /* nur der p-Tag mit der id #impressum */
 
-#impressum { background-color:#ddd; } /_ nur der Tag mit der id #impressum _/
-p#impressum { background-color:#ddd; } /_ == nur der p-Tag mit der id #impressum _/
-
-b#impressum { background-color:#ddd; } /_ nix! _/
+b#impressum { background-color:#ddd; } /* nix! */
 </pre></div>
 
 </div>
@@ -258,6 +271,15 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 </pre></div>
 
 <p>Die Worte „besonders interessante“ erscheinen rot.</p>
+
+<p>Aber meist hat man  das Bedürfnis nach “styling” ja, weil man eine bestimmte
+Bedeutung übermitteln will …. für die es schon einen HTML-Tag gibt. Besser wäre hier also
+die Verwendung des Tags <code>em</code> der für “Betonung” steht.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;p&gt;Es gibt hier ganz &lt;em class=&quot;wichtig&quot;&gt;besonders interessante&lt;/em&gt; Meldungen.&lt;/p&gt;
+</pre></div>
 
 </div>
 <div class="slide">
@@ -295,7 +317,7 @@ b#impressum { background-color:#ddd; } /_ nix! _/
   <li>zweistellig hexadezimal <code>#1000FF</code>.</li>
 </ul>
 
-<p>Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt:</p>
+<p>Zusätzlich ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt:</p>
 
 <ul>
   <li><code>rgba(153, 134, 117, 0.2);</code></li>
@@ -334,12 +356,12 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 <div class="example">
 <pre class="lang-css prettyprint linenums">
 :root {
-  --important-color: darkcyan;
+  --important-color: darkcyan;              /* Variable setzen */
   --text-on-important-color: darkcyan;
 }
 
 h1 {
-color: var(--important-color);
+color: var(--important-color);              /* Variable verwenden */
 }
 nav {
 background-color: var(--important-color);

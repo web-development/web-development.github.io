@@ -74,11 +74,13 @@ p {
 
 <p><img src="/images/css/rules-declarations.png" srcset="/images/css/rules-declarations.png 1x, /images/css/rules-declarations@2x.png 2x"  alt="" ></p>
 
+<p>Sie können beliebig Zeilenumbrüche und Whitespace einfügen, beides wird ignoriert.</p>
+
 <p>Eine Stylesheet-Regel („Rule“) besteht aus einem Selektor gefolgt von einer geschwungenen Klammer die eine oder mehrere Deklarationen enthalten kann.</p>
 
-<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Sie können auch mehrere Elemente durch ein Komma trennen. In diesem Falle werden für alle Elemente die selben Style -Angaben definiert, (siehe h1,h2 in obigem Beispiel).</p>
+<p>Der einfachste Selektor besteht aus dem Namen eines einzelnen HTML-Tags. Es gibt aber auch komplexere Selektoren, wie im Beipiel “h1,h2”.</p>
 
-<p>Sie können beliebig Zeilenumbrüche und Whitespace einfügen, beides wird ignoriert.</p>
+<p>Eine Deklaration besteht immer aus einem property, gefolgt von einem doppelpunkt, einem Wert und einem Strickpunkt. Der Wert kann wie im Beispiel bei der ersten Deklaration gezeigt komplex aufgebaut sein.</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -141,6 +143,11 @@ p {
 
 <p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite.</p>
 
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+p { background-color: #ddd; }
+</pre></div>
+
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
@@ -153,7 +160,14 @@ p {
 .wichtig { color: red; }
 </pre></div>
 
-<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt. Jedem normalen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class.</p>
+<p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt.</p>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+
+
+<p>Jedem beliebigen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
@@ -170,7 +184,7 @@ p {
 </pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="ids">ids</h3>
 
@@ -191,7 +205,7 @@ p {
 </pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="kombinationen">Kombinationen</h3>
 
@@ -201,17 +215,16 @@ p {
 <pre class="lang-css prettyprint linenums">
 .wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
 p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
+b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
 
-b.wichtig { color: yellow; } /_ nur der Tag b mit der Klasse wichtig _/
+#impressum { background-color:#ddd; }  /* nur der Tag mit der id #impressum */
+p#impressum { background-color:#ddd; } /* nur der p-Tag mit der id #impressum */
 
-#impressum { background-color:#ddd; } /_ nur der Tag mit der id #impressum _/
-p#impressum { background-color:#ddd; } /_ == nur der p-Tag mit der id #impressum _/
-
-b#impressum { background-color:#ddd; } /_ nix! _/
+b#impressum { background-color:#ddd; } /* nix! */
 </pre></div>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="div-und-span">div und span</h3>
 
@@ -224,8 +237,17 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 
 <p>Die Worte „besonders interessante“ erscheinen rot.</p>
 
+<p>Aber meist hat man  das Bedürfnis nach “styling” ja, weil man eine bestimmte
+Bedeutung übermitteln will …. für die es schon einen HTML-Tag gibt. Besser wäre hier also
+die Verwendung des Tags <code>em</code> der für “Betonung” steht.</p>
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;p&gt;Es gibt hier ganz &lt;em class=&quot;wichtig&quot;&gt;besonders interessante&lt;/em&gt; Meldungen.&lt;/p&gt;
+</pre></div>
+
+
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h2 id="maeinheiten-in-stylesheets">Maßeinheiten in Stylesheets</h2>
 
@@ -248,7 +270,7 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 <p>Einige davon sind relativ (em = relativ zur Schriftgröße, px = relativ zur Pixel-Größe am aktuellen Ausgabemedium), andere absolut (Centimeter, Inch). Die absoluten Angaben kann man nur bei der Ausgabe auf Papier sinnvoll verwenden. <a href="/images/css-masse.html">Demo</a></p>
 
 
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h3 id="farben">Farben</h3>
 
@@ -260,14 +282,14 @@ b#impressum { background-color:#ddd; } /_ nix! _/
   <li>zweistellig hexadezimal <code>#1000FF</code>.</li>
 </ul>
 
-<p>Mit CSS3 ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt:</p>
+<p>Zusätzlich ist auch die Angabe eines Alpha-Wertes möglich: Hier ein Braun-Ton der nur zu 20% deckend ist, und zu 80% den darunter liegenden Content bzw. das Hintergrundbild durchscheinen lässt:</p>
 
 <ul>
   <li><code>rgba(153, 134, 117, 0.2);</code></li>
 </ul>
 
 
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 
 
@@ -276,7 +298,7 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 <p><img src="/images/css/pipette.png" srcset="/images/css/pipette.png 1x, /images/css/pipette@2x.png 2x"  alt="Abbildung 20: Colorzilla Pipette zum auslesen einer Farbe und Colorzilla Menü zum kopieren des Codes" ></p>
 
 
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="urls">URLs</h3>
 
@@ -290,7 +312,7 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 <p>zum Einsatz. Achtung: die relative URL bezieht sich auf das Stylesheet (nicht die HTML-Datei in der es verwendet wird).</p>
 
 
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h3 id="variablen-in-css">Variablen in CSS</h3>
 
@@ -299,12 +321,12 @@ b#impressum { background-color:#ddd; } /_ nix! _/
 <div class="example">
 <pre class="lang-css prettyprint linenums">
 :root {
-  --important-color: darkcyan;
+  --important-color: darkcyan;              /* Variable setzen */
   --text-on-important-color: darkcyan;
 }
 
 h1 {
-color: var(--important-color);
+color: var(--important-color);              /* Variable verwenden */
 }
 nav {
 background-color: var(--important-color);
