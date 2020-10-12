@@ -84,7 +84,7 @@ An anderer Stelle kann man nachlesen das ca. 10% der Zugriff von Mobile erfolgen
 
 <h2 id="pixeldichte">Pixeldichte</h2>
 
-<p>Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabegerätes (24“ Desktop, 13“ Laptop, mobiles Endgerät) ist bei gleicher Pixel-Auflösung sehr unterschiedlich! Mobile Geräte haben oft eine höhere Pixeldichte:</p>
+<p>Die Angabe der Auflösung erfolgt in Pixel – die reale Größe des Ausgabegerätes (24“ Desktop, 13“ Laptop, mobiles Endgerät) ist bei gleicher Pixel-Auflösung sehr unterschiedlich! Mobile Geräte haben oft eine höhere Pixeldichte, die in Pixel pro Inch oder Pixel pro cm gemessen wird.</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <thead>
@@ -123,7 +123,7 @@ An anderer Stelle kann man nachlesen das ca. 10% der Zugriff von Mobile erfolgen
       <td>2019</td>
       <td>3072×1920</td>
       <td>16 in</td>
-      <td>226  ppi</td>
+      <td>226 ppi</td>
     </tr>
     <tr>
       <td>Apple iPhone 3</td>
@@ -186,19 +186,43 @@ An anderer Stelle kann man nachlesen das ca. 10% der Zugriff von Mobile erfolgen
 
 <p>Hier findet man einen Faktor 6 zwischen höchster und geringster Pixeldichte.</p>
 
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="css-pixel-sind-virtuelle-pixel">CSS Pixel sind virtuelle Pixel</h2>
+
+<p>Um die Gestaltung von Webseiten zu vereinfachen verwendet CSS nicht die echten
+Pixel, sondern virtuelle Pixel als Grundmaß. Im <a href="https://drafts.csswg.org/css-values-3/#px">Standard</a> findet sich folgende
+Definition und folgende Abbildung:</p>
+
+<blockquote>
+  <p>The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from
+the reader of an arm’s length. For a nominal arm’s length of 28 inches, the visual angle is therefore about
+0.0213 degrees. For reading at arm’s length, 1px thus corresponds to about 0.26 mm (1/96 inch).</p>
+
+  <p>The image below illustrates the effect of viewing distance on the size of a reference pixel: a reading distance
+of 71 cm (28 inches) results in a reference pixel of 0.26 mm, while a reading distance of 3.5 m (12 feet)
+results in a reference pixel of 1.3 mm.</p>
+</blockquote>
+
+<p><img src="/images/css-layout/pixel.png" srcset="/images/css-layout/pixel.png 1x, /images/css-layout/pixel-image-zoom.png 1x, /images/css-layout/pixel-image-smaller.png 1x, /images/css-layout/pixel@2x.png 2x"  alt="Abbildung aus dem CSS Standard: definition des pixels als Winkel" ></p>
+
 <p>Mit <a href="https://www.mydevice.io/">mydevice.io</a> kann man den aktuellen Browser
-vermessen. Dort gibt es auch eine <a href="https://www.mydevice.io/#compare-devices">ausführlichere Liste</a> von aktuellen
+vermessen. Die angezeigten Pixel sind die virtuellen CSS Pixel. Mit dem Faktor “pixel-ratio” kann man
+die physikalischen Pixel ausrechnen.</p>
+
+<p>By mydevice.io gibt es auch eine <a href="https://www.mydevice.io/#compare-devices">ausführlichere Liste</a> von aktuellen
 Geräten.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="viele-auflsungen">Viele Auflösungen</h2>
 
 <p><img src="/images/resolutions.jpg" srcset="/images/resolutions@2x.jpg 2x, /images/resolutions.jpg 1x"  alt="Vergleich der Auflösungen" ></p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="umgang-mit-der-problematik">Umgang mit der Problematik</h2>
 
@@ -211,14 +235,14 @@ Geräten.</p>
 </ol>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
 <p>Dazu ein strenges Urteil:</p>
 
 <ol>
-  <li>ist völlig inadäquat für das Medium Web. „best viewed“ ist eine Zumutung für alle LeserInnen auf “unpassenden” Ausgabegeräten. Stellen Sie sich vor, am Eingang eines Gebäudes wäre neben der Treppe ein Schild angebracht „nur benutzbar für Leute die Treppen steigen können“. Das Problem wurde erkannt, und absichtlich nicht gelöst?</li>
+  <li>ist völlig inadäquat für das Medium Web. „best viewed“ ist eine Zumutung für alle LeserInnen auf “unpassenden” Ausgabegeräten. Stellen Sie sich vor, am Eingang eines Gebäudes wäre neben der Treppe ein Schild angebracht „nur benutzbar für Leute die Treppen steigen können“. Das Problem von Rollis und Kinderwägen wurde erkannt, und absichtlich nicht gelöst?</li>
   <li>Zeigt schon ein Minimum an Wissen über das Web, ignoriert aber die gestalterische Herausforderung des Mediums. Weil solch ein Entwurf auf einem Bildschirm mit hoher Auflösung sehr klein auf einer großen leeren Fläche erscheint wird es spöttisch „Briefmarkenlayout“ genannt.</li>
   <li>Nur das verdient wirklich die Bezeichnung „Webdesign“.</li>
 </ol>

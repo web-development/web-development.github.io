@@ -107,17 +107,22 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 }
 
 @media screen {
-  body { font-size: 13px; }
+body { font-size: 13px; }
 }
 
 @supports not (display: grid) {
-  div {
-    float: right;
-  }
+div {
+float: right;
+}
 }
 </pre></div>
 
-<p>Es gibt sogar queries für präferenzen wie “dark mode”:</p>
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h3 id="dark-mode">Dark Mode</h3>
+
+<p>Es gibt sogar mediaqueries für die Präferenz des “dark mode”:</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries für color-scheme</small></h4>
@@ -133,32 +138,17 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 }
 
 @media (prefers-color-scheme: light) {
-  body {
-    color: #333333;
-    background-color: #ffffff;
-  }
-  h1,h2,h3 {
-    color: #333333;
-  }  
+body {
+color: #333333;
+background-color: #ffffff;
+}
+h1,h2,h3 {
+color: #333333;
+}  
 }
 </pre></div>
 
 <p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
-
-
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h3 id="css-pixel-vs-physikalische-pixel">CSS Pixel vs. Physikalische Pixel</h3>
-
-<p>Die Pixel in CSS sind keine “echten” Pixel, sondern
-entsprechen dem, was das menschliche Auge ungefähr als Punkt erkennen kann:
-1/96 eines Inch.</p>
-
-<p>Siehe <a href="https://drafts.csswg.org/css-values-4/#reference-pixel">Spezifikation: reference pixel</a></p>
-
-<p>Wenn ein Ausgabegerät eine höhere Pixeldichte hat, kann
-ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
-bei einer “Device Pixel Ratio” von 2.</p>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -178,7 +168,7 @@ bei einer “Device Pixel Ratio” von 2.</p>
 
 <p>Die Verkleinerte Darstellung ist eine Verschwendung: Wenn ich ein Bild herunterladen muss, dass doppelt So breit und
 doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so viele Daten, und damit eine viermal
-so lange wartezeit!</p>
+so lange Wartezeit!</p>
 
 <p>Es gibt eine moderne Lösung für diese Problematik <a href="/grafik/images/">Responsive Images</a> - diese werden wir später genauer kennen lernen.</p>
 
