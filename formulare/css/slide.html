@@ -147,6 +147,48 @@ form {
 </div>
 <div class="slide">
 
+<h3 id="welche-elemente-in-welche-spalten">Welche Elemente in welche Spalten?</h3>
+
+<p>Wenn die HTML-Tags innerhalb des Forms abwechseln <code>label</code> und <code>input</code> tags
+sind, dann landen sie automatisch in den richtigenspalten:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Formular HTML Code mit Grid</small></h4>
+<pre class="lang-html prettyprint linenums">
+ &lt;form&gt;
+      &lt;label for=&quot;customer_name&quot;&gt;Name &lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;customer_name&quot; id=&quot;customer_name&quot; required&gt;
+
+      &lt;label for=&quot;phone_number&quot;&gt;Phone &lt;/label&gt;
+      &lt;input type=&quot;tel&quot; name=&quot;phone_number&quot; id=&quot;phone_number&quot;&gt;
+
+      &lt;label for=&quot;email_address&quot;&gt;Email &lt;/label&gt;
+      &lt;input type=&quot;email&quot; name=&quot;email_address&quot; id=&quot;email_address&quot;&gt;
+      ...
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="absende-button-positionieren">Absende-Button positionieren</h3>
+
+<p>Der absende Button  <code>&lt;input type="submit" value="Submit Booking"&gt;</code> würde
+so automatisch in der linken Spalte landen. Mit folgendem CSS-Code
+kann er in der rechten Spalte positiniert werden:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+form &gt; input[type=submit] {
+  grid-column: controls;
+}
+</pre></div>
+
+<p>Der name <code>controls</code> bezieht sich dabei auf die  mit <code>grid-template-columns</code>
+definierte Namen für die Linien.</p>
+
+</div>
+<div class="slide">
+
 <h3 id="grssere-zellen">Grössere Zellen</h3>
 
 <p>Die <code>fieldsets</code> sollen beide Spalten überspannen.
@@ -161,24 +203,6 @@ form &gt; fieldset {
 
 <p>Ein fieldset Tag der ein direktes Kind eines form Tags ist,
 soll zwei Spalten überspannen.</p>
-
-</div>
-<div class="slide">
-
-<h3 id="absende-button-positionieren">Absende-Button positionieren</h3>
-
-<p>Der absende Button  <code>&lt;input type="submit" value="Submit Booking"&gt;</code> soll
-nicht in der linken sonder in der rechten Spalte positiniert werden.</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-form &gt; input[type=submit] {
-  grid-column: controls;
-}
-</pre></div>
-
-<p>Der name <code>controls</code> bezieht sich dabei auf die  mit <code>grid-template-columns</code>
-definierte Namen für die Linien.</p>
 
 </div>
     <div class="slide">
