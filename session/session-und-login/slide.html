@@ -179,7 +179,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit  an:</p>
 
-<p><img src="/images/image364.png"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
+<p><img src="/images/session/login-logout.png"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
 
 </div>
 <div class="slide">
@@ -188,7 +188,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
-<p><img src="/images/image365.png"  alt="Abbildung 147: Login-Formular der Applikation" ></p>
+<p><img src="/images/session/login-form.png" srcset="/images/session/login-form@2x.png 2x, /images/session/login-form.png 1x"  alt="Abbildung 147: Login-Formular der Applikation" ></p>
 
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
@@ -272,7 +272,12 @@ header(&quot;Location: index.php&quot;);
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
-<p><img src="/images/image366.png"  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
+<p>In diesem Beispiel wird eine funktion <code>check_login</code> aufgerufen die man
+selbst implementieren muss.  So kann man z.B. username und passwort mit Daten
+vergleichen die an verschiedenen Stellen gespeichert sein können:
+in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</p>
+
+<p><img src="/images/session/login-flow.svg"  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
 
 </div>
 <div class="slide">
