@@ -363,10 +363,8 @@ bei der Verwendung von Frameworks umsetzten.</p>
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
 <p>Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
-man am einfachsten an einem Gegenbeispiel: Wenn ich im 
-<a href="http://opac.obvsg.at/fsa">Katalog der FH-Bibliotek</a> 
-nach Büchern suche (hier mit dem Suchwort „Web“) 
-erhalte ich zum Beispiel folgende URL:</p>
+man am einfachsten an einem Gegenbeispiel: Beim Suchen  im alten 
+Katalog der FH-Bibliotek hatte das Ergebnis eine sehr lange URL (hier mit dem Suchwort „Web“)</p>
 
 <p><code>http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&amp;find_code=WRD&amp;request=Web&amp;adjacent=N&amp;x=0&amp;y=0&amp;filter_code_1=WSP&amp;filter_request_1=&amp;filter_code_2=WEF&amp;filter_request_2=&amp;filter_code_5=WYR&amp;filter_request_5=&amp;filter_code_6=WYR&amp;filter_request_6=&amp;filter_code_7=WDA&amp;filter_request_7=&amp;filter_code_8=WZW&amp;filter_request_8=</code></p>
 
@@ -387,8 +385,14 @@ mehr, sondern die Fehlermeldung:</p>
 
 <p>Warum ist das so?  Auch zwei Tage später sollte die Ressource „Liste der Bücher
 mit dem Wort ‚Web’ im Titel“ noch vorhanden sein!
-Die Antwort ist: Alephino legt zu viel Wert auf den State – den Zustand der
+Die Antwort ist: Das alte Katalog-Programm Alephino legt zu viel Wert auf den State – den Zustand der
 Session.</p>
+
+<p>Die gute Nachricht: das neue Katalog-Programm funktioniert anders,
+die URL für die Suche enthält keinen Verweis auf die Session mehr, und funktionert
+damit jederzeit:</p>
+
+<p>https://search-fsa.obvsg.at/primo-explore/search?query=any,contains,web&amp;tab=default_tab&amp;search_scope=default_scope&amp;vid=FSA&amp;offset=0</p>
 
 </div>
 <div class="slide">
