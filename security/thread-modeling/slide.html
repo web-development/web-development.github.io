@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>Web Security - als Präsentation</title>
+    <title>Thread Modeling - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <!-- Replace path with correct path to deck.core.css. -->
@@ -70,64 +70,57 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>Web Security</h1>
+      <h1>Thread Modeling</h1>
       <p>
           vorige Präsentation:
-        <a href="/xml/rss//slide.html">Beispiel RSS</a> | 
-        <a href="/security/"
+        <a href="/security//slide.html">Web Security</a> | 
+        <a href="/security/thread-modeling/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/security/thread-modeling//slide.html">Thread Modeling</a>
+        <a href="/security/a1-injection//slide.html">A1 - Injection</a>
         
       </p>
     </div>
     <div class="slide">
-<p>Die Sicherheit von Web Applikationen ist ein komplexes Thema.
-Die OWASP gibt dazu regelmäßig Empfehlungen heraus.</p>
+<p>Zuerst betrachten wir zwei Schritte aus der Definition von <a href="https://owasp.org/www-community/Threat_Modeling">Thread Modeling</a> der OWASP:</p>
 
-<p>Für ein großes Web Projekt liefert <a href="https://github.com/OWASP/ASVS/blob/master/4.0/OWASP%20Application%20Security%20Verification%20Standard%204.0.2-de.pdf">OWASP Application Security Verification Standard</a> eine vollständige Checkliste.</p>
+</div>
+<div class="slide">
 
-<p>Für den Einstieg werden wir  die <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project">OWASP Top 10 von 2017</a>
-betrachten. Wir werden es speziell auf PHP, Postgres, Apache anwenden.</p>
+<h2 id="assessment-scope">Assessment Scope</h2>
 
-<p>Was Sie können sollten</p>
+<blockquote>
+  <p>Assessment Scope - The first step is always to understand what’s on the line. Identifying tangible
+assets, like databases of information or sensitive files is usually easy. Understanding the
+capabilities provided by the application and valuing them is more difficult. Less concrete things, such
+as reputation and goodwill are the most difficult to measure, but are often the most critical.</p>
+</blockquote>
 
-<ul>
-  <li>Sie können SQL-Injection Probleme erkennen und mittels prepared Statements vermeiden</li>
-  <li>Sie können XSS Probleme erkennen und durch geeignetes Escapen des Outputs und eine Content Security Policy vermeiden</li>
-  <li>Sie können eine Authentisierung mit Passwort und Cookie in PHP implementieren</li>
-  <li>Sie können Sicherheitsproblem beim Speichern von Passwörter und sensitiven Daten erkennen und vermeiden</li>
-  <li>Sie können erkennen, wenn eine Applikation den Zugriffsschutz nicht konsequent für jede URL überprüft, und das Problem beheben</li>
-</ul>
+</div>
+<div class="slide">
 
-<p>Die OWASP beschreibt bei den Top 10 nicht nur den Angriff selbst, sondern den gesamten Angriffsweg bis
-zu den wirtschaftlichen Auswirkungen:</p>
+<h2 id="identify-threat-agents-and-possible-attacks">Identify Threat Agents and Possible Attacks</h2>
 
-<p><img src="/images/security/angriffswege.png" srcset="/images/security/angriffswege@2x.png 2x, /images/security/angriffswege.png 1x"  alt="" ></p>
+<blockquote>
+  <p>Identify Threat Agents and Possible Attacks - A key part of the threat model is a characterization of
+the different groups of people who might be able to attack your application. These groups should
+include insiders and outsiders, performing both inadvertent mistakes and malicious attacks.</p>
+</blockquote>
 
-<p>Hier werden wir uns aber auf eine technische Beschreibung des Angriffes und
-auf die Gegemaßnahmen beschränken.</p>
-
-<p>Quellen</p>
-
-<ul>
-  <li><a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/">OWASP Top 10, 2017</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a></li>
-</ul>
 </div>
     <div class="slide">
-      <h1>Web Security</h1>
+      <h1>Thread Modeling</h1>
       <p>
           vorige Präsentation:
-        <a href="/xml/rss//slide.html">Beispiel RSS</a> | 
-        <a href="/security/"
+        <a href="/security//slide.html">Web Security</a> | 
+        <a href="/security/thread-modeling/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/security/thread-modeling//slide.html">Thread Modeling</a>
+        <a href="/security/a1-injection//slide.html">A1 - Injection</a>
         
       </p>
     </div>

@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Konfigurieren</title>
+  <title>Lehrbuch Web-Development - Thread Modeling</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -44,79 +44,46 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Konfigurieren
+        Thread Modeling
       </h2>
-      <a href="/apache/konfigurieren/slide.html">als Präsentation ▻</a>
+      <a href="/security/thread-modeling/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Der Webserver Apache wird über eine zentrale Datei konfiguriert:</p>
-
-<p><code>httpd.conf</code></p>
-
-<p>Bei Verwendung von XAMPP auf Windows findet man diese Datei z.B. im Ordner <code>C:\xampp\apache\conf</code>,
-auf UNIX-Systemen in <code>/etc/apache2/</code> oder <code>/etc/httpd/</code></p>
-
-<p>Weitere interessante Dateien und Ordner:</p>
-
-<ul>
-  <li>Ordner mit den Log-Dateien <code>C:\xampp\apache\logs</code>   bzw. <code>/var/log/apache2</code></li>
-  <li>Der eigentliche Webspace, Dateien hier sind auf <code>http://localhost</code> sichtbar:   <code>C:\xampp\htdocs</code> bzw. <code>/var/www/</code></li>
-</ul>
+<p>Zuerst betrachten wir zwei Schritte aus der Definition von <a href="https://owasp.org/www-community/Threat_Modeling">Thread Modeling</a> der OWASP:</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="assessment-scope">Assessment Scope</h2>
 
-
-<p>Die Datei httpd.conf ist sehr lang, und enthält viele Kommentare:</p>
-
-<div class="example">
-<pre class="lang-ruby prettyprint linenums">
-# ServerRoot: The top of the directory tree under which the server&#39;s
-# configuration, error, and log files are kept.
-# Do not add a slash at the end of the directory path.
-ServerRoot &quot;/xampp/apache&quot;
-
-# Listen: Allows you to bind Apache to specific IP addresses and/or
-# ports, instead of the default. See also the &lt;VirtualHost&gt;
-# directive.
-Listen 80
-
-# DocumentRoot: The directory out of which you will serve your
-# documents. By default, all requests are taken from this directory, but
-# symbolic links and aliases may be used to point to other locations.
-DocumentRoot &quot;/xampp/htdocs
-</pre></div>
-
-<p>Es gibt hunderte von verschiedenen Konfigurations-Anweisungen für Apache, glücklicherweise muß man nur wenige davon kennen und verstehen um mit Apache erfolgreich arbeiten zu können.</p>
+<blockquote>
+  <p>Assessment Scope - The first step is always to understand what’s on the line. Identifying tangible
+assets, like databases of information or sensitive files is usually easy. Understanding the
+capabilities provided by the application and valuing them is more difficult. Less concrete things, such
+as reputation and goodwill are the most difficult to measure, but are often the most critical.</p>
+</blockquote>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h2 id="konfigurations-nderung-wirksam-machen">Konfigurations-Änderung wirksam machen</h2>
+<h2 id="identify-threat-agents-and-possible-attacks">Identify Threat Agents and Possible Attacks</h2>
 
-<p>Wenn man die Konfiguration von Apache verändert braucht es drei Schritte um die Auswirkungen wirklich zu sehen:</p>
-
-<ol>
-  <li>Konfigurationsdatei <code>httpd.conf</code> ändern und speichern</li>
-  <li>Apache neu starten</li>
-  <li>Im Webbrowser die entsprechende Seite neu laden</li>
-</ol>
-
-<p>Wenn man die Haupt-Konfigurationsdatei von Apache nicht ändern kann gibt es eine Alternative: Man kann eine Datei namens  <code>.htaccess</code> in den Webspace hoch laden, diese Datei kann einige der Konfigurations-Anweisungen für den Apache Webserver enthalten.</p>
-
-<p>Achtung: ob die <code>.htaccess</code> Datei wirksam ist oder nicht wird in httpd.conf festgelegt. Man kann die <code>.htaccess</code> Datei nicht selbst aktivieren falls sie nicht funktionieren.</p>
+<blockquote>
+  <p>Identify Threat Agents and Possible Attacks - A key part of the threat model is a characterization of
+the different groups of people who might be able to attack your application. These groups should
+include insiders and outsiders, performing both inadvertent mistakes and malicious attacks.</p>
+</blockquote>
 
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/apache/">Apache Konfiguration</a></li>
+      <li><a href="/security/">Web Security</a></li>
       
       
       
-      <li><a href="/apache/auth/">Authentisierung</a></li>
+      <li><a href="/security/a1-injection/">A1 - Injection</a></li>
       
     
   </ul>
@@ -826,7 +793,7 @@ DocumentRoot &quot;/xampp/htdocs
               </ul>
             </li>
           
-          <li class=" "><a href="/security/">Security</a>
+          <li class="active "><a href="/security/">Security</a>
               <ul class="sub">
                 
                   
@@ -834,7 +801,7 @@ DocumentRoot &quot;/xampp/htdocs
                       
                     
                       
-                      <li ><a href="/security/thread-modeling/">Thread Modeling</a></li>
+                      <li class="active"><a href="/security/thread-modeling/">Thread Modeling</a></li>
                       
                     
                       
@@ -942,7 +909,7 @@ DocumentRoot &quot;/xampp/htdocs
               </ul>
             </li>
           
-          <li class="active "><a href="/apache/">Apache</a>
+          <li class=" "><a href="/apache/">Apache</a>
               <ul class="sub">
                 
                   
@@ -950,7 +917,7 @@ DocumentRoot &quot;/xampp/htdocs
                       
                     
                       
-                      <li class="active"><a href="/apache/konfigurieren/">Konfigurieren</a></li>
+                      <li ><a href="/apache/konfigurieren/">Konfigurieren</a></li>
                       
                     
                       
@@ -1059,7 +1026,7 @@ DocumentRoot &quot;/xampp/htdocs
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/apache/konfigurieren.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/thread-modeling.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
