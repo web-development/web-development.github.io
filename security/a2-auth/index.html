@@ -49,7 +49,7 @@
       <a href="/security/a2-auth/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Auf Platz 2 der OWASP Top 10 2017.</p>
+<p>Auf <a href="https://owasp.org/www-project-top-ten/2017/de/A2_2017-Fehler_in_der_Authentifizierung">Platz 2 der OWASP Top 10 2017</a>.</p>
 
 <p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.
 Ein Angriff mittels “Credential Stuffing” ist einfach umzusetzen: ein kleines
@@ -84,6 +84,25 @@ von Usernamen genau so geheim halten wie die Passwörter.</p>
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="weg-mit-alten-passwort-regeln">Weg mit alten Passwort Regeln</h2>
+
+<p>Oft werden strenge Passwort Regeln verwendet:</p>
+
+<p>“Das Passwort muss mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und zwei verscheidene Ziffern enthalten und darf nicht länger als 8 Zeichen sein”</p>
+
+<p>Diese Regeln sind veraltet.  So empfiehlt das amerikanische National  Institute of Standards and Technology seit 2017 in <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret">NIST 800-63 </a>:</p>
+
+<ul>
+  <li>Passwörter sollen mindestens 8 oder mehr Zeichen lang sein</li>
+  <li>Passwörter sollen bis zu 64 Zeichen lang sein können</li>
+  <li>“Bekannte” Passwörter sollen verboten sein. Das kann man z.B. mit <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">der haveibeenpwned API</a> implementieren</li>
+  <li>Es soll keine weiteren  Regeln für die Zusammensetzung des Passworts geben (z.b. nicht verlangen dass verschiedene Zeichentypen enhält, oder Verbot von Zeichen-Wiederholungen)</li>
+  <li>Es soll keinen Zwang geben das Passwort ohne Anlass zu Ändern. Ein guter Anlass ist wenn das Passwort öffentlich wurde</li>
+</ul>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
 <h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
 
 <p>Das Protokoll HTTP ist stateless. Wenn man trotzdem UserInnen authentifizieren
@@ -92,7 +111,7 @@ mitgeschickt werden. Dies geschieht zum Beispiel in einem Cookie.</p>
 
 <p>Wenn es gelingt diese Information abzuhören und wieder zu verwenden,
 dann erhält man den gleichen Zugang wie die eigentliche UserIn. Diese
-Art der Angriffs nennt man “Replay Attacke” - ein Request wird abehört und
+Art der Angriffs nennt man “Replay Attacke” - ein Request wird abgehört und
 gleich wieder verwendet.</p>
 
 <p>Um Passwörter ebenso wie Session Ids und Cookies vor dem Abhören zu
@@ -102,7 +121,7 @@ schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/T
 Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln:</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="nicht-selbst-implementieren">Nicht selbst implementieren</h2>
 
@@ -112,7 +131,7 @@ Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschl�
 fertige Lösungen für den gesamten Login Prozess.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="selbst-implementieren-passwrter-speichern">Selbst implementieren: Passwörter speichern</h2>
 
@@ -127,7 +146,7 @@ behandelt, und mit dem gespeicherten Wert verglichen.</p>
 <p>Mehr zum Speichern von Passwörtern im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Password_Storage_Cheat_Sheet.md">OWASP Password Storage Cheat Sheet</a></p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="neue-session-bei-login--logout--neuen-rechten">Neue Session bei Login / Logout / neuen Rechten</h2>
 
@@ -154,7 +173,7 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 </pre></div>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
@@ -162,7 +181,7 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 
 <ul>
   <li>Zwei Faktor Authentisierung</li>
-  <li>Automatische Prüfung der neu eingegebenen Passwörter mit <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">der haveibeenpwned API</a></li>
+  <li>Automatische Prüfung der neu eingegebenen Passwörter mit</li>
 </ul>
 
 <p>Die OWAAS bietet noch mehr Informationen zu diesem Thema an
@@ -177,7 +196,7 @@ und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheet
       
       
       
-      <li><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
+      <li><a href="/security/a3-data/">A3 - Sensible Daten</a></li>
       
     
   </ul>
@@ -907,7 +926,7 @@ und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheet
                       
                     
                       
-                      <li ><a href="/security/a6-data/">A3 - Sensible Daten</a></li>
+                      <li ><a href="/security/a3-data/">A3 - Sensible Daten</a></li>
                       
                     
                       
@@ -915,15 +934,15 @@ und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheet
                       
                     
                       
-                      <li ><a href="/security/a7-url/">A5 - Zugriffskontrolle</a></li>
+                      <li ><a href="/security/a5-zugriffskontrolle/">A5 - Zugriffskontrolle</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-konfiguration/">A6 - Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a6-fehlkonfiguration/">A6 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-xss/">A7 - XSS</a></li>
+                      <li ><a href="/security/a7-cross-site-scripting-css/">A7 - XSS</a></li>
                       
                     
                       
@@ -935,19 +954,11 @@ und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheet
                       
                     
                       
-                      <li ><a href="/security/a9-logging-monitoring/">A10 - Monitoring</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a4-referenz/">Unsichere direkte Objektreferenzend</a></li>
+                      <li ><a href="/security/a10-logging-monitoring/">A10 - Monitoring</a></li>
                       
                     
                       
                       <li ><a href="/security/a8-csrf/">CSRF</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a10-redirect/">Weiterleitungen</a></li>
                       
                     
                   

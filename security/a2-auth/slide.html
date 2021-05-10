@@ -79,12 +79,12 @@
         >
          
         | Nächste Präsentation
-        <a href="/security/a6-data//slide.html">A3 - Sensible Daten</a>
+        <a href="/security/a3-data//slide.html">A3 - Sensible Daten</a>
         
       </p>
     </div>
     <div class="slide">
-<p>Auf Platz 2 der OWASP Top 10 2017.</p>
+<p>Auf <a href="https://owasp.org/www-project-top-ten/2017/de/A2_2017-Fehler_in_der_Authentifizierung">Platz 2 der OWASP Top 10 2017</a>.</p>
 
 <p>Rund um Authentifizierung und Session-Management treten viele Probleme auf.
 Ein Angriff mittels “Credential Stuffing” ist einfach umzusetzen: ein kleines
@@ -119,6 +119,25 @@ von Usernamen genau so geheim halten wie die Passwörter.</p>
 </div>
 <div class="slide">
 
+<h2 id="weg-mit-alten-passwort-regeln">Weg mit alten Passwort Regeln</h2>
+
+<p>Oft werden strenge Passwort Regeln verwendet:</p>
+
+<p>“Das Passwort muss mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und zwei verscheidene Ziffern enthalten und darf nicht länger als 8 Zeichen sein”</p>
+
+<p>Diese Regeln sind veraltet.  So empfiehlt das amerikanische National  Institute of Standards and Technology seit 2017 in <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret">NIST 800-63 </a>:</p>
+
+<ul>
+  <li>Passwörter sollen mindestens 8 oder mehr Zeichen lang sein</li>
+  <li>Passwörter sollen bis zu 64 Zeichen lang sein können</li>
+  <li>“Bekannte” Passwörter sollen verboten sein. Das kann man z.B. mit <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">der haveibeenpwned API</a> implementieren</li>
+  <li>Es soll keine weiteren  Regeln für die Zusammensetzung des Passworts geben (z.b. nicht verlangen dass verschiedene Zeichentypen enhält, oder Verbot von Zeichen-Wiederholungen)</li>
+  <li>Es soll keinen Zwang geben das Passwort ohne Anlass zu Ändern. Ein guter Anlass ist wenn das Passwort öffentlich wurde</li>
+</ul>
+
+</div>
+<div class="slide">
+
 <h2 id="session-id-wie-passwort-schtzen">Session ID wie Passwort schützen</h2>
 
 <p>Das Protokoll HTTP ist stateless. Wenn man trotzdem UserInnen authentifizieren
@@ -127,7 +146,7 @@ mitgeschickt werden. Dies geschieht zum Beispiel in einem Cookie.</p>
 
 <p>Wenn es gelingt diese Information abzuhören und wieder zu verwenden,
 dann erhält man den gleichen Zugang wie die eigentliche UserIn. Diese
-Art der Angriffs nennt man “Replay Attacke” - ein Request wird abehört und
+Art der Angriffs nennt man “Replay Attacke” - ein Request wird abgehört und
 gleich wieder verwendet.</p>
 
 <p>Um Passwörter ebenso wie Session Ids und Cookies vor dem Abhören zu
@@ -197,7 +216,7 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 
 <ul>
   <li>Zwei Faktor Authentisierung</li>
-  <li>Automatische Prüfung der neu eingegebenen Passwörter mit <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">der haveibeenpwned API</a></li>
+  <li>Automatische Prüfung der neu eingegebenen Passwörter mit</li>
 </ul>
 
 <p>Die OWAAS bietet noch mehr Informationen zu diesem Thema an
@@ -214,7 +233,7 @@ und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheet
         >
          
         | Nächste Präsentation
-        <a href="/security/a6-data//slide.html">A3 - Sensible Daten</a>
+        <a href="/security/a3-data//slide.html">A3 - Sensible Daten</a>
         
       </p>
     </div>
