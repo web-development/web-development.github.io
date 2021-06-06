@@ -54,7 +54,8 @@ Dieses Protokoll ist nicht geeignet für Chat, für Spiele, …. wo die Kommunik
 auch vom Server ausgehen muss.</p>
 
 <p>Das Websocket Protokoll ermöglicht die Kommunikation in beide Richtungen auf
-einer dauerhaften Verbindung zwischen Client und Server.</p>
+einer dauerhaften Verbindung zwischen Client und Server.  Es wird
+in <a href="https://www.rfc-editor.org/rfc/rfc6455.html">RFC 6455</a> definiert.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
@@ -69,8 +70,27 @@ einer dauerhaften Verbindung zwischen Client und Server.</p>
   <li>es verwende Cookies</li>
 </ul>
 
-<p>Aber nach dem ersten Request wird die TCP Verbindung auf Dauer aufrechterhalten,
-und Client und Server wechseln in das eigentlih Websocket Protokoll:</p>
+<p>Soweit die Ähnlichkeiten mit HTTP.</p>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+
+
+<p>URLs für Websockt beginnen mit <code>ws</code> oder <code>wss</code> für die verschlüsselte Version:</p>
+
+<ul>
+  <li>ws://server.example.com/chat</li>
+  <li>wss://server.example.com/chat</li>
+</ul>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+
+
+<p>Nach dem “Upgrade: websocket” Request wird die TCP Verbindung auf Dauer aufrechterhalten,
+und Client und Server wechseln in das eigentliche Websocket Protokoll:</p>
 
 <div class="example">
 <pre class="lang-plain prettyprint linenums">
@@ -87,39 +107,65 @@ HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
-Sec-WebSocket-Protocol: chat 
+Sec-WebSocket-Protocol: chat
+
 </pre></div>
 
-<p>Nach diesem ersten Austausch müssen sowohl Server als auch Client
-jederzeit mit eingehenden Nachrichten umgehen.</p>
+<p>Nach diesem ersten Austausch müssen schalten Server und  Client
+auf das senden von “Frames” um.  Nun können beide jederzeit
+senden und müssen bereits sein eingehenden Nachrichten zu empfangen.</p>
+
+<p>Websocket Frames sind viel sparsamer als HTTP Requests und Responses:
+10 bis 18 Byte für Meta-Information plus der eigentliche Payload bilden einen Frame.</p>
+
+<p><img src="/images/websockets/websocket-frame.png" srcset="/images/websockets/websocket-frame.png 1x, /images/websockets/websocket-frame@2x.png 2x"  alt="websocket frame" ></p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+
+
+<p>Der (4 bit) Opcode gibt an welchen Typ der Payload hat:</p>
+
+<ul>
+  <li><code>0000</code> - continuation frame, voriger Frame wird fortgesetzt</li>
+  <li><code>0001</code> - text frame</li>
+  <li><code>0010</code> - binary frame</li>
+  <li><code>1000</code> - connection close</li>
+  <li><code>1001</code> - ping</li>
+  <li><code>1010</code> - pong</li>
+</ul>
+
+<p>Wenn einer der beiden Endpunkte ein ping sendet muss der andere mit einem
+pong antworten.  Dieser Mechanismus wird verwendet um die TCP-Verbindung
+aufrecht zu erhalten auch wenn gerade keine Daten geschickt werden müssen (“keepalive”).</p>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="werkzeuge">Werkzeuge</h2>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="developer-tools">Developer Tools</h3>
 
 <p>Beim Programmieren und Debuggen von Websockets braucht man die
 Developer Tools: In der “Netzwerkanalyse” sieht man den ersten
-Request, noch mit HTTP, der dann mit “101 Switching Protocol” in eine Websocket 
+Request, noch mit HTTP, der dann mit “101 Switching Protocol” in eine Websocket
 umgewandelt wird:</p>
 
-<p><img src="/images/websockets/dev-tools-network.png" srcset="/images/websockets/dev-tools-network-1.png 1x, /images/websockets/dev-tools-network-2@2x.png 2x, /images/websockets/dev-tools-network@2x.png 2x, /images/websockets/dev-tools-network-2.png 1x, /images/websockets/dev-tools-network-1@2x.png 2x, /images/websockets/dev-tools-network.png 1x"  alt="" >
-<img src="/images/websockets/dev-tools-network-1.png" srcset="/images/websockets/dev-tools-network-1.png 1x, /images/websockets/dev-tools-network-1@2x.png 2x"  alt="" ></p>
+<p><img src="/images/websockets/dev-tools-network-1.png" srcset="/images/websockets/dev-tools-network-1.png 1x, /images/websockets/dev-tools-network-1@2x.png 2x"  alt="" ></p>
 
-<p>Im Tab “Nachrichten” sieht man die Nachrichten die hin oder her geschickt werden:</p>
+<p>Im Tab “Antwort” sieht man die Frames die hin oder her geschickt werden:</p>
 
 <p><img src="/images/websockets/dev-tools-network-2.png" srcset="/images/websockets/dev-tools-network-2@2x.png 2x, /images/websockets/dev-tools-network-2.png 1x"  alt="" ></p>
 
 <p>Hier sieht man auch dass Client und Server sich gegenseitig
-“Ping”-Pakete senden wenn sonst nichts zu senden ist.</p>
+Ping- und Pong-Frames senden wenn sonst nichts zu senden ist.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h3 id="nodejs">node.js</h3>
 
@@ -138,19 +184,24 @@ für das Frontend Development.</p>
 Node viel mit Asynchronen Aufrufen gearbeitet.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="glitch">glitch</h3>
 
 <p>Node.js kann man <a href="https://nodejs.org/en/download/">am eigenen Rechner installieren</a>, das
-ist aber für diese Beispiel nicht nötig. Wir verwenden <a href="https://glitch.com/">https://glitch.com/</a>:</p>
+ist aber für diese Beispiel nicht nötig. Wir verwenden <a href="https://glitch.com/">https://glitch.com/</a>.</p>
+
+<p>Mit Glitch kann man node.js Programme direkt im Browser schreiben. Der Code wird
+am Server von glitch gespeichert, und kann dort auch ausgeführt werden.</p>
 
 <p><img src="/images/websockets/glitch.png" srcset="/images/websockets/glitch.png 1x, /images/websockets/glitch@2x.png 2x"  alt="" ></p>
 
-<p>Damit enfällt das hochladen des Codes auf einen Server.</p>
+<p>Damit braucht man also am eigenen Computer nur den Webbrowser.</p>
+
+<p>Das “Frontend” findet sich in der Datei <code>public/index.html</code>,  das Backend in <code>index.js</code>.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="socketio">Socket.io</h3>
 
@@ -158,7 +209,7 @@ ist aber für diese Beispiel nicht nötig. Wir verwenden <a href="https://glitch
 von Websocket Verbindungen.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="programmierung-des-client">Programmierung des Client</h2>
 
@@ -176,7 +227,7 @@ Alle Chat-Messages sollen in der Liste mit der id <code>messages</code> angezeig
 </pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="an-den-server-senden">An den Server senden:</h3>
 
@@ -188,15 +239,15 @@ durch drücken von enter), wird eine Nachricht an den Server geschickt:</p>
 var socket = io();
 let form = document.getElementsByTagName(&#39;form&#39;)[0];
 let input = document.getElementById(&#39;m&#39;);
-form.addEventListener(&#39;submit&#39;, function() {  
-  socket.emit(&#39;chat message&#39;, m.value );
-  m.value=&quot;&quot;;
-  return false;
+form.addEventListener(&#39;submit&#39;, function(event) {
+  event.preventDefault();  // Form wird nicht &quot;normal&quot; gesendet
+  socket.emit(&#39;chat message&#39;, m.value );  // nur über socket
+  m.value=&quot;&quot;; // Eingabefeld leeren
 });
 </pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="vom-server-empfangen">Vom Server empfangen:</h3>
 
@@ -210,25 +261,27 @@ wird sie als neues <code>li</code> an die Liste angefügt:</p>
   socket.on(&#39;chat message&#39;, function(msg){
     let li = document.createElement(&#39;li&#39;);
     li.textContent = msg;
-    list.appendChild(li);   
+    list.appendChild(li);
     list.scrollTop = list.scrollHeight;
   });
 </pre></div>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h2 id="programmierung-des-servers">Programmierung des Servers:</h2>
 
-<p>Achtung: mit Node programmiert man gleich den ganzen
-Webserver mit - es gibt keinen apache oder nginx!</p>
+<p>Achtung: mit Node.js programmiert man nicht nur irgend
+ein Programm, das am Webserver läuft.  Man schreibt ein JavaScript-Programm,
+das den gesamten Job des Webserver mit erledigt.</p>
 
 <p>Das JavaScript-Programm läuft also die ganze Zeit und
-behandelt alle Anfragen.</p>
+behandelt alle Anfragen.  Ein apache oder nginx ist nicht nötig.</p>
 
-<p>In folgendem Code repräsentiert <code>io</code> den ganzen Websocket,
-<code>io.emit</code>  ist also ein broadcast an alle verbundenene Clients.
-<code>socket</code> repräsentiert einen verbundenen client:</p>
+<p>In folgendem Code repräsentiert <code>io</code> den ganzen Websocket:
+Die Variable <code>socket</code> repräsentiert einen verbundenen Client.
+<code>io.emit()</code>  ist ein broadcast an alle verbundenene Clients,
+<code>socket.emit()</code> sendet nur an einen Client.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -247,19 +300,44 @@ io.on(&#39;connection&#39;, function(socket){
 </pre></div>
 
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h2 id="messages">Messages</h2>
+
+<p>Wir haben vom Client zum Server gesendet mit dem Befehl:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+socket.emit(&#39;chat message&#39;, m.value ); 
+</pre></div>
+
+<p>Am Server haben wir auf diese Message reagiert mit:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+socket.on(&#39;chat message&#39;, function(msg){
+  console.log(`got message &#39;${msg}&#39;...`);
+});
+</pre></div>
+
+<p>Der String ‘chat message’ ist frei gewählt.  Wir haben hier
+ein Protokoll auf dem Websocket erfunden, das bisher nur diese
+eine Message kennt.</p>
+
+
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h2 id="weiterentwicklung">Weiterentwicklung</h2>
 
 <p>Es gibt viele Möglichkeiten das Beispielprogramm weiter zu entwickeln:</p>
 
 
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h3 id="neue-message">neue Message</h3>
 
 <p>In diesem Beispiel haben wir nur <code>chat message</code> messages
-gesendet und empfangen.  Wir können beliebig neue Arten von 
+gesendet und empfangen.  Wir können beliebig neue Arten von
 messages, mit oder ohne payload, dazu erfinden.</p>
 
 <p>Zum Beispiel für Applaus:  Der Client kann eine Applause-Meldung
@@ -268,20 +346,21 @@ einer Zahl schicken</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
+// am Client:
   document.getElementById(&#39;applause&#39;).addEventListener(&#39;click&#39;,function(){
     socket.emit(&#39;applause&#39;);
   })
   socket.on(&#39;applause&#39;, function(text){
-    let li = document.createElement(&#39;li&#39;);   
-    let strength = parseInt(text);       
+    let li = document.createElement(&#39;li&#39;);
+    let strength = parseInt(text);
     li.textContent = &quot;👏&quot;.repeat(strength);
-    list.appendChild(li);   
-    list.scrollTop = list.scrollHeight;         
+    list.appendChild(li);
+    list.scrollTop = list.scrollHeight;
   });
 </pre></div>
 
 
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+<a class="slide_break" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h3 id="andere-ein--und-ausgabe-im-client">Andere Ein- und Ausgabe im Client</h3>
 
@@ -292,40 +371,45 @@ clicks auf Buttons, Mausbewegungen, u.s.w. können Websocket-Botschaften auslös
 man zum Beispiel einen Audio-Clip abspielen.</p>
 
 
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
 <h3 id="andere-logik-am-server">Andere Logik am Server</h3>
 
-<p>Am Server könnte man mit-zählen wie viel User anwesend sind:</p>
+<p>Am Server könnte man mit-zählen wie viel User anwesend sind.
+Dazu legt man eine globale Variable <code>users</code> an.  Solange das JavaScript-Programm 
+am Server läuft bleibt diese Variable erhalten.  Wenn der Server neu gestartet
+werden muss - z.B. weil man die Datei <code>index.js</code> editiert hat - dann geht der
+Inhalt der Variable verloren.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var users = [];
+let users = [];
 function remove_from(users, socket){
-  users = users.filter(s =&gt; s.id != socket.id);  
+  users = users.filter(s =&gt; s.id != socket.id);
 }
 io.on(&#39;connection&#39;, function(socket){
   // called every time a client connects
   console.log(`ein neuer client mit id ${socket.id}`);
   users.push(socket);
   io.emit(&#39;chat message&#39;, `there are now ${users.length} users`);
-   
+
   ....
   socket.on(&#39;disconnect&#39;, function(){
     remove_from(users, socket);
     console.log(&#39;user disconnected&#39;);
-    io.emit(&#39;chat message&#39;, `there are now ${users.length} users`);  
+    io.emit(&#39;chat message&#39;, `there are now ${users.length} users`);
   });
 });
 </pre></div>
 
 
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 <h2 id="see-also">See Also</h2>
 
 <ul>
-  <li><a href="https://tools.ietf.org/html/rfc6455">RFC 6455</a></li>
+  <li><a href="https://www.rfc-editor.org/rfc/rfc6455.html">RFC 6455</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">Websockets im MDN</a></li>
   <li><a href="https://socket.io/">socket.io</a></li>
 </ul>
  <div class="pagination">
