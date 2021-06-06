@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Demo Page: srcset mit Angabe der Breite</title>
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+    img::before {
+      content: 
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Demo Page: srcset mit Angabe der Breite</h1>
+
+    <p>Erste Variante: Seitenbreite </p>
+    <img srcset="fairy-480w.webp 480w,
+    fairy-800w.webp 800w,
+    fairy-1200w.webp 1200w,
+    fairy-2000w.webp 2000w,
+    fairy-3024w.webp 3024w,
+    fairy-800w.webp 800w" src="fairy-480w.webp"
+      alt="Photo of two girls dresst as fairies by Allison Archer (via Unsplash)">
+
+    <p>Zweite Variante: div mit 80% der Seitenbreite </p>
+
+    <div style="width: 80%">
+      <img srcset="fairy-480w.webp 480w,
+      fairy-800w.webp 800w,
+      fairy-1200w.webp 1200w,
+      fairy-2000w.webp 2000w,
+      fairy-3024w.webp 3024w,
+      fairy-800w.webp 800w" src="fairy-480w.webp"
+        alt="Photo of two girls dresst as fairies by Allison Archer (via Unsplash)">
+    </div>
+
+    <p>Dritte Variante: div mit 30% der Seitenbreite </p>
+
+    <div style="width: 30%">
+      <img srcset="fairy-480w.webp 480w,
+      fairy-800w.webp 800w,
+      fairy-1200w.webp 1200w,
+      fairy-2000w.webp 2000w,
+      fairy-3024w.webp 3024w,
+      fairy-800w.webp 800w" src="fairy-480w.webp"
+        alt="Photo of two girls dresst as fairies by Allison Archer (via Unsplash)">
+    </div>
+  </main>
+</body>
+
+</html>
