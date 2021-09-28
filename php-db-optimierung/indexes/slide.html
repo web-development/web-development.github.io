@@ -178,6 +178,50 @@ Time: 0.775 ms
 </div>
 <div class="slide">
 
+<h2 id="die-datenstruktur-hinter-dem-index-b-baum">Die Datenstruktur hinter dem Index: B-Baum</h2>
+
+<p>Das Anlegen eines Index mit  <code>CREATE INDEX</code> erzeugt eine zusätzliche
+Datenstruktur: einen <a href="https://de.wikipedia.org/wiki/B-Baum">B-Baum</a>.</p>
+
+<p><img src="/images/php-db-optimierung/b-baum.svg"  alt="B-Baum" ></p>
+
+<p>Der B-Baum ist sortiert, ausbalanziert, und seine Knoten haben jeweils viele
+Kinder.</p>
+
+<p>Mit dem Wissen über die Datenstruktur gewinnen wir ein besserer Verständnis für
+die Fähigkeiten und Grenzen eines Index:</p>
+
+<ul>
+  <li>Ein Index bedeutet immer zusätzliche Arbeit beim Einfügen, beim Löschen, …</li>
+  <li>das Auslesen kann in logarithmischer Zeit erfolgen</li>
+  <li>…</li>
+</ul>
+
+<p>Besonders effizient ist der Index wenn alle Daten der Abfrage schon
+direkt im Baum gespeichert sind, und nicht nochmal separat gelesen werden müssen:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+# SELECT name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10; 
+# SELECT yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10; 
+</pre></div>
+
+<p>Die erste Abfrage braucht einen Zugriff auf die vollständigen Daten der Tabelle um 
+name und time auszulesen. Die zweite Abfrage findet alle nötigen Daten direkt im Index.</p>
+
+<p>Manche Datenbank bieten die Möglichkeit zusätzliche Attribute in den Index aufzunehmen,
+um einen “covering index” zu erzeugen:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+# CREATE INDEX yes_rsvp_count_with_name_and_time ON events(yes_rsvp_count) INCLUDE (name, time);
+</pre></div>
+
+<p>Siehe <a href="https://blog.crunchydata.com/blog/why-covering-indexes-are-incredibly-helpful">Katz (2018): Why Covering Indexes in Postgres Are Incredibly Helpful</a> und <a href="https://www.postgresql.org/docs/13/sql-createindex.html">Postgres Dokumentation</a>.</p>
+
+</div>
+<div class="slide">
+
 <h2 id="index-fr-volltexsuche">Index für Volltexsuche</h2>
 
 <p>Für Abfragen mit <code>LIKE</code> hilft ein normaler Index nicht.
