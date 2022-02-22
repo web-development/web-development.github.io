@@ -99,7 +99,7 @@ oder auf verschiedenen macht für die Programmierung kaum einen Unterschied.</p>
 
 <h2 id="datenbank-schnittstellen">Datenbank-Schnittstellen</h2>
 
-<p>Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen. 
+<p>Um von PHP auf die Datenbank zuzugreifen gibt es verschiedene Schnittstellen.
 Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 <a href="http://php.net/manual/de/book.pdo.php">PDO Dokumentation</a>.</p>
 
@@ -120,7 +120,7 @@ $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 Das zweite und dritte Argument sind einfach Strings mit
 dem Usernamen und Passwort für die Datenbank.</p>
 
-<p>Das erste Argument wird in der <a href="http://www.php.net/manual/en/pdo.construct.php">Dokumentation</a> 
+<p>Das erste Argument wird in der <a href="http://www.php.net/manual/en/pdo.construct.php">Dokumentation</a>
 als “Data Source Name” bezeichnet und enthält mehrere Informationen, die in
 einen String gepackt werden.</p>
 
@@ -160,14 +160,14 @@ die zuvor inkludiert wird.  Warum?</p>
 <div class="example">
 <h4 class="caption">Php Code <small>Zugangsdaten für die Datenbank</small></h4>
 <pre class="lang-php prettyprint linenums">
-$DB_NAME = &quot;portfolio_playground&quot;; 
-$DB_USER = &quot;mmtuser&quot;; 
+$DB_NAME = &quot;portfolio_playground&quot;;
+$DB_USER = &quot;mmtuser&quot;;
 $DB_PASS = &quot;****&quot;;
 $DSN     = &quot;pgsql:dbname=$DB_NAME;host=localhost&quot;;
 </pre></div>
 
 <p>Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
-niemals, niemals, niemals in git speichern wollen!<br />
+niemals, niemals, niemals in git speichern wollen!
 wir wollen den Code im Repository vielleicht
 veröffentlichen und die Zugangsdaten weiter geheimhalten.</p>
 
@@ -177,7 +177,7 @@ veröffentlichen und die Zugangsdaten weiter geheimhalten.</p>
 <h3 id="gitignore">.gitignore</h3>
 
 <p>Um zu verhindern, dass die Datei <code>config.php</code> in git committed werden kann,
-wird der Dateiname in die Datei <code>.gitignore</code> eingetragen. 
+wird der Dateiname in die Datei <code>.gitignore</code> eingetragen.
 <code>.gitignore</code> ist einfach eine Text-Datei im Hauptverzeichnis der Working Copy.</p>
 
 </div>
@@ -190,8 +190,8 @@ zeigt der Vorher / Nachher-Vergleich am besten:</p>
 
 <pre><code>D:\Webprojekte\wp2&gt;git status
 
-# On branch master
-# Your branch is ahead of 'origin/master' by 2 commits.
+# On branch main
+# Your branch is ahead of 'origin/main' by 2 commits.
 #
 # Untracked files:
 #   (use "git add &lt;file&gt;..." to include in what will be committed)
@@ -215,7 +215,7 @@ Ein Check ob es funktioniert hat:</p>
 config.php
 </code></pre>
 
-<p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen 
+<p>Damit ist git angewiesen, alle Dateien mit der Endung <code>.bak</code> und alle Dateien mit dem Namen
 <code>config.php</code> (egal in welchem Ordner) zu ignorieren.</p>
 
 </div>
@@ -225,8 +225,8 @@ config.php
 
 <pre><code>D:\Webprojekte\wp2&gt;git status
 
-# On branch master
-# Your branch is ahead of 'origin/master' by 2 commits.
+# On branch main
+# Your branch is ahead of 'origin/main' by 2 commits.
 #
 # Changed but not updated:
 #   (use "git add &lt;file&gt;..." to update what will be committed)
@@ -237,8 +237,8 @@ config.php
 no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 
-<p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an. 
-Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde. 
+<p>Wie man sieht zeigt <code>git status</code> nun die Datei <code>config.php</code> nicht mehr an.
+Dafür hat git bemerkt dass die Datei <code>.gitignore</code> geändert wurde.
 Die sollte man ganz normal committen.</p>
 
 </div>
