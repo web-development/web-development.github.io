@@ -53,7 +53,7 @@
 wie Sie beweisen können, dass Sie die Person sind, die Zugriff auf den Server haben soll.</p>
 
 <p>Für git wird statt eines Passworts meist ein Schlüsselpaar verwendet. Um
-das zu verstehen hier ein kurzer Einblick in 
+das zu verstehen hier ein kurzer Einblick in
 Asymmetrische Kryptosysteme.</p>
 
 
@@ -62,39 +62,30 @@ Asymmetrische Kryptosysteme.</p>
 <h2 id="public-key-cryptography">Public Key Cryptography</h2>
 
 <p>Klassische Verschlüsselung kennt nur einen Schlüssel: er wird
-zum ver- und zum ent-schlüsseln verwendet.  Das ist eigentlich unpraktisch:
-wenn ich ein problem habe eine lange Botschaft ohne Abhören oder Manipulation von A nach B zu bringen,
+zum ver- und zum ent- schlüsseln verwendet.  Das ist eigentlich unpraktisch:
+wenn ich ein Problem habe eine lange Botschaft ohne Abhören oder Manipulation von A nach B zu bringen,
 und sie deswegen verschlüssle, dann ist mir ja nicht geholfen: jetzt muss ich erst
-den gezeimen Schlüssel sicher (ohne Abhören oder Manipulation) von A nach B bringen. Das Problem
+den geheimen Schlüssel sicher (ohne Abhören oder Manipulation) von A nach B bringen. Das Problem
 hat jetzt einen kleinern Umfang, aber das Grundproblem bleibt bestehen.</p>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+
 
 <p>Bei einem asymmetrischen Verschlüsselungsverfahren gibt es zwei verschiedene
 Schlüssel: einen öffentlichen und einen privaten:</p>
 
-<p><img src="/images/public_key_crypto.svg"  alt="Ver- und Entschlüsseln" ></p>
+<p><img src="/images/git/public_key_crypto.svg"  alt="Ver- und Entschlüsseln" ></p>
 
 <p>Diese Art der Verschlüsselung wird im Internet z.B. für die Verschlüsselung
 und Signierung von E-Mail mit <a href="https://de.wikipedia.org/wiki/GNU_Privacy_Guard">GPG</a> verwendet,
 oder für die Authentifizierung beim Login mit <a href="https://de.wikipedia.org/wiki/Ssh">SSH</a>.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
-<h2 id="authentisierung-fr-ssh-mit-private-und-public-key">Authentisierung für SSH mit private und public key</h2>
-
-<p>SSH bezeichnet sowohl ein Netzwerkprotokoll als auch entsprechende Programme, 
-mit deren Hilfe man eine verschlüsselte Netzwerkverbindung mit einem entfernten 
-Gerät herstellen kann. Häufig wird diese Methode verwendet, um lokal eine entfernte 
-Kommandozeile verfügbar zu machen, z.B. zur Fernwartung eines in einem entfernten Rechenzentrum stehenden Servers.</p>
-
-<p>Die Authentisierung kann dabei entweder über ein Passwort oder mit private/public keys erfolgen.</p>
-
-<p><img src="/images/ssh_login_with_public_key.svg"  alt="Authentisierung für SSH mit private/public key" ></p>
-
-
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-
+<h2 id="schlsselpaar-erzeugen">Schlüsselpaar erzeugen</h2>
 
 <p>Das “Schüsselpaar” kann man jederzeit selbst erzeugen: mit dem Kommandozeilen-Programm
 ssh-keygen:</p>
@@ -102,10 +93,10 @@ ssh-keygen:</p>
 <div class="example">
 <h4 class="caption">Shell Code <small>Erzeugung eines Schlüsselpaares</small></h4>
 <pre class="lang-shell prettyprint linenums">
-$ ssh-keygen -t rsa -C &quot;vmustermann.mmt-b2014@fh-salzburg.ac.at&quot;
+$ ssh-keygen -t rsa -C &quot;vmustermann.mmt-b2022@fh-salzburg.ac.at&quot;
 # Erzeugt ein neues Schlüsselpaar, verwendet die E-Mail Adresse in der Beschriftung
 Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/verena/.ssh/id_rsa): 
+Enter file in which to save the key (/Users/verena/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Your identification has been saved in /Users/verena/.ssh/id_rsa.
 Your public key has been saved in /Users/verena/.ssh/id_rsa.pub.
@@ -131,8 +122,17 @@ The key&#39;s randomart image is:
 
 
 <p>Das Endergebnis sind zwei Dateien: <code>id_rsa</code> enthält den privaten Schlüssel,
-<code>id_rsa.pub</code> den öffentlichen Schlüssel.  Beide Schlüssel könnne in einem Text-Editor
-betrachtet werden: der private Schlüssel besteht aus einem großen Text-Block
+<code>id_rsa.pub</code> den öffentlichen Schlüssel.</p>
+
+<p>Beide Schlüssel könnne in einem Text-Editor
+betrachtet werden, oder im Text einer E-Mail oder eines Chat verschicket werden.</p>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+
+
+<p>Der private Schlüssel besteht aus einem großen Text-Block
 innerhalb von zwei Zeilen mit vielen Minus-Zeichen:</p>
 
 <div class="example">
@@ -167,23 +167,24 @@ BLzFeSXDV4AkIdRxvganwBIV1FZFQRPfR9miuRUagMkwT6/LLBxhlJE=
 -----END RSA PRIVATE KEY-----
 </pre></div>
 
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+
+
 <p>Der öffentliche Schlüssel bestezt aus einer einzigen Zeile Text, mit
 der E-Mail Adresse am Ende der Zeile:</p>
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Beispiel für den dazu gehörigen öffentlichen Schlüssel</small></h4>
 <pre class="lang-plain prettyprint linenums">
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLiHnSO+BlxUELiutzVDeijGA9kDvihO1ANcwqQZRIwQlBtn0fNZ8np3cdKmW5KYJzDEju2Rfu/qVGMLPT3G0cWrbVqBMlYnw/Ziqo2l3sF1rfrF/mrw/HxwBhsAqv2w1PxzDpxkEqMZoGpprtqvNwF5COYHWOp7sK0vWdR7FONYhLyK5e6HtCgQJ2Z/TX9LHX2UDMzXDxi1GsFPXkrs73t+YYCs59OBYLjz68iIzGP3Uw8rQtxiKe/F1utjupojhsXv4qi6Il4h/KNXJxcg00BgMCFuP4ibVRgHPVPpWqcggykzPgZr5G1/cCeQhhia1MuS9zrwfkwSivKu3KNlAL vmustermann.mmt-b2014@fh-salzburg.ac.at
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLiHnSO+BlxUELiutzVDeijGA9kDvihO1ANcwqQZRIwQlBtn0fNZ8np3cdKmW5KYJzDEju2Rfu/qVGMLPT3G0cWrbVqBMlYnw/Ziqo2l3sF1rfrF/mrw/HxwBhsAqv2w1PxzDpxkEqMZoGpprtqvNwF5COYHWOp7sK0vWdR7FONYhLyK5e6HtCgQJ2Z/TX9LHX2UDMzXDxi1GsFPXkrs73t+YYCs59OBYLjz68iIzGP3Uw8rQtxiKe/F1utjupojhsXv4qi6Il4h/KNXJxcg00BgMCFuP4ibVRgHPVPpWqcggykzPgZr5G1/cCeQhhia1MuS9zrwfkwSivKu3KNlAL vmustermann.mmt-b2022@fh-salzburg.ac.at
 </pre></div>
 
-<p>Um das Einloggen am Server zu ermöglichen muss man den öffentlichen Schlüssel als
-Datei <code>~/.ssh/authorized_keys</code> installieren, bzw. falls die Datei schon besteht
-als zusätzliche Zeile an die Datei anfügen.</p>
 
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h2 id="authentisierung-fr-gitlab-mit-private-und-public-key">Authentisierung für gitlab mit private und public key</h2>
+<h2 id="authentisierung-fr-git-mit-private-und-public-key">Authentisierung für git mit private und public key</h2>
 
 <p>SSH wird als Übertragungsprotokoll bei der Kommunikations
 mit einem entfernen Git-Repository verwendet. Somit wird
@@ -195,10 +196,22 @@ SSH: der private Key liegt als Datei <code>.ssh/id_rsa</code> in Ihrem Homeverze
 <p>Die Installation am Server wird mit gitlab etwas anders als bei ssh alleine:
 Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p>
 
-<p><img src="/images/gitlab-public-key.png"  alt="public key hochladen auf gitlab" ></p>
+<p><img src="/images/git/gitlab-ssh-key.png"  alt="public key hochladen auf gitlab" ></p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+<h2 id="authentisierung-fr-ssh">Authentisierung für SSH</h2>
+
+<p>Mit SSH (“secure shell”) kann man einen (verschlüsselte) Verbindung mit einem anderen Computer
+am Internet herstellen um dort mit der Kommandozeile zu arbeiten.</p>
+
+<p>Die Authentisierung kann dabei entweder über ein Passwort oder mit private/public keys erfolgen.</p>
+
+<p><img src="/images/git/ssh_login_with_public_key.svg"  alt="Authentisierung für SSH mit private/public key" ></p>
+
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="weiterfhrende-literatur">Weiterführende Literatur</h2>
 
@@ -474,11 +487,11 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
                       
                     
                       
-                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
                       
                     
                       
-                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
                       
                     
                       
@@ -702,11 +715,11 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
                       
                     
                   
@@ -1046,11 +1059,11 @@ Sie verwenden die Web-Oberfläche von Gitlab um den Schlüssel hoch zu laden:</p
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                   
