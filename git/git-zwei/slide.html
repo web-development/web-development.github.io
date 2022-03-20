@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Git für Zwei - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Git für Zwei</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/commits//slide.html">Commit</a> | 
+        <a href="/git/git-zwei/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+<p>Wie funktioniert die Arbeit mit git, wenn ich auf zwei
+Computern arbeite?  Oder wenn zwei Personen zusammen arbeiten?</p>
+
+</div>
+<div class="slide">
+
+<h2 id="verteiltes-versionskontrollsystem">Verteiltes Versionskontrollsystem</h2>
+
+<p>Git ist ein Verteiltes Versionskontrollsystem. “Verteilt” (distributed) heißt hier:
+Auf mehreren Computer kann eine Version des Repository liegen.</p>
+
+<p><img src="/images/git/git-zwei.png" srcset="/images/git/git-zwei-leute@2x.png 2x, /images/git/git-zwei.png 1x, /images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x, /images/git/git-zwei-leute.png 1x, /images/git/git-zwei@2x.png 2x"  alt="" ></p>
+
+<p>Mit dem Befehlen <code>push</code> und <code>pull</code> übertragen wir Information zwischen den
+verschiedenen Computern.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="zwei-computer">Zwei Computer</h2>
+
+<p>Szenario: ich beginne mein Projekte auf dem Laptop,
+pushe auf ein remote Repository.  Später will ich die Arbeit auf meinem
+PC fortsetzen.</p>
+
+<p><img src="/images/git/git-zwei-todo.png" srcset="/images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x"  alt="" ></p>
+
+<p>Wichtige Vorbereitung: auf dem zweiten Computer brauche ich wider meinen
+private key als Datei <code>~/.ssh/id_rsa</code>. Und bei ersten Mal hole ich das
+Repository mit <code>git clone</code> auf den Computer.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="zwei-personen">Zwei Personen</h2>
+
+<p>Szenario: ich arbeit mit Andreas zusammen an einem Projekt.</p>
+
+<p><img src="/images/git/git-zwei-todo.png" srcset="/images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x"  alt="" ></p>
+
+<p>Wichtige Vorbereitung: Über die Weboberfläche gitlab gebe ich Andreas
+Zugriffsrechte auf das Remote Repository. (Projekt Information → Mitglieder → grüner Button ‘Invite Members’ …). Bei ersten Mal holt  sich Andreas das Repository mit <code>git clone</code> auf seinen Computer.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="zwei-nderungen">Zwei Änderungen</h2>
+
+<p>Was passiert, wenn in zwei verschiedenen Repositories etwas geändert wurde?
+Das erfahre ich, wenn ich den Befehl <code>git push</code> ausführe:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git push origin main</b>
+To gitlab.mediacube.at:bjelline/barcamp.git
+<span style="color:red"> ! [rejected]</span>        main -> main (fetch first)
+<span style="color:red">error: Fehler beim Versenden einiger Referenzen nach 'gitlab.mediacube.at:bjelline/barcamp.git'</span>
+<span style="color:orange"></span>Hinweis: Aktualisierungen wurden zurückgewiesen, weil das Remote-Repository Commits enthält,
+Hinweis: die lokal nicht vorhanden sind. Das wird üblicherweise durch einen "push" von
+Hinweis: Commits auf dieselbe Referenz von einem anderen Repository aus verursacht.
+Hinweis: Vielleicht müssen Sie die externen Änderungen zusammenführen (z. B. 'git pull ...')
+Hinweis: bevor Sie erneut "push" ausführen.
+Hinweis: Siehe auch die Sektion 'Note about fast-forwards' in 'git push --help'
+Hinweis: für weitere Details.</span></pre></div>
+
+<p>Die Fehlermeldung weist mich in die richtige Richtung: “Vielleicht müssen Sie die externen Änderungen zusammenführen (z. B. ‘git pull …’) bevor Sie erneut push ausführen.”</p>
+
+</div>
+<div class="slide">
+
+<h2 id="vorbereitung">Vorbereitung</h2>
+
+<p>Vor dem nächsten Schritt muss ich zwei Punkte konfigurieren:
+Eine Merge-Strategie:</p>
+
+<pre><code>git config --global pull.rebase false
+</code></pre>
+
+<p>Und einen Editor, den git von der Kommandozeile aus starten kann.
+Wenn ich Visual Studio Code installiert habe, und es sich von der
+Kommandozeile aus mit dem Befehl <code>code</code> starten lässt, dann kann ich es
+so konfigurieren:</p>
+
+<pre><code>git config --global core.editor "code --wait"
+</code></pre>
+
+</div>
+<div class="slide">
+
+<h2 id="nderungen-pullen">Änderungen pullen</h2>
+
+<p>Ich habe also Änderungen (commits) in meinem lokal Repository, und andere Änderungen (commits)
+im remote Repository.  Wenn ich nun den Befehl <code>git pull</code> ausführe werden diese Änderungen
+zusammengefürt. Der englische Fachbegriff ist <code>merge</code>.</p>
+
+<p><img src="basic-merging-2.png"  alt="" ></p>
+
+<p>Dieser Schritt der Zusammenführung wird ein eigener Commit (c6 im Bild) mit einer Commit Message.
+Deswegen öffnet git automatisch einen Editor, in dem ich diese Commit Message (oder genauer: Merge Message)
+bearbeiten kann.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git pull</b>
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Entpacke Objekte: 100% (3/3), 290 Bytes | 96.00 KiB/s, fertig.
+Von gitlab.mediacube.at:bjelline/barcamp
+   99463f7..1c698be  main       -> origin/main
+Merge made by the 'recursive' strategy.
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)</pre></div>
+
+</div>
+    <div class="slide">
+      <h1>Git für Zwei</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/commits//slide.html">Commit</a> | 
+        <a href="/git/git-zwei/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>
