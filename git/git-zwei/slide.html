@@ -79,7 +79,7 @@
         >
          
         | Nächste Präsentation
-        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        <a href="/git/git-tools//slide.html">Tools für Git</a>
         
       </p>
     </div>
@@ -95,7 +95,7 @@ Computern arbeite?  Oder wenn zwei Personen zusammen arbeiten?</p>
 <p>Git ist ein Verteiltes Versionskontrollsystem. “Verteilt” (distributed) heißt hier:
 Auf mehreren Computer kann eine Version des Repository liegen.</p>
 
-<p><img src="/images/git/git-zwei.png" srcset="/images/git/git-zwei-leute@2x.png 2x, /images/git/git-zwei.png 1x, /images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x, /images/git/git-zwei-leute.png 1x, /images/git/git-zwei@2x.png 2x"  alt="" ></p>
+<p><img src="/images/git/git-zwei-computer.png" srcset="/images/git/git-zwei-computer.png 1x, /images/git/git-zwei-computer@2x.png 2x"  alt="" ></p>
 
 <p>Mit dem Befehlen <code>push</code> und <code>pull</code> übertragen wir Information zwischen den
 verschiedenen Computern.</p>
@@ -109,11 +109,15 @@ verschiedenen Computern.</p>
 pushe auf ein remote Repository.  Später will ich die Arbeit auf meinem
 PC fortsetzen.</p>
 
-<p><img src="/images/git/git-zwei-todo.png" srcset="/images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x"  alt="" ></p>
+<p><img src="/images/git/git-zwei-laptop-pc.png" srcset="/images/git/git-zwei-laptop-pc@2x.png 2x, /images/git/git-zwei-laptop-pc.png 1x"  alt="" ></p>
 
 <p>Wichtige Vorbereitung: auf dem zweiten Computer brauche ich wider meinen
 private key als Datei <code>~/.ssh/id_rsa</code>. Und bei ersten Mal hole ich das
 Repository mit <code>git clone</code> auf den Computer.</p>
+
+<p>Später brauche ich dann nur noch den Befehl <code>git pull</code> um die Daten vom
+remote repository ins local repository zu holen und von dort auch gleich in die
+working copy.</p>
 
 </div>
 <div class="slide">
@@ -122,10 +126,14 @@ Repository mit <code>git clone</code> auf den Computer.</p>
 
 <p>Szenario: ich arbeit mit Andreas zusammen an einem Projekt.</p>
 
-<p><img src="/images/git/git-zwei-todo.png" srcset="/images/git/git-zwei-todo@2x.png 2x, /images/git/git-zwei-todo.png 1x"  alt="" ></p>
+<p><img src="/images/git/git-zwei-andreas.png" srcset="/images/git/git-zwei-andreas.png 1x, /images/git/git-zwei-andreas@2x.png 2x"  alt="" ></p>
 
 <p>Wichtige Vorbereitung: Über die Weboberfläche gitlab gebe ich Andreas
 Zugriffsrechte auf das Remote Repository. (Projekt Information → Mitglieder → grüner Button ‘Invite Members’ …). Bei ersten Mal holt  sich Andreas das Repository mit <code>git clone</code> auf seinen Computer.</p>
+
+<p>Später braucht er dann nur noch den Befehl <code>git pull</code> um die Daten vom
+remote repository ins local repository zu holen und von dort auch gleich in die
+working copy.</p>
 
 </div>
 <div class="slide">
@@ -210,7 +218,7 @@ Merge made by the 'recursive' strategy.
         >
          
         | Nächste Präsentation
-        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        <a href="/git/git-tools//slide.html">Tools für Git</a>
         
       </p>
     </div>
