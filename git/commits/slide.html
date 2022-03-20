@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Commit - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Commit</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/basic-git//slide.html">Einfacher Arbeitsablauf in Git</a> | 
+        <a href="/git/commits/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+<p>Mit <code>git add</code> bereiten wir einen Commit vor, mit <code>git commit</code> führen wir ihn durch - aber
+was ist ein Commit? Wofür verwendet man ihn?</p>
+
+</div>
+<div class="slide">
+
+<h2 id="chaos">Chaos</h2>
+
+<p>Am Anfang erlebt man Programmieren oft als chaotischen Vorgang</p>
+
+<p><img src="/images/git/run.svg"  alt="Illustration: chaotisch rumrennen" ></p>
+
+<p>“Hilfe, mein Programm geht nicht, ich ändere mal was in Zeile 2 - nö ist nicht besser geworden -
+dann vielleicht Zeile 4 - hm, jetzt ist die Fehlermeldung anders - ist das gut oder ist
+das schlecht?…” u.s.w.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="stabilitt">Stabilität</h2>
+
+<p>Commits helfen Stabilität in den Prozess zu bringen:</p>
+
+<p><img src="/images/git/chill.svg"  alt="Illustration: gemütlich sitzen" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="von-commit-zu-commit-arbeiten">Von Commit zu Commit arbeiten</h2>
+
+<ul>
+  <li>Ich beginne mit einem (noch unfertigen, aber) funktionierenden Programm</li>
+  <li>ich mache eine kleine Änderung / Erweiterung, es klappt nicht sofort</li>
+  <li>ich behebe alle Fehler</li>
+  <li>und erreichen einen konsistenten, funktionierenden Zustand</li>
+  <li>Jetzt mache ich einen Commit.</li>
+</ul>
+
+<p>Nun kann ich in Ruhe eine Pause machen, meine Arbeit unterbrechen,
+morgen erst weitermachen - ich hinterlasse einen guten Zustand.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="commit-als-abgeschlossener-arbeitsschritt">Commit als abgeschlossener Arbeitsschritt</h2>
+
+<p>In einem Commit bündelt man also zusammen gehörende Arbeitsschritte, zum Beispiel:</p>
+
+<ul>
+  <li>Ein Bild zum Projekt hinzufügen</li>
+  <li>Den <code>&lt;img&gt;</code> Tag in die HTML-Datei einfügen</li>
+</ul>
+
+<p>Oder</p>
+
+<ul>
+  <li>Ein Formular in die Webseite einbauen</li>
+  <li>Im Stylesheet Einträge für das Formular machen</li>
+</ul>
+
+<p>Oder</p>
+
+<ul>
+  <li>Eine Bild-Datei aus dem Repository löschen</li>
+  <li>Den <code>&lt;img&gt;</code> Tag aus der HTML-Datei entfernen</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="commit-message">Commit Message</h2>
+
+<p>Zu jedem Commit speichert man eine Zeile Beschreibung, die Commit-Message.
+Bei einem Projekt das schon länger läuft sieht das dann so aus:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ git log --oneline
+e5166ac added json parser to user stamps
+009cd27 download as json is now possible in user stempelheft section
+f98832a added export to json button in user stempelheft
+81e98f8 refactor: move /talks  to /user/:user_id/talks
+9772224 display link + location on front page
+74258d9 fix migrations for new categories to work with postgres 9
+3af38d1 replace font because umlauts missing. discern web+game in categories
+39eee45 clean up event form and show-view for event
+6a8fe6c add missing partial back in
+645b566 impersonate in staging
+</pre></div>
+
+<p>Die git Messages erzählen die Geschichte des Projekts.  Wenn ich nach zwei
+Wochen Urlaub zurück komme und wissen will was inzwischen im Projekt passiert
+ist, dann lese ich zuerst einmal die git Messages.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="konventionen-fr-commit-messages">Konventionen für Commit Messages</h2>
+
+<p>In professionellen Software Projekten gibt es oft genaue Vorschriften
+wie Commit Messages formuliert sein müssen.</p>
+
+<p>Für den Anfang reichen einige ganz simple Regeln:</p>
+
+<ul>
+  <li>Die Commit Message ist in englischer Sprache</li>
+  <li>Sie beschreibt die Änderung im Code kurz und prägnant</li>
+</ul>
+
+<p>Am Anfang der Commit Message kann man den Typ der Änderung bekannt geben, mit folgenden Abkürzungen:</p>
+
+<ul>
+  <li>’'’fix:’’’ ein Fehler wurde behoben, das Programm funktioniert jetzt wieder</li>
+  <li>’'’feat:’’’ ein neues Feature wurde eingebaut, das Programm kann jetzt mehr als vorher</li>
+  <li>’'’refactor:’’’ der Code wurde verbessert, das Programm tut das selbe wie zuvor</li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>Commit</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/basic-git//slide.html">Einfacher Arbeitsablauf in Git</a> | 
+        <a href="/git/commits/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-status//slide.html">Status von Git abfragen</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>
