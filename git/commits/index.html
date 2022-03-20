@@ -161,9 +161,153 @@ wie Commit Messages formuliert sein müssen.</p>
 <p>Am Anfang der Commit Message kann man den Typ der Änderung bekannt geben, mit folgenden Abkürzungen:</p>
 
 <ul>
-  <li>’'’fix:’’’ ein Fehler wurde behoben, das Programm funktioniert jetzt wieder</li>
-  <li>’'’feat:’’’ ein neues Feature wurde eingebaut, das Programm kann jetzt mehr als vorher</li>
-  <li>’'’refactor:’’’ der Code wurde verbessert, das Programm tut das selbe wie zuvor</li>
+  <li>fix: ein Fehler wurde behoben, das Programm funktioniert jetzt wieder</li>
+  <li>feat: ein neues Feature wurde eingebaut, das Programm kann jetzt mehr als vorher</li>
+  <li>refactor: der Code wurde verbessert, das Programm tut das selbe wie zuvor</li>
+</ul>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="beispiel-einfgen">Beispiel: Einfügen</h2>
+
+<p>Ich bearbeite eine Webseite. Ich füge eine neue Bilddatei ein und
+verändere das Stylesheet:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git status</b>
+Auf Branch main
+Änderungen, die nicht zum Commit vorgemerkt sind:
+  (benutzen Sie "git add &lt;Datei&gt;...", um die Änderungen zum Commit vorzumerken)
+  (benutzen Sie "git restore &lt;Datei&gt;...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+	<span style="color:red">geändert:       index.html</span>
+	<span style="color:red">geändert:       styles.css</span>
+
+Unversionierte Dateien:
+  (benutzen Sie "git add &lt;Datei&gt;...", um die Änderungen zum Commit vorzumerken)
+	<span style="color:red">barcamp_logo.svg</span>
+
+keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git commit -a")
+</pre></div>
+
+<p>Es gibt also eine neue Datei und zwei Veränderungen in meinem Projekt.
+Ich teste die Webeseite nochmal im Browser, um sicher zu stellen,
+dass das Projekt in einem guten Zustand ist und keine Errors enthält.</p>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+
+
+<p>Diese drei Änderungen packe ich zusammen in einen Commit:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git status</b>
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged &lt;Datei&gt;..." zum Entfernen aus der Staging-Area)
+	<span style="color:green">neue Datei:     barcamp_logo.svg</span>
+	<span style="color:green">geändert:       index.html</span>
+	<span style="color:green">geändert:       styles.css</span>
+
+<b>$ git commit -m 'add logo and some styling'</b>
+[main f8a9f82] add logo and some styling
+ 3 files changed, 5 insertions(+)
+ create mode 100644 barcamp_logo.svg</pre></div>
+
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
+<h2 id="beispiel-lschen">Beispiel: Löschen</h2>
+
+<p>Ich will ein Bild aus der Webseite entfernen. Zuerst entferne ich den <code>img</code> Tag
+aus der HTML Datei, danach ist der Status so:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git add index.html</b>
+<b>$ git status</b>
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged <Datei>..." zum Entfernen aus der Staging-Area)
+	<span style="color:green">geändert:       index.html</span>
+</pre></div>
+
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+
+
+<p>Dann lösche ich die Bilddatei selbst mit dem Befehl <code>git rm</code> - damit
+wird die Datei aus der Working copy gelöscht, und der lösch-Befehl gestaged. Danach ist der Status so:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git rm barcamp_logo_2019.svg</b>
+rm 'barcamp_logo_2019.svg'
+
+<b>$ git status</b>
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged &lt;Datei&gt;..." zum Entfernen aus der Staging-Area)
+	<span style="color:green">gelöscht:       barcamp_logo_2019.svg</span>
+	<span style="color:green">geändert:       index.html</span>
+
+</pre></div>
+
+
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+
+
+
+<p>Nun kann ich den Commit abschließen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git commit -m "remove old logo"</b>
+[main 7de4c39] remove old logo
+ 2 files changed, 3 deletions(-)
+ delete mode 100644 barcamp_logo_2019.svg</pre></div>
+
+<p>Ist die Datei damit auch auf dem Remote Repository gelöscht? Nein!</p>
+
+
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+
+
+
+<p>Damit das Remote Repository auch erfährt, dass die Datei gelöscht wurde
+muss ich erst Pushen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git status</b>
+Auf Branch main
+Ihr Branch ist 2 Commits vor 'origin/main'.
+  (benutzen Sie "git push", um lokale Commits zu publizieren)
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+
+<b>$ git push origin main</b>
+Objekte aufzählen: 9, fertig.
+Zähle Objekte: 100% (9/9), fertig.
+Delta-Kompression verwendet bis zu 8 Threads.
+Komprimiere Objekte: 100% (6/6), fertig.
+Schreibe Objekte: 100% (7/7), 636 Bytes | 636.00 KiB/s, fertig.
+Gesamt 7 (Delta 4), Wiederverwendet 0 (Delta 0), Pack wiederverwendet 0
+To gitlab.mediacube.at:bjelline/barcamp.git
+   cd1ee3c..7de4c39  main -> main</pre></div>
+
+
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/book/de/v2/Git-Grundlagen-%C3%84nderungen-nachverfolgen-und-im-Repository-speichern#_removing_files">Dateien Löschen</a> - Kapitel  im <a href="https://git-scm.com/book/de/v2">Pro Git Buch</a></li>
+  <li><a href="https://www.conventionalcommits.org/">Conventional Commits</a></li>
 </ul>
 
  <div class="pagination">

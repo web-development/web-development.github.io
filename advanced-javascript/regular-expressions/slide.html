@@ -189,7 +189,7 @@ ist die Suche erfolgreich:</p>
 /hallo/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D=&amp;list%5B%5D=hallo&amp;list%5B%5D=aber%20hallo!&amp;list%5B%5D=die%20hallobergrenze&amp;list%5B%5D=halo&amp;list%5B%5D=Hallo">RegEx Tester: /hallo/</a></p>
+<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D%3D%26list%5B%5D%3Dhallo%26list%5B%5D%3Daber%2Bhallo%21%26list%5B%5D%3Ddie%2Bhallobergrenze%26list%5B%5D%3Dhalo%26list%5B%5D%3DHallo">RegEx Tester: /hallo/</a></p>
 
 </div>
 <div class="slide">
@@ -204,7 +204,7 @@ entspricht also einem logischen “oder”;</p>
 /en|sk|zh|us|uk/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=esuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
+<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3Desuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
 
 </div>
 <div class="slide">
@@ -221,7 +221,7 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 /^Ganzer String$/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E(en%7Csk%7Cus%7Cuk)$&amp;listname=countries&amp;list%5B%5D=&amp;list%5B%5D=en&amp;list%5B%5D=sk&amp;list%5B%5D=uk&amp;list%5B%5D=ukulele&amp;list%5B%5D=Maske&amp;list%5B%5D=schlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%28en%7Csk%7Cus%7Cuk%29%24&amp;listname=countries&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3DMaske%26list%5B%5D%3Dschlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
 
 <p>Achtung: der Zirkumflex <code>^</code> hat auch noch andere Bedeutungen (wenn er nicht am Anfang des Patterns steht).</p>
 
@@ -240,7 +240,7 @@ Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character cla
 
 <p>Achtung! Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
 
-<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D=&amp;list%5B%5D=halli&amp;list%5B%5D=hallo&amp;list%5B%5D=halla&amp;list%5B%5D=halloi&amp;list%5B%5D=hall&amp;list%5B%5D=hall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
+<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D%3D%26list%5B%5D%3Dhalli%26list%5B%5D%3Dhallo%26list%5B%5D%3Dhalla%26list%5B%5D%3Dhalloi%26list%5B%5D%3Dhall%26list%5B%5D%3Dhall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
 
 </div>
 <div class="slide">
@@ -259,7 +259,7 @@ stehen.</p>
 /[a-f]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D=&amp;list%5B%5D=a&amp;list%5B%5D=b&amp;list%5B%5D=c&amp;list%5B%5D=x&amp;list%5B%5D=y&amp;list%5B%5D=z&amp;list%5B%5D=A&amp;list%5B%5D=.&amp;list%5B%5D=%25">RegEx Tester: /[a-z]/</a></p>
+<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D%3D%26list%5B%5D%3Da%26list%5B%5D%3Db%26list%5B%5D%3Dc%26list%5B%5D%3Dx%26list%5B%5D%3Dy%26list%5B%5D%3Dz%26list%5B%5D%3DA%26list%5B%5D%3D.%26list%5B%5D%3D%25">RegEx Tester: /[a-z]/</a></p>
 
 </div>
 <div class="slide">
@@ -275,7 +275,7 @@ Klammer erwähnt werden:</p>
 /[^aeiou]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=usa">RegEx Tester: /u[^1234]/</a></p>
+<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Dusa">RegEx Tester: /u[^1234]/</a></p>
 
 <p>Achtung: das war die zweite Bedeutung des Zirkumflex <code>^</code>, wenn er am Anfang der Klasse steht.</p>
 
@@ -292,7 +292,7 @@ Klammer erwähnt werden:</p>
 /\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D=&amp;list%5B%5D=u1&amp;list%5B%5D=u2&amp;list%5B%5D=u3&amp;list%5B%5D=u4&amp;list%5B%5D=u5&amp;list%5B%5D=u6&amp;list%5B%5D=u9&amp;list%5B%5D=usa">RegEx Tester: /u\d/</a></p>
+<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Du9%26list%5B%5D%3Dusa">RegEx Tester: /u\d/</a></p>
 
 </div>
 <div class="slide">
@@ -313,7 +313,7 @@ Klammer erwähnt werden:</p>
 /\d+/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a123">RegEx Tester: /\d+/</a></p>
+<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da123">RegEx Tester: /\d+/</a></p>
 
 <p>Wenn man sich den Operator als Schleife vorstellt, kann
 bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
@@ -344,7 +344,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 /^...$/       genau drei Zeichen
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E...$&amp;listname=Studiengang&amp;list%5B%5D=&amp;list%5B%5D=NA&amp;list%5B%5D=MMT&amp;list%5B%5D=mmt&amp;list%5B%5D=%20%20%20&amp;list%5B%5D=___&amp;list%5B%5D=MMT-B">RegEx Tester: /^…$/</a></p>
+<p><a href="/images/match.html?pattern=%5E...%24&amp;listname=Studiengang&amp;list%5B%5D%3D%26list%5B%5D%3DNA%26list%5B%5D%3DMMT%26list%5B%5D%3Dmmt%26list%5B%5D%3D%2B%2B%2B%26list%5B%5D%3D___%26list%5B%5D%3DMMT-B">RegEx Tester: /^…$/</a></p>
 
 </div>
 <div class="slide">
@@ -360,7 +360,7 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 /\./     ein echter punkt
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd$&amp;listname=Kapitel-Nummern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=1.1&amp;list%5B%5D=1.2&amp;list%5B%5D=1.3&amp;list%5B%5D=2&amp;list%5B%5D=2.1&amp;list%5B%5D=2.2&amp;list%5B%5D=35&amp;list%5B%5D=35.1">RegEx Tester: /^\d.\d$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd%24&amp;listname=Kapitel-Nummern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D1.1%26list%5B%5D%3D1.2%26list%5B%5D%3D1.3%26list%5B%5D%3D2%26list%5B%5D%3D2.1%26list%5B%5D%3D2.2%26list%5B%5D%3D35%26list%5B%5D%3D35.1">RegEx Tester: /^\d.\d$/</a></p>
 
 </div>
 <div class="slide">
@@ -389,7 +389,7 @@ kann nullmal, einmal oder mehrmals vorkommen:</p>
 /\d?/  
 </pre></div>
 
-<p><a href="/images/match.html?pattern=%5E%5Cd?$&amp;listname=Ziffern&amp;list%5B%5D=&amp;list%5B%5D=1&amp;list%5B%5D=12&amp;list%5B%5D=123&amp;list%5B%5D=&amp;list%5B%5D=1a&amp;list%5B%5D=a1">RegEx Tester: /^\d?$/</a></p>
+<p><a href="/images/match.html?pattern=%5E%5Cd%3F%24&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da1">RegEx Tester: /^\d?$/</a></p>
 
 </div>
 <div class="slide">
@@ -403,7 +403,7 @@ kann nullmal, einmal oder mehrmals vorkommen:</p>
 /(de|fr)_(DE|CH)/
 </pre></div>
 
-<p><a href="/images/match.html?pattern=(de%7Cfr)_(DE%7CCH)&amp;listname=locale&amp;list%5B%5D=&amp;list%5B%5D=de_DE&amp;list%5B%5D=fr_DE&amp;list%5B%5D=de_CH&amp;list%5B%5D=fr_CH&amp;list%5B%5D=de_AT&amp;list%5B%5D=it_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
+<p><a href="/images/match.html?pattern=%28de%7Cfr%29_%28DE%7CCH%29&amp;listname=locale&amp;list%5B%5D%3D%26list%5B%5D%3Dde_DE%26list%5B%5D%3Dfr_DE%26list%5B%5D%3Dde_CH%26list%5B%5D%3Dfr_CH%26list%5B%5D%3Dde_AT%26list%5B%5D%3Dit_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
 
 <p>Ausserdem stehen die von den Klammern gefundenen Teile des
 Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
@@ -443,7 +443,7 @@ möglichst lange Strings zu erfassen.</p>
 
 <p>Diese Eigenschaft sieht man sehr gut in folgendem Beispiel:</p>
 
-<p><a href="/images/match.html?pattern=_.*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*</em>/</a></p>
+<p><a href="/images/match.html?pattern=_.%2A_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*</em>/</a></p>
 
 </div>
 <div class="slide">
@@ -463,7 +463,7 @@ möglichst lange Strings zu erfassen.</p>
 die kein o sind, und dann ein zweites o. Damit ist der Pattern beendet,
 auch wenn es später im String noch weitere o’s geben würde.</p>
 
-<p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D*_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
+<p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D%2A_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
 
 </div>
 <div class="slide">
@@ -479,7 +479,7 @@ Operatoren: ein Fragezeichen wird nachgestellt</p>
 /o(.+?)o/    
 </pre></div>
 
-<p><a href="/images/match.html?pattern=_.*?_&amp;listname=BlaBla&amp;list%5B%5D=&amp;list%5B%5D=zeugs%20und%20_bla_%20und%20zeugs&amp;list%5B%5D=_bla_%20und%20zeugs&amp;list%5B%5D=zeugs%20und%20_bla_&amp;list%5B%5D=_bla_%20und%20_bla_%20und%20noch%20mehr%20_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
+<p><a href="/images/match.html?pattern=_.%2A%3F_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
 </div>
 <div class="slide">
