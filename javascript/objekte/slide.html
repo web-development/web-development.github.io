@@ -84,7 +84,7 @@
       </p>
     </div>
     <div class="slide">
-<p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss: 
+<p>Javascript ist eine objektorientierte Sprache. Achtung, hier kommt es leicht zu einem Missverständniss:
 Objektorientierung hat nicht zwingend etwas mit Klassen zu tun, sondern eben mit Objekten.  Und während
 z.B. in Java, C++, C#, PHP diese Objekte immer in Klassen organisiert sind, ist das in Javascript nicht
 zwingend der Fall.</p>
@@ -113,7 +113,90 @@ console.log( hs.alter() );  // 20
 </div>
 <div class="slide">
 
-<h2 id="konstruktur-funktion-fr-mehrere-gleiche-objekte">Konstruktur-Funktion für mehrere gleiche Objekte</h2>
+<h2 id="klassen">Klassen</h2>
+
+<p>In Javascript 2015 wurde eine neue Schreibweise für Objekte und Konstruktoren
+eingeführt. Die Funktionsweise der Objekte, Konstruktur-Funktionen und Prototypen
+wurde dadurch nicht verändert.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+
+class Studiengang {
+
+  constructor (name, seit, hs) {
+    this.name = name;
+    this.seit = seit;
+    this.hs = hs;
+  }
+
+
+  toString () {
+    return &quot;Studiengang &quot; + this.name +
+      &quot; (seit &quot; + this.seit +
+      &quot; @ &quot; + this.hs.name + &quot;)&quot;;
+  }
+
+} 
+
+typeof Studiengang;  // function!
+
+mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
+mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
+
+mmtb.toString();  // ruft toString Methode auf
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="vererbung-mit-klassen">Vererbung mit Klassen</h2>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+class Pet {
+  constructor() {
+    this.status = &quot;sleeping&quot;;
+  }
+  log() {
+    console.log(&quot;i am &quot; + this.status +
+      &quot;. &quot; + this.word + &quot;!&quot;);
+  }
+}
+
+class Mammal extends Pet {
+  constructor() {
+    super();
+    this.legs = 4;
+  }
+}
+
+class Dog extends Mammal {
+  constructor (b) {
+    super();
+    this.breed = b;
+    this.word = &quot;wau&quot;;
+  }
+  sit() {
+    this.status = &quot;sitting&quot;;
+  }
+}
+
+
+d = new Dog(&quot;beagle&quot;);
+d.word    // wau
+d.sit()
+
+d.legs    // 4
+d.status  // sleeping
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="ohne-klassen-schreibweise-konstruktur-funktion-fr-mehrere-gleiche-objekte">Ohne Klassen-Schreibweise: Konstruktur-Funktion für mehrere gleiche Objekte</h2>
 
 <p>Sollen mehrere gleichartige Objekte erzeugt werden, dann
 geschieht das in Javascript mit einer Konstruktur Funktion:</p>
@@ -162,89 +245,6 @@ mmtb instanceof Object;
 <p><code>mmtb</code> ist auch eine Instanz von <code>Object</code>! Es muss also eine Art Vererbungs-Hierarchie
 geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <code>Object</code> geführt wird.
 Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
-
-</div>
-<div class="slide">
-
-<h2 id="klassen">Klassen</h2>
-
-<p>In Javascript 2015 wurde eine neue Schreibweise für Objekte und Konstruktoren
-eingeführt. Die Funktionsweise der Objekte, Konstruktur-Funktionen und Prototypen
-wurde dadurch nicht verändert.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-
-class Studiengang {
-
-  constructor (name, seit, hs) {
-    this.name = name;
-    this.seit = seit;
-    this.hs = hs;
-  }
-
-
-  toString () {
-    return &quot;Studiengang &quot; + this.name + 
-      &quot; (seit &quot; + this.seit + 
-      &quot; @ &quot; + this.hs.name + &quot;)&quot;;
-  }
-
-} 
-
-typeof Studiengang;  // function! 
-
-mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
-mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
-
-mmtb.toString();  // ruft toString Methode auf
-</pre></div>
-
-</div>
-<div class="slide">
-
-<h2 id="vererbung">Vererbung</h2>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-class Pet {
-  constructor() {
-    this.status = &quot;sleeping&quot;;
-  }
-  log() {
-    console.log(&quot;i am &quot; + this.status + 
-      &quot;. &quot; + this.word + &quot;!&quot;);
-  }
-}
-
-class Mammal extends Pet {
-  constructor() {
-    super();
-    this.legs = 4;
-  }
-}
-
-class Dog extends Mammal {
-  constructor (b) {
-    super();
-    this.breed = b;
-    this.word = &quot;wau&quot;;
-  }
-  sit() {
-    this.status = &quot;sitting&quot;;
-  }
-}
-
-
-d = new Dog(&quot;beagle&quot;);
-d.word    // wau
-d.sit() 
-
-d.legs    // 4
-d.status  // sleeping
-</pre></div>
 
 </div>
     <div class="slide">

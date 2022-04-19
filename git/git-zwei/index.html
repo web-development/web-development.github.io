@@ -185,7 +185,19 @@ Merge made by the 'recursive' strategy.
 <p>In diesem Beispiel tritt nach dem Pull ein Merge Konflikt auf.
 Welche Dateien sind betroffen?</p>
 
-Error reading includes/git/merge-conflict.html from /home/runner/work/web-development-textbook/web-development-textbook: No such file or directory @ rb_sysopen - includes/git/merge-conflict.html
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git pull</b>
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 8 (delta 3), reused 0 (delta 0), pack-reused 0
+Entpacke Objekte: 100% (8/8), 669 Bytes | 66.00 KiB/s, fertig.
+Von gitlab.mediacube.at:bjelline/Jellinek_Brigitte_devtools
+   a313bb2..2e2e6fc  main       -> origin/main
+automatischer Merge von 2/index.html
+<span style="background-color:yellow">KONFLIKT (Inhalt): Merge-Konflikt in 2/index.html</span>
+Automatischer Merge fehlgeschlagen; beheben Sie die Konflikte und committen Sie dann das Ergebnis.</pre></div>
 
 <p>Antwort: nur eine Datei, <code>2/index.html</code> ist betroffen.</p>
 
@@ -198,7 +210,18 @@ Error reading includes/git/merge-conflict.html from /home/runner/work/web-develo
 
 <p>Es speichert beide Versionen in der Datei und fügt zusätzliche Zeilen ein: mit kleiner-Zeichen, mit gleich-Zeichen und mit größer-Zeichen (die Farben sind nur zur Orientierung hinzugefügt.)</p>
 
-Error reading includes/git/merge-conflict-2.html from /home/runner/work/web-development-textbook/web-development-textbook: No such file or directory @ rb_sysopen - includes/git/merge-conflict-2.html
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+&lt;section id="banner"&gt;
+  &lt;div class="inner"&gt;
+<div style="background-color:#8ae5d6">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
+    &lt;h2&gt;&lt;img class="banner-image" src="barcamp_logo.svg" alt="Logo Barcamp Salzburg - The Next Web"&gt;&lt;/h2&gt;
+    &lt;h3&gt;Web, UX/UI und VR&lt;/h3&gt;
+<div style="background-color:#f88e30">=======</div>
+    &lt;h2&gt;&lt;img class="banner-image" src="barcamp_logo_neu.svg" alt="Logo Barcamp Salzburg - The Next Web"&gt;&lt;/h2&gt;
+    &lt;h3&gt;Web, Game, UX und VR&lt;/h3&gt;
+<div style="background-color: #91d3ff">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2e2e6fc1d781655bf556b9db7b10a1c5054eac15</div>
+    &lt;p&gt;</pre></div>
 
 <p>Achtung! Damit ist die Datei
 erst einmal kaputt: compiliert nicht mehr, wird vom Browser nicht mehr korrekt angzeigt,
@@ -707,11 +730,11 @@ ist kein valides HTML mehr, …</p>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
                       
                     
                   
@@ -1051,11 +1074,11 @@ ist kein valides HTML mehr, …</p>
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                   
