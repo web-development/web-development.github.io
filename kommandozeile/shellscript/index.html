@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - XML und Javascript</title>
+  <title>Lehrbuch Web-Development - Shellscript</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -44,84 +44,232 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        XML und Javascript
+        Shellscript
       </h2>
-      <a href="/xml/xml-und-javascript/slide.html">als Präsentation ▻</a>
+      <a href="/kommandozeile/shellscript/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Wir <a href="/javascript-dom/dom/">haben schon glernt</a> wie man mit
-Javascript das Document Object Model (DOM) eines HTML-Dokuments
-manipuliert.  Auch ein XML Dokument hat ein DOM, man kann
-es mit den gleichen Methoden manipulieren.</p>
+<p>Ein Shellscript fasst im einfachsten Fall ein paar
+Befehle zusammen, die man öfter mal ausführen muss.</p>
+
+<p>Hier die wichtigsten Tipps für Shellscripts:</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="manipulieren-des-dom">Manipulieren des DOM</h2>
+<h2 id="magische-erste-zeile-und-ausgabe">Magische erste Zeile und Ausgabe</h2>
 
-<div class="example">
-<h4 class="caption">Javascript Code <small>Element einfügen in HML</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var container = document.getElementById(&#39;container&#39;);
-div = document.createElement(&quot;div&quot;);
-container.appendChild( div );
-</pre></div>
+<p>Ein Shellscript beginnt mit der magischen ersten Zeile.
+Achtung: davor kann nichts anderes sein, nicht einmal Kommentar.</p>
 
-<p>In folgendem Beispiel ist XML (hier: SVG) direkt in HTML eingebettet.
-Der SVG-Tag kann genau so gefunden werden wie ein HTML tag.
-Der einzige Unterschied ergibt sich beim Erzeugen eines 
-neuen Elements: hier muss die Methode <code>createElementNS</code> verwendet werden.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Element einfügen in XML (SVG)</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var svg = document.getElementsByTagName(&#39;svg&#39;)[0];
-circle = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;circle&quot;);
-circle.setAttribute(&quot;cx&quot;, 10);
-circle.setAttribute(&quot;cy&quot;, 10);
-circle.setAttribute(&quot;r&quot;, 10);
-svg.appendChild( circle );  
-</pre></div>
-
-<p><a href="/images/js-und-xml-dom.html">demo</a></p>
+<p>```
+#!/bin/bash</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h2 id="laden-von-xml">Laden von XML</h2>
+<h1 id="hier-kann-ein-kommentar-sein-das-ist-ok">hier kann ein Kommentar sein, das ist ok</h1>
+<p>echo “Hallo Welt”
+```</p>
 
-<p>Zum Laden von XML-Dateien gibt es ein eigenes Objekt, dessen Lade-Methode
-synchron oder asynchron verwendet werden kann.  Wir verwenden
-hier die synchrone Variante, und beschäftigen uns im
-Kapitel <a href="/applied-javascript/ajax/">AJAX</a> mit der asynchronenen Variante.</p>
+<p>Die Ausgabe erfolgt mit <code>echo</code>.</p>
 
-<p>Die Methode <code>open</code> legt fest: die HTTP Methoden, die URL, und ob
-asynchron geladen werden soll.  Mit der Methode <code>send</code> wird der
-Request abgeschickt, hier könnte man noch den HTTP-Request Body als
-String übergeben.</p>
+<p>Mit den passenden Zugriffsrechte</p>
 
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-xhttp = new XMLHttpRequest();
-xhttp.open(&quot;GET&quot;, &quot;stark.xml&quot;, false);
-xhttp.send(null);
+<p><code>
+chmod u+rx meinscript
+</code></p>
 
-xmlDoc = xhttp.responseXML;
-var first = xmlDoc.getElementsByTagName(&quot;person&quot;)[0];
-document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
-</pre></div>
+<p>kann man das Skript starten</p>
 
-<p><a href="/images/load-xml.html">demo</a></p>
+<p><code>
+./meinscript
+</code></p>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="variablen-setzen-und-verwenden">Variablen setzen und verwenden</h2>
+
+<p>Wenn man eine Variable setzt hat sie kein Dollar-Zeichen,
+wenn man sie verwendet hat sie ein Dollar-Zeichen</p>
+
+<p>```
+NAME=”Brigitte”</p>
+
+<p>echo “Hallo $NAME”
+```</p>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="kontrollstrukturen-verzweigung">Kontrollstrukturen: Verzweigung</h2>
+
+<p>sieht ähnlich aber anders aus als in c:
+die Bedingung ist in eckigen klammern und
+verwendet operatoren die immer mit Minus beginnen.</p>
+
+<p>Hier <code>-lt</code> für “less than”:</p>
+
+<p><code>
+if [ $ALTER -lt 18 ]; then
+    echo "Du kommst hier nicht rein"
+else
+    echo "Willkommen im Club"
+fi
+</code></p>
+
+<p>Weitere Operatoren:</p>
+
+<pre><code>- `-eq` für "equal"
+- `-ne` für "not equal"
+- `-gt` für "greater than"
+- `-ge` für "greater or equal"
+- `-lt` für "less than"
+- `-le` für "less or equal"
+</code></pre>
+
+<p>Und weitere Tests:</p>
+
+<pre><code>- `-f name` für "existiert eine Datei diesen Namens?"
+- `-d name` für "existiert ein Ordner diesen Namens?"
+</code></pre>
+
+<p>Boolsche Operatoren</p>
+
+<pre><code>- `!` für Verneinung
+- `&amp;&amp;` für und
+- `||` für oder
+</code></pre>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="kontrollstrukturen-schleife">Kontrollstrukturen: Schleife</h2>
+
+<p><code>
+for SIZE in 350 740 1400 2800
+do
+  echo "Ich soll davon eine Bild mit Breite $SIZE erzeugen"
+done
+</code></p>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h2 id="kommandozeile">Kommandozeile:</h2>
+
+<p>Wird das Programm mit Argumenten aufgerufen,
+so landen diese als Strings in den Variablen $1 $2 usw.</p>
+
+<p><code>
+./meinscript arg1 -f
+</code></p>
+
+<p>hier wäre also $1 gleich “arg1” und $2 gleich “-f”</p>
+
+<p>Die Anzahl der Argument landet in der Variable <code>$#</code></p>
+
+<p>Eine Schleife über die Argumente:</p>
+
+<p><code>
+for ARG in $@
+do
+  echo "Noch ein Argument: $ARG"
+done
+</code></p>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="in-eine-datei-schreiben">In eine Datei schreiben</h2>
+
+<p>Man kann die Ausgabe in eine Datei umleiten mit <code>&gt;</code>, das Überschreibt
+die Datei. Oder man kann mit <code>&gt;&gt;</code> an die Datei anfügen:</p>
+
+<p><code>
+echo "Hallo Welt" &gt; README.md
+echo "nochwas,...." &gt;&gt; README.md
+</code></p>
+
+
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+<h2 id="tricks-mit-variablen">Tricks mit Variablen</h2>
+
+<p>Die <code>bash</code> bietet viele Möglichkeiten beim Aufruf einer
+Variable gleich noch eine Berechnung zu machen:</p>
+
+<p><code>
+SPRUCH="Mit Linux wäre das nicht passiert"
+echo $SPRUCH
+echo ${SPRUCH/Linux/Mac}
+</code></p>
+
+<p>Die Ausgabe lautet</p>
+
+<p><code>
+Mit Linux wäre das nicht passiert
+Mit Mac wäre das nicht passiert
+</code></p>
+
+<p>Mehr Tricks im <a href="https://tldp.org/LDP/abs/html/string-manipulation.html">Advanced Bash Scripting Guide</a></p>
+
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
+<h2 id="meine-shellscripts-im-ordner-bin">Meine Shellscripts im Ordner <code>~/bin</code></h2>
+
+<p>Skripte die man oft braucht kann man in einem
+eigenen Ordner ablegen. Auf Linux und Mac wäre der typische Ort
+dafür der Order <code>bin</code> im eigenen Home-Verzeichnis.</p>
+
+<p>Diesen Ordner gibt man in die PATH Variable, z.B.
+indem man in der Datei <code>~/.bash_profile</code> einen
+entsprechenen Eintrag macht:</p>
+
+<p><code>
+export PATH="$PATH:/home/bjelline/bin"
+</code></p>
+
+<p>hier wird die PATH Variable neu gesetzt, und zwar auf den schon
+vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
+
+<p>Das <code>export</code> vor der Variable ist wichig, damit die Variable auch
+nach Ende des Skripts <code>.bash_profile</code> weiter verfügbar ist.</p>
+
+<p><code>.bash_profile</code> wird jedesmal ausgefürht wenn ich eine neue Shell starte.</p>
+
+<p>Nun kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen, z.B:
+wenn in meinem bin ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
+liegen kann ich sie überall verwenden:</p>
+
+<p><code>
+cd ~/dev/studium/Jellinek_Brigitte_algodat
+create_algodat_project 05 01
+cd ~/dev/studium/Jellinke_Brigitte_wp2/pizza
+mksizes pizza.jpg
+</code></p>
+
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="mehr-shellskripting-lernen">Mehr Shellskripting lernen</h2>
+
+<ul>
+  <li><a href="https://swcarpentry.github.io/shell-novice/">The Unix Shell</a> ein Kurs von Software Carpentry (englisch)</li>
+</ul>
+
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/xml/xml-und-php/">XML und PHP</a></li>
+      <li><a href="/kommandozeile/kommandozeile/">Kommandozeile</a></li>
       
       
       
-      <li><a href="/xml/xpath/">XPath</a></li>
+      <li><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
       
     
   </ul>
@@ -367,7 +515,7 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
               </ul>
             </li>
           
-          <li class=" "><a href="/kommandozeile/">Kommandozeile</a>
+          <li class="active "><a href="/kommandozeile/">Kommandozeile</a>
               <ul class="sub">
                 
                   
@@ -379,7 +527,7 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
                       
                     
                       
-                      <li ><a href="/kommandozeile/shellscript/">Shellscript</a></li>
+                      <li class="active"><a href="/kommandozeile/shellscript/">Shellscript</a></li>
                       
                     
                       
@@ -811,7 +959,7 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
               </ul>
             </li>
           
-          <li class="active separator"><a href="/xml/">Xml</a>
+          <li class=" separator"><a href="/xml/">Xml</a>
               <ul class="sub">
                 
                   
@@ -835,7 +983,7 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
                       
                     
                       
-                      <li class="active"><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
+                      <li ><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
                       
                     
                       
@@ -1076,7 +1224,7 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/xml/xml-und-javascript.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/kommandozeile/shellscript.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

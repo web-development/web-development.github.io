@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shellscript - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Shellscript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/kommandozeile/kommandozeile//slide.html">Kommandozeile</a> | 
+        <a href="/kommandozeile/shellscript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/kommandozeile/wo-bin-ich//slide.html">Wo bin ich</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+<p>Ein Shellscript fasst im einfachsten Fall ein paar
+Befehle zusammen, die man öfter mal ausführen muss.</p>
+
+<p>Hier die wichtigsten Tipps für Shellscripts:</p>
+
+</div>
+<div class="slide">
+
+<h2 id="magische-erste-zeile-und-ausgabe">Magische erste Zeile und Ausgabe</h2>
+
+<p>Ein Shellscript beginnt mit der magischen ersten Zeile.
+Achtung: davor kann nichts anderes sein, nicht einmal Kommentar.</p>
+
+<p>```
+#!/bin/bash</p>
+
+</div>
+<div class="slide">
+
+<h1 id="hier-kann-ein-kommentar-sein-das-ist-ok">hier kann ein Kommentar sein, das ist ok</h1>
+<p>echo “Hallo Welt”
+```</p>
+
+<p>Die Ausgabe erfolgt mit <code>echo</code>.</p>
+
+<p>Mit den passenden Zugriffsrechte</p>
+
+<p><code>
+chmod u+rx meinscript
+</code></p>
+
+<p>kann man das Skript starten</p>
+
+<p><code>
+./meinscript
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="variablen-setzen-und-verwenden">Variablen setzen und verwenden</h2>
+
+<p>Wenn man eine Variable setzt hat sie kein Dollar-Zeichen,
+wenn man sie verwendet hat sie ein Dollar-Zeichen</p>
+
+<p>```
+NAME=”Brigitte”</p>
+
+<p>echo “Hallo $NAME”
+```</p>
+
+</div>
+<div class="slide">
+
+<h2 id="kontrollstrukturen-verzweigung">Kontrollstrukturen: Verzweigung</h2>
+
+<p>sieht ähnlich aber anders aus als in c:
+die Bedingung ist in eckigen klammern und
+verwendet operatoren die immer mit Minus beginnen.</p>
+
+<p>Hier <code>-lt</code> für “less than”:</p>
+
+<p><code>
+if [ $ALTER -lt 18 ]; then
+    echo "Du kommst hier nicht rein"
+else
+    echo "Willkommen im Club"
+fi
+</code></p>
+
+<p>Weitere Operatoren:</p>
+
+<pre><code>- `-eq` für "equal"
+- `-ne` für "not equal"
+- `-gt` für "greater than"
+- `-ge` für "greater or equal"
+- `-lt` für "less than"
+- `-le` für "less or equal"
+</code></pre>
+
+<p>Und weitere Tests:</p>
+
+<pre><code>- `-f name` für "existiert eine Datei diesen Namens?"
+- `-d name` für "existiert ein Ordner diesen Namens?"
+</code></pre>
+
+<p>Boolsche Operatoren</p>
+
+<pre><code>- `!` für Verneinung
+- `&amp;&amp;` für und
+- `||` für oder
+</code></pre>
+
+</div>
+<div class="slide">
+
+<h2 id="kontrollstrukturen-schleife">Kontrollstrukturen: Schleife</h2>
+
+<p><code>
+for SIZE in 350 740 1400 2800
+do
+  echo "Ich soll davon eine Bild mit Breite $SIZE erzeugen"
+done
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="kommandozeile">Kommandozeile:</h2>
+
+<p>Wird das Programm mit Argumenten aufgerufen,
+so landen diese als Strings in den Variablen $1 $2 usw.</p>
+
+<p><code>
+./meinscript arg1 -f
+</code></p>
+
+<p>hier wäre also $1 gleich “arg1” und $2 gleich “-f”</p>
+
+<p>Die Anzahl der Argument landet in der Variable <code>$#</code></p>
+
+<p>Eine Schleife über die Argumente:</p>
+
+<p><code>
+for ARG in $@
+do
+  echo "Noch ein Argument: $ARG"
+done
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="in-eine-datei-schreiben">In eine Datei schreiben</h2>
+
+<p>Man kann die Ausgabe in eine Datei umleiten mit <code>&gt;</code>, das Überschreibt
+die Datei. Oder man kann mit <code>&gt;&gt;</code> an die Datei anfügen:</p>
+
+<p><code>
+echo "Hallo Welt" &gt; README.md
+echo "nochwas,...." &gt;&gt; README.md
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="tricks-mit-variablen">Tricks mit Variablen</h2>
+
+<p>Die <code>bash</code> bietet viele Möglichkeiten beim Aufruf einer
+Variable gleich noch eine Berechnung zu machen:</p>
+
+<p><code>
+SPRUCH="Mit Linux wäre das nicht passiert"
+echo $SPRUCH
+echo ${SPRUCH/Linux/Mac}
+</code></p>
+
+<p>Die Ausgabe lautet</p>
+
+<p><code>
+Mit Linux wäre das nicht passiert
+Mit Mac wäre das nicht passiert
+</code></p>
+
+<p>Mehr Tricks im <a href="https://tldp.org/LDP/abs/html/string-manipulation.html">Advanced Bash Scripting Guide</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="meine-shellscripts-im-ordner-bin">Meine Shellscripts im Ordner <code>~/bin</code></h2>
+
+<p>Skripte die man oft braucht kann man in einem
+eigenen Ordner ablegen. Auf Linux und Mac wäre der typische Ort
+dafür der Order <code>bin</code> im eigenen Home-Verzeichnis.</p>
+
+<p>Diesen Ordner gibt man in die PATH Variable, z.B.
+indem man in der Datei <code>~/.bash_profile</code> einen
+entsprechenen Eintrag macht:</p>
+
+<p><code>
+export PATH="$PATH:/home/bjelline/bin"
+</code></p>
+
+<p>hier wird die PATH Variable neu gesetzt, und zwar auf den schon
+vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
+
+<p>Das <code>export</code> vor der Variable ist wichig, damit die Variable auch
+nach Ende des Skripts <code>.bash_profile</code> weiter verfügbar ist.</p>
+
+<p><code>.bash_profile</code> wird jedesmal ausgefürht wenn ich eine neue Shell starte.</p>
+
+<p>Nun kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen, z.B:
+wenn in meinem bin ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
+liegen kann ich sie überall verwenden:</p>
+
+<p><code>
+cd ~/dev/studium/Jellinek_Brigitte_algodat
+create_algodat_project 05 01
+cd ~/dev/studium/Jellinke_Brigitte_wp2/pizza
+mksizes pizza.jpg
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="mehr-shellskripting-lernen">Mehr Shellskripting lernen</h2>
+
+<ul>
+  <li><a href="https://swcarpentry.github.io/shell-novice/">The Unix Shell</a> ein Kurs von Software Carpentry (englisch)</li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>Shellscript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/kommandozeile/kommandozeile//slide.html">Kommandozeile</a> | 
+        <a href="/kommandozeile/shellscript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/kommandozeile/wo-bin-ich//slide.html">Wo bin ich</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>
