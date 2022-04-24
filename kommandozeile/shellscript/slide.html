@@ -97,29 +97,29 @@ Befehle zusammen, die man öfter mal ausführen muss.</p>
 <p>Ein Shellscript beginnt mit der magischen ersten Zeile.
 Achtung: davor kann nichts anderes sein, nicht einmal Kommentar.</p>
 
-<p>```
-#!/bin/bash</p>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+#!/bin/bash
 
-</div>
-<div class="slide">
-
-<h1 id="hier-kann-ein-kommentar-sein-das-ist-ok">hier kann ein Kommentar sein, das ist ok</h1>
-<p>echo “Hallo Welt”
-```</p>
+# hier kann ein Kommentar sein, das ist ok
+echo &quot;Hallo Welt&quot;
+</pre></div>
 
 <p>Die Ausgabe erfolgt mit <code>echo</code>.</p>
 
 <p>Mit den passenden Zugriffsrechte</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 chmod u+rx meinscript
-</code></p>
+</pre></div>
 
 <p>kann man das Skript starten</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 ./meinscript
-</code></p>
+</pre></div>
 
 </div>
 <div class="slide">
@@ -129,11 +129,11 @@ chmod u+rx meinscript
 <p>Wenn man eine Variable setzt hat sie kein Dollar-Zeichen,
 wenn man sie verwendet hat sie ein Dollar-Zeichen</p>
 
-<p>```
+<p>&lt;/shell&gt;
 NAME=”Brigitte”</p>
 
 <p>echo “Hallo $NAME”
-```</p>
+&lt;/shell&gt;</p>
 
 </div>
 <div class="slide">
@@ -146,13 +146,14 @@ verwendet operatoren die immer mit Minus beginnen.</p>
 
 <p>Hier <code>-lt</code> für “less than”:</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 if [ $ALTER -lt 18 ]; then
-    echo "Du kommst hier nicht rein"
+    echo &quot;Du kommst hier nicht rein&quot;
 else
-    echo "Willkommen im Club"
+    echo &quot;Willkommen im Club&quot;
 fi
-</code></p>
+</pre></div>
 
 <p>Weitere Operatoren:</p>
 
@@ -182,12 +183,13 @@ fi
 
 <h2 id="kontrollstrukturen-schleife">Kontrollstrukturen: Schleife</h2>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 for SIZE in 350 740 1400 2800
 do
-  echo "Ich soll davon eine Bild mit Breite $SIZE erzeugen"
+  echo &quot;Ich soll davon eine Bild mit Breite $SIZE erzeugen&quot;
 done
-</code></p>
+</pre></div>
 
 </div>
 <div class="slide">
@@ -197,9 +199,10 @@ done
 <p>Wird das Programm mit Argumenten aufgerufen,
 so landen diese als Strings in den Variablen $1 $2 usw.</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 ./meinscript arg1 -f
-</code></p>
+</pre></div>
 
 <p>hier wäre also $1 gleich “arg1” und $2 gleich “-f”</p>
 
@@ -207,12 +210,13 @@ so landen diese als Strings in den Variablen $1 $2 usw.</p>
 
 <p>Eine Schleife über die Argumente:</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 for ARG in $@
 do
-  echo "Noch ein Argument: $ARG"
+  echo &quot;Noch ein Argument: $ARG&quot;
 done
-</code></p>
+</pre></div>
 
 </div>
 <div class="slide">
@@ -222,10 +226,11 @@ done
 <p>Man kann die Ausgabe in eine Datei umleiten mit <code>&gt;</code>, das Überschreibt
 die Datei. Oder man kann mit <code>&gt;&gt;</code> an die Datei anfügen:</p>
 
-<p><code>
-echo "Hallo Welt" &gt; README.md
-echo "nochwas,...." &gt;&gt; README.md
-</code></p>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+echo &quot;Hallo Welt&quot; &gt; README.md
+echo &quot;nochwas,....&quot; &gt;&gt; README.md
+</pre></div>
 
 </div>
 <div class="slide">
@@ -235,18 +240,20 @@ echo "nochwas,...." &gt;&gt; README.md
 <p>Die <code>bash</code> bietet viele Möglichkeiten beim Aufruf einer
 Variable gleich noch eine Berechnung zu machen:</p>
 
-<p><code>
-SPRUCH="Mit Linux wäre das nicht passiert"
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+SPRUCH=&quot;Mit Linux wäre das nicht passiert&quot;
 echo $SPRUCH
 echo ${SPRUCH/Linux/Mac}
-</code></p>
+</pre></div>
 
 <p>Die Ausgabe lautet</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 Mit Linux wäre das nicht passiert
 Mit Mac wäre das nicht passiert
-</code></p>
+</pre></div>
 
 <p>Mehr Tricks im <a href="https://tldp.org/LDP/abs/html/string-manipulation.html">Advanced Bash Scripting Guide</a></p>
 
@@ -263,9 +270,10 @@ dafür der Order <code>bin</code> im eigenen Home-Verzeichnis.</p>
 indem man in der Datei <code>~/.bash_profile</code> einen
 entsprechenen Eintrag macht:</p>
 
-<p><code>
-export PATH="$PATH:/home/bjelline/bin"
-</code></p>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+export PATH=&quot;$PATH:/home/bjelline/bin&quot;
+</pre></div>
 
 <p>hier wird die PATH Variable neu gesetzt, und zwar auf den schon
 vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
@@ -279,12 +287,13 @@ nach Ende des Skripts <code>.bash_profile</code> weiter verfügbar ist.</p>
 wenn in meinem bin ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
 liegen kann ich sie überall verwenden:</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
 cd ~/dev/studium/Jellinek_Brigitte_algodat
 create_algodat_project 05 01
 cd ~/dev/studium/Jellinke_Brigitte_wp2/pizza
 mksizes pizza.jpg
-</code></p>
+</pre></div>
 
 </div>
 <div class="slide">
