@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>setTimeout - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>setTimeout</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/ajax//slide.html">AJAX</a> | 
+        <a href="/applied-js-and-css/set_timeout/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+<p>Bei der Vorstellung von asynchronen Funktionen haben wir gelernt:
+ein laufendes Javascript Programm wird nie unterbrochen.
+Erst wenn das aktuelle Programm zu Ende ist
+stellt sich die Frage ob eine Callback Funktion aufgerufen wird.</p>
+
+<p>Diese Prinzip kann man am Beispiel von <code>setTimeout</code> besonders gut sehen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="settimeout-mit-drei-sekunden">setTimeout mit drei Sekunden</h2>
+
+<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden)
+ausführen lassen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;3 Sekunden später&quot;, Date.now());
+}
+
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 3000);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="settimeout-mit-null-sekunden">setTimeout mit null Sekunden</h2>
+
+<p>Was passiert, wenn man den Timeout auf 0 setzt?</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;0 Sekunden später?&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
+
+<p>Zwei Ergebnisse wären möglich:</p>
+
+<p><code>
+Variante A: passiert sofort
+tick
+0 Sekunden später?
+tock
+tick
+tock
+__|__
+Variante B: Programm läuft durch bis zum Ende
+tick
+tock
+tick
+tock
+0 Sekunden später?
+</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="auflsung-settimeout-mit-null-sekunden">Auflösung setTimeout mit null Sekunden</h2>
+
+<p>Die Antwort ist: das Javascript-Programm wird nicht unterbrochen,
+sonder läuft bis zum Ende durch.  Hier nochmal mit mehr Ausgaben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+
+// Output in der Konsole:
+// tick 1588059630667
+// tock 1588059630668
+// tick 1588059630668
+// tock 1588059630668
+// nicht 0 Sekunden später 1588059630669
+</pre></div>
+
+</div>
+    <div class="slide">
+      <h1>setTimeout</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/ajax//slide.html">AJAX</a> | 
+        <a href="/applied-js-and-css/set_timeout/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>

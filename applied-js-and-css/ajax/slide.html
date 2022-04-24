@@ -79,7 +79,7 @@
         >
          
         | Nächste Präsentation
-        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        <a href="/applied-js-and-css/set_timeout//slide.html">setTimeout</a>
         
       </p>
     </div>
@@ -124,28 +124,33 @@ Javascript-Programm fügt die Daten in die Seite ein.</p>
 
 <h3 id="im-javascript-programm-synchorn">Im Javascript Programm: synchorn</h3>
 
-<p>Nehmen wir an Befehl1, Befehl2, Befehl3, Befehl4,
-und synchron_laden sind alles Funktionen, die wir in einem anderne Teile des
+<p>Nehmen wir an <code>rechnen1</code>, <code>rechnen2</code>, <code>rechnen3</code>, <code>rechnen4</code>,
+und <code>synchronLaden</code> sind Funktionen, die wir in einem anderne Teile des
 Programmes definiert haben.</p>
 
-<p>Bei jedem Aufruf passiert dasselbe: erst wenn Befehl1 fertig ist
-geht’s weiter mit Befehl2, erste wenn Befehl2 fertig ist geht’s weiter
-mit synchron_laden, erst wenn synchron_laden fertig ist geht’s weiter
-mit Befehl3.</p>
+<p>Bei jedem Aufruf einer der Funktionen passiert dasselbe:</p>
+
+<ul>
+  <li>erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>,</li>
+  <li>erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>synchronLaden</code>,</li>
+  <li>erst wenn <code>synchronLaden</code> fertig ist geht’s weiter mit <code>rechnen3</code>,</li>
+  <li>erst wenn <code>rechnen3</code> fertig ist geht’s weiter mit <code>rechnen4</code>.</li>
+</ul>
 
 <p>Dieser Ablauf ist “synchron”.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>synchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-Befehl1();
-Befehl2();
-Antwort = synchron_laden(url);
-Befehl3();
-Befehl4();
+rechnen1();
+rechnen2();
+data = synchronLaden(url);
+console.log(&quot;data arrived&quot;, data);
+rechnen3();
+rechnen4();
 </pre></div>
 
-<p>Wenn nun die Funktion <code>synchron_laden</code> wirklich Daten von der url
+<p>Wenn nun die Funktion <code>synchronLaden</code> wirklich Daten von der url
 mittels HTTP lädt, dann kann das sehr lange dauern - vielleicht
 eine ganze Sekunde?</p>
 
@@ -157,35 +162,35 @@ eine ganze Sekunde?</p>
 <p>Es gibt nun in Javascript die Möglichkeit Funktionen
 zu schreiben die sich anders verhalten, nämlich asynchron.</p>
 
-<p>Hier ein Beispiel mit mehreren synchronen Funktionen  Befehl1, Befehl2, Befehl3, Befehl4,
-und einer asynchronen Funktion genannt <code>asynchron_laden</code>:</p>
+<p>Hier ein Beispiel mit mehreren synchronen Funktionen  rechnen1, rechnen2, rechnen3, rechnen4,
+und einer asynchronen Funktion genannt <code>asynchronLaden</code>:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-function handle_data(data) {
+function handleData(data) {
   console.log(&quot;data arrived&quot;, data);
 }
 
-Befehl1();
-Befehl2();
-asynchron_laden(url, handle_data);
-Befehl3();
-Befehl4();
+rechnen1();
+rechnen2();
+asynchronLaden(url, handleData);
+rechnen3();
+rechnen4();
 </pre></div>
 
-<p>Erst wenn Befehl1 fertig ist geht’s weiter mit Befehl2, erste wenn Befehl2 fertig ist geht’s weiter mit <code>asynchron_laden</code> - aber dann passiert etwas besonders:</p>
+<p>Erst wenn rechnen1 fertig ist geht’s weiter mit rechnen2, erste wenn rechnen2 fertig ist geht’s weiter mit <code>asynchronLaden</code> - aber dann passiert etwas besonders:</p>
 
-<p><code>asynchron_laden</code> will etwas sehr zeitaufwändiges tun - Daten von der URL mittels HTTP laden.
-Trotzdem scheint sie ganz schnell fertig zu sein, das Programm  geht gleich zu <code>Befehl3</code> als
+<p><code>asynchronLaden</code> will etwas sehr zeitaufwändiges tun - Daten von der URL mittels HTTP laden.
+Trotzdem scheint sie ganz schnell fertig zu sein, das Programm  geht gleich zu <code>rechnen3</code> als
 nächstes weiter, egal ob und wie schnell der Server auf den HTTP-Request antwortet. Wenn
-<code>Befehl3</code> feritg ist wird <code>Befehl4</code> ausgeführt, und dann endet das JavaScript programm.</p>
+<code>rechnen3</code> feritg ist wird <code>rechnen4</code> ausgeführt, und dann endet das JavaScript programm.</p>
 
-<p>Aber eine Sekunde später passiert was neues:  Die Daten, die in <code>asynchron_laden</code>
+<p>Aber eine Sekunde später passiert was neues:  Die Daten, die in <code>asynchronLaden</code>
 angefragt wurden sind eingelangt - das ist irgendwie im Hintergrund passiert - und sind
 nun bereit zur Weiterverarbeitung.</p>
 
-<p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handle_data</code>
+<p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handleData</code>
 aufgerufen und die Daten zu verarbeiten.</p>
 
 </div>
@@ -194,93 +199,25 @@ aufgerufen und die Daten zu verarbeiten.</p>
 <h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
 
 <p>Achtung: ein laufendes Javascript Programm wird nie unterbrochen.
-Im letzten Code-Beispiel wird es nie passieren, dass zwischen Befehl3
-und Befehl4 etwas anderes (z.B. handle_data) passieren!</p>
+Im letzten Code-Beispiel wird es nie passieren, dass zwischen <code>rechnen3</code>
+und <code>rechnen4</code> etwas anderes (z.B. <code>handleData</code>) passieren!</p>
 
 <p>Erst wenn dieses kleine Programm fertig durchgelaufen ist
-stellt sich die Frage ob handle_data schon dran ist.</p>
+stellt sich die Frage ob das laden der Daten über HTTP fertig,
+und damit <code>handleData</code> dran ist.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-function handle_data(data) {
+function handleData(data) {
   console.log(&quot;data arrived&quot;, data);
 }
 
-Befehl1();
-Befehl2();
-asynchron_laden(url, handle_data);
-Befehl3();
-Befehl4();
-</pre></div>
-
-</div>
-<div class="slide">
-
-<h3 id="asynchrones-beispiel-settimeout">Asynchrones Beispiel: setTimeout</h3>
-
-<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden)
-ausführen lassen:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
-  console.log(&quot;3 Sekunden später&quot;, Date.now());
-}
-
-console.log(&quot;tick&quot;, Date.now());
-setTimeout(later, 3000);
-console.log(&quot;tock&quot;, Date.now());
-console.log(&quot;tick&quot;, Date.now());
-console.log(&quot;tock&quot;, Date.now());
-</pre></div>
-
-</div>
-<div class="slide">
-
-
-
-<p>Was passiert nun, wenn man den Timeout auf 0 setzt?</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
-  console.log(&quot;0 Sekunden später?&quot;, Date.now());
-}
-console.log(&quot;tick&quot;, Date.now());
-setTimeout(later, 0);
-console.log(&quot;tock&quot;, Date.now());
-console.log(&quot;tick&quot;, Date.now());
-console.log(&quot;tock&quot;, Date.now());
-</pre></div>
-
-</div>
-<div class="slide">
-
-
-
-<p>Antwort: das Javascript-Programm wird nicht unterbrochen!</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
-  console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
-}
-console.log(&quot;tick&quot;, Date.now());
-setTimeout(later, 0);
-console.log(&quot;tock&quot;, Date.now());
-console.log(&quot;tick&quot;, Date.now());
-console.log(&quot;tock&quot;, Date.now());
-
-// Output in der Konsole:
-// tick 1588059630667
-// tock 1588059630668
-// tick 1588059630668
-// tock 1588059630668
-// nicht 0 Sekunden später 1588059630669
+rechnen1();
+rechnen2();
+asynchronLaden(url, handleData);
+rechnen3();
+rechnen4();
 </pre></div>
 
 </div>
@@ -356,7 +293,7 @@ eingebunden.</p>
     let ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener(&quot;load&quot;, handleCounterData);
     ajaxRequest.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
-    ajaxRequest.send();
+    ajaxRequest.send();  // asynchron!
     console.log(&quot;abgesendet, sofort weiter&quot;);
   &lt;/script&gt;
 &lt;/body&gt;
@@ -365,7 +302,7 @@ eingebunden.</p>
 
 <p>Das <code>XMLHttpRequest</code> Objekt liefert verschiedene Events, hier wird nur für das <code>load</code> Event
 eine Funktion als Listener angebracht. Mit der <code>open</code> Methode wird der HTTP-Request
-konfiguriert, aber erst mit <code>send</code> wirklich abgeschickt. Da er Request asynchron erfolgt
+konfiguriert, aber erst mit <code>send</code> wirklich abgeschickt. Da der Request asynchron erfolgt
 geht der Javascript-Interpreter sofort von <code>send</code> weiter zu <code>console.log</code> in der nächsten
 Zeile.</p>
 
@@ -379,7 +316,7 @@ in der Variable <code>this</code> und kann aus <code>this.responseText</code> di
 <h2 id="fetch-und-promises">Fetch und Promises</h2>
 
 <p>In modernem Javascript, in allen Browsern <a href="https://caniuse.com/#search=fetch">ausser Internet Explorer</a>, gibt es
-eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a>.</p>
+eine neue Schreibweise für AJAX-Request mit <code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a>.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
@@ -413,7 +350,8 @@ eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a hre
 
 <p>Mit <code>fetch</code> wird die Reihenfolge des Ablaufs klarer, aber der Ablauf
 wird auch komplizierter: ein weiterer asynchroner Verarbeitungsschritt
-kommt dazu: das auslesen des Textes aus dem Response.</p>
+kommt dazu: aus dem Response wird erst der Text ausgelesen, das erfolgt
+wieder asynchron, erst dann kann der Text verwendet werden.</p>
 
 </div>
 <div class="slide">
@@ -421,8 +359,16 @@ kommt dazu: das auslesen des Textes aus dem Response.</p>
 <h2 id="promises">Promises</h2>
 
 <p>Der Rückgabewert der funktion <code>fetch</code> ist eine <strong>Promise</strong>: ein Objekt,
-das den Umgang mit einer asynchrone Operation einfacher machen soll.
-Es ist ein Platzhalter für das Ergebnis der Operation, das noch nicht
+das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+  &lt;script&gt;
+    let promise = fetch(&quot;counter_ajax.php&quot;);
+  &lt;/script&gt;
+</pre></div>
+
+<p>Das Promise Objekt ist ein Platzhalter für das Ergebnis der Operation, das noch nicht
 bekannt ist. In anderen Programmiersprachen ist die Promise auch als
 Future oder Deferred bekannt, siehe <a href="https://en.wikipedia.org/wiki/Futures_and_promises">wikipedia</a>.</p>
 
@@ -431,8 +377,7 @@ werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
-  .then(function(response) {
+  promise.then(function(response) {
     console.log(&quot;Response wird empfangen&quot;);
     // tu ws mit response response
   });
@@ -444,8 +389,7 @@ console.log(&quot;abgesendet, sofort weiter&quot;);
 
 <h3 id="chaining">Chaining</h3>
 
-<p>Angenommen mit dem Ergebnis einer asynchronen Operation
-soll
+<p>Angenommen mit dem Ergebnis einer asynchronen Operation soll
 eine weitere asynchrone Operation aufgerufen werden.</p>
 
 <p>Mit Promises funktionert das mittels “aneinanderhängen” = “chaining” mit <code>then</code>:</p>
@@ -499,9 +443,15 @@ fetch(&quot;counter_ajax.php&quot;)
 console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
-<p>Aber Achtung: wenn der HTTP-Response z.B. 404 oder 500 ist, löst das noch
-keinen Error aus, der mit <code>catch</code> gefangen werden kann. Das müsste
-man selbst behandeln:</p>
+</div>
+<div class="slide">
+
+<h2 id="fehlerbehandlung-bei-fetch">Fehlerbehandlung bei fetch</h2>
+
+<p>Achtung: wenn bei einem fetch der HTTP-Response z.B. 404 oder 500 ist
+löst das noch keine Exceltion aus, die mit <code>catch</code> gefangen werden kann.</p>
+
+<p>Das müsste man selbst behandeln:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -541,8 +491,8 @@ Mit der Anfrage</p>
 
 <p><code>search.php?term=w</code></p>
 
-<p>Werden nur die Städte die mit w beginnen geladen,
-und als JSON-Array zurück gegeben:</p>
+<p>sollen nur die Städte, die mit w beginnen, geladen werden
+und als JSON-Array zurück gegeben werden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -571,23 +521,13 @@ und als JSON-Array zurück gegeben:</p>
 
 <p>Das sind ca. 5000 Namen.</p>
 
-<p>Beim Lesen aus der Datenbank wird ein Volltext-Index verwendet (siehe
-<a href="/php-db-optimierung/indexes/">Datenbank optimieren: Indexes</a>). Das
-sieht man aber weder der SQL-Query noch dem PHP an:</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-$term = filter_var($_GET[&#39;term&#39;], FILTER_SANITIZE_STRING) . &#39;%&#39;;
-$sth-&gt;execute(array($term));
-$cities = $sth-&gt;fetchAll(PDO::FETCH_COLUMN);
-</pre></div>
-
-<p>Der Output des PHP-Programmes ist JSON. Das muss mit dem HTTP Header <code>Content-Type</code>
+<p>Der Output des PHP-Programmes ist also JSON. Das muss mit dem HTTP Header <code>Content-Type</code>
 angekündgt werden:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 header(&#39;Content-Type: application/json&#39;);
+// $cities aus der Datenbank holen
 echo json_encode($cities);
 </pre></div>
 
@@ -662,7 +602,8 @@ ist die nächste Lösung notwendig:</p>
 
 <h3 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h3>
 
-<p>Manchmal kann man nicht vom Frontend direkt auf die API zugreifen.</p>
+<p>Es gibt zwei Gründe, warum der direkte Zugriff vom Frontend
+auf die API verboten sein kann:</p>
 
 <p>Einen Grund haben wir schon bei openweathermap gesehen: die API ist über
 http zugänglich, das frontend wird auf https gehosted. So ist es verboten
@@ -711,7 +652,7 @@ es gibt natürlich noch viel mehr.</p>
         >
          
         | Nächste Präsentation
-        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        <a href="/applied-js-and-css/set_timeout//slide.html">setTimeout</a>
         
       </p>
     </div>

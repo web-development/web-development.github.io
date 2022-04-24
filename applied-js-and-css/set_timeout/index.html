@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Details zu Layout</title>
+  <title>Lehrbuch Web-Development - setTimeout</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -44,221 +44,116 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Details zu Layout
+        setTimeout
       </h2>
-      <a href="/css-layout/details/slide.html">als Präsentation ▻</a>
+      <a href="/applied-js-and-css/set_timeout/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>In diesem Kapitel werden weitere Properties vorgestellt,
-die das Layout mit CSS ermöglichen.</p>
+<p>Bei der Vorstellung von asynchronen Funktionen haben wir gelernt:
+ein laufendes Javascript Programm wird nie unterbrochen.
+Erst wenn das aktuelle Programm zu Ende ist
+stellt sich die Frage ob eine Callback Funktion aufgerufen wird.</p>
+
+<p>Diese Prinzip kann man am Beispiel von <code>setTimeout</code> besonders gut sehen.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h3 id="text">Text</h3>
+<h2 id="settimeout-mit-drei-sekunden">setTimeout mit drei Sekunden</h2>
 
-<p>Die Darstellung einer HTML-Seite durch den Browser erfolgt von oben nach unten, je nach Sprache von links nach rechts oder von rechts nach links. Dabei wird zwischen blockbildenden Tags und nicht-blockbildenden Tags unterschieden. In folgendem Beipiel wird
-der blockbindente Tag <code>p</code> und der inline-Tag <code>span</code> verwendet.</p>
+<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden)
+ausführen lassen:</p>
 
-<pre><code>p { background-color:#CCCCCC; }
-span { background-color:#FFFF66; }
-</code></pre>
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;3 Sekunden später&quot;, Date.now());
+}
+
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 3000);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="settimeout-mit-null-sekunden">setTimeout mit null Sekunden</h2>
 
+<p>Was passiert, wenn man den Timeout auf 0 setzt?</p>
 
-<p>Bei der Darstellung im Browser wird der Text innheralb der Paragraphen je nach
-zu verfügung stehenem Platz ‘'’umgebrochen’’’:</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;0 Sekunden später?&quot;, Date.now());
+}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
+</pre></div>
 
-<div class="resizable">
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.
-</p>
+<p>Zwei Ergebnisse wären möglich:</p>
 
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.  <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-
-</p>
-<p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. <span style="background-color: red;">Und ein span
-in der Mitte. And some inline content  right here.</span> Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-I am a block level element - p for paragraph.
-</p>
-</div>
+<p><code>
+Variante A: passiert sofort
+tick
+0 Sekunden später?
+tock
+tick
+tock
+__|__
+Variante B: Programm läuft durch bis zum Ende
+tick
+tock
+tick
+tock
+0 Sekunden später?
+</code></p>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h3 id="bild-im-text">Bild im Text</h3>
+<h2 id="auflsung-settimeout-mit-null-sekunden">Auflösung setTimeout mit null Sekunden</h2>
 
-<p>Ein Bild wird dabei wie ein Wort im Text behandelt, und nicht etwa frei auf der Webseite positioniert. Wenn Sie das Bild wie hier mitten in einen Absatz hinein setzen, ergibt das meist ein sehr hässliches Layout:</p>
+<p>Die Antwort ist: das Javascript-Programm wird nicht unterbrochen,
+sonder läuft bis zum Ende durch.  Hier nochmal mit mehr Ausgaben:</p>
 
-<div class="resizable">
-  <p style="background-color:#ddd">Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-  I am a block level element - p for paragraph.  Ich bin ein blockbildender Tag, nämlich ein Pargraph P. I am a block level element - p for paragraph. 
-  <img src="/images/css-layout/silhouette_hand.svg"  style="height: 5ex;" alt="Hand!" >
-  Das Bild der Hand stammt von <a href="https://commons.wikimedia.org/wiki/File:Silhouette_hand.svg">SimonWaldherr</a>.
-  Ich bin ein blockbildender Tag, nämlich ein Pargraph P.
-  I am a block level element - p for paragraph.
-  </p>
-</div>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h3 id="umbruch-von-wrtern">Umbruch von Wörtern</h3>
-
-<p>Browser können lange Wörter in mehreren Sprachen umbrechen wenn
-man in CSS <code>hyphens: auto</code> aktiviert.
-Die richtige Sprache stellt man mit dem Attribut <code>lang</code> ein,
-z.B. einfach am html-Tag: <code>&lt;html lang="de"&gt;</code>.</p>
-
-<div class="resizable">
-  <p style="background-color:#ddd; hyphens: none;">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
-    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
-    <br />
-    Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
-    <br />
-    <kbd>hyphens: none;</kbd> ist der Standardwert.
-  </p>
-
-  <p style="background-color:#ddd; hypens: auto;">Das Rindfleisch­etikettierungs­überwachungs­aufgaben­übertragungs­gesetz (RflEttÜAÜG) war
-    im Jahre 1999 im deutschen Bundesland Mecklenburg-Vorpommern Teil eines Gesetzesvorhabens.
-    <br />
-        Quelle: https://de.wikipedia.org/wiki/Rindfleischetikettierungs%C3%BCberwachungsaufgaben%C3%BCbertragungsgesetz
-    <br />
-    <kbd>hyphens: auto;</kbd>
-  </p>
-</div>
-
-
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h2 id="width-und-auto">Width und Auto</h2>
-
-<p>Normalerweise nimmt ein Block die maximal zur Verfügung stehende Breite ein. Mit
-<code>width</code> kann eine andere Breite eines Blocks definiert werden:
-Um einen Element zu zentrieren kann margin mit Wert auto verwendet werden, der den zur Verfügung stehenden Platz automatisch gleichmäßig verteilt.</p>
-
-<div class="resizable">
-<div style="max-width: 60%; margin: 0 auto; background-color: #ddd;">
-<p>Der Margin wird links und rechts gleich verteilt mit "auto"</p>
-<p><kbd>
-div {<br />
-  width: 60%;<br />
-  margin-left:  auto;<br />
-  margin-right: auto;<br />
-}</kbd></p>
-</div>
-</div>
-
-<p>Statt einer fixen Breite <code>width: 900px</code> kann man eine maximale Breite
-mit <code>max-width: 900px</code> angeben. Stehen weniger als 900px zur Verfügung
-dann wird diese CSS Anweisung ignoriert, und der Block nimmt wieder 100% der
-Breite ein.</p>
-
-
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
-
-<h2 id="float">Float</h2>
-
-<p>Eine Möglichkeit aus der normalen Reihenfolge der Darstellung auszubrechen
-bietet die Deklaration <code>float</code> mit den Werten <code>left</code> und <code>right</code>. Damit wird
-ein Element nach links bzw. rechts gesetzt, der Rest des Inhalts
-„rutscht nach oben“ und wird neben das Element gesetzt („umfließt das Element“).</p>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-
-
-<p>Hier sind drei Absätze zu sehen, die jeweils als Erstes ein Bild enthalten.
-Im ersten Absatz ist die Darstellung ganz normal – das Bild wird wie ein Wort
-im Text behandelt. Im zweiten Absatz „floated“ das Bild nach rechts,
-der Text rutscht links davon nach oben. Im dritten Absatz „floated“
-das Bild nach links, der Text rutscht rechts davon nach oben.</p>
-
-<p><a href="/images/css-layout/float.html">Beispiel als Demo-Seite</a></p>
-
-<p><img src="/images/css-layout/float-img.png" srcset="/images/css-layout/float-img@3x.png 3x, /images/css-layout/float-img@2x.png 2x, /images/css-layout/float-img.png 1x"  alt="Bilder mit float" ></p>
-
-
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-
-
-<p>Werden statt Bildern andere Elemente gefloatat muss ausserdem
-noch eine Breite gesetzt werden:</p>
-
-<p><a href="/images/css-layout/floatp.html">Beispiel als Demo-Seite</a></p>
-
-<p>Float wurde vor der Einführung von Flexbox und CSS Grid für viele
-Layout Aufgaben verwendet und war die Grundlage Grid-Systemen wie
-z.B. <a href="https://getbootstrap.com/docs/4.0/layout/grid/#equal-width">Bootstrap</a>.</p>
-
-<p>Mit der Einführung von CSS Grid ist die Verwendung von <code>float</code> für
-diesen Zweck nicht mehr sinnvoll.</p>
-
-
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h2 id="fallen-bei-der-absoluten-positionierung">Fallen bei der absoluten Positionierung</h2>
-
-<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung
-herausgenommen und über dem restlichen Inhalt der Seite platziert.</p>
-
-<p>Wenn man nicht explizit ein Koordinatensystem mit <code>position: relative</code> angibt,
-dann gilt die linke obere Ecke des Browserfensters als Ursprung.</p>
-
-<p>Das führt oft zu Verwirrung, zum Beipiel wenn der meiste Inhalt der Seite
-zentriert ist, sich also je nach Fensterbreite verschriebt, und dann ein Element
-absolut darauf platziert wird.</p>
-
-<p><a href="/images/css-layout/unkoordiniert.html">Beispiel-Seite</a></p>
-
-
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
-
-
-
-<p>In folgendem Beispiel wird ein absolut positiniertes Menü kombiniert mit
-einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
-
-<div class="example twopane">
-<pre class="lang-css prettyprint linenums left">
-#navi {
-  position: absolute;
-  width: 80px;
-  top:    0px;
-  left:   0px;
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchron</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function later() {
+  console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
 }
-</pre><pre class="lang-css prettyprint linenums right">
-#content {
-  margin-left: 100px;
-}
+console.log(&quot;tick&quot;, Date.now());
+setTimeout(later, 0);
+console.log(&quot;tock&quot;, Date.now());
+console.log(&quot;tick&quot;, Date.now());
+console.log(&quot;tock&quot;, Date.now());
 
-</pre><div class="clearfix"></div></div>
+// Output in der Konsole:
+// tick 1588059630667
+// tock 1588059630668
+// tick 1588059630668
+// tock 1588059630668
+// nicht 0 Sekunden später 1588059630669
+</pre></div>
 
-
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-
-
-<p><img src="/images/css-layout/image142.png"  alt="Abbildung 40: Kombination von absoluter Positionierung und margin-left" ></p>
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
+      <li><a href="/applied-js-and-css/ajax/">AJAX</a></li>
       
       
       
-      <li><a href="/css-layout/navigation/">Navigationsmenü</a></li>
+      <li><a href="/applied-js-and-css/ajax-irrwege/">AJAX Irrwege</a></li>
       
     
   </ul>
@@ -340,7 +235,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
               </ul>
             </li>
           
-          <li class="active "><a href="/css-layout/">Css Layout</a>
+          <li class=" "><a href="/css-layout/">Css Layout</a>
               <ul class="sub">
                 
                   
@@ -360,7 +255,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
                       
                     
                       
-                      <li class="active"><a href="/css-layout/details/">Details zu Layout</a></li>
+                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
                       
@@ -872,7 +767,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
               </ul>
             </li>
           
-          <li class=" "><a href="/applied-js-and-css/">Applied Js And Css</a>
+          <li class="active "><a href="/applied-js-and-css/">Applied Js And Css</a>
               <ul class="sub">
                 
                   
@@ -904,7 +799,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
                       
                     
                       
-                      <li ><a href="/applied-js-and-css/set_timeout/">setTimeout</a></li>
+                      <li class="active"><a href="/applied-js-and-css/set_timeout/">setTimeout</a></li>
                       
                     
                       
@@ -1209,7 +1104,7 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/css-layout/details.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/set_timeout.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
