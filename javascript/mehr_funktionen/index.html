@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - URLs</title>
+  <title>Lehrbuch Web-Development - Mehr Funktionen</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -39,83 +39,180 @@
 
 
 <!-- body -->
-	<article class="row">
-
-		<div class="span8">
-
-			
-                          <div class="page-header">
-                                <h2 class="title">URLs</h2>
-                          </div>
-			
-
-                        <h3>In diesem Kapitel</h3>
-
-                        <p>Sie lernen die Adressen des World Wide Webs kennen.</p>
-
-                        <ul class="sub">
-  
+<article id="body" class="row">
+  <div class="span8">
     
-      
-    
-      
-      <li ><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
-      
-    
-      
-      <li ><a href="/urls/konfiguration/">Konfiguration Webserver</a></li>
-      
-    
-      
-      <li ><a href="/urls/tipps/">Pragmatische Tipps</a></li>
-      
-    
-  
-</ul>
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Mehr Funktionen
+      </h2>
+      <a href="/javascript/mehr_funktionen/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div>
+<p>In diesem Kapitel werden Event Handler und Funktionen die
+mit <code>new</code> aufgerufen werden behandelt.</p>
 
-
-
-			<div id="slide-1" title="Folie Nr. 1"></div>
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h3 id="was-sie-wissen-sollten">Was Sie wissen sollten</h3>
+<h2 id="event-handler">Event Handler</h2>
 
-<ul>
-  <li>Ich kenne die absolute und relative Schreibweise von URLs, kann dieses lesen und hin- und her-übersetzen</li>
-  <li>Ich kenne die Rolle des Webservers in Bezug auf URLs</li>
-</ul>
+<p>Bei Event-Handlern wird <code>this</code> wieder anders gesetzt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function what_is_this() {
+    console.log(&quot;this = &quot; + this);
+  }
+
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, what_is_this);
+
+  // bei klick auf den Button
+  // output in der Console:
+  // this = [object HTMLInputElement]
+</pre></div>
+
+<p>Der Event Handler wird also als Methode auf dem jeweils betroffenen
+HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button
+der angeklickt wurde.</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h3 id="was-sie-knnen-sollten">Was Sie können sollten</h3>
-<ul>
-  <li>Ich kann in einem Apache Webserver die Anzeige einer Default-Datei für einen Ordner konfigurieren, oder die Auflistung des Ordners.</li>
-  <li>Ich halte bei meinen Web-Projekten eine Konvention zu Ordner- und Dateinamen ein, und kann die Vor- und Nachteile meiner Konvention erläutern.</li>
-</ul>
 
 
-                        <div class="pagination">
+<p>Event Handler haben folgendes Problem:
+Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>keine Argument an den event handler!</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function f( mein_argument ) {
+    console.log(&quot;this = &quot; + mein_argument);
+    // funktioniert nicht wie erwartet !!!
+  }
+
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f(43) );
+
+  // hier wird die Funktion f aufgerufen,
+  // der listener an das Event gebunden wird,
+  // das funktioniert so nicht !!!
+</pre></div>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+
+
+<p>Die als Listener definierte Funktion erhält als Argument Infos zum Event:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function f( ev ) {
+    console.log(&quot;this = &quot; + this);
+    console.log(&quot;ev = &quot; + ev);
+    console.log(&quot;ev.target = &quot; + ev.target);
+  }
+
+  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
+
+  // bei klick auf den Button
+  // output in der Console:
+  // this = [object HTMLInputElement]
+  // ev = [object MouseEvent]
+  // ev.target = [object HTMLInputElement]
+</pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+
+
+<p>Das Event-Objekt beinhaltet Informationen wie z.B. die Koordinaten
+an denen geklickt wurde, ob dazu noch Shift, Alt und/oder Ctrl gedrückt wurden,
+und noch einmal einen Verweis auf den Button.  Hier ein Screenshot aus Chrome der
+die Eigenschaften des MouseEvents zeigt:</p>
+
+<p><img src="/images/chrome-mouse-event.png"  alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" ></p>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+
+
+<p>Es gibt noch eine besondere Art eine Funktion in Javascript aufzurufen: mit <code>new</code>.
+Damit wird die Funktion als Konstruktor für ein Objekt verwendet. Es ist üblich
+Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Objekte mit einer Konstruktor-Funktion</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function Studiengang(name, seit) {
+    this.name = name;
+    this.seit = seit;
+  }
+
+  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008 );
+  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011 );
+</pre></div>
+
+<p>Innerhalb der Konstruktur-Funktion <code>Studiengang</code> ist bereits
+ein neues Objekt vorhanden, und über <code>this</code> zugänglich. Dieses
+Objekt ist auch automatisch Rückgabewert der Funktion.</p>
+
+<p>Arrow Funktionen können nicht als Constructor verwendet werden.
+Dafür gibt es in Javascript 2015 <code>class</code> und <code>constructor</code> als Alternative.</p>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
+
+<p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
+die man mit der ganz normalen Schreibweise setzten kann:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  function repeat( s, x ) {
+    var result = &quot;&quot;;
+    while( x ) {
+      result += s;
+      if( repeat.sep &amp;&amp; x &gt; 1 ) result += repeat.sep;
+      x--;
+    }
+    console.log(result);
+    return result;
+  }
+
+  repeat(&quot;x&quot;, 3);
+  // rückgabewert ist &quot;xxx&quot;;
+
+  repeat.sep = &quot;, &quot;;
+  repeat(&quot;x&quot;, 3);
+  // rückgabewert ist &quot;x, x, x&quot;;
+</pre></div>
+
+ <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+      <li><a href="/javascript/funktionen/">Funktionen und this</a></li>
       
       
       
-      <li><a href="/urls/absolut-relativ/">Absolute und relative URLs</a></li>
+      <li><a href="/javascript/objekte/">Objekte + Klassen</a></li>
       
     
   </ul>
 </div>
 
+  </div>
 
-
-		</div>
-
-		<!-- sidebar -->
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header"> 
         <h2>Kapitel</h2>
@@ -225,7 +322,7 @@
               </ul>
             </li>
           
-          <li class="active "><a href="/urls/">Urls</a>
+          <li class=" "><a href="/urls/">Urls</a>
               <ul class="sub">
                 
                   
@@ -677,7 +774,7 @@
               </ul>
             </li>
           
-          <li class=" "><a href="/javascript/">Javascript</a>
+          <li class="active "><a href="/javascript/">Javascript</a>
               <ul class="sub">
                 
                   
@@ -693,7 +790,7 @@
                       
                     
                       
-                      <li ><a href="/javascript/mehr_funktionen/">Mehr Funktionen</a></li>
+                      <li class="active"><a href="/javascript/mehr_funktionen/">Mehr Funktionen</a></li>
                       
                     
                       
@@ -1047,15 +1144,14 @@
 </div>
 <!-- sidebar -->
 
-
-	</article>
+</article>
 <!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/urls/dex.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/javascript/mehr_funktionen.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

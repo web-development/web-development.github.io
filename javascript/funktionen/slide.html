@@ -79,7 +79,7 @@
         >
          
         | Nächste Präsentation
-        <a href="/javascript/objekte//slide.html">Objekte + Klassen</a>
+        <a href="/javascript/mehr_funktionen//slide.html">Mehr Funktionen</a>
         
       </p>
     </div>
@@ -133,7 +133,7 @@ auf eine Variable zugewiesen werden:</p>
     return result;
   }
 
-  r2 = function ( s, x ) {
+  let r2 = function ( s, x ) {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -152,7 +152,7 @@ auf eine Variable zugewiesen werden:</p>
 
 
 
-<p>Seit Javascript 2015 gibt es doch eine weitere Schreibweise für anonyme 
+<p>Seit Javascript 2015 gibt es doch eine weitere Schreibweise für anonyme
 Funktionen: die Arrow Function</p>
 
 <div class="example">
@@ -168,7 +168,7 @@ Funktionen: die Arrow Function</p>
   }
 </pre></div>
 
-<p>Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer:</p>
+<p>Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer, man braucht gar kein <code>return</code> mehr:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
@@ -200,8 +200,8 @@ Teile von Objekten oder Arrays definieren:</p>
   objekt = {
     prop1 : &quot;Schokolade&quot;,
     prop2 : 42,
-    method_1 : function () {  console.log( &quot;method 1&quot; ); },
-    method_2 : x =&gt; `${x} ist das beste`
+    method_1 : function (x) { return `${x} ist schlecht` },
+    method_2 : x =&gt; `${x} ist gut`
   }
 </pre></div>
 
@@ -210,14 +210,14 @@ Teile von Objekten oder Arrays definieren:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>Methoden aufrufen</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-objekt.method_1();
+objekt.method_1(&quot;Kopfweh&quot;);
 objekt.method_2(&quot;Eis&quot;);
 objekt.method_2(objekt.prop1);
 </pre></div>
 
 <p>Achtung: Wenn das Objekt serialisiert wird, also in einem String
-gespeichert wird (um es in LocalStorage zu speichern oder 
-über HTTP zu verschicken) dann gehen die Funktionen verloren!</p>
+gespeichert wird - z.B. um das Objekt in LocalStorage zu speichern oder
+über HTTP zu verschicken - dann gehen die Funktionen verloren!</p>
 
 </div>
 <div class="slide">
@@ -230,12 +230,12 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>this in einer normalen Funktion</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-  function f() {
+  console.log(&quot;this = &quot; + this);
+
+  function what_is_this() {
     console.log(&quot;this = &quot; + this);
   }
-
-  console.log(&quot;this = &quot; + this);
-  f();
+  what_is_this();
 
   // output auf der Console:
   // this = [object Window]
@@ -255,13 +255,13 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
   var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
-    f : function () {  
-      console.log( &quot;this = &quot; + this ) 
-      console.log( &quot;this.prop2 = &quot; + this.prop2 ) 
+    report : function () {
+      console.log( &quot;this = &quot; + this )
+      console.log( &quot;this.prop2 = &quot; + this.prop2 )
     }
   }
 
-  objekt.f();
+  objekt.report();
 
   // output auf der Console:
   // this = [object Object]
@@ -286,158 +286,17 @@ Wert:</p>
   var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
-    f : () =&gt; {  
-      console.log( &quot;this = &quot; + this ) 
-      console.log( &quot;this.prop2 = &quot; + this.prop2 ) 
+    broken_report : () =&gt; {
+      console.log( &quot;this = &quot; + this )
+      console.log( &quot;this.prop2 = &quot; + this.prop2 )
     }
   }
 
-  objekt.f();
+  objekt.broken_report();
 
   // output auf der Console:
   // this = [object Window]
   // this.prop2 = undefined
-</pre></div>
-
-</div>
-<div class="slide">
-
-
-
-<p>Bei Event-Handlern wird <code>this</code> wieder anders gesetzt:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function f() {
-    console.log(&quot;this = &quot; + this);
-  }
-
-  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
-
-  // bei klick auf den Button
-  // output in der Console:
-  // this = [object HTMLInputElement]
-</pre></div>
-
-<p>Der Event Handler wird also als Methode auf dem jeweils betroffenen
-HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button.</p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>keine Argument an den event handler!</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function f( mein_argument ) {
-    console.log(&quot;this = &quot; + mein_argument); 
-    // funktioniert nicht wie erwartet !!!
-  }
- 
-  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f(43) );
-
-  // hier wird die Funktion f aufgerufen, 
-  // der listener an das Event gebunden wird,
-  // das funktioniert so nicht !!!
-</pre></div>
-
-</div>
-<div class="slide">
-
-
-
-<p>Die als Listener definierte Funktion erhält als Argument Infos zum Event:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function f( ev ) {
-    console.log(&quot;this = &quot; + this);
-    console.log(&quot;ev = &quot; + ev);
-    console.log(&quot;ev.target = &quot; + ev.target);
-  }
- 
-  document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
-
-  // bei klick auf den Button
-  // output in der Console:
-  // this = [object HTMLInputElement]
-  // ev = [object MouseEvent]
-  // ev.target = [object HTMLInputElement]
-</pre></div>
-
-</div>
-<div class="slide">
-
-
-
-<p>Das Event-Objekt beinhaltet Informationen wie z.B. die Koordinaten
-an denen geklickt wurde, ob dazu noch Shift, Alt und/oder Ctrl gedrückt wurden,
-und noch einmal einen Verweis auf den Button.  Hier ein Screenshot aus Chrome der 
-die Eigenschaften des MouseEvents zeigt:</p>
-
-<p><img src="/images/chrome-mouse-event.png"  alt="Abbildung: Details des MouseEvents, angezeigt in der Console von Chrome" ></p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Es gibt noch eine besondere Art eine Funktion in Javascript aufzurufen: mit <code>new</code>.
-Damit wird die Funktion als Konstruktor für ein Objekt verwendet. Es ist üblich
-Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Objekte mit einer Konstruktor-Funktion</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function Studiengang(name, seit) {
-    this.name = name;
-    this.seit = seit;
-  }
-
-  mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008 );
-  mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011 );
-</pre></div>
-
-<p>Innerhalb der Konstruktur-Funktion <code>Studiengang</code> ist bereits
-ein neues Objekt vorhanden, und über <code>this</code> zugänglich. Dieses
-Objekt ist auch automatisch Rückgabewert der Funktion.</p>
-
-<p>Arrow Funktionen können nicht als Constructor verwendet werden.
-Dafür gibt es in Javascript 2015 <code>class</code> und <code>constructor</code> als Alternative.</p>
-
-</div>
-<div class="slide">
-
-<h2 id="eine-funktion-ist-ein-objekt">Eine Funktion ist ein Objekt</h2>
-
-<p>Jede Funktion in Javascript ist auch ein Objekt. Sie kann Attribute haben,
-die man mit der ganz normalen Schreibweise setzten kann:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function repeat( s, x ) {
-    var result = &quot;&quot;;
-    while( x ) {
-      result += s;
-      if( repeat.sep &amp;&amp; x &gt; 1 ) result += repeat.sep;
-      x--;
-    }
-    console.log(result);
-    return result;
-  } 
-
-  repeat(&quot;x&quot;, 3);
-  // rückgabewert ist &quot;xxx&quot;;
-
-  repeat.sep = &quot;, &quot;;
-  repeat(&quot;x&quot;, 3);
-  // rückgabewert ist &quot;x, x, x&quot;;
 </pre></div>
 
 </div>
@@ -451,7 +310,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
         >
          
         | Nächste Präsentation
-        <a href="/javascript/objekte//slide.html">Objekte + Klassen</a>
+        <a href="/javascript/mehr_funktionen//slide.html">Mehr Funktionen</a>
         
       </p>
     </div>

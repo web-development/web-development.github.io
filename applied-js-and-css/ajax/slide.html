@@ -122,41 +122,68 @@ Javascript-Programm fügt die Daten in die Seite ein.</p>
 </div>
 <div class="slide">
 
-<h3 id="im-javascript-programm">Im Javascript Programm</h3>
+<h3 id="im-javascript-programm-synchorn">Im Javascript Programm: synchorn</h3>
 
-<p>Auf der Ebene des Javascript Programm-Codes sieht der Unterschied zwischen
-synchron und asynchron so aus:</p>
+<p>Nehmen wir an Befehl1, Befehl2, Befehl3, Befehl4,
+und synchron_laden sind alles Funktionen, die wir in einem anderne Teile des
+Programmes definiert haben.</p>
+
+<p>Bei jedem Aufruf passiert dasselbe: erst wenn Befehl1 fertig ist
+geht’s weiter mit Befehl2, erste wenn Befehl2 fertig ist geht’s weiter
+mit synchron_laden, erst wenn synchron_laden fertig ist geht’s weiter
+mit Befehl3.</p>
+
+<p>Dieser Ablauf ist “synchron”.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>synchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 Befehl1();
 Befehl2();
-Antwort = synchron_laden(url);   // dauert ewig 
-Befehl3();                      // viel später
+Antwort = synchron_laden(url);
+Befehl3();
 Befehl4();
 </pre></div>
 
-<p>Bevor <code>Befehl3</code> ausgeführt werden kann muss erst die Antwort des Servers vorliegen –
-hier kann also eine Wartezeit von mehreren Sekunden entstehen.</p>
+<p>Wenn nun die Funktion <code>synchron_laden</code> wirklich Daten von der url
+mittels HTTP lädt, dann kann das sehr lange dauern - vielleicht
+eine ganze Sekunde?</p>
+
+</div>
+<div class="slide">
+
+<h3 id="im-javascript-programm-asynchorn">Im Javascript Programm: asynchorn</h3>
+
+<p>Es gibt nun in Javascript die Möglichkeit Funktionen
+zu schreiben die sich anders verhalten, nämlich asynchron.</p>
+
+<p>Hier ein Beispiel mit mehreren synchronen Funktionen  Befehl1, Befehl2, Befehl3, Befehl4,
+und einer asynchronen Funktion genannt <code>asynchron_laden</code>:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-function handle_data(Antwort) {  
-   ... 
-} 
- 
+function handle_data(data) {
+  console.log(&quot;data arrived&quot;, data);
+}
+
 Befehl1();
 Befehl2();
-asynchron_laden(url, handle_data);  // dauert kurz 
-Befehl3();                         // kurz darauf
+asynchron_laden(url, handle_data);
+Befehl3();
 Befehl4();
 </pre></div>
 
-<p><code>Befehl3</code> und <code>Befehl4</code> können sofort ausgeführt werden,
-egal ob und wie schnell der Server antwortet. Das Javascript-Programm (befehle 1 bis 4)
-läuft vollständig ab.</p>
+<p>Erst wenn Befehl1 fertig ist geht’s weiter mit Befehl2, erste wenn Befehl2 fertig ist geht’s weiter mit <code>asynchron_laden</code> - aber dann passiert etwas besonders:</p>
+
+<p><code>asynchron_laden</code> will etwas sehr zeitaufwändiges tun - Daten von der URL mittels HTTP laden.
+Trotzdem scheint sie ganz schnell fertig zu sein, das Programm  geht gleich zu <code>Befehl3</code> als
+nächstes weiter, egal ob und wie schnell der Server auf den HTTP-Request antwortet. Wenn
+<code>Befehl3</code> feritg ist wird <code>Befehl4</code> ausgeführt, und dann endet das JavaScript programm.</p>
+
+<p>Aber eine Sekunde später passiert was neues:  Die Daten, die in <code>asynchron_laden</code>
+angefragt wurden sind eingelangt - das ist irgendwie im Hintergrund passiert - und sind
+nun bereit zur Weiterverarbeitung.</p>
 
 <p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handle_data</code>
 aufgerufen und die Daten zu verarbeiten.</p>
@@ -166,21 +193,24 @@ aufgerufen und die Daten zu verarbeiten.</p>
 
 <h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
 
-<p>Achtung: ein laufendes Javascript programm wird nie unterbrochen.
+<p>Achtung: ein laufendes Javascript Programm wird nie unterbrochen.
 Im letzten Code-Beispiel wird es nie passieren, dass zwischen Befehl3
-und Befehl4 niemals etwas anderes (z.B. handle_data) passieren!</p>
+und Befehl4 etwas anderes (z.B. handle_data) passieren!</p>
+
+<p>Erst wenn dieses kleine Programm fertig durchgelaufen ist
+stellt sich die Frage ob handle_data schon dran ist.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-function handle_data(Antwort) {  
-   ... 
-} 
- 
+function handle_data(data) {
+  console.log(&quot;data arrived&quot;, data);
+}
+
 Befehl1();
 Befehl2();
-asynchron_laden(url, handle_data);  // dauert kurz 
-Befehl3();                         // kurz darauf
+asynchron_laden(url, handle_data);
+Befehl3();
 Befehl4();
 </pre></div>
 
@@ -189,7 +219,7 @@ Befehl4();
 
 <h3 id="asynchrones-beispiel-settimeout">Asynchrones Beispiel: setTimeout</h3>
 
-<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden) 
+<p>Mit <code>setTimeout</code> kann man eine Funktion später (Angabe in Millisekunden)
 ausführen lassen:</p>
 
 <div class="example">
@@ -326,8 +356,8 @@ eingebunden.</p>
     let ajaxRequest = new XMLHttpRequest();
     ajaxRequest.addEventListener(&quot;load&quot;, handleCounterData);
     ajaxRequest.open(&quot;GET&quot;, &quot;counter_ajax.php&quot;);
-    ajaxRequest.send(); 
-    console.log(&quot;abgesendet, sofort weiter&quot;);   
+    ajaxRequest.send();
+    console.log(&quot;abgesendet, sofort weiter&quot;);
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -374,8 +404,8 @@ eine neue Schreibweise für AJAX-Request mit dem Befehl <code>fetch</code><a hre
       .then(function(counter) {
         console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
         // ...
-      }); 
-    console.log(&quot;abgesendet, sofort weiter&quot;);   
+      });
+    console.log(&quot;abgesendet, sofort weiter&quot;);
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -406,7 +436,7 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;Response wird empfangen&quot;);
     // tu ws mit response response
   });
-console.log(&quot;abgesendet, sofort weiter&quot;);   
+console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 </div>
@@ -431,8 +461,8 @@ fetch(&quot;counter_ajax.php&quot;)
   .then(function(counter) {
     console.log(&quot;counter wurde aus dem Response herausgelesen&quot;);
     // ...
-  }); 
-console.log(&quot;abgesendet, sofort weiter&quot;);   
+  });
+console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 <p>Dieser Code kann mit Arrow-Functions noch kürzer werden:</p>
@@ -445,7 +475,7 @@ fetch(&quot;counter_ajax.php&quot;)
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
   });
-console.log(&quot;abgesendet, sofort weiter&quot;);   
+console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 </div>
@@ -476,19 +506,19 @@ man selbst behandeln:</p>
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 fetch(&quot;counter_ajax.php&quot;)
-  .then(function(response){ 
+  .then(function(response){
     console.log(&quot;response status is&quot;, response.status);
     if (response.status !== 200) {
         throw new Error(&quot;Not 200 response&quot;);
-    } 
-    return response.text(); 
+    }
+    return response.text();
   }).then(function(counter) {
     console.log(&quot;Text wurde aus dem Response herausgelesen&quot;);
     // tu was mit counter
   }).catch(function(error) {
     console.log(error);
   });
-  console.log(&quot;abgesendet, sofort weiter&quot;);   
+  console.log(&quot;abgesendet, sofort weiter&quot;);
 </pre></div>
 
 <p>Siehe auch</p>
@@ -575,7 +605,7 @@ new autoComplete({
     selector: &#39;#cityinput&#39;,
     source: function(term, handle_response){
       // schicke suchwort &#39;term&#39; ans backend
-      // wenn die datenvorliegen, rufe die funktion handle_response auf           
+      // wenn die datenvorliegen, rufe die funktion handle_response auf
     }
 });
 </pre></div>
