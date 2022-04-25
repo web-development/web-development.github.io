@@ -123,12 +123,13 @@ fi
 
 <p>Weitere Operatoren:</p>
 
-<pre><code>- `-eq` für "equal"
-- `-ne` für "not equal"
-- `-gt` für "greater than"
-- `-ge` für "greater or equal"
-- `-lt` für "less than"
-- `-le` für "less or equal"
+<pre><code>- `=`  ein Gleichzeichen für Vergleich von Strings
+- `-eq` für "equal" bei Zahlen
+- `-ne` für "not equal" bei Zahlen
+- `-gt` für "greater than" bei Zahlen
+- `-ge` für "greater or equal" bei Zahlen
+- `-lt` für "less than" bei Zahlen
+- `-le` für "less or equal" bei Zahlen
 </code></pre>
 
 <p>Und weitere Tests:</p>
@@ -226,14 +227,36 @@ Mit Mac wäre das nicht passiert
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
+<h2 id="meine-konfiguration-fr-bash-in-der-datei-bashrc">Meine Konfiguration für Bash in der Datei <code>~/.bashrc</code></h2>
+
+<p>Falls es in meinem Homeverzeichnis eine Datei <code>.bashrc</code> gibt,
+dann wird die immer ausgeführt wenn ich eine neue Bash-Session starte.</p>
+
+<p>Also z.B. wenn ich das git-bash Fenster aufmache.</p>
+
+<p>In dieser Datei kann man zum Beispiel Umgebung-Variablen setzen,
+die immer gelten sollen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+export SPRUCH=&quot;Mit Linux wäre das nicht passiert.&quot;
+</pre></div>
+
+<p>Dann kann ich die Varialbe $SPRUCH auf der Kommandozeile
+und in allen Shell-Skripts nutzen, sie ist schon da.</p>
+
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
 <h2 id="meine-shellscripts-im-ordner-bin">Meine Shellscripts im Ordner <code>~/bin</code></h2>
 
 <p>Skripte die man oft braucht kann man in einem
 eigenen Ordner ablegen. Auf Linux und Mac wäre der typische Ort
 dafür der Order <code>bin</code> im eigenen Home-Verzeichnis.</p>
 
-<p>Diesen Ordner gibt man in die PATH Variable, z.B.
-indem man in der Datei <code>~/.bash_profile</code> einen
+<p>Diesen Ordner gibt man in die PATH Variable.</p>
+
+<p>z.B. indem man in der Datei <code>~/.bash_profile</code> einen
 entsprechenen Eintrag macht:</p>
 
 <div class="example">
@@ -244,14 +267,11 @@ export PATH=&quot;$PATH:/home/bjelline/bin&quot;
 <p>hier wird die PATH Variable neu gesetzt, und zwar auf den schon
 vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
 
-<p>Das <code>export</code> vor der Variable ist wichig, damit die Variable auch
-nach Ende des Skripts <code>.bash_profile</code> weiter verfügbar ist.</p>
+<p>Wenn die Pfad-Variable so getzt ist,
+kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen.</p>
 
-<p><code>.bash_profile</code> wird jedesmal ausgefürht wenn ich eine neue Shell starte.</p>
-
-<p>Nun kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen, z.B:
-wenn in meinem bin ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
-liegen kann ich sie überall verwenden:</p>
+<p>Wenn in meinem bin ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
+liegen kann ich sie so verwenden:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
@@ -262,7 +282,7 @@ mksizes pizza.jpg
 </pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="mehr-shellskripting-lernen">Mehr Shellskripting lernen</h2>
 
