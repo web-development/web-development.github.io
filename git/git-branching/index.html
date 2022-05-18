@@ -61,7 +61,7 @@ aber noch nicht sicher bin, dass ich sie einsetzen werde,
 kann ich für das Experimentieren einen Branch einrichten.</p>
 
 <p>Später möchten ich vielleicht
-den Branche wieder mit dem Haupt-Branch zusammenführen.</p>
+den Branch  wieder mit dem Haupt-Branch zusammenführen.</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -69,7 +69,8 @@ den Branche wieder mit dem Haupt-Branch zusammenführen.</p>
 <h2 id="branches-anzeigen">Branches anzeigen</h2>
 
 <p>Eine visuelle Darstellungen der Branches
-findet man z.B. in Gitlab unter Repository → Diagram.</p>
+findet man z.B. in Gitlab unter Repository → Diagram.
+Jeder Knoten in diesem Graphen ist ein Commit.</p>
 
 <p><img src="/images/git/gitlab-branches.png" srcset="/images/git/gitlab-branches@2x.png 2x, /images/git/gitlab-branches.png 1x"  alt="Diagram in Gitlab" ></p>
 
@@ -100,12 +101,11 @@ $ git branch
 
 <h2 id="aktuellen-branch-wechseln">Aktuellen Branch wechseln</h2>
 
-<p>Das Erstellen und Löschen von Branches an sich hat keine Auswirkungen auf
-Dateien und ändert nicht, in welchem Branch Sie sich befinden.</p>
+<p>Das Erstellen und Löschen von Branches hat alleine noch keine Auswirkungen auf
+Dateien und ändert auch nicht in welchem Branch man sich befindet.</p>
 
-<p>Ein Branch ist immer der aktuelle Branch. Sie beginnen
-auf dem <code>main</code> Branch und können zu einem anderen Branch wechseln
-indem Sie <code>checkout</code> benutzen:</p>
+<p>Ein Branch ist immer der aktuelle Branch. Man beginnt
+auf dem <code>main</code> Branch und kann mit <code>git checkout</code> zu einem anderen Branch wechseln:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
@@ -116,23 +116,31 @@ $ git checkout experiment_mit_three_js
 git checkout -b foo
 </pre></div>
 
-<p>Wenn es sich um einen neu erstellten Branch handelt,  ändern sich die Dateien in Ihrer
-Arbeitskopie nicht verändert. Sie können nun in diesem
-Branch wie gewohnt arbeiten: hinzufügen, übertragen, hinzufügen, übertragen.
-Jetzt ist der Branch wirklich anders als andere Branches.
-Wenn Sie jetzt einen anderen Branch auschecken, werden Sie sehen, dass sich die
-Dateien in Ihrem Dateisystem ändern!</p>
+<p>Wenn es sich um einen neu erstellten Branch handelt,
+ändern sich die Dateien in Ihrer Arbeitskopie nicht.  Der neu
+erstellte Branch enthält dieselben Dateien wie der Branch
+von dem er gerade “abgezweigt” wurde.</p>
 
-<p>Checken Sie einen anderen Branch erst aus, wenn Ihr Arbeitsverzeichnis sauber ist,
-nachdem Sie alle Änderungen festgeschrieben haben!</p>
+<p>Man kann nun in diesem
+Branch wie gewohnt arbeiten: <code>git add</code>, <code>git commit</code>, <code>git add</code>, <code>git commit</code>, ….
+Jetzt ist der Branch wirklich anders als Ursprungs-Branch.
+Wenn man jetzt einen anderen Branch auschecken
+ändern sich die
+Dateien im Dateisystem!</p>
+
+<p>Deswegen ist es gut alle Änderungen im Branch zu committen
+bevor man in einen anderen Branch wechselt.</p>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="hinter-den-kulissen">Hinter den Kulissen</h2>
 
-<p>Git behält den Überblick über alle Commits. Ein Branch ist
-ein Zeiger auf einen bestimmten Commit.  Wenn man noch keine
+<p>Git behält den Überblick über alle Commits. Die Commits sind Nodes
+in einem Graphen. Jeder Commit hat eine Kante, die auf
+den vorhergehenden Commit verweist.</p>
+
+<p>Ein Branch ist ein Zeiger auf einen bestimmten Commit.  Wenn man noch keine
 weiteren branches erstellt hat gibt es
 nur einen <code>main</code> Branch, der auf den letzten Commit verweist,
 in dieser Abbildung ist das c2:</p>
