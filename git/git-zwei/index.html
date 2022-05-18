@@ -91,7 +91,7 @@ working copy.</p>
 
 <p>Szenario: ich arbeit mit Andreas zusammen an einem Projekt.</p>
 
-<p><img src="/images/git/git-zwei-andreas.png" srcset="/images/git/git-zwei-andreas.png 1x, /images/git/git-zwei-andreas@2x.png 2x"  alt="" ></p>
+<p><img src="/images/git/git-zwei-andreas.png" srcset="/images/git/git-zwei-andreas@2x.png 2x, /images/git/git-zwei-andreas.png 1x"  alt="" ></p>
 
 <p>Wichtige Vorbereitung: Über die Weboberfläche gitlab gebe ich Andreas
 Zugriffsrechte auf das Remote Repository. (Projekt Information → Mitglieder → grüner Button ‘Invite Members’ …). Bei ersten Mal holt  sich Andreas das Repository mit <code>git clone</code> auf seinen Computer.</p>
@@ -152,11 +152,19 @@ so konfigurieren:</p>
 im remote Repository.  Wenn ich nun den Befehl <code>git pull</code> ausführe werden diese Änderungen
 zusammengefürt. Der englische Fachbegriff ist <code>merge</code>.</p>
 
-<p><img src="basic-merging-2.png"  alt="" ></p>
+<p><img src="images/git/basic-merging-2.png"  alt="" ></p>
 
-<p>Dieser Schritt der Zusammenführung wird ein eigener Commit (c6 im Bild) mit einer Commit Message.
-Deswegen öffnet git automatisch einen Editor, in dem ich diese Commit Message (oder genauer: Merge Message)
-bearbeiten kann.</p>
+<p>Bei der Zusammenführung entsteht ein neuer Commit (c6 im Bild) mit einer Commit Message.</p>
+
+
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="die-merge-nachricht-schreiben">Die Merge Nachricht schreiben</h2>
+
+<p>Damit ich für den Merge Commit die Commit Message zu schreiben
+kann öffnet git automatisch einen Editor.
+Nachdem ich die Message gespeichert habe wird der Vorgang abgeschlossen,
+das sieht so aus:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
@@ -171,11 +179,6 @@ Von gitlab.mediacube.at:bjelline/barcamp
 Merge made by the 'recursive' strategy.
  README.md | 1 +
  1 file changed, 1 insertion(+)</pre></div>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-<h2 id="die-merge-nachricht-schreiben">Die Merge Nachricht schreiben</h2>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -208,7 +211,7 @@ Automatischer Merge fehlgeschlagen; beheben Sie die Konflikte und committen Sie 
 
 <p>Was macht git mit den beiden verschiedenen Versionen einer Datei?</p>
 
-<p>Es speichert beide Versionen in der Datei und fügt zusätzliche Zeilen ein: mit kleiner-Zeichen, mit gleich-Zeichen und mit größer-Zeichen (die Farben sind nur zur Orientierung hinzugefügt.)</p>
+<p>Git speichert beide Versionen in einer Datei und fügt zusätzliche Zeilen ein: mit kleiner-Zeichen, mit gleich-Zeichen und mit größer-Zeichen (die Farben sind nur zur Orientierung hinzugefügt.)</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
@@ -227,6 +230,44 @@ Automatischer Merge fehlgeschlagen; beheben Sie die Konflikte und committen Sie 
 erst einmal kaputt: compiliert nicht mehr, wird vom Browser nicht mehr korrekt angzeigt,
 ist kein valides HTML mehr, …</p>
 
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="merge-konflikt-auflsen">Merge Konflikt auflösen</h2>
+
+<p>Die Datei mit dem Merge Konfligt kann ich ganz normal editieren.
+Ich überlege welche Version ich behalten will, und entferne die andere
+Version und die extra-Zeilen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+&lt;section id="banner"&gt;
+  &lt;div class="inner"&gt;
+    &lt;h2&gt;&lt;img class="banner-image" src="barcamp_logo_neu.svg" alt="Logo Barcamp Salzburg - The Next Web"&gt;&lt;/h2&gt;
+    &lt;h3&gt;Web, Game, UX und VR&lt;/h3&gt;
+    &lt;p&gt;</pre></div>
+
+<p>Nun teste ich ob alles funktioniert: ich schau mir die HTML-Datei im Browser an.</p>
+
+<p>Wenn alles passt muss ich nun die Datei neu committen, damit ist
+der merge Konflikt beseitigt.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+<b>$ git add index.html</b>
+<b>$ git commit -m 'Neues Logo bleibt'</b>
+[main 59353a9] Neues Logo bleibt
+<b>$ git push</b>
+Objekte aufzählen: 11, fertig.
+Zähle Objekte: 100% (11/11), fertig.
+Delta-Kompression verwendet bis zu 8 Threads.
+Komprimiere Objekte: 100% (5/5), fertig.
+Schreibe Objekte: 100% (5/5), 626 Bytes | 626.00 KiB/s, fertig.
+Gesamt 5 (Delta 2), Wiederverwendet 0 (Delta 0), Pack wiederverwendet 0
+To gitlab.mediacube.at:bjelline/Jellinek_Brigitte_devtools.git
+   d741640..59353a9  main -> main
+</pre></div>
+
  <div class="pagination">
   <ul>
     
@@ -236,7 +277,7 @@ ist kein valides HTML mehr, …</p>
       
       
       
-      <li><a href="/git/git-tools/">Tools für Git</a></li>
+      <li><a href="/git/git-branching/">Git Branching</a></li>
       
     
   </ul>
@@ -498,11 +539,11 @@ ist kein valides HTML mehr, …</p>
                       
                     
                       
-                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
                       
                     
                       
-                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
                       
                     
                       
@@ -547,6 +588,10 @@ ist kein valides HTML mehr, …</p>
                     
                       
                       <li class="active"><a href="/git/git-zwei/">Git für Zwei</a></li>
+                      
+                    
+                      
+                      <li ><a href="/git/git-branching/">Git Branching</a></li>
                       
                     
                       
@@ -738,11 +783,11 @@ ist kein valides HTML mehr, …</p>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
                       
                     
                   
@@ -1090,11 +1135,11 @@ ist kein valides HTML mehr, …</p>
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                   

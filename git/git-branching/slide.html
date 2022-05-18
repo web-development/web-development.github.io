@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Git Branching - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Git Branching</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/git-zwei//slide.html">Git für Zwei</a> | 
+        <a href="/git/git-branching/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-tools//slide.html">Tools für Git</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+</div>
+<div class="slide">
+
+<h2 id="wozu-branches">Wozu Branches?</h2>
+
+<p>Ein Branch ist neuer Zweig für die Entwicklung.</p>
+
+<p>Wenn ich eine neue Library ausprobieren will,
+aber noch nicht sicher bin, dass ich sie einsetzen werde,
+kann ich für das Experimentieren einen Branch einrichten.</p>
+
+<p>Später möchten ich vielleicht
+den Branche wieder mit dem Haupt-Branch zusammenführen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="branches-anzeigen">Branches anzeigen</h2>
+
+<p>Eine visuelle Darstellungen der Branches
+findet man z.B. in Gitlab unter Repository → Diagram.</p>
+
+<p><img src="/images/git/gitlab-branches.png" srcset="/images/git/gitlab-branches@2x.png 2x, /images/git/gitlab-branches.png 1x"  alt="Diagram in Gitlab" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="einen-branch-erstellen">Einen Branch erstellen</h2>
+
+<p>Um einen Branch anzuzeigen, zu erstellen oder zu löschen, verwenden wir den Befehl <code>git branch</code>.
+Der aktuelle Branch wird bei der Anzeige mit einem Sternchen markiert:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ git branch
+* main
+  iss50
+
+$ git branch experiment_mit_three_js
+
+$ git branch
+* main
+  iss50
+  experiment_mit_three_js
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="aktuellen-branch-wechseln">Aktuellen Branch wechseln</h2>
+
+<p>Das Erstellen und Löschen von Branches an sich hat keine Auswirkungen auf
+Dateien und ändert nicht, in welchem Branch Sie sich befinden.</p>
+
+<p>Ein Branch ist immer der aktuelle Branch. Sie beginnen
+auf dem <code>main</code> Branch und können zu einem anderen Branch wechseln
+indem Sie <code>checkout</code> benutzen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+zu einem anderen Branch wechseln
+$ git checkout experiment_mit_three_js
+
+# Abkürzung: Erstellen eines neuen Branches + checkout
+git checkout -b foo
+</pre></div>
+
+<p>Wenn es sich um einen neu erstellten Branch handelt,  ändern sich die Dateien in Ihrer
+Arbeitskopie nicht verändert. Sie können nun in diesem
+Branch wie gewohnt arbeiten: hinzufügen, übertragen, hinzufügen, übertragen.
+Jetzt ist der Branch wirklich anders als andere Branches.
+Wenn Sie jetzt einen anderen Branch auschecken, werden Sie sehen, dass sich die
+Dateien in Ihrem Dateisystem ändern!</p>
+
+<p>Checken Sie einen anderen Branch erst aus, wenn Ihr Arbeitsverzeichnis sauber ist,
+nachdem Sie alle Änderungen festgeschrieben haben!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="hinter-den-kulissen">Hinter den Kulissen</h2>
+
+<p>Git behält den Überblick über alle Commits. Ein Branch ist
+ein Zeiger auf einen bestimmten Commit.  Wenn man noch keine
+weiteren branches erstellt hat gibt es
+nur einen <code>main</code> Branch, der auf den letzten Commit verweist,
+in dieser Abbildung ist das c2:</p>
+
+<p><img src="/images/git/branch-and-merge-0.svg"  alt="noch keine Branches" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="einen-neuen-branch-erstellen">einen neuen Branch erstellen</h2>
+
+<p>Ein neuer Branch verweist nach dem Erstellen auf den gleichen Commit wie der aktuelle Branch.
+In dieser Abbildung wird der neue Branch mit dem Namen <code>iss53</code> erstellt,
+der auch auf den Commit c2 verweist.  (iss53 ist eine Abkürzung für Issue 53)</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ git branch iss53
+$ git checkout iss53
+</pre></div>
+
+<p><img src="/images/git/branch-and-merge-1.svg"  alt="noch keine Branches" ></p>
+
+<p>Mit <code>git checkout</code> kann man zu einem anderen Branch wechseln.
+Das verändert die Branches nicht.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ git branch
+* main
+  iss50
+
+$ git checkout iss53
+
+$ git branch
+  main
+* iss50
+
+$ git checkout main
+
+$ git branch
+* main
+  iss50
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="auf-zwei-verschiedenen-branches-arbeiten">auf zwei verschiedenen Branches arbeiten</h2>
+
+<p>Wenn man am Projekt weiterarbeitet und auf beiden
+Branches  neue Commits macht, kann man in eine Situation geraten wie
+in dieser Abbildung:</p>
+
+<p><img src="/images/git/branch-and-merge-4.svg"  alt="was will ich zusammenführen?" ></p>
+
+<p>Nun ist der Inhalt der beiden Branches unterschiedlich.
+Wenn man mit <code>git checkout</code> in einen anderen Branch wechselt, kann
+man sehen wie sich  die Dateien in der Working Copy ändern.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="merge--zusammenfhren">Merge = Zusammenführen</h2>
+
+<p>Der Prozess des Zusammenfügens von Branches wird mit dem
+englischen Wort “merge” bezeichnet.
+Git versucht, dies automatisch zu tun, und in vielen Fällen ist das auch kein Problem.
+Zum Beispiel, wenn in den beiden Branches unterschiedliche Dateien verändert wurden.</p>
+
+<p>Man startet den Prozess auf dem Branch, der weiter bestehen soll,
+also meist auf <code>main</code>.  Dort gibt man den Befehl <code>git merge ....</code> ein.</p>
+
+<p>Wenn alles gut geht, wird die Ausgabe wie folgt aussehen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ git checkout main
+$ git merge experiment_mit_three_js
+Aktualisiere bdf7328..05d4ceb
+Fast-forward
+  README.md                |  189 +++++++
+  index.html               |  218 ++++++++
+ 2 files changed, 407 insertions(+)
+</pre></div>
+
+<p>Nach der erfolgreichen Zusammenführung enthält der aktuelle Branch <code>main</code>
+alle Änderungen aus beiden Branches.
+Der andere Branch ist noch unverändert:</p>
+
+<p><img src="/images/git/branch-and-merge-5.svg"  alt="nach der Zusammenführung" ></p>
+
+<p>Wir brauchen den anderen Branch wahrscheinlich nicht mehr und können ihn  mit <code>-d</code> löschen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+git branch -d iss53
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="konflikte">Konflikte</h2>
+
+<p>Wie schon im Kapitel <a href="/git/git-zwei/">Git für Zwei</a> beschreiben kann
+es zu Merge Konflikten kommen.  Dann wird das Repository
+in einem “unmerged” Zustand belassen, und ich muss erst
+die Konflikte beheben und danach die betroffenen Dateien comitten.</p>
+
+</div>
+    <div class="slide">
+      <h1>Git Branching</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/git/git-zwei//slide.html">Git für Zwei</a> | 
+        <a href="/git/git-branching/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/git/git-tools//slide.html">Tools für Git</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>
