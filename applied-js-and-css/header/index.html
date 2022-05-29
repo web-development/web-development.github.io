@@ -59,7 +59,7 @@ untereinander abgebildet:</p>
 
 <p><img src="/images/pizza-phases.jpg" srcset="/images/pizza-phases@2x.jpg 2x, /images/pizza-phases.jpg 1x"  alt="screenshot" ></p>
 
-<p>Um diesen Effekt zu erreichen brauchen wir eine Briese CSS Animation
+<p>Um diesen Effekt zu erreichen brauchen wir eine Prise CSS Animation
 und ein Event, das mit Javascript behandelt wird.</p>
 
 
@@ -72,16 +72,15 @@ verwenden wir die CSS-Anweisung <code>position: fixed</code>.</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-header{
+header {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  color: #fff;
-  height: 70px;
-  background-color: transparent;
-  padding-top: 0px;  
+  padding: 35px 100px 0;
+  color: white;
+  z-index: 10;
 }
 </pre></div>
 
@@ -91,15 +90,15 @@ header{
 <h2 id="style-verndern-nein-danke">Style verändern? Nein Danke!</h2>
 
 <p>Nun könnten wir mit Javascript
-direkt den stype des headers verändern</p>
+direkt den Style des headers verändern</p>
 
 <p>vorher:</p>
 
-<p><code>&lt;header style="padding-top: 35px;"&gt;</code></p>
+<p><code>&lt;header style="padding: 35px 100px 0;"&gt;</code></p>
 
 <p>nachher:</p>
 
-<p><code>&lt;header style="padding-top: 0px;"&gt;</code></p>
+<p><code>&lt;header style="padding: 15px 100px;"&gt;</code></p>
 
 <p>Das ist aber unpraktisch. Einfacher ist
 es, die CSS-Details im Stylesheet zu belassen, und
@@ -124,9 +123,8 @@ wird mit einer Klasse <code>.shrunk</code> dargestellt:</p>
 <div class="example">
 <pre class="lang-css prettyprint linenums">
 header.shrunk {
-  height: 70px;
   background-color: black;
-  padding-top: 35px;  
+  padding: 15px 100px; 
 }
 </pre></div>
 
@@ -167,27 +165,24 @@ oder <code>requestAnimationFrame</code> selbst ausprogrammiert kann die Grafikka
 <div class="example">
 <pre class="lang-css prettyprint linenums">
 header {
-  will-change: background-color;
-  will-change: padding;
-  
-  transition: padding 2s;  
-  transition: background-color 2s;  
+  transition: padding 2s, background-color 2s;
+  /* transition: all 2s; */
 }
 </pre></div>
 
 <p>Der wichtigste Teil ist hier die Angabe <code>2s</code> für “zwei Sekunden”.
-So lange wird er übergang von der einen zur anderen Version des headers dauern.</p>
+So lange wird der Übergang von der einen zur anderen Version des Headers dauern.</p>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="srollen">Srollen</h2>
 
-<p>Nun müssen wir noch erfassen ob gescrollt wurde, und je
+<p>Nun müssen wir noch erfassen, ob gescrollt wurde, und je
 nachdem die <code>.shrunk</code> Klasse anwenden.</p>
 
-<p>Wie weit schon gescrollt wurde kann man aus dem window-Objekt,
-aus der Eigenschaft <code>pageYOffset</code> auslesen. Man erhält eine
+<p>Wie weit schon gescrollt wurde, kann man aus dem window-Objekt - 
+aus der Eigenschaft <code>pageYOffset</code> - auslesen. Man erhält eine
 Zahl, die Maßeinheit sind Pixel:</p>
 
 <div class="example">
@@ -201,7 +196,7 @@ window.pageYOffset
 <h2 id="scroll-event-behandeln">Scroll Event behandeln</h2>
 
 <p>Wenn die Userin / der User scrollt - egal ob mit Scrollbar, Maus, Touchscreen oder
-Keyboard, wird das <code>scroll</code> event am window-Objekt ausgelöst. Auf dieses
+Keyboard - wird das <code>scroll</code>-Event am window-Objekt ausgelöst. Auf dieses
 Event können wir reagieren:</p>
 
 <div class="example">
@@ -229,13 +224,13 @@ Keyboard) sehen wie sich der Header verwandelt.</p>
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
-<h2 id="ausblick-mehr-spass-beim-scrollen">Ausblick: Mehr spass beim Scrollen</h2>
+<h2 id="ausblick-mehr-spass-beim-scrollen">Ausblick: Mehr Spass beim Scrollen</h2>
 
 <p>Im Webdesign wird das Scrollen gerne als Auslöser für
 Animationen verwendet.</p>
 
 <ul>
-  <li><a href="https://github.com/russellgoldenberg/scrollama#scrollamajs">Scrolllama.js</a></li>
+  <li><a href="https://github.com/russellgoldenberg/scrollama#scrollamajs">Scrollama.js</a></li>
   <li><a href="https://cssanimation.rocks/parallax/">Tutorial Parallax Scrolling</a></li>
 </ul>
  <div class="pagination">
