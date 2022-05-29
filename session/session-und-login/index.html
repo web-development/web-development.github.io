@@ -21,6 +21,7 @@
         margin-left: 50px !important;
     }
   </style>
+  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -153,7 +154,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p>Das Login-Formular (Dateiname <code>login.php</code>) sieht ganz einfach aus und sendet die Daten mit POST wieder an <code>login.php</code>:</p>
 
-<p><img src="/images/session/login-form.png" srcset="/images/session/login-form@2x.png 2x, /images/session/login-form.png 1x"  alt="Abbildung 147: Login-Formular der Applikation" ></p>
+<p><img src="/images/session/login-form.png" srcset="/images/session/login-form.png 1x, /images/session/login-form@2x.png 2x"  alt="Abbildung 147: Login-Formular der Applikation" ></p>
 
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
@@ -528,11 +529,11 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
                       
                     
                       
-                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
                       
                     
                       
-                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
                       
                     
                       
@@ -1016,47 +1017,43 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
+                      <li ><a href="/security/a1-zugriffskontrolle/">A1 - Zugriffskontrolle</a></li>
                       
                     
                       
-                      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
+                      <li ><a href="/security/a2-crypto/">A2 - Cryptographic Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-data/">A3 - Sensible Daten</a></li>
+                      <li ><a href="/security/a3-injection/">A3 - Injection + XSS</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
+                      <li ><a href="/security/a4-design/">A4 - Insecure design</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-zugriffskontrolle/">A5 - Zugriffskontrolle</a></li>
+                      <li ><a href="/security/a5-fehlkonfiguration/">A5 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-fehlkonfiguration/">A6 - Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a6-komponenten/">A6 - Komponenten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-cross-site-scripting-css/">A7 - XSS</a></li>
+                      <li ><a href="/security/a7-auth/">A7 - Identification and Authentication Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
+                      <li ><a href="/security/a8-integrity/">A8 - Software and Data Integrity Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
+                      <li ><a href="/security/a9-logging-monitoring/">A9 - Monitoring</a></li>
                       
                     
                       
-                      <li ><a href="/security/a10-logging-monitoring/">A10 - Monitoring</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+                      <li ><a href="/security/a10-ssrf/">A10 - Server Side Request Forgery (SSRF)</a></li>
                       
                     
                   

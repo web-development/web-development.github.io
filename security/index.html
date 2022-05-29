@@ -21,6 +21,7 @@
         margin-left: 50px !important;
     }
   </style>
+  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -63,47 +64,43 @@
       
     
       
-      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
+      <li ><a href="/security/a1-zugriffskontrolle/">A1 - Zugriffskontrolle</a></li>
       
     
       
-      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
+      <li ><a href="/security/a2-crypto/">A2 - Cryptographic Failures</a></li>
       
     
       
-      <li ><a href="/security/a3-data/">A3 - Sensible Daten</a></li>
+      <li ><a href="/security/a3-injection/">A3 - Injection + XSS</a></li>
       
     
       
-      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
+      <li ><a href="/security/a4-design/">A4 - Insecure design</a></li>
       
     
       
-      <li ><a href="/security/a5-zugriffskontrolle/">A5 - Zugriffskontrolle</a></li>
+      <li ><a href="/security/a5-fehlkonfiguration/">A5 - Fehlkonfiguration</a></li>
       
     
       
-      <li ><a href="/security/a6-fehlkonfiguration/">A6 - Fehlkonfiguration</a></li>
+      <li ><a href="/security/a6-komponenten/">A6 - Komponenten</a></li>
       
     
       
-      <li ><a href="/security/a7-cross-site-scripting-css/">A7 - XSS</a></li>
+      <li ><a href="/security/a7-auth/">A7 - Identification and Authentication Failures</a></li>
       
     
       
-      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
+      <li ><a href="/security/a8-integrity/">A8 - Software and Data Integrity Failures</a></li>
       
     
       
-      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
+      <li ><a href="/security/a9-logging-monitoring/">A9 - Monitoring</a></li>
       
     
       
-      <li ><a href="/security/a10-logging-monitoring/">A10 - Monitoring</a></li>
-      
-    
-      
-      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+      <li ><a href="/security/a10-ssrf/">A10 - Server Side Request Forgery (SSRF)</a></li>
       
     
   
@@ -117,7 +114,7 @@ Die OWASP gibt dazu regelmäßig Empfehlungen heraus.</p>
 
 <p>Für ein großes Web Projekt liefert <a href="https://github.com/OWASP/ASVS/blob/master/4.0/OWASP%20Application%20Security%20Verification%20Standard%204.0.2-de.pdf">OWASP Application Security Verification Standard</a> eine vollständige Checkliste.</p>
 
-<p>Für den Einstieg werden wir  die <a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project">OWASP Top 10 von 2017</a>
+<p>Für den Einstieg werden wir  die <a href="https://owasp.org/Top10/">OWASP Top 10 von 2021</a>
 betrachten. Wir werden es speziell auf PHP, Postgres, Apache anwenden.</p>
 
 <p>Was Sie können sollten</p>
@@ -136,12 +133,12 @@ zu den wirtschaftlichen Auswirkungen:</p>
 <p><img src="/images/security/angriffswege.png" alt="" /></p>
 
 <p>Hier werden wir uns aber auf eine technische Beschreibung des Angriffes und
-auf die Gegemaßnahmen beschränken.</p>
+auf die Gegenmaßnahmen beschränken.</p>
 
 <p>Quellen</p>
 
 <ul>
-  <li><a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/">OWASP Top 10, 2017</a></li>
+  <li><a href="https://owasp.org/Top10/">OWASP Top 10, 2021</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a></li>
 </ul>
 
@@ -419,11 +416,11 @@ auf die Gegemaßnahmen beschränken.</p>
                       
                     
                       
-                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
+                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
                       
                     
                       
-                      <li ><a href="/kommandozeile/vscode-remote-ssh/">VS Code</a></li>
+                      <li ><a href="/kommandozeile/wo-bin-ich/">Wo bin ich</a></li>
                       
                     
                       
@@ -907,47 +904,43 @@ auf die Gegemaßnahmen beschränken.</p>
                       
                     
                       
-                      <li ><a href="/security/a1-injection/">A1 - Injection</a></li>
+                      <li ><a href="/security/a1-zugriffskontrolle/">A1 - Zugriffskontrolle</a></li>
                       
                     
                       
-                      <li ><a href="/security/a2-auth/">A2 - Authentifizierung</a></li>
+                      <li ><a href="/security/a2-crypto/">A2 - Cryptographic Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a3-data/">A3 - Sensible Daten</a></li>
+                      <li ><a href="/security/a3-injection/">A3 - Injection + XSS</a></li>
                       
                     
                       
-                      <li ><a href="/security/a4-xee/">A4 - XXE</a></li>
+                      <li ><a href="/security/a4-design/">A4 - Insecure design</a></li>
                       
                     
                       
-                      <li ><a href="/security/a5-zugriffskontrolle/">A5 - Zugriffskontrolle</a></li>
+                      <li ><a href="/security/a5-fehlkonfiguration/">A5 - Fehlkonfiguration</a></li>
                       
                     
                       
-                      <li ><a href="/security/a6-fehlkonfiguration/">A6 - Fehlkonfiguration</a></li>
+                      <li ><a href="/security/a6-komponenten/">A6 - Komponenten</a></li>
                       
                     
                       
-                      <li ><a href="/security/a7-cross-site-scripting-css/">A7 - XSS</a></li>
+                      <li ><a href="/security/a7-auth/">A7 - Identification and Authentication Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a8-deserialisierung/">A8 - Deserialisierung</a></li>
+                      <li ><a href="/security/a8-integrity/">A8 - Software and Data Integrity Failures</a></li>
                       
                     
                       
-                      <li ><a href="/security/a9-komponenten/">A9 - Komponenten</a></li>
+                      <li ><a href="/security/a9-logging-monitoring/">A9 - Monitoring</a></li>
                       
                     
                       
-                      <li ><a href="/security/a10-logging-monitoring/">A10 - Monitoring</a></li>
-                      
-                    
-                      
-                      <li ><a href="/security/a8-csrf/">CSRF</a></li>
+                      <li ><a href="/security/a10-ssrf/">A10 - Server Side Request Forgery (SSRF)</a></li>
                       
                     
                   
