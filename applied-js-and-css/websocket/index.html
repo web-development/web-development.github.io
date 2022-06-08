@@ -374,10 +374,10 @@ einen User-Counter in unserer Chat-App updaten.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-const users = [];
+let users = [];
   
-function remove_from(users, socket){
-  users = users.filter(s =&gt; s.id != socket.id);
+function remove_from(socket){
+  users = users.filter(user =&gt; user.id !== socketId);
 }
   
 io.on(&#39;connection&#39;, function(socket){
