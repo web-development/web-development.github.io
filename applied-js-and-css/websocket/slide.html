@@ -422,7 +422,7 @@ io.on(&#39;connection&#39;, function(socket){
 
   ....
   socket.on(&#39;disconnect&#39;, function(){
-    remove_from(users, socket); // Wenn ein User disconnected muss er wieder entfernt werden
+    remove_from(socket); // Wenn ein User disconnected muss er wieder entfernt werden
     console.log(&#39;User disconnected&#39;);
     io.emit(&#39;update users&#39;, users.length);
   });
