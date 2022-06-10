@@ -84,16 +84,316 @@
       </p>
     </div>
     <div class="slide">
-<p>Docker ist ein Walfisch der Container trägt.</p>
+<p>Das Logo von Docker ist ein Walfisch der Container trägt - aber was steck dahinter?</p>
 
-<p><img src="/images/kommandozeile/vm-vs-container.svg"  alt="" ></p>
+<p><img src="/images/docker/docker-logo.svg"  alt="" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="container">Container</h2>
+
+<p>Was ist ein Container?  Ein standardisierter Behälter, der den Transport
+von Gütern vereinfacht. Wie zum Beispiel der <a href="https://de.wikipedia.org/wiki/ISO-Container">ISO Container</a>.</p>
+
+<p>Wir arbeiten mit Betriebssystemen und Software, was bedeutet Container hier?</p>
+
+<p>Die <a href="https://de.wikipedia.org/wiki/Containervirtualisierung">Containervirtualisierung</a> ist eine
+Methode auf einem Host-Betriebssystem mehrere Instanzen des Betreibsysstem voneinander Isoliert
+laufen zu lassen.</p>
+
+<p>Docker ist das bekannteste Beispiel für Containervirtualisierung.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="vergleich-virtualisierung">Vergleich Virtualisierung</h2>
+
+<p>Schon vor der Containervirtualisierung gab es die Virtualisierung mit Hypervisor -
+z.B. mit Virtualbox oder VMWare.</p>
+
+<p>Ein Hypervisor lässt Virtuelle Maschienen auf derselben Hardware laufen. Jede “Gast-VM”
+glaubt die Hardware alleine zu benutzen.</p>
+
+<p>Bei der Containervirtualisierung werden Teile des Host-Betriebssystem in den Containern
+mit verwendet, die Virtualiserung erfolgt also auf einer höheren Ebene:</p>
+
+<p><img src="/images/docker/vm-vs-container.svg"  alt="" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="grundbegriffe-von-docker">Grundbegriffe von Docker</h2>
+
+<p>Wichtige Begriffe sind:</p>
+
+<ul>
+  <li>Image</li>
+  <li>Container</li>
+  <li>Volume</li>
+  <li>Dockerfile</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="image">Image</h3>
+
+<p>Der Begriff Image wird nicht nur für digitale Bilder verwendet, sondern
+auch für das “Abbild” eines ganzen Dateisystems.</p>
+
+<p>Wenn man z.B. mit CDs oder DVDs arbeitet
+spricht man davon ein “Image zu brennen” wenn man Daten auf der CD oder DVD speichert.
+Dieses Image enthält ein ganzes Dateisystem, das man dann später auf der DVD verwenden kann.
+Aber zum Zeitpunkt des “brennens” ist das Image eine sehr große binäre Datei, die auf einen
+Schlag auf die DVD geschrieben wird.</p>
+
+<p>Bei Docker ist ein Image ein vorbereitetes Dateisystem, das auf das
+Host-System “draufgesetzt” werden kann.</p>
+
+<p>Mit dem Kommandozeilen-Befehl <code>docker images</code> kann man sehen
+welche images schon vorhanden sind:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
-docker build -t mytest:latest .
-docker images
+$ docker images
+REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
+tb-web-development   latest    b0adb8f50f6c   11 days ago    1.64GB
+pandoc/latex         latest    5c1d8e5aafcd   2 months ago   654MB
 </pre></div>
 
+</div>
+<div class="slide">
+
+<h3 id="image-holen">Image holen</h3>
+
+<p>Die Webseite Dockerhub <a href="https://hub.docker.com/">https://hub.docker.com/</a> ist
+ein zentraler Speicher für Images.  Hier kann Images suchen und ihre Dokumentation
+zu lesen: <a href="https://hub.docker.com/search?q=">explore</a>.</p>
+
+<p>Und man kann sich registieren um Images hochzuladen oder runterzuladen.</p>
+
+<p>Auf der Kommandozeile sieht das so aus:</p>
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+docker login
+docker pull pandoc/latex:latest
+docker pull ubuntu:latest
+</pre></div>
+
+<p>Images haben immer einen Namen und eine Versionsbezeichnung, getrennt durch einen Doppelpunkt.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="container-1">Container</h2>
+
+<p>Ein Container ist eine lauffähige Zusammenstellung als Image plus weiterer
+Konfiguration. Der Container kann gestartet werden.</p>
+
+<p>Mit dem Kommandozeilen-Befehl <code>docker ps</code> kann man sehen
+welche Container gerade laufen. So sieht das z.B. aus wenn
+gitlab in einem container läuft:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+ docker ps
+CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS                PORTS                                        NAMES
+cdf2ad32e7fc        gitlab/gitlab-ce:latest   &quot;/assets/wrapper&quot;   2 days ago          Up 2 days (healthy)   193.171.143.2:22-&gt;22/tcp, 193.171.143.2:80-&gt;80/tcp, 193.171.143.2:443-&gt;443/tcp, 193.171.143.2:5050-&gt;5050/tcp, 193.171.143.4:80-&gt;8079/tcp   gitlab_web_1
+</pre></div>
+
+<p>Auf dem server project.multimediatechnology.at laufen sehr viele Projekte in verschiedenen
+docker containern, hier ein kurzer Auszug:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+# docker ps
+CONTAINER ID IMAGE                           COMMAND                  CREATED       STAT
+12246a07     dokku/skinavie:latest           &quot;/start web&quot;             3 days ago    Up 3 days
+f4b9c5ab     dokku/stempelheft:latest        &quot;/exec rails console&quot;    3 days ago    Up 3 days
+9016e13a     svendowideit/ambassador         &quot;/bin/run.sh&quot;            3 weeks ago   Up 3 weeks
+d16eb536     dokku/stempelheft:latest        &quot;/start web&quot;             3 weeks ago   Up 3 weeks
+a3fd20b7     dokku/fago:latest               &quot;/start web&quot;             4 weeks ago   Up 4 weeks
+9f5030a8     pgrouting/pgrouting:latest      &quot;docker-entrypoint...&quot;   6 weeks ago   Up 6 weeks
+82f8e908     postgres:13.2                   &quot;docker-entrypoint...&quot;   2 months ago  Up 2 months
+6bd4b634     dokku/beerpong_reloaded:latest  &quot;/start web&quot;             3 months ago  Up 3 months
+1732d49a     dokku/soundlink:latest          &quot;/start web&quot;             3 months ago  Up 3 months
+55af4cf7     dokku/aupair_app:latest         &quot;/start web&quot;             3 months ago  Up 3 months
+b0a10815     dokku/knotenpunkt:latest        &quot;/start web&quot;             4 months ago  Up 4 months
+</pre></div>
+
+<p>Mit dem Kommandozeilenbefehl <code>docker run</code> kann man einen Container starten:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+docker run pandoc/latex
+</pre></div>
+
+<p>Dieser Container läuft kurz und stoppt von selbst wieder.  Er hinterlässt einen
+abgeschaltenen Container. Besser wäre:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+docker run --rm pandoc/latex
+</pre></div>
+
+<p>Tut immer noch nicht sinnvolles, aber hinterlässt auch keine zusätzlichen Daten.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="eigenes-dateisystem">eigenes Dateisystem</h3>
+
+<p>Ein Docker Container hat sein eigenes Dateisystem und erst mal keine Verbindung zum Host-Dateisystem.</p>
+
+<p>Wenn der Container während der Laufzeit etwas ins eigene Dateisystem schreibt ist das
+im Host-Dateisystem nicht vorhanden.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ docker run --rm -ti ubuntu
+root@87712b76b86a:/# ls
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@87712b76b86a:/# touch tmp/brigitte_war_hier
+root@87712b76b86a:/# ls tmp/
+brigitte_war_hier
+</pre></div>
+
+<p>Wird derselbe Container später nochmal gestartet ist das Dateisystem wieder im Anfangszustand.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ docker run -ti ubuntu
+root@9f80c9069e71:/# ls tmp/brigitte_war_hier
+ls: cannot access &#39;tmp/brigitte_war_hier&#39;: No such file or directory
+</pre></div>
+
+<p>Will man etwas dauerhaft im Host Dateisystem speichern braucht man dafür ein Volume.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="volume">Volume</h2>
+
+<p>Ein Volume ist ein Ornder der mit dem “echten” Dateisystem verbunden ist.</p>
+
+<p>Beim Start eines Containers kann man angeben, welche Pfad im echten Dateisystem mit dem Volume im container verbunden werden soll:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex
+</pre></div>
+
+<p>Hier wird der Ordner <code>/Users/bjelline/devel/7</code> im Host Dateisystem verbunden mit dem Ornder <code>/data</code> im Container.</p>
+
+<p>Noch besser:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex README.md -o outfile.pdf
+</pre></div>
+
+<p>Das pandoc/latex image startet automatisch den pandoc Befehl. Der String <code>README.md -o outfile.pdf</code>
+wird an diesen Befehl als parameter übergeben.  pandoc versucht dann eine Datei <code>data/REAMDE.md</code> einzulesen,
+die Daten zu konvertieren, und als Datei <code>data/outfile.pdf</code> wieder zu speichern.</p>
+
+<p>Da das Verzeichnis <code>data/</code> im Container auf den Ordner <code>7</code> im Host-Dateisystem gemappt war
+wird die neue erzeugte Datei dort hin geschrieben.</p>
+
+<p>So kann man also pandoc im Container verwenden ohne es im Host-Betriebsystem zu installieren.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="dockerfile">Dockerfile</h2>
+
+<p>Wie baue ich selbst ein Image?  Mit einem <code>Dockerfile</code>.  (Ja dieser Dateiname hat keine Endung.)</p>
+
+<p>Das Dockerfile legt fest wie das Image gebaut wird.  Wenn das Image fertig ist braucht man
+das Dockerfile nicht mehr.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="beispiel">Beispiel</h3>
+
+<p>Ein Beispiel:  ich will ein Image das das Kommandozeilen-Programm <code>wget</code> enthält.</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+FROM ubuntu
+RUN apt-get update &amp;&amp; apt-get install -y wget
+WORKDIR /data
+ENTRYPOINT [&quot;/usr/bin/wget&quot;]
+</pre></div>
+
+<p>Wenn ich nun mit dem Befehl <code>docker build . -t mein_wget</code> ein Image bauen lasse
+werden folgende Schritte ausgeführt:</p>
+
+<ol>
+  <li>als Basis-Image wird <code>ubuntu</code> verwendet (default zu: <code>ubuntu:latest</code>)
+    <ul>
+      <li>ein Container mit diesem Basis-image wird gestartet,</li>
+      <li>in diesem Container werden die weiteren Schritte ausgeführt.</li>
+    </ul>
+  </li>
+  <li>mit dem Ubuntu-Befehl mit <code>apt-get update</code>  werden die neuesten Daten für das Paketsystem <code>apt</code> geladen</li>
+  <li>mit dem Befehl <code>apt-get install wget</code>  wird ein Softwarepaket mit Namen <code>wget</code> installiert.</li>
+  <li>mit dem Befehl <code>WORKDIR /data</code> wird ein Ordner angelegt und in den Ordner hinein gewechselt.</li>
+  <li>als Entrypoint wird <code>/usr/bin/wget</code> festgelegt - das tut aber noch nichts.</li>
+</ol>
+
+<p>Das Ergebnis ist ein neues image mit einer eindeutigen id und dem von mir vergebenen Namen:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+$ docker images
+REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+mein_wget      latest    4c4d9f9444d9   2 minutes ago   116MB
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="mein-selbst-gebautes-images-als-container-starten">Mein selbst gebautes Images als Container starten</h3>
+
+<p>Mit dem Befehl <code>docker run --rm mein_wget http://web-development.github.io</code> starte ich nun
+mein image als container.  Dabei passiert folgendes:</p>
+
+<ol>
+  <li>aus dem Image wird ein laufender Container</li>
+  <li>aus meiner Eingabe wird der Teil nach dem image-Namen genommen: <code>http://web-development.github.io</code></li>
+  <li>der Befehl der als “Entrypoint” eingetragen war wird aufgerufen
+    <ul>
+      <li>der Befehl war <code>/usr/bin/wget</code></li>
+      <li>als Argument erhält er <code>http://web-development.github.io</code></li>
+      <li>der Befehl läuft durch und schreibt eventuell output in den aktuellen Ornder (WORKDIR) <code>data</code></li>
+    </ul>
+  </li>
+  <li>der Container wird gestoppt.</li>
+</ol>
+
+<p>Der Output des Befehles verschwindet mit dem Container.
+Derselbe Befehl nochmal mit einem Volume:</p>
+
+<p><code>docker run --rm --volume $(pwd):/data mein_wget http://web-development.github.io</code></p>
+
+<p>Nun wird der Output von wget im aktuellen Ordner des Host-Betriebssystems gespeichert.</p>
+
+<p>Tipp: wget hat die Optionen <code>-r</code> für rekursives Abrufen aller Links in der Webseite und <code>--level=2</code> für die Angabe wie viele Schritte weit die Rekursion gehen soll.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> in der docker dokumentation</li>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#run">RUN</a> in der docker dokumentation</li>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#workdir">WORKDIR</a> in der docker dokumentation</li>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#entrypoint">ENTRYPOINT</a> in der docker dokumentation
+*</li>
+</ul>
 </div>
     <div class="slide">
       <h1>Docker</h1>
