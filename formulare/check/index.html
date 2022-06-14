@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Indexes</title>
+  <title>Lehrbuch Web-Development - Formularprüfung</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,232 +45,95 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Indexes
+        Formularprüfung
       </h2>
-      <a href="/php-db-optimierung/indexes/slide.html">als Präsentation ▻</a>
+      <a href="/formulare/check/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<div class="example">
-<h4 class="caption">Sql Code <small>Eine Abfrage die sehr lange dauert</small></h4>
-<pre class="lang-sql prettyprint linenums">
-# SELECT name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10;
-         name         |        time         | yes_rsvp_count
-----------------------+---------------------+----------------
- Facebook. Twitter. V | 2014-04-24 22:30:00 |            614
- Future of 21st Centu | 2013-05-01 22:30:00 |            598
- The AppNexus Ad Plat | 2012-11-12 23:30:00 |            550
- Programmable Big Dat | 2014-05-01 22:30:00 |            496
- Open-Source Database | 2014-05-08 22:30:00 |            450
- Future of NoSQL &amp; Ne | 2014-05-13 22:30:00 |            444
- Bridging the gap, OL | 2014-05-06 22:30:00 |            414
- Throw Some Keys on I | 2014-07-14 22:30:00 |            334
- Resolving the Cloud  | 2012-11-15 23:30:00 |            326
- Creator of MySQL: My | 2013-05-30 22:30:00 |            325
- (10 rows)
-
-Time: 674.327 ms
-</pre></div>
+<p>HTML und CSS bieten einige möglichkeiten um die Eingabe im Formular
+sofort zu prüfen und Rückmeldung zu geben.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="tags-fr-formulare">Tags für Formulare</h2>
 
-
-<p>Warum dauert diese Abfrage so lange? Das können wir mit dem Befehl <code>EXPLAIN</code> erforschen:</p>
+<p>Mit den HTML-Attributen <code>required</code>, <code>minlength</code>, <code>maxlength</code>, und einigen mehr kann
+man die Eingabe in einem Text-Eingabefehld prüfen:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-# explain SELECT name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10;
-                                 QUERY PLAN
-----------------------------------------------------------------------------
- Limit  (cost=30988.25..30988.28 rows=10 width=54)
-   -&gt;  Sort  (cost=30988.25..32504.05 rows=606317 width=54)
-         Sort Key: yes_rsvp_count
-         -&gt;  Seq Scan on events  (cost=0.00..17885.96 rows=606317 width=54)
-(4 rows)
+<h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+  ...
+  &lt;input type=&quot;text&quot;  name=&quot;fullname&quot; minlength=&quot;2&quot; maxlength=&quot;200&quot;&gt;
+  ...
+  &lt;input type=&quot;submit&quot; value=&quot;Bestellen&quot;&gt;
+&lt;/form&gt;
 </pre></div>
+
+<p>So sieht das Formular im Browser aus:</p>
+
+<form method="get" action="bestellung.php">
+  <input type="text" name="fullname" minlength="2" maxlength="200" />
+  <input type="submit" value="Bestellen" />
+</form>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h2 id="index-erzeugen">Index erzeugen</h2>
+<h2 id="pattern">pattern</h2>
+
+<p>Mit dem Attribut <code>pattern</code> kann man ein “Muster” für den eigegebenen String vorgeben.
+Dieses “Muster” besteht im einfachsten fall aus einem Stück Text, im komplizierten
+Fall aus einer Folge von Sonderzeichen.  Es handelt sich um eine eigene kleine Programmiersprache,
+einer sogenannten “Regular Expression”.</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-# CREATE INDEX yes_rsvp_count ON events(yes_rsvp_count);
-CREATE INDEX
-Time: 1212.178 ms
+<h4 class="caption">Html Code <small>Formular mit pattern</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;form method=&quot;get&quot; action=&quot;anmeldung.php&quot;&gt;
+  FH E-Mail Adresse:
+  &lt;input type=&quot;email&quot;  name=&quot;email&quot; pattern=&quot;@fh-salzburg.ac.at$&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Anmeldung&quot;&gt;
+&lt;/form&gt;
 </pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
+<h2 id="css">CSS</h2>
 
+<p>Alle Eingabefelder, die die Prüfung nicht bestehen, kann man mit der Pseudo-Klasse <code>:invalid</code> in
+CSS selektieren:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-# explain SELECT name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC;
-                                           QUERY PLAN
-------------------------------------------------------------------------------------------------
- Index Scan Backward using yes_rsvp_count on events  (cost=0.42..57684.59 rows=606317 width=54)
-(1 row)
+<pre class="lang-css prettyprint linenums">
+:invalid {
+  background-color: pink;
+}
 </pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-SELECT substring(name from 1 for 20) AS name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10;
-         name         |        time         | yes_rsvp_count
-----------------------+---------------------+----------------
- Facebook. Twitter. V | 2014-04-24 22:30:00 |            614
- Future of 21st Centu | 2013-05-01 22:30:00 |            598
- The AppNexus Ad Plat | 2012-11-12 23:30:00 |            550
- Programmable Big Dat | 2014-05-01 22:30:00 |            496
- Open-Source Database | 2014-05-08 22:30:00 |            450
- Future of NoSQL &amp; Ne | 2014-05-13 22:30:00 |            444
- Bridging the gap, OL | 2014-05-06 22:30:00 |            414
- Throw Some Keys on I | 2014-07-14 22:30:00 |            334
- Resolving the Cloud  | 2012-11-15 23:30:00 |            326
- Champions League FIN | 2014-05-24 18:30:00 |            325
-(10 rows)
-
-Time: 0.775 ms
-</pre></div>
-
-
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h2 id="die-datenstruktur-hinter-dem-index-b-baum">Die Datenstruktur hinter dem Index: B-Baum</h2>
-
-<p>Das Anlegen eines Index mit  <code>CREATE INDEX</code> erzeugt eine zusätzliche
-Datenstruktur: einen <a href="https://de.wikipedia.org/wiki/B-Baum">B-Baum</a>.</p>
-
-<p><img src="/images/php-db-optimierung/b-baum.svg"  alt="B-Baum" ></p>
-
-<p>Der B-Baum ist sortiert, ausbalanziert, und seine Knoten haben jeweils viele
-Kinder.</p>
-
-<p>Mit dem Wissen über die Datenstruktur gewinnen wir ein besserer Verständnis für
-die Fähigkeiten und Grenzen eines Index:</p>
+<h2 id="links">Links</h2>
 
 <ul>
-  <li>Ein Index bedeutet immer zusätzliche Arbeit beim Einfügen, beim Löschen, …</li>
-  <li>das Auslesen kann in logarithmischer Zeit erfolgen</li>
-  <li>…</li>
-</ul>
-
-<p>Besonders effizient ist der Index wenn alle Daten der Abfrage schon
-direkt im Baum gespeichert sind, und nicht nochmal separat gelesen werden müssen:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-# SELECT name, time, yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10; 
-# SELECT yes_rsvp_count FROM events ORDER BY yes_rsvp_count DESC LIMIT 10; 
-</pre></div>
-
-<p>Die erste Abfrage braucht einen Zugriff auf die vollständigen Daten der Tabelle um 
-name und time auszulesen. Die zweite Abfrage findet alle nötigen Daten direkt im Index.</p>
-
-<p>Manche Datenbank bieten die Möglichkeit zusätzliche Attribute in den Index aufzunehmen,
-um einen “covering index” zu erzeugen:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-# CREATE INDEX yes_rsvp_count_with_name_and_time ON events(yes_rsvp_count) INCLUDE (name, time);
-</pre></div>
-
-<p>Siehe <a href="https://blog.crunchydata.com/blog/why-covering-indexes-are-incredibly-helpful">Katz (2018): Why Covering Indexes in Postgres Are Incredibly Helpful</a> und <a href="https://www.postgresql.org/docs/13/sql-createindex.html">Postgres Dokumentation</a>.</p>
-
-
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
-
-<h2 id="index-fr-volltexsuche">Index für Volltexsuche</h2>
-
-<p>Für Abfragen mit <code>LIKE</code> hilft ein normaler Index nicht.
-Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
-
-<p>Hier ein Beispiel: eine Tabelle mit Namen und Länderkürzel von ca. 170.000 Städten:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-# explain analyze SELECT concat(name,&#39;,&#39;,country) as label FROM city WHERE name ILIKE &#39;Salz%&#39;  ORDER BY name LIMIT 150;
-                                                      QUERY PLAN
-----------------------------------------------------------------------------------------------------------------------
- Limit  (cost=3065.44..3065.48 rows=17 width=43) (actual time=1698.352..1698.370 rows=24 loops=1)
-   -&gt;  Sort  (cost=3065.44..3065.48 rows=17 width=43) (actual time=1698.350..1698.357 rows=24 loops=1)
-         Sort Key: name
-         Sort Method: quicksort  Memory: 26kB
-         -&gt;  Seq Scan on city  (cost=0.00..3065.09 rows=17 width=43) (actual time=1303.415..1679.370 rows=24 loops=1)
-               Filter: ((name)::text ~~* &#39;Salz%&#39;::text)
-               Rows Removed by Filter: 168780
- Planning time: 1.086 ms
- Execution time: 1698.456 ms
-(9 rows)
-</pre></div>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-
-
-<p>Nun legen wir einen Index an:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
-</pre></div>
-
-
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-
-
-<p>Danach ist die Abfage wesentlich schneller:</p>
-
-<div class="example">
-<pre class="lang-sql prettyprint linenums">
-# explain analyze SELECT concat(name,&#39;,&#39;,country) as label FROM city WHERE name ILIKE &#39;Salz%&#39;  ORDER BY name LIMIT 150;
-                                                                QUERY PLAN
-------------------------------------------------------------------------------------------------------------------------------------------
- Limit  (cost=113.93..113.97 rows=17 width=43) (actual time=0.936..0.948 rows=24 loops=1)
-   -&gt;  Sort  (cost=113.93..113.97 rows=17 width=43) (actual time=0.935..0.940 rows=24 loops=1)
-         Sort Key: name
-         Sort Method: quicksort  Memory: 26kB
-         -&gt;  Bitmap Heap Scan on city  (cost=52.13..113.58 rows=17 width=43) (actual time=0.751..0.845 rows=24 loops=1)
-               Recheck Cond: ((name)::text ~~* &#39;Salz%&#39;::text)
-               Rows Removed by Index Recheck: 13
-               Heap Blocks: exact=11
-               -&gt;  Bitmap Index Scan on trgm_idx_city_name  (cost=0.00..52.13 rows=17 width=0) (actual time=0.676..0.676 rows=37 loops=1)
-                     Index Cond: ((name)::text ~~* &#39;Salz%&#39;::text)
- Planning time: 0.962 ms
- Execution time: 1.006 ms
-(12 rows)
-</pre></div>
-
-
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h2 id="siehe-auch">Siehe auch</h2>
-
-<ul>
-  <li><a href="https://gist.github.com/jboner/2841832">Latency Numbers Every Programmer Should Know </a></li>
-  <li><a href="https://gist.github.com/hellerbarde/2843375#file-latency_humanized-markdown">Latency Numbers, Humanized</a></li>
-  <li><a href="https://prezi.com/pdkvgys-r0y6/latency-numbers-for-programmers-web-development/">prezi</a></li>
+  <li><a href="http://html5pattern.com/">html5pattern</a> - bewährte Pattern für die Eingabeprüfung</li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid">:invalid</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">Attributes for Input Tags</a></li>
 </ul>
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/php-db-optimierung/">Änderungen, Constraints und Transaktionen in der DB</a></li>
+      <li><a href="/formulare/form/">Formulare</a></li>
       
       
       
-      <li><a href="/php-db-optimierung/constraints/">Constraints</a></li>
+      <li><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
       
     
   </ul>
@@ -412,7 +275,7 @@ CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
               </ul>
             </li>
           
-          <li class=" "><a href="/formulare/">Formulare</a>
+          <li class="active "><a href="/formulare/">Formulare</a>
               <ul class="sub">
                 
                   
@@ -424,7 +287,7 @@ CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li class="active"><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -792,7 +655,7 @@ CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
               </ul>
             </li>
           
-          <li class="active separator"><a href="/php-db-optimierung/">Php Db Optimierung</a>
+          <li class=" separator"><a href="/php-db-optimierung/">Php Db Optimierung</a>
               <ul class="sub">
                 
                   
@@ -800,7 +663,7 @@ CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
                       
                     
                       
-                      <li class="active"><a href="/php-db-optimierung/indexes/">Indexes</a></li>
+                      <li ><a href="/php-db-optimierung/indexes/">Indexes</a></li>
                       
                     
                       
@@ -1233,7 +1096,7 @@ CREATE INDEX trgm_idx_city_name ON city USING gin(name gin_trgm_ops);
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-optimierung/indexes.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/formulare/check.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>
