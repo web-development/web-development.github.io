@@ -55,10 +55,10 @@ Fielding hat unter anderem an der HTTP-Spezifikation und an WebDAV
 mitgearbeitet. In seiner Dissertation stellt er grundlegende Überlegungen zur Architektur von
 verteilten Systemen an.</p>
 
-<p>Die Grundfrage könnte man so stellen: das Web ist ein sehr erfolgreiches 
+<p>Die Grundfrage könnte man so stellen: das Web ist ein sehr erfolgreiches
 verteiltes System, viele Hersteller entwickeln dafür Software (Microsoft,
 Mozilla, IBM, …) und die Zusammenarbeit funktioniert. Es gibt viele Komponenten die erfolgreich
-zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen, 
+zusammenspielen (Browser, Server, Proxies, Suchmaschinen, Browser-Erweiterungen,
 …).</p>
 
 <p><strong>Welche Eigenschaften des Webs führen dazu, dass dieses
@@ -84,7 +84,7 @@ Infrastruktur des Web (Server, Browser, Proxies, Caches, etc.) einpassen und dav
 <p>In der REST-Terminologie ist das Web ist eine Ansammlung von „<strong>Ressourcen</strong>“. In
 diesem Skriptum wird für Ressourcen auch der Begriff „<strong>Dokumente</strong>“ verwendet. Wir
 gehen hier nicht direkt von Fieldings Dissertation aus, sondern von der vereinfachten
-Darstellung in 
+Darstellung in
 <a href="http://www.infoq.com/articles/rest-introduction">Tilkov, Stefan(2007): A Brief Introduction to REST. In: InfoQ</a></p>
 
 <p>Die REST-Prinzipien sind (vereinfacht):</p>
@@ -106,12 +106,12 @@ Darstellung in
 
 <p>Wenn jedes Dokument eine URL hat, dann ist es verlinkbar, kann in Lesezeichen
 gespeichert werden, kann von Google gefunden und verlinkt werden, etc.
-Wenn Sie eine statische Webseite bauen erzeugen Sie die URLs beim Festlegen der 
+Wenn Sie eine statische Webseite bauen erzeugen Sie die URLs beim Festlegen der
 Dateinamen.</p>
 
 <p>Bei einer PHP-Applikation sind es die Dateinamen und die GET-
 Parameter, die die URL ausmachen. In der Portfolio-Applikation, die wir in den
-Kapiteln <a href="/php-db-lesen/">PHP Datenbank Lesen</a> und <a href="/php-db-schreiben/">PHP Datenbank schreiben</a> gebaut haben, 
+Kapiteln <a href="/php-db-lesen/">PHP Datenbank Lesen</a> und <a href="/php-db-schreiben/">PHP Datenbank schreiben</a> gebaut haben,
 waren die URLs:</p>
 
 <ul>
@@ -154,8 +154,8 @@ RewriteRule ^person/(.*)   person.php?slug=$1  [L]
 
 <h4 id="umsetzung">Umsetzung</h4>
 
-<p>die Umstellung einer bestehenden Applikation 
-auf diese URLs hat Auswirkungen falls sie relative Links 
+<p>die Umstellung einer bestehenden Applikation
+auf diese URLs hat Auswirkungen falls sie relative Links
 verwendet haben, um z.B. auf Stylesheets zu verweisen. Deswegen rate ich von
 einer nachträglichen Umstellung der URLs ab – das ist sehr viel mehr Arbeit als man
 denkt.</p>
@@ -183,15 +183,15 @@ URLs konstruieren muss.</p>
 <p>Wie sollen diese Methoden verwendet werden? Jede Methode hat eine Bedeutung:</p>
 
 <ul>
-  <li><strong>GET</strong> Eine Repräsentation einer Ressource soll geholt werden. Das verändert 
+  <li><strong>GET</strong> Eine Repräsentation einer Ressource soll geholt werden. Das verändert
 nichts an der Ressource, diese Methode ist also harmlos.</li>
-  <li><strong>POST</strong> Eine Ressource (die bisher noch keine URL hatte) soll neu erzeugt 
-werden. z.B. könnte ein POST auf <code>/dings/</code> eine neue Ressource mit der 
+  <li><strong>POST</strong> Eine Ressource (die bisher noch keine URL hatte) soll neu erzeugt
+werden. z.B. könnte ein POST auf <code>/dings/</code> eine neue Ressource mit der
 URL <code>/dings/17</code> erzeugen</li>
-  <li><strong>PUT</strong> Diese Methode dient zum Speichern einer Ressource unter der  angegebenen URL. 
-Diese Methode steht bei Web-Formularen aber nicht zur Verfügung. Deswegen 
+  <li><strong>PUT</strong> Diese Methode dient zum Speichern einer Ressource unter der  angegebenen URL.
+Diese Methode steht bei Web-Formularen aber nicht zur Verfügung. Deswegen
 wird statt dessen meist ein POST auf eine übergeordnete Ressource verwendet.</li>
-  <li><strong>DELETE</strong> Diese Methode dient zum Löschen einer Ressource. Auch diese Methode 
+  <li><strong>DELETE</strong> Diese Methode dient zum Löschen einer Ressource. Auch diese Methode
 steht bei Web-Formularen nicht zur Verfügung.</li>
 </ul>
 
@@ -207,7 +207,7 @@ PHP werden sie die anderen Methoden verwenden.</p>
 <h3 id="ein-dokument--mehrere-reprsentationen">Ein Dokument – mehrere Repräsentationen</h3>
 
 <p>Ein Dokument kann auf verschiedene Arten repräsentiert werden: z.B. kann die
-Darstellung einer Person in HTML, XML und JSON erfolgen. Die HTML-Variante kennen Sie 
+Darstellung einer Person in HTML, XML und JSON erfolgen. Die HTML-Variante kennen Sie
 schon:</p>
 
 <div class="example">
@@ -294,7 +294,7 @@ im http-Header:</p>
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt html als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
-Host: ich.multimediatechnology.at 
+Host: ich.multimediatechnology.at
 Accept: text/html
 </pre></div>
 
@@ -304,7 +304,7 @@ Accept: text/html
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt xml als Antwort</small></h4>
 <pre class="lang-plain prettyprint linenums">
 GET /mini/person/3 HTTP/1.1
-Host: ich.multimediatechnology.at 
+Host: ich.multimediatechnology.at
 Accept: application/xml
 </pre></div>
 
@@ -332,7 +332,7 @@ bei der Verwendung von Frameworks umsetzten.</p>
 <h2 id="zustandslosigkeit--statlessness">Zustandslosigkeit = Statlessness.</h2>
 
 <p>Zustandslosigkeit ist ein sehr wichtiges Prinzip im Web. Was das bedeutet zeigt
-man am einfachsten an einem Gegenbeispiel: Beim Suchen  im alten 
+man am einfachsten an einem Gegenbeispiel: Beim Suchen  im alten
 Katalog der FH-Bibliotek hatte das Ergebnis eine sehr lange URL (hier mit dem Suchwort „Web“)</p>
 
 <p><code>http://aleph20-prod-sh1.obvsg.at/F/VY5F42S4132QETN8I7DXHJNF4RSEE7Y7S7K3EKI2QU6R6XQK4B-50822?func=find-b&amp;find_code=WRD&amp;request=Web&amp;adjacent=N&amp;x=0&amp;y=0&amp;filter_code_1=WSP&amp;filter_request_1=&amp;filter_code_2=WEF&amp;filter_request_2=&amp;filter_code_5=WYR&amp;filter_request_5=&amp;filter_code_6=WYR&amp;filter_request_6=&amp;filter_code_7=WDA&amp;filter_request_7=&amp;filter_code_8=WZW&amp;filter_request_8=</code></p>
@@ -376,7 +376,7 @@ verwenden, wenn er unbedingt notwendig ist.</p>
 
 
 
-<p>z.B. könnte man denken „Liste meiner ausgeliehenen Bücher“ sei von der Session abhängig. 
+<p>z.B. könnte man denken „Liste meiner ausgeliehenen Bücher“ sei von der Session abhängig.
 Aber selbst hier könnte man eine fixe URL
 verwenden:</p>
 
@@ -393,7 +393,7 @@ BibliothekarIn darf zugreifen. Alle anderen erhalten keinen Zugriff sondern den 
 
 <p><strong>Achtung</strong>: wir haben schon ein Szenario kennen gelernt, wo die
 Zeitbeschränkung von Sessions einen Sinn macht: Zum Verhindern von
-<a href="/security/a8-csrf/">Cross Site Request Forgeries - CSRF</a>.  Das
+<a href="https://owasp.org/www-community/attacks/csrf">Cross Site Request Forgeries - CSRF</a>.  Das
 ist aber nur bei Operationen sinnvoll, die etwas am Server ändern,
 bzw. die Daten abfragen die besonders geschützt werden müssen.</p>
 
@@ -401,7 +401,7 @@ bzw. die Daten abfragen die besonders geschützt werden müssen.</p>
 
 <h4 id="umsetzung-4">Umsetzung</h4>
 
-<p>Diesen Aspekt von REST können und sollen Sie voll umsetzten. 
+<p>Diesen Aspekt von REST können und sollen Sie voll umsetzten.
 Verwenden Sie nur die php-SESSION um den Zustand der Applikation zu speichern, und
 gehen Sie möglichst sparsam damit um.</p>
 

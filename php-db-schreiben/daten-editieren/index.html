@@ -158,7 +158,7 @@ htmlspecialchars( $person-&gt;firstname );
 $sth = $dbh-&gt;prepare(
   &quot;UPDATE users SET
     firstname=?,surname=?,email=?,
-    profile_visible=?,description=? 
+    profile_visible=?,description=?
    WHERE id=?&quot;);
 
 $update_went_ok = $sth-&gt;execute(
@@ -207,7 +207,7 @@ $surname     = htmlspecialchars( $person-&gt;surname      );
 $description = htmlspecialchars( $person-&gt;description  );
 
 echo &lt;&lt;&lt;EOM
-  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt
   $no Werke in dieser Datenbank.
   $ersie hat den Usernamen $username.&lt;/p&gt;
 
@@ -225,7 +225,7 @@ EOM;
 <h2 id="siehe-auch">Siehe auch</h2>
 
 <ul>
-  <li>Kapitel über <a href="/security/a3-xss/">Cross Site Scripting (XSS)</a></li>
+  <li>Kapitel über <a href="/security/a3-injection/#slide-7">Cross Site Scripting (XSS)</a></li>
 </ul>
 
  <div class="pagination">
