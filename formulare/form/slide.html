@@ -99,7 +99,7 @@ noch in einem sehr strengen, sehr strukturierten Rahmen.</p>
 <p>Zwei
 typische Anwendungsgebiete für Web-Formulare sind: die Suche in Amazon und ein Bestellformular.</p>
 
-<p><img src="/images/formulare/formulare.png" srcset="/images/formulare/formulare.png 1x, /images/formulare/formulare@2x.png 2x"  alt="Abbildung 44: Formulare in Webseiten" ></p>
+<p><img src="/images/formulare/formulare.png" srcset="/images/formulare/formulare@2x.png 2x, /images/formulare/formulare.png 1x"  alt="Abbildung 44: Formulare in Webseiten" ></p>
 
 </div>
 <div class="slide">
@@ -337,6 +337,58 @@ hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
   <option>L</option>
   <option>M</option>
   <option>S</option>
+</select>
+</form>
+
+</div>
+<div class="slide">
+
+
+
+<p>Im Menü kann man Zwischentitel einfügen:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Menü mit Zwischentitel</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;select&gt;
+  &lt;option&gt;--Your Favourite Animal--&lt;/option&gt;
+  &lt;optgroup label=&quot;Birds&quot;&gt;
+    &lt;option&gt;Blue Jay&lt;/option&gt;
+    &lt;option&gt;Cardinal&lt;/option&gt;
+    &lt;option&gt;Hummingbird&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label=&quot;Sea Creatures&quot;&gt;
+    &lt;option&gt;Shark&lt;/option&gt;
+    &lt;option&gt;Clownfish&lt;/option&gt;
+    &lt;option&gt;Whale&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label=&quot;Mammals&quot;&gt;
+    &lt;option&gt;Lion&lt;/option&gt;
+    &lt;option&gt;Squirrel&lt;/option&gt;
+    &lt;option&gt;Quokka&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;
+</pre></div>
+
+<form action="/images/formulare/submitted.html">
+
+<select>
+  <option>--Your Favourite Animal--</option>
+  <optgroup label="Birds">
+    <option>Blue Jay</option>
+    <option>Cardinal</option>
+    <option>Hummingbird</option>
+  </optgroup>
+  <optgroup label="Sea Creatures">
+    <option>Shark</option>
+    <option>Clownfish</option>
+    <option>Whale</option>
+  </optgroup>
+  <optgroup label="Mammals">
+    <option>Lion</option>
+    <option>Squirrel</option>
+    <option>Quokka</option>
+  </optgroup>
 </select>
 </form>
 
