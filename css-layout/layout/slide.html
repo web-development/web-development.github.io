@@ -73,7 +73,7 @@
       <h1>CSS für Layout</h1>
       <p>
           vorige Präsentation:
-        <a href="/css-layout/responsive//slide.html">Responsive Design</a> | 
+        <a href="/css-layout//slide.html">CSS - Layout</a> | 
         <a href="/css-layout/layout/"
           >zurück zum Buch-Kapitel [esc]</a
         >
@@ -86,10 +86,20 @@
     <div class="slide">
 <p>Welche Gestaltungsmöglichkeiten bietet CSS für das Layout einer Webseite?</p>
 
+<p>In diesem Kapitel betrachten wir drei Möglichkeiten:</p>
+
+<ul>
+  <li>Normal Flow</li>
+  <li>Flexbox</li>
+  <li>Grid</li>
+</ul>
+
 </div>
 <div class="slide">
 
 <h2 id="normal-flow">Normal Flow</h2>
+
+<p><img src="/images/css-layout/layout-normal-flow.svg"  alt="normal flow on laptop and smartphone" ></p>
 
 <p>Schon bisher wurden die Elemente unserer Webseite
 auf eine bestimmte Weise angeordnet: nach dem “normal flow” (siehe <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow">MDN</a>):</p>
@@ -99,30 +109,32 @@ deren Größe wir mit <code>width</code>, <code>padding</code>, <code>border</co
 beeinflussen können.</p>
 
 <p>Nicht-Blockbildente Elemente werden von links nach rechts auf Zeilen
-gesetzt, blockbildende Element von oben nach unten arragniert.
+gesetzt, blockbildende Element von oben nach unten arrangiert.
 Achtung: die Richtung hängt von der Sprache, bzw. dem <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode">writing mode</a> ab.</p>
 
-<p>Mit einer zentrierten Box mit <code>margin: auto</code> kann man
-eine gut lesbare seite mit responsive layout erzeugen: <a href="/images/css-layout/width-auto.html">Demo</a></p>
+<p>Auf dem Smartphone und am Laptop ist die Webseite sehr ähnlich: nur einmal
+länger und schmäler, einmal kürzer und breiter.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="flexbox">Flexbox</h2>
 
+<p><img src="/images/css-layout/layout-flexbox.svg"  alt="flexbox auf verschiedenene Geräten" ></p>
+
 <p>Seit <a href="https://caniuse.com/#search=flex">2014</a> wird Flexbox in allen Browsern unterstützt.</p>
 
-<p>Flexbox arbeitet nur in einer Dimension. Es wird für kleinere Komponenten
+<p>Flexbox wird für kleinere Komponenten
 in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 
-<p><a href="/images/flexbox/">Demo-Seite</a></p>
+<p>Mit Flexbox kann man die Kinder eines Tags nebeneinander anordnen.</p>
 
 </div>
 <div class="slide">
 
 <h3 id="flexbox-definieren">Flexbox definieren</h3>
 
-<p>Der Container legt die Richtung fest: entweder horizontal (in einer Zeile = <code>row</code>) oder vertikal
+<p>Das Eltern-Element legt die Richtung fest: entweder horizontal (in einer Zeile = <code>row</code>) oder vertikal
 (in einer Spalte = <code>column</code>):</p>
 
 <div class="example twopane">
@@ -146,6 +158,8 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 }
 </pre><div class="clearfix"></div></div>
 
+<p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
+
 </div>
 <div class="slide">
 
@@ -161,17 +175,19 @@ linksbündig, rechtsbündig, zentriert, mit Platz dazwischen oder Platz rundum.<
 }
 </pre></div>
 
-<p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#justify-content">justify-content</a></p>
-
 <p>Oder die Elemente können sich ausdehnen, um den Platz einzunehmen:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-.project_partial {
-    flex-grow: 1;
-    flex-shrink: 1;
+#box1, #box3 {
+    flex: 1;
+}
+#box2 {
+    flex: 2;
 }
 </pre></div>
+
+<p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#justify-content">justify-content</a></p>
 
 <p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flex-grow">flex-grow</a></p>
 
@@ -190,58 +206,18 @@ können sie auf eine nächste Zeile umgebrochen werden:</p>
 }
 </pre></div>
 
-</div>
-<div class="slide">
-
-<h3 id="flexbox-verschachteln">Flexbox verschachteln</h3>
-
-<p>Wenn man vertikale und horizontale Flexboxen ineinander schachtelt
-kann man auch ein zweidimensionales Layout erzielen - so wie mit
-CSS Grid. Das HTML Dokument muss aber dabei diese Struktur genau
-nachbauen.</p>
-
-<div class="resizable">
-  <div style="display:flex; flex-direction: row;">
-    <nav style="border: 5px green solid;margin-right: 1px;">
-      Navi Navi Navi Navi Navi Navi Navi Navi Navi
-    </nav>
-    <div style="display:flex; flex-direction: column; border: 5px green solid;padding: 1px;">
-      <section style="border: 5px #ddd solid;margin-bottom: 1px;">
-        <p><b>
-          Flexbox  in Flexbox
-        </b></p>
-      </section>
-      <section style="border: 5px #ddd solid;">
-        <p>
-          Wird eine Flexbox in eine Flexbox geschachtelt, dann
-          braucht das entsprechend verschachtelete HTML Tags.
-          Wäre hier nicht CSS Grid eine einfachere Lösung?
-          Das sollte man überlegen!
-        </p>
-      </section>
-    </div>
-  </div>
-</div>
-
-<p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
+<p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-wrap">flex-wrap</a></p>
 
 </div>
 <div class="slide">
 
 <h2 id="css-grid">CSS Grid</h2>
 
+<p><img src="/images/css-layout/layout-grid.svg"  alt="grid auf verschiedenene Geräten" ></p>
+
 <p>Seit <a href="https://caniuse.com/#search=grid">Frühjahr 2017</a> wird CSS Grid in Browsern unterstützt.
-Damit legt man ein Gitternetz über die ganze Seite:</p>
-
-<p><img src="/images/css-layout/grid.png" srcset="/images/css-layout/grid@2x.png 2x, /images/css-layout/grid@3x.png 3x, /images/css-layout/grid.png 1x"  alt="Layout mit CSS Grid" ></p>
-
-<p>Das Grid wird normalerweise nicht angzeigt. Die hier gezeigte Ansicht
-mit den strichlierten Linien kann man in den Firefox Developertools mit
-einem Klick auf das grid-symbol aktivieren:</p>
-
-<p><img src="/images/css-layout/switch-on-grid.png" srcset="/images/css-layout/switch-on-grid.png 1x, /images/css-layout/switch-on-grid@2x.png 2x"  alt="Grid Ansicht einschalten in Firefox" ></p>
-
-<p><a href="/images/cssgrid/">Demo-Seite</a></p>
+Damit legt man ein Gitternetz über die ganze Seite, und kann dann die Kinder
+eines Elements in diesem Gitternetz positionieren.</p>
 
 </div>
 <div class="slide">
@@ -339,48 +315,14 @@ header {
 }
 
 section#description {
-grid-area: descriptionArea;
-background-color: white;
+  grid-area: descriptionArea;
+  background-color: white;
 }
 </pre></div>
 
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Guide to CSS Grid</a></p>
 
 <p>Siehe auch <a href="https://gridbyexample.com/examples/">CSS Grid by Example</a></p>
-
-</div>
-<div class="slide">
-
-<h2 id="absolute-positionierung">Absolute Positionierung</h2>
-
-<p>Mit der Deklaration <code>position: absolute</code> wird ein Tag aus der normalen Darstellung
-herausgenommen und über dem restlichen Inhalt platziert.
-Dazu muss aber erst eine Koordinatensystem angelegt werden, auf das sich
-die Position bezieht. Das geschieht mit <code>position: relative</code> in einem übergeordneten
-Tag.</p>
-
-<div class="example twopane">
-<pre class="lang-html prettyprint linenums left">
-&lt;div class=&quot;project_partial&quot;&gt;
-
-  &lt;img src=&quot;cover.jpg&quot;&gt;
-
-  &lt;div class=&quot;badge&quot;&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-</pre><pre class="lang-html prettyprint linenums right">
-.project_partial {
-  position: relative;
-  background-color: #292927;
-}
-.project_partial .badge {
-  position: absolute;
-  background-image: url(badge_topleft.png);
-  /* top: 0px; left: 0px; */
-}
-</pre><div class="clearfix"></div></div>
-
-<p><a href="/images/css-absolute/test.html">Beispiel-Seite</a></p>
 
 </div>
 <div class="slide">
@@ -393,26 +335,25 @@ Methoden um das Layout der Seite zu beeinflussen.</p>
 <p>Für einen ersten Einstieg reichen die hier gezeigten,
 später sollten Sie noch <a href="/css-layout/details">weitere Details</a> kennen lernen.</p>
 
-<p>Eine gute englischsprachige Quelle dazu ist <a href="http://learnlayout.com/">learnlayout.com</a></p>
-
-<p>Der Artikel <a href="https://www.smashingmagazine.com/2018/10/flexbox-use-cases/">Use Cases For Flexbox</a> von Rachel Andrews erklärt gut in welchen Fällen man Grid und in welchen Fällen man Flexbox verwenden kann.</p>
-
 </div>
 <div class="slide">
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
 <ul>
+  <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></li>
   <li><a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> - bekannte Probleme mit Flexbox</li>
   <li><a href="http://flexboxfroggy.com/">Flexboxfroggy.com</a> - Lernspiel mit Fröschen</li>
   <li><a href="http://www.flexboxdefense.com/">FlexboxDefense.com</a> - Lernspiel mit Tower Defense</li>
+  <li><a href="http://learnlayout.com/">learnlayout.com</a></li>
+  <li><a href="https://www.smashingmagazine.com/2018/10/flexbox-use-cases/">Use Cases For Flexbox</a> erklärt in welchen Fällen man Grid und in welchen Fällen man Flexbox verwenden kann</li>
 </ul>
 </div>
     <div class="slide">
       <h1>CSS für Layout</h1>
       <p>
           vorige Präsentation:
-        <a href="/css-layout/responsive//slide.html">Responsive Design</a> | 
+        <a href="/css-layout//slide.html">CSS - Layout</a> | 
         <a href="/css-layout/layout/"
           >zurück zum Buch-Kapitel [esc]</a
         >
