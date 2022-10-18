@@ -50,11 +50,50 @@
       <a href="/css-layout/responsive/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Wie gehen wir mit der Herausforderung der verschiedenen
-Auflösungen und Pixeldichten um?</p>
+<p>Wie im Kapitel <a href="/das-web-und-html/">Das Web und HTML</a> beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des visuellen Layouts von Webseiten spielt dabei die die Größe des Geräts, die Auflösung und die Pixeldichte eine wichtige Rolle.## Verschiedene visuelle Ausgabegeräte</p>
+
+<p>Wenn wir nur Laptops und Smartphones vergleichen sehen wir schon große
+Unterschiede in der Größe in cm und der Auflösung in Pixel. Die Auflösung hat
+sich über viele Jahre erhöht, scheint nun aber ein Plateau erreicht zu haben:</p>
+
+<p><img src="/images/css-layout/res-and-img.jpg" srcset="/images/css-layout/res-and-img.jpg 1x, /images/css-layout/res-and-img@2x.jpg 2x"  alt="Laptop vs. Smartphone - viele Möglichkeiten" ></p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="verschiedene-pixel">Verschiedene Pixel</h2>
+
+<p>Mit <a href="https://www.mydevice.io/">mydevice.io</a> kann man den aktuellen Browser
+vermessen. Die angezeigten Pixel sind die virtuellen CSS Pixel.</p>
+
+<p><img src="/images/css-layout/res-and-mydevice.png" srcset="/images/css-layout/res-and-mydevice@2x.png 2x, /images/css-layout/res-and-mydevice.png 1x"  alt="Laptop vs. Smartphone - ein konkretes Beispiel" ></p>
+
+<p>Der Faktor von “echten” Pixel zu Virtuellen CSS Pixeln wird als “CSS Pixel Ratio” bezeichnet.
+Der Laptop mit 1440 CSS Pixel auf 2880 echte Pixel hat eine CSS Pixel Ratio von 2.
+Das Smartphone mit 360 CSS Pixel auf 1080 echte Pixel hat eine CSS Pixel Ratio von 3.</p>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h2 id="css-pixel">CSS Pixel</h2>
+
+<p>Im <a href="https://drafts.csswg.org/css-values-3/#px">CSS Standard</a> findet sich folgende
+Definition und folgende Abbildung:</p>
+
+<blockquote>
+  <p>The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from
+the reader of an arm’s length. For a nominal arm’s length of 28 inches, the visual angle is therefore about
+0.0213 degrees. For reading at arm’s length, 1px thus corresponds to about 0.26 mm (1/96 inch).</p>
+
+  <p>The image below illustrates the effect of viewing distance on the size of a reference pixel: a reading distance
+of 71 cm (28 inches) results in a reference pixel of 0.26 mm, while a reading distance of 3.5 m (12 feet)
+results in a reference pixel of 1.3 mm.</p>
+</blockquote>
+
+<p><img src="/images/css-layout/css-pixel-definition.png"  alt="Abbildung aus dem CSS Standard: definition des pixels als Winkel" ></p>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="responsive-design">Responsive Design</h2>
 
@@ -66,7 +105,7 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 <p><img src="/images/css-layout/responsive.png"  alt="Das erste Beispiel für &quot;Responsive Webdesign&quot;: Darstellung der Seite auf verschiedenen Breiten" ></p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
@@ -84,8 +123,20 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 /* allgemein gültige Regeln */
 </pre></div>
 
+<p>Eine tiefere “Verschachtelung” gibt es in CSS nicht.</p>
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+
+
+<p>Voraussehtung für responsive design am Handy: man muss den <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">viewport</a> im meta tag setzen:</p>
+
+<pre><code>&lt;meta name="viewport" content="width=500, initial-scale=1"&gt;
+</code></pre>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="mobile-first">Mobile First</h3>
 
@@ -96,7 +147,7 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 <p><a href="https://www.flickr.com/photos/saucef/7184615025">Bild: (CC BY-NC) Sauce Babilonia</a></p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h3 id="mediaqueries-and-featurequeries">Mediaqueries and Featurequeries</h3>
 
@@ -119,7 +170,7 @@ float: right;
 </pre></div>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="dark-mode">Dark Mode</h3>
 
@@ -131,11 +182,11 @@ float: right;
 @media (prefers-color-scheme: dark) {
   body {
     color: #ddd;
-    background-color: black; 
-  }  
+    background-color: black;
+  }
   h1,h2,h3 {
     color: #d39060;
-  }  
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -145,197 +196,18 @@ background-color: #ffffff;
 }
 h1,h2,h3 {
 color: #333333;
-}  
+}
 }
 </pre></div>
 
 <p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
-
-
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
-
-<h2 id="bilder-und-responsive-design">Bilder und Responsive Design</h2>
-
-<p>Bilder waren lange Zeit ein Grund, warum das Layout von Webseiten nicht flexibel war: weil die Bilder nur für die Darstellung bei einer bestimmten Größe geeigenet waren. Das ist aber seit ca. 2010 anders.</p>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-<h3 id="pixel">Pixel</h3>
-
-<p>Als Bildformate für <code>&lt;img&gt;</code> Tags in Webseiten wurden lange nur Pixel-Formate unterstützt. Diese Formate (jpg, png, gif) sind für die Darstellung bei einer bestimmten Größe gedacht. Die Vergrößerte Darstellung von Pixel-Bildern liefert keine guten Ergebnisse:</p>
-
-<p><img src="/images/css-layout/pixel-image-zoom.png"  alt="Abbildung 29: Ausschnitte aus einem Pixel Bild, vom Browser (Firefox) in 3 Stufen vergrößert dargestellt" ></p>
-
-<p>Die Verkleinerte Darstellung ist eine Verschwendung: Wenn ich ein Bild herunterladen muss, dass doppelt So breit und
-doppelt so hoch ist, wie mein Browser darstellen kann, dann sind das viermal so viele Daten, und damit eine viermal
-so lange Wartezeit!</p>
-
-<p>Es gibt eine moderne Lösung für diese Problematik <a href="/grafik/images/">Responsive Images</a> - diese werden wir später genauer kennen lernen.</p>
-
-
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-<h3 id="vektor">Vektor</h3>
-
-<p>Mit dem Format SVG steht auch ein vektor-basiertes Bildformat für das Web zur Verfügung. SVG-Bilder können in beliebiger Größe verwendet werden. Die Einbindung erfolgt mit dem img-Tag:</p>
-
-<pre><code>&lt;img src="circle.svg"&gt;
-</code></pre>
-
-<p><img src="/images/circle.svg"  alt="Abbildung: Kreis in SVG-Darstelllung" ></p>
-
-
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h2 id="schriftgre">Schriftgröße</h2>
-
-<p>Die Schriftgröße im Browser unterliegt nur bedingte der Kontrolle durch HTML und CSS Code. Das „letzte Wort“ hat hier die LeserIn, die die Schrift größer oder kleiner stellen kann. z.B. in MSIE unter Ansicht → Schriftgrad, in Firefox mit der Tastenkombination <code>STRG +</code> oder <code>STRG –</code>.</p>
-
-<p>Je nach Schriftgröße und zur Verfügung stehendem Platz im Browser-Fenster wird der Browser die Absätze geeignet in Zeilen umbrechen, wie in Abbildung 31 gezeigt.</p>
-
-<p><img src="/images/css-layout/zeilenumbruch.png"  alt="Abbildung 31: Darstellung von Text bei verschiedenen Fensterbreiten und Schriftgrößen" ></p>
-
-
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
-
-<h2 id="zoomen">Zoomen</h2>
-
-<p>Alle Browser bieten das Vergrößern und Verkleinern der Webseite an,
-meist mit einer Tastenkombination mit <code>+</code> bzw. <code>-</code>.
-Dabei werden die CSS Pixel vergrößert bzw. verkleinert. Die Größe des
-Viewport und die CSS pixel-ratio verändern sich also, dadurch werden
-andere Mediaqueries schlagend.</p>
-
-
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-<h2 id="beispiel">Beispiel</h2>
-
-<p>Die <a href="/images/cssgrid/#!/responsive">Demo Seite für CSS Grid</a> ist responsive.</p>
-
-<p><img src="/images/css-layout/example-responsive.png" srcset="/images/css-layout/example-responsive@2x.png 2x, /images/css-layout/example-responsive@3x.png 3x, /images/css-layout/example-responsive.png 1x"  alt="/images/css-layout/example-responsive.png" ></p>
-
-
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
-
-
-
-<p>Für Smartphones ist kein Grid vorgesehen:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-@media screen and (max-width: 660px)  {
-  .page_container {
-    padding: 10px;
-    max-width: 80em;
-    font-size: 18px;
-    line-height: 24px;
-  }
-  ...
-}
-</pre></div>
-
-
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
-
-
-
-<p>Für Tablets gilt ein Grid mit zwei Spalten:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-@media screen and (min-width: 660px) and (max-width: 1150px)  {
-
-    .page_container {
-      display: grid;
-
-      grid-template-columns: 2fr 3fr;
-      grid-template-rows: 60px 403px 1fr 1fr 60px 3fr;
-
-      grid-template-areas:  &quot;w1        headline &quot;
-                            &quot;portrait  description&quot;
-                            &quot;w2        facts&quot;
-                            &quot;w2        navigation&quot;
-                            &quot;w2        stylename&quot;
-                            &quot;w2        css&quot;;
-    }
-    ....
-
-}
-</pre></div>
-
-
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
-
-
-
-<p>für Desktops ein Grid mit drei Spalten:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-@media screen and (min-width: 1200px)  {
-
-    .page_container {
-      display: grid;
-
-      grid-template-columns: 270px 5fr 3fr;
-      grid-template-rows: 60px 2fr 210px;
-
-      grid-template-areas:  &quot;w1        headline     stylename&quot;
-                            &quot;portrait  description  css&quot;
-                            &quot;w2        facts        navigation&quot;;
-    }
-    ...
-
-}
-</pre></div>
-
-
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
-
-
-
-<p>und als Easter Egg ist noch eine ganz verrücktes Grid dabei:</p>
-
-<p><img src="/images/css-layout/easteregg-responsive.png" srcset="/images/css-layout/easteregg-responsive.png 1x, /images/css-layout/easteregg-responsive@2x.png 2x"  alt="/images/css-layout/easteregg-responsive.png" ></p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-@media screen and (min-width: 1150px) and (max-width: 1200px) {
-
-    .page_container {
-      height:1200px;
-      width:1200px;
-
-      display: grid;
-
-      grid-template-columns: 140fr 131fr 152fr 283fr 190fr 166fr;
-      grid-template-rows: 114fr 306fr 305fr 131fr 129fr 70fr;
-
-      background-color: black;
-      grid-gap: 25px 25px;
-
-      grid-template-areas:
-        &quot;w1    w1           w2           w2           headline  headline&quot;
-        &quot;w4    description  description  description  facts     facts&quot;
-        &quot;w5    description  description  description  portrait  w11&quot;
-        &quot;w5    navigation   navigation   w6           w7        w7&quot;
-        &quot;gelb  navigation   navigation   w8           css       css&quot;
-        &quot;gelb  w9           w9           stylename    css       css&quot;
-        &quot;gelb  w9           w9           w10          w10       w10&quot;;
-    }
-    ...
-
-}
-</pre></div>
 
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
+      <li><a href="/css-layout/layout/">CSS für Layout</a></li>
       
       
       
@@ -433,14 +305,6 @@ andere Mediaqueries schlagend.</p>
                       
                     
                       
-                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
-                      
-                    
-                      
-                      <li ><a href="/css-layout/rahmenbedingungen/">Rahmenbedingungen</a></li>
-                      
-                    
-                      
                       <li class="active"><a href="/css-layout/responsive/">Responsive Design</a></li>
                       
                     
@@ -450,6 +314,10 @@ andere Mediaqueries schlagend.</p>
                     
                       
                       <li ><a href="/css-layout/selektoren/">CSS Selektoren im Detail</a></li>
+                      
+                    
+                      
+                      <li ><a href="/css-layout/details/">Details zu Layout</a></li>
                       
                     
                   
@@ -849,11 +717,11 @@ andere Mediaqueries schlagend.</p>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
                       
                     
                       
-                      <li ><a href="/php-db-schreiben/fehlerbehandlung/">Fehlerbehandlung</a></li>
+                      <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
                       
                     
                   
@@ -1197,11 +1065,11 @@ andere Mediaqueries schlagend.</p>
                       
                     
                       
-                      <li ><a href="/apache/auth/">Authentisierung</a></li>
+                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
                       
                     
                       
-                      <li ><a href="/apache/rewrite/">Rewrite</a></li>
+                      <li ><a href="/apache/auth/">Authentisierung</a></li>
                       
                     
                   
