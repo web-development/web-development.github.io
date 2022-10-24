@@ -168,19 +168,17 @@ als Web ProgrammiererInnen relevant sind:</p>
 </div>
 <div class="slide">
 
-<h3 id="einfach-und-semantisch">Einfach und Semantisch</h3>
+<h3 id="so-einfach-wie-mglich">So einfach wie möglich</h3>
 
-<p>Wir haben HTML, CSS, JavaScript in dieser Reihenfolge gelernt,
-wir haben die korrekte Verwendung der HTML Tags gelernt.  Das ist
-eine gute Basis für barrierefreie Webseiten.</p>
-
-<p>Wenn ein Effekt mit HTML, CSS oder JavaScript erzieht werden kann, dann
+<p>Wir lernen HTML, CSS, JavaScript in dieser Reihenfolge - das ist auch
+die Reihenfolge in der wir es anwenden:
+Wenn ein Effekt mit HTML, CSS oder JavaScript erzieht werden kann, dann
 verwende immer die einfachste Technologie.</p>
 
 <p>Folgende Folie aus eine Votragt von <a href="https://twitter.com/g33konaut">Martin Splitt</a>
 zeigt verschiedene Arten einen Link zu bauen.  Die einfachste Art ist die Beste!</p>
 
-<p><img src="/images/qualitaet/accessible-link.jpg" srcset="/images/qualitaet/accessible-link.jpg 1x, /images/qualitaet/accessible-link@2x.jpg 2x"  alt="Beispiel für barrierefreies Web - lieber ein link mit href als mit JavaScript" ></p>
+<p><img src="/images/qualitaet/accessible-link.jpg" srcset="/images/qualitaet/accessible-link@2x.jpg 2x, /images/qualitaet/accessible-link.jpg 1x"  alt="Beispiel für barrierefreies Web - lieber ein link mit href als mit JavaScript" ></p>
 
 </div>
 <div class="slide">
@@ -214,92 +212,106 @@ und Datumsangaben darzustellen. Ebenso von Vorleseprogrammen, Suchmaschinen, Üb
 </div>
 <div class="slide">
 
-<h3 id="landmarks-und-berschriften">Landmarks und Überschriften</h3>
+<h3 id="semantisches-html">Semantisches HTML</h3>
+
+<p>Die HTML-Tags die wir kennen gelernt haben geben dem Dokument nicht nur
+eine Struktur, sondern verleihen auch eine Bedeutung. Diese Bedeutung
+sollten wir immer nutzen:</p>
+
+<ul>
+  <li>für einen Link?  Verwende <code>&lt;a href="https://....."&gt;</code>, nicht <code>&lt;span&gt;</code> oder <code>&lt;div&gt;</code></li>
+  <li>für eine Liste? Verwende <code>&lt;li&gt;</code>, nicht <code>&lt;span&gt;</code> oder <code>&lt;div&gt;</code></li>
+  <li>für eine Überschrift? Verwende <code>&lt;h1&gt;</code>, nicht <code>&lt;strong&gt;</code> oder <code>&lt;div&gt;</code></li>
+  <li>für einen Absend-Button? verwende <code>&lt;input type="submit"&gt;</code>, nicht <code>&lt;span&gt;</code> oder <code>&lt;div&gt;</code></li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="berschriften-und-landmarks">Überschriften und Landmarks</h3>
 
 <p>Einen Überblick über die Inhalte der Seite zu erhalten ist schwierig, wenn man
 nicht sehen kann. Screen Reader verwenden die Überschriften und sogenannte Landmarks
 um diesen Überblick zu schaffen.</p>
 
-<p>Damit das funktioniert, muss man die HTML-Tags korrekt verwenden, oder - falls das nicht geht - die
+<p>Die Überschrift <code>h1</code> sollte nur einmal in der Seite verwendet werden und
+die gesamte Seite beschreiben.  Die weiteren Überschriften <code>h2</code>, <code>h3</code>, …
+werden für die weiteren Gliederungsebenen verwendet.</p>
+
+<p>Für Bereiche der Seite die eine wichtige Rolle spielen (Navigation, Suche, Header, Main, Section, …) sollte
+man die entsprechenden semantischen HTML-Tags verwenden.</p>
+
+<p>Falls das nicht funktioniert kann man die
 Rolle explizit mit dem <code>role</code> Attribut definieren:</p>
 
-<table>
+<table class="table table-condensed table-bordered" style="width:auto">
   <thead>
     <tr>
-      <th>Role</th>
-      <th>HTML</th>
+      <th>HTML-Tag</th>
+      <th>Role-Attribut</th>
       <th>Bedeutung</th>
-      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>main</td>
-      <td>MAIN-Tag</td>
+      <td>main</td>
       <td>primary content of the page.</td>
-      <td> </td>
     </tr>
     <tr>
+      <td>section</td>
       <td>region</td>
-      <td>SECTION-Tag</td>
       <td>a perceivable section that is sufficiently important that users will likely want to be able to navigate to the section easily and to have it listed in a summary of the page.</td>
-      <td> </td>
     </tr>
     <tr>
+      <td>nav</td>
       <td>navigation</td>
-      <td>NAV-Tag</td>
       <td>links that are intended to be used for website or page content navigation.</td>
-      <td> </td>
     </tr>
     <tr>
-      <td>search</td>
       <td>keine HTML-Entsprechung;</td>
+      <td>search</td>
       <td>search functionality for content on the website.</td>
-      <td> </td>
     </tr>
     <tr>
+      <td>header</td>
       <td>banner</td>
-      <td>HEADER-Tag</td>
       <td>the logo or identity of the site sponsor, and site-specific search tool. A banner usually appears at the top of the page</td>
-      <td> </td>
     </tr>
     <tr>
+      <td>footer</td>
       <td>contentinfo</td>
-      <td>FOOTER-Tag</td>
       <td>information such as copyrights and links to privacy and accessibility statements.</td>
-      <td> </td>
     </tr>
     <tr>
+      <td>aside</td>
       <td>complementary</td>
-      <td>ASIDE-Tag</td>
       <td>complementary to the main content at a similar level in the DOM hierarchy, but remains meaningful when separated from the main content.</td>
-      <td> </td>
     </tr>
     <tr>
       <td>form</td>
-      <td>FORM-Tag</td>
+      <td>form</td>
       <td>a form when no other named landmark is appropriate (e.g. main or search)</td>
-      <td> </td>
     </tr>
   </tbody>
 </table>
 
-<div class="example table table-condensed table-bordered" style="width:auto">
+<div class="example">
 <pre class="lang-html prettyprint linenums">
 &lt;form role=&quot;search&quot;&gt;
   &lt;input type=&quot;search&quot; aria-label=&quot;search text&quot; size=&quot;20&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Search&quot;&quot;&gt;
-&lt;/form&gt; 
+&lt;/form&gt;
 </pre></div>
 
-<p>Siehe auch <a href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/index.html">w3c: ARIA Landmarks Example</a></p>
+<p>Siehe auch <a href="https://www.w3.org/WAI/ARIA/apg/example-index/landmarks/search.html">w3c: ARIA Landmarks Example</a></p>
 
 </div>
 <div class="slide">
 
 <h3 id="textformatierung">Textformatierung</h3>
 
-<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2019 verwenden z.B. Die <a href="https://www.zeit.de/2016/51/bundesteilhabegesetz-inklusion-barrierefreiheit-gleichstellung">Zeit Online</a> 20px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 21px,
+<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2022 verwenden z.B. Die <a href="https://www.zeit.de/2016/51/bundesteilhabegesetz-inklusion-barrierefreiheit-gleichstellung">Zeit Online</a> 20px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 21px,
 <a href="http://www.zeldman.com/2016/12/14/font-size-widgets/">Jeffrey Zeldman</a> 21px.</p>
 
 <p>Ein Zeilenabstand 1.5x (mit <code>line-height</code> festgelegt) erhöht die Lesbarkeit.</p>
@@ -307,9 +319,8 @@ Rolle explizit mit dem <code>role</code> Attribut definieren:</p>
 <p>Im Web gibt es weiterhin Probleme mit Blocksatz. Flattersatz (“linksbündig”) führt zu
 zuverlässigeren Ergebnissen.</p>
 
-<p>Die Zeilenlänge sollte man von der Schriftgröße abhängig machen, oder gleich die relativ neue
-Einheit <code>ch</code> (Breite des Zeichens 0) in CSS verwenden, um die maximal zulässige Anzahl von Zeichen in einer Zeile
-festzulegen:</p>
+<p>Wie breit eine Spalte Text ist beeinflusst auch die Lesbarkeit. Man könnte dafür die Einheit <code>ch</code> (Breite des Zeichens 0)  verwenden,
+um die maximal zulässige Anzahl von Zeichen in einer Zei festzulegen:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
@@ -317,6 +328,22 @@ p {
     max-width: 65ch;
 }
 </pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="farben-und-kontraste">Farben und Kontraste</h3>
+
+<p>Farbenblindheit und Fabenfehlsichtigkeit betrifft ca. jede 20. Person.  Männer sind - aus genetischen Gründen
+- häufiger betroffen als Frauen.  Deswegen sollte man vermeiden, eine Information <em>nur</em> mit Farbe zu vermitteln:</p>
+
+<p>Schlechtes Beispiel: 🟢  vs. 🔴</p>
+
+<p>Gutes Beispiel:  ✅  vs.  ❌</p>
+
+<p>Für die Lesbarkeit von Text ist der Kontrast zwischen Text und Hintergrund wichtig. Die WCAG 1.4.3
+schreibt ein Kontrastverhältnis von mindestens 4,5:1 vor.  Das kann man einfach überprüfen mit dem
+<a href="https://webaim.org/resources/contrastchecker/">Contrast Checker</a></p>
 
 </div>
 <div class="slide">
