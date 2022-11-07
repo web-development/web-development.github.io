@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - A6 - Komponenten</title>
+  <title>Lehrbuch Web-Development - Include Javascript</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -45,42 +45,126 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        A6 - Komponenten
+        Include Javascript
       </h2>
-      <a href="/security/a6-komponenten/slide.html">als Präsentation ▻</a>
+      <a href="/javascript-dom/include-javascript/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Auf <a href="https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/">Platz 6 der OWASP Top 10 2021: Anfällige und veraltete Komponenten </a></p>
-
-<p>Die OWASP beschreibt dieses Problem ungefähr so:</p>
-
-<blockquote>
-  <p>Web Applikationen verwenden Komponenten wie z.B. Bibliotheken, Frameworks oder andere Softwaremodule. Wenn eine verwundbare Komponente ausgenutzt wird, kann ein
-solcher Angriff zu schwerwiegendem Datenverlust oder bis zu einer Serverübernahme führen.
-Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können Schutzmaßnahmen unterlaufen und so zahlreiche Angriffe und Auswirkungen ermöglichen.</p>
-</blockquote>
-
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="manahmen">Maßnahmen</h2>
+<h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
 
 <ul>
-  <li>Nur Komponenten inkludieren, die wirklich verwendet werden</li>
-  <li>regelmäßig automatisch prüfen, ob die Komponenten Sicherheitsprobleme haben</li>
+  <li>externe Javascript-Datei</li>
+  <li>mit <code>&lt;script&gt;</code>-Tag</li>
+  <li>Javascript in einer URL</li>
+  <li>onevent-Attribute</li>
 </ul>
 
-<p>Siehe <a href="https://web-engineering.github.io/dependencies.html">Managing Dependencies</a> im Buch “Web Engineering”.</p>
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
+
+<p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die
+Endung <code>.js</code>. Wir werden später eine Javascript-Library namens jQuery verwendet.
+Mit dem <code>script</code>-Tag wird die externe Javascript-Datei eingebunden:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+</pre></div>
+
+<p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er
+keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung:
+die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
+
+<p>Man kann das Javascript Programm auch von einem anderen Server laden, zum Beispiel von einem <a href="https://de.wikipedia.org/wiki/Content_Delivery_Network">CDN</a>.  Dann verwendet man zusätzlich noch das <code>integrity</code> attribut, um sicher zu Stellen dass genau der Javascript-Code geladen wird, den man haben wollte, und ihn niemand verändert hat:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot; integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</pre></div>
+
+<p><img src="images/javascript-dom/sri.png"  alt="" ></p>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
+<p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet
+werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
+<a href="/images/javascript-dom/countdown.html">live im Browser</a></p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;h1&gt;Selbstzerstörung&lt;/h1&gt;
+  &lt;script&gt;
+      i=10;
+      while (i&gt;0) {
+          document.write(&quot;&lt;br&gt;in &quot; + i + &quot; Millisekunden&quot;);
+          i--;
+      }
+  &lt;/script&gt;
+  &lt;p&gt;&lt;strong&gt;Peng!&lt;/strong&gt;
+</pre></div>
+
+<p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
+
+<p>Als URL kann man auch ein kleines Javascript-Programm angeben, z. B. bei einem Link:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;javascript:location=&#39;http://www.google.at/&#39;&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
+</pre></div>
+
+<p>Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.</p>
+
+<p>Hier eine Version die dem Prinzip der „graceful degradation“ entspricht. Sie funktioniert mit und ohne Javascript sinnvoll:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm(&#39;go?&#39;); return ok;&quot;&gt;google&lt;/a&gt;
+</pre></div>
+
+<p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>
+
+<p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
+
+<p><a href="http://www.google.at" onclick="ok=confirm('go?'); return ok;">google</a></p>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h3 id="die-onevent---attribute">Die onevent - Attribute</h3>
+
+<p>Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.
+Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo&amp;t=316">Crash Course Computer Science #26: Graphical User Interfaces</a> für eine Erklärung von Event-Gesteuerter-Programmierung.</p>
+
+<p>Ein Beispiel:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;body onload=&quot;...&quot;&gt;
+</pre></div>
+
+<p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/security/a5-fehlkonfiguration/">A5 - Fehlkonfiguration</a></li>
+      <li><a href="/javascript-dom/basic-javascript/">Basic Javascript</a></li>
       
       
       
-      <li><a href="/security/a7-auth/">A7 - Identification and Authentication Failures</a></li>
+      <li><a href="/javascript-dom/dom/">DOM</a></li>
       
     
   </ul>
@@ -258,7 +342,7 @@ Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können S
               </ul>
             </li>
           
-          <li class=" "><a href="/javascript-dom/">Javascript Dom</a>
+          <li class="active "><a href="/javascript-dom/">Javascript Dom</a>
               <ul class="sub">
                 
                   
@@ -278,7 +362,7 @@ Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können S
                       
                     
                       
-                      <li ><a href="/javascript-dom/include-javascript/">Include Javascript</a></li>
+                      <li class="active"><a href="/javascript-dom/include-javascript/">Include Javascript</a></li>
                       
                     
                       
@@ -822,7 +906,7 @@ Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können S
               </ul>
             </li>
           
-          <li class="active "><a href="/security/">Security</a>
+          <li class=" "><a href="/security/">Security</a>
               <ul class="sub">
                 
                   
@@ -854,7 +938,7 @@ Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können S
                       
                     
                       
-                      <li class="active"><a href="/security/a6-komponenten/">A6 - Komponenten</a></li>
+                      <li ><a href="/security/a6-komponenten/">A6 - Komponenten</a></li>
                       
                     
                       
@@ -1043,7 +1127,7 @@ Applikationen, die Komponenten mit bekannten Schwachstellen einsetzen, können S
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a6-komponenten.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/javascript-dom/include-javascript.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

@@ -79,7 +79,7 @@
         >
          
         | Nächste Präsentation
-        <a href="/javascript-dom/dom//slide.html">DOM</a>
+        <a href="/javascript-dom/include-javascript//slide.html">Include Javascript</a>
         
       </p>
     </div>
@@ -90,18 +90,18 @@
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
 <pre class="lang-html prettyprint linenums">
 &lt;body id=&quot;farbfeld&quot;&gt;
-  &lt;h1&gt;Farbwahl&lt;/h1&gt;
-  &lt;form&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
-    &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
-  &lt;/form&gt;
   &lt;script&gt;
-  function setcolor( c ) {
-    b = document.getElementById(&#39;farbfeld&#39;);
-    b.style.backgroundColor = c
+  console.log(&quot;JavaScript is active&quot;);
+  function setcolor( color ) {
+    let area = document.getElementById(&#39;farbfeld&#39;);
+    area.style.backgroundColor = color;
+    console.log(&quot;color was changed to&quot;, color);
   }
   &lt;/script&gt;
+  &lt;h1&gt;Farbwahl&lt;/h1&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
 &lt;/body&gt;
 </pre></div>
 
@@ -109,118 +109,65 @@
 
 <p>Wer ein bestehende Website warten oder verändern will muss mindestens den bestehenden Javascript-Code erkennen können, um ihn nicht zu beschädigen. D.h. auch Leute die nur Design und keine Programmierung machen brauchen ein Grundverständnis von Javascript.</p>
 
-<p>Es ist also erst einmal zu klären wie Javascript in HTML eingebunden wird.</p>
+<p>Betrachten wir nun die einzelnen Teile des Dokuments</p>
 
 </div>
 <div class="slide">
 
-<h2 id="einbindung-von-javascript">Einbindung von Javascript</h2>
+<h2 id="der-script-tag">Der Script Tag</h2>
 
-<ul>
-  <li>externe Javascript-Datei</li>
-  <li>mit <code>&lt;script&gt;</code>-Tag</li>
-  <li>Javascript in einer URL</li>
-  <li>onevent-Attribute</li>
-</ul>
+<p>Der HTML-Tag <code>&lt;script&gt;</code> enthält JavaScript Code.
+Dieser Code wird sofort ausgeführt wenn die Seite geladen wird.
+Im Beispiel betrifft das nur den Befehl <code>console.log</code>, der sofort
+eine Zeile in die Console der Developer Tools schreibt:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Der Script-Tag</small></h4>
+<pre class="lang-html prettyprint linenums">
+&lt;script&gt;
+console.log(&quot;JavaScript is active&quot;);
+function setcolor( color ) {
+  let area = document.getElementById(&#39;farbfeld&#39;);
+  area.style.backgroundColor = color;
+  console.log(&quot;color was changed to&quot;, color);
+}
+&lt;/script&gt;
+</pre></div>
+
+<p>Es wir noch eine Funktion <code>setcolor</code> definiert, aber nicht aufgerufen.</p>
 
 </div>
 <div class="slide">
 
-<h3 id="externe-javascript-datei">Externe Javascript-Datei</h3>
-
-<p>Man kann Javascript-Programme in eigenen Dateien speichern, diese haben traditionell die 
-Endung <code>.js</code>. Wir werden später eine Javascript-Library namens jQuery verwendet. 
-Mit dem <code>script</code>-Tag wird die externe Javascript-Datei eingebunden:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
-</pre></div>
-
-<p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er 
-keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung: 
-die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nicht erlaubt!</p>
-
-<p>Man kann das Javascript Programm auch von einem anderen Server laden, zum Beispiel von einem <a href="https://de.wikipedia.org/wiki/Content_Delivery_Network">CDN</a>.  Dann verwendet man zusätzlich noch das <code>integrity</code> attribut, um sicher zu Stellen dass genau der Javascript-Code geladen wird, den man haben wollte, und ihn niemand verändert hat:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot; integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-</pre></div>
-
-<p><img src="images/javascript-dom/sri.png"  alt="" ></p>
-
-</div>
-<div class="slide">
-
-<h3 id="der-ltscript-tag">Der &lt;script&gt;-Tag</h3>
-<p>Javascript-Programme können im HTML-Code mit dem <code>script</code>-Tag eingebettet
-werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
-<a href="/images/javascript-dom/countdown.html">live im Browser</a></p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h1&gt;Selbstzerstörung&lt;/h1&gt;
-  &lt;script&gt;
-      i=10;
-      while (i&gt;0) {
-          document.write(&quot;&lt;br&gt;in &quot; + i + &quot; Millisekunden&quot;);
-          i--;
-      }
-  &lt;/script&gt;
-  &lt;p&gt;&lt;strong&gt;Peng!&lt;/strong&gt;
-</pre></div>
-
-<p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
-
-</div>
-<div class="slide">
-
-<h3 id="javascript-in-einer-url">Javascript in einer URL</h3>
-
-<p>Als URL kann man auch ein kleines Javascript-Programm angeben, z. B. bei einem Link:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;javascript:location=&#39;http://www.google.at/&#39;&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
-</pre></div>
-
-<p>Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.</p>
-
-<p>Hier eine Version die dem Prinzip der „graceful degradation“ entspricht. Sie funktioniert mit und ohne Javascript sinnvoll:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm(&#39;go?&#39;); return ok;&quot;&gt;google&lt;/a&gt;
-</pre></div>
-
-<p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>
-
-<p>Mit Javascript erscheint ein Dialog, je nach Antwort wird der Link entweder aufgerufen oder nicht. Das funktioniert gleich wie beim onsubmit-Attribut des form-Tags: Wenn der Event-Handler <code>false</code> zurückgibt wird das Event unterbrochen.</p>
-
-<p><a href="http://www.google.at" onclick="ok=confirm('go?'); return ok;">google</a></p>
-
-</div>
-<div class="slide">
-
-<h3 id="die-onevent---attribute">Die onevent - Attribute</h3>
+<h2 id="die-onevent---attribute">Die onevent - Attribute</h2>
 
 <p>Meist werden Javascript-Programme so geschrieben, dass sie nicht gleich beim Laden der Seite starten, sondern erst wenn gewisse Ereignisse (Events) eintreten.
 Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo&amp;t=316">Crash Course Computer Science #26: Graphical User Interfaces</a> für eine Erklärung von Event-Gesteuerter-Programmierung.</p>
 
-<p>Ein paar typische Events mit ihren typischen HTML-Tags:</p>
+<p>Im Beispiel-Programm findet man drei <code>onclick</code> attribute:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
+<pre class="lang-html prettyprint linenums">
+  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
+</pre></div>
+
+<p>Beim Click auf den jeweiligen Button wird das Stück JavaScript Code im <code>onclick</code>-Attribut
+ausgeführt.</p>
 
 </div>
 <div class="slide">
 
-
+<h2 id="beispiele-fr-events">Beispiele für Events</h2>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;body onload=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
+<p>Der Code wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
 
 </div>
 <div class="slide">
@@ -232,7 +179,7 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
   &lt;a href=&quot;...&quot; onmouseover=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn die Maus über den Link bewegt wird (auch: <code>onmouseout</code>). (Achtung: funktioniert nicht auf Touch-Devices – so wie <code>:hover</code>)</p>
+<p>Der Code wird ausgeführt wenn die Maus über den Link bewegt wird (auch: <code>onmouseout</code>). (Achtung: funktioniert nicht auf Touch-Devices – genau wie <code>:hover</code>)</p>
 
 </div>
 <div class="slide">
@@ -242,10 +189,9 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;input type=&quot;button&quot; onclick=&quot;...&quot;&gt;
-  &lt;input type=&quot;submit&quot; onclick=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn auf den Button geklickt wird. Beim <code>type="submit"</code> muss das Javscript-Programm  <code>true</code> oder <code>false</code> zurückgeben um anzuzeigen ob die normale Submit-Funktion  wirklich ausgeführt werden soll.</p>
+<p>Der Code wird ausgeführt wenn auf den Button geklickt wird.</p>
 
 </div>
 <div class="slide">
@@ -254,22 +200,23 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;form onsubmit=&quot;...&quot;&gt;
+  &lt;script&gt;
+    function check() {
+      if (....) {
+        // data ok, send it!
+        return true;
+      } else {
+        // data not ok, block the submission of the form
+        return false;
+      }
+    }
+  &lt;/script&gt;
+  &lt;form onsubmit=&quot;return check();&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden. Falls der Javascript-Code false zurückgibt werden die Daten aber nicht versandt!</p>
+<p>Der Code wird aufgerufen, wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden.</p>
 
-</div>
-<div class="slide">
-
-
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;...&quot; onclick=&quot;...&quot;&gt;
-</pre></div>
-
-<p>Das Programm wird ausgeführt wenn der Link angeklickt wird. Falls der Javascript-Code false zurückgibt wird der Link aber nicht aktiviert!</p>
+<p>Falls der Javascript-Code  <code>false</code> zurückgibt werden die Daten aber nicht versandt!</p>
 
 </div>
 <div class="slide">
@@ -281,7 +228,8 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
   &lt;input onchange=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde</p>
+<p>Der Code wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde
+und der Fokus auf das nächste Feld weitergeht.</p>
 
 </div>
 <div class="slide">
@@ -305,7 +253,7 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
   &lt;body onoffline=&quot;...&quot; ononline=&quot;...&quot;&gt;
 </pre></div>
 
-<p>Das Programm wird ausgeführt wenn das Gerät die Verbindung zum Internet
+<p>Der Code wird ausgeführt wenn das Gerät die Verbindung zum Internet
 verliert, bzw. wieder erhält.</p>
 
 </div>
@@ -313,9 +261,9 @@ verliert, bzw. wieder erhält.</p>
 
 <h2 id="syntax-von-javascript">Syntax von Javascript</h2>
 
-<p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Anweisung wird mit einem Strichpunkt (Semikolon) getrennt, Blöcke werden mit geschwungenen Klammern gebildet.</p>
+<p>Javascript hat eine ähnliche Schreibweise wie die Sprachen aus der C-Familie (C, C++, Java, Perl, PHP): Semikolon am Ende des Statements, Blöcke werden mit geschwungenen Klammern gebildet.</p>
 
-<p>Javascript ist eine objektorientierte Programmiersprache. Was bedeutet objektorientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Methoden existieren können, die zu diesem Objekt gehören.</p>
+<p>Javascript ist eine objektorientierte Programmiersprache. Was bedeutet Objekt-Orientierung? Die Grundidee ist, dass ein Objekt nicht nur eine Variable ist, die Daten speichert, sondern zusätzlich auch noch Methoden existieren können, die zu diesem Objekt gehören.</p>
 
 </div>
 <div class="slide">
@@ -345,7 +293,7 @@ document.write(&quot;hi&quot;);
 <p>Folgendes Beispiel verwendet die Methode <code>getElementById</code> des <code>document</code>-Objekts um ein bestimmtes Element in der Webseite auszuwählen, und dann die Eigenschaft <code>textContent</code>
 um den Text zu verändern:</p>
 
-<p><img src="/images/javascript-dom/js-console.png" srcset="/images/javascript-dom/js-console.png 1x, /images/javascript-dom/js-console@2x.png 2x, /images/javascript-dom/js-console@3x.png 3x"  alt="Abbildung 58: Javascript Console in Firebug: Manipulation von Wikipedia" ></p>
+<p><img src="/images/javascript-dom/js-console.png" srcset="/images/javascript-dom/js-console.png 1x, /images/javascript-dom/js-console@2x.png 2x, /images/javascript-dom/js-console@3x.png 3x"  alt="Abbildung 58: Javascript Console in den Developer Tools: Manipulation von Wikipedia" ></p>
 
 </div>
 <div class="slide">
@@ -369,7 +317,7 @@ let b;    // neu, Variable
 const c;  // neu, Konstante
 </pre></div>
 
-<p>Die Details zu <code>let</code> und <code>const</code> lernen Sie später 
+<p>Die Details zu <code>let</code> und <code>const</code> lernen wir später
 im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
 
 </div>
@@ -388,7 +336,7 @@ im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
   a = undefined;    // typeof(a) == &quot;undefined&quot;
 </pre></div>
 
-<p>Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden: 
+<p>Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden:
 bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
 darüber nur noch floats.  Die Details
 können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How numbers are encoded in JavaScript</a> nachlesen.</p>
@@ -431,7 +379,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 
 
-<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft 
+<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft
 `.length ausgelesen werden.
 <a href="/images/javascript-dom/jsarray.html">Beispiel live im Browser</a></p>
 
@@ -460,9 +408,9 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
   var c;
   c = {&quot;farbe&quot; : &quot;rot&quot;, &quot;beschriftung&quot;: &quot;int pi == 3&quot;, &quot;verkauft&quot;: true};
 
-  alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”  
+  alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”
 
-  alert(typeof c); // gibt  &quot;object&quot;  
+  alert(typeof c); // gibt  &quot;object&quot;
 </pre></div>
 
 <p>Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Klasse mit Konstruktor besser geeignet.</p>
@@ -480,7 +428,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
   alert(&quot;Das Shirt ist &quot; + d.farbe ); // gibt “Das Shirt ist rot”
 
-  alert(typeof d); // gibt  &quot;object&quot;  
+  alert(typeof d); // gibt  &quot;object&quot;
 </pre></div>
 
 </div>
@@ -583,8 +531,8 @@ definierten Funktionsnamen verwendet:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  function add( a, b ) { 
-      return a+b; 
+  function add( a, b ) {
+      return a+b;
   }
 
   console.log(  add(40, 2)  );  // gibt 42
@@ -597,7 +545,6 @@ definierten Funktionsnamen verwendet:</p>
 
 <p>Sowohl für Variablen als auch für Funktionen wird meist “Camel Case” verwendet, mit
 einem kleinen Anfangsbuchstaben, z.b.  <code>addNumbers</code>,  <code>deleteAllTheListItems</code>.</p>
-
 </div>
     <div class="slide">
       <h1>Basic Javascript</h1>
@@ -609,7 +556,7 @@ einem kleinen Anfangsbuchstaben, z.b.  <code>addNumbers</code>,  <code>deleteAll
         >
          
         | Nächste Präsentation
-        <a href="/javascript-dom/dom//slide.html">DOM</a>
+        <a href="/javascript-dom/include-javascript//slide.html">Include Javascript</a>
         
       </p>
     </div>
