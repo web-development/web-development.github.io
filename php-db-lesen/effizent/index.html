@@ -108,13 +108,19 @@ die benötigten Datensätze zu laden.</p>
 
 <p>Die Verwendung der richtigen Datentypen in der Datenbank erleichtert die
 Abfragen.  Zum Beipiel zum Speichern eines Datums sollte man den Typ <code>DATE</code> oder
-<code>TIMESTAMP</code> verwenden.  Das ermöglicht das Sortieren nach Datum und  Berechnungen wie 
+<code>TIMESTAMP</code> verwenden.  Das ermöglicht das Sortieren nach Datum und  Berechnungen wie
 „falls Datum nicht älter als 100 Tage ist“</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
-select titel,publicationdate from projects
-where datediff( curdate( ) , publicationdate ) &lt;= 100; 
+SELECT
+  title,
+  publicationdate,
+  (current_date - publicationdate) AS age
+FROM projects where
+  (current_date - publicationdate) BETWEEN 0 AND 100
+  AND NOT(draft)
+ORDER BY publicationdate DESC;
 </pre></div>
 
 <p>Diese SQL-Abfage zeigt Titel und Publikations-Datum aller Werke die in den
