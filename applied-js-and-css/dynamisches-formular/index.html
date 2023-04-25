@@ -50,61 +50,66 @@
       <a href="/applied-js-and-css/dynamisches-formular/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Ohne Einsatz von Javascript sind HTML-Formulare sehr unflexibel.
-So könnte ein Pizza-Bestell-Formular aussehen:</p>
+So könnte ein Pizza-Bestell-Formular aussehen: für jede
+Sorte Pizza gibts ein Eingabefeld für die Anzahl der Pizzen.</p>
 
-<p><img src="/images/static-pizza-form.png" srcset="/images/static-pizza-form.png 1x, /images/static-pizza-form@2x.png 2x"  alt="static pizza form" ></p>
+<p><img src="/images/applied-js-and-css/dynamisches-formular/static-pizza-form.png" srcset="/images/applied-js-and-css/dynamisches-formular/static-pizza-form.png 1x, /images/applied-js-and-css/dynamisches-formular/static-pizza-form@2x.png 2x"  alt="static pizza form" ></p>
 
-<p>Viel schöner wäre es, wenn jede bestellte Pizza im Formlar
+<p>Viel schöner wäre es, wenn jede bestellte Pizza im Formular
 einzeln aufgeführt würde, und jeweils eigene Extra-Zutaten haben
-könnte:</p>
+könnte. Je nach Bedarf kann man Zeilen dazugeben oder weglöschen:</p>
 
-<p><img src="/images/dynamic-pizza-form-2.png" srcset="/images/dynamic-pizza-form-2.png 1x, /images/dynamic-pizza-form-2@2x.png 2x"  alt="dynamic pizza form" ></p>
+<p><img src="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2.png" srcset="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2.png 1x, /images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2@2x.png 2x"  alt="dynamic pizza form" ></p>
 
-<p>Dann kann man auch zu jeder Pizza angeben, für wen sie
-bestimmt ist.</p>
+<p>Dann kann man auch zu jeder Pizza angeben, für wen sie bestimmt ist.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="dynamisches-formular-planen">Dynamisches Formular planen</h2>
 
-<p>ACHTUNG: in den Beispielen hier wird noch jQuery verwendet - finde heraus
-wie Du dasselbe ohnee jQuery, mit reinem JavaScript machen kannst!
-<a href="http://youmightnotneedjquery.com/">Siehe auch: You Might Not Need jQuery</a></p>
+<p>So könnten die “Zeilen” des Formulars aussehen: sie haben jeweils
+eindeutige IDs (pizza_0, pizza_1, und so weiter)
+und enthalten dann jeweils 2 Checkboxen, ein Textfeld und ein verstecktes Feld.</p>
 
-<p>Das Hinzufügen von zusätzlichen Zeilen bzw. Eingabeelementen
-kann man mit jQuery gut umsetzen.</p>
-
-<p>Achtung: die dynamisch erzeugten Eingabefelder brauchen eindeutige Namen!
-Wir verwenden <code>pizza[1]</code>, <code>pizza[2]</code>, … für den Typ der Pizza,
-<code>hot[1]</code>, <code>hot[2]</code>, … für die checkbox “scharf”, und so weiter.</p>
+<p>Beachte die Namen der Eingabefelder:</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;li class=&quot;a_pizza&quot;&gt;
+  &lt;div id=&quot;pizza_0&quot; class=&quot;selected_pizza&quot;&gt;
     &lt;p&gt;Pizza Sicilia&lt;/p&gt;
-      &lt;div class=&quot;flex-inner&quot;&gt;
-        &lt;label&gt;&lt;input name=&quot;hot[2]&quot; type=&quot;checkbox&quot;&gt; Scharf&lt;/label&gt;
-        &lt;label&gt;&lt;input name=&quot;cheese[2]&quot; type=&quot;checkbox&quot;&gt; mit extra Käse&lt;/label&gt;
-        &lt;label&gt;für &lt;input name=&quot;fuer[2]&quot; placeholder=&quot;Christian&quot; type=&quot;text&quot;&gt;&lt;/label&gt;
-        &lt;input name=&quot;pizza[2]&quot; value=&quot;Pizza Tonno&quot; type=&quot;hidden&quot;&gt;
-    &lt;/div&gt;&lt;/li&gt;
-  &lt;li class=&quot;a_pizza&quot;&gt;
-    &lt;p&gt;Pizza Margherita&lt;/p&gt;
-      &lt;div class=&quot;flex-inner&quot;&gt;
-        &lt;label&gt;&lt;input name=&quot;hot[1]&quot; type=&quot;checkbox&quot;&gt; Scharf&lt;/label&gt;
-        &lt;label&gt;&lt;input name=&quot;cheese[1]&quot; type=&quot;checkbox&quot;&gt; mit extra Käse&lt;/label&gt;
-        &lt;label&gt;für &lt;input name=&quot;fuer[1]&quot; placeholder=&quot;Christian&quot; type=&quot;text&quot;&gt;&lt;/label&gt;
-        &lt;input name=&quot;pizza[1]&quot; value=&quot;Pizza Salami&quot; type=&quot;hidden&quot;&gt;
+    &lt;div&gt;
+      &lt;input name=&quot;pizza[0][type]&quot; value=&quot;Pizza Sicilia&quot; type=&quot;hidden&quot;&gt;
+      &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;pizza[0][spicy]&quot;&gt; scharf&lt;/label&gt;
+      &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;pizza[0][cheese]&quot;&gt; mit extra Käse&lt;/label&gt;
+      &lt;label&gt;
+        &lt;span&gt;Für&lt;/span&gt;
+        &lt;input name=&quot;pizza[0][name]&quot; placeholder=&quot;Name der Person&quot; type=&quot;text&quot;&gt;
+      &lt;/label&gt;
     &lt;/div&gt;
-  &lt;/li&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;pizza_1&quot; class=&quot;selected_pizza&quot;&gt;
+    &lt;p&gt;Pizza Margherita&lt;/p&gt;
+    &lt;div&gt;
+      &lt;input name=&quot;pizza[1][type]&quot; value=&quot;Pizza Margherita&quot; type=&quot;hidden&quot;&gt;
+      &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;pizza[1][spicy]&quot;&gt; scharf&lt;/label&gt;
+      &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;pizza[1][cheese]&quot;&gt; mit extra Käse&lt;/label&gt;
+      &lt;label&gt;
+        &lt;span&gt;Für&lt;/span&gt;
+        &lt;input name=&quot;pizza[1][name]&quot; placeholder=&quot;Name der Person&quot; type=&quot;text&quot;&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 </pre></div>
 
 <p>Die Namen mit eckigen Klammern, die an ein Array erinnern, werden
-von PHP auch als Array interpretiert:
-macht es aus den Parametern <code>pizza[1]</code>, <code>pizza[2]</code>,… ein Array,
-Wenn PHP die Daten entgegen nimmt und in $_POST speichert,
-das unter <code>$_POST['pizza']</code> gespeichert ist.</p>
+von PHP auch als Array interpretiert.</p>
+
+<p><a href="https://users.multimediatechnology.at/~bjelline/paramarray.php?">Demo mit GET Parametern</a></p>
+
+<p>Auch für unser Pizza Formular, das mit POST gesendet wird, gilt:
+PHP macht aus den Parametern <code>pizza[0][type]</code> … <code>pizza[1][name]</code> ein verschachteltes Array,
+das wir dann in <code>$_POST['pizza']</code> finden können.</p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -113,31 +118,27 @@ das unter <code>$_POST['pizza']</code> gespeichert ist.</p>
 
 <p>Die Auswahl der Pizza erfolgt über einen einfachen Select-Tag:</p>
 
-<p><img src="/images/dynamic-pizza-form-3.png" srcset="/images/dynamic-pizza-form-3.png 1x, /images/dynamic-pizza-form-3@2x.png 2x"  alt="" ></p>
+<p><img src="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3.png" srcset="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3.png 1x, /images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3@2x.png 2x"  alt="" ></p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-  &lt;li&gt;
-    &lt;p&gt;Pizzen&lt;/p&gt;
-    &lt;select id=&quot;next_pizza&quot; name=&quot;next_pizza&quot;&gt;
-      &lt;option value=&quot;&quot; selected&gt;--- bitte auswählen ---&lt;/option&gt;
-      &lt;option&gt;Pizza Margherita&lt;/option&gt;
-      &lt;option&gt;Pizza Sicilia&lt;/option&gt;
-      &lt;option&gt;Pizza Salami&lt;/option&gt;
-      &lt;option&gt;Pizza Tonno&lt;/option&gt;
-      &lt;option&gt;Pizza Diavolo&lt;/option&gt;
-      &lt;option&gt;Pizza ai Spinaci&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;button id=&quot;add_next_pizza&quot; &gt;Pizza auswählen&lt;/button&gt;
-  &lt;/li&gt;
+  &lt;select id=&quot;next_pizza&quot;&gt;
+    &lt;option value=&quot;&quot; selected&gt;--- bitte auswählen ---&lt;/option&gt;
+    &lt;option&gt;Pizza Margherita&lt;/option&gt;
+    &lt;option&gt;Pizza Sicilia&lt;/option&gt;
+    &lt;option&gt;Pizza Salami&lt;/option&gt;
+    &lt;option&gt;Pizza Tonno&lt;/option&gt;
+    &lt;option&gt;Pizza Diavolo&lt;/option&gt;
+    &lt;option&gt;Pizza ai Spinaci&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button id=&quot;add_next_pizza&quot; &gt;Pizza auswählen&lt;/button&gt;
 </pre></div>
 
-<p>Das auslesen des ausgewählten Wertes ist mit der
-jquery-Methode <code>val</code> ganz einfach:</p>
+<p>Den ausgewählten Wert kann man mit <code>value</code> auslesen:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-  let pizza_type = $(&#39;#next_pizza&#39;).val(); 
+  let selectedPizza = document.querySelector(&#39;#next_pizza&#39;).value;
 </pre></div>
 
 
@@ -145,97 +146,59 @@ jquery-Methode <code>val</code> ganz einfach:</p>
 
 <h2 id="neuen-teil-in-das-formular-einfgen">Neuen Teil in das Formular einfügen</h2>
 
-<p><img src="/images/dynamic-pizza-form-3.png" srcset="/images/dynamic-pizza-form-3.png 1x, /images/dynamic-pizza-form-3@2x.png 2x"  alt="" ></p>
-
 <p>Wenn der “Pizza Auswählen” Button geklickt wird
 soll dann ein neuer Teil zum Formular hinzugefügt werden.</p>
 
+<p><img src="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2.png" srcset="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2.png 1x, /images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-2@2x.png 2x"  alt="dynamic pizza form" ></p>
+
 <p>Wir brauchen für die Erzeugung dieses Teils einerseits
-den Typ der ausgewählten Pizza, und die nächstes Zahl:</p>
+den Typ der ausgewählten Pizza und einen Bereich, in den
+wir die Zeile hinein klonen können:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+  &lt;div class=&quot;row&quot; id=&quot;pizza_list&quot;&gt;
+    &lt;!-- Hier kommen die ausgewählten Pizzen hin --&gt;
+  &lt;/div&gt;
+</pre></div>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-    $(&quot;#add_next_pizza&quot;).on(&quot;click&quot;, function(event) {
-    event.preventDefault();
-    let pizza_type = $(&quot;#next_pizza&quot;).val();
-    let pizza_number = 1 + $(&quot;.a_pizza&quot;).length;
-    let template = `&lt;li class=&#39;a_pizza&#39;&gt;
-      &lt;p&gt;${pizza_type}&lt;/p&gt;....
-      &lt;/li&gt;`;
-    let $li = $(this).parents(&quot;li&quot;);
-    $li.after(template);
-  });
+// Pizzen hinzufügen
+
+  const pizzaList = document.getElementById(&quot;pizza_list&quot;);
+  const index = pizzaList.childElementCount;
+
+  const item = document.createElement(&quot;div&quot;);
+  item.id = &quot;pizza_&quot; + index;
+  item.classList.add(&quot;selected_pizza&quot;);
+  item.innerHTML = `
+    &lt;p&gt;${selectedPizza}&lt;/p&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;pizza[${index}][type]&quot; value=&quot;${selectedPizza}&quot;&gt;
+      ...
+    &lt;/div&gt;
+  `;
+  pizzaList.appendChild(item);
 </pre></div>
 
-<p>Der Inhalt des Templates fehlt hier, er müsste nach der Vorlage oben
+<p>Das Einfügen mit <code>innerHTML</code> ist nicht vollständig, der String müsste nach der Vorlage oben
 ergänzt werden.</p>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-<h2 id="html-einfgen">HTML einfügen</h2>
-
-<p>Das Einfügen des neuen Formular-Teils erfolgt hier über die gemeinsame
-Liste, in der sich alle Formular-Teile befinden:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;ul&gt;
-    ...
-    &lt;li&gt;
-      &lt;p&gt;Pizzen&lt;/p&gt;
-      &lt;select id=&quot;next_pizza&quot; name=&quot;next_pizza&quot;&gt;
-        ...
-      &lt;/select&gt;
-      &lt;button id=&quot;add_next_pizza&quot; &gt;Pizza auswählen&lt;/button&gt;
-    &lt;/li&gt;
-    &lt;li class=&quot;a_pizza&quot;&gt;
-      &lt;p&gt;Pizza Sicilia&lt;/p&gt;
-        &lt;div class=&quot;flex-inner&quot;&gt;
-          &lt;label&gt;&lt;input name=&quot;hot[2]&quot; type=&quot;checkbox&quot;&gt; Scharf&lt;/label&gt;
-          &lt;label&gt;&lt;input name=&quot;cheese[2]&quot; type=&quot;checkbox&quot;&gt; mit extra Käse&lt;/label&gt;
-          &lt;label&gt;für &lt;input name=&quot;fuer[2]&quot; placeholder=&quot;Christian&quot; type=&quot;text&quot;&gt;&lt;/label&gt;
-          &lt;input name=&quot;pizza[2]&quot; value=&quot;Pizza Tonno&quot; type=&quot;hidden&quot;&gt;
-      &lt;/div&gt;&lt;/li&gt;
-    &lt;li class=&quot;a_pizza&quot;&gt;
-      &lt;p&gt;Pizza Margherita&lt;/p&gt;
-        &lt;div class=&quot;flex-inner&quot;&gt;
-          &lt;label&gt;&lt;input name=&quot;hot[1]&quot; type=&quot;checkbox&quot;&gt; Scharf&lt;/label&gt;
-          &lt;label&gt;&lt;input name=&quot;cheese[1]&quot; type=&quot;checkbox&quot;&gt; mit extra Käse&lt;/label&gt;
-          &lt;label&gt;für &lt;input name=&quot;fuer[1]&quot; placeholder=&quot;Christian&quot; type=&quot;text&quot;&gt;&lt;/label&gt;
-          &lt;input name=&quot;pizza[1]&quot; value=&quot;Pizza Salami&quot; type=&quot;hidden&quot;&gt;
-      &lt;/div&gt;
-    &lt;/li&gt;
-    ...
-  &lt;/ul&gt;
-</pre></div>
-
-<p>Der “Pizza auswählen”-Button wurde angeklickt. Die Variable <code>this</code> verweist
-also auf diesen Button. Mit der jQuery-Methode <code>parent</code> kann also vom Button
-aus nach oben, zu den Eltern und Großeltern navigiert werden.
-Mit <code>$(this).parent("li")</code> wird ein <code>li</code> Element als Vorfahre gesucht, und
-in der Variablen <code>$li</code> gespeichert. Mit <code>$li.after()</code> wird dann
-der neue Formularteil als “nächstes Geschwister” eingefügt.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let $li = $(this).parents(&quot;li&quot;);
-  $li.after(template);
-</pre></div>
-
-<p>Siehe auch <a href="jQuery: parent">https://api.jquery.com/parent/</a>, <a href="jquery: after">https://api.jquery.com/after/</a></p>
-
-
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
 <h2 id="eine-bessere-selectbox">Eine bessere Selectbox</h2>
 
 <p>Bei der Auswahl des Pizza-Typs wäre es schön nicht nur den Namen der Pizza
-zu sehen, sondern zusätlich noch ein Beschreibung und den Preis. Das kann man
+zu sehen, sondern zusätzlich noch ein Beschreibung und den Preis. Das kann man
 mit den HTML-Tags <code>option</code> und <code>select</code> aber nicht umsetzen.</p>
 
+<p>Dafür gibt es fertige JavaScript Libraries:</p>
+
 <ul>
-  <li><a href="http://opensource.faroemedia.com/selectator/">Homepage von Selectator</a></li>
+  <li><a href="https://tom-select.js.org/">Tom Select</a></li>
+  <li><a href="https://getbutterfly.com/tail-select/">tail-select</a></li>
 </ul>
  <div class="pagination">
   <ul>
