@@ -53,8 +53,22 @@
 erstes Bildformat <code>svg</code> gennen gelernt. Das ist praktisch, weil es
 auf jeder Bildschirmgröße gut funktioneirt.</p>
 
-<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.
-Mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
+<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.</p>
+
+<p>ACHTUNG: Der Einsatz von <code>gif</code> und <code>png</code> ist nicht mehr sinnvoll.</p>
+
+<ul>
+  <li>Animierte gifs wurden durch video ersetzt</li>
+  <li>Bilder mit wenigen Farben und klaren Kanten (inkl. Transparenz), für die
+man früher <code>.png</code> verwendet hat, werden nun als <code>.svg</code> gespeichert.</li>
+</ul>
+
+
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="problematik-pixeldichte-und-auflsung">Problematik Pixeldichte und Auflösung</h2>
+
+<p>Mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
 Grundeigenschaft des Web:  Sowohl Auflösung als auch Pixeldichte variieren stark.</p>
 
 <p>Besonders Mobile Geräte mit sehr hoher Pixeldichte
@@ -66,7 +80,7 @@ stellen das Web Design vor ein Dilemma:</p>
 </ul>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="wiederholung-css-pixel-vs-physikalische-pixel">Wiederholung: CSS Pixel vs. Physikalische Pixel</h2>
 
@@ -82,7 +96,7 @@ ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
 bei einer “Device Pixel Ratio” von 2.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="responsive-images">Responsive Images</h2>
 
@@ -96,7 +110,7 @@ separaten Datei geladen wird.  Die nötige Information muss direkt im HTML-Code 
 <p>Wir bieten Bilder in verschiedenen Größen also mittels HTML an.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="srcset-attribut">srcset-Attribut</h2>
 
@@ -130,19 +144,23 @@ Beispiel das Bild mit einer Breite von 701.</p>
 <p><a href="/images/responsive-images/index.html">Demo-Seite für “Responsive Images”</a></p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
-<p>Im Attribut <code>sizes</code> können auch Mediaqueries verwenden.</p>
+<p>Im Attribut <code>sizes</code> kann man Mediaqueries verwenden: erst die Bedingung in Klammern,
+dann die Größe die verwendet werden soll.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-sizes=&quot;(max-width: 600px) 480px, 800px&quot;
+sizes=&quot;(min-width: 1200px)) 1200px
+       ((min-width: 800px) and (max-width: 1200px)) 1000px,
+       ((min-width: 300px) and (max-width: 800px)) 500px,
+        (max-width: 300px) 200px&quot;
 </pre></div>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="bilder-erzeugen">Bilder erzeugen</h2>
 
@@ -152,7 +170,7 @@ sizes=&quot;(max-width: 600px) 480px, 800px&quot;
 machen und automatisieren, siehe <a href="/kommandozeile/bild-und-video/#slide-5">Kommandozeile: Bild und Video</a>.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 

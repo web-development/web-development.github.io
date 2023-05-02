@@ -87,8 +87,22 @@
 erstes Bildformat <code>svg</code> gennen gelernt. Das ist praktisch, weil es
 auf jeder Bildschirmgröße gut funktioneirt.</p>
 
-<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.
-Mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
+<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.</p>
+
+<p>ACHTUNG: Der Einsatz von <code>gif</code> und <code>png</code> ist nicht mehr sinnvoll.</p>
+
+<ul>
+  <li>Animierte gifs wurden durch video ersetzt</li>
+  <li>Bilder mit wenigen Farben und klaren Kanten (inkl. Transparenz), für die
+man früher <code>.png</code> verwendet hat, werden nun als <code>.svg</code> gespeichert.</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="problematik-pixeldichte-und-auflsung">Problematik Pixeldichte und Auflösung</h2>
+
+<p>Mit diesen Pixelbildern kommen wir aber in Konflikt mit einer
 Grundeigenschaft des Web:  Sowohl Auflösung als auch Pixeldichte variieren stark.</p>
 
 <p>Besonders Mobile Geräte mit sehr hoher Pixeldichte
@@ -168,11 +182,15 @@ Beispiel das Bild mit einer Breite von 701.</p>
 
 
 
-<p>Im Attribut <code>sizes</code> können auch Mediaqueries verwenden.</p>
+<p>Im Attribut <code>sizes</code> kann man Mediaqueries verwenden: erst die Bedingung in Klammern,
+dann die Größe die verwendet werden soll.</p>
 
 <div class="example">
 <pre class="lang-html prettyprint linenums">
-sizes=&quot;(max-width: 600px) 480px, 800px&quot;
+sizes=&quot;(min-width: 1200px)) 1200px
+       ((min-width: 800px) and (max-width: 1200px)) 1000px,
+       ((min-width: 300px) and (max-width: 800px)) 500px,
+        (max-width: 300px) 200px&quot;
 </pre></div>
 
 </div>
