@@ -114,12 +114,10 @@ console.log( hs.alter() );  // 20
 
 <h2 id="klassen">Klassen</h2>
 
-<p>In Javascript 2015 wurde eine neue Schreibweise für Objekte und Konstruktoren
-eingeführt. Die Funktionsweise der Objekte, Konstruktur-Funktionen und Prototypen
-wurde dadurch nicht verändert.</p>
+<p>In Javascript 2015 wurden Klassen in JavaScript eingeführt:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Methoden und Attribute definieren mit dem Prototyp</small></h4>
+<h4 class="caption">Javascript Code <small>Klasse mit Constructor und einer Methode</small></h4>
 <pre class="lang-javascript prettyprint linenums">
 
 class Studiengang {
@@ -137,9 +135,11 @@ class Studiengang {
       &quot; @ &quot; + this.hs.name + &quot;)&quot;;
   }
 
-} 
+}
 
 typeof Studiengang;  // function!
+
+
 
 mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
 mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
@@ -165,14 +165,7 @@ class Pet {
   }
 }
 
-class Mammal extends Pet {
-  constructor() {
-    super();
-    this.legs = 4;
-  }
-}
-
-class Dog extends Mammal {
+class Dog extends Pet {
   constructor (b) {
     super();
     this.breed = b;
@@ -188,17 +181,17 @@ d = new Dog(&quot;beagle&quot;);
 d.word    // wau
 d.sit()
 
-d.legs    // 4
 d.status  // sleeping
 </pre></div>
 
 </div>
 <div class="slide">
 
-<h2 id="ohne-klassen-schreibweise-konstruktur-funktion-fr-mehrere-gleiche-objekte">Ohne Klassen-Schreibweise: Konstruktur-Funktion für mehrere gleiche Objekte</h2>
+<h2 id="contructor-ohne-klasse">Contructor ohne Klasse</h2>
 
-<p>Sollen mehrere gleichartige Objekte erzeugt werden, dann
-geschieht das in Javascript mit einer Konstruktur Funktion:</p>
+<p>Vor den Klassen gab es in JavaScript eine andere Art mehrere
+gleichartige Objekte zu erzeugen: die Constructor Funktion wurde
+als normale Funktion angelegt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor für Objekte</small></h4>

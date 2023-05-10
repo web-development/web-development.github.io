@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Speichern im Browser - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Speichern im Browser</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> | 
+        <a href="/applied-js-and-css/browser-speicher/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax//slide.html">AJAX</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>JavaScript Programme die im Browser laufen haben einen ganz
+eigenen Lebenszyklus:</p>
+
+<p>In jedem Browserfenster läuft ein anderes Programme, jeweils mit
+eigenen Variablen.  Bei einem “Reload” startet das Programm von Vorne,
+mit neuen Variablen:</p>
+
+<p><a href="/images/applied-js-and-css/no-storage.html">Demo</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="localstorage">localStorage</h2>
+
+<p>Um diese Einschränkung zu überwinden gibt <code>localStorage</code>: ein Art
+Daten permanent und unabhängig von Browser-Fenstern zu speichern.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+localStorage.setItem(&quot;name&quot;, &quot;she who must not be named&quot;);
+let n = localStorage.getItem(&quot;name&quot;);
+</pre></div>
+
+<p>Aber Achtung: <code>localStorage</code> ist ein key-value store, sowohl keys
+als auch values können nur Strings sein!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="zahlen-in-localstorage-speichern">Zahlen in localStorage speichern</h2>
+
+<p>Wenn man Zahlen oder andere Datentypen in localStorage speichern will
+kann man sie explizit konvertieren:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+localStorage.setItem(&quot;number&quot;, 42);
+let n = parseInt( localStorage.getItem(&quot;number&quot;) );
+</pre></div>
+
+<p>oder man verwendet JSON dafür:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+localStorage.setItem(&quot;number&quot;, JSON.stringify(42));
+let n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="storage-event">Storage Event</h2>
+
+<p>Wenn in localStorage etwas gespeichert wird löst das ein
+Storage-Event aus. Auf das kann ich in JavaScript reagieren:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+var n;  // globale Variable, kann unten gesetzt werden
+
+addEventListener(&quot;storage&quot;, (event) =&gt; {
+  n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
+});
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="anwendungen-fr-localstorage">Anwendungen für localStorage</h2>
+
+<p>localStorage ist sehr gut geegiente:</p>
+
+<ul>
+  <li>für Daten einer Person auf einem Gerät</li>
+  <li>für Fälle wenn die Seite “offline” verwendet wird</li>
+</ul>
+
+<p>aber es ist nicht geeigent falls:</p>
+
+<ul>
+  <li>Daten zwischen verschiedenen Personen geteilt werden sollen,</li>
+  <li>oder zwischen verschiedenen Browsern,</li>
+  <li>oder zwischen verschiedenen Geräten</li>
+</ul>
+
+<p>Dafür brauchen wir weiterhin eine Backend mit Datenbank.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe Auch</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">MDN: localStorage</a></li>
+</ul>
+</div>
+    <div class="slide">
+      <h1>Speichern im Browser</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/dynamisches-formular//slide.html">Dynamisches Formular</a> | 
+        <a href="/applied-js-and-css/browser-speicher/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax//slide.html">AJAX</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>

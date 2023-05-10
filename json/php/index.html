@@ -94,7 +94,8 @@ Ist das der Fall, dann wird es in JSON als Objekt dargestellt:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30, 0 =&gt; &quot;a&quot;);
+$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30);
+$array[0] = &quot;a&quot;;
 echo json_encode( $array );
 // {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
 </pre></div>
@@ -143,7 +144,7 @@ print_r( $o );
 //   [0] =&gt; a
 // )
 echo &quot;Wert von foo: &quot; . $o[&#39;foo&#39;];
-echo &quot;Wert von 0: &quot; . $o[0];  
+echo &quot;Wert von 0: &quot; . $o[0];
 </pre></div>
 
 
@@ -814,11 +815,11 @@ echo &quot;Wert von 0: &quot; . $o[0];
                       
                     
                       
-                      <li ><a href="/applied-js-and-css/landkarte/">Landkarte</a></li>
+                      <li ><a href="/applied-js-and-css/dynamisches-formular/">Dynamisches Formular</a></li>
                       
                     
                       
-                      <li ><a href="/applied-js-and-css/dynamisches-formular/">Dynamisches Formular</a></li>
+                      <li ><a href="/applied-js-and-css/browser-speicher/">Speichern im Browser</a></li>
                       
                     
                       
@@ -835,6 +836,10 @@ echo &quot;Wert von 0: &quot; . $o[0];
                     
                       
                       <li ><a href="/applied-js-and-css/cors/">CORS</a></li>
+                      
+                    
+                      
+                      <li ><a href="/applied-js-and-css/landkarte/">Landkarte</a></li>
                       
                     
                       

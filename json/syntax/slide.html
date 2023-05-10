@@ -91,30 +91,35 @@ Arrays und Objekten in Javscript deklarativ anschreiben.</p>
 
 
 
-<p>JSON ist ein Teil der Javascript Syntax, eine deklarative
-Art Datenstrukturen zu definieren.</p>
+<p>JSON ist ein Teil der Javascript Syntax. JSON erlaubt es Datenstrukturen
+deklarativ zu definieren.</p>
 
-<p>(Folgende Beispiel für JSON wurde aus der Graph API von Facebook abgerufen
-und wird hier etwas verkürzt dargestellt,
-siehe <a href="https://graph.facebook.com/multimediatechnology">original</a>)</p>
+<p>Folgende Beispiel für JSON wurde aus der Wikidata API abgerufen
+und wird hier stark verkürzt dargestellt,
+das <a href="https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q701554">original</a> ist umfangreicher.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>JSON Beispiel</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-var o = {
-  &quot;about&quot;: &quot;Ein Medieninformatik Studiengang an der FH Salzburg&quot;,
-  &quot;category_list&quot;: [
-    {
-      &quot;id&quot;: &quot;151676848220295&quot;,
-      &quot;name&quot;: &quot;Education&quot;
-    }
-  ],
-  &quot;is_published&quot;: true
-};
+let o = {
+  &quot;id&quot;: &quot;Q701554&quot;,
+  &quot;labels&quot;: {
+    &quot;de&quot;: &quot;Fachhochschule Salzburg&quot;,
+    &quot;en&quot;: &quot;Salzburg University of Applied Sciences&quot;,
+  },
+  &quot;aliases&quot;: {
+    &quot;de&quot;: [
+      &quot;Fachhochschule Holztechnikum Kuchl&quot;,
+      &quot;FH Salzburg&quot;,
+      &quot;FH Puch&quot;,
+      &quot;Fachhochschule Urstein&quot;
+    ]
+  }
+}
 </pre></div>
 
-<p>Mit dieser Schreibweise wird ein Objekt mit drei Eigenschaften definiert,
-die zweite Eigenschaft hat als Wert ein Array das ein weiteres Objekt enthält.</p>
+<p>Mit dieser Schreibweise wird ein Objekt mit vier Eigenschaften definiert.
+Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]</code>) gespeichert werden.</p>
 
 </div>
 <div class="slide">
@@ -126,25 +131,32 @@ die zweite Eigenschaft hat als Wert ein Array das ein weiteres Objekt enthält.<
 <div class="example">
 <h4 class="caption">Javascript Code <small>ohne JSON</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-var o = new Object();
-o.about = &quot;Ein Medieninformatik Studiengang an der FH Salzburg&quot;;
-o.category_list = new Array();
-o.category_list[0] = new Object()
-o.category_list[0].id = &quot;151676848220295&quot;;
-o.category_list[0].name = &quot;Education&quot;;
+let o = new Object();
+o.id = &quot;Q701554;
+o.labels = new Object();
+o.labels.de =  &quot;Fachhochschule Salzburg&quot;;
+o.labels.en =  &quot;Salzburg University of Applied Sciences&quot;;
+o.aliases = new Object();
+o.aliases.de = new Array();
+o.aliases.de[0] = &quot;Fachhochschule Holztechnikum Kuchl&quot;;
+o.aliases.de[1] = &quot;FH Salzburg&quot;;
+o.aliases.de[2] = &quot;FH Puch&quot;;
+o.aliases.de[3] = &quot;Fachhochschule Urstein;
 </pre></div>
 
-<p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar</p>
+<p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="json-und-javascript">JSON und Javascript</h2>
 
-<p>Für den Datenaustausch mit JSON muss die JSON-Schreibweise als String
-ausgegeben werden, bzw. ein String der JSON-Schreibweise enthält in
-eine Javascript Datenstruktur zurück verwandelt werden.  Die Umwandlung
-in einen String nennt man auch “Serialisierung”<a href="http://de.wikipedia.org/wiki/Serialisierung">→</a>.</p>
+<p>Für den Datenaustausch über das Netzwerk oder über eine Datei
+wird die JSON-Schreibweise als String gespeichert. Das nennt man
+“Serialisierung”<a href="http://de.wikipedia.org/wiki/Serialisierung">→</a>.</p>
+
+<p>Am anderen Ende wird dann aus dem String wieder die Datenstruktur,
+das nennt man Deserialisierung.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>(De)Serialisierung von JSON</small></h4>
@@ -152,6 +164,77 @@ in einen String nennt man auch “Serialisierung”<a href="http://de.wikipedia.
 string = JSON.stringify( o );
 o      = JSON.parse(string);
 </pre></div>
+
+<p>Achtung: nicht alle JavaScript Strukturen lassen sich als JSON String Serialisieren!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="nicht-serialisierbare-datentypen">Nicht serialisierbare Datentypen</h2>
+
+<p>Nicht jeder Datentyp von JavaScript ist serialisierbar.
+Wie man in folgendem Beispiel sieht wird die Funktion
+und der Eintrag mit Wert <code>undefined</code> nicht serialisiert:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Serialisieren</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+let o = {
+  &quot;a&quot;: &quot;blabla&quot;,
+  &quot;b&quot;: 42,
+  &quot;c&quot;: true,
+  &quot;d&quot;: undefined,
+  &quot;e&quot;: null,
+  &quot;f&quot;: new Date(2036, 0, 2, 15, 4, 5),
+  &quot;g&quot;: x =&gt; 2 * x,
+  &quot;h&quot;: [1, 2, 3]
+}
+let s = JSON.stringify(o);
+console.log(s);
+/*
+{&quot;a&quot;:&quot;blabla&quot;,&quot;b&quot;:42,&quot;c&quot;:true,&quot;e&quot;:null,&quot;f&quot;:&quot;2036-01-02T14:04:05.000Z&quot;,&quot;h&quot;:[1,2,3]}
+*/
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="nicht-deserialisierbare-datentypen">Nicht deserialisierbare Datentypen</h2>
+
+<p>Wenn wir nun den String wieder deserialisieren, ensteht nicht
+eine genaue Kopie des ursprünglichen Objekts, es gibt einige Änderungen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Deserialisieren</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+let p = JSON.parse(s);
+
+for(key in o) {
+  if (typeof o[key] == typeof p[key]) {
+    console.log(`${o[key]} still has type ${typeof o[key]}.` )
+  } else {
+    console.log(`${o[key]} had type ${typeof o[key]}, is now type ${typeof p[key]}!` )
+  }
+}
+</pre></div>
+
+<p>Der Output lautet:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+blabla still has type string.
+42 still has type number.
+undefined still has type undefined.
+null still has type object.
+Wed Jan 02 2036 15:04:05 had type object, is now type string!
+x =&gt; 2 * x had type function, is now type undefined!
+1,2,3 still has type object.
+</pre></div>
+
+<p>Aus dem Date-Objekt wurde nur ein String. Es bräuchte einen
+separaten Verarbeitungschritt um daraus wieder ein Date Objekt zu machen:</p>
+
+<p><code>p.f = new Date(p.f);</code></p>
 
 </div>
 <div class="slide">
@@ -165,15 +248,17 @@ als Javascript Code und führt das Programm aus.</p>
 <div class="example">
 <h4 class="caption">Javascript Code <small>eval</small></h4>
 <pre class="lang-javascript prettyprint linenums">
-json_string = &quot;{ &#39;dies&#39;: &#39;und das&#39; }&quot;;
-eval( &quot;o = &quot; + json_string);
+javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
+eval( javascript_string );
 console.log(o);
+console.log( o.f(o.data) );  // 84
 </pre></div>
 
-<p>In diesem Beispiel ist ganz klar was passiert - weil <code>json_string</code> ja
-lokal definier wird.  Für die Behandlung von unbekannten Daten ist <code>eval</code>
-nicht geeignet. Wir wollen ja nur den Datenaustausch ermöglichen, und nicht,
-dass beliebiger Javascript Code ausgeführt wird.</p>
+<p>In diesem Beispiel kann man aus dem Code klar herauslesen was passieren wird,
+das ist unproblematisch.</p>
+
+<p>Für die Behandlung von “fremden” Daten, z.B. Input über ein Web Formular, ist <code>eval</code>
+nicht geeignet!</p>
 
 </div>
 <div class="slide">
