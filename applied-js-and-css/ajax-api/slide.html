@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>API verwenden - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>API verwenden</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/ajax-autocomplete//slide.html">Autocomplete</a> | 
+        <a href="/applied-js-and-css/ajax-api/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>In diesem Beispiel werden Wetter-Daten von zwei Quellen angezeigt. Dabei
+sieht man einen wichtigen Unterschied:</p>
+
+<ul>
+  <li>auf http://openweathermap.org/ ist der Zugriff nur mit API key möglich, auch vom frontend aus</li>
+  <li>auf http://at-wetter.tk/ ist der Zugriff auch ohne API key möglich, aber nicht von einem fremden Frontend aus, weil <a href="/cors/">CORS</a> nicht erlaubt ist.</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="direkter-zugriff-auf-eine-fremde-api">Direkter Zugriff auf eine fremde API</h2>
+
+<p>Um die API von http://openweathermap.org/ zu benutzen
+ist eine Anmeldung und ein API key notwendig. Das ermöglicht
+eine Beschränkung der Zugriffe: am Server kann mitgezählt werden
+mit welchem API Key wie viele Zugriffe erfolgt sind, und je nach
+dem limitiert oder verrechnet werden. Die Preise für die API
+sind nach Anzahl der Zugriffen gestaffelt, im Mai 2017 waren die Preise:</p>
+
+<p><img src="/images/openweathermap-preise.png"  alt="Preise von openweathermap.org" ></p>
+
+<p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
+mit gesendet werden:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Zugriff auf die openweathermap API</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+fetch(&quot;http://api.openweathermap.org/data/2.5/weather?&amp;units=metric&amp;q=London,uk&amp;apikey=....&quot;)
+.then((response)=&gt;...
+</pre></div>
+
+<p>Die genaue Struktur der Daten und wie man sie zerlegt kann man entweder
+<a href="https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2">der Dokumentation</a> entnehmen, oder einfach in der console erforschen.</p>
+
+<p>ABER ACHTUNG: diese API ist (gratis) nur über http zugänglich.
+Die resultierende Webseite kann wieder nur auf http veröffentlicht werden, nicht
+auf https.</p>
+
+<p>Um die openweahtermap api auch über https verwenden zu können
+ist die nächste Lösung notwendig:</p>
+
+</div>
+<div class="slide">
+
+<h2 id="zugriff-auf-eine-api-ber-lokales-backend">Zugriff auf eine API über lokales Backend</h2>
+
+<p>Es gibt zwei Gründe, warum der direkte Zugriff vom Frontend
+auf die API verboten sein kann:</p>
+
+<p>Einen Grund haben wir schon bei openweathermap gesehen: die API ist über
+http zugänglich, das frontend wird auf https gehosted. So ist es verboten
+auf die API zuzugreifen.</p>
+
+<p>Der zweite mögliche Grund ist CORS. Das tritt zum Beispiel bei der API
+<code>at-wetter.tk</code> auf.
+Die Abfrage scheitert ohne sichtbare Fehlermeldung. In der console wird
+in manchen Browsern eine Meldung angezeigt:</p>
+
+<p><img src="/images/cors-error.png"  alt="CORS Fehlermeldung" ></p>
+
+<p>In beiden Fällen ist die Lösung dieselbe: man muss die Daten
+über das eigene Backend laden.</p>
+
+<p>In PHP ist der Zugriff auf die API ohne Problem möglich:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>zugriff auf die wetter-at.tk API</small></h4>
+<pre class="lang-php prettyprint linenums">
+header(&#39;Content-Type: application/json&#39;);
+...
+$url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
+$text=file_get_contents( $url );
+...
+</pre></div>
+
+</div>
+    <div class="slide">
+      <h1>API verwenden</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css/ajax-autocomplete//slide.html">Autocomplete</a> | 
+        <a href="/applied-js-and-css/ajax-api/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/ajax-irrwege//slide.html">AJAX Irrwege</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script>
+      $(function() {
+        $.deck(".slide");
+      });
+    </script>
+  </body>
+</html>
