@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - AJAX</title>
+  <title>Lehrbuch Web-Development - JavaScript und HTTP</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -40,418 +40,97 @@
 
 
 <!-- body -->
-<article id="body" class="row">
-  <div class="span8">
+	<article class="row">
+
+		<div class="span8">
+
+			
+                          <div class="page-header">
+                                <h2 class="title">JavaScript und HTTP</h2>
+                          </div>
+			
+
+                        <h3>In diesem Kapitel</h3>
+
+                        <p>Mit JavaScript setzen Sie HTTP Requests ab und verarbeiten den Response.</p>
+
+                        <ul class="sub">
+  
+
     
-    <div class="page-header">
-      <h2 class="title" id="slide-0">
-        AJAX
-      </h2>
-      <a href="/applied-js-and-css/ajax/slide.html">als Präsentation ▻</a>
-    </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
-wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
-(URL eintippen, Link anklicken), oder um Ressourcen zu laden
-die zu einem HTML-Dokument gehören.</p>
+      
+    
+      
+      
+      <li><a href="ajax/">AJAX</a>
+      </li>
+      
+    
+      
+      
+      <li><a href="ajax-autocomplete/">Autocomplete</a>
+      </li>
+      
+    
+      
+      
+      <li><a href="ajax-api/">API verwenden</a>
+      </li>
+      
+    
+      
+      
+      <li><a href="ajax-irrwege/">AJAX Irrwege</a>
+      </li>
+      
+    
+  
+</ul>
 
-<p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
-verwendet werden: Asynchrone Requests.</p>
 
 
+			<div id="slide-1" title="Folie Nr. 1"></div>
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="was-ist-ajax">Was ist AJAX?</h2>
+<h1 id="was-sie-wissen-sollten">Was Sie wissen sollten</h1>
 
-<p>AJAX ist die englische Abkürzung für „Asynchrones Javascript und XML“. In
-diesem Kapitel lernen Sie was das genau bedeutet, und dass sich hinter dem X
-zum Schluss auch andere Format verbergen können</p>
+<ul>
+  <li>was synchron und asynchron am Beispiel von JavaScript bedeuten</li>
+  <li>was Promises sind</li>
+</ul>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h3 id="ajax-beispiel-autocomplete">AJAX Beispiel: Autocomplete</h3>
-
-<p>Ein Beispiel für die Verwendung von AJAX ist das in der Abbildung unten
-gezeigte Eingabefeld:
-schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserver
-geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Namen. Diese Liste
-wird mit Javascript in einer <code>div</code> unterhalb des Eingabefelds angezeigt:</p>
-
-<p><img src="/images/image375.png"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
-
-<p>Mit AJAX wird hier eine HTTP-Anfrage gesendet.</p>
-
-<p>Asynchron heisst hier: der Request wird abgesetzt, das Javascript-Programm läuft sofort
-weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort
-des Servers vorliegt starte ein
-Javascript-Programm und fügt die Daten in die Seite ein.</p>
-
-
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
-
-<h3 id="im-javascript-programm-synchorn">Im Javascript Programm: synchorn</h3>
-
-<p>Nehmen wir an <code>rechnen1</code>, <code>rechnen2</code>, <code>rechnen3</code>, <code>rechnen4</code>,
-und <code>synchronLaden</code> sind Funktionen, die wir in einem anderne Teile des
-Programmes definiert haben.</p>
-
-<p>Bei jedem Aufruf einer der Funktionen passiert dasselbe:</p>
+<h1 id="was-sie-knnen-sollten">Was Sie können sollten</h1>
 
 <ul>
-  <li>erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>,</li>
-  <li>erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>synchronLaden</code>,</li>
-  <li>erst wenn <code>synchronLaden</code> fertig ist geht’s weiter mit <code>rechnen3</code>,</li>
-  <li>erst wenn <code>rechnen3</code> fertig ist geht’s weiter mit <code>rechnen4</code>.</li>
+  <li>mit fetch einen HTTP Request absetzen</li>
+  <li>die Daten aus dem HTTP Response verarbeiten</li>
+  <li>Fehlerbehandlung</li>
 </ul>
 
-<p>Dieser Ablauf ist “synchron”.</p>
 
-<div class="example">
-<h4 class="caption">Javascript Code <small>synchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-rechnen1();
-rechnen2();
-data = synchronLaden(url);
-console.log(&quot;data arrived&quot;, data);
-rechnen3();
-rechnen4();
-</pre></div>
-
-<p>Wenn nun die Funktion <code>synchronLaden</code> wirklich Daten von der url
-mittels HTTP lädt, dann kann das sehr lange dauern - vielleicht
-eine ganze Sekunde?</p>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h3 id="im-javascript-programm-asynchorn">Im Javascript Programm: asynchorn</h3>
-
-<p>Es gibt nun in Javascript die Möglichkeit Funktionen
-zu schreiben die sich anders verhalten, nämlich asynchron.</p>
-
-<p>Hier ein Beispiel mit mehreren synchronen Funktionen  <code>rechnen1</code>, <code>rechnen2</code>, <code>rechnen3</code>, <code>rechnen4</code>,
-und einer asynchronen Funktion genannt <code>asynchronLaden</code>:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function handleData(data) {
-  console.log(&quot;data arrived&quot;, data);
-}
-
-rechnen1();
-rechnen2();
-asynchronLaden(url, handleData);
-rechnen3();
-rechnen4();
-</pre></div>
-
-<p>Erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>. Erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>asynchronLaden</code> - aber dann passiert etwas Besonderes:</p>
-
-<p><code>asynchronLaden</code> will etwas sehr zeitaufwendiges tun - Daten von der URL per HTTP laden.
-Trotzdem scheint es sehr schnell zu gehen, das Programm geht direkt zu <code>rechnen3</code>  weiter, egal ob und wie schnell der Server auf die HTTP-Anfrage antwortet. Wenn
-<code>rechnen3</code> fertig ist wird <code>rechnen4</code> ausgeführt, und das JavaScript Programm endet.</p>
-
-<p>Aber eine Sekunde später passiert was Neues:  Die Daten, die in <code>asynchronLaden</code>
-angefragt wurden sind eingelangt - das ist irgendwie im Hintergrund passiert - und sind
-nun bereit zur Weiterverarbeitung.</p>
-
-<p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handleData</code>
-aufgerufen und die Daten zu verarbeiten.</p>
-
-
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
-
-<p>Achtung: ein laufendes Javascript Programm wird nie unterbrochen.
-Im letzten Code-Beispiel wird es nie passieren, dass zwischen <code>rechnen3</code>
-und <code>rechnen4</code> etwas anderes (z.B. <code>handleData</code>) passieren!</p>
-
-<p>Erst wenn dieses kleine Programm fertig durchgelaufen ist
-stellt sich die Frage ob das Laden der Daten über HTTP fertig,
-und damit <code>handleData</code> dran ist.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function handleData(data) {
-  console.log(&quot;data arrived&quot;, data);
-}
-
-rechnen1();
-rechnen2();
-asynchronLaden(url, handleData);
-rechnen3();
-rechnen4();
-</pre></div>
-
-
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
-
-<h3 id="asynchrone-http-requests">Asynchrone HTTP Requests</h3>
-
-<p>Betrachten wir nun den Ablauf für ein Textfeld mit Autocomplete-Funktion,
-wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
-<a href="http://de.wikipedia.org/wiki/Sequenzdiagramm">Sequenz Diagramm</a>, die Zeit
-läuft von oben nach unten.</p>
-
-<p>Zuerst wird die Webseite mit dem Formular geladen: der Browser schickt die
-Anfrage an den Server und erhält eine Antwort. Was immer zuvor im Browser
-angezeigt wurde wird - nach Ankunft des HTTP Response - gelöscht, die neue
-Seite wird im Browser dargestellt. Diese Verhalten des Browsers ist uns
-schon bekannt.</p>
-
-<p>Nun kommt der neue Teil: das Eintippten des ersten Buchstabens ins
-Eingabefeld löst ein Javascript-Programm aus, das einen AJAX-Request absetzt.
-Am Netzwerk ist das ein ganz normaler HTTP Request, für den Server gibt
-es keinen Unterschied zu jedem anderen Request.</p>
-
-<p>Was anders ist, ist das Verhalten des Browsers: Das Absenden des Requests
-bleibt die Webseite bestehen und bleibt interaktiv - das Absenden passiert
-meist von der UserIn unbemerkt.</p>
-
-<p>Wenn die Daten des Response
-einlangen wird <strong>nicht</strong> die Seite gelöscht, sondern es wird eine
-Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
-Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
-die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
-
-<p><img src="/images/ajax-sequence-diagram.svg"  alt="AJAX Ablauf" ></p>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-<h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
-
-<p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server
-können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
-Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
-
-
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-<h3 id="simples-javascript-beispiel">Simples Javascript Beispiel</h3>
-
-<p>Im ersten AJAX Beispiel wird der Output eines PHP-Counters in eine HTML-Seite
-eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a>.</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;title&gt;AJAX counter&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Webseite&lt;/h1&gt;
-
-  &lt;div id=&quot;output&quot;&gt;0&lt;/div&gt;
-
-  &lt;script&gt;
-    fetch(&quot;counter_ajax.php&quot;)
-      .then((response) =&gt; {
-        console.log(&quot;Response wird empfangen&quot;);
-        console.log(response.url);
-        console.log(response.headers.get(&#39;Content-Type&#39;));
-        let promiseOfText = response.text();
-        return promiseOfText;
-      })
-      .then((text) =&gt; {
-        console.log(&quot;text wurde aus dem Response herausgelesen&quot;, text);
-        document.getElementById(&#39;output&#39;).innerHTML = text;
-        console.log(&quot;fertig!&quot;);
-      });
-    console.log(&quot;abgesendet, sofort weiter&quot;);
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre></div>
-
-<p>Diesen Ablauf müssen wir genauer analysieren.</p>
-
-
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h3 id="promises">Promises</h3>
-
-<p>Der Rückgabewert der funktion <code>fetch</code> ist eine <strong>Promise</strong>: ein Objekt,
-das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-&lt;script&gt;
-  let promise = fetch(&quot;counter_ajax.php&quot;);
-&lt;/script&gt;
-</pre></div>
-
-<p>Das Promise Objekt ist ein Platzhalter für das Ergebnis der Operation, das noch nicht
-bekannt ist. In anderen Programmiersprachen ist die Promise auch als
-Future oder deferred Task bekannt, siehe <a href="https://en.wikipedia.org/wiki/Futures_and_promises">wikipedia</a>.</p>
-
-<p>Mit der Methode <code>then()</code> kann eine Funktion als Callback angegeben
-werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-promise.then((response) =&gt; {
-  console.log(&quot;Response wird empfangen&quot;);
-  // tu was mit dem response objekt
-});
-</pre></div>
-
-
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
-
-<h3 id="response-body">Response Body</h3>
-
-<p>Bei <code>fetch</code> muss mit dem Ergebnis einer asynchronen Operation
-eine weitere asynchrone Operation aufgerufen werden: Das Laden des
-gesamten Body des HTTP Response kann lange dauern. Deswegen
-erhalten wir nicht sofort den body, sondern wieder eine Promise:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-promise.then((response) =&gt; {
-  console.log(&quot;Response wird empfangen&quot;);
-  let promiseOfText = response.text();
-  return promiseOfText;
-});
-</pre></div>
-
-<p>Es gibt drei Arten wie der Body ausgelesen werden kann -
-als text, json oder binary blob (z.B. beim Laden eines Bildes).</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-response.text();
-response.json();
-response.blob();
-</pre></div>
-
-
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-<h3 id="chaining">Chaining</h3>
-
-<p>Da nun die erste Callback Funktion wieder eine Promise zurückgibt,
-kann  wieder die Methode <code>then</code> verwendet werden:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-.then((response) =&gt; {
-  console.log(&quot;Response wird empfangen&quot;);
-  let promiseOfText = response.text();
-  return promiseOfText;
-})
-.then((text) =&gt; {
-  console.log(&quot;text wurde aus dem Response herausgelesen&quot;, text);
-  document.getElementById(&#39;output&#39;).innerHTML = text;
-  console.log(&quot;fertig!&quot;);
-});
-console.log(&quot;abgesendet, sofort weiter&quot;);
-</pre></div>
-
-
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
-
-<h3 id="kurze-version">Kurze Version</h3>
-
-<p>Wenn man alle Ausgaben auf die Console weg lässt
-wird der Code sehr kurz:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; response.text() )
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
-</pre></div>
-
-
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
-
-<h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
-
-<p>Für die Fehlerbehandlung gibt es die Methode <code>catch</code>:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; response.text())
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
-  .catch(error =&gt; {
-	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-    console.log(error);
-  });
-</pre></div>
-
-
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
-
-<h3 id="fehlerbehandlung-von-http">Fehlerbehandlung von HTTP</h3>
-
-<p>Zur Erinnerung: Bei einem HTTP Response wird ein Statuscode
-mitgeliefert, der Erfolg oder Fehler anzeigen kann, siehe auch
-<a href="https://http-status-code.de/">http-status-code.de</a></p>
-
-<p>Achtung: wenn bei einem <code>fetch</code> der HTTP-Response einen Statuscode
-für einen Fehler liefert, z.B. 404 oder 500 , dann
-löst das noch keine Exception aus, die mit <code>catch</code> gefangen werden könnte.</p>
-
-<p>Die Property <code>response.ok</code> zeigt an ob der HTTP Status im
-postivien Bereich (200-299) war.</p>
-
-<p>Das müsste man selbst behandeln:</p>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.text();
-  })
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
-  .catch(error =&gt; {
-	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-    console.log(error);
-  });
-  console.log(&quot;abgesendet, sofort weiter&quot;);
-</pre></div>
-
-
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
-
-<h3 id="backend">Backend</h3>
-
-<p>Das Backend ist im Fall des Counters sehr simpel: ein PHP-Programm
-das eine Zahl ausgibt.  Im einfachsten Fall also</p>
-
-<div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php echo 42 ?&gt;
-</pre></div>
-
- <div class="pagination">
+                        <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/applied-js-and-css/browser-speicher/">Speichern im Browser</a></li>
+      <li><a href="/applied-js-and-css/websocket/">Chat Websockets</a></li>
       
       
       
-      <li><a href="/applied-js-and-css/ajax-autocomplete/">Autocomplete</a></li>
+      <li><a href="/js-http/ajax/">AJAX</a></li>
       
     
   </ul>
 </div>
 
-  </div>
 
-  <!-- sidebar -->
+
+		</div>
+
+		<!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header">
         <h2>Kapitel</h2>
@@ -1073,7 +752,7 @@ das eine Zahl ausgibt.  Im einfachsten Fall also</p>
               </ul>
             </li>
           
-          <li class="active "><a href="/applied-js-and-css/">Applied Js And Css</a>
+          <li class=" "><a href="/applied-js-and-css/">Applied Js And Css</a>
               <ul class="sub">
                 
                   
@@ -1101,22 +780,6 @@ das eine Zahl ausgibt.  Im einfachsten Fall also</p>
                       
                     
                       
-                      <li class="active"><a href="/applied-js-and-css/ajax/">AJAX</a></li>
-                      
-                    
-                      
-                      <li ><a href="/applied-js-and-css/ajax-autocomplete/">Autocomplete</a></li>
-                      
-                    
-                      
-                      <li ><a href="/applied-js-and-css/ajax-api/">API verwenden</a></li>
-                      
-                    
-                      
-                      <li ><a href="/applied-js-and-css/ajax-irrwege/">AJAX Irrwege</a></li>
-                      
-                    
-                      
                       <li ><a href="/applied-js-and-css/set_timeout/">setTimeout</a></li>
                       
                     
@@ -1130,6 +793,34 @@ das eine Zahl ausgibt.  Im einfachsten Fall also</p>
                     
                       
                       <li ><a href="/applied-js-and-css/websocket/">Chat Websockets</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class="active "><a href="/js-http/">Js Http</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/js-http/ajax/">AJAX</a></li>
+                      
+                    
+                      
+                      <li ><a href="/js-http/ajax-autocomplete/">Autocomplete</a></li>
+                      
+                    
+                      
+                      <li ><a href="/js-http/ajax-api/">API verwenden</a></li>
+                      
+                    
+                      
+                      <li ><a href="/js-http/ajax-irrwege/">AJAX Irrwege</a></li>
                       
                     
                   
@@ -1411,14 +1102,15 @@ das eine Zahl ausgibt.  Im einfachsten Fall also</p>
 </div>
 <!-- sidebar -->
 
-</article>
+
+	</article>
 <!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2019 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/ajax.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/js-http/dex.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

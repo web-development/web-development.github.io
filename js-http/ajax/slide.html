@@ -73,13 +73,13 @@
       <h1>AJAX</h1>
       <p>
           vorige Präsentation:
-        <a href="/applied-js-and-css/browser-speicher//slide.html">Speichern im Browser</a> | 
-        <a href="/applied-js-and-css/ajax/"
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
+        <a href="/js-http/ajax/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/applied-js-and-css/ajax-autocomplete//slide.html">Autocomplete</a>
+        <a href="/js-http/ajax-autocomplete//slide.html">Autocomplete</a>
         
       </p>
     </div>
@@ -310,7 +310,7 @@ eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a
 
 <h3 id="promises">Promises</h3>
 
-<p>Der Rückgabewert der funktion <code>fetch</code> ist eine <strong>Promise</strong>: ein Objekt,
+<p>Der Rückgabewert der Funktion <code>fetch</code> ist eine <strong>Promise</strong>: ein Objekt,
 das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
 
 <div class="example">
@@ -333,6 +333,52 @@ promise.then((response) =&gt; {
   console.log(&quot;Response wird empfangen&quot;);
   // tu was mit dem response objekt
 });
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="fetch">fetch</h3>
+
+<p>Die Funktion <code>fetch</code> kann nicht nur für einfache GET Requests eingesetzt werden,
+sondern bietet noch mehr Möglichkeiten:</p>
+
+<p>Sollen Cookies bei diesem Request mitgeschickt werden?</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      credentials: &#39;same-origin&#39;
+  });
+&lt;/script&gt;
+</pre></div>
+
+<p>Beliebige zusätzliche HTTP Header einfügen.</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      headers: {
+        &quot;API-Key&quot;: &quot;xxxxyyyy&quot;,
+      });
+&lt;/script&gt;
+</pre></div>
+
+<p>POST Request mit Daten im JSON Format:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+    method: &quot;POST&quot;,
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(data),
+  });
+&lt;/script&gt;
 </pre></div>
 
 </div>
@@ -440,6 +486,8 @@ postivien Bereich (200-299) war.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
+button.disabled = true;
+
 fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; {
     if (!response.ok) {
@@ -451,8 +499,10 @@ fetch(&quot;counter_ajax.php&quot;)
   .catch(error =&gt; {
 	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
     console.log(error);
-  });
-  console.log(&quot;abgesendet, sofort weiter&quot;);
+  })
+  .finally {
+    button.disabled = false;
+  };
 </pre></div>
 
 </div>
@@ -460,12 +510,12 @@ fetch(&quot;counter_ajax.php&quot;)
 
 <h3 id="backend">Backend</h3>
 
-<p>Das Backend ist im Fall des Counters sehr simpel: ein PHP-Programm
-das eine Zahl ausgibt.  Im einfachsten Fall also</p>
+<p>Das Backend ist im Fall des Counters sehr simpel - ein PHP-Programm
+das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
-&lt;?php echo 42 ?&gt;
+&lt;?php echo 42; ?&gt;
 </pre></div>
 
 </div>
@@ -473,13 +523,13 @@ das eine Zahl ausgibt.  Im einfachsten Fall also</p>
       <h1>AJAX</h1>
       <p>
           vorige Präsentation:
-        <a href="/applied-js-and-css/browser-speicher//slide.html">Speichern im Browser</a> | 
-        <a href="/applied-js-and-css/ajax/"
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
+        <a href="/js-http/ajax/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/applied-js-and-css/ajax-autocomplete//slide.html">Autocomplete</a>
+        <a href="/js-http/ajax-autocomplete//slide.html">Autocomplete</a>
         
       </p>
     </div>
