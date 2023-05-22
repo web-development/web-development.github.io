@@ -102,21 +102,22 @@ console.log(&quot;tock&quot;, Date.now());
 
 <p>Zwei Ergebnisse wären möglich:</p>
 
-<p><code>
+<div class="example twopane">
+<pre class="lang-shell prettyprint linenums left">
 Variante A: passiert sofort
 tick
 0 Sekunden später?
 tock
 tick
 tock
-__|__
+</pre><pre class="lang-shell prettyprint linenums right">
 Variante B: Programm läuft durch bis zum Ende
 tick
 tock
 tick
 tock
 0 Sekunden später?
-</code></p>
+</pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -145,6 +146,25 @@ console.log(&quot;tock&quot;, Date.now());
 // tock 1588059630668
 // nicht 0 Sekunden später 1588059630669
 </pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="hnliche-befehle">Ähnliche Befehle</h2>
+
+<p>Es gibt drei Befehle in diesem Bereich:</p>
+
+<ul>
+  <li>
+    <p>Ungefähr nach x Sekunden eine Funktion starten: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout">setTimeout</a></p>
+  </li>
+  <li>
+    <p>Ungefähr alle x Sekunden eine Funktion starten: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval">setInterval</a></p>
+  </li>
+  <li>
+    <p>Ungefähr für jeden Frame einmal eine Funktion starten: <a href="https://css-tricks.com/using-requestanimationframe/">requestAnimationFrame</a></p>
+  </li>
+</ul>
 
  <div class="pagination">
   <ul>
