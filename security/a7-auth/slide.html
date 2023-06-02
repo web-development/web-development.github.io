@@ -185,6 +185,48 @@ behandelt, und mit dem gespeicherten Wert verglichen.</p>
 
 <p>PHP stellt eine geeignete Hash-Funktion zur Verfügung: <a href="https://www.php.net/manual/de/function.password-hash.php">password_hash</a>.</p>
 
+</div>
+<div class="slide">
+
+<h3 id="starke-algorithmen">starke Algorithmen?</h3>
+
+<p>Was passiert, wenn ich nicht <code>password_hash</code>, sondern einen veralteten Algorithmus verwende?
+Ein Beispiel aus einem Projekt: hier wurde der Algorithmus <code>sha1</code>
+verwendet um das Passwort zu verschleiern, wenn sich jemand
+versucht einzuloggen wird das so geprüft:</p>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+$passwordhashed = sha1($password);
+
+$stmt = $db-&gt;prepare(&#39;SELECT * FROM `users` WHERE username = ? AND password = ?&#39;);
+$stmt-&gt;execute(array($username, $passwordhashed));
+</pre></div>
+
+<p>In der Datenbank sehen die Daten so aus:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, &#39;student&#39;, &#39;08df1a7479ca768d03481fb6534ebe844cc2a2d5&#39;),
+(2, &#39;admin&#39;, &#39;dd94709528bb1c83d08f3088d4043f4742891f4f&#39;);
+</pre></div>
+
+<p>Das sieht ja erst mal gut aus: falls diese Datenbank in falsche Hände gerät
+sind die Passwörter nicht direkt lesbar.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="sha1-ist-ein-schwacher-algorithmus">sha1 ist ein schwacher Algorithmus</h3>
+
+<p>Nimmt man den gehashten Passwort String
+des admin-users, und googelt danach, so findet man direkt diese Seite:</p>
+
+<p><img src="/images/security/sha1.png" srcset="/images/security/sha1.png 1x, /images/security/sha1@2x.png 2x"  alt="" ></p>
+
+<p><img src="/images/security/sha2.png" srcset="/images/security/sha2.png 1x, /images/security/sha2@2x.png 2x"  alt="" ></p>
+
 <p>Mehr zum Speichern von Passwörtern im <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">OWASP Password Storage Cheat Sheet</a></p>
 
 </div>
