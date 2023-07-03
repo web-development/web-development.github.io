@@ -80,12 +80,12 @@ Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
 
 <div class="example">
 <pre class="lang-css prettyprint linenums">
-#triangle-up { 
-   width: 0; height: 0; 
-   border-left: 50px solid transparent; 
-   border-right: 50px solid transparent; 
-   border-bottom: 100px solid red; 
-} 
+#triangle-up {
+   width: 0; height: 0;
+   border-left: 50px solid transparent;
+   border-right: 50px solid transparent;
+   border-bottom: 100px solid red;
+}
 </pre></div>
 
 <p>An einem Standard für CSS Shapes wird gearbeitet, es gibt aber noch
@@ -94,17 +94,74 @@ keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Dr
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
+<h2 id="animation">Animation</h2>
+
+<p>Mit Keyframes kann man Animationen definieren:</p>
+
+<div id="motion-demo-space">
+<div id="motion-demo"></div>
+</div>
+<style>
+#motion-demo-space {
+   width: 450px;
+   height: 140px;
+   margin: 10px 0;
+   border-top: 1px gray solid;
+   border-bottom: 1px gray solid;
+}
+#motion-demo {
+  offset-path: path("M40,40 C50,100 400,0 400,100");
+  animation: move 3000ms infinite alternate ease-in-out;
+  width: 50px;
+  height: 40px;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+    background: blue;
+  }
+  100% {
+    offset-distance: 100%;
+    background: cyan;
+  }
+}
+</style>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+#motion-demo {
+  offset-path: path(&quot;M20,20 C20,100 200,0 200,100&quot;);
+  animation: move 3000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+    background: blue;
+  }
+  100% {
+    offset-distance: 100%;
+    background: cyan;
+  }
+}
+</pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
 <h2 id="perspektive">Perspektive</h2>
 
-<p>Seit 2013 liegt der Standard für CSS Transforms vor, er
-ist aber immer noch ein “Draft”. In den Browsern sind <a href="http://caniuse.com/#search=perspective">3D Transforms aber längst implementiert</a></p>
+<p>Mit Transforms kann man ein bisschen 3d in HTML und CSS bringen:
+In den Browsern sind <a href="http://caniuse.com/#search=perspective">3D Transforms</a>
+seit 2013 implementiert.</p>
 
 <p><img src="/images/weather-app-transition.jpg"  alt="Bild" ></p>
 
 <p>Von David DeSandro gibt es ein ausführliches <a href="http://desandro.github.io/3dtransforms/">Tutorial</a> dazu.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="resume">Resume</h2>
 
@@ -112,7 +169,7 @@ ist aber immer noch ein “Draft”. In den Browsern sind <a href="http://canius
 für ihr Problem wählen. Bei Grafik kann das ganz oft einfaches HTML + CSS sein.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 

@@ -131,7 +131,7 @@ funktioniert jetzt für MySQL:</p>
 INSERT INTO werk (titel) VALUES (&#39;That\&#39;s it&#39;)
 </pre></div>
 
-<p>Diese Automatik funktioniert aber leider <strong>nur</strong> für MySQL, 
+<p>Diese Automatik funktioniert aber leider <strong>nur</strong> für MySQL,
 nicht aber für Postgres. Da müsste es heissen:</p>
 
 <div class="example">
@@ -145,7 +145,7 @@ INSERT INTO werk (titel) VALUES (&#39;That&#39;&#39;s it&#39;)
 
 
 <p>Wenn Sie eine PHP-Version größer als 5.4.0 verwenden, brauchen
-Sie sich nicht mehr darum zu kümmern. Bei älteren Versionen 
+Sie sich nicht mehr darum zu kümmern. Bei älteren Versionen
 sollten Sie die <code>magic_quotes</code> abschalten:</p>
 
 <p><code caption="In der Apache Konfiguration: magic quotes abschalten">
@@ -169,7 +169,7 @@ $sth = $dbh-&gt;prepare(
     (firstname, surname, email, profile_visible)
       VALUES
     (?, ?, ?, ?)&quot;);
-    
+
 // Variante 2: nur postgreSQL (mit DEFAULT für den autoincrement id-Wert)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
@@ -191,7 +191,7 @@ $sth-&gt;execute(
     $_POST[&#39;email&#39;],
     $_POST[&#39;profile_visible&#39;]
   )
-); 
+);
 
 // noch ohne Fehlerbehandlung
 </pre></div>
@@ -217,8 +217,8 @@ deutsche Fehlermeldungen ausgeben.</p>
 
 <p>Falls das Einfügen der Daten funktioniert hat und in der Tabelle ein
 autoincrement-Feld als Primärschlüssel vorhanden ist, kann man den Wert des
-Schlüssels im neuen Datensatz mit 
-<code>lastInsertId</code><a href="http://php.net/manual/en/pdo.lastinsertid.php">*</a> 
+Schlüssels im neuen Datensatz mit
+<code>lastInsertId</code><a href="http://php.net/manual/en/pdo.lastinsertid.php">*</a>
 auslesen und weiter verwenden.</p>
 
 <div class="example">
@@ -227,6 +227,28 @@ auslesen und weiter verwenden.</p>
 $id = $dbh-&gt;lastInsertId();
 header(&quot;Location: person.php?id=$id&quot;);
 </pre></div>
+
+</div>
+<div class="slide">
+
+
+
+<p>Postgres bietet noch eine Zweite Möglichkeit mit <code>RETURNING</code>:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>Primärschlüssel des neuen Datensatzes zurückgeben</small></h4>
+<pre class="lang-php prettyprint linenums">
+$sth = $dbh-&gt;prepare(&quot;INSERT INTO users (firstname, surname) VALUES (?,?) RETURNING id&quot;);
+$sth-&gt;execute([&#39;Aliya&#39;, &#39;DaSilva&#39;]);
+$result = $sth-&gt;fetch();
+
+echo &quot;I inserted $result-&gt;id&quot;;
+</pre></div>
+
+</div>
+<div class="slide">
+
+
 
 <p>Auch hier ist eine Weiterleitung direkt nach dem POST-Request sinnvoll: Nach dem
 Einfügen des Datensatzes wird direkt auf die Anzeige des neuen Datensatzes
