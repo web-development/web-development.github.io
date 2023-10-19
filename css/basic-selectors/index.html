@@ -93,9 +93,9 @@ zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h2 id="group-selector">Group Selector</h2>
+<h2 id="selector-list">Selector List</h2>
 
-<p>Mehrere Selektoren können mit Kommas zu einem neuen Selektor gruppiert werden.
+<p>Mehrere Selektoren können mit Kommas zu einer Liste gruppiert werden.
 Das Komma entspricht einem “Oder”: selektiert werden Tags die entweder <code>h1</code> sind,
 oder <code>h2</code>, oder <code>a</code>:</p>
 
@@ -112,9 +112,13 @@ siehe weiter Unten.)</p>
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-<h2 id="descendant-selector">Descendant Selector</h2>
+<h2 id="descendant-combinator">Descendant Combinator</h2>
 
-<p>Hier wird ein Element ausgewählt, das Nachkomme eines anderen Elements ist.</p>
+<p>Hier werden zwei Selektoren mit einem Leerzeichen dazwischen
+geschrieben.</p>
+
+<p>Im Beispiel unten werden alle <code>a</code> Tags ausgewählt, die Nachkomme
+eines <code>div</code> sind:</p>
 
 <p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
@@ -125,11 +129,46 @@ siehe weiter Unten.)</p>
 
 <p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
 
-<p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
-siehe weiter Unten.)</p>
-
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="verschachteltes-css">Verschachteltes CSS</h2>
+
+<p>(Neu in 2023)</p>
+
+<p>Auch hier wird ein Element ausgewählt, das Nachkomme eines anderen Elements ist.</p>
+
+<p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div {
+    &amp; a {
+      color: red;
+    }
+  }
+</pre></div>
+
+<p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
+
+<p>Praktisch: man kann die Deklarationen für <code>div</code> auch mit
+rein schreiben:</p>
+
+<div class="example">
+<pre class="lang-css prettyprint linenums">
+  div {
+    border: 1px gray solid;
+    padding: 10px;
+    &amp; a {
+      color: red;
+    }
+  }
+</pre></div>
+
+<p><a href="/images/css/nested.html">Demo: Verschachteltes CSS</a></p>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="links-formatieren">Links formatieren</h2>
 
@@ -144,20 +183,8 @@ siehe weiter Unten.)</p>
   a:visited { color:#FF00FF; }
 </pre></div>
 
-<p>Achtung: <code>:any-link</code> ist noch experimentell, und wird (im Herbst 2019) von
-Internet Explorer und Edge noch nicht akzeptiert. Siehe <a href="https://caniuse.com/#search=%3Aany-link">caniuse</a>.</p>
 
-<p>Für Internet Explorer und Edge müsste man also schreiben:</p>
-
-<div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:link, a:visited { text-decoration: underline; }
-  a:link    { color:blue; }
-  a:visited { color:#FF00FF; }
-</pre></div>
-
-
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -176,18 +203,19 @@ Internet Explorer und Edge noch nicht akzeptiert. Siehe <a href="https://caniuse
 <p><a href="/images/css/link-icon.html">Demo</a></p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="interaktion">Interaktion</h3>
 
 <p>Die Pseudo-Klassen <code>:hover</code> und <code>:active</code> gelten  bevor ein Link wirklich geladen wird:
-<code>:hover</code> schlägt an wenn die Maus sich über dem Element befindet. Danache 
-wird <code>:active</code> wirksam, wenn der Link wirklich mit Klick oder Touch ausgelöst wird:</p>
+<code>:hover</code> schlägt an wenn die Maus sich über dem Element befindet. Auf Touch-Geräten hat es keine Wirkung.</p>
+
+<p><code>:active</code> wird wirksam, wenn der Link wirklich mit Klick oder Touch ausgelöst wird:</p>
 
 <p><a href="/images/css/hover-active.html">Demo</a></p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="und-noch-viel-mehr">Und noch viel mehr</h2>
 

@@ -83,7 +83,12 @@
         
       </p>
     </div>
-    <div class="slide"><p>Wie im Kapitel <a href="/das-web-und-html/">Das Web und HTML</a> beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des visuellen Layouts von Webseiten spielt dabei die die Größe des Geräts, die Auflösung und die Pixeldichte eine wichtige Rolle.## Verschiedene visuelle Ausgabegeräte</p>
+    <div class="slide"><p>Wie im Kapitel <a href="/das-web-und-html/">Das Web und HTML</a> beschrieben gibt es viele verschiedene Ausgabegeräte für Webseiten. Für die Gestaltung des visuellen Layouts von Webseiten spielt dabei die die Größe des Geräts, die Auflösung und die Pixeldichte eine wichtige Rolle.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="verschiedene-visuelle-ausgabegerte">Verschiedene visuelle Ausgabegeräte</h2>
 
 <p>Wenn wir nur Laptops und Smartphones vergleichen sehen wir schon große
 Unterschiede in der Größe in cm und der Auflösung in Pixel. Die Auflösung hat
@@ -142,13 +147,26 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 
 
-<p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach: Mediaqueries erlauben eine “Verzweigung” in CSS.</p>
+<p>Die technische Umsetzung des verschiedenen Layouts ist relativ einfach:</p>
+
+<ul>
+  <li>Mediaqueries erlauben eine “Verzweigung” auf Grund der Größe des Ausgabegeräts</li>
+  <li>Container Queries erlauben eine “Verzweigung” auf Grund der Größe die für ein bestimmtes Element zur Verfügung steht</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="media-query">Media Query</h3>
+
+<p>Auf einem Ausgabegerät das mindestens 480 CSS Pixel breit ist
+wird die Breite der Bilder auf 100px gesetzt.</p>
 
 <div class="example">
-<h4 class="caption">Css Code <small>CSS mit Mediaqueries</small></h4>
+<h4 class="caption">Css Code <small>CSS mit Mediaquery</small></h4>
 <pre class="lang-css prettyprint linenums">
 @media screen and (max-width: 480px) {
-  .column {
+  img {
     width: 100px;
   }
   /* weitere Regeln für kleine Screens */
@@ -156,12 +174,34 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 /* allgemein gültige Regeln */
 </pre></div>
 
-<p>Eine tiefere “Verschachtelung” gibt es in CSS nicht.</p>
+</div>
+<div class="slide">
+
+<h3 id="container-query">Container Query</h3>
+
+<p>Wenn für das Section Element mindestens 700 CSS Pixel Breite
+zur Verfügung steht, dann wird die Überschrift auf Größe 28px gesetzt:</p>
+
+<div class="example">
+<h4 class="caption">Css Code <small>CSS mit Container Query</small></h4>
+<pre class="lang-css prettyprint linenums">
+section {
+  container-type: inline-size;
+}
+
+@container (min-width: 700px) {
+  h2 {
+    font-size: 28px;
+  }
+}
+</pre></div>
+
+<p><a href="/images/css-layout/container-query.html">Ausführliche Demo</a></p>
 
 </div>
 <div class="slide">
 
-
+<h3 id="viewport">Viewport</h3>
 
 <p>Voraussetzung für responsive design am Handy: man muss den <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">viewport</a> im meta tag setzen:</p>
 
@@ -274,10 +314,6 @@ body { font-size: 13px; }
     <script src="/assets/js/deck.fullscreen.js"></script>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
-    <script>
-      $(function() {
-        $.deck(".slide");
-      });
-    </script>
+    <script src="/assets/js/godeck.js"></script>
   </body>
 </html>
