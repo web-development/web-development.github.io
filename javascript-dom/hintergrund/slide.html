@@ -101,13 +101,16 @@
 
 <ul>
   <li>
-    <p>Zum Nachladen von Daten („AJAX“, fetch) – das macht das Web viel interaktiver und angenehmer in der Benutzung.</p>
+    <p>Zum Nachladen von Daten ( HTTP Requests mit <code>fetch</code>, manchmal „AJAX“ genannt) – das macht das Web viel interaktiver und angenehmer in der Benutzung.</p>
   </li>
   <li>
-    <p>Mit Javascript können Webseiten auch „offline“ – also ohne Verbindung zum Internet und dem Webserver – weiterarbieten. Am Smartphone wird diese Art von Webseiten als  „progressive Web App“  bezeichnet.</p>
+    <p>Mit Javascript können Webseiten auch „offline“ – also ohne Verbindung zum Internet und dem Webserver – weiterarbieten. Diese Art von Webseiten wird als  „progressive Web App“  bezeichnet.</p>
   </li>
   <li>
-    <p>Der Server Node JS ist ein (Web)Server, den man mit Javascript programmieren kann. Er wird besonders für Realtime-Applikationen im Web eingesetzt, z.B. für Chats oder Spiele.</p>
+    <p>Der Server Node JS ist ein (Web)Server, den man mit Javascript programmieren kann. Damit kann man also auch das Backend in JavaScript programmieren.</p>
+  </li>
+  <li>
+    <p>Mit <a href="https://www.electronjs.org/de/">Electron</a> kann ein Programm in JavaScript schreiben, die Oberfläche dazu mit Web-Technologien bauen, und es dann wie ein “normales” Windows Programm / MacOS Programm ausliefern. z.B. VS Code.</p>
   </li>
   <li>
     <p>Javascript wird in einigen Programmen als Makro-Sprache verwendet, z.B. in Indesign, Illustrator und in Unity.</p>
@@ -115,12 +118,6 @@
   <li>
     <p>Die No-SQL Datenbanken CouchDB und MongoDB verwendet Javascript als Abfragesprache.</p>
   </li>
-</ul>
-
-<p>Und nur noch historisch interessant:</p>
-
-<ul>
-  <li>Unter dem Namen Actionscript wurde früher eine Variante von Javascript in Flash verwendet.</li>
 </ul>
 
 </div>
@@ -155,23 +152,23 @@
     </tr>
     <tr>
       <td>Objektorientierung</td>
-      <td>Objekte und Prototypen (Klassen als “syntactic sugar”)</td>
+      <td>Objekte, Prototypen, später auch Klassen</td>
       <td>Objekte und Klassen</td>
     </tr>
     <tr>
       <td>Verwendung</td>
-      <td>Im Webbrowser, am Webserver (node.js), in Flash, in Illustrator und Indesign</td>
-      <td>Überall (Chipkarten, am Server, im Browser, im Handy)</td>
+      <td>Im Webbrowser, am Webserver (node.js), auf Deskstops, Handies,…</td>
+      <td>Überall (Android, Chipkarten, am Webserver)</td>
     </tr>
     <tr>
       <td>Projekte</td>
-      <td>Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: JS Frontend als wichtiger Teil einer Webappliaktion wie Facebook, Gmail, etc.</td>
+      <td>Früher nur winzige Projekte (z.B: Animations-Effekt),  in den letzten Jahren: Web als GUI für viele Applikationen, viel JavaScript (z.B. Facebook, Gmail, etc.</td>
       <td>Alle, auch Großprojekte mit vielen Jahren Entwicklungszeit</td>
     </tr>
     <tr>
       <td>Wer</td>
-      <td>Manchmal auch Web-DesignerInnen</td>
-      <td>Nur hauptberufliche ProgrammiererInnen</td>
+      <td>Manchmal auch Web-Designer*innen</td>
+      <td>Nur hauptberufliche Programmierer*innen</td>
     </tr>
   </tbody>
 </table>
@@ -183,30 +180,28 @@
 
 <p>Javascript wurde ursprünglich bei Netscape von Brendan Eich erfunden, und dann von verschiedenen Herstellern weiterentwickelt. Es war eines der Schlachtfelder im Browser-War: Microsoft und Netscape versuchten durch verschiedene Implementierungen die Position des eigenen Browsers zu verbessern und Webseiten im “gegnerischen” Browser unbrauchbar zu machen.</p>
 
-<p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Sie wird von der Arbeitsgruppe ECMA TC39, in der u.a. Personen von Browser-Herstellern vertreten sind weiter entwickelt.</p>
+<p>Erst nachträglich gab es (partielle) Einigung auf Standards. Mit dem ECMA-Standard 262 wurde die Syntax fixiert. Sie wird von der Arbeitsgruppe <a href="https://tc39.es/">ECMA TC39</a>, in der u.a. Personen von Browser-Herstellern vertreten sind weiter entwickelt.</p>
 
 <p>Mit dem „Document Object Model“ (DOM) wurde der Zugriff auf die Webseite vereinheitlicht.
-Libraries wie jQuery ebenen die letzten Unterschiede in den Browser-Implementierungen noch aus.</p>
-
-<p>Die Entwicklung dieser API ist nun Teil von HTML5 und liegt beim W3C. Unter den Stichwort „HTML5“ sind auch viele Neuerungen in Javascript, viele neue APIs gemeint: File API, Websockets,  Storage, WebGL, …</p>
-
-<p>Die aktuelle Version die Sie erlernen ist die Untermenge von ‘‘ECMA Script ES8’’, die derzeit schon im Browsern unterstützt wird.</p>
+Die Entwicklung der DOM und weiterer APIs (File API, Websockets, Storage, WebGL) liegt beim W3C.</p>
 
 </div>
 <div class="slide">
 
-<h2 id="anwendung-von-javascript">Anwendung von Javascript</h2>
+<h2 id="anwendung-und-grenzen-von-javascript">Anwendung und Grenzen von Javascript</h2>
 
 <p>Lange Zeit waren kleine Javascript-Programme eine relative unabhängige Ergänzung für Web-Applikationen. Ein Beispiel dafür wäre ein <a href="https://datatables.net/">Data Table</a>
 der in eine HTML Tabelle die Möglichkeit zum Sortieren nach eine Spalte einbaut.</p>
 
 <p>Große Web Applikationen wie outlook oder gmail zeigten aber bald, dass auch komplexe
 Programme im Browser möglich sind. Um diese umzusetzen gibt es heute clientseitige
-Frameworks wie React, Vue oder Angular.</p>
+Frameworks wie React, Vue, Svelte oder Angular. Diese werden derzeit in Richtung
+Backend weiterentwickelt: next.js, nuxt.js, SvleteKit.</p>
 
-<p>Web Applikationen wurden seit ca. 2008 Schritt für Schritt mehr und mehr offline-fähige.
-Heute nennt man solche Applikationen “Progressive Web Apps” (PWA). <a href="https://pwa.rocks">pwa.rocks</a>
-zeigt eine Sammlung solcher Apps.</p>
+<p>Für Applikationen die besonders hohe Anforderungen an Performance stellen reicht
+JavaScript nicht aus - dafür muss man dann eine kompilierte Sprache und WebAssembly
+verwenden wie z.B. <a href="https://www.figma.com/de/blog/webassembly-cut-figmas-load-time-by-3x/">Figma</a> oder
+<a href="https://web.dev/articles/ps-on-the-web?hl=en">Photoshop</a>.</p>
 
 </div>
 <div class="slide">

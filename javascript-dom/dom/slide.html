@@ -87,7 +87,7 @@
 <div class="slide">
 
 <h2 id="lesen-aus-dem-dom">Lesen aus dem DOM</h2>
-<p>Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objecten vom Typ „node“.
+<p>Die wichtigsten Befehle zur Manipulation des DOM finden Sie im Objekten „document“ und in Objekten vom Typ „node“.
 Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stück Text.</p>
 
 </div>
@@ -126,9 +126,9 @@ node.nextSibling
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-node.attributes
-node.innerHTML
-node.innerText
+node.innerHTML = &quot;&lt;p&gt;neu und &lt;strong&gt;wichtig&lt;/strong&gt;&lt;/p&gt;&quot;
+node.innerText = &quot;nur text&quot;;
+node.style.backgroundColor = &quot;red&quot;;
 </pre></div>
 
 </div>
@@ -141,17 +141,15 @@ node.innerText
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
 let d = document.getElementById(&quot;person_25&quot;);
-d.setAttribute(&quot;style&quot;, &quot;display:none&quot;);
+d.style.display = &quot;none&quot;;
 </pre></div>
 
 <p>Diese beiden Zeilen könnten auch zu einer kombiniert werden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-document.getElementById(&quot;person_25&quot;).setAttribute(&quot;style&quot;, &quot;display:none&quot;);
+document.getElementById(&quot;person_25&quot;).style.display = &quot;none&quot;;
 </pre></div>
-
-<p>Achtung: Falls der Tag schon ein Style-Attribute hatte wurde dieses überschrieben.  Der Wert des Attributes ist ein einfacher String.</p>
 
 </div>
 <div class="slide">
@@ -176,7 +174,8 @@ if( document.getElementById(&quot;person_25&quot;).classList.contains(&#39;sicht
 
 <h3 id="selektieren">Selektieren</h3>
 
-<p>Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit der Methode <code>document.querySelectorAll()</code>:</p>
+<p>Man kann CSS-Selektoren verwenden um Element auszuwählen, und zwar mit den Methode <code>document.querySelectorAll()</code> (liefert alle ndoes) und
+<code>document.querySelector()</code>  (liefert erste node)</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -202,11 +201,11 @@ while(i &lt; inputs.length) {
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-let vn = document.getElementById(&quot;v_25&quot;).textContent;
+let vn = document.getElementById(&quot;v_25&quot;).innerText;
 </pre></div>
 
-<p><code>textContent</code> funktioniert auch bei Nodes die noch weitere verschachtelte
-Tags enthalten und extrahiert immer den gesamten Text aus allen “Blättern” des DOM-Baums.</p>
+<p><code>innerText</code> funktioniert auch bei Nodes die noch weitere verschachtelte
+Tags enthalten und extrahiert immer den gesamten Text aus allen sichtbaren “Blättern” des DOM-Baums.</p>
 
 </div>
 <div class="slide">
@@ -259,14 +258,14 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 <div class="example">
 <pre class="lang-html prettyprint linenums">
   &lt;div class=&quot;pizza&quot;&gt;
-    &lt;p&gt;
-      &lt;select name=&quot;pizzatype[]&quot;&gt;
-        &lt;option&gt;Magaritha&lt;/option&gt;
-        &lt;option&gt;Vegetarian&lt;/option&gt;
-        &lt;option&gt;Quattro Staggione&lt;/option&gt;
-      &lt;/select&gt;
+    &lt;p&gt;
+      &lt;select name=&quot;pizzatype[]&quot;&gt;
+        &lt;option&gt;Magaritha&lt;/option&gt;
+        &lt;option&gt;Vegetarian&lt;/option&gt;
+        &lt;option&gt;Quattro Staggione&lt;/option&gt;
+    &lt;/select&gt;
       ...
-    &lt;/p&gt;
+    &lt;/p&gt;
   &lt;/div&gt;
 </pre></div>
 
@@ -389,11 +388,11 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 <div class="example">
 <pre class="lang-html prettyprint linenums">
  &lt;div class=&quot;pizza&quot;&gt;
-    &lt;p&gt;
+    &lt;p&gt;
       &lt;span class=&quot;removethis&quot;&gt;x&lt;/span&gt;
-      &lt;select name=&quot;pizzatype[]&quot;&gt;…&lt;/select&gt;
+      &lt;select name=&quot;pizzatype[]&quot;&gt;…&lt;/select&gt;
       …
-    &lt;/p&gt;
+    &lt;/p&gt;
   &lt;/div&gt;
 </pre></div>
 

@@ -244,7 +244,7 @@ verliert, bzw. wieder erhält.</p>
 // diese Eigenschaft speichert die aktuelle URL
 // wenn man einen neuen Wert in location speichert
 // surft der Browser hin
-document.location = &quot;http://io9.com&quot;;
+document.location = &quot;https://boardgamegeek.com/&quot;;
 
 // die Methode write
 // (über)schreibt die webseite
@@ -345,8 +345,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 
 
 
-<p>Die Werte im Array können verschiedene Daten haben (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft
-`.length ausgelesen werden.
+<p>Im Array können verschiedene Datentypen gespeichert werden (String, Number, Boolean,…). Die Größe des Arrays ist nicht beschränkt, die aktuelle Länge des Arrays kann aus der Eigenschaft <code>.length</code>` ausgelesen werden.
 <a href="/images/javascript-dom/jsarray.html">Beispiel live im Browser</a></p>
 
 <div class="example">
@@ -451,7 +450,7 @@ index zu benötigen mit einer <code>for ... of</code> schleife:</p>
   let windy = false;
   let rainy = true;
 
-  if (! windy &amp;&amp; ( rainy || sunny )) {
+  if (! windy &amp;&amp; ( rainy || ! sunny )) {
       console.log(&quot;Umbrella !&quot;);
   } else {
       console.log(&quot;No umbrella !&quot;);

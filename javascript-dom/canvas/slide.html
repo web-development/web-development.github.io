@@ -87,9 +87,10 @@
 <div class="slide">
 
 <h2 id="zeichnen-im-canvas">Zeichnen im Canvas</h2>
-<p>Der Canvas-Tag stellt eine rechteckige Zeichenfläche zur Verfügung. Es handelt sich dabei um eine Matrix von Pixeln, siehe SVG für Vektor-Grafik.</p>
+<p>Der Canvas-Tag stellt eine rechteckige Zeichenfläche zur Verfügung. Es handelt sich dabei um eine Matrix von Pixeln.
+Wenn man Vektor-Grafik braucht muss man SVG statt dessen verwenden.</p>
 
-<p>Der Canvas wird durch zwei Objekte in Javascript repräsentiert: ein Canvas-Objekt und ein Context-Objekt. Zuerste müssen wir diese beiden Objekte finden und in Variablen speichern:</p>
+<p>Der Canvas wird durch zwei Objekte in Javascript repräsentiert: ein Canvas-Objekt und ein Context-Objekt. Zuerst müssen wir diese beiden Objekte finden und in Variablen speichern:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -140,7 +141,8 @@ man die Größe des Canvas extra setzen:</p>
 my_context.fillRect(50, 50, 20, 20);
 </pre></div>
 
-<p>Linien ziehen kann man mit moveTo und lineTo. Die Linie erscheint erst, wenn man die abschließende Stroke-Methode aufruft:</p>
+<p>Linien ziehen kann man mit <code>moveTo</code> (den Zeichenstift bewegen) und <code>lineTo</code> (eine linie von der aktuellen Position zur
+angegeben Position ziehen). Die Linie erscheint erst, wenn man die abschließende Stroke-Methode aufruft:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -155,7 +157,7 @@ my_context.stroke();
 
 
 
-<p>Text auf den Canvas schreiben kann man mit dem font-Befehl:</p>
+<p>Text auf den Canvas schreiben kann man mit dem <code>fillText</code>-Befehl:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
