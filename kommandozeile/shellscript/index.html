@@ -65,7 +65,7 @@ Achtung: davor kann nichts anderes sein, nicht einmal Kommentar.</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
-#!/bin/bash
+#!/usr/bin/bash
 
 # hier kann ein Kommentar sein, das ist ok
 echo &quot;Hallo Welt&quot;
@@ -77,7 +77,7 @@ echo &quot;Hallo Welt&quot;
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
-chmod u+rx meinscript
+chmod +x meinscript
 </pre></div>
 
 <p>kann man das Skript starten</p>
@@ -145,6 +145,15 @@ fi
 - `&amp;&amp;` für und
 - `||` für oder
 </code></pre>
+
+<p>Beispiel für Boolsche Operatoren</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+if [ $ALTER -ge 18 ] &amp;&amp; [ $ALTER -lt 24 ]; then
+    echo &quot;In den USA darfst du noch keinen Alkohol trinken&quot;
+fi
+</pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -271,13 +280,13 @@ vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
 <p>Wenn die Pfad-Variable so getzt ist,
 kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen.</p>
 
-<p>Wenn in meinem <code>bin</code> Ordner die Skripte <code>create_algodat_project</code> und <code>mksizes</code>
+<p>Wenn in meinem <code>bin</code> Ordner die Skripte <code>mkalgodatproject</code> und <code>mksizes</code>
 liegen kann ich sie so verwenden, egal “wo” ich bin:</p>
 
 <div class="example">
 <pre class="lang-shell prettyprint linenums">
 cd ~/dev/studium/Jellinek_Brigitte_algodat
-create_algodat_project 05 01
+mkalgodatproject 5 1
 cd ~/dev/studium/Jellinke_Brigitte_wp2/pizza
 mksizes pizza.jpg
 </pre></div>
