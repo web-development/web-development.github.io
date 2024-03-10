@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>In PHP Daten aus Web-Formularen verarbeiten - als Präsentation</title>
+    <title>Daten aus dem Web-Formularen prüfen - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <!-- Replace path with correct path to deck.core.css. -->
@@ -70,7 +70,7 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>In PHP Daten aus Web-Formularen verarbeiten</h1>
+      <h1>Daten aus dem Web-Formularen prüfen</h1>
       <p>
           vorige Präsentation:
         <a href="/php/mail//slide.html">PHP und E-Mail</a> | 
@@ -102,7 +102,10 @@
   <dd>Enthält Daten von hochgeladenen Dateien</dd>
 </dl>
 
-<p>Warnhinweis: In frühen PHP Versionen konnte man noch direkt die Variable $nr verwenden um den Wert  aus einem Eingabefeld &lt;input name=”nr”&gt; zu lesen — das funktioniert heute nicht mehr!</p>
+</div>
+<div class="slide">
+
+<h3 id="keine-prfung">keine Prüfung</h3>
 
 <p>Um einen GET-Request zu verarbeiten haben wir bisher ein sehr simples Programm verwendet:</p>
 
@@ -117,19 +120,26 @@
 ?&gt;
 </pre></div>
 
-<p>Dabei wird aber die Eingabe nicht geprüft. Eine bessere Version des Programmes prüft vorher jede Eingabe und gibt entsprechende Fehlermeldungen aus:</p>
+<p>Dabei wird aber die Eingabe nicht geprüft.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="prfung-mit-isset-und-filtervar">Prüfung mit <code>isset</code> und <code>filter_var</code></h3>
+
+<p>Eine bessere Version des Programmes prüft vorher jede Eingabe und gibt entsprechende Fehlermeldungen aus:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
 &lt;?php
 $fehler = array(); // sammelt alle Fehlermeldungen
 
-if ( ! isset($_GET[&#39;anzahl&#39;])  or 
+if ( ! isset($_GET[&#39;anzahl&#39;])  or
      ! $anzahl = filter_var( $_GET[&#39;anzahl&#39;], FILTER_VALIDATE_INT )  ) {
   $fehler[] = &quot;Bitte geben Sie die Anzahl der Flugzeuge ein - als Zahl!&quot;;
 }
 
-if ( ! isset($_GET[&#39;adresse&#39;]) or 
+if ( ! isset($_GET[&#39;adresse&#39;]) or
      ! $adresse = filter_var( $_GET[&#39;adresse&#39;], FILTER_SANITIZE_STRING ) ) {
   $fehler[] = &quot;Bitte geben Sie die Lieferadresse an!&quot;;
 } elseif ( strlen( $adresse ) &lt; 5 ) {
@@ -152,8 +162,16 @@ if ( $fehler ) {
 </pre></div>
 
 </div>
+<div class="slide">
+
+<h3 id="filtervar-bessern-kennenlernen"><code>filter_var</code> bessern kennenlernen</h3>
+
+<p>Auf der Webseite <a href="https://de.functions-online.com/filter_var.html">https://de.functions-online.com/filter_var.html</a> kann
+man die verschiedenen Optionen von filter_var ausprobieren.</p>
+
+</div>
     <div class="slide">
-      <h1>In PHP Daten aus Web-Formularen verarbeiten</h1>
+      <h1>Daten aus dem Web-Formularen prüfen</h1>
       <p>
           vorige Präsentation:
         <a href="/php/mail//slide.html">PHP und E-Mail</a> | 
