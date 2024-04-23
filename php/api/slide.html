@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>API verwenden mit PHP - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>API verwenden mit PHP</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/php/datei-upload-frontend//slide.html">Datei Upload - Frontend</a> | 
+        <a href="/php/api/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/php/error//slide.html">Errors + Debugging</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>API steht für Application Programming Interface. Eine API im Web ist
+ein Programm auf einem anderen Webserver, das wir aufrufen können, und da
+Daten liefert.</p>
+
+<p>drei Beispiele:</p>
+
+<ul>
+  <li><a href="https://php-noise.com/">Noise Background Image Generator</a>
+    <ul>
+      <li>beim Aufruf übergibt man 7 Argumente</li>
+      <li>als Rückgabewert erhält man ein (Hintergrund-)Bild</li>
+    </ul>
+  </li>
+  <li><a href="https://openlibrary.org/dev/docs/api/search">Open Library Book Search</a>
+    <ul>
+      <li>Beim Aufruf übergibt man einen Such-Parameter <code>q</code></li>
+      <li>als Rückgabewert erhält man sehr viele Daten über die gefundenen Bücher, im JSON-Format</li>
+    </ul>
+  </li>
+  <li><a href="https://openweathermap.org/current">openweathermap current</a>
+    <ul>
+      <li>Beim Aufruf übergibt man Längen- und Breitengrad</li>
+      <li>als Rückgabewert erhält man Daten über das aktuelle Wetter, im JSON-Format</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="mit-welchen-sprachen-kann-man-apis-abfragen">Mit welchen Sprachen kann man APIs abfragen?</h2>
+
+<p>Mit jeder Programmiersprache kann man APIs abfragen.</p>
+
+<p>Egal ob PHP, C#, JavaScript, Ruby, Python, …. jede Programmiersprache
+kann HTTP-Requests schicken und HTTP-Responses verabeiten.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="mit-welchen-sprachen-werden-apis-programmiert">Mit welchen Sprachen werden APIs programmiert?</h2>
+
+<p>Mit jeder Programmiersprache kann man selbst eine API programmieren.</p>
+
+<p>Egal ob PHP, C#, JavaScript, Ruby, Python, …. für jede dieser Programmiersprache
+gibt es Libraries die es einfach machen HTTP-Anfrage zu beantworten.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="api-key">API Key</h2>
+
+<p><img src="/images/key.svg"  alt="Schlüssel" ></p>
+
+<p>Einige APIs sind  völlig frei zugänglich.  Aber für viele braucht man
+erst einen API-Key, bevor man eine Antwort von der API erhält.</p>
+
+<p>Das dient dazu eine Überlastung zu vermeiden. Oft sind die ersten paar Zugriffe
+gratis, für höhere Zugriffszahlen muss man bezahlen.</p>
+
+<p>Ein API Key ist genau so wichtig und geheim wie ein Passwort und
+soll also auch nicht im git repository gespeichert werden.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="beispiel-openweathermap">Beispiel openweathermap</h2>
+
+<p>Um die API von <a href="http://openweathermap.org/">http://openweathermap.org/</a> zu benutzen
+ist eine Anmeldung und ein API key notwendig. Die Preise für die API
+sind nach Anzahl der Zugriffen gestaffelt, im April 2023 waren die Preise:</p>
+
+<p><img src="/images/openweathermap-preise.png" srcset="/images/openweathermap-preise.png 1x, /images/openweathermap-preise@2x.png 2x"  alt="Preise von openweathermap.org" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="mit-php-auf-openweathermap-zugreifen">Mit PHP auf openweathermap zugreifen</h2>
+
+<p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
+mit gesendet werden:</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>zugriff auf die API von geosphere.at</small></h4>
+<pre class="lang-php prettyprint linenums">
+...
+require &quot;config.php&quot;;
+$lat = 47.723; // Breitengrad
+$lon = 13.086; // Längengrad
+$url =&quot;https://api.openweathermap.org/data/2.5/weather?lon=$lon&amp;lat=$lat&amp;units=metric&amp;apikey=$api_key&quot;;
+$json_string = file_get_contents( $url );
+</pre></div>
+
+<p>Mit dem Befehl <code>file_get_contents</code> wird ein HTTP GET Request gesendet.
+Die Antwort erhalten wir als String als Rückgabewert.</p>
+
+<p><a href="https://users.multimediatechnology.at/~bjelline/wetter/weather.php">Demo</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="datenformat-der-api">Datenformat der API</h2>
+
+<p>Die Daten werden je nach API in verschiedenen Formaten geliefert.
+Besonders beliebt sind XML und JSON.</p>
+
+<p>Im Fall der openweatherapi ist es JSON. Im Browser Firefox wird es so dargestellt:</p>
+
+<p><img src="/images/json_side_by_side.png"  alt="JSON Darstellung in Firefox" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="json-in-php-weiter-verarbeiten">JSON in PHP weiter verarbeiten</h2>
+
+<p>Mit <code>json_decode</code> kann man den String in eine PHP Datenstruktur
+umwandeln: in verschachtelte (assoziative) Arrays</p>
+
+<div class="example">
+<h4 class="caption">Php Code <small>JSON in PHP Datenstrukturen umwandeln</small></h4>
+<pre class="lang-php prettyprint linenums">
+$json_string = file_get_contents( $url );
+$data = json_decode($json_string, true);
+
+echo $data[&#39;main&#39;][&#39;temp&#39;];
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="http://localhost:3000/json/">JSON</a></li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>API verwenden mit PHP</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/php/datei-upload-frontend//slide.html">Datei Upload - Frontend</a> | 
+        <a href="/php/api/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/php/error//slide.html">Errors + Debugging</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+  </body>
+</html>
