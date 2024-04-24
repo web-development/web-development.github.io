@@ -84,56 +84,98 @@
       </p>
     </div>
     <div class="slide"><p>Im <a href="/formulare/">Kapitel über Formulare</a> haben Sie gelernt,
-wie Sie mit Javascript die Daten eines Webformulars prüfen können
+wie Sie mit Javascript die einzelnen Eingabfelder eines Webformulars prüfen können
 bevor das Formular abgesendet wird.</p>
 
-<p>Das Submit-Event des Formulars wird nun in der jQuery Schreibweise
-behandelt, der boolsche Rückgabewert bleibt in der Bedeutung gleich:
-<code>return false</code> verhindert das Absenden des Formulars.</p>
+</div>
+<div class="slide">
 
-<p>TODO: jquery entfernen</p>
+<h2 id="komplexe-berprfung">Komplexe Überprüfung</h2>
+
+<p>Mit JavaScript kann man noch komplexere Überprüfungen programmieren.
+Dazu braucht man das <code>submit</code> event, das vom Formular gefeuert wird,
+bevor die Daten gesendet werden.</p>
+
+<p>Zum Beispiel soll in folgendem Formular sicher gestellt werden,
+dass mindestens 1 Stück bestellt wird:</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;form&gt;
+  &lt;label for=&quot;schokolade&quot;&gt;Tafeln Schokolade:&lt;/label&gt;
+  &lt;input type=&quot;number&quot; name=&quot;schokolade&quot; id=&quot;schokolade&quot; value=&quot;0&quot;&gt;
+  &lt;label for=&quot;schweinsbraten&quot;&gt;Portionen Schweinsbraten:&lt;/label&gt;
+  &lt;input type=&quot;number&quot; name=&quot;schweinsbraten&quot; id=&quot;schweinsbraten&quot; value=&quot;0&quot;&gt;
+  &lt;label for=&quot;kaffee&quot;&gt;Tassen Kaffee:&lt;/label&gt;
+  &lt;input type=&quot;number&quot; name=&quot;kaffee&quot; id=&quot;kaffee&quot; value=&quot;0&quot;&gt;
+  &lt;button type=&quot;submit&quot;&gt;Bestellen&lt;/button&gt;
+  &lt;/form&gt;
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="abfangen-des-submit-events">Abfangen des submit Events</h2>
+
+<p>Die Überprüfung erfolgt im submit - Event:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;form&quot;).submit(function(){
+document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
   // ...
-  return ok;
+  if (!ok) {
+    event.preventDefault(); // Verhindert das Absenden des Formulars, wenn `ok` false ist
+  }
 });
 </pre></div>
 
-<p>Der Wert eines Eingabefeldes kann mit der jQuery Methode <code>val()</code> ausgelesen
-werden:</p>
+</div>
+<div class="slide">
+
+<h2 id="eingabefelder-prfen">Eingabefelder Prüfen:</h2>
+
+<p>Der Wert eines Eingabefeldes kann mit <code>.value</code> ausgelesen werden:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;input[name=schokolade]&quot;).val()    // ein Wert
+document.querySelector(&#39;input[name=&quot;schokolade&quot;]&#39;).value;
 </pre></div>
 
-<p>Das <a href="/images/form-jquery.html">fertige Programm</a>
-zeigt die Fehlermeldungen jeweils beim betroffenen Eingabefeld an:</p>
+<p>Achtung: dieser Wert ist immer ein String!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="fertiges-programm">Fertiges Programm:</h2>
+
+<p>Das fertige Programm
+zeigt die Fehlermeldungen auch an:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-$(&quot;form&quot;).submit(function(){
+document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
   var ok = true;
-  $(&quot;span.error&quot;).remove();
 
-gesamt_zahl = parseInt( $(&quot;input[name=schokolade]&quot;).val() )
-    + parseInt( $(&quot;input[name=schweinsbraten]&quot;).val() ) + parseInt( \$(&quot;input[name=kaffee]&quot;).val() );
+  // Entfernen alle Fehlermeldungen
+  document.getElementById(&quot;display_errors&quot;).innerHTML = &quot;&quot;;
 
-if(gesamt_zahl == 0) {
-\$(&#39;form&#39;).before(
-&#39;&lt;span class=&quot;error&quot;&gt;Mindest-Bestellmenge 1!&lt;/span&gt;&#39;
-);
-ok = false;
-}
+  console.log(document.querySelector(&quot;input[name=schokolade]&quot;).value);
+  // Berechnen der Gesamtsumme
+  var gesamtZahl = parseInt(document.querySelector(&quot;input[name=schokolade]&quot;).value)
+      + parseInt(document.querySelector(&quot;input[name=schweinsbraten]&quot;).value)
+      + parseInt(document.querySelector(&quot;input[name=kaffee]&quot;).value);
 
-$i = $(&quot;input[name=adresse]&quot;);
-if($i.val() == &quot;&quot;) {
-    $i.after(&#39;&lt;span class=&quot;error&quot;&gt;Lieferadresse angeben&lt;/span&gt;&#39;);
-ok = false;
-}
-return ok;
+  // Überprüfen der Gesamtsumme
+  if(gesamtZahl === 0) {
+    document.getElementById(&quot;display_errors&quot;).innerHTML += &quot;&lt;p&gt;Mindest-Bestellmenge 1!&lt;/p&gt;&quot;;
+    ok = false;
+  }
+
+  // Verhindern des Formularabsendens, wenn ok false ist
+  if (!ok) {
+    event.preventDefault();
+  }
+  return ok;
 });
 </pre></div>
 

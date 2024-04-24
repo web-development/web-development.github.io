@@ -199,7 +199,6 @@ oder <code>requestAnimationFrame</code> selbst ausprogrammiert kann die Grafikka
 <pre class="lang-css prettyprint linenums">
 header {
   transition: padding 2s, background-color 2s;
-  /* transition: all 2s; */
 }
 </pre></div>
 
@@ -234,9 +233,11 @@ Event können wir reagieren:</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-window.addEventListener(&#39;scroll&#39;, function() {
+function didScroll() {
   console.log(`scrolling has reached ${window.pageYOffset}`);
-});
+}
+
+window.addEventListener(&#39;scroll&#39;, didScroll);
 </pre></div>
 
 <p>In diesen Eventlistener hinein kommt nun die Logik:
