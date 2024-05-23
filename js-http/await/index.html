@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Javascript Vertiefung</title>
+  <title>Lehrbuch Web-Development - Async/Await</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -40,102 +40,168 @@
 
 
 <!-- body -->
-	<article class="row">
-
-		<div class="span8">
-
-			
-                          <div class="page-header">
-                                <h2 class="title">Javascript Vertiefung</h2>
-                          </div>
-			
-
-                        <h3>In diesem Kapitel</h3>
-
-                        <p>Fortgeschrittene Javascript Themen</p>
-
-                        <ul class="sub">
-  
-
+<article id="body" class="row">
+  <div class="span8">
     
-      
-    
-      
-      
-      <li><a href="call/">Funktion Aufrufen</a>
-      </li>
-      
-    
-      
-      
-      <li><a href="event-und-closure/">Events und Closures</a>
-      </li>
-      
-    
-      
-      
-      <li><a href="vererbung/">Prototypen + Vererbung</a>
-      </li>
-      
-    
-      
-      
-      <li><a href="regular-expressions/">Regular Expressions</a>
-      </li>
-      
-    
-  
-</ul>
+    <div class="page-header">
+      <h2 class="title" id="slide-0">
+        Async/Await
+      </h2>
+      <a href="/js-http/await/slide.html">als Präsentation ▻</a>
+    </div>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Sie kennen nun Promises als Art mit Asynchronität umzugehen.</p>
 
+<p>Nun lernen wir eine zweite Schreibweise für promises.</p>
 
-
-			<div id="slide-1" title="Folie Nr. 1"></div>
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h1 id="was-sie-wissen-sollten">Was Sie wissen sollten</h1>
+<h2 id="warnhinweis">Warnhinweis</h2>
 
-<ul>
-  <li>Was Prototypen sind, und wie sie mit ES6 Klassen zusammen hängen</li>
-  <li>Wie Objekte, Methoden, Vererbung ohne Klassen funktionieren</li>
-</ul>
+<p>Die Schreibweise mit await funktioniert im Browser, aber
+nur innerhalb einer Funktion die als <code>async</code> ausgewiesen ist:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchrone funktion</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+async function f1() {
+  console.log(&quot;ich kann await&quot;);
+}
+
+function f2() {
+  console.log(&quot;ich kann kein async und kein await&quot;);
+}
+</pre></div>
+
+<p>Auch anonyme Funktionen und Arrow Functions können async sein:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchrone arrow function</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+const f1 = async f1() =&gt; {
+  console.log(&quot;ich kann await&quot;);
+}
+
+const f2 = () =&gt; {
+  console.log(&quot;ich kann kein async und kein await&quot;);
+}
+</pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h1 id="was-sie-knnen-sollten">Was Sie können sollten</h1>
+<h2 id="await-statt-then">await statt then</h2>
 
-<ul>
-  <li>Javascript Code der Prototypen verwendet lesen, verstehen, modifiezieren</li>
-</ul>
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function f2() {
+  fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
+}
+
+async function f1() {
+  const response = await fetch(&quot;counter_ajax.php&quot;);
+  const text = await response.text();
+  document.getElementById(&#39;output&#39;).innerHTML = text;
+}
+</pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h2 id="vertiefung">Vertiefung</h2>
+<h2 id="was-bedeutet-await">was bedeutet await?</h2>
+
+<p>Das keyword <strong>await</strong> wird auf eine <strong>promise</strong> angewandt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  const promise = fetch(&quot;counter_ajax.php&quot;);
+  const response = await promise;
+</pre></div>
+
+<p><code>await</code> wartet nicht “aktiv” auf das Ergebnis, sondern die Ausführung
+dieser Funktion wird pausiert, und <strong>anderer</strong> JavaScript Code kann
+derweilen ausgeführt werden.</p>
+
+<p>Wenn der andere Code fertig ausgeführt ist, und die Promise ein
+Ergebnis liefert, dann wird die Ausführung fortgeführt.</p>
 
 
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-                        <div class="pagination">
+<h2 id="async-await-und-fehlerbehandlung">async await und Fehlerbehandlung.</h2>
+
+<p>Bei Promises mussten wir die <code>.catch</code> methode
+ans Ende der <code>.then</code> Chain anhängen um einen Fehler abzufangen.
+Mit async/await können wir wieder die “normale” <code>try</code> <code>catch</code> Schreibweise verwenden:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function f2() {
+  fetch(&quot;counter_ajax.php&quot;)
+    .then(response =&gt; response.text())
+    .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+    .catch(error =&gt; {
+      document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+      console.log(error);
+    });
+}
+
+async function f1() {
+  try {
+    const response = await fetch(&quot;counter_ajax.php&quot;);
+    const text = await response.text();
+    document.getElementById(&#39;output&#39;).innerHTML = text;
+  } catch (error) {
+    document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  }
+}
+</pre></div>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="tipp">Tipp</h2>
+
+<p>In folgendem Beispiel wird das “load” event verwendet,
+um eine asynchrone Funktion zu starten.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>load event und async</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+window.addEventListener(&quot;load&quot;, async () =&gt; {
+  await doTheThing();
+  console.log(&quot;Thing is Done.&quot;);
+});
+
+async function doTheThing() {
+  // ...
+}
+</pre></div>
+
+ <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/apache/rewrite/">Rewrite</a></li>
+      <li><a href="/js-http/ajax/">AJAX</a></li>
       
       
       
-      <li><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
+      <li><a href="/js-http/ajax-autocomplete/">Autocomplete</a></li>
       
     
   </ul>
 </div>
 
+  </div>
 
-
-		</div>
-
-		<!-- sidebar -->
+  <!-- sidebar -->
 <div id="sidebar" class="span3 offset1">
         <div class="page-header">
         <h2>Kapitel</h2>
@@ -813,7 +879,7 @@
               </ul>
             </li>
           
-          <li class=" "><a href="/js-http/">Js Http</a>
+          <li class="active "><a href="/js-http/">Js Http</a>
               <ul class="sub">
                 
                   
@@ -825,7 +891,7 @@
                       
                     
                       
-                      <li ><a href="/js-http/await/">Async/Await</a></li>
+                      <li class="active"><a href="/js-http/await/">Async/Await</a></li>
                       
                     
                       
@@ -1033,7 +1099,7 @@
               </ul>
             </li>
           
-          <li class="active "><a href="/advanced-javascript/">Advanced Javascript</a>
+          <li class=" "><a href="/advanced-javascript/">Advanced Javascript</a>
               <ul class="sub">
                 
                   
@@ -1119,15 +1185,14 @@
 </div>
 <!-- sidebar -->
 
-
-	</article>
+</article>
 <!-- /body -->
 
 
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2023 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/advanced-javascript/dex.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/js-http/await.md">Kommentar zu dieser Seite</a></p>
         <p>Diese Seite ist sowohl auf <a href="https://web-development.github.io">github.io</a>
         als auch auf <a href="http://web-development.netlify.com/">netlify.com</a> erhältlich.</p>
     </div>

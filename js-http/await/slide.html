@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Async/Await - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Async/Await</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/js-http/ajax//slide.html">AJAX</a> | 
+        <a href="/js-http/await/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/js-http/ajax-autocomplete//slide.html">Autocomplete</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Sie kennen nun Promises als Art mit Asynchronität umzugehen.</p>
+
+<p>Nun lernen wir eine zweite Schreibweise für promises.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="warnhinweis">Warnhinweis</h2>
+
+<p>Die Schreibweise mit await funktioniert im Browser, aber
+nur innerhalb einer Funktion die als <code>async</code> ausgewiesen ist:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchrone funktion</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+async function f1() {
+  console.log(&quot;ich kann await&quot;);
+}
+
+function f2() {
+  console.log(&quot;ich kann kein async und kein await&quot;);
+}
+</pre></div>
+
+<p>Auch anonyme Funktionen und Arrow Functions können async sein:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>asynchrone arrow function</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+const f1 = async f1() =&gt; {
+  console.log(&quot;ich kann await&quot;);
+}
+
+const f2 = () =&gt; {
+  console.log(&quot;ich kann kein async und kein await&quot;);
+}
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="await-statt-then">await statt then</h2>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function f2() {
+  fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
+}
+
+async function f1() {
+  const response = await fetch(&quot;counter_ajax.php&quot;);
+  const text = await response.text();
+  document.getElementById(&#39;output&#39;).innerHTML = text;
+}
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="was-bedeutet-await">was bedeutet await?</h2>
+
+<p>Das keyword <strong>await</strong> wird auf eine <strong>promise</strong> angewandt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+  const promise = fetch(&quot;counter_ajax.php&quot;);
+  const response = await promise;
+</pre></div>
+
+<p><code>await</code> wartet nicht “aktiv” auf das Ergebnis, sondern die Ausführung
+dieser Funktion wird pausiert, und <strong>anderer</strong> JavaScript Code kann
+derweilen ausgeführt werden.</p>
+
+<p>Wenn der andere Code fertig ausgeführt ist, und die Promise ein
+Ergebnis liefert, dann wird die Ausführung fortgeführt.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="async-await-und-fehlerbehandlung">async await und Fehlerbehandlung.</h2>
+
+<p>Bei Promises mussten wir die <code>.catch</code> methode
+ans Ende der <code>.then</code> Chain anhängen um einen Fehler abzufangen.
+Mit async/await können wir wieder die “normale” <code>try</code> <code>catch</code> Schreibweise verwenden:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+function f2() {
+  fetch(&quot;counter_ajax.php&quot;)
+    .then(response =&gt; response.text())
+    .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+    .catch(error =&gt; {
+      document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+      console.log(error);
+    });
+}
+
+async function f1() {
+  try {
+    const response = await fetch(&quot;counter_ajax.php&quot;);
+    const text = await response.text();
+    document.getElementById(&#39;output&#39;).innerHTML = text;
+  } catch (error) {
+    document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  }
+}
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="tipp">Tipp</h2>
+
+<p>In folgendem Beispiel wird das “load” event verwendet,
+um eine asynchrone Funktion zu starten.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>load event und async</small></h4>
+<pre class="lang-javascript prettyprint linenums">
+window.addEventListener(&quot;load&quot;, async () =&gt; {
+  await doTheThing();
+  console.log(&quot;Thing is Done.&quot;);
+});
+
+async function doTheThing() {
+  // ...
+}
+</pre></div>
+
+</div>
+    <div class="slide">
+      <h1>Async/Await</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/js-http/ajax//slide.html">AJAX</a> | 
+        <a href="/js-http/await/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/js-http/ajax-autocomplete//slide.html">Autocomplete</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+  </body>
+</html>
