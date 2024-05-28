@@ -92,10 +92,7 @@ auferlegen kann.</p>
 
 
 
-<p>Ein Constraint kennen Sie schon: Wenn man einen
-Primäreschlüssel definiert, dann soll dieser ja jeden Datensatz
-eindeutig identifizieren. Das heisst: der Primärschlüssel muss
-eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
+<p>Ein Constraint kennen Sie schon:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
@@ -106,18 +103,39 @@ sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
 sql&gt; INSERT INTO departments VALUES(&#39;Engineering&#39;)
 1 row(s) affected in 7ms
 sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
-[23505] ERROR: 
+[23505] ERROR:
   duplicate key value violates unique constraint &quot;departments_pkey&quot;
   Detail: Key (name)=(Marketing) already exists.
 </pre></div>
+
+<p>Was ist hier passiert?</p>
 
 </div>
 <div class="slide">
 
 
 
-<p>Ein  <strong>unique constraint</strong> kann man auch einer anderen Spalte,
-oder einer kombination von Spalten auferlegen.</p>
+<p>Die Spalte <code>dep_name</code> ist der Primärschlüssel der Tabelle.
+Die Werte in dieser Spalte müssen also eindeutig sein.</p>
+
+<p>Beim Versuch zum zweiten Mal ‘Marketing’ in die Spalte einzufügen erhalten
+wir die Fehlermeldung:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+[23505] ERROR:
+  duplicate key value violates unique constraint &quot;departments_pkey&quot;
+  Detail: Key (name)=(Marketing) already exists.
+</pre></div>
+
+<p>Der Primärschlüssel muss eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
+
+</div>
+<div class="slide">
+
+
+
+<p>Ein  <strong>unique constraint</strong> kann man auf eine beliebige Spalte anwenden:</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
@@ -131,11 +149,55 @@ CREATE TABLE users (
 </div>
 <div class="slide">
 
-<h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
 
-<p>Bei einer Beziehung macht es Sinn, die existenz des Fremdschlüssels
-in der anderen Tabelle mit einem <strong>foreign key constraint</strong> sicher zu
-stellen.</p>
+
+<p>Ein  <strong>unique constraint</strong> kann man auf eine Kombination ovn Spalten anwenden.
+Hier wollen wir, dass ein Artikel nur einmal von einer Pseon reviewed werden kann:</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+sql&gt; CREATE TABLE review (
+    article_id int NOT NULL,
+    user_id int NOT NULL,
+    UNIQUE (article_id, user_id)
+)
+completed in 23ms
+sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
+INSERT 0 1
+sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
+ERROR:  duplicate key value violates unique constraint &quot;review_article_id_user_id_key&quot;
+DETAIL:  Key (article_id, user_id)=(1, 1) already exists.
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="namen-fr-constraints">Namen für Constraints</h2>
+
+<p>Jedes Constraint hat einen Namen. Wenn wir beim Erzeugen keinen Namen setzen
+wird ein Name automatisch erzeugt. Das war in den bisherigen Beispielen der Fall.</p>
+
+<p>Mit <code>\d</code> kann man in postgres Informationen zu einer Tabelle anzeigen.
+Das sieht dann so aus:</p>
+
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
+\d review
+                 Table &quot;public.review&quot;
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ article_id | integer |           | not null |
+ user_id    | integer |           | not null |
+Indexes:
+    &quot;review_article_id_user_id_key&quot; UNIQUE CONSTRAINT, btree (article_id, user_id)
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="references">References</h2>
+
+<p>Was bedeutet die Fehlermeldung am Ende?</p>
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
@@ -148,10 +210,42 @@ CREATE TABLE employees (
   dep_id integer NULL REFERENCES departments(dep_id)
 );
 INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
-[23503] ERROR: insert or update on table &quot;employees&quot; 
+[23503] ERROR: insert or update on table &quot;employees&quot;
   violates foreign key constraint &quot;employees_dep_id_fkey&quot;
   Detail: Key (dep_id)=(99) is not present in table &quot;departments&quot;.
 </pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
+
+<p>Mit einem <strong>foreign key constraint</strong> kann man die Existenz des Fremdschlüssels
+in der anderen Tabelle sicher stellen.</p>
+
+<p>Hier verweist die Spalte <code>dep_id</code> in der Tabelle <code>employees</code> auf
+die Spalte <code>dep_id</code> in der Tabelle <code>departments</code>.</p>
+
+<p><code>dep_id</code> ist also der Primary Key von <code>departments</code> und ein Foreign Key in <code>employees</code>.</p>
+
+<p>Mit dem Keyword <code>REFERENCES</code> wird diese Beziehung als Constrait festgelegt, es ist
+nicht möglich in <code>employees</code> eine <code>dep_id</code> zu benutzen, die in <code>departments</code> nicht existiert.</p>
+
+<div class="example">
+<pre class="lang-sql prettyprint linenums">
+CREATE TABLE departments (
+  dep_id SERIAL PRIMARY KEY,
+  dep_name VARCHAR(20)
+);
+CREATE TABLE employees (
+  name VARCHAR(20),
+  dep_id integer NULL REFERENCES departments(dep_id)
+);
+</pre></div>
+
+<p>Fremdschlüssel sind auch gute Kanditeten für einen Index: Wenn man
+die Abfrage machen will “Welche Leute arbeiten im Department 7” ist
+es gut einen Index auf <code>dep_id</code> in <code>employees</code>  zu haben.</p>
 
 </div>
     <div class="slide">
