@@ -158,7 +158,7 @@ DROP CONSTRAINT zimmerbuchung_zinr_fkey;
 
 ALTER TABLE zimmerbuchung
 add CONSTRAINT zimmerbuchung_zinr_fkey
-FOREIGN KEY (zinr) 
+FOREIGN KEY (zinr)
 REFERENCES zimmer(zinr)
 ON DELETE CASCADE;
 </pre></div>
@@ -174,7 +174,7 @@ und im Nachhinein ein <code>SERIAL</code> daraus machen will ist das sehr viel A
 
 <div class="example">
 <pre class="lang-sql prettyprint linenums">
--- CREATE TABLE gast (kunr INTEGER PRIMARY KEY, 
+-- CREATE TABLE gast (kunr INTEGER PRIMARY KEY,
 CREATE SEQUENCE gast_kunr_seq OWNED BY gast.kunr;
 SELECT setval(&#39;gast_kunr_seq&#39;, coalesce(max(kunr), 1)) FROM gast;
 ALTER TABLE gast ALTER COLUMN kunr SET DEFAULT nextval(&#39;gast_kunr_seq&#39;);
@@ -183,7 +183,7 @@ ALTER TABLE gast ALTER COLUMN kunr SET DEFAULT nextval(&#39;gast_kunr_seq&#39;);
 </div>
 <div class="slide">
 
-
+<h2 id="migrations">Migrations</h2>
 
 <p>So ein kleiner Änderungs-Schritt in der Datenbank wird auch Migration genannt.
 Wir müssen sicherstellen, dass die Migration sowohl auf dem Entwicklungsrechner
@@ -191,15 +191,18 @@ als auch auf dem Production-Server durchgeführt wird.
 Migrations sind genau so wichtig
 wie der Programmcode, und sollten auch im Versionskontrollsystem erfasst werden.</p>
 
+<p><img src="/images/how-to-migration.svg"  alt="" ></p>
+
 <p>Bei Migrations ist die Reihenfolge wichtig.  Wir könnten sie
 also der Reihe nach in einer Daten speichern, oder einzelne Dateien anlegen
 deren Reihenfolge aus dem Dateinamen erkennbar ist, z.B:</p>
 
-<p><code>
+<div class="example">
+<pre class="lang-plain prettyprint linenums">
 migration-1-add-description.sql
 migration-2-foreigen-key-zimmerbuchung.sql
 migration-3....
-</code></p>
+</pre></div>
 
 </div>
     <div class="slide">

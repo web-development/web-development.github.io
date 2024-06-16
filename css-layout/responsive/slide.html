@@ -259,28 +259,44 @@ body { font-size: 13px; }
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries für color-scheme</small></h4>
 <pre class="lang-css prettyprint linenums">
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ddd;
-    background-color: black;
-  }
-  h1,h2,h3 {
-    color: #d39060;
-  }
+:root {
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: light) {
-  body {
-    color: #333333;
-    background-color: #ffffff;
+  .element {
+    color: black;
+    background-color: white;
   }
-  h1,h2,h3 {
-    color: #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .element {
+    color: white;
+    background-color: black;
   }
 }
 </pre></div>
 
-<p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
+<p>oder, seit 2024 noch kürzer:</p>
+
+<div class="example">
+<h4 class="caption">Css Code <small>light-dark Funktion für Farben</small></h4>
+<pre class="lang-css prettyprint linenums">
+:root {
+  color-scheme: light dark;
+}
+
+.element {
+  color: light-dark(black, white);
+  background-color: light-dark(white, black);
+}
+</pre></div>
+
+<p>siehe auch
+* <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme">MDN: color-scheme</a></p>
 
 </div>
     <div class="slide">

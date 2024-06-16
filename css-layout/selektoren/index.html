@@ -81,7 +81,12 @@ folgende Schreibweisen für Selektoren beschrieben:</p>
     <tr>
       <td>Descendant selectors</td>
       <td>E F</td>
-      <td>Stimmt mit jedem F-Element überein, das ein Nachfahre eines E-Elements ist, also z.B. <code>&lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;</code>.</td>
+      <td>Stimmt mit jedem F-Element überein, das ein Nachfahre eines E-Elements ist, also z.B. das F in <code>&lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>Has pseudo class</td>
+      <td>E:has(F)</td>
+      <td>Stimmt mit jedem E-Element überein, das einen Nachfahren E hat, also z.B. das E in <code>&lt;E&gt;bla &lt;div&gt; &lt;F&gt;hier&lt;/F&gt; &lt;/div&gt; &lt;/E&gt;</code>.</td>
     </tr>
     <tr>
       <td>Child selectors</td>
@@ -217,6 +222,32 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
+<h2 id="has-pseudo-class">Has Pseudo Class</h2>
+
+<p>Die Pseudo Class <code>:has()</code> ist die Umkehrung des Descendant Selectors:  Mit <code>div:has(a)</code> wird der <code>div</code> Tag selektiert, falls er einen <code>a</code> Tag als Nachkommen hat.</p>
+
+<p><img src="/images/css/selector-has.png"  alt="Document Object Model und has psuedo class" ></p>
+
+<p>In <code>:has(...)</code> kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code>.  Hier wird ein Select-Tag selektiert, falls von seinen optionen diejenige ausgewählt ist, die den Leeren Wert hat. Siehe <a href="/images/css/example-has.html">Demo</a>.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;style&gt;
+select:has(option[value=&quot;&quot;]:checked) {
+  border-color: #ddd;
+  color: #ddd;
+}
+&lt;/style&gt;
+&lt;select id=&quot;place_type&quot; name=&quot;place_type&quot;&gt;
+  &lt;option value&gt;--- Any Place Type ---&lt;/option&gt;
+  &lt;option value=&quot;River&quot;&gt;River&lt;/option&gt;
+  &lt;option value=&quot;Lake&quot;&gt;Lake&lt;/option&gt;
+&lt;/select&gt;
+</pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
 <h2 id="adjacent-selector">Adjacent selector</h2>
 
 <p>Dieser Selector wählt das direkte Geschwister-Node aus.</p>
@@ -230,7 +261,7 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 <p><img src="/images/css-layout/selector-adj.png"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="kombinationen-von-selektoren">Kombinationen von Selektoren</h2>
 
@@ -244,12 +275,12 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 <p><img src="/images/css-layout/selector-precedence.png"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="neu-2024-has">Neu 2024: <code>has()</code></h2>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="css-selektoren-ben">CSS Selektoren Üben</h2>
 
