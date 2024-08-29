@@ -117,7 +117,7 @@ in manchen Browsern eine Meldung angezeigt:</p>
 <pre class="lang-php prettyprint linenums">
 header(&#39;Content-Type: application/json&#39;);
 ...
-$url = &quot;http://at-wetter.tk/api/v1/station/11150/t/$date/7&quot;;
+$url = &quot;http://api.openweathermap.org/data/2.5/weather?&amp;units=metric&amp;q=London,uk&amp;apikey=$key&quot;;
 $text=file_get_contents( $url );
 ...
 </pre></div>
