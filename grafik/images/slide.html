@@ -87,7 +87,7 @@
 erstes Bildformat <code>svg</code> gennen gelernt. Das ist praktisch, weil es
 auf jeder Bildschirmgröße gut funktioneirt.</p>
 
-<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.</p>
+<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code>, <code>avif</code> oder <code>jpg</code>.</p>
 
 <p>ACHTUNG: Der Einsatz von <code>gif</code> und <code>png</code> ist nicht mehr sinnvoll.</p>
 
@@ -96,6 +96,35 @@ auf jeder Bildschirmgröße gut funktioneirt.</p>
   <li>Bilder mit wenigen Farben und klaren Kanten (inkl. Transparenz), für die
 man früher <code>.png</code> verwendet hat, werden nun als <code>.svg</code> gespeichert.</li>
 </ul>
+
+</div>
+<div class="slide">
+
+<h2 id="aktuelle-bildformate-webp-und-avif">Aktuelle Bildformate: webp und avif</h2>
+
+<p>Wenn man nicht sicher ist, ob jpg, webp oder avif das beste Format
+für ein bestimmtes Bild wären, kann man das Bild in alle drei Formate
+konvertieren und dann die Dateigröße vergleichen.</p>
+
+<p>Hier ein paar Beispiele, die mit dem <a href="erstellt wurden">Cloudinary Website Image Analysis Tool</a>:</p>
+
+<p>Ein Logo mit Schrift - könnte hier <code>png</code> geeignet sein?</p>
+
+<p><img src="/images/grafik/image-analysis-schriftlogo.png" srcset="/images/grafik/image-analysis-schriftlogo.png 1x, /images/grafik/image-analysis-schriftlogo@2x.png 2x"  alt="nein, avif ist am besten" ></p>
+
+<p>Ein zweites Logo.</p>
+
+<p><img src="/images/grafik/image-analysis-logo2.png" srcset="/images/grafik/image-analysis-logo2.png 1x, /images/grafik/image-analysis-logo2@2x.png 2x"  alt="avif ist am besten" ></p>
+
+<p>Ein Bild das mit dem Computer erzeugt wurde:</p>
+
+<p><img src="/images/grafik/image-analysis-cg.png" srcset="/images/grafik/image-analysis-cg.png 1x, /images/grafik/image-analysis-cg@2x.png 2x"  alt="avif ist wieder am besten" ></p>
+
+<p>Und schließlich ein Foto:</p>
+
+<p><img src="/images/grafik/image-analysis-photo.png" srcset="/images/grafik/image-analysis-photo.png 1x, /images/grafik/image-analysis-photo@2x.png 2x"  alt="avif ist immer noch am besten" ></p>
+
+<p>In all diesen Fällen ist avif besser als webp, und webp besser als jpg.</p>
 
 </div>
 <div class="slide">

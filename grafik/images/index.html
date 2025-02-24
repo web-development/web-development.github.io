@@ -50,7 +50,7 @@
 erstes Bildformat <code>svg</code> gennen gelernt. Das ist praktisch, weil es
 auf jeder Bildschirmgröße gut funktioneirt.</p>
 
-<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code> oder <code>jpg</code>.</p>
+<p>Für Photos kann man aber kein Vektorformat verwenden, da brauchen wir ein Pixelformat wie <code>webp</code>, <code>avif</code> oder <code>jpg</code>.</p>
 
 <p>ACHTUNG: Der Einsatz von <code>gif</code> und <code>png</code> ist nicht mehr sinnvoll.</p>
 
@@ -62,6 +62,35 @@ man früher <code>.png</code> verwendet hat, werden nun als <code>.svg</code> ge
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="aktuelle-bildformate-webp-und-avif">Aktuelle Bildformate: webp und avif</h2>
+
+<p>Wenn man nicht sicher ist, ob jpg, webp oder avif das beste Format
+für ein bestimmtes Bild wären, kann man das Bild in alle drei Formate
+konvertieren und dann die Dateigröße vergleichen.</p>
+
+<p>Hier ein paar Beispiele, die mit dem <a href="erstellt wurden">Cloudinary Website Image Analysis Tool</a>:</p>
+
+<p>Ein Logo mit Schrift - könnte hier <code>png</code> geeignet sein?</p>
+
+<p><img src="/images/grafik/image-analysis-schriftlogo.png" srcset="/images/grafik/image-analysis-schriftlogo.png 1x, /images/grafik/image-analysis-schriftlogo@2x.png 2x"  alt="nein, avif ist am besten" ></p>
+
+<p>Ein zweites Logo.</p>
+
+<p><img src="/images/grafik/image-analysis-logo2.png" srcset="/images/grafik/image-analysis-logo2.png 1x, /images/grafik/image-analysis-logo2@2x.png 2x"  alt="avif ist am besten" ></p>
+
+<p>Ein Bild das mit dem Computer erzeugt wurde:</p>
+
+<p><img src="/images/grafik/image-analysis-cg.png" srcset="/images/grafik/image-analysis-cg.png 1x, /images/grafik/image-analysis-cg@2x.png 2x"  alt="avif ist wieder am besten" ></p>
+
+<p>Und schließlich ein Foto:</p>
+
+<p><img src="/images/grafik/image-analysis-photo.png" srcset="/images/grafik/image-analysis-photo.png 1x, /images/grafik/image-analysis-photo@2x.png 2x"  alt="avif ist immer noch am besten" ></p>
+
+<p>In all diesen Fällen ist avif besser als webp, und webp besser als jpg.</p>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="problematik-pixeldichte-und-auflsung">Problematik Pixeldichte und Auflösung</h2>
 
@@ -77,7 +106,7 @@ stellen das Web Design vor ein Dilemma:</p>
 </ul>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="wiederholung-css-pixel-vs-physikalische-pixel">Wiederholung: CSS Pixel vs. Physikalische Pixel</h2>
 
@@ -93,7 +122,7 @@ ein CSS Pixel z.B. 2x2 physikalischen Pixeln entsprechen,
 bei einer “Device Pixel Ratio” von 2.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="responsive-images">Responsive Images</h2>
 
@@ -107,7 +136,7 @@ separaten Datei geladen wird.  Die nötige Information muss direkt im HTML-Code 
 <p>Wir bieten Bilder in verschiedenen Größen also mittels HTML an.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="srcset-attribut">srcset-Attribut</h2>
 
@@ -141,7 +170,7 @@ Beispiel das Bild mit einer Breite von 701.</p>
 <p><a href="/images/responsive-images/index.html">Demo-Seite für “Responsive Images”</a></p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -157,7 +186,7 @@ sizes=&quot;(min-width: 1200px)) 1200px
 </pre></div>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="bilder-erzeugen">Bilder erzeugen</h2>
 
@@ -167,7 +196,7 @@ sizes=&quot;(min-width: 1200px)) 1200px
 machen und automatisieren, siehe <a href="/kommandozeile/bild-und-video/#slide-5">Kommandozeile: Bild und Video</a>.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
@@ -567,7 +596,7 @@ machen und automatisieren, siehe <a href="/kommandozeile/bild-und-video/#slide-5
                       
                     
                       
-                      <li ><a href="/php-vorbereitung/apache/">Apache</a></li>
+                      <li ><a href="/php-vorbereitung/apache/">Webserver mit PHP oder Apache</a></li>
                       
                     
                       

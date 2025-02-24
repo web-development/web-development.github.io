@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>Apache - als Präsentation</title>
+    <title>Webserver mit PHP oder Apache - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <!-- Replace path with correct path to deck.core.css. -->
@@ -70,7 +70,7 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>Apache</h1>
+      <h1>Webserver mit PHP oder Apache</h1>
       <p>
           vorige Präsentation:
         <a href="/php-vorbereitung/was-ist-php//slide.html">Was ist PHP? Was passiert am Webserver?</a> | 
@@ -83,10 +83,71 @@
         
       </p>
     </div>
-    <div class="slide"><p>Apache ist eine Webserver-Software. Es ist freie Software (free as in freedom,
+    <div class="slide"><p>Als vollständige Entwicklungsumgebung brauchen wir PHP, die Datenbank
+und einen Webserver, der Anfragen per HTTP beantwortet.</p>
+
+<p>Zwei Möglichkeiten für den Webserver sind:</p>
+
+<ul>
+  <li>Mit PHP auf der Kommandozeile einen simplen Webserver starten</li>
+  <li>den Webserver Apache installieren und konfigurieren</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="php-webserver">PHP Webserver</h2>
+
+<p>PHP hat einen eingebauten Webserver (siehe <a href="https://www.php.net/manual/de/features.commandline.webserver.php#example-508">Dokumentation</a>).</p>
+
+<p>Man startet ihn auf der Kommandozeile mit der Option <code>-S</code> (Achtung: Großbuchstabe S)</p>
+
+<p><code>php -S localhost:4000</code></p>
+
+<p>Erst mit einem Browser kann man die Funktionstüchtigkeit des Webservers wirklich testen. Die URL ist gleich wie in der Option -S angegebe:  http://localhost:4000/</p>
+
+</div>
+<div class="slide">
+
+<h2 id="php-webserver-pfade-und-urls">PHP Webserver, Pfade und URLs</h2>
+
+<p>Es macht einen großen Unterschied “wo” man den Webserver startet.
+Angenommen ich habe eine Datei mit Pfad <code>dev/webprog2abgabe/order-mail/index.html</code></p>
+
+<p>Wenn ich den Webserver im Ordner <code>webprog2abgabe</code> starte:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+cd dev
+cd webprog2abgabe
+php -S localhost:4000
+</pre></div>
+
+<p>dann lautet die URL <code>http://localhost:4000/order-mail/index.html</code></p>
+
+<p>Wenn ich den Webserver im Ordner <code>oder-mail</code> starte:</p>
+
+<div class="example">
+<pre class="lang-shell prettyprint linenums">
+cd dev
+cd webprog2abgabe
+cd order-mail
+php -S localhost:4000
+</pre></div>
+
+<p>dann lautet die URL nur  <code>http://localhost:4000/index.html</code></p>
+
+<p><img src="/images/php-apache/url.png" srcset="/images/php-apache/url.png 1x, /images/php-apache/url@2x.png 2x"  alt="php webserver starten, pfad und url" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="apache">Apache</h2>
+
+<p>Apache ist eine Webserver-Software. Es ist freie Software (free as in freedom,
 not free as in beer). Das Apache-Projekt startete 1995 um statt NCSA Webserver, der schon durch viele Patches verbessert wurde, einen neuen Webserver von Grund auf zu programmieren. Der Name leitet sich aber noch von „a patchy webserver“ ab.</p>
 
-<p>Im Gegensatz zu anderen freien Software Projekten waren in der Apache Group von Anfang an Programmierer aus großen Firmen vertreten, und zwar im offiziellen Auftrag dieser Firmen.</p>
+<p>Im Gegensatz zu anderen freien Software Projekten waren in der Apache Group von Anfang an Programmierer aus großen Firmen vertreten, und zwar im offiziellen Auftrag dieser Firme</p>
 
 <p>Heute betreibt die “Apache Group” neben dem Webserver noch viele weitere
 wichtige Open Source Software Projekte.</p>
@@ -94,57 +155,41 @@ wichtige Open Source Software Projekte.</p>
 </div>
 <div class="slide">
 
-<h2 id="apache-und-php-und-datenbank">Apache und PHP und Datenbank</h2>
+<h2 id="apache-installieren">Apache installieren</h2>
 
-<p>Für eine komplette Entwicklungsumgebung braucht man Apache, PHP und eine Datenbank.</p>
+<p>Die <a href="https://www.apachelounge.com/download/">Apache Lounge</a> bietet Installationsdateien
+für verschiedene Betriebssysteme an.</p>
 
-<p>Auf MacOS ist schon ein Apache installiert, man kann mit brew PHP und postgresql dazu
-installieren:</p>
-
-<p>Bitnami bietet ein Paket an, das alle drei Teile gemeinsam installiert: den <a href="https://bitnami.com/stack/wapp">WAPP Stack</a> für Windows, den <a href="https://bitnami.com/stack/mapp/installer">MAPP Stack</a> für MacOS und den <a href="https://bitnami.com/stack/lapp/installer">LAPP Stack</a> für Linux.</p>
-
-<p>Diese Stack sind besonders für den Anfang geeignet. Wer schon mehr
-Erfahrung mit dem Installieren auf Mac hat kann alternativ auch
-<a href="https://gist.github.com/karlhillx/5cd68430aeb25e5e242a3e2c30f238d1">brew</a> zur Installation
-verwenden.</p>
+<p>Auf MacOS kann man auch <a href="https://www.git-tower.com/blog/apache-on-macos/">homebrew zur installation</a> verwenden.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="apache-und-datenbank-starten">Apache und Datenbank starten</h2>
+
 <p>Wenn die Installation von Apache und Postgres funktioniert hat, findet
 man nicht – wie bei anderen Programmen – einen Eintrag im Programm-Menü. Weder
 Apache noch PHP noch Postgresql haben eine grafische Oberfläche. Apache und Postgresql
 sind „Server“ (oder, wie es unter Windows heisst: „Dienste“).</p>
 
-<p>Mit dem MAPP/WAPP/LAPP Paket wird ein Control Panel installiert,
-über das man Webserver und Datenbank starten kann:</p>
-
-<p><img src="/images/php-vorbereitung/mapp-stack-panel.png" srcset="/images/php-vorbereitung/mapp-stack-panel.png 1x, /images/php-vorbereitung/mapp-stack-panel@2x.png 2x"  alt="MAPP Control Panel" ></p>
-
-</div>
-<div class="slide">
-
-<h2 id="apache-als-windows-dienst">Apache als Windows-Dienst</h2>
 <p>Unter Systemsteuerung -&gt; Verwaltung -&gt; Dienste findet man eine Liste aller
 bereits installierten Dienste und kann diese starten und anhalten.</p>
 
-<p><img src="/images/image326.png"  alt="Abbildung 124: Dienste von Windows: MySQL und Apache2 sind schon gestartet" ></p>
+<p><img src="/images/php-apache/windows-dienste.png"  alt="Dienste von Windows: MySQL und Apache2 sind schon gestartet" ></p>
+
+<p>Auf MacOS mit Homebrew sieht und steuert man die Server mit der Kommandozeile <code>brew services</code>. Apache ist hier unter dem Namen <code>httpd</code> zu finden:</p>
+
+<p><img src="/images/php-apache/brew-services.png" srcset="/images/php-apache/brew-services.png 1x, /images/php-apache/brew-services@2x.png 2x"  alt="brew services auf der Kommandozeile" ></p>
 
 </div>
 <div class="slide">
 
-<h2 id="webserver-stoppen">Webserver stoppen</h2>
-<p>Egal wie man Apache gestartet hat: erst mit einem Browser kann man die Funktionstüchtigkeit des Webservers wirklich testen. Als URL verwendet man http://localhost/.</p>
-
-<p>Apache und die Datenbank brauchen Hauptspeicher.
-Wer gleichzeitig mit vielen anderen Programmen arbeitet und extrem wenig
-Hauptspeicher im Computer hat, sollte die Server also nach Gebrauch wieder
-beenden.</p>
+<h2 id="apache-testen">Apache testen</h2>
+<p>Egal wie man Apache gestartet hat: erst mit einem Browser kann man die Funktionstüchtigkeit des Webservers wirklich testen. Als URL verwendet man http://localhost:80/ oder nur http://localhost/</p>
 
 </div>
     <div class="slide">
-      <h1>Apache</h1>
+      <h1>Webserver mit PHP oder Apache</h1>
       <p>
           vorige Präsentation:
         <a href="/php-vorbereitung/was-ist-php//slide.html">Was ist PHP? Was passiert am Webserver?</a> | 
