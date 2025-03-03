@@ -85,30 +85,125 @@
     </div>
     <div class="slide"><p>Computer haben bunte Oberflächen mit Buttons, Menüs, Links. Man verwendet Maus oder Touchscreen um mit Ihnen zu arbeiten.</p>
 
-<p>Das ist aber nur die halbe Wahrheit. Unter der bunten Oberfläche verbirgt sich ein anderes Interface, das die Fachleute verwenden 
+<p>Das ist aber nur die halbe Wahrheit. Unter der bunten Oberfläche verbirgt sich ein anderes Interface, das die Fachleute verwenden
 um mit dem Computer zu interagieren. Dieses Interface hat sich seit den 70er Jahren nicht verändert, es funktioniert noch immer
-so wie mit dem Teletype:</p>
+so wie der Teletype:</p>
 
 <p><img src="/images/teletype.jpg"  alt="Abbildung: Teletype" ></p>
 
-<p>Wenn Sie professionell im Web Development arbeiten wollen, werden Sie auch die
-Kommandozeile brauchen. Sie ist kein einfaches, aber ein mächtiges Werkzeug.</p>
+<p>Wenn Sie professionell in der Webentwicklung arbeiten möchten, werden Sie früher oder später auf die Kommandozeile stoßen. Sie mag anfangs einschüchternd wirken, ist aber ein unglaublich leistungsfähiges Werkzeug.</p>
 
-<p>Die GUIs (Graphical User Interfaces) die Sie bisher benutz haben sind besonders
-für Ungeübte geeignet: Durch hinkucken und rumklicken kann man oft herausfinden
-wie ein Programm funktioniert.  Man kann z.B. die Menüpunkte studieren um sich
-zu orientieren, oder die Icons betrachten.</p>
+<p><strong>Der Unterschied zur grafischen Benutzeroberfläche (GUI)</strong></p>
 
-<p>Die Kommandozeile ist nicht so freundlich: Das schwarze Fenster wartet auf Eingabe
-von Ihnen, Sie müssen einen korrekt formulierten Befehl eintippen.  Wenn Sie noch keinen
-Befehl kennen gibt es keine Hinweise darauf wie Sie anfangen könnten.</p>
+<p>Bisher haben Sie wahrscheinlich hauptsächlich mit grafischen Benutzeroberflächen (GUIs) gearbeitet. Diese sind besonders benutzerfreundlich: Durch einfaches Herumklicken und Erkunden können Sie oft herausfinden, wie ein Programm funktioniert. Menüs und Symbole bieten visuelle Hinweise und erleichtern die Orientierung.</p>
 
-<p>Deswegen werden wir nun die ersten Schritte gemeinsam gehen.  Danach sollten Sie
-fähig sein selbstständig neue Kommandos zu erlernen, und die (gut versteckte) Dokumentation
-zu finden.</p>
+<p><strong>Die Herausforderung der Kommandozeile</strong></p>
 
-<p>Das Thema Kommandozeile ist nicht abschließend zu behandeln: Sie werden Ihr gesamtes
-Leben als ProgrammiererIn damit verbringen neue Kommandos zu lernen; das hört nie auf.</p>
+<p>Die Kommandozeile ist anders. Sie präsentiert sich als schwarzes Fenster, das auf Ihre Eingabe wartet. Sie müssen präzise formulierte Befehle eintippen, und wenn Sie noch keine Befehle kennen, gibt es keine offensichtlichen Anhaltspunkte, wo Sie anfangen sollen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="wo-finde-ich-die-kommandozeile">Wo finde ich die Kommandozeile</h2>
+
+<p>Sie öffnen die Kommandozeile je nach Betriebssystem Unterschiedlich:</p>
+
+<ul>
+  <li>Windows: <a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=de-DE&amp;gl=DE">Windows Terminal</a> aus dem Microsoft App Store</li>
+  <li>Mac OS X: Terminal</li>
+  <li>Linux: xterm</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="beispiel-mac-os">Beispiel Mac OS</h3>
+
+<p>So sieht das Terminal auf Mac OS X aus:</p>
+
+<p><img src="/images/kommandozeile/empty-terminal.png" srcset="/images/kommandozeile/empty-terminal.png 1x, /images/kommandozeile/empty-terminal@2x.png 2x"  alt="Abbildung: Terminal auf Mac OS X" ></p>
+
+<p>Im Terminal läuft eine <strong>Shell</strong>.  Das ist der eigentliche Kommando-Interpreter,
+der Ihre Eingaben verarbeitet wird.  In der Abbildung oben ist das die shell <strong>zsh</strong>.</p>
+
+<p>Die eine Zeile Text die Sie sofort sehen ist die <strong>Eingabeaufforderung</strong> (english: <strong>prompt</strong>).
+Nach dem Prozent-Zeichen können Sie einen ersten Befehl eintippen</p>
+
+</div>
+<div class="slide">
+
+
+
+<p><img src="/images/kommandozeile/terminal.png" srcset="/images/kommandozeile/terminal-pwd.png 1x, /images/kommandozeile/terminal.png 1x, /images/kommandozeile/terminal@2x.png 2x"  alt="Abbildung: Terminal auf Mac OS X" ></p>
+
+<p>In dieser Abbildung ist die Eingabe gelb markiert.  Die Antwort der Shell ist blau markiert.
+Beim Arbeiten mit der Kommandozeile ist es wichtig die Ausgabe immer vollständig zu lesen!</p>
+
+<p>Das Kommando <strong>pwd</strong> steht für “print working directory”, also “gib das Arbeitsverzeichnis aus”.
+Die Ausgabe ist also der <strong>Pfad</strong> des Arbeitsverzeichnisses.
+In menschliche Sprache übersetzt lautet dieser Dialog ungefähr:</p>
+
+<ul>
+  <li>Frage an die Shell: “wo bin ich gerade?”</li>
+  <li>Antwort: “du bis im Ordner <strong>Users</strong> im Unter-Ordner <strong>bjelline</strong>, im Unter-Ordner <strong>dev</strong>”</li>
+</ul>
+
+<p>Das Kommando <strong>ls</strong> steht für “listing” und listet die hier sichtbaren Dateien und Ordner auf.</p>
+
+<p>Das Kommando kann mit sogenannten “Optionen” verändert werden:  <strong>-l</strong> zeigt mehr Informationen
+für jeden Listen-Eintrag an, <strong>-a</strong> zeigt auch versteckte Einträge an. In kombination lautet
+das Kommando <strong>ls -la</strong></p>
+
+</div>
+<div class="slide">
+
+<h3 id="beispiel-windows">Beispiel Windows:</h3>
+
+<p>So sieht das Windows Terminal aus:</p>
+
+<p><img src="/images/kommandozeile/windows-terminal.png" srcset="/images/kommandozeile/windows-terminal.png 1x, /images/kommandozeile/windows-terminal@2x.png 2x"  alt="Abbildung: Windows Terminal" ></p>
+
+<p>Im Terminal sieht man, dass drei verschiedene Tabs geöffnet sind:</p>
+
+<ul>
+  <li>Die (DOS) Eingabeaufforderung (englisch: <code>cmd</code>) ist die “alte” Shell von Windows</li>
+  <li>Der Tag der git bash zeigt den Titel MINGW64</li>
+  <li>Die Windows PowerShell (kurz “PS”) ist die “neue” Shell von Windows</li>
+</ul>
+
+<p>Als Promt wird hier Pfad inklusive Laufwerksname angezeigt.
+Mit dem Befehl <strong>cd</strong> kann man diesen Pfad anzeigen, oder zu einem
+anderen Pfad wechseln.</p>
+
+<p>Das Kommando <strong>dir</strong> steht für “directory listing”. Die Antwort
+ist sehr ausführlich.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="cd---change-working-directory">cd - change working directory</h2>
+
+<p>Der Befehl <strong>cd</strong> funktioniert auf Windows und Mac fast gleich:</p>
+
+<p><strong>cd pfad</strong> setzt das Arbeitsverzeichnis auf den neuen Pfad.
+Dabei gilt alles, was wir über absolute und relative Pfade gelernt
+haben</p>
+
+<p>Auf Mac:</p>
+
+<ul>
+  <li><strong>cd webprog2abgabe</strong>  - wechselt in den Unterordner <code>webprog2abgabe</code></li>
+  <li><strong>cd ..</strong> - wechselt einen Ordner höher</li>
+  <li><strong>cd /home/bjelline/dev</strong> - wechselt in den Ordner der mit dem absoluten Pfad angegeben ist</li>
+</ul>
+
+<p>Auf Windows:</p>
+
+<ul>
+  <li><strong>cd webprog2abgabe</strong>  - wechselt in den Unterordner <code>webprog2abgabe</code></li>
+  <li><strong>cd ..</strong> - wechselt einen Ordner höher</li>
+  <li><strong>cd \Users\bjelline\dev</strong> - wechselt in den Ordner der mit dem absoluten Pfad angegeben ist</li>
+</ul>
 
 </div>
 <div class="slide">
