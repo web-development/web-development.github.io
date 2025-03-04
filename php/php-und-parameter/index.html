@@ -51,23 +51,6 @@
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="daten-prfen">Daten prüfen</h2>
-<p>Die Daten aus einem Web-Formular werden vom PHP-Interpreter verarbeitet, die Codierung aufgelöst und die Daten dann in mehreren superglobalen12 Arrays zur Verfügung gestellt:</p>
-
-<dl>
-  <dt>$_GET</dt>
-  <dd>Dieses Array enthält die Parameter einer GET-Anfrage.</dd>
-  <dt>$_POST</dt>
-  <dd>Dieses Array enthält die Parameter einer POST-Anfrage.</dd>
-  <dt>$_REQUEST</dt>
-  <dd>Dieses Array kombiniert die Daten aus $_GET und $_COOKIE und $_POST. Besser die spezifischen Arrays verwenden!</dd>
-  <dt>$_FILE</dt>
-  <dd>Enthält Daten von hochgeladenen Dateien</dd>
-</dl>
-
-
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
 <h3 id="keine-prfung">keine Prüfung</h3>
 
 <p>Um einen GET-Request zu verarbeiten haben wir bisher ein sehr simples Programm verwendet:</p>
@@ -86,11 +69,76 @@
 <p>Dabei wird aber die Eingabe nicht geprüft.</p>
 
 
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h3 id="was-kann-schiefgehen">Was kann schiefgehen?</h3>
+
+<p>Wir Eingabe im Web-Formular kann auf zwei Arten “schief gehen”:</p>
+
+<p><strong>1.Fall</strong> Ein harmloser Mensch füllt unser Web-Formular aus, vertippt sich, vergisst etwas auszufüllen</p>
+
+<p><strong>2.Fall</strong> Ein Mensch mit böser Absicht verwendet vielleicht gar nicht unser Web-Formular, sondern schreibt sein eigenes und schickt damit Daten an unser PHP-Programm</p>
+
+<p>Wenn wir im Formular mit checkboxen oder  <code>required</code> oder  <code>pattern</code> oder …
+die Eingabemöglichkeiten einschränken, dann hilft das nur im 1.Fall.  z.B.</p>
+
+<div class="example">
+<pre class="lang-html prettyprint linenums">
+&lt;form action=&quot;https://example.com/order.php&quot;&gt;
+    &lt;label&gt;Anzahl: &lt;input name=&quot;anzahl&quot; type=&quot;number&quot; required&gt;&lt;/label&gt;
+&lt;/form&gt;
+</pre></div>
+
+<p>Dieses Formular sorgt dafür, dass man nur Zahlen eingeben kann. Aber man könnte
+ein anderes Formular bauen und es ebenfalls an <code>https://example.com/order.php</code>
+zu schicken.</p>
+
+<p><a href="/images/php/good-form.html">Demo</a></p>
+
+<p>Wird die Methode GET verwendet braucht man nicht mal ein Formular,
+ sondern kann einfach die Parameter direkt in der URL setzen:
+<code>https://example.com/order.php?anzahl=&lt;script&gt;alert('peng')&lt;/script&gt;</code></p>
+
+
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="prfung-mit-isset-und-filtervar">Prüfung mit <code>isset</code> und <code>filter_var</code></h3>
 
 <p>Eine bessere Version des Programmes prüft vorher jede Eingabe und gibt entsprechende Fehlermeldungen aus:</p>
+
+<ul>
+  <li><code>isset</code> prüft ob die Variable einen anderen Wert als <code>null</code> hat</li>
+  <li>filter_var kann verschiedene tests anwenden, und die Umwandlung von String in einen anderen Datentyp vornehmen:</li>
+</ul>
+
+<div class="example">
+<pre class="lang-php prettyprint linenums">
+if (! isset($_GET[&quot;anzahl&quot;])) {
+    echo &quot;&lt;p&gt;Anzahl ist nicht gesetzt&lt;/p&gt;&quot;;
+} elseif(! $anzahl = filter_var( $_GET[&#39;anzahl&#39;], FILTER_VALIDATE_INT )) {
+  echo &quot;&lt;p&gt;Anzahl ist keine Zahl&lt;/p&gt;&quot;;
+} else {
+    echo &quot;&lt;p&gt;Anzahl: $anzahl &lt;/p&gt;&quot;;
+}
+</pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h3 id="filtervar-bessern-kennenlernen"><code>filter_var</code> bessern kennenlernen</h3>
+
+<p>Die Funktion <code>filter_var</code> kann noch viel mehr, siehe die <a href="https://www.php.net/manual/de/filter.constants.php#constant.filter-validate-bool">Filter Constants in der PHP Dokumentation</a></p>
+
+<p>Auf der Webseite <a href="https://de.functions-online.com/filter_var.html">https://de.functions-online.com/filter_var.html</a> kann
+man die verschiedenen Optionen von filter_var ausprobieren.</p>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h3 id="alle-fehler-sammeln">Alle Fehler sammeln</h3>
+
+<p>Wenn wir die Daten nicht akzeptieren können ist es freundlich, wenn
+wir alle Fehlermeldungen sammeln und anzeigen:</p>
 
 <div class="example">
 <pre class="lang-php prettyprint linenums">
@@ -103,10 +151,10 @@ if ( ! isset($_GET[&#39;anzahl&#39;])  or
 }
 
 if ( ! isset($_GET[&#39;adresse&#39;]) or
-     ! $adresse = filter_var( $_GET[&#39;adresse&#39;], FILTER_SANITIZE_STRING ) ) {
-  $fehler[] = &quot;Bitte geben Sie die Lieferadresse an!&quot;;
+     ! $adresse = filter_var( $_GET[&#39;adresse&#39;], FILTER_VALIDATE_EMAIL ) ) {
+  $fehler[] = &quot;Bitte geben Sie die E-Mail Adresse an!&quot;;
 } elseif ( strlen( $adresse ) &lt; 5 ) {
-  $fehler[] = &quot;Die Lieferadresse ist zu kurz - mindestens 5 Buchstaben!&quot;;
+  $fehler[] = &quot;Die E-Mail Adresse  ist zu kurz - mindestens 5 Buchstaben!&quot;;
 }
 
 if ( $fehler ) {
@@ -119,18 +167,9 @@ if ( $fehler ) {
   echo(&quot;&lt;p&gt;Bitte gehen Sie zurück und bessern Sie die Bestellung aus.&quot;);
 } else {
   echo(&quot;&lt;p&gt;Ihre Bestellung über $anzahl Flugzeuge ist eingelangt&lt;/p&gt;&quot;);
-  echo(&quot;&lt;p&gt;Die Flugzeuge werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
 }
 ?&gt;
 </pre></div>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h3 id="filtervar-bessern-kennenlernen"><code>filter_var</code> bessern kennenlernen</h3>
-
-<p>Auf der Webseite <a href="https://de.functions-online.com/filter_var.html">https://de.functions-online.com/filter_var.html</a> kann
-man die verschiedenen Optionen von filter_var ausprobieren.</p>
 
  <div class="pagination">
   <ul>

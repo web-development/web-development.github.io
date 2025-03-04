@@ -93,7 +93,14 @@ Datei-Upload: in modernen Browsern kann man Dateien mit
 “Drag-and-Drop” in den Browser befördern, und erst in einem
 zweiten Schritt hochladen:</p>
 
-<p><img src="/images/drag-and-drop-upload.gif"  alt="Neu im Frontend: Drag and Drop in den Browser" ></p>
+<video controls="" width="100%">
+  <source src="/images/php/upload-drag-and-drop.mp4" type="video/mp4" />
+
+
+  Download the
+  <a href="/images/php/upload-drag-and-drop.mp4">mp4</a>
+  video.
+</video>
 
 </div>
 <div class="slide">
@@ -101,8 +108,8 @@ zweiten Schritt hochladen:</p>
 <h3 id="drag-and-drop-entgegen-nehmen">Drag-and-Drop entgegen nehmen</h3>
 
 <p>Wählen Sie einen Tag in der Webseite aus, der die Dateien entgegen nehmen
-soll. (Es könnte auch der ganze Body sein).   Für diesen Tag müssen
-die Events “dragenter”, “dragover” und “drop” behandelt werden:</p>
+soll.   Für diesen Tag müssen
+die Events “dragenter”, “dragover” und “drop” behandelt werden.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
@@ -122,61 +129,76 @@ function handle_drop(e) {
 }
 </pre></div>
 
-</div>
-<div class="slide">
-
-<h3 id="thumbnails-darstellen">Thumbnails darstellen</h3>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-img.src = window.URL.createObjectURL(file);
-</pre></div>
+<p>Das drop-Event erhält unter <code>dataTransfer.files</code> die Daten aus
+den gedroppten Dateien.</p>
 
 </div>
 <div class="slide">
 
-<h3 id="http-request-senden">HTTP Request senden</h3>
+<h3 id="dateien-behandeln">Dateien behandeln</h3>
+
+<p>In dieser Funktion werden zuerst alle Informationen
+zu den Dateien ausgegeben.</p>
+
+<p>Es ist sehr einfach eine einzelne Datei an ein file-input Feld zu übergeben.</p>
 
 <div class="example">
 <pre class="lang-javascript prettyprint linenums">
-var xhr = new XMLHttpRequest();
-xhr.open(&quot;POST&quot;, &quot;upload.php&quot;, true);
-xhr.addEventListener(&quot;load&quot;, handle_load);
-xhr.send();
-</pre></div>
+function handleFiles(files) {
+    var count = files.length;
+    console.log(&quot;File Count: &quot; + count + &quot;\n&quot;);
 
-<p>wie mit dem Formular:</p>
+    for (var i = 0; i &lt; files.length; i++) {
+    console.log(&quot; File &quot; + i + &quot;:\n(&quot; + (typeof files[i]) + &quot;) : &lt;&quot; + files[i] + &quot; &gt; &quot; +
+            files[i].name + &quot; &quot; + files[i].size + &quot;\n&quot;);
+    }
 
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-var xhr = new XMLHttpRequest();
-var fd = new FormData();
-
-xhr.open(&quot;POST&quot;, &quot;upload.php&quot;, true);
-xhr.responseType = &quot;document&quot;;
-xhr.addEventListener(&quot;load&quot;, handle_load);
-fd.append(&#39;pic&#39;, file);
-xhr.send(fd);
-</pre></div>
-
-</div>
-<div class="slide">
-
-<h3 id="antwort-des-servers-behandeln">Antwort des Servers behandeln</h3>
-
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function handle_load(evt) {
-    var response_doc = this.responseXML;
-    ....
-    if( this.status == 200 ) {
-        ...
-    } else {
-        ....
-        dropbox.removeChild(img);
+    if(count == 1) {
+        console.log(&quot;Eine Datei hochgeladen&quot;);
+        var file = files[0];
+        var input = document.querySelector(&#39;input[name=&quot;bild&quot;]&#39;);
+        input.files = files;
     }
 }
 </pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="preview-einer-datei">Preview einer Datei</h3>
+
+<p>Um eine Preview der Datei im Browser anzuzeigen
+muss ein image-tag in die Seite eingebaut werden.
+Die Übertragung der Daten ist kompliziert: Ein <code>FileReader</code> Objekt
+kann die Daten aus der Datei lesen, löst dann das event <code>onload</code> aus,
+und kann dann das <code>src</code>-Attibut des image-tags setzen:</p>
+
+<div class="example">
+<pre class="lang-javascript prettyprint linenums">
+if (file.type.startsWith(&#39;image/&#39;)) {
+    var preview = document.getElementById(&#39;preview&#39;);
+    var img = document.createElement(&#39;img&#39;);
+    img.style.maxWidth = &#39;100%&#39;;
+    img.style.maxHeight = &#39;200px&#39;;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        img.src = e.target.result;
+    };
+
+    preview.innerHTML = &#39;&#39;; // Clear previous preview
+    preview.appendChild(img);
+    reader.readAsDataURL(file);
+}
+</pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="javascript-library">JavaScript Library</h3>
+
+<p>Die Library <a href="https://www.dropzone.dev/">Dropzone</a> bietet noch einige
+zusätzliche Funktionen an.</p>
 
 </div>
     <div class="slide">
