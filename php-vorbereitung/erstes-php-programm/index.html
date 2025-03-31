@@ -59,7 +59,7 @@ Hier eine Schritt- für Schritt Auflistung, was alles schief gehen kann:</p>
 Browser angezeigt werden, sondern muss über den Webserver aufgerufen weden. In
 folgendem Beispiel ist beides falsch:</p>
 
-<p><img src="/images/image327.png"  alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" ></p>
+<p><img src="/images/php-open-file.png" srcset="/images/php-open-file.png 1x, /images/php-open-file@2x.png 2x"  alt="Abbildung 125: So funktioniert PHP nicht: ohne Webserver, falsche Dateiendung" ></p>
 
 <p>Wenn die URL mit <kbd>file:///</kbd> beginnt, öffnet der Browser die Datei
 direkt vom Filesystem, es ist keine Webserver involviert.  Dann kann PHP nicht
@@ -73,10 +73,10 @@ funktionieren!</p>
 
 
 <p>Wenn Sie eine PHP-Programm in einer Datei mit der Endung .html oder .htm
-speichern, und über den Webserver aufrufen, wird es trotzdem nicht vom Webserver 
+speichern, und über den Webserver aufrufen, wird es trotzdem nicht vom Webserver
 interpretiert, sondern direkt an den Browser gesandt.</p>
 
-<p>Der Browser zeigt den PHP-Teil des Code aber nicht an, 
+<p>Der Browser zeigt den PHP-Teil des Code aber nicht an,
 erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
 
 <p><img src="/images/image328.png"  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" ></p>
@@ -86,8 +86,8 @@ erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 geze
 
 
 
-<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver 
-betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten. 
+<p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver
+betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten.
 Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
 <p><img src="/images/image329.png"  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" ></p>
@@ -109,17 +109,17 @@ Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="php-versionen">PHP Versionen</h2>
-<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen 
+<p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen
 Sie z.B. dass PHP in der Version 5.0.5 verwendet wird - eine veraltete Version. Im Jahr
 2019 sollten Sie nur mindestens PHP 7 verwenden.</p>
 
-<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede, 
-verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>. 
-Wenn ihr Webspace-Vermieter auf eine 
+<p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede,
+verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>.
+Wenn ihr Webspace-Vermieter auf eine
 neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
 anpassen!</p>
 
-<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen 
+<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen
 aufgeführt, z.B. bei der Funktion <a href="http://php.net/manual/de/function.ldap-sort.php">ldap_sort</a> ist in der Dokumentation angegeben:</p>
 
 <pre><code>PHP 4 &gt;= 4.2.0, PHP 5, PHP 7
@@ -134,7 +134,7 @@ Warnung: Dieses Feature ist seit PHP 7.0.0 DEPRECATED (veraltet). Sich auf diese
 
 
 
-<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen: 
+<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen:
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
 können Sie das nicht ändern!
 Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
