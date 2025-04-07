@@ -5,6 +5,9 @@
     <title>Basic Javascript - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -88,8 +91,7 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;body id=&quot;farbfeld&quot;&gt;
+<pre><code class="language-html  linenums">&lt;body id=&quot;farbfeld&quot;&gt;
   &lt;script&gt;
   console.log(&quot;JavaScript is active&quot;);
   function setcolor( color ) {
@@ -103,7 +105,7 @@
   &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
 &lt;/body&gt;
-</pre></div>
+</code></pre></div>
 
 <p>In dieser Webseite ist an vier Stellen Javascript zu finden. Im <code>script</code> Tag am Ende des body, und dreimal in einem Attribut des <code>input</code>-Tags. Wie Sie sehen ist Javascript sehr eng mit HTML und CSS verzahnt.</p>
 
@@ -123,8 +125,7 @@ eine Zeile in die Console der Developer Tools schreibt:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Der Script-Tag</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-html  linenums">&lt;script&gt;
 console.log(&quot;JavaScript is active&quot;);
 function setcolor( color ) {
   let area = document.getElementById(&#39;farbfeld&#39;);
@@ -132,7 +133,7 @@ function setcolor( color ) {
   console.log(&quot;color was changed to&quot;, color);
 }
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Es wir noch eine Funktion <code>setcolor</code> definiert, aber nicht aufgerufen.</p>
 
@@ -148,11 +149,10 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
 
 <div class="example">
 <h4 class="caption">Html Code <small>Vollständige Webseite mit Javascript</small></h4>
-<pre class="lang-html prettyprint linenums">
-  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Beim Click auf den jeweiligen Button wird das Stück JavaScript Code im <code>onclick</code>-Attribut
 ausgeführt.</p>
@@ -163,9 +163,8 @@ ausgeführt.</p>
 <h2 id="beispiele-fr-events">Beispiele für Events</h2>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;body onload=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;body onload=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Der Code wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
 
@@ -175,9 +174,8 @@ ausgeführt.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;...&quot; onmouseover=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;a href=&quot;...&quot; onmouseover=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Der Code wird ausgeführt wenn die Maus über den Link bewegt wird (auch: <code>onmouseout</code>). (Achtung: funktioniert nicht auf Touch-Devices – genau wie <code>:hover</code>)</p>
 
@@ -187,9 +185,8 @@ ausgeführt.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;input type=&quot;button&quot; onclick=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;input type=&quot;button&quot; onclick=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Der Code wird ausgeführt wenn auf den Button geklickt wird.</p>
 
@@ -199,8 +196,7 @@ ausgeführt.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script&gt;
+<pre><code class="language-html  linenums">  &lt;script&gt;
     function check() {
       if (....) {
         // data ok, send it!
@@ -212,7 +208,7 @@ ausgeführt.</p>
     }
   &lt;/script&gt;
   &lt;form onsubmit=&quot;return check();&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der Code wird aufgerufen, wenn der Einsende-Knopf des Formulars betätigt wird, aber bevor die Daten wirklich gesendet werden.</p>
 
@@ -224,9 +220,8 @@ ausgeführt.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;input onchange=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;input onchange=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Der Code wird ausgeführt wenn der Inhalt des Eingabefeldes verändert wurde
 und der Fokus auf das nächste Feld weitergeht.</p>
@@ -237,9 +232,8 @@ und der Fokus auf das nächste Feld weitergeht.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;div ontouchstart=&quot;...&quot; ontouchend=&quot;...&quot; ontouchmove=&quot;....&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;div ontouchstart=&quot;...&quot; ontouchend=&quot;...&quot; ontouchmove=&quot;....&quot;&gt;
+</code></pre></div>
 
 <p>Nur auf Geräten mit Touchscreen.</p>
 
@@ -249,9 +243,8 @@ und der Fokus auf das nächste Feld weitergeht.</p>
 
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;body onoffline=&quot;...&quot; ononline=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;body onoffline=&quot;...&quot; ononline=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Der Code wird ausgeführt wenn das Gerät die Verbindung zum Internet
 verliert, bzw. wieder erhält.</p>
@@ -273,17 +266,15 @@ verliert, bzw. wieder erhält.</p>
 <p>Zum Beispiel das Objekt <code>document</code> ist bei Javascript im Browser immer vorhanden. Es repräsentiert die aktuell geladene Webseite. Dieses Dokument hat einige Eigenschaften (Variablen) und einige Methoden (Funktionen):</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-// document.location
+<pre><code class="language-javascript  linenums">// document.location
 // diese Eigenschaft speichert die aktuelle URL
 // wenn man einen neuen Wert in location speichert
 // surft der Browser hin
 document.location = &quot;https://boardgamegeek.com/&quot;;
-
 // die Methode write
 // (über)schreibt die webseite
 document.write(&quot;hi&quot;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -310,12 +301,10 @@ um den Text zu verändern:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>deklaration</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var a;  // alt
-
+<pre><code class="language-javascript  linenums">var a;  // alt
 let b;    // neu, Variable
 const c;  // neu, Konstante
-</pre></div>
+</code></pre></div>
 
 <p>Die Details zu <code>let</code> und <code>const</code> lernen wir später
 im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
@@ -328,13 +317,12 @@ im Kapitel <a href="/javascript/variablen/">Variablen und Scope</a></p>
 <p>Variablen in Javascript können Zahlen, Strings, Arrays, Objekte enthalten – der Interpreter trennt Variablen nicht nach verschiedenen Datentypen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  a = 10;               // typeof(a) == &quot;number&quot;
+<pre><code class="language-javascript  linenums">  a = 10;               // typeof(a) == &quot;number&quot;
   a = 3.141;           // typeof(a) == &quot;number&quot;
   a = &quot;ein text&quot;;     // typeof(a) == &quot;string&quot;
   a = true;          // typeof(a) == &quot;boolean&quot;
   a = undefined;    // typeof(a) == &quot;undefined&quot;
-</pre></div>
+</code></pre></div>
 
 <p>Bei Zahlen in Javascript wird nicht zwischen integer und float unterschieden:
 bis 2<sup>53</sup> (9.007.199.254.740.992)  können Ganzzahlen gespeichert werden,
@@ -350,11 +338,10 @@ können Sie in <a href="http://www.2ality.com/2012/04/number-encoding.html">How 
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>drei Arten Strings zu schreiben</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-a = &quot;Hallo&quot;;
+<pre><code class="language-javascript  linenums">a = &quot;Hallo&quot;;
 b = &#39;Welt&#39;;
 c = `Hallo ${name}, der brutto Preis ist ${netto * 1.2}`;
-</pre></div>
+</code></pre></div>
 
 <p>Die letzte, genannt  <strong>template literals</strong>, erlaubt das einbinden von Variablen und das
 Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></p>
@@ -367,12 +354,11 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <p>Arrays in Javascript können wie in C# mit eckigen Klammern und Integer-Index ausgelesen werden: <code>b[0]</code>, <code>b[1]</code>. Für das Erzeugen des Arrays gibt es zwei Schreibweisen</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  var b;
+<pre><code class="language-javascript  linenums">  var b;
   b = [&quot;eins&quot;, 2, 3.141, true];           // JSON-Schreibweise
   b = new Array(&quot;eins&quot;, 2, 3.141, true);  // Objekt-Schreibweise
   // typeof(b) == &quot;object&quot;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -383,8 +369,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <a href="/images/javascript-dom/jsarray.html">Beispiel live im Browser</a></p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  var i,t;
+<pre><code class="language-javascript  linenums">  var i,t;
   i = 0;
   t = &quot;Das Array:\n&quot;;
   while( i &lt; b.length ) {
@@ -393,7 +378,7 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
       i++;
   }
   alert(t);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -403,20 +388,16 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <p>Für das Erzeugen von Objekten gibt es zwei Schreibweisen: die JSON-Schreibweise mit geschwungenen Klammern eignet sich gut für einmalige Objekte.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  var c;
+<pre><code class="language-javascript  linenums">  var c;
   c = {&quot;farbe&quot; : &quot;rot&quot;, &quot;beschriftung&quot;: &quot;int pi == 3&quot;, &quot;verkauft&quot;: true};
-
   alert(&quot;Das Shirt ist &quot; + c.farbe ); // gibt “Das Shirt ist rot”
-
   alert(typeof c); // gibt  &quot;object&quot;
-</pre></div>
+</code></pre></div>
 
 <p>Will man mehrere Objekte mit denselben Eigenschaften erzeugen, dann ist eine Klasse mit Konstruktor besser geeignet.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  class Shirt {
+<pre><code class="language-javascript  linenums">  class Shirt {
       constructor( f, b, v ) {
           this.farbe        = f;
           this.beschriftung = b;
@@ -424,11 +405,9 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
       }
   }
   var d = new Shirt(&quot;rot&quot;, &quot;int pi == 3&quot;, true);
-
   alert(&quot;Das Shirt ist &quot; + d.farbe ); // gibt “Das Shirt ist rot”
-
   alert(typeof d); // gibt  &quot;object&quot;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -438,20 +417,18 @@ Auswerten von Javascript-Expressions.  Siehe auch <a href="https://developer.moz
 <p>Eine Besonderheit von Javascript (die sie nicht in anderen Programmiersprachen finden werden) ist, dass Eigenschaften eines Objekts nicht nur über die Punkt-Schreibweise, sondern auch über eckige Klammern – also wie ein Array – angesprochen werden können:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  console.log(&quot;die Farbe des shirts ist&quot;)
+<pre><code class="language-javascript  linenums">  console.log(&quot;die Farbe des shirts ist&quot;)
   console.log( c.farbe    );
   console.log( c[&quot;farbe&quot;] );
-</pre></div>
+</code></pre></div>
 
 <p>In den eckigen Klammern steht nun ein String. Dieser könnte auch in einer Variable gespeichert sein:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  e = &quot;beschriftung&quot;;
+<pre><code class="language-javascript  linenums">  e = &quot;beschriftung&quot;;
   console.log(&quot;Die Beschriftung lautet &quot;)
   console.log( c[e] );
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -464,13 +441,11 @@ die Werte in einem Array zu iterieren <strong>ohne</strong> den
 index zu benötigen mit einer <code>for ... of</code> schleife:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let liste = [10, 20, 30];
-
+<pre><code class="language-javascript  linenums">  let liste = [10, 20, 30];
   for (let element of liste) {
       console.log(element);
   }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -480,16 +455,14 @@ index zu benötigen mit einer <code>for ... of</code> schleife:</p>
 <p><code>if</code>, <code>else</code>, <code>else if</code> und die Operatoren für boolsche Werte funktionieren wie in c#:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let windy = false;
+<pre><code class="language-javascript  linenums">  let windy = false;
   let rainy = true;
-
   if (! windy &amp;&amp; ( rainy || ! sunny )) {
       console.log(&quot;Umbrella !&quot;);
   } else {
       console.log(&quot;No umbrella !&quot;);
   }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -499,8 +472,7 @@ index zu benötigen mit einer <code>for ... of</code> schleife:</p>
 <p><code>switch</code> funktioniert genau wie in C#:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  switch (cardNr) {
+<pre><code class="language-javascript  linenums">  switch (cardNr) {
       case 14:
           console.log(&quot;Ass&quot;);
           break;
@@ -517,7 +489,7 @@ index zu benötigen mit einer <code>for ... of</code> schleife:</p>
           console.log(`unbekannte Karte Nr. ${cardNr}`);
           break;
   }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -529,13 +501,11 @@ Typ-Deklarationen entfallen.  Das Keyword <code>function</code> wird vor dem neu
 definierten Funktionsnamen verwendet:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  function add( a, b ) {
+<pre><code class="language-javascript  linenums">  function add( a, b ) {
       return a+b;
   }
-
   console.log(  add(40, 2)  );  // gibt 42
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -584,5 +554,12 @@ einem kleinen Anfangsbuchstaben, z.b.  <code>addNumbers</code>,  <code>deleteAll
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

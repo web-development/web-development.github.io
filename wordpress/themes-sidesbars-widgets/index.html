@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -166,11 +166,10 @@ definiert.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>verweis auf den RSS-Feed im HEAD eines HTML-Dokuments</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
+<pre><code class="language-html  linenums">&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
       href=&quot;http://wordpress.local/?feed=rss2&quot; 
       title=&quot;Programmier-Portfolio Posts RSS feed&quot;&gt;
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1186,7 +1185,11 @@ definiert.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

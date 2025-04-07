@@ -5,6 +5,9 @@
     <title>Shellscript - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -98,28 +101,24 @@ Befehle zusammen, die man öfter mal ausführen muss.</p>
 Achtung: davor kann nichts anderes sein, nicht einmal Kommentar.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-#!/usr/bin/bash
-
+<pre><code class="language-shell  linenums">#!/usr/bin/bash
 # hier kann ein Kommentar sein, das ist ok
 echo &quot;Hallo Welt&quot;
-</pre></div>
+</code></pre></div>
 
 <p>Die Ausgabe erfolgt mit <code>echo</code>.</p>
 
 <p>Mit den passenden Zugriffsrechte</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-chmod +x meinscript
-</pre></div>
+<pre><code class="language-shell  linenums">chmod +x meinscript
+</code></pre></div>
 
 <p>kann man das Skript starten</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-./meinscript
-</pre></div>
+<pre><code class="language-shell  linenums">./meinscript
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -130,11 +129,9 @@ chmod +x meinscript
 wenn man sie verwendet hat sie ein Dollar-Zeichen</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-NAME=&quot;Brigitte&quot;
-
+<pre><code class="language-shell  linenums">NAME=&quot;Brigitte&quot;
 echo &quot;Hallo $NAME&quot;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -148,13 +145,12 @@ verwendet operatoren die immer mit Minus beginnen.</p>
 <p>Hier <code>-lt</code> für “less than”:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-if [ $ALTER -lt 18 ]; then
+<pre><code class="language-shell  linenums">if [ $ALTER -lt 18 ]; then
     echo &quot;Du kommst hier nicht rein&quot;
 else
     echo &quot;Willkommen im Club&quot;
 fi
-</pre></div>
+</code></pre></div>
 
 <p>Weitere Operatoren:</p>
 
@@ -183,11 +179,10 @@ fi
 <p>Beispiel für Boolsche Operatoren</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-if [ $ALTER -ge 18 ] &amp;&amp; [ $ALTER -lt 24 ]; then
+<pre><code class="language-shell  linenums">if [ $ALTER -ge 18 ] &amp;&amp; [ $ALTER -lt 24 ]; then
     echo &quot;In den USA darfst du noch keinen Alkohol trinken&quot;
 fi
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -195,12 +190,11 @@ fi
 <h2 id="kontrollstrukturen-schleife">Kontrollstrukturen: Schleife</h2>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-for SIZE in 350 740 1400 2800
+<pre><code class="language-shell  linenums">for SIZE in 350 740 1400 2800
 do
   echo &quot;Ich soll davon eine Bild mit Breite $SIZE erzeugen&quot;
 done
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -211,9 +205,8 @@ done
 so landen diese als Strings in den Variablen $1 $2 usw.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-./meinscript arg1 -f
-</pre></div>
+<pre><code class="language-shell  linenums">./meinscript arg1 -f
+</code></pre></div>
 
 <p>hier wäre also $1 gleich “arg1” und $2 gleich “-f”</p>
 
@@ -222,12 +215,11 @@ so landen diese als Strings in den Variablen $1 $2 usw.</p>
 <p>Eine Schleife über die Argumente:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-for ARG in $@
+<pre><code class="language-shell  linenums">for ARG in $@
 do
   echo &quot;Noch ein Argument: $ARG&quot;
 done
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -238,10 +230,9 @@ done
 die Datei. Oder man kann mit <code>&gt;&gt;</code> an die Datei anfügen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-echo &quot;Hallo Welt&quot; &gt; README.md
+<pre><code class="language-shell  linenums">echo &quot;Hallo Welt&quot; &gt; README.md
 echo &quot;nochwas,....&quot; &gt;&gt; README.md
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -252,19 +243,17 @@ echo &quot;nochwas,....&quot; &gt;&gt; README.md
 Variable gleich noch eine Berechnung zu machen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-SPRUCH=&quot;Mit Linux wäre das nicht passiert&quot;
+<pre><code class="language-shell  linenums">SPRUCH=&quot;Mit Linux wäre das nicht passiert&quot;
 echo $SPRUCH
 echo ${SPRUCH/Linux/Mac}
-</pre></div>
+</code></pre></div>
 
 <p>Die Ausgabe lautet</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-Mit Linux wäre das nicht passiert
+<pre><code class="language-shell  linenums">Mit Linux wäre das nicht passiert
 Mit Mac wäre das nicht passiert
-</pre></div>
+</code></pre></div>
 
 <p>Mehr Tricks im <a href="https://tldp.org/LDP/abs/html/string-manipulation.html">Advanced Bash Scripting Guide</a></p>
 
@@ -282,9 +271,8 @@ dann wird die immer ausgeführt wenn ich eine neue Bash-Session starte.</p>
 die immer gelten sollen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-export SPRUCH=&quot;Mit Linux wäre das nicht passiert.&quot;
-</pre></div>
+<pre><code class="language-shell  linenums">export SPRUCH=&quot;Mit Linux wäre das nicht passiert.&quot;
+</code></pre></div>
 
 <p>Dann kann ich die Varialbe $SPRUCH auf der Kommandozeile
 und in allen Shell-Skripts nutzen, sie ist schon da.</p>
@@ -304,9 +292,8 @@ dafür der Order <code>bin</code> im eigenen Home-Verzeichnis.</p>
 entsprechenen Eintrag macht:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-export PATH=&quot;$PATH:/home/bjelline/bin&quot;
-</pre></div>
+<pre><code class="language-shell  linenums">export PATH=&quot;$PATH:/home/bjelline/bin&quot;
+</code></pre></div>
 
 <p>hier wird die PATH Variable neu gesetzt, und zwar auf den schon
 vorhandnen Wert plus den Pfad zum bin-Ordner in meinem Home-Verzeichnis.</p>
@@ -318,12 +305,11 @@ kann ich Skripts aus meinem bin-Ordner von überall aus aufrufen.</p>
 liegen kann ich sie so verwenden, egal “wo” ich bin:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-cd ~/dev/studium/Jellinek_Brigitte_algodat
+<pre><code class="language-shell  linenums">cd ~/dev/studium/Jellinek_Brigitte_algodat
 mkalgodatproject 5 1
 cd ~/dev/studium/Jellinke_Brigitte_wp2/pizza
 mksizes pizza.jpg
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -374,5 +360,12 @@ mksizes pizza.jpg
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

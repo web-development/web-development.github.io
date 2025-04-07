@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -76,27 +76,24 @@ nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception �
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
 function compute($x) {
     if ($x == 0) {
        throw new Exception(&#39;Illegal Input: 0.&#39;);
     }
     return 1 / $x;
 }
-
 try {
     echo compute(5) . &quot;\n&quot;;
     echo compute(0) . &quot;\n&quot;;
 } catch (Exception $e) {
     echo &#39;Exception abgefangen: &#39;,  $e-&gt;getMessage(), &quot;\n&quot;;
 }
-
 // output:
 // 0.2
 // Exception abgefangen: Illegal Input: 0
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -107,9 +104,8 @@ try {
 Attribut <code>ERRMODE</code> aktiviert werden:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-</pre></div>
+<pre><code class="language-php  linenums">  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+</code></pre></div>
 
 <p>In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
 Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftreten,
@@ -117,38 +113,30 @@ oder bei einzelnen Abfragen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
-<pre class="lang-php prettyprint linenums">
-$get_id = $_GET[&#39;id&#39;];
+<pre><code class="language-php  linenums">$get_id = $_GET[&#39;id&#39;];
 try{
   include &quot;config.php&quot;;
-
   if( ! $DSN ) {
     throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
   }
-
   $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
   /* das folgende Attribut aktiviert die Exceptions */
   $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
   $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
   $sth-&gt;execute(array($get_id));
   $p = $sth-&gt;fetch();
-
   // wirklich nicht in der Datenbank
   if( $p === false ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
   }
-
   // Profil verborgen
   if( !$p-&gt;profile_visible  ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
   }
-
   $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
   $sth-&gt;execute(array($get_id));
   $projects = $sth-&gt;fetchAll();
-
 } catch( Exception $e ) {
   include &quot;header.php&quot;;
   echo &quot;&lt;h1&gt;Problem mit der Datenbank&lt;/h1&gt;&quot; ;
@@ -157,9 +145,8 @@ try{
   include &quot;footer.php&quot;;
   exit;
 }
-
 /* hier folgt die normale Ausgabe der Seite */
-</pre></div>
+</code></pre></div>
 
 <p>In diesem Beispiel erfolgt die ganze Arbeit mit der Datenbank
 bevor die Ausgabe beginnt.  Im <code>catch</code>-Block wird eine Webseite
@@ -1189,7 +1176,11 @@ gar nicht lohnt näher darauf einzugehen. Siehe
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -5,6 +5,9 @@
     <title>CSS Sprites - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -98,8 +101,7 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 <p>So könnte der CSS Code aussehen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.icon{
+<pre><code class="language-css  linenums">.icon{
   display:block;
   padding:8px 0 9px 40px;
   background:url(http://us.i1.yimg.com/pa-icons2.gif) 5px 3px no-repeat;
@@ -111,7 +113,7 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 #music .icon{
   background-position:5px -197px;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -153,5 +155,12 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

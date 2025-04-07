@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -71,13 +71,12 @@ verweist mittels des <code>DOCTYPE</code> auf das Wurzelelement und die Datei mi
 heisst ebenfalls <code>&lt;serie&gt;</code>:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;!DOCTYPE serie SYSTEM &quot;serie.dtd&quot;&gt;
 &lt;serie&gt;
 ....
 &lt;/serie&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -95,9 +94,8 @@ festgelegt. <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#elemdecls">→ 
 <p>Ein allein stehender Tag (ohne Inhalt) wird wie folgt definiert:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ELEMENT br EMPTY&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;!ELEMENT br EMPTY&gt;
+</code></pre></div>
 
 <p>Sie kennen den Break-Tag aus HTML. In einem XML-Dokument muss
 er entweder mit einem zusätzlichesn Slash am Ende geschrieben werden <code>&lt;br /&gt;</code>
@@ -113,9 +111,8 @@ Diese beiden Schreibweisen sind gleichbedeutend.</p>
 es nur reinen Text enthalten, aber keine weiteren Tags.</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ELEMENT option (#PCDATA)&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;!ELEMENT option (#PCDATA)&gt;
+</code></pre></div>
 
 <p>So ist z.B. <code>&lt;option&gt;gr&amp;uuml;n&lt;/option&gt;</code> ein valider Tag (Entities sind erlaubt), 
 aber <code>&lt;option&gt;&lt;b&gt;nur&lt;/b&gt; grün&lt;/option&gt;</code> nicht, da Tags verboten sind.</p>
@@ -147,12 +144,11 @@ mathematischen Ausdrücken kennt.</p>
 <p>Ein paar Beispiele:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ELEMENT html   (head, body) &gt;
+<pre><code class="language-xml  linenums">&lt;!ELEMENT html   (head, body) &gt;
 &lt;!ELEMENT ul     (li)+        &gt;
 &lt;!ELEMENT select (option)+    &gt;
 &lt;!ELEMENT dl     (dt|dd)+     &gt;
-</pre></div>
+</code></pre></div>
 
 <p>Zeile 1: Für das <code>html</code>-Element wird festgelegt, dass es genau einen <code>head</code>-Element gefolgt von genau einem <code>body</code>-Element enthalten muss.
 Keine anderen Tags, keine andere Reihenfolge, kein Text ist erlaubt.</p>
@@ -173,9 +169,8 @@ aber keine Reihenfolge oder Anzahl mehr festlegen.</p>
 <p>Die Regel beginnt dann immer mit <code>(#PCDATA |</code> und endet mit <code>)*</code>:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ELEMENT p ( #PCDATA | a | ul | dl | b | i )*&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;!ELEMENT p ( #PCDATA | a | ul | dl | b | i )*&gt;
+</code></pre></div>
 
 <p>Hier kann ein <code>p</code>-Tag also nur die Kinder-Tags 5 aufgeführten Kinder-Tags
 enthalten, aber diese in beliebiger Reihenfolge und Anzahl, mit beliebigem
@@ -196,12 +191,11 @@ einen Default.</p>
 <p>Hier ein Beispiel für ein Element <code>img</code> das zwei mögliche Attribute hat: <code>id</code> und <code>src</code>.</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ATTLIST img
+<pre><code class="language-xml  linenums">&lt;!ATTLIST img
   id       ID       #IMPLIED
   src      CDATA    #REQUIRED
 &gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -218,14 +212,13 @@ einen Default.</p>
 </ul>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ATTLIST foo
+<pre><code class="language-xml  linenums">&lt;!ATTLIST foo
   bar     CDATA #REQUIRED
   baz     CDATA #IMPLIED
   qux     CDATA &quot;42&quot;
   wibble  CDATA #FIXED &quot;wobble&quot;
 &gt;
-</pre></div>
+</code></pre></div>
 
 <p>Ein korreter Tag wäre als <code>&lt;foo bar='barbar' wibble='wobble'&gt;</code>.  Ein XML Parser
 würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</code> erkennen.</p>
@@ -241,12 +234,11 @@ würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</co
 </ul>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ATTLIST p
+<pre><code class="language-xml  linenums">&lt;!ATTLIST p
   title  CDATA      #IMPLIED
   dir    (ltr|rtl)  #IMPLIED
 &gt;
-</pre></div>
+</code></pre></div>
 
 <p>Das Titel-Attribut kann einen bliebigen Text enthalten. Das Attribut
 <code>dir</code> (für “direction”, Schreib-Richtung) kann die Werte <code>ltr</code> (“left to right”) und
@@ -266,18 +258,16 @@ würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</co
 </ul>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;!ATTLIST person
+<pre><code class="language-xml  linenums">&lt;!ATTLIST person
   id     ID     #REQUIRED
   kinder IDREFS #IMPLIED
 &gt;
-</pre></div>
+</code></pre></div>
 
 <p>Mit dieser DTD kann man Personen und Ihre Kinder definieren, z.B. das Haus Stark:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE leute SYSTEM &quot;leute.dtd&quot;&gt;
 &lt;leute&gt;
   &lt;person id=&quot;rickard&quot; kinder=&quot;ned&quot;&gt;Rickard Stark&lt;/person&gt;
@@ -290,7 +280,7 @@ würde aber zusätzlich noch das Attribut <code>qux</code> mit Wert <code>42</co
   &lt;person id=&quot;brandon&quot;&gt;Brandon Stark&lt;/person&gt;
   &lt;person id=&quot;rickon&quot;&gt;Rickon Stark&lt;/person&gt;
 &lt;/leute&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -1319,7 +1309,11 @@ Dieses Programm prüft die Wohlgeformtheit und die Validtät.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

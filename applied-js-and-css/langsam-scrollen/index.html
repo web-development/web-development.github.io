@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -62,8 +62,7 @@ auf die <code>&lt;section&gt;</code> mit der id <code>order</code>:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Navigationsmenü mit internen Links</small></h4>
-<pre class="lang-html prettyprint linenums">
-    &lt;nav&gt;
+<pre><code class="language-html  linenums">    &lt;nav&gt;
       &lt;ul&gt;
         &lt;li&gt;&lt;a href=&quot;#hero&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&quot;#menu&quot;&gt;Speisekarte&lt;/a&gt;&lt;/li&gt;
@@ -77,7 +76,7 @@ auf die <code>&lt;section&gt;</code> mit der id <code>order</code>:</p>
     &lt;section id=&quot;order&quot;&gt;
     ....
     &lt;footer id=&quot;contact&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Wird so ein interner Link angeklick, erfolgt die neue Darstellung der
 Seite blitzschnell. Es ist schwer zu erkennen, dass man sich nun nicht
@@ -94,11 +93,10 @@ unten auf derselben Seite.</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior">scroll-behaviour</a></p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-html {
+<pre><code class="language-css  linenums">html {
   scroll-behavior: smooth;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Damit ist die Aufgabe erledigt.</p>
 
@@ -1130,7 +1128,11 @@ Browser dieses Feature unterstützen. In diesem Fall unter <a href="https://cani
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

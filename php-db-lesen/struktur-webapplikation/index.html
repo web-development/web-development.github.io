@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -136,18 +136,16 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 <code>footer.php</code> inkluidert.</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?
+<pre><code class="language-php  linenums">&lt;?
   $pagetitle = &quot;Titel der Seite&quot;;
   include &quot;functions.php&quot;;
-
   // hier passiert die eigentliche Arbeit
   
   include &quot;header.php&quot;;
   // und hier die Ausgabe
   include &quot;footer.php&quot;;
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -158,8 +156,7 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 
 <div class="example">
 <h4 class="caption">Html Code <small>Links von Personen zur einzelnen Person</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;li&gt;
+<pre><code class="language-html  linenums">&lt;li&gt;
   &lt;b&gt;Michael A&lt;/b&gt;
   &lt;a href=&quot;person.php?id=577&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
@@ -167,7 +164,7 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
   &lt;b&gt;Benjamin A&lt;/b&gt;
   &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -176,12 +173,11 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 <p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
   Suche nach einer Person mit Namen &lt;input name=&quot;suchwort&quot;&gt; 
   &lt;input type=&quot;submit&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1197,7 +1193,11 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

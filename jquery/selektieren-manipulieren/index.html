@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -49,28 +49,25 @@
      <div id="slide-1" title="Folie Nr. 1"></div><p>jQuery verwendet die Schreibweise der CSS-Selektoren um Nodes des DOM auszuwählen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;)        /* alle a-Tags ... als jQuery Objekte */
+<pre><code class="language-javascript  linenums">$(&quot;a&quot;)        /* alle a-Tags ... als jQuery Objekte */
 $(&quot;h1&quot;)       /* alle Überschriften h1 ... als jQuery Objekte */
 $(&quot;p.extra&quot;)  /* alle p-tags mit klasse extra ... als jQuery Objekte  */
-</pre></div>
+</code></pre></div>
 
 <p>jQuery definiert noch ein paar zusätzliche Selektoren, die es in CSS so nicht gibt:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
+<pre><code class="language-javascript  linenums">$(&quot;tr:even&quot;)                 /* Alle geraden Zeilen der Tabelle */
 $(&quot;p:contains(&#39;Warnung&#39;)&quot;)   /* Absätze die die Zeichenkette Warnung enthalten */
 $(&quot;:checkbox&quot;)               /* Alle input-Tags vom typ checkbox */
-</pre></div>
+</code></pre></div>
 
 <p>und weitere Methoden, um noch besser zu selektieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&#39;h1&#39;).next()               /* nächster Tag nach der h1 */
+<pre><code class="language-javascript  linenums">$(&#39;h1&#39;).next()               /* nächster Tag nach der h1 */
 $(&#39;h2&#39;).nextUntil(&#39;h2&#39;)      /* Alle Tags zwischen einem h2 und dem nächsten */
-</pre></div>
+</code></pre></div>
 
 <p>Das Ergebnis ist jeweils ein jQuery Objekt.</p>
 
@@ -83,12 +80,11 @@ $(&#39;h2&#39;).nextUntil(&#39;h2&#39;)      /* Alle Tags zwischen einem h2 und 
 eine Reihe von Manipulations-Funktionen an.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;).addClass(&quot;wichtig&quot;); /* alle A-Tags erhalten die Klasse wichtig */
+<pre><code class="language-javascript  linenums">$(&quot;a&quot;).addClass(&quot;wichtig&quot;); /* alle A-Tags erhalten die Klasse wichtig */
 $(&quot;h1&quot;).append(&quot;:&quot;);        /* in Überschriften h1 wird ein Doppelpunkt angefügt */
 $(&quot;h1&quot;).prepend(&quot;Titel:&quot;);  /*  --||-- wird vorne ‚titel:’ eingefügt */
 $(&quot;p.extra&quot;).hide();        /* alle p-tags mit klasse extra werden versteckt */
-</pre></div>
+</code></pre></div>
 
 <p>Hinweis: hier versteckt sich eine Schleife: der Selektor liefert ein Liste von
 Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</p>
@@ -1107,7 +1103,11 @@ Tags, die Manipulations-Funktion wird für jedes Element der Liste aufgerufen.</
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

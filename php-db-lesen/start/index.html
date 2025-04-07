@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -74,9 +74,8 @@ Hier werden die „PHP Database Objects“ (PDO) vorgestellt, siehe auch
 
 <div class="example">
 <h4 class="caption">Php Code <small>new PDO für den Verbindungs-Aufbau</small></h4>
-<pre class="lang-php prettyprint linenums">
-$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
-</pre></div>
+<pre><code class="language-php  linenums">$dbh = new PDO($DSN, $DB_USER, $DB_PASS);
+</code></pre></div>
 
 <p>Der Rückgabewert ist ein sogenanntes “Datenbank-Handle”.
 Das zweite und dritte Argument sind einfach Strings mit
@@ -104,10 +103,9 @@ Port über den UNIX-Socket aufbauen, den Pfad zum socket gibt man unter
 
 <div class="example">
 <h4 class="caption">Php Code <small>Verbindungs-Aufbau</small></h4>
-<pre class="lang-php prettyprint linenums">
-include &quot;config.php&quot;;
+<pre><code class="language-php  linenums">include &quot;config.php&quot;;
 $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
-</pre></div>
+</code></pre></div>
 
 <p>Hier werden die Argumente für <code>new PDO</code> in der Datei <code>config.php</code> gesetzt,
 die zuvor inkludiert wird.  Warum?</p>
@@ -121,12 +119,11 @@ die zuvor inkludiert wird.  Warum?</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Zugangsdaten für die Datenbank</small></h4>
-<pre class="lang-php prettyprint linenums">
-$DB_NAME = &quot;portfolio_playground&quot;;
+<pre><code class="language-php  linenums">$DB_NAME = &quot;portfolio_playground&quot;;
 $DB_USER = &quot;mmtuser&quot;;
 $DB_PASS = &quot;****&quot;;
 $DSN     = &quot;pgsql:dbname=$DB_NAME;host=localhost&quot;;
-</pre></div>
+</code></pre></div>
 
 <p>Warum zwei Dateien?  Weil wir die Zugangsdaten (Username, Passwort)
 niemals, niemals, niemals in git speichern wollen!
@@ -212,12 +209,11 @@ Die sollte man ganz normal committen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Optionen für den Verbindungs-Aufbau</small></h4>
-<pre class="lang-php prettyprint linenums">
-include &quot;config.php&quot;;
+<pre><code class="language-php  linenums">include &quot;config.php&quot;;
 $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
 $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE,            PDO::ERRMODE_EXCEPTION);
-</pre></div>
+</code></pre></div>
 
 <p>Als “default fetch mode” wird hier festgelegt,
 dass die gelesenen Datensätze aus der Datenbank in PHP als
@@ -239,9 +235,8 @@ Solche Queries kann man mit der Methode <code>exec</code><a href="http://www.php
 
 <div class="example">
 <h4 class="caption">Php Code <small>Anweisungen an die Datenbank mit exec</small></h4>
-<pre class="lang-php prettyprint linenums">
-$anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
-</pre></div>
+<pre><code class="language-php  linenums">$anzahl = $dbh-&gt;exec(&quot;DELETE FROM users&quot;);
+</code></pre></div>
 
 <p>Hier werden alle Datensätze aus der Tabelle <code>users</code> gelöscht.
 Der Rückgabewert enthält die Anzahl der betroffenen Datensätze.</p>
@@ -258,9 +253,8 @@ erhält aber noch nicht die Daten retour, sondern nur ein neues “Handle”:</p
 
 <div class="example">
 <h4 class="caption">Php Code <small>Query an die Datenbank senden</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth =$dbh-&gt;query( $sql );
-</pre></div>
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query( $sql );
+</code></pre></div>
 
 <p>Das Argument ist ein String mit dem SQL, der Rückgabewert
 ist ein “Statement-Handle”. Dieses Objekt bietet verschiedene
@@ -1282,7 +1276,11 @@ im nächsten Kapitel die Struktur eine Beispiel-Applikation ansehen.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

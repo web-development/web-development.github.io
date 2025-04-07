@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -64,10 +64,9 @@ mit neuen Variablen:</p>
 Daten permanent und unabhängig von Browser-Fenstern zu speichern.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;name&quot;, &quot;she who must not be named&quot;);
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;name&quot;, &quot;she who must not be named&quot;);
 let n = localStorage.getItem(&quot;name&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Aber Achtung: <code>localStorage</code> ist ein key-value store, sowohl keys
 als auch values können nur Strings sein!</p>
@@ -81,18 +80,16 @@ als auch values können nur Strings sein!</p>
 kann man sie explizit konvertieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;number&quot;, 42);
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;number&quot;, 42);
 let n = parseInt( localStorage.getItem(&quot;number&quot;) );
-</pre></div>
+</code></pre></div>
 
 <p>oder man verwendet JSON dafür:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;number&quot;, JSON.stringify(42));
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;number&quot;, JSON.stringify(42));
 let n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -103,13 +100,11 @@ let n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
 Storage-Event aus. Auf das kann ich in JavaScript reagieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-var n;  // globale Variable, kann unten gesetzt werden
-
+<pre><code class="language-javascript  linenums">var n;  // globale Variable, kann unten gesetzt werden
 addEventListener(&quot;storage&quot;, (event) =&gt; {
   n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
 });
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -1155,7 +1150,11 @@ addEventListener(&quot;storage&quot;, (event) =&gt; {
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

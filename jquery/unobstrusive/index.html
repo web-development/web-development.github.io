@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -59,8 +59,7 @@ also Javascript dass nicht stört.  Und zwar den HTML-Code nicht stört.</p>
 <p>Bei der Verwendung von jQuery bleibt der HTML-Code „javascript-frei“: jQuery wird nur an einer Stelle, im Head des Dokuments eingebaut.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script
+<pre><code class="language-html  linenums">  &lt;script
         src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
         integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
         crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
@@ -73,7 +72,7 @@ also Javascript dass nicht stört.  Und zwar den HTML-Code nicht stört.</p>
   &lt;body&gt;
         &lt;!--  plain html here, no onclick or onload or ... --&gt;
   &lt;/body&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -1102,7 +1101,11 @@ nicht passieren, dass eine gefälchste Version von jQuery verwendet wird, die Sc
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

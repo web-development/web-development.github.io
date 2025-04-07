@@ -5,6 +5,9 @@
     <title>Git Branching - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -118,18 +121,15 @@ Jeder Knoten in diesem Graphen ist ein Commit.</p>
 Der aktuelle Branch wird bei der Anzeige mit einem Sternchen markiert:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ git branch
+<pre><code class="language-shell  linenums">$ git branch
 * main
   iss50
-
 $ git branch experiment_mit_three_js
-
 $ git branch
 * main
   iss50
   experiment_mit_three_js
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -143,13 +143,11 @@ Dateien und ändert auch nicht in welchem Branch man sich befindet.</p>
 auf dem <code>main</code> Branch und kann mit <code>git checkout</code> zu einem anderen Branch wechseln:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-zu einem anderen Branch wechseln
+<pre><code class="language-shell  linenums">zu einem anderen Branch wechseln
 $ git checkout experiment_mit_three_js
-
 # Abkürzung: Erstellen eines neuen Branches + checkout
 git checkout -b foo
-</pre></div>
+</code></pre></div>
 
 <p>Wenn es sich um einen neu erstellten Branch handelt,
 ändern sich die Dateien in Ihrer Arbeitskopie nicht.  Der neu
@@ -192,10 +190,9 @@ In dieser Abbildung wird der neue Branch mit dem Namen <code>iss53</code> erstel
 der auch auf den Commit c2 verweist.  (iss53 ist eine Abkürzung für Issue 53)</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ git branch iss53
+<pre><code class="language-shell  linenums">$ git branch iss53
 $ git checkout iss53
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/git/branch-and-merge-1.svg"  alt="noch keine Branches" ></p>
 
@@ -203,23 +200,18 @@ $ git checkout iss53
 Das verändert die Branches nicht.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ git branch
+<pre><code class="language-shell  linenums">$ git branch
 * main
   iss50
-
 $ git checkout iss53
-
 $ git branch
   main
 * iss50
-
 $ git checkout main
-
 $ git branch
 * main
   iss50
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -252,15 +244,14 @@ also meist auf <code>main</code>.  Dort gibt man den Befehl <code>git merge ....
 <p>Wenn alles gut geht, wird die Ausgabe wie folgt aussehen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ git checkout main
+<pre><code class="language-shell  linenums">$ git checkout main
 $ git merge experiment_mit_three_js
 Aktualisiere bdf7328..05d4ceb
 Fast-forward
   README.md                |  189 +++++++
   index.html               |  218 ++++++++
  2 files changed, 407 insertions(+)
-</pre></div>
+</code></pre></div>
 
 <p>Nach der erfolgreichen Zusammenführung enthält der aktuelle Branch <code>main</code>
 alle Änderungen aus beiden Branches.
@@ -271,9 +262,8 @@ Der andere Branch ist noch unverändert:</p>
 <p>Wir brauchen den anderen Branch wahrscheinlich nicht mehr und können ihn  mit <code>-d</code> löschen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-git branch -d iss53
-</pre></div>
+<pre><code class="language-shell  linenums">git branch -d iss53
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -325,5 +315,12 @@ die Konflikte beheben und danach die betroffenen Dateien comitten.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -50,11 +50,10 @@
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank - mit Sicherheitsproblem!</small></h4>
-<pre class="lang-php prettyprint linenums">
-$t = $_POST[&#39;title&#39;];
+<pre><code class="language-php  linenums">$t = $_POST[&#39;title&#39;];
 $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 // Beispielcode mit Sicherheitslücke - NICHT verwenden!
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
@@ -65,17 +64,15 @@ $dbh-&gt;query(&quot;INSERT INTO projects (title) VALUES (&#39;$t&#39;)&quot;);
 „That’s it“ haben soll? Dann wird folgendes SQL-Statement ausgeführt:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-INSERT INTO projects (title) VALUES (&#39;That&#39;s it&#39;)
-</pre></div>
+<pre><code class="language-sql  linenums">INSERT INTO projects (title) VALUES (&#39;That&#39;s it&#39;)
+</code></pre></div>
 
 <p>Das kann nicht funktionieren: das einfache Anführungszeichen beendet den String
 und es bleibt <code>s it</code> übrig. Die Fehlermeldung von Postgres lautet:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-ERROR:  syntax error at or near &quot;s&quot;
-</pre></div>
+<pre><code class="language-plain  linenums">ERROR:  syntax error at or near &quot;s&quot;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -90,17 +87,15 @@ Aus „That’s it“ wird also automatisch „That\’s it“, das SQL-Statemen
 funktioniert jetzt für MySQL:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-INSERT INTO werk (titel) VALUES (&#39;That\&#39;s it&#39;)
-</pre></div>
+<pre><code class="language-sql  linenums">INSERT INTO werk (titel) VALUES (&#39;That\&#39;s it&#39;)
+</code></pre></div>
 
 <p>Diese Automatik funktioniert aber leider <strong>nur</strong> für MySQL,
 nicht aber für Postgres. Da müsste es heissen:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-INSERT INTO werk (titel) VALUES (&#39;That&#39;&#39;s it&#39;)
-</pre></div>
+<pre><code class="language-sql  linenums">INSERT INTO werk (titel) VALUES (&#39;That&#39;&#39;s it&#39;)
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -124,29 +119,24 @@ php_flag magic_quotes_gpc off
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen von Daten in die Datenbank mit prepared statements</small></h4>
-<pre class="lang-php prettyprint linenums">
-
-// Variante 1: mySQL + postgreSQL (id-Wert weglassen)
+<pre><code class="language-php  linenums">// Variante 1: mySQL + postgreSQL (id-Wert weglassen)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
     (firstname, surname, email, profile_visible)
       VALUES
     (?, ?, ?, ?)&quot;);
-
 // Variante 2: nur postgreSQL (mit DEFAULT für den autoincrement id-Wert)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
       VALUES
     (DEFAULT, ?, ?, ?, ?)&quot;);
-
 // Variante 3: nur MySQL (mit NULL für den autoincrement id-Wert)
 $sth = $dbh-&gt;prepare(
   &quot;INSERT INTO users
     (id,  firstname,surname,email,profile_visible)
       VALUES
     (NULL, ?, ?, ?, ?)&quot;);
-
 $sth-&gt;execute(
   array(
     $_POST[&#39;firstname&#39;],
@@ -155,9 +145,8 @@ $sth-&gt;execute(
     $_POST[&#39;profile_visible&#39;]
   )
 );
-
 // noch ohne Fehlerbehandlung
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -186,10 +175,9 @@ auslesen und weiter verwenden.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Primärschlüssel des neuen Datensatzes auslesen</small></h4>
-<pre class="lang-php prettyprint linenums">
-$id = $dbh-&gt;lastInsertId();
+<pre><code class="language-php  linenums">$id = $dbh-&gt;lastInsertId();
 header(&quot;Location: person.php?id=$id&quot;);
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -200,13 +188,11 @@ header(&quot;Location: person.php?id=$id&quot;);
 
 <div class="example">
 <h4 class="caption">Php Code <small>Primärschlüssel des neuen Datensatzes zurückgeben</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(&quot;INSERT INTO users (firstname, surname) VALUES (?,?) RETURNING id&quot;);
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;prepare(&quot;INSERT INTO users (firstname, surname) VALUES (?,?) RETURNING id&quot;);
 $sth-&gt;execute([&#39;Aliya&#39;, &#39;DaSilva&#39;]);
 $result = $sth-&gt;fetch();
-
 echo &quot;I inserted $result-&gt;id&quot;;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -1232,7 +1218,11 @@ angezeigt, aber so verhindert, dass er ein zweites Mal eingefügt wird.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

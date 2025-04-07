@@ -5,6 +5,9 @@
     <title>HTML erlauben - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -106,9 +109,8 @@ gefährlich! Dazu zwei Beispiele:</p>
 beliebiges HTML abspeichern können. Herr Lauscher trägt dort ein Bild ein:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;http://lauscher.net/bild.php?woher=gaestebuch_mmt&quot; alt=&quot;harmloses bild&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;img src=&quot;http://lauscher.net/bild.php?woher=gaestebuch_mmt&quot; alt=&quot;harmloses bild&quot;&gt;
+</code></pre></div>
 
 <p>Das Bild wird also nicht von Webserver gustav.at geladen, sondern vom Webserver von
 Herrn Lauscher. Und dort wird gleich ein php-Programm zum Erzeugen des Bildes
@@ -169,9 +171,8 @@ streng kontrollieren: Im Profil sollen nur die HTML-Tags
 alle anderen Tags entfernt:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
-</pre></div>
+<pre><code class="language-php  linenums">$description = strip_tags( $_POST[&#39;description&#39;], &quot;&lt;p&gt;&lt;b&gt;&quot; );
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -183,20 +184,17 @@ der <code>description</code> verzichten:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
-<pre class="lang-php prettyprint linenums">
-$username    = htmlspecialchars( $person-&gt;username     );
+<pre><code class="language-php  linenums">$username    = htmlspecialchars( $person-&gt;username     );
 $firstname   = htmlspecialchars( $person-&gt;firstname    );
 $surname     = htmlspecialchars( $person-&gt;surname      );
 $description = strip_tags( $person-&gt;description,  &quot;&lt;p&gt;&lt;b&gt;&quot; );
-
 echo &lt;&lt;&lt;EOM
   &lt;p&gt;$anrede $vorname $nachname hat insgesamt
   $no Werke in dieser Datenbank.
   $ersie hat den Usernamen $username.&lt;/p&gt;
-
   &lt;div&gt;$description&lt;/div&gt;
 EOM;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -207,13 +205,11 @@ EOM;
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Beispiel für einen Text in Markdown</small></h4>
-<pre class="lang-plain prettyprint linenums">
-  ### Abspeichern von HTML
-
+<pre><code class="language-plain  linenums">  ### Abspeichern von HTML
   Bevor wir das eingegeben HTML abspeichern, wollen wir es
   streng kontrollieren: Im Profil sollen nur die HTML-Tags
   `&lt;p&gt;` und `&lt;b&gt;` verwendet werden können, mehr nicht.
-</pre></div>
+</code></pre></div>
 
 <p>Dieses Format wird in der Datenbank gespeichert. Erst bei
 der Ausgabe als HTML wird Markdown in HTML verwandelt.</p>
@@ -236,11 +232,10 @@ der Ausgabe als HTML wird Markdown in HTML verwandelt.</p>
 in HTML übersetzt:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-include &#39;Parsedown.php&#39;;
+<pre><code class="language-php  linenums">include &#39;Parsedown.php&#39;;
 $Parsedown = new Parsedown();
 echo $Parsedown-&gt;text(&#39;## Hello HTML!&#39;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -290,5 +285,12 @@ echo $Parsedown-&gt;text(&#39;## Hello HTML!&#39;);
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

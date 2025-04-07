@@ -5,6 +5,9 @@
     <title>Konfigurieren - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -105,22 +108,19 @@ auf UNIX-Systemen in <code>/etc/apache2/</code> oder <code>/etc/httpd/</code></p
 <p>Die Datei httpd.conf ist sehr lang, und enthält viele Kommentare:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-# ServerRoot: The top of the directory tree under which the server&#39;s
+<pre><code class="language-ruby  linenums"># ServerRoot: The top of the directory tree under which the server&#39;s
 # configuration, error, and log files are kept.
 # Do not add a slash at the end of the directory path.
 ServerRoot &quot;/xampp/apache&quot;
-
 # Listen: Allows you to bind Apache to specific IP addresses and/or
 # ports, instead of the default. See also the &lt;VirtualHost&gt;
 # directive.
 Listen 80
-
 # DocumentRoot: The directory out of which you will serve your
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 DocumentRoot &quot;/xampp/htdocs
-</pre></div>
+</code></pre></div>
 
 <p>Es gibt hunderte von verschiedenen Konfigurations-Anweisungen für Apache, glücklicherweise muß man nur wenige davon kennen und verstehen um mit Apache erfolgreich arbeiten zu können.</p>
 
@@ -181,5 +181,12 @@ DocumentRoot &quot;/xampp/htdocs
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

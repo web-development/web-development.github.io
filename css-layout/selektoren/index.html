@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -181,9 +181,8 @@ folgende Schreibweisen für Selektoren beschrieben:</p>
 Der Child Selector ist auf direkte Kinder beschränkt.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li &gt; a { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  li &gt; a { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-child.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -210,9 +209,8 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 </ul>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li:first-child { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  li:first-child { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-firstchild.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -228,8 +226,7 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 <p>In <code>:has(...)</code> kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code>.  Hier wird ein Select-Tag selektiert, falls von seinen optionen diejenige ausgewählt ist, die den Leeren Wert hat. Siehe <a href="/images/css/example-has.html">Demo</a>.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;style&gt;
+<pre><code class="language-html  linenums">&lt;style&gt;
 select:has(option[value=&quot;&quot;]:checked) {
   border-color: #ddd;
   color: #ddd;
@@ -240,7 +237,7 @@ select:has(option[value=&quot;&quot;]:checked) {
   &lt;option value=&quot;River&quot;&gt;River&lt;/option&gt;
   &lt;option value=&quot;Lake&quot;&gt;Lake&lt;/option&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -250,10 +247,9 @@ select:has(option[value=&quot;&quot;]:checked) {
 <p>Dieser Selector wählt das direkte Geschwister-Node aus.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  p + h1 { color: yellow; }
+<pre><code class="language-css  linenums">  p + h1 { color: yellow; }
   li + li { color: yellow; }
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-adj.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -265,9 +261,8 @@ select:has(option[value=&quot;&quot;]:checked) {
 <p>Wenn man mehrere Selektoren kombiniert hat das Komma die geringste Präzedenz:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  p, div a { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  p, div a { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-precedence.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -1300,7 +1295,11 @@ select:has(option[value=&quot;&quot;]:checked) {
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

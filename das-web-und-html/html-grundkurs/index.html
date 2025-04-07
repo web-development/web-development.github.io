@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -198,17 +198,14 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 
 <div class="example twopane">
 <h4 class="caption">Html Code <small>Zeilenumbruch im Code ist egal, Darstellung gleich</small></h4>
-<pre class="lang-html prettyprint linenums left">
-    &lt;p&gt;Halli
+<pre><code class="language-html linenums left">    &lt;p&gt;Halli
     Hallo&lt;/p&gt;
-
-
-</pre><pre class="lang-html prettyprint linenums right">
+</code></pre><pre><code class="language-html linenums right">
     &lt;p&gt;
     Halli
     Hallo
     &lt;/p&gt;
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -232,9 +229,8 @@ Darstellung, Ersatztext), und <code>loading</code> (<code>eager</code> heisst so
 in den sichtbaren Bereich kommt.).</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;neu.svg&quot; alt=&quot;Das ist neu!&quot; loading=&quot;lazy&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;img src=&quot;neu.svg&quot; alt=&quot;Das ist neu!&quot; loading=&quot;lazy&quot;&gt;
+</code></pre></div>
 
 <p>Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben.</p>
 
@@ -243,24 +239,19 @@ werden, in HTML kann man die Anführungszeichen weglasse, dann endet der Wert
 beim nächsten Leerzeichen.</p>
 
 <div class="example twopane">
-<pre class="lang-html prettyprint linenums left">
-&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
-
-
-
-</pre><pre class="lang-html prettyprint linenums right">
+<pre><code class="language-html linenums left">&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
+</code></pre><pre><code class="language-html linenums right">
 &lt;img
   alt=&quot;Das ist Neu!&quot;
   src=&quot;neu.svg&quot;
   width=50 height=15&gt;
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 <p>ACHTUNG: ein häufiger Fehler ist es, das zweite Anführungszeichen zu vergessen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
@@ -289,12 +280,11 @@ Browser nicht erkennt, sind zu ignorieren – es gibt
 unbekannte Attribute einfach ignoriert.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img  alt=&quot;Das ist Neu!&quot;
+<pre><code class="language-html  linenums">&lt;img  alt=&quot;Das ist Neu!&quot;
     bli=&quot;bla, blo&quot;
     src=&quot;neu.svg&quot;
     &gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -308,15 +298,14 @@ hüpfend dargestellt. In älteren Browsern wird der Tag &lt;jump&gt; ignoriert:<
 
 <div class="example twopane">
 <h4 class="caption">Html Code <small>Neuer Tag in neuem Browser, Interpretation in altem Browser</small></h4>
-<pre class="lang-html prettyprint linenums left">
-&lt;p&gt;Dies ist meine erste
+<pre><code class="language-html linenums left">&lt;p&gt;Dies ist meine erste
 &lt;jump&gt;supercoole&lt;/jump&gt;
 Webseite!!!! &lt;/p&gt;
-</pre><pre class="lang-html prettyprint linenums right">
+</code></pre><pre><code class="language-html linenums right">
 &lt;p&gt;Dies ist meine erste
 supercoole
 Webseite!!!!&lt;/p&gt;
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -366,12 +355,11 @@ sondern des Webbrowsers.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Normaler Fließ-Text</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Text text text, text text. Text
+<pre><code class="language-html  linenums">&lt;p&gt;Text text text, text text. Text
 text text, text text. Text text
 text, text text. Text und text text,
 text text. &lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 <p>In folgendem Beispiel wird mit dem Attribut <code>style</code> ein bisschen CSS verwendet.
 CSS ist für die Darstellung von
@@ -379,13 +367,12 @@ HTML zuständig. Hier wird der Text im Absatz zentriert.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Zentrierter Text</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;p style=&quot;text-align:center;&quot;&gt;Text
+<pre><code class="language-html  linenums">&lt;p style=&quot;text-align:center;&quot;&gt;Text
 Zentrierter text text, text text. Text text
 text, text text. Zentrierter text text text,
 text text. Text und text text, text
 text. &lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
@@ -397,11 +384,10 @@ mehr als 3 Ebenen braucht man selten:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Überschriften</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;h1&gt;Überschriftstext&lt;/h1&gt;
+<pre><code class="language-html  linenums">&lt;h1&gt;Überschriftstext&lt;/h1&gt;
 &lt;h2&gt;Überschriftstext&lt;/h2&gt;
 &lt;h3&gt;Überschriftstext&lt;/h3&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der <code>nav</code> Tag dient zur Auszeichnung von
 Navigations-Menüs. Achtung: dieser Tag hat erst mal
@@ -409,32 +395,29 @@ keine sichtbare Wirkung.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Bereich mit Navigations-Menü, Links</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;nav&gt;
+<pre><code class="language-html  linenums">&lt;nav&gt;
    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
    ....
 &lt;/nav&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Auch die folgenden drei Tags haben keine sichtbare Wirkung,
 sondern dienen erst mal nur zu Strukturierung des Dokuments.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Weitere Tags zur Strukturierung der Seite</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;header&gt; .... &lt;/header&gt;
+<pre><code class="language-html  linenums">&lt;header&gt; .... &lt;/header&gt;
 &lt;footer&gt; .... &lt;/footer&gt;
 &lt;aside&gt; .... &lt;/aside&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Für umfangreiche Zitate gibt es einen blockbildenden Tag:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Block-Zitat (eingerückt)</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;blockquote&gt;Alle meine Entchen&lt;br&gt;
+<pre><code class="language-html  linenums">&lt;blockquote&gt;Alle meine Entchen&lt;br&gt;
 schwimmen auf dem See&lt;/blockquote&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
@@ -448,10 +431,9 @@ in logische und physische Elemente.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>inline Tags zum formatieren von Text</small></h4>
-<pre class="lang-html prettyprint linenums">
-Eine &lt;strong&gt;sehr wichtige&lt;/strong&gt; Sache     (stark betont, meist fett)
+<pre><code class="language-html  linenums">Eine &lt;strong&gt;sehr wichtige&lt;/strong&gt; Sache     (stark betont, meist fett)
 und eine &lt;em&gt;interessante&lt;/em&gt; Sache.         (betont, meist kursiv)
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
@@ -465,12 +447,11 @@ diese Tag in „alten“ Dokumenten aber noch finden:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>veraltete Tags zum formatieren von Text</small></h4>
-<pre class="lang-html prettyprint linenums">
-Eine &lt;b&gt;fette&lt;/b&gt; Sache                      (VERALTET!)
+<pre><code class="language-html  linenums">Eine &lt;b&gt;fette&lt;/b&gt; Sache                      (VERALTET!)
 Eine &lt;i&gt;schräge&lt;/i&gt; Sache                    (VERALTET!)
 &lt;font face=&quot;Arial&quot;&gt;Text&lt;/font&gt;               (VERALTET!)
 &lt;font color=&quot;red&quot;&gt;rot&lt;/font&gt;                 (VERALTET!)
-</pre></div>
+</code></pre></div>
 
 <p>Heute verwendet man CSS im <code>style</code>-Attribut statt dessen.  Das lernen wir später.</p>
 
@@ -485,8 +466,7 @@ absolute oder relative URL angeben:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Bilder</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;http://www.google.at/intl/de_at/images/logo.svg&quot; alt=&quot;Google&quot;&gt;
+<pre><code class="language-html  linenums">&lt;img src=&quot;http://www.google.at/intl/de_at/images/logo.svg&quot; alt=&quot;Google&quot;&gt;
 &lt;img src=&quot;neu.svg&quot;&gt;
 &lt;img src=&quot;10prozent.svg&quot; alt=&quot;jetzt 10% verbilligt!&quot;&gt;
     (mit Ersatztext, weil das Bild wichtige Information enthält)
@@ -494,7 +474,7 @@ absolute oder relative URL angeben:</p>
     (ohne Ersatztext, weil das Bild zur zur Dekoration dient)
 &lt;img src=&quot;neu.svg&quot; style=&quot;float:left;&quot; alt=&quot;neu&quot;&gt;
     (Bild nach links, Text fließt rechts vorbei)
-</pre></div>
+</code></pre></div>
 
 <p>Für Blinde, Suchmaschinen, Browser die keine Bilder darstellen können, u.s.w. gibt man für
 jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem Firefox AddOn
@@ -593,8 +573,7 @@ URL angeben:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Links</small></h4>
-<pre class="lang-html prettyprint linenums">
-Link zu Webseite (absolute URL)
+<pre><code class="language-html  linenums">Link zu Webseite (absolute URL)
     &lt;a href=&quot;http://cnn.com&quot;&gt;zu CNN&lt;/a&gt;
 Link zu Webseite im selben Ordner (relative URL)
     &lt;a href=&quot;seite2.htm&quot;&gt;mehr&lt;/a&gt;
@@ -602,7 +581,7 @@ Link zu E-Mail Adresse
     &lt;a href=&quot;mailto:aa@bb.cc&quot;&gt;Mail&lt;/a&gt;
 Bild als Link
     &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.svg&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
@@ -617,8 +596,7 @@ Hier am Beispiel von HTML5:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Grundgerüst eines HTML5 Dokuments</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE HTML&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE HTML&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -628,15 +606,14 @@ Hier am Beispiel von HTML5:</p>
     Hier die Tags, die Sie schon kennen
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Bei XHTML ist der DOCTYPE sehr viel komplizierter. Der meta-Tag für die Auswahl des
 Charactersets ist ebenfalls komplizierter.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Grundgerüst eines XHTML Dokuments</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html
      PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
      &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
@@ -648,7 +625,7 @@ Charactersets ist ebenfalls komplizierter.</p>
      Hier die Tags, die Sie schon kennen.
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
@@ -1735,7 +1712,11 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

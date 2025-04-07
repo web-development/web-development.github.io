@@ -5,6 +5,9 @@
     <title>Änderungen an der Datenbank - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -92,8 +95,7 @@ foreign key constraint:</p>
 
 <div class="example">
 <h4 class="caption">Sql Code <small>ein foreign key constraint</small></h4>
-<pre class="lang-sql prettyprint linenums">
- \d zimmerbuchung
+<pre><code class="language-sql  linenums"> \d zimmerbuchung
              Table &quot;public.zimmerbuchung&quot;
    Column   |  Type   | Collation | Nullable | Default
 ------------+---------+-----------+----------+---------
@@ -102,7 +104,7 @@ foreign key constraint:</p>
 Foreign-key constraints:
     &quot;zimmerbuchung_buchungsnr_fkey&quot; FOREIGN KEY (buchungsnr) REFERENCES buchung(buchungsnr)
     &quot;zimmerbuchung_zinr_fkey&quot; FOREIGN KEY (zinr) REFERENCES zimmer(zinr)
-</pre></div>
+</code></pre></div>
 
 <p>Diesem Constraint fehlt das Attribut <code>on delete cascade</code>. Wie kann man
 das im Nachhinein ändern?</p>
@@ -133,15 +135,14 @@ beginnen, z.B: <a href="https://www.postgresql.org/docs/11/sql-altertable.html">
 oder</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-ALTER TABLE distributors ADD COLUMN address varchar(30);
+<pre><code class="language-sql  linenums">ALTER TABLE distributors ADD COLUMN address varchar(30);
 ALTER TABLE distributors DROP COLUMN address RESTRICT;
 ALTER TABLE distributors
     ALTER COLUMN address TYPE varchar(80),
     ALTER COLUMN name TYPE varchar(100);
 ALTER TABLE distributors RENAME COLUMN address TO city;
 ...
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -152,16 +153,14 @@ ALTER TABLE distributors RENAME COLUMN address TO city;
 und dann neu setzen:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-ALTER TABLE zimmerbuchung
+<pre><code class="language-sql  linenums">ALTER TABLE zimmerbuchung
 DROP CONSTRAINT zimmerbuchung_zinr_fkey;
-
 ALTER TABLE zimmerbuchung
 add CONSTRAINT zimmerbuchung_zinr_fkey
 FOREIGN KEY (zinr)
 REFERENCES zimmer(zinr)
 ON DELETE CASCADE;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -173,12 +172,11 @@ Wenn man eine Tabelle mit einem <code>PRIMARY KEY</code> als <code>INTEGER</code
 und im Nachhinein ein <code>SERIAL</code> daraus machen will ist das sehr viel Arbeit:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
--- CREATE TABLE gast (kunr INTEGER PRIMARY KEY,
+<pre><code class="language-sql  linenums">-- CREATE TABLE gast (kunr INTEGER PRIMARY KEY,
 CREATE SEQUENCE gast_kunr_seq OWNED BY gast.kunr;
 SELECT setval(&#39;gast_kunr_seq&#39;, coalesce(max(kunr), 1)) FROM gast;
 ALTER TABLE gast ALTER COLUMN kunr SET DEFAULT nextval(&#39;gast_kunr_seq&#39;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -198,11 +196,10 @@ also der Reihe nach in einer Daten speichern, oder einzelne Dateien anlegen
 deren Reihenfolge aus dem Dateinamen erkennbar ist, z.B:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-migration-1-add-description.sql
+<pre><code class="language-plain  linenums">migration-1-add-description.sql
 migration-2-foreigen-key-zimmerbuchung.sql
 migration-3....
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -244,5 +241,12 @@ migration-3....
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

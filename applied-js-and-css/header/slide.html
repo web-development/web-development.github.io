@@ -5,6 +5,9 @@
     <title>Fixe Kopfzeile mit Animation - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -104,8 +107,7 @@ und ein Event, das mit Javascript behandelt wird.</p>
 verwenden wir die CSS-Anweisung <code>position: fixed</code>.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-header {
+<pre><code class="language-css  linenums">header {
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -115,7 +117,7 @@ header {
   color: white;
   z-index: 10;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -154,12 +156,11 @@ nur eine Klasse zu setzen:</p>
 wird mit einer Klasse <code>.shrunk</code> dargestellt:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-header.shrunk {
+<pre><code class="language-css  linenums">header.shrunk {
   background-color: black;
   padding: 15px 100px;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Diese Klasse wird aber nicht im HTML gesetzt,
 sondern erst später.</p>
@@ -173,11 +174,10 @@ sondern erst später.</p>
 ob die Anwendung der Klasse das gewünschte Ergebnis erzielt:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-    let h = ... /* richtige DOM Node auswählen */
+<pre><code class="language-javascript  linenums">    let h = ... /* richtige DOM Node auswählen */
     h.classList.add(&quot;shrunk&quot;);
     h.classList.remove(&quot;shrunk&quot;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -196,11 +196,10 @@ mit CSS: der Browser weiss alles über den Ablauf der Animation und kann
 oder <code>requestAnimationFrame</code> selbst ausprogrammiert kann die Grafikkarte nicht verwendet werden.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-header {
+<pre><code class="language-css  linenums">header {
   transition: padding 2s, background-color 2s;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Der wichtigste Teil ist hier die Angabe <code>2s</code> für “zwei Sekunden”.
 So lange wird der Übergang von der einen zur anderen Version des Headers dauern.</p>
@@ -218,9 +217,8 @@ aus der Eigenschaft <code>pageYOffset</code> - auslesen. Man erhält eine
 Zahl, die Maßeinheit sind Pixel:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-window.pageYOffset
-</pre></div>
+<pre><code class="language-javascript  linenums">window.pageYOffset
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -232,13 +230,11 @@ Keyboard - wird das <code>scroll</code>-Event am window-Objekt ausgelöst. Auf d
 Event können wir reagieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function didScroll() {
+<pre><code class="language-javascript  linenums">function didScroll() {
   console.log(`scrolling has reached ${window.pageYOffset}`);
 }
-
 window.addEventListener(&#39;scroll&#39;, didScroll);
-</pre></div>
+</code></pre></div>
 
 <p>In diesen Eventlistener hinein kommt nun die Logik:
 den <code>pageYOffset</code> auslesen, und je nach Ergebnis die Klasse
@@ -308,5 +304,12 @@ Animationen verwendet.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

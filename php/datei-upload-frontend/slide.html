@@ -5,6 +5,9 @@
     <title>Datei Upload - Frontend - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -112,22 +115,19 @@ soll.   Für diesen Tag müssen
 die Events “dragenter”, “dragover” und “drop” behandelt werden.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-dropbox.addEventListener(&quot;dragenter&quot;, ignore_all, false);
+<pre><code class="language-javascript  linenums">dropbox.addEventListener(&quot;dragenter&quot;, ignore_all, false);
 dropbox.addEventListener(&quot;dragover&quot;, ignore_all, false);
 dropbox.addEventListener(&quot;drop&quot;, handle_drop, false);
-
 function ignore_all(e) {
     e.stopPropagation();
     e.preventDefault();
 }
-
 function handle_drop(e) {
     e.stopPropagation();
     e.preventDefault();
     handleFiles(e.dataTransfer.files);
 }
-</pre></div>
+</code></pre></div>
 
 <p>Das drop-Event erhält unter <code>dataTransfer.files</code> die Daten aus
 den gedroppten Dateien.</p>
@@ -143,16 +143,13 @@ zu den Dateien ausgegeben.</p>
 <p>Es ist sehr einfach eine einzelne Datei an ein file-input Feld zu übergeben.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function handleFiles(files) {
+<pre><code class="language-javascript  linenums">function handleFiles(files) {
     var count = files.length;
     console.log(&quot;File Count: &quot; + count + &quot;\n&quot;);
-
     for (var i = 0; i &lt; files.length; i++) {
     console.log(&quot; File &quot; + i + &quot;:\n(&quot; + (typeof files[i]) + &quot;) : &lt;&quot; + files[i] + &quot; &gt; &quot; +
             files[i].name + &quot; &quot; + files[i].size + &quot;\n&quot;);
     }
-
     if(count == 1) {
         console.log(&quot;Eine Datei hochgeladen&quot;);
         var file = files[0];
@@ -160,7 +157,7 @@ function handleFiles(files) {
         input.files = files;
     }
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -174,23 +171,20 @@ kann die Daten aus der Datei lesen, löst dann das event <code>onload</code> aus
 und kann dann das <code>src</code>-Attibut des image-tags setzen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-if (file.type.startsWith(&#39;image/&#39;)) {
+<pre><code class="language-javascript  linenums">if (file.type.startsWith(&#39;image/&#39;)) {
     var preview = document.getElementById(&#39;preview&#39;);
     var img = document.createElement(&#39;img&#39;);
     img.style.maxWidth = &#39;100%&#39;;
     img.style.maxHeight = &#39;200px&#39;;
-
     var reader = new FileReader();
     reader.onload = function(e) {
         img.src = e.target.result;
     };
-
     preview.innerHTML = &#39;&#39;; // Clear previous preview
     preview.appendChild(img);
     reader.readAsDataURL(file);
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -240,5 +234,12 @@ zusätzliche Funktionen an.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

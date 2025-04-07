@@ -5,6 +5,9 @@
     <title>Was ist XML - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -172,8 +175,7 @@ wie die Homepage des Blogs im RSS Format an.</p>
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Beispiel für RSS</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;rss version=&quot;2.0&quot;
   xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;&gt;
   &lt;channel&gt;
@@ -199,7 +201,7 @@ wie die Homepage des Blogs im RSS Format an.</p>
     &lt;/item&gt;
   &lt;/channel&gt;
 &lt;/rss&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -212,8 +214,7 @@ von Chrome und Edge (siehe <a href="http://caniuse.com/#feat=mathml">→ can i u
 
 <div class="example">
 <h4 class="caption">Xml Code <small>MathML Code-Beispiel</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<pre><code class="language-xml  linenums">&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
 &lt;mrow&gt;
   &lt;mrow&gt;
     &lt;msubsup&gt;
@@ -240,7 +241,7 @@ von Chrome und Edge (siehe <a href="http://caniuse.com/#feat=mathml">→ can i u
   &lt;/mrow&gt;
 &lt;/mrow&gt;
 &lt;/math&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -320,5 +321,12 @@ von Chrome und Edge (siehe <a href="http://caniuse.com/#feat=mathml">→ can i u
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

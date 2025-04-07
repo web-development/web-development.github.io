@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -61,16 +61,14 @@ JSON erzeugen wissen Sie ja schon:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Objekt in JSON Schreibweise</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var hs = {
+<pre><code class="language-javascript  linenums">var hs = {
   name: &quot;FH Salzburg&quot;,
   typ: &quot;Fachhochschule&quot;,
   seit: 1996,
   alter: function() { return  (new Date).getYear() + 1900 - this.seit }
 };
-
 console.log( hs.alter() );  // 20
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -81,34 +79,23 @@ console.log( hs.alter() );  // 20
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Klasse mit Constructor und einer Methode</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-
-class Studiengang {
-
+<pre><code class="language-javascript  linenums">class Studiengang {
   constructor (name, seit, hs) {
     this.name = name;
     this.seit = seit;
     this.hs = hs;
   }
-
-
   toString () {
     return &quot;Studiengang &quot; + this.name +
       &quot; (seit &quot; + this.seit +
       &quot; @ &quot; + this.hs.name + &quot;)&quot;;
   }
-
 }
-
 typeof Studiengang;  // function!
-
-
-
 mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs );
 mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs );
-
 mmtb.toString();  // ruft toString Methode auf
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -117,8 +104,7 @@ mmtb.toString();  // ruft toString Methode auf
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Vererbung von Attributen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-class Pet {
+<pre><code class="language-javascript  linenums">class Pet {
   constructor() {
     this.status = &quot;sleeping&quot;;
   }
@@ -127,7 +113,6 @@ class Pet {
       &quot;. &quot; + this.word + &quot;!&quot;);
   }
 }
-
 class Dog extends Pet {
   constructor (b) {
     super();
@@ -138,14 +123,11 @@ class Dog extends Pet {
     this.status = &quot;sitting&quot;;
   }
 }
-
-
 d = new Dog(&quot;beagle&quot;);
 d.word    // wau
 d.sit()
-
 d.status  // sleeping
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -158,18 +140,16 @@ als normale Funktion angelegt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor für Objekte</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function Studiengang(name, seit, hochschule) {
+<pre><code class="language-javascript  linenums">function Studiengang(name, seit, hochschule) {
   this.name = name;
   this.seit = seit;
   this.hs = hochschule;
 }
-
 mmad = new Studiengang( &quot;DI(FH) MultiMediaArt&quot;, 1996, hs);
 mmab = new Studiengang( &quot;BA MultiMediaArt&quot;, 2006, hs);
 mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008, hs);
 mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011, hs);
-</pre></div>
+</code></pre></div>
 
 <p>Jedes dieser Objekte hat nun eine Eigenschaft <code>name</code>
  und eine Eigenschaft <code>seit</code>.</p>
@@ -179,11 +159,10 @@ verbunden - falls keine verwendet wurde auf die Funktion <code>Object()</code>:<
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Fortsetzung: Konstruktor-Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-// folgende Ausdrücke sind true:
+<pre><code class="language-javascript  linenums">// folgende Ausdrücke sind true:
 mmtb.constructor === Studiengang;
 hs.constructor === Object;
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/objekt-mit-objekt-und-constructor.png"  alt="Abbildung: Objekt mit Konstruktor" ></p>
 
@@ -191,11 +170,10 @@ hs.constructor === Object;
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Fortsetzung: Operator instanceof</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-mmtb instanceof Studiengang;
+<pre><code class="language-javascript  linenums">mmtb instanceof Studiengang;
 hs instanceof Object;
 mmtb instanceof Object;
-</pre></div>
+</code></pre></div>
 
 <p><code>mmtb</code> ist auch eine Instanz von <code>Object</code>! Es muss also eine Art Vererbungs-Hierarchie
 geben, die wir noch nicht kennen, in der <code>Studiengang</code> als Kind von <code>Object</code> geführt wird.
@@ -1215,7 +1193,11 @@ Wie funktioniert das?  Die Antwort lautet:  mit dem Prototypen.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

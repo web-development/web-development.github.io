@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -51,8 +51,7 @@
 <p>Der Ausgangspunkt für ein Navigationsmenü ist eine Liste mit Links in einem <code>nav</code> Tag:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;nav&gt;
+<pre><code class="language-html  linenums">&lt;nav&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;ort.html&quot;&gt;ort&lt;/a&gt;&lt;/li&gt;
@@ -60,7 +59,7 @@
     &lt;li&gt;&lt;a href=&quot;das.html&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Ohne CSS wird die Liste ganz normal dargestellt <a href="/images/navi/demo.html">Demo</a>.</p>
 
@@ -79,12 +78,10 @@ Element. Das hat den Vorteil, dass das ganze Rechteck als Link wirkt,
 und nicht nur der Text.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-nav li {
+<pre><code class="language-css  linenums">nav li {
    list-style-type:none;
    margin-bottom:1px;
 }
-
 nav li a:link {
    text-decoration: none;
    font-weight: bold;
@@ -93,7 +90,7 @@ nav li a:link {
    width: 6em;
    padding: 0.2em;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Der eigentliche Link wird zu einem blockbildenden Element gemacht.
 Damit ist dann das ganze Rechteck anklickbar, nicht nur der Text selbst.
@@ -109,18 +106,15 @@ Die Default-Richtung von <code>flex-direction</code> ist ja <code>row</code>, un
 horizontales Menü.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.unsichtbar {display:none;}
+<pre><code class="language-css  linenums">.unsichtbar {display:none;}
 nav ul {
   padding-left: 0;
   display: flex;
 }
-
 nav li {
   list-style-type:none;
   margin-right: 1px;
 }
-
 nav li a:link {
   text-decoration: none;
   font-weight: bold;
@@ -129,7 +123,7 @@ nav li a:link {
   width:6em;
   padding: 0.2em;
 }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/navi/demo-2.html">Demo</a></p>
 
@@ -166,8 +160,7 @@ intensiv beschäftigen werden.</p>
 im Navigationsmenü sieht das dann so aus:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;nav&gt;
+<pre><code class="language-html  linenums">&lt;nav&gt;
    &lt;h3 class=&quot;unsichtbar&quot;&gt;Seitenauswahl&lt;/h3&gt;
    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
@@ -176,7 +169,7 @@ im Navigationsmenü sieht das dann so aus:</p>
       &lt;li&gt;&lt;a href=&quot;das.php&quot;&gt;das&lt;/a&gt;&lt;/li&gt;
    &lt;/ul&gt;
 &lt;/nav&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -187,11 +180,10 @@ im Navigationsmenü sieht das dann so aus:</p>
 z.B. <code>navi.php</code>.  In den einzelnen Seiten wird das Menü dann mit <code>include</code> eingebunden:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;body&gt;
+<pre><code class="language-html  linenums">&lt;body&gt;
 &lt;?php include &quot;navi.php&quot;; ?&gt;
 &lt;h1&gt;News&lt;/h1&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -1225,7 +1217,11 @@ ganz einfach: nur die Datei <code>navi.php</code> muss editiert werden.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

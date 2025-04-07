@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -96,9 +96,7 @@ dann wäre das kein Problem mehr.</p>
 
 <div class="example twopane">
 <h4 class="caption">Javascript Code <small>Ein globales Namensraum-Objekt statt vieler globalen Variablen</small></h4>
-<pre class="lang-javascript prettyprint linenums left">
-// globale Variabeln 
-
+<pre><code class="language-javascript linenums left">// globale Variabeln 
 var KONSTANTE = 3.141;
 var variable = 3;
 function Ding(){
@@ -107,9 +105,8 @@ function Ding(){
 function f(x){
   return 2*x;
 }
-
 var objekt = new Ding();
-</pre><pre class="lang-javascript prettyprint linenums right">
+</code></pre><pre><code class="language-javascript linenums right">
 // ein Namensraum-Objekt
 var APP = {}
 APP.KONSTANTE = 3.141;
@@ -120,9 +117,8 @@ APP.Ding = function() {
 APP.f = function(x) {
   return 2*x;
 }
-
 APP.objekt = new APP.Ding();
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -146,11 +142,10 @@ liefert einfach den Wert <code>undefined</code>, aber keinen Fehler:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Verschachtelte Namensräume</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var GAME =  GAME || {};
+<pre><code class="language-javascript  linenums">var GAME =  GAME || {};
 GAME.Player = ...
 GAME.Master = ...
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -168,21 +163,15 @@ für diese Zuweisung:</p>
 
 <div class="example twopane">
 <h4 class="caption">Javascript Code <small>Schreibweisen für Default-Wert</small></h4>
-<pre class="lang-javascript prettyprint linenums left">
-var GAME = GAME || {};
-
-
-
-
-
-</pre><pre class="lang-javascript prettyprint linenums right">
+<pre><code class="language-javascript linenums left">var GAME = GAME || {};
+</code></pre><pre><code class="language-javascript linenums right">
 var GAME;
 if( GAME ) {
   // GAME = GAME;
 } else {
   GAME = {};
 }
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -199,11 +188,10 @@ Nur der Rückgabewert wird ein einer globalen Variable <code>g</code> gespeicher
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Schreibweise für sofort ausgewertete Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var g = (function(){
+<pre><code class="language-javascript  linenums">var g = (function(){
   return 42;
 })();
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -216,8 +204,7 @@ sind “von aussen” nicht zugänglich.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>sofort ausgwertete Funktion</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var g = (function(){
+<pre><code class="language-javascript  linenums">var g = (function(){
   var a,b,c;
   function d(x) {
     return 2*x;
@@ -225,14 +212,12 @@ var g = (function(){
   function Ding(v) {
     this.value = v;
   }
-
   a = 10;
   b = d( a );
   c = new Ding(b);
-
   return a;
 })();
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -248,8 +233,7 @@ einem Namensraum und bietet die Möglichkeit von privaten und
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Schreibweise für ein Modul: ein Objekt</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var APP = (function(){
+<pre><code class="language-javascript  linenums">var APP = (function(){
   var a,b,f;      // private 
   var c,d,g;      // öffentlich
   f = function() {  
@@ -264,7 +248,7 @@ var APP = (function(){
     g: g
   };
 })();
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
@@ -1290,7 +1274,11 @@ var APP = (function(){
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

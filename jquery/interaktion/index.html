@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -51,11 +51,10 @@
 <p>In folgendem Beispiel ist es das <code>mouseover</code> event:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
+<pre><code class="language-javascript  linenums">$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
   // code wird bei mouseover ausgeführt
 });
-</pre></div>
+</code></pre></div>
 
 <p>Innerhalb der Funktion steht die Variable <code>this</code> zu Verfügung, sie erhält 
 den Tag der das Event ausgelöst hat.</p>
@@ -64,11 +63,10 @@ den Tag der das Event ausgelöst hat.</p>
 die Funktion <code>$</code> verwenden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
+<pre><code class="language-javascript  linenums">$(&quot;a&quot;).on(&#39;mouseover&#39;, function(event){
   $(this).find(&quot;span&quot;).show();
 });
-</pre></div>
+</code></pre></div>
 
 <p>Das <a href="/images/mouseover.html">vollständiges Beispiel</a> zeigt mouseover und
 mouseout.</p>
@@ -1087,7 +1085,11 @@ mouseout.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

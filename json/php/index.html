@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -57,14 +57,13 @@ gibt es beim Serialisieren zu JSON Probleme.</p>
 <p>Ein PHP Objekt lässt sich als JSON Objekt darstellen:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$object = new stdClass();
+<pre><code class="language-php  linenums">$object = new stdClass();
 $object-&gt;foo = 10;
 $object-&gt;bar = &quot;zwanzig&quot;;
 $object-&gt;baz = 30;
 echo json_encode( $object );
 // {&quot;foo&quot;:10,&quot;bar&quot;:&quot;zwanzig&quot;,&quot;baz&quot;:30}
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -75,11 +74,10 @@ echo json_encode( $object );
 direkt auf JSON abbilden:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$array = array( &quot;a&quot;, &quot;b&quot;, &quot;c&quot; );
+<pre><code class="language-php  linenums">$array = array( &quot;a&quot;, &quot;b&quot;, &quot;c&quot; );
 echo json_encode( $array );
 // [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -90,12 +88,11 @@ echo json_encode( $array );
 Ist das der Fall, dann wird es in JSON als Objekt dargestellt:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30);
+<pre><code class="language-php  linenums">$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30);
 $array[0] = &quot;a&quot;;
 echo json_encode( $array );
 // {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
-</pre></div>
+</code></pre></div>
 
 <p>In JSON gibt es keine entsprechung für das Assoziative Array
 in PHP. Deswegen wird es als Objekt dargestellt.  Wenn man
@@ -103,8 +100,7 @@ dieses Objekt wieder in JSON zurück wandelt erhält man aber
 ein PHP Objekt mit einer Property “0”:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30, 0 =&gt; &quot;a&quot;);
+<pre><code class="language-php  linenums">$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30, 0 =&gt; &quot;a&quot;);
 $string = json_encode( $array );
 // {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
 $o = json_decode( $string );
@@ -118,7 +114,7 @@ print_r( $o );
 //  )
 echo &quot;Wert von foo: &quot; . $o-&gt;foo;
 echo &quot;Wert von 0: &quot; . $o-&gt;{&#39;0&#39;};
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -129,8 +125,7 @@ echo &quot;Wert von 0: &quot; . $o-&gt;{&#39;0&#39;};
 <strong>alle</strong> Objekte als Assoziative Arrays decodiert werden sollen:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$string = &#39;{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}&#39;;
+<pre><code class="language-php  linenums">$string = &#39;{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}&#39;;
 $o = json_decode( $string, true );
 print_r( $o );
 // Array
@@ -142,7 +137,7 @@ print_r( $o );
 // )
 echo &quot;Wert von foo: &quot; . $o[&#39;foo&#39;];
 echo &quot;Wert von 0: &quot; . $o[0];
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -1167,7 +1162,11 @@ echo &quot;Wert von 0: &quot; . $o[0];
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

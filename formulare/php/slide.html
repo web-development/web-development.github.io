@@ -5,6 +5,9 @@
     <title>Formular und PHP - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -113,15 +116,13 @@ verwendet.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Programm zur Verarbeitung der Daten aus dem Bestell-Formular</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
     $anzahl  = $_GET[&#39;anzahl&#39;];
     $adresse = $_GET[&#39;adresse&#39;];
-
     echo(&quot;&lt;p&gt;Bestellung über $anzahl Flugzeuge.&lt;/p&gt;&quot;);
     echo(&quot;&lt;p&gt;Werden binnen 1 Monat an $adresse geliefert&lt;/p&gt;&quot;);
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Dabei wird aber die Eingabe noch gar nicht geprüft.</p>
 
@@ -134,13 +135,12 @@ verwendet.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP-Befehl zum Versenden einer E-Mail</small></h4>
-<pre class="lang-php prettyprint linenums">
-mail(
+<pre><code class="language-php  linenums">mail(
  &quot;ich@fh-salzburg.ac.at&quot;,                        // To
  &quot;Bestellung von $anzahl Flugzeugen&quot;,       // Subject
  &quot;Lieferung von $anzahl Flugzeugen an Adresse $adresse&quot;
 );
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -182,5 +182,12 @@ mail(
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

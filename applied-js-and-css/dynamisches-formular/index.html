@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -72,8 +72,7 @@ und enthalten dann jeweils 2 Checkboxen, ein Textfeld und ein verstecktes Feld.<
 <p>Beachte die Namen der Eingabefelder:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;div id=&quot;pizza_0&quot; class=&quot;selected_pizza&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;div id=&quot;pizza_0&quot; class=&quot;selected_pizza&quot;&gt;
     &lt;p&gt;Pizza Sicilia&lt;/p&gt;
     &lt;div&gt;
       &lt;input name=&quot;pizza[0][type]&quot; value=&quot;Pizza Sicilia&quot; type=&quot;hidden&quot;&gt;
@@ -97,7 +96,7 @@ und enthalten dann jeweils 2 Checkboxen, ein Textfeld und ein verstecktes Feld.<
       &lt;/label&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die Namen mit eckigen Klammern, die an ein Array erinnern, werden
 von PHP auch als Array interpretiert.</p>
@@ -118,8 +117,7 @@ das wir dann in <code>$_POST['pizza']</code> finden können.</p>
 <p><img src="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3.png" srcset="/images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3.png 1x, /images/applied-js-and-css/dynamisches-formular/dynamic-pizza-form-3@2x.png 2x"  alt="" ></p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;select id=&quot;next_pizza&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;select id=&quot;next_pizza&quot;&gt;
     &lt;option value=&quot;&quot; selected&gt;--- bitte auswählen ---&lt;/option&gt;
     &lt;option&gt;Pizza Margherita&lt;/option&gt;
     &lt;option&gt;Pizza Sicilia&lt;/option&gt;
@@ -129,14 +127,13 @@ das wir dann in <code>$_POST['pizza']</code> finden können.</p>
     &lt;option&gt;Pizza ai Spinaci&lt;/option&gt;
   &lt;/select&gt;
   &lt;button id=&quot;add_next_pizza&quot; &gt;Pizza auswählen&lt;/button&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Den ausgewählten Wert kann man mit <code>value</code> auslesen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let selectedPizza = document.querySelector(&#39;#next_pizza&#39;).value;
-</pre></div>
+<pre><code class="language-javascript  linenums">  let selectedPizza = document.querySelector(&#39;#next_pizza&#39;).value;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -153,19 +150,15 @@ den Typ der ausgewählten Pizza und einen Bereich, in den
 wir die Zeile hinein klonen können:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;div class=&quot;row&quot; id=&quot;pizza_list&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;div class=&quot;row&quot; id=&quot;pizza_list&quot;&gt;
     &lt;!-- Hier kommen die ausgewählten Pizzen hin --&gt;
   &lt;/div&gt;
-</pre></div>
+</code></pre></div>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-// Pizzen hinzufügen
-
+<pre><code class="language-javascript  linenums">// Pizzen hinzufügen
   const pizzaList = document.getElementById(&quot;pizza_list&quot;);
   const index = pizzaList.childElementCount;
-
   const item = document.createElement(&quot;div&quot;);
   item.id = &quot;pizza_&quot; + index;
   item.classList.add(&quot;selected_pizza&quot;);
@@ -177,7 +170,7 @@ wir die Zeile hinein klonen können:</p>
     &lt;/div&gt;
   `;
   pizzaList.appendChild(item);
-</pre></div>
+</code></pre></div>
 
 <p>Das Einfügen mit <code>innerHTML</code> ist nicht vollständig, der String müsste nach der Vorlage oben
 ergänzt werden.</p>
@@ -1211,7 +1204,11 @@ mit den HTML-Tags <code>option</code> und <code>select</code> aber nicht umsetze
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -5,6 +5,9 @@
     <title>Transaktionen und PHP - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -91,8 +94,7 @@ offen ist, dann löst PDO selbst das Rollback aus.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für Transaktion mit Fehlerbehandlung</small></h4>
-<pre class="lang-php prettyprint linenums">
-try {
+<pre><code class="language-php  linenums">try {
   $dbh-&gt;beginTransaction();
   $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;)&quot;);
   $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
@@ -102,7 +104,7 @@ try {
   $dbh-&gt;rollBack();
   echo &quot;Error: &quot; . $e-&gt;getMessage();
 }
-</pre></div>
+</code></pre></div>
 
 <p>Bei einem realen Beispiel würde man nicht die <code>exec</code> Methode verwenden,
 sondern wahrscheinlich prepared Statements. Aber die generelle Vorgehensweise
@@ -148,5 +150,12 @@ bleibt gleich.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

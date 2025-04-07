@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -59,15 +59,14 @@ und die Webseite verschieden formatieren.</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS mit Mediaqueries</small></h4>
-<pre class="lang-css prettyprint linenums">
-@media screen and (max-width: 480px) {
+<pre><code class="language-css  linenums">@media screen and (max-width: 480px) {
   .column {
     width: 100px;
   }
   /* weitere Regeln für kleine Screens */
 }
 /* allgemein gültige Regeln */
-</pre></div>
+</code></pre></div>
 
 <p>Auch die Eingabemethode kann mit Mediaqueries abgefragt werden.
 Ein Smartphone oder Tablet ist meist ein Gerät ohne <code>hover</code> und
@@ -75,8 +74,7 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries für color-scheme</small></h4>
-<pre class="lang-css prettyprint linenums">
-/* smartphones, touchscreens */
+<pre><code class="language-css  linenums">/* smartphones, touchscreens */
 @media (hover: none) and (pointer: coarse) {
     /* ... */
 }/* stylus-based screens */
@@ -89,7 +87,7 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 @media (hover: hover) and (pointer: fine) {
     /* ... */
 }
-</pre></div>
+</code></pre></div>
 
 <p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
 
@@ -1122,7 +1120,11 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

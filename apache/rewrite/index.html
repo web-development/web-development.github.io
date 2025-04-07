@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -49,11 +49,10 @@
      <div id="slide-1" title="Folie Nr. 1"></div><p>Das Apache-Modul mod_rewrite erlaubt das Umschreiben der URL. Normalerweise verweist die URL direkt auf eine Datei im Filesystem. Dabei wird nur die Apache-Konfigurationsanweisung DocumentRoot verwendet um den Hauptordner des Servers festzulegen:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-&lt;VirtualHost ich.multimediatechnology.at&gt;
+<pre><code class="language-ruby  linenums">&lt;VirtualHost ich.multimediatechnology.at&gt;
   DocumentRoot /home/stud007/public_html/
 &lt;/VirtualHost&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die URL     <code>http://ich.multimediatechnology.at/mini/index.php</code> verweist auf die
 Datei <code>/home/stud007/public_html/mini/index.php</code></p>
@@ -71,10 +70,9 @@ Datei <code>/home/stud007/public_html/mini/index.php</code></p>
 
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-RewriteEngine On
+<pre><code class="language-ruby  linenums">RewriteEngine On
 RewriteRule ^personen$     personen.php  [L]
-</pre></div>
+</code></pre></div>
 
 <p>Diese Datei enthält eine Regel. Jede Regel besteht aus einem Suchmuster und einer neuen Schreibweise für die URL. Die erste Regel verwandelt die URL</p>
 
@@ -86,9 +84,8 @@ RewriteRule ^personen$     personen.php  [L]
 
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-RewriteRule ^person/(.*)   person.php?pid=$1  [L]
-</pre></div>
+<pre><code class="language-ruby  linenums">RewriteRule ^person/(.*)   person.php?pid=$1  [L]
+</code></pre></div>
 
 <p>Das Suchmuster dieser Regel enthält runde Klammern. Diese dienen dazu einen Teil der URL einzufangen und später als Variable wieder zu verwenden. Damit verwandelt diese Regel die URLs</p>
 
@@ -1120,7 +1117,11 @@ RewriteRule ^person/(.*)   person.php?pid=$1  [L]
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

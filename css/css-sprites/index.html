@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -61,8 +61,7 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 <p>So könnte der CSS Code aussehen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.icon{
+<pre><code class="language-css  linenums">.icon{
   display:block;
   padding:8px 0 9px 40px;
   background:url(http://us.i1.yimg.com/pa-icons2.gif) 5px 3px no-repeat;
@@ -74,7 +73,7 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 #music .icon{
   background-position:5px -197px;
 }
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1090,7 +1089,11 @@ eine Datei geladen werden.  Das ist die Idee von CSS-Sprites.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

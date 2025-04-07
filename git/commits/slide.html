@@ -5,6 +5,9 @@
     <title>Commit - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -159,8 +162,7 @@ morgen erst weitermachen - ich hinterlasse einen guten Zustand.</p>
 Bei einem Projekt das schon länger läuft sieht das dann so aus:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ git log --oneline
+<pre><code class="language-shell  linenums">$ git log --oneline
 e5166ac added json parser to user stamps
 009cd27 download as json is now possible in user stempelheft section
 f98832a added export to json button in user stempelheft
@@ -171,7 +173,7 @@ f98832a added export to json button in user stempelheft
 39eee45 clean up event form and show-view for event
 6a8fe6c add missing partial back in
 645b566 impersonate in staging
-</pre></div>
+</code></pre></div>
 
 <p>Die git Messages erzählen die Geschichte des Projekts.  Wenn ich nach zwei
 Wochen Urlaub zurück komme und wissen will was inzwischen im Projekt passiert
@@ -384,5 +386,12 @@ To gitlab.mediacube.at:bjelline/barcamp.git
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -46,69 +46,80 @@
       </h2>
       <a href="/javascript/variablen/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div>
-<p>Bis zum Jahre 2015 wurden Variablen in Javascript gar nicht oder mit <code>var</code> deklariert.
-Seit Javascript 2015 gibt es auch <code>let</code> und <code>const</code>.</p>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Bis zum Jahre 2015 wurden Variablen in Javascript gar nicht oder mit <code>var</code> deklariert.
+Seit Javascript 2015 gibt es auch <code>let</code> und <code>const</code>. Wenn man heute ein Programm
+neu schreib verwendet man nur <code>let</code> und <code>const</code>.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="sichtbarkeit-von-variablen-mit-let-und-konstanten-mit-const">Sichtbarkeit von Variablen mit <code>let</code> und Konstanten mit <code>const</code></h2>
+<h2 id="lebensdauer-von-javascript-und-variablen-im-browser">Lebensdauer von Javascript und Variablen im Browser</h2>
 
-<p>let und const haben einen Block-Scope, können also auf kleiner
-Bereich beschränkt werden als Variablen mit var:</p>
+<p>Zwei wichtige Hinweis zur Lebensdauer von Variablen:</p>
 
-<div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function g() { // function - scope
-  if ( true ) { // block - scope
-    let x = ’foo ’;
-    var y = ’bar ’;
-  }
-  console.log(x); // ReferenceError : x is not defined
-  console.log(y); // y === ’bar ’
-}
-</pre></div>
+<ol>
+  <li>
+    <p>Wenn Sie eine Webseite neu laden oder aktualisieren, startet das JavaScript-Programm komplett neu. Alle Variablen werden dabei zurückgesetzt - als ob Sie das Programm zum ersten Mal starten würden.</p>
+  </li>
+  <li>
+    <p>Wenn Sie dieselbe Webseite in mehreren Browser-Fenstern öffnen, läuft in jedem Fenster ein eigenes, unabhängiges JavaScript-Programm. Eine Variable <code>a</code> im ersten Fenster hat nichts mit einer Variable <code>a</code> im zweiten Fenster zu tun - sie sind völlig getrennt voneinander.</p>
+  </li>
+</ol>
+
+<p><a href="/images/applied-js-and-css/no-storage-only.html">Demo</a></p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h2 id="konstanten-mit-const">Konstanten mit <code>const</code></h2>
+<h2 id="sichtbarkeit-von-variablen-mit-let-und-konstanten-mit-const">Sichtbarkeit von Variablen mit <code>let</code> und Konstanten mit <code>const</code></h2>
 
-<p>Da Javascript eine dynamische Sprache ist haben Konstanten  eine
-geringe Bedeutung. Für einfache Werte verhalten Sie sich wie erwartet:</p>
+<p>let und const haben einen Block-Scope - sie gelten von <code>{</code> bis <code>}</code>.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const x = 1;
-x = 2;  // Uncaught TypeError: Assignment to constant variable.
-</pre></div>
+<pre><code class="language-javascript  linenums">  if ( true ) { // block - scope
+    let x = &#39;foo&#39;;
+    const y = &#39;bar&#39;;
+  }
+  console.log(x); // ReferenceError : x is not defined
+  console.log(y); // ReferenceError : y is not defined
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="konstanten-mit-const">Konstanten mit <code>const</code></h2>
+
+<p>Da Javascript eine dynamische Sprache hat die deklaration als Konstanten
+nur wenig Wirkung. Für einfache Werte verhalten Sie sich wie erwartet:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">const myNumber = 1;
+myNumber = 2;  // Uncaught TypeError: Assignment to constant variable.
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
 <p>Bei Objekten oder Arrays zeigt sich die Beschränktheit:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const y = [1,2,3];
-y[0] = 100;  // einen Wert zu ändern ist erlaubt
-y.push(4);   // einen Wert hinzu zu fügen ist erlaubt
-y = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
+<pre><code class="language-javascript  linenums">const myArray = [1,2,3];
+myArray[0] = 100;  // einen Wert zu ändern ist erlaubt
+myArray.push(4);   // einen Wert hinzu zu fügen ist erlaubt
+myArray = [5,6,7]; // Uncaught TypeError: invalid assignment to const &#39;myArray&#39;
+const myObject = { farbe: &#39;grün&#39;, anzahl : 4 }
+myObject.farbe = &#39;rot&#39;;  // einen Wert zu ändern ist erlaubt
+myObject.kg = 12;           // eine neue Eigenschaft (und ihren Wert) hinzu zu fügen ist erlaubt
+myObject = { muster: &#39;grün&#39; }; // Uncaught TypeError: invalid assignment to const &#39;myObject&#39;
+</code></pre></div>
 
-const z = { farbe: &#39;grün&#39;, anzahl : 4 }
-z[&#39;farbe&#39;] = &#39;rot&#39;;  // einen Wert zu ändern ist erlaubt
-z.kg = 12;           // einen Wert hinzu zu fügen ist erlaubt
-z = [5,6,7]; // Uncaught TypeError: Assignment to constant variable.
-</pre></div>
-
-<p>Den Inhalt des Objekts oder Arrays zu ändern ist erlaubt.
-Nur das Objekt oder Array ganz zu ersetzen ist verboten.</p>
+<p>Den Inhalt des Arrays oder Objekts zu ändern ist erlaubt.
+Nur das Array oder Objekt ganz zu ersetzen ist verboten.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="objekt-konstant-machen-mit-objectfreeze">Objekt konstant machen mit <code>Object.freeze</code></h2>
 
@@ -117,41 +128,41 @@ oder Arrays konstant machen, aber nur “eine Ebene tief”: verschachtelte
 Objekte bzw. Arrays werden nicht geschützt</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const y = [1,2,[3]];
+<pre><code class="language-javascript  linenums">const y = [1,2,[3]];
 Object.freeze(y);
 y[0] = 100;  // Wert wird nicht verändert, bleibt 1, kein Fehler
-y.push(4);   // Uncaught TypeError: object is not extensible
+y.push(4);   // Uncaught TypeError: can&#39;t define array index property past the end of an array with non-writable length
 y[2][0] = 100;  // Verschachteltes Array kann geändert werden!
 y[2].push( 200 );   //               und kann erweitert werden!
-JSON.stringify(yy); // &quot;[1,2,[100,200]]&quot;
-
+JSON.stringify(y); // &quot;[1,2,[100,200]]&quot;
 const z = { farbe: &#39;grün&#39;, anzahl : 4, other : { a:1, b:2, c:3 } }
 Object.freeze(z);
 z[&#39;farbe&#39;] = &#39;rot&#39;; // Wert wird nicht verändert, kein Fehler
 z.kg = 12;          // Wert wird nicht hinzu gefügt, kein Fehler
 z.other.a = 100;    // Wert im verschachtelten Objekt kann geändert werden!
-</pre></div>
+JSON.stringify(z)   // &#39;{&quot;farbe&quot;:&quot;grün&quot;,&quot;anzahl&quot;:4,&quot;other&quot;:{&quot;a&quot;:100,&quot;b&quot;:2,&quot;c&quot;:3}}&#39;
+</code></pre></div>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="kurz-schreibweise-fr-objekte--werte">Kurz-Schreibweise für Objekte + Werte</h2>
 
 <p>Wenn in der JSON Schreibweise eines Objekts eine Variable
-verwendet wird, die den gleichen Namen hat wie das Propertie das
+verwendet wird, die den gleichen Namen hat wie eine Eigenschaft die
 erzeugt werden soll, dann kann man die Schreibweise verkürzen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let x = 10;
+<pre><code class="language-javascript  linenums">let x = 10;
 let y = 12;
-let circle1 = { color: &#39;yellow&#39;, r: 25, x: x, y: y  }; // lang
-let circle2 = { color: &#39;yellow&#39;, r: 25, x,    y     }; // kurz
-</pre></div>
+let circle1 = { color: &#39;yellow&#39;, r: 25, x: x, y: y  }; // lang
+let circle2 = { color: &#39;yellow&#39;, r: 25, x,    y     }; // kurz
+</code></pre></div>
+
+<p>Die Variablen <code>x</code> und <code>y</code> werden hier als “shorthand property names” verwendet.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="zuweisung-mit-desctructuring">Zuweisung mit Desctructuring</h2>
 
@@ -161,75 +172,56 @@ von JSON verwendet werden um mehrere Variablen auf einmal zuzuweisen.</p>
 <p>Das kann sehr komplex werden, hier ein paar einfache Beispiele:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let [x,y] = [10,12];  // zwei Werte werden an zwei Variablen zugewiesen
+<pre><code class="language-javascript  linenums">let [x,y] = [10,12];  // zwei Werte werden an zwei Variablen zugewiesen
 let p     = [10,12];
 let [x1,y1] = p;      // zwei Werte werden an zwei Variablen zugewiesen
-let circle = { m: p, r: 20 };
-let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r 
-</pre></div>
-
-
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-<h2 id="sichtbarkeit-von-variablen-mit-var">Sichtbarkeit von Variablen mit var</h2>
-
-<p>In einer Funktion in Javascript sind lokale und globale
-Variablen sichtbar.  Da Funktionen auch innerhalb von
-Funktionen definiert werden können sind in folgendem Code
-die Variablen a, b und c in der innern Funktion f sichtbar</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var a = 1;
-function g( x ) {
-  var b = 2;
-  var s = &quot;Ein String aus g ... &quot;;
-  function f( y ) {
-    var c = 3;
-    return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-  }
-  return s + f( x );
-}
-
-g(10);
-// Rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-console.log(a);  // 1
-console.log(b);  // ReferenceError: b is not defined
-console.log(c);  // ReferenceError: c is not defined
-console.log(x);  // ReferenceError: x is not defined
-console.log(y);  // ReferenceError: y is not defined
-</pre></div>
+let circle = { m: p, r: 20 };
+let { m: [x2, y2], r } = circle  // Achtung: kurz-schreibweise für r: r
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
-<h2 id="hoisting-von-variablen-mit-var">Hoisting von Variablen mit var</h2>
+<h2 id="funktionsparameter-mit-desctructuring">Funktionsparameter mit Desctructuring</h2>
 
-<p>Eine Besonderheit von Javascript Variablen die mit <code>var</code> deklariert
-wurden ist das “Hochziehen” (auf englisch: hoisting): Alle
-Variablen-Deklarationen werden an den Anfang der jeweiligen Funktion 
-vorverlegt.  Falls auch eine Zuweisung eines Wertes erfolgt
-bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.</p>
+<p>Auch in den Funktionsparametern kann Destructuring verwendet werden.
+Angenommen wir haben ein user-Objekt:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Sichtbarkeit von a, b, c in Funktionen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function g( x ) {
-    var s = &quot;Ein String aus g ... &quot;;
-    function f( y ) {
-      var c = 3;
-      return &quot;die Werte sind &quot; + [a,b,c,x,y].join(&quot;, &quot;);
-    }
-    var b = 2; // var b wird hochgezogen zum Beginn von g()
-               // die Initialisierung b = 2 bleibt hier!
-    return s + f( x );
-  }
+<pre><code class="language-javascript  linenums">const user = {
+  id: 42,
+  displayName: &quot;jdoe&quot;,
+  fullName: {
+    firstName: &quot;Jane&quot;,
+    lastName: &quot;Doe&quot;,
+  },
+};
+function logFullUser(user) {
+  console.log(&quot;full information about the user:&quot;);
+  console.dir(user);
+}
+logFullUser(user);
+// full information about the user: debugger eval code:11:11
+// Object { id: 42, displayName: &quot;jdoe&quot;, fullName: {…} }
+function logFirstName({ fullName: { firstName: name } }) {
+  console.log(&quot;Hello&quot;, name);
+}
+logFirstName(user); // Hello Jane
+function logUserId({ id }) {
+  console.log(&quot;the user id is&quot;, id);
+}
+logUserId(user); // the user id is 42
+</code></pre></div>
 
-  g(10);
-  // rückgabewert: &quot;Ein String aus g ... die Werte sind 1, 2, 3, 10, 10&quot;
-</pre></div>
+
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring">MDN: Destructuring</a></li>
+  <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer">MDN: Object initializer</a> zu shorthand property names</li>
+</ul>
 
  <div class="pagination">
   <ul>
@@ -1245,7 +1237,11 @@ bleibt diese Zuweisung an der Ursprünglichen Stelle im Code.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

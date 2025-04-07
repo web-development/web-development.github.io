@@ -5,6 +5,9 @@
     <title>AJAX - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -142,14 +145,13 @@ Programmes definiert haben.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>synchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-rechnen1();
+<pre><code class="language-javascript  linenums">rechnen1();
 rechnen2();
 data = synchronLaden(url);
 console.log(&quot;data arrived&quot;, data);
 rechnen3();
 rechnen4();
-</pre></div>
+</code></pre></div>
 
 <p>Wenn nun die Funktion <code>synchronLaden</code> wirklich Daten von der url
 mittels HTTP lädt, dann kann das sehr lange dauern - vielleicht
@@ -168,17 +170,15 @@ und einer asynchronen Funktion genannt <code>asynchronLaden</code>:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function handleData(data) {
+<pre><code class="language-javascript  linenums">function handleData(data) {
   console.log(&quot;data arrived&quot;, data);
 }
-
 rechnen1();
 rechnen2();
 asynchronLaden(url, handleData);
 rechnen3();
 rechnen4();
-</pre></div>
+</code></pre></div>
 
 <p>Erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>. Erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>asynchronLaden</code> - aber dann passiert etwas Besonderes:</p>
 
@@ -208,17 +208,15 @@ und damit <code>handleData</code> dran ist.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function handleData(data) {
+<pre><code class="language-javascript  linenums">function handleData(data) {
   console.log(&quot;data arrived&quot;, data);
 }
-
 rechnen1();
 rechnen2();
 asynchronLaden(url, handleData);
 rechnen3();
 rechnen4();
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -272,17 +270,14 @@ eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a
 
 <div class="example">
 <h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;html&gt;
+<pre><code class="language-html  linenums">&lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;AJAX counter&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;Webseite&lt;/h1&gt;
-
   &lt;div id=&quot;output&quot;&gt;0&lt;/div&gt;
-
   &lt;script&gt;
     fetch(&quot;counter_ajax.php&quot;)
       .then((response) =&gt; {
@@ -301,7 +296,7 @@ eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Diesen Ablauf müssen wir genauer analysieren.</p>
 
@@ -314,11 +309,10 @@ eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a
 das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-javascript  linenums">&lt;script&gt;
   let promise = fetch(&quot;counter_ajax.php&quot;);
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Das Promise Objekt ist ein Platzhalter für das Ergebnis der Operation, das noch nicht
 bekannt ist. In anderen Programmiersprachen ist die Promise auch als
@@ -328,12 +322,11 @@ Future oder deferred Task bekannt, siehe <a href="https://en.wikipedia.org/wiki/
 werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-promise.then((response) =&gt; {
+<pre><code class="language-javascript  linenums">promise.then((response) =&gt; {
   console.log(&quot;Response wird empfangen&quot;);
   // tu was mit dem response objekt
 });
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -346,31 +339,28 @@ sondern bietet noch mehr Möglichkeiten:</p>
 <p>Sollen Cookies bei diesem Request mitgeschickt werden?</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-javascript  linenums">&lt;script&gt;
   let promise = fetch(&quot;api.php&quot;,  {
       credentials: &#39;same-origin&#39;
   });
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Beliebige zusätzliche HTTP Header einfügen.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-javascript  linenums">&lt;script&gt;
   let promise = fetch(&quot;api.php&quot;,  {
       headers: {
         &quot;API-Key&quot;: &quot;xxxxyyyy&quot;,
       });
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>POST Request mit Daten im JSON Format:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-javascript  linenums">&lt;script&gt;
   let promise = fetch(&quot;api.php&quot;,  {
     method: &quot;POST&quot;,
     headers: {
@@ -379,7 +369,7 @@ sondern bietet noch mehr Möglichkeiten:</p>
     body: JSON.stringify(data),
   });
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -392,23 +382,21 @@ gesamten Body des HTTP Response kann lange dauern. Deswegen
 erhalten wir nicht sofort den body, sondern wieder eine Promise:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-promise.then((response) =&gt; {
+<pre><code class="language-javascript  linenums">promise.then((response) =&gt; {
   console.log(&quot;Response wird empfangen&quot;);
   let promiseOfText = response.text();
   return promiseOfText;
 });
-</pre></div>
+</code></pre></div>
 
 <p>Es gibt drei Arten wie der Body ausgelesen werden kann -
 als text, json oder binary blob (z.B. beim Laden eines Bildes).</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-response.text();
+<pre><code class="language-javascript  linenums">response.text();
 response.json();
 response.blob();
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -419,8 +407,7 @@ response.blob();
 kann  wieder die Methode <code>then</code> verwendet werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-.then((response) =&gt; {
+<pre><code class="language-javascript  linenums">.then((response) =&gt; {
   console.log(&quot;Response wird empfangen&quot;);
   let promiseOfText = response.text();
   return promiseOfText;
@@ -431,7 +418,7 @@ kann  wieder die Methode <code>then</code> verwendet werden:</p>
   console.log(&quot;fertig!&quot;);
 });
 console.log(&quot;abgesendet, sofort weiter&quot;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -442,11 +429,10 @@ console.log(&quot;abgesendet, sofort weiter&quot;);
 wird der Code sehr kurz:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
+<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text() )
   .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -456,15 +442,14 @@ fetch(&quot;counter_ajax.php&quot;)
 <p>Für die Fehlerbehandlung gibt es die Methode <code>catch</code>:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-fetch(&quot;counter_ajax.php&quot;)
+<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text())
   .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
   .catch(error =&gt; {
 	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
     console.log(error);
   });
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -485,9 +470,7 @@ postivien Bereich (200-299) war.</p>
 <p>Das müsste man selbst behandeln:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-button.disabled = true;
-
+<pre><code class="language-javascript  linenums">button.disabled = true;
 fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; {
     if (!response.ok) {
@@ -503,7 +486,7 @@ fetch(&quot;counter_ajax.php&quot;)
   .finally {
     button.disabled = false;
   };
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -514,9 +497,8 @@ fetch(&quot;counter_ajax.php&quot;)
 das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php echo 42; ?&gt;
-</pre></div>
+<pre><code class="language-php  linenums">&lt;?php echo 42; ?&gt;
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -558,5 +540,12 @@ das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

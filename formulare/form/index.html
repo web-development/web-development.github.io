@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -73,13 +73,12 @@ Formulare aufgebaut. Hier ein einfaches Formular und der HTML Code dafür:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
   Bitte schicken Sie den Newsletter an die E-Mail Adresse:
   &lt;input type=&quot;email&quot;  name=&quot;mail&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Ja, ich will!&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der <code>form</code>-Tag ist „unsichtbar“ und dient nur dazu, die anderen Eingabefelder zu bündeln. Im action-Attribut des <code>form</code>-tag wird angegeben, an welche URL die Daten zur Verarbeitung geschickt werden.</p>
 
@@ -147,10 +146,9 @@ Eingabefeldern - normalerweise unverschlüsselt.</p>
 <p>Für größere Mengen Text gibt es <code>textarea</code>:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;textarea name=&quot;zitat&quot;&gt;In a hole in the ground
+<pre><code class="language-html  linenums">&lt;textarea name=&quot;zitat&quot;&gt;In a hole in the ground
 there lived a Hobbit. &lt;/textarea&gt;
-</pre></div>
+</code></pre></div>
 
 <textarea name="zitat">In a hole in the ground
 there lived a Hobbit. </textarea>
@@ -207,9 +205,8 @@ Formular gar nicht abgesendet werden.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Checkbox für Ja/Nein Frage</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers&lt;/label&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;schlag&quot;&gt; mit Schlagobers&lt;/label&gt;
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html"><label><input type="checkbox" name="schlag" /> mit Schlagobers</label></form>
 
@@ -231,12 +228,11 @@ mit dem <code>label</code> Tag zu markieren - das erleichtert auch die Eingabe.<
 
 <div class="example">
 <h4 class="caption">Html Code <small>Radiobuttons</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt; XL&lt;/label&gt;
+<pre><code class="language-html  linenums">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;XL&quot;&gt; XL&lt;/label&gt;
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;L&quot;&gt; L&lt;/label&gt;
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;M&quot;&gt; M&lt;/label&gt;
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;S&quot; checked&gt; S&lt;/label&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <label><input type="radio" name="size" value="XL" /> XL</label>
@@ -255,14 +251,13 @@ hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit select und option</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;select name=&quot;size2&quot;&gt;
+<pre><code class="language-html  linenums">&lt;select name=&quot;size2&quot;&gt;
   &lt;option&gt;XL&lt;/option&gt;
   &lt;option selected&gt;L&lt;/option&gt;
   &lt;option&gt;M&lt;/option&gt;
   &lt;option&gt;S&lt;/option&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <select name="size2">
@@ -282,15 +277,14 @@ hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit „leer“- Auswahl</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;select name=&quot;size3&quot;&gt;
+<pre><code class="language-html  linenums">&lt;select name=&quot;size3&quot;&gt;
   &lt;option&gt;---Bitte Auswählen---&lt;/option&gt;
   &lt;option&gt;XL&lt;/option&gt;
   &lt;option&gt;L&lt;/option&gt;
   &lt;option&gt;M&lt;/option&gt;
   &lt;option&gt;S&lt;/option&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <select name="size3">
@@ -311,8 +305,7 @@ hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Menü mit Zwischentitel</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;select&gt;
+<pre><code class="language-html  linenums">&lt;select&gt;
   &lt;option&gt;--Your Favourite Animal--&lt;/option&gt;
   &lt;optgroup label=&quot;Birds&quot;&gt;
     &lt;option&gt;Blue Jay&lt;/option&gt;
@@ -330,7 +323,7 @@ hat aber den Nachteil dass man nicht alle Optionen sofort sieht:</p>
     &lt;option&gt;Quokka&lt;/option&gt;
   &lt;/optgroup&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 
@@ -364,14 +357,13 @@ erfolgt mit dem Drücken der Steuerungs-Taste.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Liste - ermöglicht Mehrfach-Auswahl</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;select name=&quot;htmleditor&quot; multiple&gt;
+<pre><code class="language-html  linenums">&lt;select name=&quot;htmleditor&quot; multiple&gt;
   &lt;option&gt;vim&lt;/option&gt;
   &lt;option&gt;PHPStorm&lt;/option&gt;
   &lt;option&gt;Atom&lt;/option&gt;
   &lt;option&gt;Sublime&lt;/option&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <select name="htmleditor" multiple="">
@@ -394,8 +386,7 @@ was nicht in der <code>datalist</code> angeführt ist.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Textfeld mit Datalist</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input id=&quot;city&quot; placeholder=&quot;Name&quot; list=&quot;list-of-cities&quot;&gt;
 &lt;datalist id=&quot;list-of-cities&quot;&gt;
     &lt;option value=&quot;Salzburg&quot;&gt;
     &lt;option value=&quot;Wien&quot;&gt;
@@ -403,7 +394,7 @@ was nicht in der <code>datalist</code> angeführt ist.</p>
     &lt;option value=&quot;Innsbruck&quot;&gt;
     &lt;option value=&quot;Linz&quot;&gt;
 &lt;/datalist&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Siehe <a href="/images/formulare/datalist.html">Demo</a></p>
 
@@ -451,10 +442,9 @@ was nicht in der <code>datalist</code> angeführt ist.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Absende-Button</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;input type=&quot;text&quot; name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input type=&quot;text&quot; name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
 &lt;input type=&quot;submit&quot; value=&quot;Bestellung Absenden&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <input type="text" name="bestellung" value="100 Stück Fidget Spinner" />
@@ -485,10 +475,9 @@ das Formular auf den Anfangszustand zurück.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Zurück: bitte nicht verwenden</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;input type=&quot;text&quot;  name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input type=&quot;text&quot;  name=&quot;bestellung&quot; value=&quot;100 Stück Fidget Spinner&quot;&gt;
 &lt;input type=&quot;reset&quot;  value=&quot;Zurücksetzen&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <form action="/images/formulare/submitted.html">
 <input type="text" name="bestellung" value="100 Stück Fidget Spinner" />
@@ -506,9 +495,8 @@ Beschriftung einfach als Text neben das Eingabefeld zu stellen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld ohne Label</small></h4>
-<pre class="lang-html prettyprint linenums">
-E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;ihre e-mail&quot;&gt;
+</code></pre></div>
 
 <p>Damit ist aber nicht erkennbar, welche Beschriftung (vorher, nachher, weiter oben, weiter unten) zu welchem Eingabefeld gehört.</p>
 
@@ -521,19 +509,17 @@ E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot; placeholder=&quot;i
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit Label</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;label&gt;E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot;&gt;&lt;/label&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;label&gt;E-Mail &lt;input type=&quot;text&quot; name=&quot;mail&quot;&gt;&lt;/label&gt;
+</code></pre></div>
 
 <p>Falls der Beschriftungs-Tag weiter entfernt ist kann der label auf die <strong>id</strong> des Eingabefeldes verweisen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formularfeld mit entferntem Label</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;label for=&quot;mail&quot;&gt;E-Mail&lt;/label&gt;
+<pre><code class="language-html  linenums">&lt;label for=&quot;mail&quot;&gt;E-Mail&lt;/label&gt;
 ....
 &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
@@ -573,14 +559,13 @@ speziellem enctype an den Webserver geschickt werden. Das werden wir später im 
 
 <div class="example">
 <h4 class="caption">Html Code <small>Visuelle Zusammenfassung mehrer Felder: fieldset + legend</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;fieldset&gt;
+<pre><code class="language-html  linenums">&lt;fieldset&gt;
 &lt;legend&gt;Kreditkarte&lt;/legend&gt;
 &lt;input name=&quot;nr&quot; placeholder=&quot;0000 0000 0000 0000&quot;&gt;
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Master&quot;&gt; Master&lt;/label&gt;
 &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;kk&quot; value=&quot;Visa&quot;&gt; Visa&lt;/label&gt;
 &lt;/fieldset&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Siehe <a href="/images/formulare/fieldset.html">Demo</a>.</p>
 
@@ -1607,7 +1592,11 @@ speziellem enctype an den Webserver geschickt werden. Das werden wir später im 
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

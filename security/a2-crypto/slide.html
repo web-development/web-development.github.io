@@ -5,6 +5,9 @@
     <title>A2 - Cryptographic Failures - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -121,21 +124,18 @@ verwendet um das Passwort zu verschleiern. Wenn sich jemand
 versucht einzuloggen wird das so geprüft:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-$passwordhashed = sha1($password);
-
+<pre><code class="language-php  linenums">$passwordhashed = sha1($password);
 $stmt = $db-&gt;prepare(&#39;SELECT * FROM `users` WHERE username = ? AND password = ?&#39;);
 $stmt-&gt;execute(array($username, $passwordhashed));
-</pre></div>
+</code></pre></div>
 
 <p>In der Datenbank sehen die Daten so aus:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
+<pre><code class="language-plain  linenums">INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, &#39;student&#39;, &#39;08df1a7479ca768d03481fb6534ebe844cc2a2d5&#39;),
 (2, &#39;admin&#39;, &#39;dd94709528bb1c83d08f3088d4043f4742891f4f&#39;);
-</pre></div>
+</code></pre></div>
 
 <p>Das sieht ja erst mal gut aus: falls diese Datenbank in falsche Hände gerät
 sind die Passwörter nicht direkt lesbar.</p>
@@ -209,5 +209,12 @@ und ein Zertifikat.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

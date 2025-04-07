@@ -5,6 +5,9 @@
     <title>Wichtige Properties - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -92,13 +95,11 @@
 ein paar weitere  Properties für die Gestaltung der Schrift:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-h1,h2 {
+<pre><code class="language-css  linenums">h1,h2 {
   font-family: Roboto, sans-serif;
   font-size: 18px;
   font-weight: bold;
   font-style: italic;
-
   letter-spacing: 0.2ex;  //  Abstand zw. Buchstaben
   text-decoration: underline;  // unterstrichen - gefährlich!
   text-shadow: orange 0 -2px;  // Schatten Effekt
@@ -109,7 +110,7 @@ h1 {
 h2 {
   font-variant: small-caps;    // Kapitälchen
 }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css/text-css.html">Demo</a></p>
 
@@ -150,13 +151,12 @@ und <code>margin-bottom</code> des <code>&amp;lt;p&amp;gt;</code>-Tags:</p>
 <p>Die erste Zeile des Absatzes kann einen separaten Einzug haben, den Sie mit <code>text-indent</code> festlegen. Die Zeilenhöhe wird mit <code>line-height</code> festgelegt. Hier ist es sinnvoll für längere Texte einen etwas erhöhten Wert festzulegen (z. B. <code>1.5em</code> – d.h.1,5 mal die Breite des Buchstaben M in dieser Schrift) da die Standard-Darstellung der Browser etwas zu eng ist um gut lesbar zu sein.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-p {
+<pre><code class="language-css  linenums">p {
    text-align: justify;
    text-indent: 4em;
    line-height: 1.2;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -172,8 +172,7 @@ p {
 <p>Dabei wird direkt in der Webseite der Außenabstand (margin) gelb und der Innenabstand (padding) dunkelviolett hinterlegt.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  p {
+<pre><code class="language-css  linenums">  p {
   padding: 5px;
   margin-top: 5px;
   margin-right: 10px;
@@ -184,7 +183,7 @@ p {
   border-bottom-width: 1px;
   background-color: #DDD;
   }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -197,13 +196,12 @@ Gesamt-Platzbedarf zu errechnen. Mit der Deklaration <code>box-sizing: border-bo
 kann man auf ein besseres Box-Model umschalten: dann gibt width die Gesamt-Breite an.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-box-sizing: border-box;
+<pre><code class="language-css  linenums">box-sizing: border-box;
 width: 200px;
 padding: 10px;
 border-width: 10px;
 margin: 32px 0px
-</pre></div>
+</code></pre></div>
 
 <p>Gesamtbreite inklusive Rahmen = 200px.
 Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
@@ -219,8 +217,7 @@ Platz für den Inhalt = 200px - (10px + 10px + 10px + 10px) =  160px</p>
 und Schatten:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-button{
+<pre><code class="language-css  linenums">button{
    color: white;
    text-shadow: 0 1px 1px black;
    padding: 5px 30px;
@@ -229,7 +226,7 @@ button{
    border-radius: 4px;
    box-shadow: inset 0 1px 3px pink, inset 0 -5px 15px maroon, 0 2px 1px black;
 }
-</pre></div>
+</code></pre></div>
 
 <p>So sieht’s aus:</p>
 
@@ -313,5 +310,12 @@ Textes ein weißer <code>text-shadow</code> gelegt.  Erhöht der Schatten die  L
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

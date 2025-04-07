@@ -5,6 +5,9 @@
     <title>CSS Selektoren im Detail - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -218,9 +221,8 @@ folgende Schreibweisen für Selektoren beschrieben:</p>
 Der Child Selector ist auf direkte Kinder beschränkt.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li &gt; a { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  li &gt; a { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-child.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -247,9 +249,8 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 </ul>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li:first-child { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  li:first-child { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-firstchild.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -265,8 +266,7 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 <p>In <code>:has(...)</code> kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code>.  Hier wird ein Select-Tag selektiert, falls von seinen optionen diejenige ausgewählt ist, die den Leeren Wert hat. Siehe <a href="/images/css/example-has.html">Demo</a>.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;style&gt;
+<pre><code class="language-html  linenums">&lt;style&gt;
 select:has(option[value=&quot;&quot;]:checked) {
   border-color: #ddd;
   color: #ddd;
@@ -277,7 +277,7 @@ select:has(option[value=&quot;&quot;]:checked) {
   &lt;option value=&quot;River&quot;&gt;River&lt;/option&gt;
   &lt;option value=&quot;Lake&quot;&gt;Lake&lt;/option&gt;
 &lt;/select&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -287,10 +287,9 @@ select:has(option[value=&quot;&quot;]:checked) {
 <p>Dieser Selector wählt das direkte Geschwister-Node aus.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  p + h1 { color: yellow; }
+<pre><code class="language-css  linenums">  p + h1 { color: yellow; }
   li + li { color: yellow; }
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-adj.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -302,9 +301,8 @@ select:has(option[value=&quot;&quot;]:checked) {
 <p>Wenn man mehrere Selektoren kombiniert hat das Komma die geringste Präzedenz:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  p, div a { color: yellow; }
-</pre></div>
+<pre><code class="language-css  linenums">  p, div a { color: yellow; }
+</code></pre></div>
 
 <p><img src="/images/css-layout/selector-precedence.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -363,5 +361,12 @@ select:has(option[value=&quot;&quot;]:checked) {
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

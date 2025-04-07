@@ -5,6 +5,9 @@
     <title>Landkarte - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -102,12 +105,11 @@
 </html>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  #map.static {
+<pre><code class="language-css  linenums">  #map.static {
     background-size: cover;
     background-image: url(map.png);
   }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -117,15 +119,12 @@
 <p>Für die Darstellung von Open Street Map</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-var map = L.map(&#39;map&#39;).setView([lat, lng], 13);
-
+<pre><code class="language-javascript  linenums">var map = L.map(&#39;map&#39;).setView([lat, lng], 13);
 L.tileLayer(&#39;http://{s}.tile.osm.org/{z}/{x}/{y}.png&#39;, {
     attribution: &#39;&amp;copy; &lt;a href=&quot;http://osm.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;
 }).addTo(map);
-
 $(&#39;map&#39;).removeClass(&#39;static&#39;);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -176,5 +175,12 @@ $(&#39;map&#39;).removeClass(&#39;static&#39;);
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

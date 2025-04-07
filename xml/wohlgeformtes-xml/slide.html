@@ -5,6 +5,9 @@
     <title>wohlgeformtes XML - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -112,9 +115,8 @@ sind möglich.</p>
 <p>Ein XML Dokument beginnt mit einer Deklaration:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -172,9 +174,8 @@ verschachtelt werden.</p>
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Kommentar darf Code enthalten</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;!-- no need to escape &lt;code&gt; &amp; such in comments --&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;!-- no need to escape &lt;code&gt; &amp; such in comments --&gt;
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -218,8 +219,7 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Code-Snippets für den Editor text-mate</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;snippets language=&quot;CSS&quot;&gt;
   &lt;snippet id=&quot;color&quot;&gt;
     &lt;text&gt;&lt;![CDATA[color: #DDD;]]&gt;&lt;/text&gt;
@@ -232,7 +232,7 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
     &lt;tag&gt;float&lt;/tag&gt;
   &lt;/snippet&gt;
 &lt;/snippets&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -283,5 +283,12 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

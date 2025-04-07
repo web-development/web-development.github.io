@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -75,9 +75,8 @@ sind möglich.</p>
 <p>Ein XML Dokument beginnt mit einer Deklaration:</p>
 
 <div class="example">
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -135,9 +134,8 @@ verschachtelt werden.</p>
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Kommentar darf Code enthalten</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;!-- no need to escape &lt;code&gt; &amp; such in comments --&gt;
-</pre></div>
+<pre><code class="language-xml  linenums">&lt;!-- no need to escape &lt;code&gt; &amp; such in comments --&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -181,8 +179,7 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Code-Snippets für den Editor text-mate</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="language-xml  linenums">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;snippets language=&quot;CSS&quot;&gt;
   &lt;snippet id=&quot;color&quot;&gt;
     &lt;text&gt;&lt;![CDATA[color: #DDD;]]&gt;&lt;/text&gt;
@@ -195,7 +192,7 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
     &lt;tag&gt;float&lt;/tag&gt;
   &lt;/snippet&gt;
 &lt;/snippets&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -1220,7 +1217,11 @@ Text-Mate gespeichert werden, hier Code-Snippets für CSS
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

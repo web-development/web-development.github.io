@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -58,8 +58,7 @@ auferlegen kann.</p>
 <p>Ein Constraint kennen Sie schon:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-sql&gt; CREATE TABLE departments ( dep_name VARCHAR(20) PRIMARY KEY, … );
+<pre><code class="language-sql  linenums">sql&gt; CREATE TABLE departments ( dep_name VARCHAR(20) PRIMARY KEY, … );
 completed in 23ms
 sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
 1 row(s) affected in 16ms
@@ -69,7 +68,7 @@ sql&gt; INSERT INTO departments VALUES(&#39;Marketing&#39;)
 [23505] ERROR:
   duplicate key value violates unique constraint &quot;departments_pkey&quot;
   Detail: Key (name)=(Marketing) already exists.
-</pre></div>
+</code></pre></div>
 
 <p>Was ist hier passiert?</p>
 
@@ -85,11 +84,10 @@ Die Werte in dieser Spalte müssen also eindeutig sein.</p>
 wir die Fehlermeldung:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-[23505] ERROR:
+<pre><code class="language-plain  linenums">[23505] ERROR:
   duplicate key value violates unique constraint &quot;departments_pkey&quot;
   Detail: Key (name)=(Marketing) already exists.
-</pre></div>
+</code></pre></div>
 
 <p>Der Primärschlüssel muss eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
 
@@ -101,13 +99,12 @@ wir die Fehlermeldung:</p>
 <p>Ein  <strong>unique constraint</strong> kann man auf eine beliebige Spalte anwenden:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-CREATE TABLE users (
+<pre><code class="language-sql  linenums">CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(20) UNIQUE,
   email VARCHAR(220) UNIQUE
 );
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -118,8 +115,7 @@ CREATE TABLE users (
 Hier wollen wir, dass ein Artikel nur einmal von einer Pseon reviewed werden kann:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-sql&gt; CREATE TABLE review (
+<pre><code class="language-sql  linenums">sql&gt; CREATE TABLE review (
     article_id int NOT NULL,
     user_id int NOT NULL,
     UNIQUE (article_id, user_id)
@@ -130,7 +126,7 @@ INSERT 0 1
 sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
 ERROR:  duplicate key value violates unique constraint &quot;review_article_id_user_id_key&quot;
 DETAIL:  Key (article_id, user_id)=(1, 1) already exists.
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -144,8 +140,7 @@ wird ein Name automatisch erzeugt. Das war in den bisherigen Beispielen der Fall
 Das sieht dann so aus:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-\d review
+<pre><code class="language-plain  linenums">\d review
                  Table &quot;public.review&quot;
    Column   |  Type   | Collation | Nullable | Default
 ------------+---------+-----------+----------+---------
@@ -153,7 +148,7 @@ Das sieht dann so aus:</p>
  user_id    | integer |           | not null |
 Indexes:
     &quot;review_article_id_user_id_key&quot; UNIQUE CONSTRAINT, btree (article_id, user_id)
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -163,8 +158,7 @@ Indexes:
 <p>Was bedeutet die Fehlermeldung am Ende?</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-CREATE TABLE departments (
+<pre><code class="language-sql  linenums">CREATE TABLE departments (
   dep_id SERIAL PRIMARY KEY,
   dep_name VARCHAR(20)
 );
@@ -176,7 +170,7 @@ INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
 [23503] ERROR: insert or update on table &quot;employees&quot;
   violates foreign key constraint &quot;employees_dep_id_fkey&quot;
   Detail: Key (dep_id)=(99) is not present in table &quot;departments&quot;.
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -195,8 +189,7 @@ die Spalte <code>dep_id</code> in der Tabelle <code>departments</code>.</p>
 nicht möglich in <code>employees</code> eine <code>dep_id</code> zu benutzen, die in <code>departments</code> nicht existiert.</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-CREATE TABLE departments (
+<pre><code class="language-sql  linenums">CREATE TABLE departments (
   dep_id SERIAL PRIMARY KEY,
   dep_name VARCHAR(20)
 );
@@ -204,7 +197,7 @@ CREATE TABLE employees (
   name VARCHAR(20),
   dep_id integer NULL REFERENCES departments(dep_id)
 );
-</pre></div>
+</code></pre></div>
 
 <p>Fremdschlüssel sind auch gute Kanditeten für einen Index: Wenn man
 die Abfrage machen will “Welche Leute arbeiten im Department 7” ist
@@ -1224,7 +1217,11 @@ es gut einen Index auf <code>dep_id</code> in <code>employees</code>  zu haben.<
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -5,6 +5,9 @@
     <title>2d Canvas - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -104,15 +107,13 @@ erst die DOM-Node des Canvas finden, dann den 2d-Kontext dieses
 Canvas:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const w = 770, h = 50;
+<pre><code class="language-javascript  linenums">const w = 770, h = 50;
 const my_canvas = document.getElementById(&quot;c&quot;);
 const my_context = my_canvas.getContext(&quot;2d&quot;);
-
 my_canvas.width = w;
 my_canvas.height = h;
 draw(my_context);
-</pre></div>
+</code></pre></div>
 
 <p>Darstellung im Browser (nicht optimal bei hohen Auflösungen):</p>
 
@@ -167,22 +168,17 @@ aber weiterhin die virtuellen Pixel verwendet. X-Koordinaten größer als 770 we
 
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-const w = 770, h = 50;
+<pre><code class="language-javascript  linenums">const w = 770, h = 50;
 const my_canvas = document.getElementById(&quot;c&quot;);
 const my_context = my_canvas.getContext(&quot;2d&quot;);
-
 let ratio = window.devicePixelRatio;
 my_context.scale(ratio, ratio);
-
 my*canvas.width = w * ratio;
 my*canvas.height = h * ratio;
-
 my_canvas.style.width = `${w}px`;
 my_canvas.style.height = `${h}px`;
-
 draw(my_context);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -190,10 +186,9 @@ draw(my_context);
 <h3 id="text-setzen">Text setzen</h3>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-my_context.font = &quot;bold 12px sans-serif&quot;;
+<pre><code class="language-javascript  linenums">my_context.font = &quot;bold 12px sans-serif&quot;;
 my_context.fillText(&quot;hier bin ich&quot;, 30, 50);
-</pre></div>
+</code></pre></div>
 
 <canvas id="c3" style="width:770px; height: 50px"></canvas>
 
@@ -203,14 +198,13 @@ my_context.fillText(&quot;hier bin ich&quot;, 30, 50);
 <h3 id="linien-zeichnen">Linien Zeichnen</h3>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-my_context.moveTo(0, 0);
+<pre><code class="language-javascript  linenums">my_context.moveTo(0, 0);
 my_context.lineTo(50, 50);
 my_context.lineTo(100, 0);
 my_context.lineTo(150, 50);
 // ...
 my_context.stroke();
-</pre></div>
+</code></pre></div>
 
 <canvas id="c4" style="width:770px; height: 50px"></canvas>
 
@@ -222,15 +216,14 @@ my_context.stroke();
 <p>Achtung: das Laden des Originalbildes dauert lange. Wenn der Kopierbefehl <code>drawImage</code> zu früh durchgeführt wird ist das Bild noch nicht geladen und das leere Bild wird kopiert. Deswegen starten wir den Kopierbefehl erst beim <code>load</code> Event des Bildes.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let canvas = document.getElementById(&quot;e&quot;);
+<pre><code class="language-javascript  linenums">let canvas = document.getElementById(&quot;e&quot;);
 let context = canvas.getContext(&quot;2d&quot;);
 let image = document.getElementById(&quot;the_img_tag&quot;);
 image.addEventListener(&#39;load&#39;, function(){
   context.drawImage(image, 0, 0);
 });
 the_img.src = &quot;/images/grafik/dolly.jpg&quot;;
-</pre></div>
+</code></pre></div>
 
 <p><img id="the_img_tag" /></p>
 
@@ -312,5 +305,12 @@ Webcam + 2d Canvas ermöglicht damit viele interessante Anwendungen.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

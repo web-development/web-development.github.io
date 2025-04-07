@@ -5,6 +5,9 @@
     <title>Pixel-Bilder - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -189,8 +192,7 @@ Hier wird <code>w</code> statt <code>px</code> verwendet -  das wären ja CSS-Pi
 Achtung: man muss immer noch mit CSS diese Breite setzen!</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;japanischer-garten_350px.webp&quot;
+<pre><code class="language-html  linenums">&lt;img src=&quot;japanischer-garten_350px.webp&quot;
   sizes=&quot;350px&quot;
   srcset=&quot;japanischer-garten_350px.webp 350w,
      japanischer-garten_701px.webp 701w,
@@ -198,7 +200,7 @@ Achtung: man muss immer noch mit CSS diese Breite setzen!</p>
      japanischer-garten_2802px.webp 2802w,
      japanischer-garten_4500px.webp 4500w,
      japanischer-garten_6000px.webp 6000w&quot; /&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Nun kann der Browser das geeignete Bild auswählen. z.B. bei einer Pixeldichte von 2 dppx:
 350 * 2 = 700.  Der Browser wählt dann das nächstgrößere Bild aus und stellt es dar, also in diesem
@@ -215,12 +217,11 @@ Beispiel das Bild mit einer Breite von 701.</p>
 dann die Größe die verwendet werden soll.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-sizes=&quot;(min-width: 1200px)) 1200px
+<pre><code class="language-html  linenums">sizes=&quot;(min-width: 1200px)) 1200px
        ((min-width: 800px) and (max-width: 1200px)) 1000px,
        ((min-width: 300px) and (max-width: 800px)) 500px,
         (max-width: 300px) 200px&quot;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -282,5 +283,12 @@ machen und automatisieren, siehe <a href="/kommandozeile/bild-und-video/#slide-5
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

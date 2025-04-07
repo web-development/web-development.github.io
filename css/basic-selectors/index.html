@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -81,9 +81,8 @@ die Darstellung des HTML-Dokuments als Baum:</p>
 zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  li { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-type.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -97,9 +96,8 @@ Das Komma entspricht einem “Oder”: selektiert werden Tags die entweder <code
 oder <code>h2</code>, oder <code>a</code>:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  h1,h2,a { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  h1,h2,a { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-group.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -120,9 +118,8 @@ eines <code>div</code> sind:</p>
 <p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div a { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  div a { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -138,13 +135,12 @@ eines <code>div</code> sind:</p>
 <p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     &amp; a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -152,28 +148,26 @@ eines <code>div</code> sind:</p>
 rein schreiben:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     border: 1px gray solid;
     padding: 10px;
     &amp; a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p>Und man kann das kaufmännische Und weglassen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     border: 1px gray solid;
     padding: 10px;
     a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css/nested.html">Demo: Verschachteltes CSS</a></p>
 
@@ -187,11 +181,10 @@ rein schreiben:</p>
 <p>Die Default Einstellung der Browser entspricht ungefähr folgendem CSS:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:any-link { text-decoration: underline; }
+<pre><code class="language-css  linenums">  a:any-link { text-decoration: underline; }
   a:link    { color:blue; }
   a:visited { color:#FF00FF; }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -201,14 +194,13 @@ rein schreiben:</p>
 <p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:link, a:visited {
+<pre><code class="language-css  linenums">  a:link, a:visited {
      background-image:    url(icon-link.gif);
      background-position: center right;
      background-repeat:   no-repeat;
      padding-right:       9px;
   }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css/link-icon.html">Demo</a></p>
 
@@ -1244,7 +1236,11 @@ rein schreiben:</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

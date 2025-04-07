@@ -5,6 +5,9 @@
     <title>Async/Await - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -97,29 +100,25 @@ nur innerhalb einer Funktion die als <code>async</code> ausgewiesen ist:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchrone funktion</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-async function f1() {
+<pre><code class="language-javascript  linenums">async function f1() {
   console.log(&quot;ich kann await&quot;);
 }
-
 function f2() {
   console.log(&quot;ich kann kein async und kein await&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 <p>Auch anonyme Funktionen und Arrow Functions können async sein:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchrone arrow function</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-const f1 = async () =&gt; {
+<pre><code class="language-javascript  linenums">const f1 = async () =&gt; {
   console.log(&quot;ich kann await&quot;);
 }
-
 const f2 = () =&gt; {
   console.log(&quot;ich kann kein async und kein await&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -128,19 +127,17 @@ const f2 = () =&gt; {
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>await</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function f2() {
+<pre><code class="language-javascript  linenums">function f2() {
   fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text())
   .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
 }
-
 async function f1() {
   const response = await fetch(&quot;counter_ajax.php&quot;);
   const text = await response.text();
   document.getElementById(&#39;output&#39;).innerHTML = text;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -151,10 +148,9 @@ async function f1() {
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>await</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  const promise = fetch(&quot;counter_ajax.php&quot;);
+<pre><code class="language-javascript  linenums">  const promise = fetch(&quot;counter_ajax.php&quot;);
   const response = await promise;
-</pre></div>
+</code></pre></div>
 
 <p><code>await</code> wartet nicht “aktiv” auf das Ergebnis, sondern die Ausführung
 dieser Funktion wird pausiert, und <strong>anderer</strong> JavaScript Code kann
@@ -174,8 +170,7 @@ Mit async/await können wir wieder die “normale” <code>try</code> <code>catc
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>await</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function f2() {
+<pre><code class="language-javascript  linenums">function f2() {
   fetch(&quot;counter_ajax.php&quot;)
     .then(response =&gt; response.text())
     .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
@@ -184,7 +179,6 @@ function f2() {
       console.log(error);
     });
 }
-
 async function f1() {
   try {
     const response = await fetch(&quot;counter_ajax.php&quot;);
@@ -195,7 +189,7 @@ async function f1() {
     console.log(error);
   }
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -207,16 +201,14 @@ um eine asynchrone Funktion zu starten.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>load event und async</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-window.addEventListener(&quot;load&quot;, async () =&gt; {
+<pre><code class="language-javascript  linenums">window.addEventListener(&quot;load&quot;, async () =&gt; {
   await doTheThing();
   console.log(&quot;Thing is Done.&quot;);
 });
-
 async function doTheThing() {
   // ...
 }
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -258,5 +250,12 @@ async function doTheThing() {
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

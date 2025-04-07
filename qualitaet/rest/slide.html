@@ -5,6 +5,9 @@
     <title>REST - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -176,12 +179,10 @@ z.B. könnte man in die Datei <code>.htaccess</code> im Ordner projekt-1 schreib
 
 <div class="example">
 <div class="filename">.htaccess</div>
-<pre class="lang-plain prettyprint linenums">
-RewriteEngine On
-
+<pre><code class="language-plain  linenums">RewriteEngine On
 RewriteRule ^personen$     personen.php  [L]
 RewriteRule ^person/(.*)   person.php?slug=$1  [L]
-</pre></div>
+</code></pre></div>
 
 <h4 id="umsetzung">Umsetzung</h4>
 
@@ -242,8 +243,7 @@ Darstellung einer Person in HTML, XML und JSON erfolgen. Die HTML-Variante kenne
 schon:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;h1&gt;Details zu einer Person&lt;/h1&gt;
+<pre><code class="language-html  linenums">&lt;h1&gt;Details zu einer Person&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;http://multimediaart.at/media/profil/edvard_1_2.jpg&quot; /&gt;
 Herr Edvard Paul Beispieler hat insgesamt 4 Werke in dieser Datenbank.
 Er hat den Usernamen fhs14287.&lt;/p&gt;
@@ -253,7 +253,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#39;werk/83&#39;&gt;nimm zwei, schatz&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#39;werk/303&#39;&gt;the neighbour.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -264,8 +264,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Daten einer Person als XML</small></h4>
-<pre class="lang-plain prettyprint linenums">
-&lt;person&gt;
+<pre><code class="language-plain  linenums">&lt;person&gt;
 &lt;image ref=&#39;http://multimediaart.at/media/profil/edvard_1_2.jpg&#39; /&gt;
 &lt;vorname&gt;Edvard Paul&lt;/vorname&gt;
 &lt;nachname&gt;Beispieler&lt;/nachname&gt;
@@ -277,7 +276,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 &lt;werk ref=&#39;http://ich.multimediatechnology.at/projekt-1/werk/303&#39;&gt;the neighbour.&lt;/werk&gt;
 &lt;/werke&gt;
 &lt;/person&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -288,8 +287,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Daten einer Person als JSON</small></h4>
-<pre class="lang-plain prettyprint linenums">
-{&quot;image&quot;:&quot;http://multimediaart.at/media/profil/edvard_1_2.jpg&quot;,
+<pre><code class="language-plain  linenums">{&quot;image&quot;:&quot;http://multimediaart.at/media/profil/edvard_1_2.jpg&quot;,
  &quot;vorname&quot;:&quot;Eduard Paul&quot;,
  &quot;nachname&quot;:&quot;Beisteiner&quot;,
  &quot;werk&quot;:[
@@ -301,7 +299,7 @@ Er hat den Usernamen fhs14287.&lt;/p&gt;
      &quot;url&quot;:&quot;http://ich.multimediatechnology.at/projekt-1/werk/83&quot;},
     {&quot;titel&quot;:&quot;the neighbour.&quot;,
      &quot;url&quot;:&quot;http://ich.multimediatechnology.at/projekt-1/werk/303&quot;}]}
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -323,21 +321,19 @@ im http-Header:</p>
 
 <div class="example">
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt html als Antwort</small></h4>
-<pre class="lang-plain prettyprint linenums">
-GET /mini/person/3 HTTP/1.1
+<pre><code class="language-plain  linenums">GET /mini/person/3 HTTP/1.1
 Host: ich.multimediatechnology.at
 Accept: text/html
-</pre></div>
+</code></pre></div>
 
 <p>Bzw.</p>
 
 <div class="example">
 <h4 class="caption">Plain Code <small>HTTP Request: Accept-Header verlangt xml als Antwort</small></h4>
-<pre class="lang-plain prettyprint linenums">
-GET /mini/person/3 HTTP/1.1
+<pre><code class="language-plain  linenums">GET /mini/person/3 HTTP/1.1
 Host: ich.multimediatechnology.at
 Accept: application/xml
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -473,5 +469,12 @@ gehen Sie möglichst sparsam damit um.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

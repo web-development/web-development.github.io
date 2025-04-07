@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -56,10 +56,9 @@ Wenn man Vektor-Grafik braucht muss man SVG statt dessen verwenden.</p>
 <p>Der Canvas wird durch zwei Objekte in Javascript repräsentiert: ein Canvas-Objekt und ein Context-Objekt. Zuerst müssen wir diese beiden Objekte finden und in Variablen speichern:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let my_canvas = document.getElementById(&quot;c&quot;);
+<pre><code class="language-javascript  linenums">let my_canvas = document.getElementById(&quot;c&quot;);
 let my_context = my_canvas.getContext(&quot;2d&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Wir verwenden erst einmal die 2-dimensionale Zeichenfläche des Canvas. Wenn Sie mehr von Computergrafik verstehen können Sie auch die 3d-Version, genannt „webgl“ verwenden.</p>
 
@@ -75,22 +74,18 @@ einem <code>devicePixelRatio</code> von 1 gut.  Für höhere Pixeldichte muss
 man die Größe des Canvas extra setzen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let canvas = document.getElementById(id);
+<pre><code class="language-javascript  linenums">  let canvas = document.getElementById(id);
   let ctx = canvas.getContext(&quot;2d&quot;);
-
   let scale = window.devicePixelRatio;
   console.log(`creating a canvas with ${canvas_width} x ${canvas_height} css pixels at devicePixelRatio ${window.devicePixelRatio}`);
-
   // set canvas.width to real pixels - will never be used again!
   canvas.width = canvas_width * scale;
   canvas.height = canvas_height * scale;
   ctx.scale(scale,scale)
-
   // set style.width to virtual pixels, we will work with virtual pixels from now on
   canvas.style.width = canvas_width + &quot;px&quot;;
   canvas.style.height = canvas_height + &quot;px&quot;;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -100,20 +95,18 @@ man die Größe des Canvas extra setzen:</p>
 <p>Achsenparallelle Rechtecke zeichnet man mit fillRect:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-my_context.fillRect(50, 50, 20, 20);
-</pre></div>
+<pre><code class="language-javascript  linenums">my_context.fillRect(50, 50, 20, 20);
+</code></pre></div>
 
 <p>Linien ziehen kann man mit <code>moveTo</code> (den Zeichenstift bewegen) und <code>lineTo</code> (eine linie von der aktuellen Position zur
 angegeben Position ziehen). Die Linie erscheint erst, wenn man die abschließende Stroke-Methode aufruft:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-my_context.moveTo(10, 20);
+<pre><code class="language-javascript  linenums">my_context.moveTo(10, 20);
 my_context.lineTo(10, 50);
 my_context.strokeStyle = &quot;#4a4&quot;;
 my_context.stroke();
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -123,18 +116,16 @@ my_context.stroke();
 <p>Text auf den Canvas schreiben kann man mit dem <code>fillText</code>-Befehl:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-my_context.font = &quot;bold 12px sans-serif&quot;;
+<pre><code class="language-javascript  linenums">my_context.font = &quot;bold 12px sans-serif&quot;;
 my_context.fillText(&quot;hier bin ich&quot;, 10, 50);
-</pre></div>
+</code></pre></div>
 
 <p>Bilder die sich bereits in der Webseite befinden kann man in den Canvas kopieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let cat = document.getElementById(&quot;cat&quot;);
+<pre><code class="language-javascript  linenums">let cat = document.getElementById(&quot;cat&quot;);
 my_context.drawImage(cat, 0, 0);
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -146,13 +137,12 @@ einige Zeit dauert verwenden wir hier das onload Event:
 erst wenn das Bild fertig geladen ist wird es in den Canvas kopiert:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let cat = new Image();
+<pre><code class="language-javascript  linenums">let cat = new Image();
 cat.src = &quot;images/cat.png&quot;;
 cat.onload = function() {
   my_context.drawImage(cat, 0, 0);
 };
-</pre></div>
+</code></pre></div>
 
 <p>Diese Beispiel zu Canvas stammen alle aus dem <a href="http://diveintohtml5.info/canvas.html">Canvas-Kapitel</a> von Mark Pilgrims „Dive into HTML5“.</p>
 
@@ -1170,7 +1160,11 @@ cat.onload = function() {
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

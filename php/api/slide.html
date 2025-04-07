@@ -5,6 +5,9 @@
     <title>API verwenden mit PHP - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -174,14 +177,13 @@ and eine URL. So einen einfachen HTTP Request kann man mit <code>file_get_conten
 
 <div class="example">
 <h4 class="caption">Php Code <small>zugriff auf die API von geosphere.at</small></h4>
-<pre class="lang-php prettyprint linenums">
-...
+<pre><code class="language-php  linenums">...
 require &quot;config.php&quot;;
 $lat = 47.723; // Breitengrad
 $lon = 13.086; // Längengrad
 $url =&quot;https://api.openweathermap.org/data/2.5/weather?lon=$lon&amp;lat=$lat&amp;units=metric&amp;apikey=$api_key&quot;;
 $json_string = file_get_contents( $url );
-</pre></div>
+</code></pre></div>
 
 <p>Mit dem Befehl <code>file_get_contents</code> wird ein HTTP GET Request gesendet.
 Die Antwort erhalten wir als String als Rückgabewert.</p>
@@ -210,12 +212,10 @@ umwandeln: in verschachtelte (assoziative) Arrays</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>JSON in PHP Datenstrukturen umwandeln</small></h4>
-<pre class="lang-php prettyprint linenums">
-$json_string = file_get_contents( $url );
+<pre><code class="language-php  linenums">$json_string = file_get_contents( $url );
 $data = json_decode($json_string, true);
-
 echo $data[&#39;main&#39;][&#39;temp&#39;];
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -232,37 +232,29 @@ zurückgegebenen JSON-Daten wieder in PHP Datenstrukturen übersetzt:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>POST Request, JSON rein und JSON raus</small></h4>
-<pre class="lang-php prettyprint linenums">
-function post_request($url, $data) {
-
+<pre><code class="language-php  linenums">function post_request($url, $data) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
     curl_setopt($ch, CURLOPT_HTTPHEADER, [&#39;Content-Type: application/json&#39;]);
-
     $result_string = curl_exec($ch);
     $error = curl_error($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-
     if ($error) {
         throw new Exception(&#39;cURL error: &#39; . $error . &#39; with http_code:&#39; . $http_code);
     }
-
     if ($http_code !== 200) {
         throw new Exception(&#39;HTTP error: &#39; . $http_code . &#39;raw_response: &#39;. $result_string);
     }
-
     $result_data = json_decode($result_string, true);
-
     if(json_last_error() === JSON_ERROR_NONE){
         return $result_data;
     }
-
     throw new Exception(&#39;Invalid JSON response from API &#39; . json_last_error_msg(). &#39;raw_response: &#39;. $result_string);
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -273,10 +265,7 @@ function post_request($url, $data) {
 liefert eine komplexe Datenstruktur als Output:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-
-    $prompt = &quot;Erstelle eine Multiple-Choice-Quizfrage zum Thema {$topic} mit dem Schwierigkeitsgrad {$difficulty}. Verwende die Sprache Deusch, und eine positive Frage, keine Verneinung. Gib vier Antwortmöglichkeiten (a, b, c, d) an und markiere die richtige Antwort. Formatiere die Ausgabe als JSON mit den Schlüsseln &#39;question&#39;, &#39;options&#39; und &#39;answer&#39;.&quot;;
-
+<pre><code class="language-php  linenums">    $prompt = &quot;Erstelle eine Multiple-Choice-Quizfrage zum Thema {$topic} mit dem Schwierigkeitsgrad {$difficulty}. Verwende die Sprache Deusch, und eine positive Frage, keine Verneinung. Gib vier Antwortmöglichkeiten (a, b, c, d) an und markiere die richtige Antwort. Formatiere die Ausgabe als JSON mit den Schlüsseln &#39;question&#39;, &#39;options&#39; und &#39;answer&#39;.&quot;;
     $url = &#39;https://generativelanguage.googleapis.com/&#39;
          . &#39;v1beta/models/gemini-2.0-flash:generateContent?key=&#39; . $GEMINI_API_KEY;
     $data = [
@@ -289,21 +278,16 @@ liefert eine komplexe Datenstruktur als Output:</p>
         ]
     ];
     $result = post_request($url, $data);
-
     // echo &quot;&lt;pre&gt;&quot;;
     // print_r($result);
     // echo &quot;&lt;/pre&gt;&quot;;
-
     if (isset($result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;])) {
         $api_response = $result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;];
-
         $api_response = str_replace(&#39;```json&#39;, &#39;&#39;, $api_response);
         $api_response = str_replace(&#39;```&#39;, &#39;&#39;, $api_response);
-
         // echo &quot;&lt;pre&gt;&quot;;
         // print_r($api_response);
         // echo &quot;&lt;/pre&gt;&quot;;
-
         // Attempt to parse the expected JSON format. If it fails, return the raw text.
         $json_data = json_decode($api_response, true);
         if (json_last_error() === JSON_ERROR_NONE) {
@@ -311,11 +295,10 @@ liefert eine komplexe Datenstruktur als Output:</p>
         } else {
             throw new Exception(&#39;Invalid JSON response from API &#39; . json_last_error_msg());
         }
-
     } else {
         throw new Exception(&#39;Unexpected API response format: &#39; . $result);
     }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -365,5 +348,12 @@ liefert eine komplexe Datenstruktur als Output:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

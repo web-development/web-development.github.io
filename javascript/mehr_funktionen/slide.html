@@ -5,6 +5,9 @@
     <title>Mehr Funktionen - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -95,17 +98,14 @@ mit <code>new</code> aufgerufen werden behandelt.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this im Event Handler</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function what_is_this() {
+<pre><code class="language-javascript  linenums">  function what_is_this() {
     console.log(&quot;this = &quot; + this);
   }
-
   document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, what_is_this);
-
   // bei klick auf den Button
   // output in der Console:
   // this = [object HTMLInputElement]
-</pre></div>
+</code></pre></div>
 
 <p>Der Event Handler wird also als Methode auf dem jeweils betroffenen
 HTML-Element aufgerufen. <code>this</code> zeigt in diesem Fall also auf den Button
@@ -121,18 +121,15 @@ Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>keine Argument an den event handler!</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function f( mein_argument ) {
+<pre><code class="language-javascript  linenums">  function f( mein_argument ) {
     console.log(&quot;this = &quot; + mein_argument);
     // funktioniert nicht wie erwartet !!!
   }
-
   document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f(43) );
-
   // hier wird die Funktion f aufgerufen,
   // der listener an das Event gebunden wird,
   // das funktioniert so nicht !!!
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -143,21 +140,18 @@ Es gibt keine Möglichkeit Argumente an den Funktion mit zu übergeben:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this und event im Event Handler</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function f( ev ) {
+<pre><code class="language-javascript  linenums">  function f( ev ) {
     console.log(&quot;this = &quot; + this);
     console.log(&quot;ev = &quot; + ev);
     console.log(&quot;ev.target = &quot; + ev.target);
   }
-
   document.getElementById(&quot;button&quot;).addEventListener(&quot;click&quot;, f);
-
   // bei klick auf den Button
   // output in der Console:
   // this = [object HTMLInputElement]
   // ev = [object MouseEvent]
   // ev.target = [object HTMLInputElement]
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -182,15 +176,13 @@ Konstruktur-Funktionen mit großen Anfangsbuchstaben zu benennen.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Objekte mit einer Konstruktor-Funktion</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function Studiengang(name, seit) {
+<pre><code class="language-javascript  linenums">  function Studiengang(name, seit) {
     this.name = name;
     this.seit = seit;
   }
-
   mmtb = new Studiengang( &quot;BSc MultiMediaTechnology&quot;, 2008 );
   mmtm = new Studiengang( &quot;MSc MultiMediaTechnology&quot;, 2011 );
-</pre></div>
+</code></pre></div>
 
 <p>Innerhalb der Konstruktur-Funktion <code>Studiengang</code> ist bereits
 ein neues Objekt vorhanden, und über <code>this</code> zugänglich. Dieses
@@ -209,8 +201,7 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktion mit einem Attribut</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function repeat( s, x ) {
+<pre><code class="language-javascript  linenums">  function repeat( s, x ) {
     var result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -220,14 +211,12 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
     console.log(result);
     return result;
   }
-
   repeat(&quot;x&quot;, 3);
   // rückgabewert ist &quot;xxx&quot;;
-
   repeat.sep = &quot;, &quot;;
   repeat(&quot;x&quot;, 3);
   // rückgabewert ist &quot;x, x, x&quot;;
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -269,5 +258,12 @@ die man mit der ganz normalen Schreibweise setzten kann:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

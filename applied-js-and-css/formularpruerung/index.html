@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -63,8 +63,7 @@ bevor die Daten gesendet werden.</p>
 dass mindestens 1 Stück bestellt wird:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form&gt;
+<pre><code class="language-html  linenums">&lt;form&gt;
   &lt;label for=&quot;schokolade&quot;&gt;Tafeln Schokolade:&lt;/label&gt;
   &lt;input type=&quot;number&quot; name=&quot;schokolade&quot; id=&quot;schokolade&quot; value=&quot;0&quot;&gt;
   &lt;label for=&quot;schweinsbraten&quot;&gt;Portionen Schweinsbraten:&lt;/label&gt;
@@ -73,7 +72,7 @@ dass mindestens 1 Stück bestellt wird:</p>
   &lt;input type=&quot;number&quot; name=&quot;kaffee&quot; id=&quot;kaffee&quot; value=&quot;0&quot;&gt;
   &lt;button type=&quot;submit&quot;&gt;Bestellen&lt;/button&gt;
   &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -83,14 +82,13 @@ dass mindestens 1 Stück bestellt wird:</p>
 <p>Die Überprüfung erfolgt im submit - Event:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
+<pre><code class="language-javascript  linenums">document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
   // ...
   if (!ok) {
     event.preventDefault(); // Verhindert das Absenden des Formulars, wenn `ok` false ist
   }
 });
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -100,9 +98,8 @@ document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, fu
 <p>Der Wert eines Eingabefeldes kann mit <code>.value</code> ausgelesen werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.querySelector(&#39;input[name=&quot;schokolade&quot;]&#39;).value;
-</pre></div>
+<pre><code class="language-javascript  linenums">document.querySelector(&#39;input[name=&quot;schokolade&quot;]&#39;).value;
+</code></pre></div>
 
 <p>Achtung: dieser Wert ist immer ein String!</p>
 
@@ -115,32 +112,27 @@ document.querySelector(&#39;input[name=&quot;schokolade&quot;]&#39;).value;
 zeigt die Fehlermeldungen auch an:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
+<pre><code class="language-javascript  linenums">document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, function(event) {
   var ok = true;
-
   // Entfernen alle Fehlermeldungen
   document.getElementById(&quot;display_errors&quot;).innerHTML = &quot;&quot;;
-
   console.log(document.querySelector(&quot;input[name=schokolade]&quot;).value);
   // Berechnen der Gesamtsumme
   var gesamtZahl = parseInt(document.querySelector(&quot;input[name=schokolade]&quot;).value)
       + parseInt(document.querySelector(&quot;input[name=schweinsbraten]&quot;).value)
       + parseInt(document.querySelector(&quot;input[name=kaffee]&quot;).value);
-
   // Überprüfen der Gesamtsumme
   if(gesamtZahl === 0) {
     document.getElementById(&quot;display_errors&quot;).innerHTML += &quot;&lt;p&gt;Mindest-Bestellmenge 1!&lt;/p&gt;&quot;;
     ok = false;
   }
-
   // Verhindern des Formularabsendens, wenn ok false ist
   if (!ok) {
     event.preventDefault();
   }
   return ok;
 });
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1156,7 +1148,11 @@ document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, fu
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

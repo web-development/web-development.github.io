@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -50,8 +50,7 @@
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function r1( s, x ) {
+<pre><code class="language-javascript  linenums">  function r1( s, x ) {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -59,7 +58,6 @@
     }
     return result;
   }
-
   function ( s, x ) {
     let result = &quot;&quot;;
     while( x ) {
@@ -68,10 +66,9 @@
     }
     return result;
   }
-
   // Aufruf:
   r1(&#39;*&#39;, 10);
-</pre></div>
+</code></pre></div>
 
 <p>Die zweite Funktion kann aber nicht aufgerufen werden.</p>
 
@@ -85,8 +82,7 @@ auf eine Variable zugewiesen werden:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen definieren</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  function r1( s, x ) {
+<pre><code class="language-javascript  linenums">  function r1( s, x ) {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -94,7 +90,6 @@ auf eine Variable zugewiesen werden:</p>
     }
     return result;
   }
-
   let r2 = function ( s, x ) {
     let result = &quot;&quot;;
     while( x ) {
@@ -103,11 +98,10 @@ auf eine Variable zugewiesen werden:</p>
     }
     return result;
   }
-
   // Aufruf:
   r1(&#39;*&#39;, 10);
   r2(&#39;*&#39;, 10);
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -119,8 +113,7 @@ Funktionen: die Arrow Function</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  let f1 = ( s, x ) =&gt; {
+<pre><code class="language-javascript  linenums">  let f1 = ( s, x ) =&gt; {
     let result = &quot;&quot;;
     while( x ) {
       result += s;
@@ -128,24 +121,22 @@ Funktionen: die Arrow Function</p>
     }
     return result;
   }
-</pre></div>
+</code></pre></div>
 
 <p>Wenn die Funktion nur eine einzige Expression enthält wird die Schreibweise noch kürzer, man braucht gar kein <code>return</code> mehr:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  let f2 = ( s, x ) =&gt; s + &quot; mal &quot; + x;
-</pre></div>
+<pre><code class="language-javascript  linenums">  let f2 = ( s, x ) =&gt; s + &quot; mal &quot; + x;
+</code></pre></div>
 
 <p>Und wenn die Funktion nur ein Argument nimmt kann man auch noch die Klammern rund um
 die Argumente weglassen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Arrow Function</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  let f3 = x =&gt; `${x} ist das beste`;
-</pre></div>
+<pre><code class="language-javascript  linenums">  let f3 = x =&gt; `${x} ist das beste`;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -158,24 +149,22 @@ Teile von Objekten oder Arrays definieren:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktionen in JSON</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  objekt = {
+<pre><code class="language-javascript  linenums">  objekt = {
     prop1 : &quot;Schokolade&quot;,
     prop2 : 42,
     method_1 : function (x) { return `${x} ist schlecht` },
     method_2 : x =&gt; `${x} ist gut`
   }
-</pre></div>
+</code></pre></div>
 
 <p>Die beiden Methoden kann man ganz normal aufrufen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Methoden aufrufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-objekt.method_1(&quot;Kopfweh&quot;);
+<pre><code class="language-javascript  linenums">objekt.method_1(&quot;Kopfweh&quot;);
 objekt.method_2(&quot;Eis&quot;);
 objekt.method_2(objekt.prop1);
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: Wenn das Objekt serialisiert wird, also in einem String
 gespeichert wird - z.B. um das Objekt in LocalStorage zu speichern oder
@@ -191,18 +180,15 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this in einer normalen Funktion</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  console.log(&quot;this = &quot; + this);
-
+<pre><code class="language-javascript  linenums">  console.log(&quot;this = &quot; + this);
   function what_is_this() {
     console.log(&quot;this = &quot; + this);
   }
   what_is_this();
-
   // output auf der Console:
   // this = [object Window]
   // this = [object Window]
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -213,8 +199,7 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this in einer Methode</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  var objekt = {
+<pre><code class="language-javascript  linenums">  var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
     report : function () {
@@ -222,13 +207,11 @@ Erst einmal verweist <code>this</code> auf das <code>window</code> Objekt:</p>
       console.log( &quot;this.prop2 = &quot; + this.prop2 )
     }
   }
-
   objekt.report();
-
   // output auf der Console:
   // this = [object Object]
   // this.prop2 = 42
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: Arrow Functions verhalten sich hier anders!</p>
 
@@ -244,8 +227,7 @@ Wert:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>this in einer Methode</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  var objekt = {
+<pre><code class="language-javascript  linenums">  var objekt = {
     prop1 : &quot;string&quot;,
     prop2 : 42,
     broken_report : () =&gt; {
@@ -253,13 +235,11 @@ Wert:</p>
       console.log( &quot;this.prop2 = &quot; + this.prop2 )
     }
   }
-
   objekt.broken_report();
-
   // output auf der Console:
   // this = [object Window]
   // this.prop2 = undefined
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1275,7 +1255,11 @@ Wert:</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

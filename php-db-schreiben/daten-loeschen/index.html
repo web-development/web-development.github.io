@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -51,11 +51,10 @@ das als Parameter die <code>id</code> der Person erhält, die gelöscht werden s
 
 <div class="example">
 <h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
-<pre class="lang-php prettyprint linenums">
-$id   = $_POST[&#39;id&#39;];
+<pre><code class="language-php  linenums">$id   = $_POST[&#39;id&#39;];
 $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
 // Beispielcode mit Sicherheitslücke - NICHT verwenden!
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
@@ -68,13 +67,12 @@ In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1<
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular für die Attacke auf das Skript person_delete.php</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;post&quot; 
+<pre><code class="language-html  linenums">&lt;form method=&quot;post&quot; 
       action=&quot;http://somedomain.at/person_delete.php&quot;&gt;
     &lt;input type=&quot;hidden&quot; value=&quot;9 OR 1=1&quot; name=&quot;id&quot;/&gt;
     &lt;input type=&quot;submit&quot; value=&quot;del all&quot;/&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -84,9 +82,8 @@ In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1<
 <p>Das führt dazu, dass folgendes SQL-Statement ausgeführt wird:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-DELETE FROM users WHERE id=9 OR 1=1
-</pre></div>
+<pre><code class="language-sql  linenums">DELETE FROM users WHERE id=9 OR 1=1
+</code></pre></div>
 
 <p>Und dieses Statement löscht nicht einen Datensatz sondern alle Datensätze. Diese
 Art von Attacke auf eine Web-Applikation nennt man „SQL Injection“, weil Alyssa
@@ -104,14 +101,13 @@ z.B. mit der Funktion <code>filter_var</code>:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit filter_var</small></h4>
-<pre class="lang-php prettyprint linenums">
-if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
+<pre><code class="language-php  linenums">if( ! $id = filter_var( $_GET[&#39;id&#39;], FILTER_VALIDATE_INT ) ) {
   echo(&quot;Hack detected: Police will arrive shortly.&quot;);
   echo(&quot;variable id is false!&quot;);
   exit;
 }
 $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -124,13 +120,12 @@ Filter von <code>filter_var</code> gibt - also fast nie.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Eingabeprüfung mit Regular Expression</small></h4>
-<pre class="lang-php prettyprint linenums">
-if( ! preg_match( &#39;/^\d+$/&#39;, $id ) ) {
+<pre><code class="language-php  linenums">if( ! preg_match( &#39;/^\d+$/&#39;, $id ) ) {
     error_log(&quot;hack: $id statt id in person_delete.php.&quot;);
     echo(&quot;Hack detected. Police will arrive shortly.&quot;);
     exit;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -159,10 +154,9 @@ anrichten.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>DELETE mit prepared statement</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(&quot;DELETE FROM users WHERE id = ?&quot;);
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;prepare(&quot;DELETE FROM users WHERE id = ?&quot;);
 $sth-&gt;execute(array($id));
-</pre></div>
+</code></pre></div>
 
 <p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine
 normale query zu wiederholen.</p>
@@ -179,18 +173,16 @@ vorgesehen haben.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>SELECT mit Sicherheitslücke!</small></h4>
-<pre class="lang-php prettyprint linenums">
-$id   = $_POST[&#39;id&#39;];
+<pre><code class="language-php  linenums">$id   = $_POST[&#39;id&#39;];
 $dbh-&gt;exec(&quot;SELECT * FROM comments WHERE id=$id&quot;);  
 // Beispielcode mit Sicherheitslücke - NICHT verwenden!
-</pre></div>
+</code></pre></div>
 
 <p>Die Attacke mit <code>1=1</code> ermöglicht das Lesen von Datensätzen aus derselben Tabelle:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-SELECT * FROM comments WHERE id=9 OR 1=1
-</pre></div>
+<pre><code class="language-sql  linenums">SELECT * FROM comments WHERE id=9 OR 1=1
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -202,25 +194,22 @@ ganz anderen Informationsquellen lesen:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>verwundbarer code</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
+<pre><code class="language-php  linenums">$query = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
 $dbh-&gt;query($query);
-</pre></div>
+</code></pre></div>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>attacke</small></h4>
-<pre class="lang-shell prettyprint linenums">
-hallo&#39; UNION SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%
-</pre></div>
+<pre><code class="language-shell  linenums">hallo&#39; UNION SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%
+</code></pre></div>
 
 <p>Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-  SELECT id, name FROM cities WHERE name = &#39;hallo&#39; 
+<pre><code class="language-sql  linenums">  SELECT id, name FROM cities WHERE name = &#39;hallo&#39; 
   UNION 
   SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%&#39;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
@@ -232,11 +221,10 @@ immer prepared Statements!</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>sicherer code</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query = &quot;SELECT id, name FROM cities WHERE name=?&quot;;
+<pre><code class="language-php  linenums">$query = &quot;SELECT id, name FROM cities WHERE name=?&quot;;
 $sth = $dbh-&gt;prepare($query);
 $sth-&gt;execute( array($name) );
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
@@ -1269,7 +1257,11 @@ zu tun: Löschen, Einfügen, Bearbeiten soll nur nach dem Login möglich sein!</
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

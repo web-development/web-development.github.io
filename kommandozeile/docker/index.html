@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -116,12 +116,11 @@ Host-System “drauf-gesetzt” werden kann.</p>
 welche images schon vorhanden sind:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ docker images
+<pre><code class="language-shell  linenums">$ docker images
 REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
 tb-web-development   latest    b0adb8f50f6c   11 days ago    1.64GB
 pandoc/latex         latest    5c1d8e5aafcd   2 months ago   654MB
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -136,11 +135,10 @@ zu lesen: <a href="https://hub.docker.com/search?q=">explore</a>.</p>
 
 <p>Auf der Kommandozeile sieht das so aus:</p>
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-docker login
+<pre><code class="language-shell  linenums">docker login
 docker pull pandoc/latex:latest
 docker pull ubuntu:latest
-</pre></div>
+</code></pre></div>
 
 <p>Images haben immer einen Namen und eine Versionsbezeichnung, getrennt durch einen Doppelpunkt.</p>
 
@@ -157,18 +155,16 @@ welche Container gerade laufen. So sieht das z.B. aus wenn
 gitlab in einem container läuft:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
- docker ps
+<pre><code class="language-shell  linenums"> docker ps
 CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS                PORTS                                        NAMES
 cdf2ad32e7fc        gitlab/gitlab-ce:latest   &quot;/assets/wrapper&quot;   2 days ago          Up 2 days (healthy)   193.171.143.2:22-&gt;22/tcp, 193.171.143.2:80-&gt;80/tcp, 193.171.143.2:443-&gt;443/tcp, 193.171.143.2:5050-&gt;5050/tcp, 193.171.143.4:80-&gt;8079/tcp   gitlab_web_1
-</pre></div>
+</code></pre></div>
 
 <p>Auf dem server project.multimediatechnology.at laufen sehr viele Projekte in verschiedenen
 docker containern, hier ein kurzer Auszug:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-# docker ps
+<pre><code class="language-shell  linenums"># docker ps
 CONTAINER ID IMAGE                           COMMAND                  CREATED       STAT
 12246a07     dokku/skinavie:latest           &quot;/start web&quot;             3 days ago    Up 3 days
 f4b9c5ab     dokku/stempelheft:latest        &quot;/exec rails console&quot;    3 days ago    Up 3 days
@@ -181,22 +177,20 @@ a3fd20b7     dokku/fago:latest               &quot;/start web&quot;             
 1732d49a     dokku/soundlink:latest          &quot;/start web&quot;             3 months ago  Up 3 months
 55af4cf7     dokku/aupair_app:latest         &quot;/start web&quot;             3 months ago  Up 3 months
 b0a10815     dokku/knotenpunkt:latest        &quot;/start web&quot;             4 months ago  Up 4 months
-</pre></div>
+</code></pre></div>
 
 <p>Mit dem Kommandozeilenbefehl <code>docker run</code> kann man einen Container starten:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-docker run pandoc/latex
-</pre></div>
+<pre><code class="language-shell  linenums">docker run pandoc/latex
+</code></pre></div>
 
 <p>Dieser Container läuft kurz und stoppt von selbst wieder.  Er hinterlässt einen
 abgeschaltenen Container. Besser wäre:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-docker run --rm pandoc/latex
-</pre></div>
+<pre><code class="language-shell  linenums">docker run --rm pandoc/latex
+</code></pre></div>
 
 <p>Tut immer noch nicht sinnvolles, aber hinterlässt auch keine zusätzlichen Daten.</p>
 
@@ -211,23 +205,21 @@ docker run --rm pandoc/latex
 im Host-Dateisystem nicht vorhanden.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ docker run --rm -ti ubuntu
+<pre><code class="language-shell  linenums">$ docker run --rm -ti ubuntu
 root@87712b76b86a:/# ls
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@87712b76b86a:/# touch tmp/brigitte_war_hier
 root@87712b76b86a:/# ls tmp/
 brigitte_war_hier
-</pre></div>
+</code></pre></div>
 
 <p>Wird derselbe Container später nochmal gestartet ist das Dateisystem wieder im Anfangszustand.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ docker run -ti ubuntu
+<pre><code class="language-shell  linenums">$ docker run -ti ubuntu
 root@9f80c9069e71:/# ls tmp/brigitte_war_hier
 ls: cannot access &#39;tmp/brigitte_war_hier&#39;: No such file or directory
-</pre></div>
+</code></pre></div>
 
 <p>Will man etwas dauerhaft im Host Dateisystem speichern braucht man dafür ein Volume.</p>
 
@@ -241,18 +233,16 @@ ls: cannot access &#39;tmp/brigitte_war_hier&#39;: No such file or directory
 <p>Beim Start eines Containers kann man angeben, welche Pfad im echten Dateisystem mit dem Volume im container verbunden werden soll:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex
-</pre></div>
+<pre><code class="language-shell  linenums">docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex
+</code></pre></div>
 
 <p>Hier wird der Ordner <code>/Users/bjelline/devel/7</code> im Host Dateisystem verbunden mit dem Ornder <code>/data</code> im Container.</p>
 
 <p>Noch besser:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex README.md -o outfile.pdf
-</pre></div>
+<pre><code class="language-shell  linenums">docker run --rm --volume /Users/bjelline/devel/7:/data pandoc/latex README.md -o outfile.pdf
+</code></pre></div>
 
 <p>Das pandoc/latex image startet automatisch den pandoc Befehl. Der String <code>README.md -o outfile.pdf</code>
 wird an diesen Befehl als parameter übergeben.  pandoc versucht dann eine Datei <code>data/REAMDE.md</code> einzulesen,
@@ -281,12 +271,11 @@ das Dockerfile nicht mehr.</p>
 <p>Ein Beispiel:  ich will ein Image das das Kommandozeilen-Programm <code>wget</code> enthält.</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-FROM ubuntu
+<pre><code class="language-shell  linenums">FROM ubuntu
 RUN apt-get update &amp;&amp; apt-get install -y wget
 WORKDIR /data
 ENTRYPOINT [&quot;/usr/bin/wget&quot;]
-</pre></div>
+</code></pre></div>
 
 <p>Wenn ich nun mit dem Befehl <code>docker build . -t mein_wget</code> ein Image bauen lasse
 werden folgende Schritte ausgeführt:</p>
@@ -307,11 +296,10 @@ werden folgende Schritte ausgeführt:</p>
 <p>Das Ergebnis ist ein neues image mit einer eindeutigen id und dem von mir vergebenen Namen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ docker images
+<pre><code class="language-shell  linenums">$ docker images
 REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
 mein_wget      latest    4c4d9f9444d9   2 minutes ago   116MB
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -1369,7 +1357,11 @@ Derselbe Befehl nochmal mit einem Volume:</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

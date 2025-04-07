@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -161,13 +161,12 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Überprüfung von username und passwort</small></h4>
-<pre class="lang-php prettyprint linenums">
-if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
+<pre><code class="language-php  linenums">if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
     $_SESSION[&#39;USER&#39;] = $username;
     header(&quot;Location: index.php&quot;);
     exit;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
 
@@ -179,11 +178,10 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 <p>Das Logout erfolgt ebenfalls mit der Methode POST:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;form action=&quot;logout.php&quot; method=&quot;post&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;form action=&quot;logout.php&quot; method=&quot;post&quot;&gt;
       &lt;input type=&quot;submit&quot; value=&quot;Logout&quot; /&gt;
   &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -193,10 +191,8 @@ if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
 <p>Das Logout ist etwas umständlich zu Programmieren: das Cookie, das von PHP gesetzt wurde, muß man nun selbst löschen. Dazu wird das „Ablaufdatum“ des Cookies auf ein Datum in der Vergangenheit gesetzt, dann wird der Browser es löschen.</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-// Löschen aller Session-Variablen.
+<pre><code class="language-php  linenums">// Löschen aller Session-Variablen.
 $_SESSION = array();
-
 // Löscht das Session-Cookie.
 if (isset($_COOKIE[session_name()])) {
   setcookie(
@@ -208,7 +204,7 @@ if (isset($_COOKIE[session_name()])) {
 }
 session_destroy();
 header(&quot;Location: index.php&quot;);
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
@@ -220,22 +216,18 @@ header(&quot;Location: index.php&quot;);
 <p>Die Weiterleitung funktioniert nur, wenn noch keine Ausgabe erfolgt ist, also vor dem Laden der header-include-Datei. Hier am Beispiel von login:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
     $pagetitle = &quot;Login&quot;;
     include &quot;functions.php&quot;;
-
     $username = $_POST[&#39;username&#39;];
     $passwort = $_POST[&#39;passwort&#39;];
-
     if ( strlen($username) &gt; 0  and check_login( $username, $passwort ) ) {
         $_SESSION[&#39;USER&#39;] = $username;
         header(&quot;Location: index.php&quot;);
         exit;
     }
-
     include &quot;header.php&quot;;
-</pre></div>
+</code></pre></div>
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
@@ -1273,7 +1265,11 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

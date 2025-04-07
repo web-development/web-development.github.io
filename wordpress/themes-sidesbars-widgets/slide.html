@@ -5,6 +5,9 @@
     <title>Themes, Sidebars und Widgets verwenden - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -203,11 +206,10 @@ definiert.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>verweis auf den RSS-Feed im HEAD eines HTML-Dokuments</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
+<pre><code class="language-html  linenums">&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; 
       href=&quot;http://wordpress.local/?feed=rss2&quot; 
       title=&quot;Programmier-Portfolio Posts RSS feed&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -249,5 +251,12 @@ definiert.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -80,23 +80,21 @@ Angenommen ich habe eine Datei mit Pfad <code>dev/webprog2abgabe/order-mail/inde
 <p>Wenn ich den Webserver im Ordner <code>webprog2abgabe</code> starte:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-cd dev
+<pre><code class="language-shell  linenums">cd dev
 cd webprog2abgabe
 php -S localhost:4000
-</pre></div>
+</code></pre></div>
 
 <p>dann lautet die URL <code>http://localhost:4000/order-mail/index.html</code></p>
 
 <p>Wenn ich den Webserver im Ordner <code>oder-mail</code> starte:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-cd dev
+<pre><code class="language-shell  linenums">cd dev
 cd webprog2abgabe
 cd order-mail
 php -S localhost:4000
-</pre></div>
+</code></pre></div>
 
 <p>dann lautet die URL nur  <code>http://localhost:4000/index.html</code></p>
 
@@ -1164,7 +1162,11 @@ bereits installierten Dienste und kann diese starten und anhalten.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

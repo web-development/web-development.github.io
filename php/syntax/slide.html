@@ -5,6 +5,9 @@
     <title>Syntax von PHP - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -92,8 +95,7 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>HTML und PHP - der Sourcecode</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt; 
@@ -113,7 +115,7 @@
   ?&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der Quellcode besteht hier aus einem HTML-Dokument, in dem in
 Zeile 09 bis 19 PHP eingebettet ist. In den Zeilen 10 bis 14
@@ -131,8 +133,7 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>HTML und PHP - der Output</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt; 
@@ -142,7 +143,7 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
   &lt;p&gt;296 km in 2:40 sind 111 km/h&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Welcher Teil des Dokuments statisch war und welcher von PHP berechnet wurde ist nicht mehr erkennbar.</p>
 
@@ -156,31 +157,26 @@ sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>HTML und PHP - mehrere PHP-Abschnitte in einem HTML-Dokument</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt; 
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;Wilde Mischung&lt;/h1&gt;
-
   &lt;?php
     $i = 0;
     while ( $i &lt; 22 ) {
   ?&gt;
-
   &lt;p&gt;Alles Gute zum Geburtstag &lt;img src=&quot;torte.jpg&quot;&gt; !&lt;/p&gt;
-
   &lt;?php
       $i++;
     }
   ?&gt;
-
   &lt;p&gt;Und ein gutes nächstes Jahr!&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Diese Schreibweise widerspricht den Lese-Gewohnheiten von ProgrammiererInnen:
 diese Art von Verschachtelung (geschwungenen Klammern in PHP vs. HTML-Tags)
@@ -203,22 +199,18 @@ mit einem eigenen Schlüsselwort (endwhile, endif, endfor) markiert:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>HTML und PHP - While-Schleife ohne geschungene Klammern</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;h1&gt;Wilde Mischung&lt;/h1&gt;
+<pre><code class="language-html  linenums">&lt;h1&gt;Wilde Mischung&lt;/h1&gt;
 &lt;?php
   $i = 0;
   while ( $i &lt; 22 ) :
 ?&gt;
-
     &lt;p&gt;Alles Gute zum Geburtstag &lt;img src=&quot;torte.jpg&quot;&gt; !&lt;/p&gt;
-
 &lt;?php
     $i++;
   endwhile;
 ?&gt;
-
 &lt;p&gt;Und ein gutes nächstes Jahr!&lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -235,8 +227,7 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 
 <div class="example">
 <h4 class="caption">Html Code <small>HTML und PHP - Erst Berechnung, dann Ausgabe</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;?php   // Berechnung zuerst
+<pre><code class="language-html  linenums">&lt;?php   // Berechnung zuerst
   $entfernung = 296;
   $h = 2;
   $min = 40;
@@ -259,7 +250,7 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
   ?&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -273,15 +264,14 @@ kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Datei phpfunction.php enthält eine Funktion in PHP</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;?php
+<pre><code class="language-html  linenums">&lt;?php
   function calc( $entfernung, $h, $min ) {
     $zeit = $h + $min / 60;
     $kmh = $entfernung / $zeit;
     return $kmh;
   }
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Wenn diese Datei direkt aufgerufen wird (http://www.meinhost.at/phpfunctions.php)
 erscheint kein Output, aber auch keine Fehlermeldung 404
@@ -299,8 +289,7 @@ den Titel der Seite dynamisch generieren zu können:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datei header.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-php  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt; 
@@ -313,7 +302,7 @@ den Titel der Seite dynamisch generieren zu können:</p>
     &lt;li&gt;Da&lt;/li&gt;
   &lt;/ul&gt;&lt;/nav&gt;
   &lt;h1&gt;&lt;?php echo $pagetitle ?&gt;&lt;/h1&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Wenn diese Seite direkt aufgerufen wird (http://www.meinhost.at/header.php)
 erscheint der HTML-Code. Da die Variable $pagetitle nicht gesetzt ist
@@ -329,11 +318,10 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datei footer.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-  &lt;footer&gt;&amp;copy; 2012 Brigitte&lt;/footer&gt;
+<pre><code class="language-php  linenums">  &lt;footer&gt;&amp;copy; 2012 Brigitte&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -344,8 +332,7 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datei index.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php   
+<pre><code class="language-php  linenums">&lt;?php   
   include &quot;phpfunctions.php&quot;;   // kein Output!
   $pagetitle = &quot;Berechnung der Geschwindigkeit&quot;;
   $entfernung = 296;
@@ -359,7 +346,7 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
   }
   include &quot;footer.php&quot; 
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Und wieder gilt: die „Zusammensetzung“ erfolgt am Server.
 Im Client landet nur der fertige HTML-Code. Die UserIn
@@ -376,9 +363,8 @@ Sie haben im Beispielprogramm schon gesehen,
 wie Variablen einfach in Strings eingebettet werden können:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-echo &quot;$entfernung km in $h:$min sind $kmh km/h&quot;;
-</pre></div>
+<pre><code class="language-php  linenums">echo &quot;$entfernung km in $h:$min sind $kmh km/h&quot;;
+</code></pre></div>
 
 <p>Das ist nur möglich weil die Variablennamen mit einem besonderen
 Zeichen gekennzeichnet sind.</p>
@@ -393,9 +379,8 @@ zweite Schreibweise für Strings: einfache Anführungszeichen.
 Diese Variante erlaubt keine Variablen:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-echo &#39;Bei einfachen Anführungszeichen ist ein $ einfach ein $&#39;;
-</pre></div>
+<pre><code class="language-php  linenums">echo &#39;Bei einfachen Anführungszeichen ist ein $ einfach ein $&#39;;
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -407,15 +392,14 @@ und doppelten Anführungszeichen - ist das “heredoc” Schreibweise<a href="ht
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für heredoc</small></h4>
-<pre class="lang-php prettyprint linenums">
-echo &lt;&lt;&lt;EOT
+<pre><code class="language-php  linenums">echo &lt;&lt;&lt;EOT
 My name is $lastname, $firstname $lastname. 
 I am printing some $foo-&gt;foo.
 Now, I am printing some {$foo-&gt;bar[1]}.
 I can&#39;t mess up this string
 by mentioning 19&quot; racks!
 EOT;
-</pre></div>
+</code></pre></div>
 
 <p>Da der String durch “EOT” beendet wird, kann
 man beide Arten von Anführungszeichen gefahrlos verwenden.
@@ -433,13 +417,12 @@ float, string, array, object, resource und NULL.</p>
 gespeichert werden, die Variable selbst hat also keinen Typ!</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
   $foo = &quot;Hallo 🦄&quot;;   // $foo contains a string
   $foo = 2;           // $foo now contains an integer (2)
   $foo = 3.3;        // $foo now contins a float (3.3)
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -454,15 +437,14 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 <p>Je nach verwendeten Operatoren und Funktionen werden die Typen konvertiert:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
   $foo = &quot;0&quot;;         // $foo is a string with one character (ASCII 48)
   $foo = $foo + 2;    // $foo is now an integer (2)
   $foo = $foo + 1.3;  // $foo is now a float (3.3)
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
   $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -472,12 +454,11 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 <p>Betrachten wir die letzten zwei Zeilen des Codes genauer:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
   $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die Addition mit <code>+</code> interpretiert beide Summanden als Zahl.
 Falls ein Summand ein String ist, wird am Beginn
@@ -510,16 +491,14 @@ sich auf den ersten Blick auch wie erwartet:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Array in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-$foo[2] = 2008;
+<pre><code class="language-php  linenums">$foo[2] = 2008;
 $foo[3] = 2009;
 $foo[0] = &quot;Halli&quot;;
 $foo[1] = &quot;Hallo&quot;;
-
 for($i=0;$i&lt;count($foo);$i++) {
 echo(&quot;Der $i. Wert im Array ist $foo[$i]&lt;br&gt;&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -539,16 +518,14 @@ Schlüssel-Wert-Paare sind im Array weiterhin geordnet!</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Array in PHP ist auch ein assoziatives Array (Hashmap)</small></h4>
-<pre class="lang-php prettyprint linenums">
-$foo[2] = 2008;
+<pre><code class="language-php  linenums">$foo[2] = 2008;
 $foo[3] = 2009;
 $foo[0] = &quot;Halli&quot;;
 $foo[1] = &quot;Hallo&quot;;
-
 foreach( $foo as $key =&gt; $value ) {
     echo(&quot;Zum Schlüssel $key ist der Wert \$value gespeichert&lt;br /&gt;&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -560,15 +537,14 @@ kleinsten (noch nicht verwendet) Integer-Zahl als Schlüssel gespeichert werden:
 
 <div class="example">
 <h4 class="caption">Php Code <small>Einfügen in ein Array in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-$foo[2] = 2008;
+<pre><code class="language-php  linenums">$foo[2] = 2008;
 $foo[3] = 2009;
 $foo[0] = &quot;Halli&quot;;
 $foo[1] = &quot;Hallo&quot;;
 $foo[&#39;dies&#39;] = &quot;etwas Nahes&quot;;
 $foo[&#39;das&#39;]  = &quot;etwas Fernes&quot;;
 $foo[] = &quot;das Nächste&quot;;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -590,14 +566,13 @@ diese im Abschnitt <a href="http://at.php.net/manual/de/ref.array.php">→Array-
 
 <div class="example">
 <h4 class="caption">Php Code <small>Funktion in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-function foo($arg_1, $arg_2 = &quot;Euro&quot;) {
+<pre><code class="language-php  linenums">function foo($arg_1, $arg_2 = &quot;Euro&quot;) {
   $a = 1 * 2;
   return $a . $arg_2;
 }
 $x = foo(10);
 $y = foo(20, &quot;Pfund&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Die Schreibweise von Funktionen inklusive Argumentliste und
 Rückgabewert ist leicht verständlich.</p>
@@ -612,8 +587,7 @@ für erfahrene ProgrammiererInnen ist das Scoping von globalen Variablen:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Globale Variablen und Funktionen in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-$pi = 3.141;
+<pre><code class="language-php  linenums">$pi = 3.141;
 function inhalt($radius) {
   return $radius * $radius * $pi;
 }
@@ -621,7 +595,7 @@ $r = 10;
 $a = inhalt($r);
 echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 // ergibt 0 !
-</pre></div>
+</code></pre></div>
 
 <p>Dieses Programm funktioniert nicht wie erwartet, da innerhalb
 einer Funktion kein Zugriff auf die außerhalb definierten Variablen
@@ -638,8 +612,7 @@ und ist dann auch innerhalb der Funktion sichtbar, lesbar und veränderbar.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Globale Variablen und Funktionen in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-$pi = 3.141;
+<pre><code class="language-php  linenums">$pi = 3.141;
 function inhalt($radius) {
   global $pi;
   return $radius * $radius * $pi;
@@ -648,7 +621,7 @@ $r = 10;
 $a = inhalt($r);
 echo(&quot;ein Kreis mit Radius $r hat eine Fläche von $a&quot;);
 // korrekte Berechnung und Ausgabe
-</pre></div>
+</code></pre></div>
 
 <p>Siehe auch <a href="http://php.net/manual/de/language.variables.scope.php">PHP Dokumentation: Geltungsbereich von Variablen</a></p>
 
@@ -736,5 +709,12 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

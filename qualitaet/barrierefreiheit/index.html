@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -168,20 +168,17 @@ und Datumsangaben darzustellen. Ebenso von Vorleseprogrammen, Suchmaschinen, Üb
 <p>Den Standardwert setzt man im <code>html</code>-Tag. In jedem Tag kann man lokal die Sprache ändern:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;de&quot;&gt;
 &lt;head&gt;
     &lt;title&gt;Lieblingsbücher&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;Meine Lieblingsbücher&lt;/h1&gt;
-
     &lt;p lang=&quot;en&quot;&gt;Neal Stephenson: &lt;q&gt;Diamond Age&lt;/q&gt;&lt;/p&gt;
-
 &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Siehe auch <a href="https://www.w3.org/International/questions/qa-lang-why">w3c: Why use the lang attribute?</a></p>
 
@@ -273,12 +270,11 @@ Rolle explizit mit dem <code>role</code> Attribut definieren:</p>
 </table>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form role=&quot;search&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form role=&quot;search&quot;&gt;
   &lt;input type=&quot;search&quot; aria-label=&quot;search text&quot; size=&quot;20&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Search&quot;&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Siehe auch <a href="https://www.w3.org/WAI/ARIA/apg/example-index/landmarks/search.html">w3c: ARIA Landmarks Example</a></p>
 
@@ -300,11 +296,10 @@ zuverlässigeren Ergebnissen.</p>
 um die maximal zulässige Anzahl von Zeichen in einer Zei festzulegen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-p {
+<pre><code class="language-css  linenums">p {
     max-width: 65ch;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -314,29 +309,25 @@ p {
 <p>Wenn ein Bild nur <strong>dekorativ</strong> ist, sollte man ein leeres alt-Attribut setzen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;zierleiste.png&quot; alt=&quot;&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;img src=&quot;zierleiste.png&quot; alt=&quot;&quot;&gt;
+</code></pre></div>
 
 <p>Bilder die <strong>Information</strong> liefern brauchen ein kurzes alt-Attribut.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;fhs.png&quot; alt=&quot;FH Salzburg in Puch Urstein, Ansicht des Haupteingangs.&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;img src=&quot;fhs.png&quot; alt=&quot;FH Salzburg in Puch Urstein, Ansicht des Haupteingangs.&quot;&gt;
+</code></pre></div>
 
 <p>Falls das Bild als <strong>Link</strong> dient, ist es wichtiger das Link-Ziel zu beschreiben:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;a href=&quot;https://www.fh-salzburg.ac.at/&quot;&gt;&lt;img src=&quot;fhs.png&quot; alt=&quot;Link: Homepage der FH Salzburg&quot;&gt;&lt;/a&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;a href=&quot;https://www.fh-salzburg.ac.at/&quot;&gt;&lt;img src=&quot;fhs.png&quot; alt=&quot;Link: Homepage der FH Salzburg&quot;&gt;&lt;/a&gt;
+</code></pre></div>
 
 <p>Längere Informationen kann man in eine <strong>Bildunterschrift</strong> geben, wo sie Allen zugute kommen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;figure&gt;
+<pre><code class="language-html  linenums">&lt;figure&gt;
   &lt;img src=&quot;anreise.png&quot; alt=&quot;Landkarte&quot;&gt;
   &lt;figcaption&gt;
     Anreise per S-Bahn von der Stadt Salzburg: S3 bis Haltestelle
@@ -346,7 +337,7 @@ p {
     landen sie direkt am Eingang zum Gasthaus.
   &lt;/figcaption&gt;
 &lt;/figure&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -1419,7 +1410,11 @@ es ist ein guter Start.  Das Web macht - ohne dass wir etwas tun müssen - schon
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

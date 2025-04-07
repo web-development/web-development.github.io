@@ -5,6 +5,9 @@
     <title>DOM - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -96,12 +99,11 @@ Ein Node ist ein Knoten DOM-Baum, entspricht also einem HTML-Tag oder einem Stü
 <h2 id="eine-node-finden">Eine Node finden</h2>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.getElementById()            /* liefert 1 Node  */
+<pre><code class="language-javascript  linenums">document.getElementById()            /* liefert 1 Node  */
 document.getElementsByTagName(&quot;li&quot;) /*       Array   */
 document.querySelectorAll(&quot;li a&quot;)  /* liefert mit CSS Selector ein Array   */
 document.querySelector(&quot;h1&quot;)      /* liefert mit CSS Selector nur die erste Node  */
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -109,15 +111,13 @@ document.querySelector(&quot;h1&quot;)      /* liefert mit CSS Selector nur die 
 <h2 id="von-node-zu-node-weitergehen">Von Node zu Node weitergehen</h2>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let p = node.parentNode   /* liefert 1 Node          */
+<pre><code class="language-javascript  linenums">let p = node.parentNode   /* liefert 1 Node          */
 let c = node.childNodes   /* liefert Array von Nodes */
-
 node.firstChild
 node.lastChild
 node.previousSibling
 node.nextSibling
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -125,11 +125,10 @@ node.nextSibling
 <h2 id="daten-auslesen-und-setzen">Daten auslesen und setzen</h2>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-node.innerHTML = &quot;&lt;p&gt;neu und &lt;strong&gt;wichtig&lt;/strong&gt;&lt;/p&gt;&quot;
+<pre><code class="language-javascript  linenums">node.innerHTML = &quot;&lt;p&gt;neu und &lt;strong&gt;wichtig&lt;/strong&gt;&lt;/p&gt;&quot;
 node.innerText = &quot;nur text&quot;;
 node.style.backgroundColor = &quot;red&quot;;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -139,17 +138,15 @@ node.style.backgroundColor = &quot;red&quot;;
 <p>Ein bestimmter Tag wird über die ID ausgewählt und sein Style-Attribut gesetzt:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let d = document.getElementById(&quot;person_25&quot;);
+<pre><code class="language-javascript  linenums">let d = document.getElementById(&quot;person_25&quot;);
 d.style.display = &quot;none&quot;;
-</pre></div>
+</code></pre></div>
 
 <p>Diese beiden Zeilen könnten auch zu einer kombiniert werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.getElementById(&quot;person_25&quot;).style.display = &quot;none&quot;;
-</pre></div>
+<pre><code class="language-javascript  linenums">document.getElementById(&quot;person_25&quot;).style.display = &quot;none&quot;;
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -160,14 +157,13 @@ document.getElementById(&quot;person_25&quot;).style.display = &quot;none&quot;;
 man eine Klasse setzen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.getElementById(&quot;person_25&quot;).classList.add(&#39;sichtbar&#39;);
+<pre><code class="language-javascript  linenums">document.getElementById(&quot;person_25&quot;).classList.add(&#39;sichtbar&#39;);
 document.getElementById(&quot;person_25&quot;).classList.remove(&#39;sichtbar&#39;);
 document.getElementById(&quot;person_25&quot;).classList.toggle(&#39;sichtbar&#39;);
 if( document.getElementById(&quot;person_25&quot;).classList.contains(&#39;sichtbar&#39;) ) {
   // wird nur ausgeführt falls person sichtbar
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -178,14 +174,13 @@ if( document.getElementById(&quot;person_25&quot;).classList.contains(&#39;sicht
 <code>document.querySelector()</code>  (liefert erste node)</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let inputs = document.querySelectorAll(&quot;input&quot;);
+<pre><code class="language-javascript  linenums">let inputs = document.querySelectorAll(&quot;input&quot;);
 let i=0;
 while(i &lt; inputs.length) {
   console.log(&quot;input mit name &quot; + inputs[i].name );
   i++;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -195,14 +190,12 @@ while(i &lt; inputs.length) {
 <p>Den eigentlichen Text der HTML-Seite kann man als data eines Text-Nodes auslesen.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;span id=&quot;v_25&quot; class=&quot;vorname&quot;&gt;Benjamin&lt;/span&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;span id=&quot;v_25&quot; class=&quot;vorname&quot;&gt;Benjamin&lt;/span&gt;
+</code></pre></div>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let vn = document.getElementById(&quot;v_25&quot;).innerText;
-</pre></div>
+<pre><code class="language-javascript  linenums">let vn = document.getElementById(&quot;v_25&quot;).innerText;
+</code></pre></div>
 
 <p><code>innerText</code> funktioniert auch bei Nodes die noch weitere verschachtelte
 Tags enthalten und extrahiert immer den gesamten Text aus allen sichtbaren “Blättern” des DOM-Baums.</p>
@@ -214,8 +207,7 @@ Tags enthalten und extrahiert immer den gesamten Text aus allen sichtbaren “Bl
 <p>Noch einmal eine Liste der wichtigen Objekte, Methoden, Eigenschaften die für das Erzeugen, Zerstören oder Verändern des DOM notwendig sind:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-let node = document.createElement(&quot;h1&quot;);
+<pre><code class="language-javascript  linenums">let node = document.createElement(&quot;h1&quot;);
        // erzeugt eine Node, Tag-Name angeben
 node.innerHTML = &quot;bla &lt;strong&gt;bla&lt;/strong&gt; bla&quot;;
        // Zugriff auf den &quot;Inhalt&quot; der node als String,
@@ -234,7 +226,7 @@ node.replaceChild(newchild, oldchild)
        // ersetzt kind oldchild durch kind newchild
 node.setAttribute(&#39;value&#39;, 42)  // setzt ein attribut
 node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -244,9 +236,8 @@ node.removeAttribute(&#39;value&#39;)   // löscht ein attribute
 <p>Das Einfügen eines ganz neuen Elements in die Webseite ist am einfachsten mit der Eigenschaft <code>innerHTML</code>:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt;new&lt;/b&gt;&lt;/p&gt;&quot;;
-</pre></div>
+<pre><code class="language-javascript  linenums">document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt;new&lt;/b&gt;&lt;/p&gt;&quot;;
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -256,8 +247,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 <p>Mit <code>cloneNode</code> kann man einen ganzen Teil-Baum duplizieren, und wo anders wieder einfügen. So kann man z.B. in einem Pizza-Bestell-Formular die Eingabeelement für eine Pizza in einer div zusammenfassen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;div class=&quot;pizza&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;div class=&quot;pizza&quot;&gt;
     &lt;p&gt;
       &lt;select name=&quot;pizzatype[]&quot;&gt;
         &lt;option&gt;Magaritha&lt;/option&gt;
@@ -267,7 +257,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
       ...
     &lt;/p&gt;
   &lt;/div&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -277,11 +267,10 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 <p>Dieses div kann man dann clonen, falls man mehrere Pizzen braucht:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  let  first_pizza = document.querySelector(&quot;div.pizza&quot;);
+<pre><code class="language-javascript  linenums">  let  first_pizza = document.querySelector(&quot;div.pizza&quot;);
   let  new_pizza = first_pizza.cloneNode(true);
   first_pizza.insertBefore(new_pizza, null);
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/javascript-dom/example_js_add_to_form.html">Beispiel live im Browser</a></p>
 
@@ -293,8 +282,7 @@ document.querySelector(&quot;body&quot;).innerHTML = &quot;&lt;p&gt;All &lt;b&gt
 wie Event-Handler direkt im HTML definiert werden können:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form&gt;
+<pre><code class="language-html  linenums">&lt;form&gt;
   &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  onclick=&quot;setcolor(&#39;red&#39;)&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Grün&quot; onclick=&quot;setcolor(&#39;#0F0&#39;)&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Blau&quot; onclick=&quot;setcolor(&#39;blue&#39;)&quot;&gt;
@@ -305,7 +293,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
     b.style.backgroundColor = c
   }
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Mit der Methode <code>addEventListener</code> kann das auch von Javascript aus erfolgen.</p>
 
@@ -318,8 +306,7 @@ wie Event-Handler direkt im HTML definiert werden können:</p>
 müssen wir eine id hinzufügen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form&gt;
+<pre><code class="language-html  linenums">&lt;form&gt;
   &lt;input type=&quot;button&quot; value=&quot;Rot&quot;  id=&quot;r&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Grün&quot; id=&quot;g&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Blau&quot; id=&quot;b&quot;&gt;
@@ -333,7 +320,7 @@ müssen wir eine id hinzufügen:</p>
   document.getElementById(&#39;g&#39;).addEventListener(&#39;click&#39;, setcolor);
   document.getElementById(&#39;b&#39;).addEventListener(&#39;click&#39;, setcolor);
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Wir haben aber ein Problem: der Methode <code>addEventListern</code> wird als
 zweites Argument die Methode <code>setcolor</code> übergeben.  Das ist nicht dasselbe
@@ -352,8 +339,7 @@ Wir müssen also einen Weg finden die Farbe direkt aus dem Button auzulesen.
 So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form&gt;
+<pre><code class="language-html  linenums">&lt;form&gt;
   &lt;input type=&quot;button&quot; value=&quot;Rot&quot;
          style=&quot;background-color:red&quot;  id=&quot;r&quot;&gt;
   &lt;input type=&quot;button&quot; value=&quot;Grün&quot;
@@ -370,7 +356,7 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
   document.getElementById(&#39;g&#39;).addEventListener(&#39;click&#39;, setcolor);
   document.getElementById(&#39;b&#39;).addEventListener(&#39;click&#39;, setcolor);
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Programm <a href="/images/javascript-dom/farbfeld-dom.html">live im browser</a></p>
 
@@ -386,15 +372,14 @@ So können wir zum Beispiel die Hintergrundfarbe des Buttons verwenden:</p>
 <p>Im HTML-Code fügen wir dafür einen span-Tag ein:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
- &lt;div class=&quot;pizza&quot;&gt;
+<pre><code class="language-html  linenums"> &lt;div class=&quot;pizza&quot;&gt;
     &lt;p&gt;
       &lt;span class=&quot;removethis&quot;&gt;x&lt;/span&gt;
       &lt;select name=&quot;pizzatype[]&quot;&gt;…&lt;/select&gt;
       …
     &lt;/p&gt;
   &lt;/div&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -407,15 +392,14 @@ funktion removeMe. Mit addEventListener können wir dann die Funktion als
 zuständig für das click-event am spam <code>.removthis</code> definieren.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-function removeMe(e){
+<pre><code class="language-javascript  linenums">function removeMe(e){
   let me = e.target;
   let my_pizza = me.parentNode.parentNode;
   my_pizza.parentNode.removeChild( my_pizza );
 }
 document.querySelector(&quot;.removethis&quot;)
         .addEventListener(&quot;click&quot;, removeMe);
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -466,5 +450,12 @@ document.querySelector(&quot;.removethis&quot;)
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

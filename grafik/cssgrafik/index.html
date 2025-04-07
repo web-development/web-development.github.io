@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -76,14 +76,13 @@ Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
 <p><img src="/images/dreieck.png" srcset="/images/dreieck.png 1x, /images/dreieck@2x.png 2x"  alt="Bild der Dreiecks" ></p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#triangle-up {
+<pre><code class="language-css  linenums">#triangle-up {
    width: 0; height: 0;
    border-left: 50px solid transparent;
    border-right: 50px solid transparent;
    border-bottom: 100px solid red;
 }
-</pre></div>
+</code></pre></div>
 
 <p>An einem Standard für CSS Shapes wird gearbeitet, es gibt aber noch
 keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Draft: CSS Shapes</a>.</p>
@@ -126,12 +125,10 @@ keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Dr
 </style>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#motion-demo {
+<pre><code class="language-css  linenums">#motion-demo {
   offset-path: path(&quot;M20,20 C20,100 200,0 200,100&quot;);
   animation: move 3000ms infinite alternate ease-in-out;
 }
-
 @keyframes move {
   0% {
     offset-distance: 0%;
@@ -142,7 +139,7 @@ keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Dr
     background: cyan;
   }
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -1187,7 +1184,11 @@ für ihr Problem wählen. Bei Grafik kann das ganz oft einfaches HTML + CSS sein
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

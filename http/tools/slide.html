@@ -5,6 +5,9 @@
     <title>Werkzeuge - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -145,11 +148,10 @@ In dieser Ansicht kann man gut sehen wie lange die Beantwortung jeweils dauert:<
 Hier ein Beispiel:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-curl &#39;http://users.fh-salzburg.ac.at/~bjelline/u2/bestellung.php&#39;
+<pre><code class="language-shell  linenums">curl &#39;http://users.fh-salzburg.ac.at/~bjelline/u2/bestellung.php&#39;
   -H &#39;Cookie: _ga=GA1.3.1837452953.1440699405&#39; 
   --data &#39;anzahl=a&amp;adresse=1&#39;
-</pre></div>
+</code></pre></div>
 
 <p>Aus dem Firefox Network Monitor kann man zu jedem Request den entsprechenden
 curl Befehl heraus kopieren:</p>
@@ -195,5 +197,12 @@ curl Befehl heraus kopieren:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

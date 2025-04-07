@@ -5,6 +5,9 @@
     <title>XML und Javascript - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -96,11 +99,10 @@ es mit den gleichen Methoden manipulieren.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Element einfügen in HML</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var container = document.getElementById(&#39;container&#39;);
+<pre><code class="language-javascript  linenums">var container = document.getElementById(&#39;container&#39;);
 div = document.createElement(&quot;div&quot;);
 container.appendChild( div );
-</pre></div>
+</code></pre></div>
 
 <p>In folgendem Beispiel ist XML (hier: SVG) direkt in HTML eingebettet.
 Der SVG-Tag kann genau so gefunden werden wie ein HTML tag.
@@ -109,14 +111,13 @@ neuen Elements: hier muss die Methode <code>createElementNS</code> verwendet wer
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Element einfügen in XML (SVG)</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var svg = document.getElementsByTagName(&#39;svg&#39;)[0];
+<pre><code class="language-javascript  linenums">var svg = document.getElementsByTagName(&#39;svg&#39;)[0];
 circle = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;circle&quot;);
 circle.setAttribute(&quot;cx&quot;, 10);
 circle.setAttribute(&quot;cy&quot;, 10);
 circle.setAttribute(&quot;r&quot;, 10);
 svg.appendChild( circle );  
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/js-und-xml-dom.html">demo</a></p>
 
@@ -136,15 +137,13 @@ Request abgeschickt, hier könnte man noch den HTTP-Request Body als
 String übergeben.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-xhttp = new XMLHttpRequest();
+<pre><code class="language-javascript  linenums">xhttp = new XMLHttpRequest();
 xhttp.open(&quot;GET&quot;, &quot;stark.xml&quot;, false);
 xhttp.send(null);
-
 xmlDoc = xhttp.responseXML;
 var first = xmlDoc.getElementsByTagName(&quot;person&quot;)[0];
 document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/load-xml.html">demo</a></p>
 </div>
@@ -187,5 +186,12 @@ document.getElementById(&#39;output&#39;).value = first.firstChild.nodeValue;
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

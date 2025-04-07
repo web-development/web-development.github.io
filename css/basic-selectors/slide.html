@@ -5,6 +5,9 @@
     <title>CSS Selektoren - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -118,9 +121,8 @@ die Darstellung des HTML-Dokuments als Baum:</p>
 zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  li { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  li { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-type.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -134,9 +136,8 @@ Das Komma entspricht einem “Oder”: selektiert werden Tags die entweder <code
 oder <code>h2</code>, oder <code>a</code>:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  h1,h2,a { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  h1,h2,a { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-group.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -157,9 +158,8 @@ eines <code>div</code> sind:</p>
 <p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div a { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">  div a { color: red; }
+</code></pre></div>
 
 <p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -175,13 +175,12 @@ eines <code>div</code> sind:</p>
 <p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     &amp; a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
 
@@ -189,28 +188,26 @@ eines <code>div</code> sind:</p>
 rein schreiben:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     border: 1px gray solid;
     padding: 10px;
     &amp; a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p>Und man kann das kaufmännische Und weglassen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  div {
+<pre><code class="language-css  linenums">  div {
     border: 1px gray solid;
     padding: 10px;
     a {
       color: red;
     }
   }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css/nested.html">Demo: Verschachteltes CSS</a></p>
 
@@ -224,11 +221,10 @@ rein schreiben:</p>
 <p>Die Default Einstellung der Browser entspricht ungefähr folgendem CSS:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:any-link { text-decoration: underline; }
+<pre><code class="language-css  linenums">  a:any-link { text-decoration: underline; }
   a:link    { color:blue; }
   a:visited { color:#FF00FF; }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -238,14 +234,13 @@ rein schreiben:</p>
 <p>Im folgenden Beispiel werden die Links mit einem Icon markiert:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  a:link, a:visited {
+<pre><code class="language-css  linenums">  a:link, a:visited {
      background-image:    url(icon-link.gif);
      background-position: center right;
      background-repeat:   no-repeat;
      padding-right:       9px;
   }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css/link-icon.html">Demo</a></p>
 
@@ -307,5 +302,12 @@ rein schreiben:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

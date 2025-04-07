@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -59,14 +59,13 @@ man die Eingabe in einem Text-Eingabefeld prüfen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
   ...
   &lt;input type=&quot;text&quot;  name=&quot;fullname&quot; required minlength=&quot;4&quot; maxlength=&quot;8&quot;&gt;
   ...
   &lt;input type=&quot;submit&quot; value=&quot;Bestellen&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 <p>So sieht das Formular im Browser aus:</p>
 
@@ -87,13 +86,12 @@ mit dem Namen “Regular Expression”.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular mit pattern</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;anmeldung.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;anmeldung.php&quot;&gt;
   FH E-Mail Adresse:
   &lt;input type=&quot;email&quot;  name=&quot;email&quot; pattern=&quot;@fh-salzburg.ac.at$&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Anmeldung&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -104,11 +102,10 @@ mit dem Namen “Regular Expression”.</p>
 CSS selektieren:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-:invalid {
+<pre><code class="language-css  linenums">:invalid {
   box-shadow: 0px 0px 5px red;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -1135,7 +1132,11 @@ CSS selektieren:</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -63,17 +63,15 @@ ausführen lassen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
+<pre><code class="language-javascript  linenums">function later() {
   console.log(&quot;3 Sekunden später&quot;, Date.now());
 }
-
 console.log(&quot;tick&quot;, Date.now());
 setTimeout(later, 3000);
 console.log(&quot;tock&quot;, Date.now());
 console.log(&quot;tick&quot;, Date.now());
 console.log(&quot;tock&quot;, Date.now());
-</pre></div>
+</code></pre></div>
 
 <p>(Programm in die Konsole kopieren und ausprobieren!)</p>
 
@@ -86,8 +84,7 @@ console.log(&quot;tock&quot;, Date.now());
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
+<pre><code class="language-javascript  linenums">function later() {
   console.log(&quot;0 Sekunden später?&quot;, Date.now());
 }
 console.log(&quot;tick&quot;, Date.now());
@@ -95,26 +92,25 @@ setTimeout(later, 0);
 console.log(&quot;tock&quot;, Date.now());
 console.log(&quot;tick&quot;, Date.now());
 console.log(&quot;tock&quot;, Date.now());
-</pre></div>
+</code></pre></div>
 
 <p>Zwei Ergebnisse wären möglich:</p>
 
 <div class="example twopane">
-<pre class="lang-shell prettyprint linenums left">
-Variante A: passiert sofort
+<pre><code class="language-shell linenums left">Variante A: passiert sofort
 tick
 0 Sekunden später?
 tock
 tick
 tock
-</pre><pre class="lang-shell prettyprint linenums right">
+</code></pre><pre><code class="language-shell linenums right">
 Variante B: Programm läuft durch bis zum Ende
 tick
 tock
 tick
 tock
 0 Sekunden später?
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -126,8 +122,7 @@ sonder läuft bis zum Ende durch.  Hier nochmal mit mehr Ausgaben:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function later() {
+<pre><code class="language-javascript  linenums">function later() {
   console.log(&quot;NICHT 0 Sekunden später!&quot;, Date.now());
 }
 console.log(&quot;tick&quot;, Date.now());
@@ -135,14 +130,13 @@ setTimeout(later, 0);
 console.log(&quot;tock&quot;, Date.now());
 console.log(&quot;tick&quot;, Date.now());
 console.log(&quot;tock&quot;, Date.now());
-
 // Output in der Konsole:
 // tick 1588059630667
 // tock 1588059630668
 // tick 1588059630668
 // tock 1588059630668
 // nicht 0 Sekunden später 1588059630669
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -1177,7 +1171,11 @@ console.log(&quot;tock&quot;, Date.now());
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -69,9 +69,8 @@ Endung <code>.js</code>. Wir werden später eine Javascript-Library namens jQuer
 Mit dem <code>script</code>-Tag wird die externe Javascript-Datei eingebunden:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
 
 <p>Wird der <code>script</code>-Tag auf diese Weise (mit dem Attribut src) verwendet, dann darf er
 keinen Inhalt zwischen <code>&lt;script&gt;</code> und <code>&lt;/script&gt;</code> enthalten. Achtung:
@@ -80,9 +79,8 @@ die Schreibweise ohne Ende-Tag: <code>&lt;script src="jquery"&gt;</code> ist nic
 <p>Man kann das Javascript Programm auch von einem anderen Server laden, zum Beispiel von einem <a href="https://de.wikipedia.org/wiki/Content_Delivery_Network">CDN</a>.  Dann verwendet man zusätzlich noch das <code>integrity</code> attribut, um sicher zu Stellen dass genau der Javascript-Code geladen wird, den man haben wollte, und ihn niemand verändert hat:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot; integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot; integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+</code></pre></div>
 
 <p><img src="images/javascript-dom/sri.png"  alt="" ></p>
 
@@ -95,8 +93,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <a href="/images/javascript-dom/countdown.html">live im Browser</a></p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;h1&gt;Selbstzerstörung&lt;/h1&gt;
+<pre><code class="language-html  linenums">  &lt;h1&gt;Selbstzerstörung&lt;/h1&gt;
   &lt;script&gt;
       i=10;
       while (i&gt;0) {
@@ -105,7 +102,7 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
       }
   &lt;/script&gt;
   &lt;p&gt;&lt;strong&gt;Peng!&lt;/strong&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Dieses Programm ist übrigens ein gutes Beispiel für ein veraltetes Javascript-Programm. Die Methode <code>document.write()</code>, der hier für die Ausgabe verwendet wird, wurde durch das DOM größteteils ersetzt. Nur sehr wenige Leute müssen bei sehr wenigen Gelegenheiten noch <code>document.write()</code> verwenden - z.B. die AutorInnen der Javascript-Libaries wie John Resig von jQuery.</p>
 
@@ -117,18 +114,16 @@ werden. Das Programm wird dann beim Aufbau der Seite ausgeführt, siehe auch
 <p>Als URL kann man auch ein kleines Javascript-Programm angeben, z. B. bei einem Link:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;javascript:location=&#39;http://www.google.at/&#39;&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;a href=&quot;javascript:location=&#39;http://www.google.at/&#39;&quot;&gt;zu Google nur mit Javascript&lt;/a&gt;
+</code></pre></div>
 
 <p>Die “Javascript-in-einer-URL”- Schreibweise ist in HTML-Seiten nicht sehr sinnvoll, da sie für Browser ohne Javascript-Fähigkeit die Links unbrauchbar macht.</p>
 
 <p>Hier eine Version die dem Prinzip der „graceful degradation“ entspricht. Sie funktioniert mit und ohne Javascript sinnvoll:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm(&#39;go?&#39;); return ok;&quot;&gt;google&lt;/a&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;a href=&quot;http://www.google.at&quot; onclick=&quot;ok=confirm(&#39;go?&#39;); return ok;&quot;&gt;google&lt;/a&gt;
+</code></pre></div>
 
 <p>Ohne Javascript ist es ein ganz normaler Link zu google.</p>
 
@@ -147,9 +142,8 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
 <p>Ein Beispiel:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  &lt;body onload=&quot;...&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">  &lt;body onload=&quot;...&quot;&gt;
+</code></pre></div>
 
 <p>Das Programm wird ausgeführt, nachdem die ganze Seite geladen und fertig dargestellt ist</p>
  <div class="pagination">
@@ -1166,7 +1160,11 @@ Siehe <a href="https://youtu.be/XIGSJshYb90?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZB
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

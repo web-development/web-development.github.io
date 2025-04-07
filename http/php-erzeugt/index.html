@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -58,8 +58,7 @@ Mit dem Befehl <code>header()</code> kann dies verändert werden.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>referenziert ein Stylesheet das von PHP erzeugt wird</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;link rel=&quot;stylesheet&quot; href=&quot;style.php&quot;&gt;
@@ -69,14 +68,13 @@ Mit dem Befehl <code>header()</code> kann dies verändert werden.</p>
     &lt;p&gt;text text text&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Ein Stylesheet, das von PHP aus erzeugt wird, hat den Vorteil, dass man Variablen verwenden kann, z.B. für die Definition von Farben, die mehrmals im Stylesheet verwendet werden sollen. In folgendem Beispiel wird einfach das ganze Stylesheet mit einem echo ausgegeben:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP erzeugt CSS</small></h4>
-<pre class="lang-php prettyprint linenums">
-  &lt;?php
+<pre><code class="language-php  linenums">  &lt;?php
       $blau = &quot;rgb(0,0,255)&quot;;
   echo &quot;
   body { padding: 3em; }
@@ -86,7 +84,7 @@ Mit dem Befehl <code>header()</code> kann dies verändert werden.</p>
   }
   &quot;;
   ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -97,8 +95,7 @@ Mit dem Befehl <code>header()</code> kann dies verändert werden.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP erzeugt CSS, mit HEREDoc</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
     $blau = &quot;rgb(0,0,255)&quot;;
 echo &lt;&lt;&lt;ENDE
   body { padding: 3em; }
@@ -108,7 +105,7 @@ echo &lt;&lt;&lt;ENDE
   }
 ENDE;
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -118,8 +115,7 @@ ENDE;
 
 <div class="example">
 <h4 class="caption">Html Code <small>Dieses HTML-Dokument referenziert ein Hintergrundbild das von PHP erzeugt wird</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;!DOCTYPE html&gt;
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;style&gt;
@@ -136,7 +132,7 @@ ENDE;
     &lt;p&gt;&lt;img src=&quot;drawbackground.php&quot; /&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -147,15 +143,12 @@ ENDE;
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP erzeugt PNG</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php  // Waagrechte Linien zufälliger Länge
+<pre><code class="language-php  linenums">&lt;?php  // Waagrechte Linien zufälliger Länge
     header(&quot;Content-type: image/png&quot;);
-
     $max = 100;  // maximale Breite des Bildes
     $im = imagecreate($max, 100);
     $background_color = imagecolorallocate($im, 255, 255, 255);
     $drawing_color    = imagecolorallocate($im, 255, 0, 255);
-
     imagefill($im, 0, 0, $background_color);
     $y=0;
     while( $y &lt; 100 ) {
@@ -167,7 +160,7 @@ ENDE;
     imagepng($im);  // gibt das Bild aus
     imagedestroy($im);
 ?&gt; 
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -198,10 +191,8 @@ ENDE;
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP erzeugt XML</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
    header(&quot;Content-Type: application/xml&quot;);
-
    $bilder = glob(&quot;*.jpg&quot;);
    
    echo(&quot;&lt;bilder&gt;\n&quot;);
@@ -210,7 +201,7 @@ ENDE;
    }
    echo(&quot;&lt;/bilder&gt;\n&quot;);
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -220,13 +211,12 @@ ENDE;
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP Redirect</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
     // hier passieren wichtige Dinge ...
     header(&quot;Location: bestell_status.php&quot;);
     exit; /* fertig, nichts weiter ausgeben! */ 
 ?&gt; 
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1242,7 +1232,11 @@ ENDE;
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

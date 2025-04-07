@@ -5,6 +5,9 @@
     <title>Responsive Design - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -96,15 +99,14 @@ und die Webseite verschieden formatieren.</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS mit Mediaqueries</small></h4>
-<pre class="lang-css prettyprint linenums">
-@media screen and (max-width: 480px) {
+<pre><code class="language-css  linenums">@media screen and (max-width: 480px) {
   .column {
     width: 100px;
   }
   /* weitere Regeln für kleine Screens */
 }
 /* allgemein gültige Regeln */
-</pre></div>
+</code></pre></div>
 
 <p>Auch die Eingabemethode kann mit Mediaqueries abgefragt werden.
 Ein Smartphone oder Tablet ist meist ein Gerät ohne <code>hover</code> und
@@ -112,8 +114,7 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries für color-scheme</small></h4>
-<pre class="lang-css prettyprint linenums">
-/* smartphones, touchscreens */
+<pre><code class="language-css  linenums">/* smartphones, touchscreens */
 @media (hover: none) and (pointer: coarse) {
     /* ... */
 }/* stylus-based screens */
@@ -126,7 +127,7 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 @media (hover: hover) and (pointer: fine) {
     /* ... */
 }
-</pre></div>
+</code></pre></div>
 
 <p>siehe auch <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a> und <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports">MDN: features queries</a></p>
 
@@ -185,5 +186,12 @@ mit einem groben Cursor (<code>pointer: coarse</code>).</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

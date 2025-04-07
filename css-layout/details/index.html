@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -227,19 +227,17 @@ absolut darauf platziert wird.</p>
 einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt verdecken!</p>
 
 <div class="example twopane">
-<pre class="lang-css prettyprint linenums left">
-#navi {
+<pre><code class="language-css linenums left">#navi {
   position: absolute;
   width: 80px;
   top:    0px;
   left:   0px;
 }
-</pre><pre class="lang-css prettyprint linenums right">
+</code></pre><pre><code class="language-css linenums right">
 #content {
   margin-left: 100px;
 }
-
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -1261,7 +1259,11 @@ einem Inhalt mit <code>margin-left</code> - sonst würde das Menü den Inhalt ve
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

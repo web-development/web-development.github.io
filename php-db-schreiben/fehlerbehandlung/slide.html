@@ -5,6 +5,9 @@
     <title>Fehlerbehandlung - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -113,27 +116,24 @@ nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception �
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für Exception-Handling in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
 function compute($x) {
     if ($x == 0) {
        throw new Exception(&#39;Illegal Input: 0.&#39;);
     }
     return 1 / $x;
 }
-
 try {
     echo compute(5) . &quot;\n&quot;;
     echo compute(0) . &quot;\n&quot;;
 } catch (Exception $e) {
     echo &#39;Exception abgefangen: &#39;,  $e-&gt;getMessage(), &quot;\n&quot;;
 }
-
 // output:
 // 0.2
 // Exception abgefangen: Illegal Input: 0
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -144,9 +144,8 @@ try {
 Attribut <code>ERRMODE</code> aktiviert werden:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-</pre></div>
+<pre><code class="language-php  linenums">  $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+</code></pre></div>
 
 <p>In folgendem Beispiel soll ein Datensatz (plus abhängige Daten) dargestellt werden.
 Dabei könnte schon beim Verbindungsaufbau mit der Datenbank ein Fehler auftreten,
@@ -154,38 +153,30 @@ oder bei einzelnen Abfragen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
-<pre class="lang-php prettyprint linenums">
-$get_id = $_GET[&#39;id&#39;];
+<pre><code class="language-php  linenums">$get_id = $_GET[&#39;id&#39;];
 try{
   include &quot;config.php&quot;;
-
   if( ! $DSN ) {
     throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
   }
-
   $dbh = new PDO($DSN, $DB_USER, $DB_PASS);
   /* das folgende Attribut aktiviert die Exceptions */
   $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
   $sth  = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
   $sth-&gt;execute(array($get_id));
   $p = $sth-&gt;fetch();
-
   // wirklich nicht in der Datenbank
   if( $p === false ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
   }
-
   // Profil verborgen
   if( !$p-&gt;profile_visible  ) {
     throw (new Exception( &quot;Kein Person Nr. $get_id in der DB.&quot; ));
   }
-
   $sth  = $dbh-&gt;prepare( &quot; .... &quot; );
   $sth-&gt;execute(array($get_id));
   $projects = $sth-&gt;fetchAll();
-
 } catch( Exception $e ) {
   include &quot;header.php&quot;;
   echo &quot;&lt;h1&gt;Problem mit der Datenbank&lt;/h1&gt;&quot; ;
@@ -194,9 +185,8 @@ try{
   include &quot;footer.php&quot;;
   exit;
 }
-
 /* hier folgt die normale Ausgabe der Seite */
-</pre></div>
+</code></pre></div>
 
 <p>In diesem Beispiel erfolgt die ganze Arbeit mit der Datenbank
 bevor die Ausgabe beginnt.  Im <code>catch</code>-Block wird eine Webseite
@@ -252,5 +242,12 @@ gar nicht lohnt näher darauf einzugehen. Siehe
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

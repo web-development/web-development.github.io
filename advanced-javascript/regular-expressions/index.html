@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -107,12 +107,11 @@ wir beginnen mit der Methode <code>match</code> des String-Objekts:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>match</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var s = &quot;begreifen&quot;;
+<pre><code class="language-javascript  linenums">var s = &quot;begreifen&quot;;
 if( s.match(/greif/) ) {
   console.log(&quot;greif gefunden!&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 <p>Hier wird im String “begreifen” nach dem String “greif” gesucht.
 Falls er gefunden wird (ja, wird er), gibt die Match-Methoden einen
@@ -129,12 +128,11 @@ nicht gefunden wurde, und die Position der Fundstelle anderfalls.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>match</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var s = &quot;begreifen&quot;;
+<pre><code class="language-javascript  linenums">var s = &quot;begreifen&quot;;
 if( s.indexOf(&#39;greif&#39;) &gt; -1) {
   console.log(&quot;greif gefunden!&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -147,9 +145,8 @@ Falls die Zeichenkette irgendwo im String gefunden wird
 ist die Suche erfolgreich:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/hallo/
-</pre></div>
+<pre><code class="language-javascript  linenums">/hallo/
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D%3D%26list%5B%5D%3Dhallo%26list%5B%5D%3Daber%2Bhallo%21%26list%5B%5D%3Ddie%2Bhallobergrenze%26list%5B%5D%3Dhalo%26list%5B%5D%3DHallo">RegEx Tester: /hallo/</a></p>
 
@@ -162,9 +159,8 @@ ist die Suche erfolgreich:</p>
 entspricht also einem logischen “oder”;</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/en|sk|zh|us|uk/
-</pre></div>
+<pre><code class="language-javascript  linenums">/en|sk|zh|us|uk/
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3Desuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
 
@@ -177,11 +173,10 @@ entspricht also einem logischen “oder”;</p>
 Anfang bzw. Ende der Strings verankert werden.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/^Am Anfang war/
+<pre><code class="language-javascript  linenums">/^Am Anfang war/
 /dann leben sie noch heute.$/
 /^Ganzer String$/
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5E%28en%7Csk%7Cus%7Cuk%29%24&amp;listname=countries&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3DMaske%26list%5B%5D%3Dschlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
 
@@ -196,9 +191,8 @@ Anfang bzw. Ende der Strings verankert werden.</p>
 Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character class”) zusammen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[aeiou]/
-</pre></div>
+<pre><code class="language-javascript  linenums">/[aeiou]/
+</code></pre></div>
 
 <p>Achtung! Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
 
@@ -216,10 +210,9 @@ stehen.</p>
 <p>Die folgenden beiden pattern sind also gleichbedeutend:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[abcdef]/
+<pre><code class="language-javascript  linenums">/[abcdef]/
 /[a-f]/
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D%3D%26list%5B%5D%3Da%26list%5B%5D%3Db%26list%5B%5D%3Dc%26list%5B%5D%3Dx%26list%5B%5D%3Dy%26list%5B%5D%3Dz%26list%5B%5D%3DA%26list%5B%5D%3D.%26list%5B%5D%3D%25">RegEx Tester: /[a-z]/</a></p>
 
@@ -233,9 +226,8 @@ es werden dann alle Zeichen gematched die <strong>nicht</strong> in der eckigen
 Klammer erwähnt werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/[^aeiou]/
-</pre></div>
+<pre><code class="language-javascript  linenums">/[^aeiou]/
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Dusa">RegEx Tester: /u[^1234]/</a></p>
 
@@ -247,12 +239,11 @@ Klammer erwähnt werden:</p>
 <h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d/       eine Ziffer, entspricht /[0-9]/
+<pre><code class="language-javascript  linenums">/\d/       eine Ziffer, entspricht /[0-9]/
 /\D/       keine Ziffer, entspricht /[^0-9]/
 /\w/       Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
 /\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Du9%26list%5B%5D%3Dusa">RegEx Tester: /u\d/</a></p>
 
@@ -264,16 +255,14 @@ Klammer erwähnt werden:</p>
 <p>Der Plus-Operator erlaubt eine Wiederholung des vorigen Zeichens. Um also <code>"i"</code> und <code>"iiii"</code> und <code>"wir sind die Ritter die ni sagen"</code> zu matchen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/i+/  
-</pre></div>
+<pre><code class="language-javascript  linenums">/i+/  
+</code></pre></div>
 
 <p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d+/
-</pre></div>
+<pre><code class="language-javascript  linenums">/\d+/
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da123">RegEx Tester: /\d+/</a></p>
 
@@ -282,9 +271,8 @@ bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
 andere Alternative gewählt werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/(do|re|mi)+/
-</pre></div>
+<pre><code class="language-javascript  linenums">/(do|re|mi)+/
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
@@ -302,9 +290,8 @@ andere Alternative gewählt werden:</p>
 bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/^...$/       genau drei Zeichen
-</pre></div>
+<pre><code class="language-javascript  linenums">/^...$/       genau drei Zeichen
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5E...%24&amp;listname=Studiengang&amp;list%5B%5D%3D%26list%5B%5D%3DNA%26list%5B%5D%3DMMT%26list%5B%5D%3Dmmt%26list%5B%5D%3D%2B%2B%2B%26list%5B%5D%3D___%26list%5B%5D%3DMMT-B">RegEx Tester: /^…$/</a></p>
 
@@ -318,9 +305,8 @@ hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
 Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\./     ein echter punkt
-</pre></div>
+<pre><code class="language-javascript  linenums">/\./     ein echter punkt
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd%24&amp;listname=Kapitel-Nummern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D1.1%26list%5B%5D%3D1.2%26list%5B%5D%3D1.3%26list%5B%5D%3D2%26list%5B%5D%3D2.1%26list%5B%5D%3D2.2%26list%5B%5D%3D35%26list%5B%5D%3D35.1">RegEx Tester: /^\d.\d$/</a></p>
 
@@ -335,9 +321,8 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 kann nullmal, einmal oder mehrmals vorkommen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/i*/  
-</pre></div>
+<pre><code class="language-javascript  linenums">/i*/  
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
@@ -347,9 +332,8 @@ kann nullmal, einmal oder mehrmals vorkommen:</p>
 <p>Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/\d?/  
-</pre></div>
+<pre><code class="language-javascript  linenums">/\d?/  
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5E%5Cd%3F%24&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da1">RegEx Tester: /^\d?$/</a></p>
 
@@ -361,9 +345,8 @@ kann nullmal, einmal oder mehrmals vorkommen:</p>
 <p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/(de|fr)_(DE|CH)/
-</pre></div>
+<pre><code class="language-javascript  linenums">/(de|fr)_(DE|CH)/
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=%28de%7Cfr%29_%28DE%7CCH%29&amp;listname=locale&amp;list%5B%5D%3D%26list%5B%5D%3Dde_DE%26list%5B%5D%3Dfr_DE%26list%5B%5D%3Dde_CH%26list%5B%5D%3Dfr_CH%26list%5B%5D%3Dde_AT%26list%5B%5D%3Dit_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
 
@@ -374,14 +357,13 @@ gesamte gefundene String gespeichert, auf 1, 2, 3 der Reihe
 nach die gefundnen Gruppen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-locale = &quot;de_CH&quot;;
+<pre><code class="language-javascript  linenums">locale = &quot;de_CH&quot;;
 if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
   console.log(&quot;gesamt:  &quot; + match[0]);
   console.log(&quot;sprache: &quot; + match[1]);
   console.log(&quot;land:    &quot; + match[2]);
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
@@ -399,9 +381,8 @@ if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
 möglichst lange Strings zu erfassen.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/o.*o/    möglichst viele Zeichen zwischen o und o
-</pre></div>
+<pre><code class="language-javascript  linenums">/o.*o/    möglichst viele Zeichen zwischen o und o
+</code></pre></div>
 
 <p>Diese Eigenschaft sieht man sehr gut in folgendem Beispiel:</p>
 
@@ -417,9 +398,8 @@ möglichst lange Strings zu erfassen.</p>
 <p>Die “altmodisch” Methode ist eine Komplement-Klasse:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/o[^o]*o/    
-</pre></div>
+<pre><code class="language-javascript  linenums">/o[^o]*o/    
+</code></pre></div>
 
 <p>Hier wird ein erstes o gematched, dann kommen (null bis viele) zeichen
 die kein o sind, und dann ein zweites o. Damit ist der Pattern beendet,
@@ -436,10 +416,9 @@ auch wenn es später im String noch weitere o’s geben würde.</p>
 Operatoren: ein Fragezeichen wird nachgestellt</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-/o(.*?)o/    
+<pre><code class="language-javascript  linenums">/o(.*?)o/    
 /o(.+?)o/    
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/match.html?pattern=_.%2A%3F_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
 
@@ -453,12 +432,11 @@ einmal gesucht. Wenn ich in einem string aber mehrere Vorkommen
 finden will, braucht es das global-Flag:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-m = &quot;Nana nana nana nana batman&quot;.match(/na/);
+<pre><code class="language-javascript  linenums">m = &quot;Nana nana nana nana batman&quot;.match(/na/);
 // findet das erste na
 m = &quot;Nana nana nana nana batman&quot;.match(/na/g);
 // findet alle 7 nax
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
@@ -490,31 +468,28 @@ Aber nichts komplizierteres.</p>
 <p>Ein häufiger Anwendungsfall von RegEx ist “Suchen und Ersetzen”</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-s = &quot;Voldemort hat keine Nase&quot;;
+<pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase&quot;;
 s.replace(/Voldemort/, 
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Es erfolgt nur eine einzige Ersetzung. Mit dem Modifikator <code>g</code> am
 Ende der RegEx kann man alle Ersetzungen durchführen:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-s = &quot;Voldemort hat keine Nase. Voldemort ist verschwunden.&quot;;
+<pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase. Voldemort ist verschwunden.&quot;;
 s.replace(/Voldemort/g, 
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Achtung, auch hier kommt man bald an die Grenzen
 von Regular Expressions:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-s = &quot;Harry greift Voldemort an. Voldemorts Zauberstab bricht.&quot;;
+<pre><code class="language-javascript  linenums">s = &quot;Harry greift Voldemort an. Voldemorts Zauberstab bricht.&quot;;
 s.replace(/Voldemort/g, 
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Dass im zweiten Satz ein anderer Fall notwendig wäre,
 und wie man das dann richtige formuliert,
@@ -529,20 +504,16 @@ sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>RegEx Beispiel-Code aus Wordpress Plugins</small></h4>
-<pre class="lang-php prettyprint linenums">
-# Beispiel Link Suchen
+<pre><code class="language-php  linenums"># Beispiel Link Suchen
 if (preg_match(&#39;/^(http)(s?)(:)\/\//&#39;,$linky)){ ...
-
 # Beispiel Sprache-Code
-
 if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
-</pre></div>
+</code></pre></div>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Suchen mit RegEx in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;) 
-</pre></div>
+<pre><code class="language-php  linenums">preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;) 
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-30" href="slide.html#slide-30"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 30">▻</a>
@@ -1587,7 +1558,11 @@ preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

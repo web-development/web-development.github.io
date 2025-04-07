@@ -5,6 +5,9 @@
     <title>HTML+CSS für Grafik - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -113,14 +116,13 @@ Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
 <p><img src="/images/dreieck.png" srcset="/images/dreieck.png 1x, /images/dreieck@2x.png 2x"  alt="Bild der Dreiecks" ></p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#triangle-up {
+<pre><code class="language-css  linenums">#triangle-up {
    width: 0; height: 0;
    border-left: 50px solid transparent;
    border-right: 50px solid transparent;
    border-bottom: 100px solid red;
 }
-</pre></div>
+</code></pre></div>
 
 <p>An einem Standard für CSS Shapes wird gearbeitet, es gibt aber noch
 keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Draft: CSS Shapes</a>.</p>
@@ -163,12 +165,10 @@ keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Dr
 </style>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#motion-demo {
+<pre><code class="language-css  linenums">#motion-demo {
   offset-path: path(&quot;M20,20 C20,100 200,0 200,100&quot;);
   animation: move 3000ms infinite alternate ease-in-out;
 }
-
 @keyframes move {
   0% {
     offset-distance: 0%;
@@ -179,7 +179,7 @@ keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Dr
     background: cyan;
   }
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -250,5 +250,12 @@ für ihr Problem wählen. Bei Grafik kann das ganz oft einfaches HTML + CSS sein
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

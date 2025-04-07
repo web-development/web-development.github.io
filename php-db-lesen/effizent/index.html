@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -60,15 +60,14 @@ besonders wenn viele Daten in der Datenbank gespeichert sind:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Ineffiziente Abfrage der Datenbank</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;query(&quot;SELECT * FROM person&quot;);  // SO NICHT!
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;query(&quot;SELECT * FROM person&quot;);  // SO NICHT!
 $personen = $sth-&gt;fetchAll();
 foreach( $personen as $person ) {
   if ( $person-&gt;profile_visible ) {
     echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
   }
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -79,15 +78,14 @@ foreach( $personen as $person ) {
 
 <div class="example">
 <h4 class="caption">Php Code <small>Effiziente Abfrage der Datenbank</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;query(
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;query(
   &quot;SELECT * FROM person WHERE profile_visible=1&quot;
 );
 $personen = $sth-&gt;fetchAll();
 foreach( $personen as $person ) {
   echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -109,8 +107,7 @@ Abfragen.  Zum Beipiel zum Speichern eines Datums sollte man den Typ <code>DATE<
 „falls Datum nicht älter als 100 Tage ist“</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-SELECT
+<pre><code class="language-sql  linenums">SELECT
   title,
   publicationdate,
   (current_date - publicationdate) AS age
@@ -118,7 +115,7 @@ FROM projects where
   (current_date - publicationdate) BETWEEN 0 AND 100
   AND NOT(draft)
 ORDER BY publicationdate DESC;
-</pre></div>
+</code></pre></div>
 
 <p>Diese SQL-Abfage zeigt Titel und Publikations-Datum aller Werke die in den
 letzten 100 Tagen publiziert wurden.  Hätte man das Datum nur
@@ -1138,7 +1135,11 @@ als String in der Datenbank gespeichert, dann wäre das sehr viel umständlicher
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

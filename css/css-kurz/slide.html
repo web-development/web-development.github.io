@@ -5,6 +5,9 @@
     <title>Kurzvorstellung von Stylesheets - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -88,12 +91,11 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>typische Webseite von 1993 - HTML-Code stellt nur die Struktur dar</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;html&gt;&lt;body&gt;
+<pre><code class="language-html  linenums">&lt;html&gt;&lt;body&gt;
 &lt;h1&gt;Das Studium&lt;/h1&gt;
 &lt;p&gt;Studienziel ist es, breit gefächerte technische und kreative Kompetenzen...
 &lt;/body&gt;&lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -104,13 +106,12 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>typische Webseite von 1995 - Neue HTML-Tags für visuelle Darstellung</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;html&gt;&lt;body&gt;
+<pre><code class="language-html  linenums">&lt;html&gt;&lt;body&gt;
 &lt;h1&gt;&lt;font face=&quot;Arial&quot; color=&quot;blue&quot;&gt;Das Studium&lt;/font&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;font size=&quot;+1&quot;&gt;S&lt;/font&gt;tudienziel ist es, breit gefächerte technische und kreative Kompetenzen...&lt;/p&gt;
 &lt;p&gt;&lt;font size=&quot;+1&quot;&gt;P&lt;/font&gt;rojekte und Praxissemster stellen schon während des Studiums die Verbindung...&lt;/p&gt;
 &lt;/body&gt;&lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -123,25 +124,23 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>typische Webseite von 2001 - HTML-Tags für Struktur, Verweis auf CSS</small></h4>
-<pre class="lang-html prettyprint linenums">
-  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;fh.css&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;fh.css&quot;&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;Das Studium&lt;/h1&gt;
   &lt;p&gt;Studienziel ist es, breit gefächerte technische und wirtschaftliche Kompetenzen...
 &lt;/body&gt;&lt;/html&gt;
-</pre></div>
+</code></pre></div>
 
 <div class="example">
 <h4 class="caption">Css Code <small>Die Datei fh.css</small></h4>
-<pre class="lang-css prettyprint linenums">
-h1 {
+<pre><code class="language-css  linenums">h1 {
   font-family: Arial;
   color: blue;
 }
 p:first-letter {
   font-size: large;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -178,8 +177,7 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Hintergrundfarbe, Schriftfamilie, Schriftgröße mit CSS festlegen</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;style type=&quot;text/css&quot;&gt;
+<pre><code class="language-html  linenums">&lt;style type=&quot;text/css&quot;&gt;
   p {
     font-family: Libertine, serif;
     font-size: 22px;
@@ -191,7 +189,7 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
   h2 { font-size: 24px; }
   body { background-color: green; }
 &lt;/style&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -242,5 +240,12 @@ Wichtige Argumente für den Einsatz von Stylesheets sind:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

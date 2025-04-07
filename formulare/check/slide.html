@@ -5,6 +5,9 @@
     <title>Formularprüfung - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -96,14 +99,13 @@ man die Eingabe in einem Text-Eingabefeld prüfen:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Einfaches Formular</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;bestellung.php&quot;&gt;
   ...
   &lt;input type=&quot;text&quot;  name=&quot;fullname&quot; required minlength=&quot;4&quot; maxlength=&quot;8&quot;&gt;
   ...
   &lt;input type=&quot;submit&quot; value=&quot;Bestellen&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 <p>So sieht das Formular im Browser aus:</p>
 
@@ -124,13 +126,12 @@ mit dem Namen “Regular Expression”.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular mit pattern</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;anmeldung.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;anmeldung.php&quot;&gt;
   FH E-Mail Adresse:
   &lt;input type=&quot;email&quot;  name=&quot;email&quot; pattern=&quot;@fh-salzburg.ac.at$&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;Anmeldung&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -141,11 +142,10 @@ mit dem Namen “Regular Expression”.</p>
 CSS selektieren:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-:invalid {
+<pre><code class="language-css  linenums">:invalid {
   box-shadow: 0px 0px 5px red;
 }
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -198,5 +198,12 @@ CSS selektieren:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

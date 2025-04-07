@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -101,8 +101,7 @@ erzeugt werden können.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function Editor( css_selector, w, h ) {
+<pre><code class="language-javascript  linenums">function Editor( css_selector, w, h ) {
   this.renderlist = [];
   this.dom = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;svg&quot;);
   this.dom.setAttribute(&quot;width&quot;, w || 600);
@@ -110,21 +109,19 @@ function Editor( css_selector, w, h ) {
   emptyAndAppendChild( document.querySelector( css_selector ), this.dom );
   return this;
 }
-
 Editor.prototype.rectangle = function(  x,y,w,h,att, text ) {
   var o;
   o = new Rectangle( x,y,w,h, att, this.dom );
   this.renderlist.push(o);
   return o;
 }
-
 Editor.prototype.circle = function( x,y,r,att, text ) {
   var o;
   o = new Circle( x,y,r,att, this.dom );
   this.renderlist.push(o);
   return o;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -180,15 +177,11 @@ ein.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Konstruktor für Kreis</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-var nextCircleId = idGenerator( &quot;cicle&quot; );
-
+<pre><code class="language-javascript  linenums">var nextCircleId = idGenerator( &quot;cicle&quot; );
 function Circle( x,y,r,att, canvas ) {
   var shape,a;
-
   this.id = nextCircleId();
   this.canvas = canvas;
-
   //   &lt;circle&gt;
   this.dom = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;circle&quot;);
   this.dom.setAttribute(&quot;id&quot;, this.id);
@@ -207,7 +200,7 @@ Circle.prototype.setPosition = function ( position ) {
   this.dom.setAttribute(&quot;cx&quot;, position.x );
   this.dom.setAttribute(&quot;cy&quot;, position.y );
 };
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -232,8 +225,7 @@ Hier eine Implementierung die in allen Browsern funktionieren sollte:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>auslesen der Maus-Position aus einem Event-Objekt</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function cursorPoint(e) {
+<pre><code class="language-javascript  linenums">function cursorPoint(e) {
   var posx = 0;
   var posy = 0;
   if (!e) var e = window.event;
@@ -251,7 +243,7 @@ function cursorPoint(e) {
   // Do something with this information
   return { &#39;x&#39;: posx, &#39;y&#39;: posy  };
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -265,13 +257,11 @@ Funktion jeweils Zugriff auf ein Element der DOM, das durch das Event betroffen 
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Event Listener</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function onMouseDown(e) {
+<pre><code class="language-javascript  linenums">function onMouseDown(e) {
   console.log(&quot;Mouse down. this is &quot; + this.id + &quot; event is &quot; + e);
 }
-
 element.addEventListener( &#39;mousedown&#39;, onMouseDown);
-</pre></div>
+</code></pre></div>
 
 <p>Wenn die Funktion onMouseDown aufgerufen wird enthält
 <code>this</code> das angeklickte Element, und <code>e</code> enthält ein Event-Objekt mit
@@ -295,11 +285,10 @@ Name des Attributs mit “data-“ beginnt.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>data-Attribute in HTML5</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
+<pre><code class="language-html  linenums">&lt;h1 data-geheim=&quot;wichtig daten&quot;&gt;Normaler Überschrift&lt;/h1&gt;
 ....
 &lt;circle data-weight=&quot;10kg&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
@@ -310,16 +299,14 @@ Name des Attributs mit “data-“ beginnt.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Javascript-Objekte in einem Data-Attribut in der DOM speichern - geht nicht</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-// Versuch ein Objekt zu speichern
+<pre><code class="language-javascript  linenums">// Versuch ein Objekt zu speichern
 c = document.getElementById(&quot;circle_1&quot;);
 c.setAttribute(&quot;data-myobject&quot;, { color: &#39;red&#39;, no: 42 } ); 
-
 // auslesen der Daten
 o = c.getAttribute(&quot;data-myobject&quot;);    
 typeof o        // ergibt &quot;string&quot;
 console.log(o)  // ergibt &quot;[object Object]&quot;
-</pre></div>
+</code></pre></div>
 
 <p>Beim Speichern in der DOM wurde also mein Objekt in einen String umgewandelt,
 und nur der String wurde gespeichert.</p>
@@ -336,22 +323,18 @@ ist eine Closure, die das Javascript-Objekt kennt, und deswegen darauf Zugriff h
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Event-Listener-Funktion als Closure</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function addDragability( jsobj, element ) {
-
+<pre><code class="language-javascript  linenums">function addDragability( jsobj, element ) {
   function onMouseDown(e) {
     console.log(&quot;Mouse down&quot;);
     console.log(&quot;my element is &quot; + this);
     console.log(&quot;my javascript object is &quot; + jsobj);
     console.log(&quot;my event is &quot; + e);
   }
-
   element.addEventListener( &#39;mousedown&#39;, onMouseDown);
 }
-
 addDragability( jsobj, element );
 addDragability( other_jsobj, other_element );
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -370,8 +353,7 @@ addDragability( other_jsobj, other_element );
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Struktur der Event-Listener für Drag-and-Drop</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-function addDragability( jsobj, element ) {
+<pre><code class="language-javascript  linenums">function addDragability( jsobj, element ) {
   function onMove(e) {
     // die Differenz zwischen aktueller Maus-Position 
     // und der Start-Position berechnen. Das ergibt 
@@ -389,9 +371,8 @@ function addDragability( jsobj, element ) {
     // Drag-and-Drop beenden: nicht mehr gebrauchte 
     // event-listener entfernen
   }
-
   console.log( jsobj + &quot; und damit &quot; + element + &quot; sind nun draggable&quot;);
-</pre></div>
+</code></pre></div>
 
 <div class="alert"><strong>ToDo</strong> fertigen Code zeigen - später</div>
  <div class="pagination">
@@ -1408,7 +1389,11 @@ function addDragability( jsobj, element ) {
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

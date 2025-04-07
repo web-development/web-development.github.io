@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -100,8 +100,7 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 (in einer Spalte = <code>column</code>):</p>
 
 <div class="example twopane">
-<pre class="lang-html prettyprint linenums left">
-&lt;div class=&quot;project&quot;&gt;
+<pre><code class="language-html linenums left">&lt;div class=&quot;project&quot;&gt;
   &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
   &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
   &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
@@ -109,7 +108,7 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
   &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
   &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
-</pre><pre class="lang-html prettyprint linenums right">
+</code></pre><pre><code class="language-html linenums right">
 .project {
   display: flex;
   flex-direction: row;
@@ -118,7 +117,7 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
   width: 160px;
   height: 275px;
 }
-</pre><div class="clearfix"></div></div>
+</code></pre><div class="clearfix"></div></div>
 
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></p>
 
@@ -131,23 +130,21 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 linksbündig, rechtsbündig, zentriert, mit Platz dazwischen oder Platz rundum.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.projects {
+<pre><code class="language-css  linenums">.projects {
     justify-content: flex-start;   /* alle möglichst weit links */
 }
-</pre></div>
+</code></pre></div>
 
 <p>Oder die Elemente können sich ausdehnen, um den Platz einzunehmen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#box1, #box3 {
+<pre><code class="language-css  linenums">#box1, #box3 {
     flex: 1;
 }
 #box2 {
     flex: 2;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#justify-content">justify-content</a></p>
 
@@ -162,11 +159,10 @@ linksbündig, rechtsbündig, zentriert, mit Platz dazwischen oder Platz rundum.<
 können sie auf eine nächste Zeile umgebrochen werden:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.projects {
+<pre><code class="language-css  linenums">.projects {
   flex-wrap: wrap;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Siehe <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-wrap">flex-wrap</a></p>
 
@@ -190,13 +186,12 @@ eines Elements in diesem Gitternetz positionieren.</p>
 Zeilen (rows) definiert:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.page_container {
+<pre><code class="language-css  linenums">.page_container {
   display: grid;
   grid-template-columns: 270px 5fr 3fr;
   grid-template-rows: 60px 2fr 210px;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Dabei kann die neue Maßeinheit <code>fr</code> (für fraction, Bruchteil) verwendet werden:
 Nachdem von der Gesamtbreite die absoluten Breitenangaben abgezogen wurden,
@@ -231,12 +226,11 @@ werden die neu berechneten Werte angezeigt.</p>
 für die einzelnen Felder des Grids vergeben werden:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  grid-template-areas:
+<pre><code class="language-css  linenums">  grid-template-areas:
     &quot;.              headlineArea     subheadArea&quot;
     &quot;portraitArea   descriptionArea  codeArea&quot;
     &quot;.              factsArea        sourceArea&quot;;
-</pre></div>
+</code></pre></div>
 
 <p>Die drei Strings stehen für die drei Zeilen des Grids.
 Innerhalb der Strings gilt jedes Wort als ein Feld.
@@ -253,12 +247,11 @@ Die Felder sind also durch Whitespace getrennt.</p>
 muss aber immer in Rechteck bilden (keine beliebige Tetris-Form):</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-  grid-template-areas:
+<pre><code class="language-css  linenums">  grid-template-areas:
     &quot;headlineArea  headlineArea     subheadArea&quot;
     &quot;portraitArea  descriptionArea  codeArea&quot;
     &quot;factsArea     descriptionArea  sourceArea&quot;;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
@@ -269,18 +262,16 @@ muss aber immer in Rechteck bilden (keine beliebige Tetris-Form):</p>
 Das erfolgt rein in CSS, es ist keine Veränderung im HTML notwendig.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-header {
+<pre><code class="language-css  linenums">header {
   grid-area: headlineArea;
   background-color: #EBBB5B;
   padding-top: 19px;
 }
-
 section#description {
   grid-area: descriptionArea;
   background-color: white;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Siehe auch <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Guide to CSS Grid</a></p>
 
@@ -1324,7 +1315,11 @@ später sollten Sie noch <a href="/css-layout/details">weitere Details</a> kenne
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

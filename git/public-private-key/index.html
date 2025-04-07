@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -89,8 +89,7 @@ ssh-keygen:</p>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Erzeugung eines Schlüsselpaares</small></h4>
-<pre class="lang-shell prettyprint linenums">
-$ ssh-keygen -t rsa -C &quot;vmustermann.mmt-b2022@fh-salzburg.ac.at&quot;
+<pre><code class="language-shell  linenums">$ ssh-keygen -t rsa -C &quot;vmustermann.mmt-b2022@fh-salzburg.ac.at&quot;
 # Erzeugt ein neues Schlüsselpaar, verwendet die E-Mail Adresse in der Beschriftung
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/verena/.ssh/id_rsa):
@@ -111,7 +110,7 @@ The key&#39;s randomart image is:
 |       . o  . +.*|
 |        . ..  .+o|
 +-----------------+
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -134,8 +133,7 @@ innerhalb von zwei Zeilen mit vielen Minus-Zeichen:</p>
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Beispiel für einen Privaten Schlüssel</small></h4>
-<pre class="lang-plain prettyprint linenums">
------BEGIN RSA PRIVATE KEY-----
+<pre><code class="language-plain  linenums">-----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEAy4h50jvgZcVBC4rrc1Q3ooxgPZA74oTtQDXMKkGUSMEJQbZ9
 HzWfJ6d3HSpluSmCcwxI7tkX7v6lRjCz09xtHFq21agTJWJ8P2YqqNpd7Bda36xf
 5q8Px8cAYbAKr9sNT8cw6cZBKjGaBqaa7arzcBeQjmB1jqe7CtL1nUexTjWIS8iu
@@ -162,7 +160,7 @@ oN+t5rZ3bs+0ESk2NjUBua2IH7HdLnd4Uz1nDMLVDlv6gPem0k9LD/lCpRAGytvy
 eHBMzHcPRALwg3sYNuIIDNTC2HXuf5SGgOQJcZoURoh+CbnjZ1bpJD9djIOMx/zK
 BLzFeSXDV4AkIdRxvganwBIV1FZFQRPfR9miuRUagMkwT6/LLBxhlJE=
 -----END RSA PRIVATE KEY-----
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -174,9 +172,8 @@ der E-Mail Adresse am Ende der Zeile:</p>
 
 <div class="example">
 <h4 class="caption">Plain Code <small>Beispiel für den dazu gehörigen öffentlichen Schlüssel</small></h4>
-<pre class="lang-plain prettyprint linenums">
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLiHnSO+BlxUELiutzVDeijGA9kDvihO1ANcwqQZRIwQlBtn0fNZ8np3cdKmW5KYJzDEju2Rfu/qVGMLPT3G0cWrbVqBMlYnw/Ziqo2l3sF1rfrF/mrw/HxwBhsAqv2w1PxzDpxkEqMZoGpprtqvNwF5COYHWOp7sK0vWdR7FONYhLyK5e6HtCgQJ2Z/TX9LHX2UDMzXDxi1GsFPXkrs73t+YYCs59OBYLjz68iIzGP3Uw8rQtxiKe/F1utjupojhsXv4qi6Il4h/KNXJxcg00BgMCFuP4ibVRgHPVPpWqcggykzPgZr5G1/cCeQhhia1MuS9zrwfkwSivKu3KNlAL vmustermann.mmt-b2022@fh-salzburg.ac.at
-</pre></div>
+<pre><code class="language-plain  linenums">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLiHnSO+BlxUELiutzVDeijGA9kDvihO1ANcwqQZRIwQlBtn0fNZ8np3cdKmW5KYJzDEju2Rfu/qVGMLPT3G0cWrbVqBMlYnw/Ziqo2l3sF1rfrF/mrw/HxwBhsAqv2w1PxzDpxkEqMZoGpprtqvNwF5COYHWOp7sK0vWdR7FONYhLyK5e6HtCgQJ2Z/TX9LHX2UDMzXDxi1GsFPXkrs73t+YYCs59OBYLjz68iIzGP3Uw8rQtxiKe/F1utjupojhsXv4qi6Il4h/KNXJxcg00BgMCFuP4ibVRgHPVPpWqcggykzPgZr5G1/cCeQhhia1MuS9zrwfkwSivKu3KNlAL vmustermann.mmt-b2022@fh-salzburg.ac.at
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -1231,7 +1228,11 @@ am Internet herstellen um dort mit der Kommandozeile zu arbeiten.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

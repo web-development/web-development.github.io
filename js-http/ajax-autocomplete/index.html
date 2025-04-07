@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -63,8 +63,7 @@ Mit der Anfrage</p>
 und als JSON-Array zurück gegeben werden:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-[
+<pre><code class="language-javascript  linenums">[
     &quot;Wa,GH&quot;,
     &quot;WaKeeney,US&quot;,
     &quot;Waabs,DE&quot;,
@@ -85,7 +84,7 @@ und als JSON-Array zurück gegeben werden:</p>
     &quot;Wāsiţ,EG&quot;,
     &quot;Wąwolnica,PL&quot;
 ]
-</pre></div>
+</code></pre></div>
 
 <p>Das sind ca. 5000 Namen.</p>
 
@@ -93,11 +92,10 @@ und als JSON-Array zurück gegeben werden:</p>
 angekündgt werden:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-header(&#39;Content-Type: application/json&#39;);
+<pre><code class="language-php  linenums">header(&#39;Content-Type: application/json&#39;);
 // $cities aus der Datenbank holen
 echo json_encode($cities);
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -108,15 +106,14 @@ echo json_encode($cities);
 z.B. <a href="https://github.com/Pixabay/JavaScript-autoComplete/">JavaScript-autoComplete</a>:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-new autoComplete({
+<pre><code class="language-javascript  linenums">new autoComplete({
     selector: &#39;#cityinput&#39;,
     source: (term, handle_response) =&gt; {
       // schicke suchwort &#39;term&#39; ans backend
       // wenn die datenvorliegen, rufe die funktion handle_response auf
     }
 });
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1132,7 +1129,11 @@ new autoComplete({
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

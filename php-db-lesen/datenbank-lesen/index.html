@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -59,11 +59,10 @@ wir die Anzahl der gefundenen Datensätze bestimmen<a href="http://www.postgresq
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;);
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;);
 $result = $sth-&gt;fetch();
 $anz_personen = $result-&gt;anzahl;
-</pre></div>
+</code></pre></div>
 
 <p>Hier verwenden wir die Methode <code>fetch()</code> des Statement-Handles
 um nur einen Datensatz zu lesen.</p>
@@ -77,9 +76,8 @@ um nur einen Datensatz zu lesen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-$anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;)-&gt;fetch()-&gt;anzahl;
-</pre></div>
+<pre><code class="language-php  linenums">$anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;)-&gt;fetch()-&gt;anzahl;
+</code></pre></div>
 
 <p>Damit spart man sich zwei der drei Variablen, macht aber
 die Fehlersuche etwas schwieriger.</p>
@@ -94,12 +92,11 @@ Daten aus der Datenbank zu lesen. Das geschieht mit einem einfachen <code>SELECT
 
 <div class="example">
 <h4 class="caption">Php Code <small>Abfrage der Datenbank mit SELECT</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth =$dbh-&gt;query(
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
   &quot;SELECT * FROM person WHERE profile_visible=1 ORDER BY surname LIMIT 500&quot;
 );
 $personen = $sth-&gt;fetchAll();
-</pre></div>
+</code></pre></div>
 
 <p>Die SQL-Anfrage wird hier als String an die <code>query()</code>-Methode des Datenbankhandler
 übergeben.  Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
@@ -138,8 +135,7 @@ Hier der Output von <code>print_r($personen)</code>:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
-<pre class="lang-php prettyprint linenums">
-Array
+<pre><code class="language-php  linenums">Array
 (
   [0] =&gt; stdClass Object
       (
@@ -161,7 +157,7 @@ Array
       )
   ...
 )
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -172,11 +168,10 @@ Array
 
 <div class="example">
 <h4 class="caption">Php Code <small>Anzeige der Personen</small></h4>
-<pre class="lang-php prettyprint linenums">
-foreach($personen as $person) {
+<pre><code class="language-php  linenums">foreach($personen as $person) {
   echo &quot;&lt;li&gt;$person-&gt;firstname $person-&gt;surname&lt;/li&gt;\n&quot;;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
 
@@ -190,11 +185,10 @@ der <code>foreach</code> Schleife verwenden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Foreach-Schleife mit index</small></h4>
-<pre class="lang-php prettyprint linenums">
-foreach($personen as $i =&gt; $person) {
+<pre><code class="language-php  linenums">foreach($personen as $i =&gt; $person) {
   echo &quot;&lt;li&gt;Person Nr. $i) $person-&gt;firstname $person-&gt;surname&lt;/li&gt;\n&quot;;
 }
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: <code>$i</code>  ist hier der Index im Array das <code>fetchAll()</code> erzeugt
 hat, es ist nicht der Primary Key aus der Datenbank!  Den würde man
@@ -209,19 +203,17 @@ mit <code>$person-&gt;id</code> erhalten!</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Link mit ID als Parameter erzeugen</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;li&gt;
+<pre><code class="language-php  linenums">&lt;li&gt;
   &lt;b&gt;&lt;?php echo $person-&gt;firstname ?&gt; &lt;?php echo $person-&gt;surname?&gt;&lt;/b&gt;
   &lt;a href=&quot;person.php?id=&lt;?php echo $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der Output sieht dann zum Beispiel so aus:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Output des letzten PHP-Programmes</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;li&gt;
+<pre><code class="language-html  linenums">&lt;li&gt;
   &lt;b&gt;Michael A&lt;/b&gt;
   &lt;a href=&quot;person.php?id=577&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
@@ -229,7 +221,7 @@ mit <code>$person-&gt;id</code> erhalten!</p>
   &lt;b&gt;Benjamin A&lt;/b&gt;
   &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
 &lt;/li&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Auf diese Weise haben wir den Parameter <code>id</code> an den nächsten Teil
 der Applikation weiter gegeben.</p>
@@ -264,14 +256,13 @@ gibt fetch kein Objekt sondern der Wert <code>FALSE</code> zurück.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre class="lang-php prettyprint linenums">
-$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
+<pre><code class="language-php  linenums">$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
 $stm = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible AND id=$id&quot;);
 $person = $stm-&gt;fetch();
 if( $person === FALSE ) {
   die(&quot;&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -282,15 +273,13 @@ if( $person === FALSE ) {
 Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-if( $person-&gt;isfemale ) {
+<pre><code class="language-php  linenums">if( $person-&gt;isfemale ) {
     $anrede = &quot;Frau&quot;;
     $ersie  = &quot;Sie&quot;;
 } else {
     $anrede = &quot;Herr&quot;;
     $ersie  = &quot;Er&quot;;
 }
-
 // ====================== Ausgabe ===================
 include &quot;header.php&quot;;
 ?&gt;
@@ -301,7 +290,7 @@ include &quot;header.php&quot;;
   hat insgesamt x Werke in dieser Datenbank.
   &lt;?php echo $ersie ?&gt; hat die E-Mail Adresse &lt;?php echo $person-&gt;email ?&gt;.
 &lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
@@ -312,21 +301,19 @@ include &quot;header.php&quot;;
 
 <div class="example">
 <h4 class="caption">Html Code <small>Such-Formular in psuche.php</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
   Suche nach einer Person mit dem Namen &lt;input name=&quot;suchwort&quot;&gt; 
   &lt;input type=&quot;submit&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-... 
+<pre><code class="language-sql  linenums">... 
 WHERE profile_visible=1 
   AND (surname LIKE &#39;%$suchwort%&#39; OR firstname LIKE &#39;%$suchwort%&#39;)
-</pre></div>
+</code></pre></div>
 
 <p>Wir werden uns später noch genauer mit der Sicherheitsproblematik von
 SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren
@@ -343,12 +330,11 @@ anzeigen.  Wie geht das?</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in Postgres 9.4</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query =$dbh-&gt;query(
+<pre><code class="language-php  linenums">$query =$dbh-&gt;query(
   &quot;SELECT * FROM projects WHERE NOT(draft) AND NOT(blocked) ORDER BY RANDOM() LIMIT 10&quot;
 );
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
-</pre></div>
+</code></pre></div>
 
 <p>Ab Version 9.5 gibt es eine effizientere Methode mit
 <code>TABLESAMPLE</code> <a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">*</a>,</p>
@@ -1388,7 +1374,11 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

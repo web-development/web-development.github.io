@@ -5,6 +5,9 @@
     <title>A1 - Zugriffskontrolle - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -159,12 +162,11 @@ PHP-Datei zuerst die Zugriffsrechte zu prüfen.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prüfung der Zugriffsrechte am Anfang jeder PHP-Datei</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
   include &quot;functions.php&quot;;
   check_permissions();
   // ....
-</pre></div>
+</code></pre></div>
 
 <p>Mit der Funktion <code>check_permissions</code> haben wir hier eine zentrale
 Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
@@ -207,11 +209,9 @@ beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Pro
 
 <div class="example">
 <h4 class="caption">Plain Code <small>.htaccess</small></h4>
-<pre class="lang-plain prettyprint linenums">
-RewriteEngine on
-
+<pre><code class="language-plain  linenums">RewriteEngine on
 RewriteRule ^item/([-a-z]+) view_item.php?slug=\$1
-</pre></div>
+</code></pre></div>
 
 <p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
 
@@ -229,12 +229,11 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
-<pre class="lang-html prettyprint linenums">
-  &lt;img src=&quot;&lt;?= $_GET[&#39;img&#39;] ?&gt;&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;img src=&quot;&lt;?= $_GET[&#39;img&#39;] ?&gt;&quot;&gt;
   &lt;?php
   include $_GET[&#39;text&#39;];  // nicht so programmieren!!!
   ?&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Mit diesem Programm kann man durch einfaches ändern der URL beliebige
 Dateien am Server “erforschen”.</p>
@@ -287,5 +286,12 @@ Dateien am Server “erforschen”.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

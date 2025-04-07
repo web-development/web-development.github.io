@@ -5,6 +5,9 @@
     <title>Authentisierung - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -107,9 +110,8 @@ für Authentisierung und für  Fehlermeldungen kennen.</p>
 <p>Diese Webseite wird im Webspace gespeichert, z.B. unter der URL <code>/myerror/404.html</code>. Mit der Konfigurations-Anweisung</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-ErrorDocument 404 /myerror/404.html
-</pre></div>
+<pre><code class="language-ruby  linenums">ErrorDocument 404 /myerror/404.html
+</code></pre></div>
 
 <p>wird die Fehlermeldung aktiviert. (nicht vergessen: Apache neu starten.)
 Nun wird bei jedem Zugriff auf eine nicht existierende URL die Fehlermeldung angezeigt.</p>
@@ -128,11 +130,10 @@ Nun wird bei jedem Zugriff auf eine nicht existierende URL die Fehlermeldung ang
 <p>Das letzte Kriterium ist das einfachste:  Alle Computer innerhalb der FH haben eine IP-Adresse die mit 10. beginnt. Die Zugriffsbeschränkung erfolgt mit den Konfigurations-Anweisungen Deny, Allow und Order:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-Order deny,allow
+<pre><code class="language-ruby  linenums">Order deny,allow
 Deny from all
 Allow from 10.
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -142,13 +143,12 @@ Allow from 10.
 <p>Aber meist will man nicht den Zugriff auf den ganzen Server sperren, sondern auf einen Bestimmten Ordner oder auf bestimmte Dateien. Dafür wird in der Apache Konfigurations-Datei eine Schreibweise verwendet, die an HTML oder XML erinnert:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-  &lt;Location /fhintranet&gt;
+<pre><code class="language-ruby  linenums">  &lt;Location /fhintranet&gt;
     Order deny,allow
     Deny from all
     Allow from 141.201
   &lt;/Location&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace.</p>
 
@@ -160,12 +160,11 @@ Allow from 10.
 <p>Der Teil, der im <code>&lt;FilesMatch&gt;</code>-Tag eingeschlossen ist gilt für alle Dateien im Webspace, deren Name auf <code>.bak</code> endet.</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-  &lt;FilesMatch \.bak$&gt;
+<pre><code class="language-ruby  linenums">  &lt;FilesMatch \.bak$&gt;
     Order allow,deny
     Deny from all
   &lt;/FilesMatch&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace. Der Teil, der im <code>&lt;FilesMatch&gt;</code>-Tag eingeschlossen ist gilt für alle Dateien im Webspace, deren Name auf <code>.bak</code> endet.</p>
 
@@ -181,26 +180,23 @@ Allow from 10.
 <p>In dem Ordner, der gesperrt werden soll, wird eine Datei .htaccess angelegt:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-  AuthType Basic
+<pre><code class="language-ruby  linenums">  AuthType Basic
   AuthName &quot;Intranet&quot;
   AuthUserFile /home/stud007/pass
   require valid-user
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: der Pfad zur Passwort-Datei (AuthUserFile) muß vollständig angegeben werde! Die Passwort-Datei sieht so aus:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-  brigitte:$apr1$Yj1. . . . . $N72ZRLbh91/q33fhGqlJW1
+<pre><code class="language-ruby  linenums">  brigitte:$apr1$Yj1. . . . . $N72ZRLbh91/q33fhGqlJW1
   clemens:$apr1$al1. . . . . $VZguOHeYTiQ7emGSIj4lh. 
-</pre></div>
+</code></pre></div>
 
 <p>Diese Datei können Sie mit einem Generator am Web erzeugen oder mit dem Programm <code>htpasswd</code> das mit Apache mit geliefert wird. Das funktioniert z.B. auf der Kommandozeile von Windows so:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-  C:\xampp\apache\bin&gt;htpasswd -c pass brigitte
+<pre><code class="language-ruby  linenums">  C:\xampp\apache\bin&gt;htpasswd -c pass brigitte
   New password: ********
   Re-type new password: ********
   Adding password for user brigitte
@@ -208,7 +204,7 @@ Allow from 10.
   New password: ***
   Re-type new password: ***
   Adding password for user Clemens
-</pre></div>
+</code></pre></div>
 
 <p>Diese Methode funktioniert auch auf dem Webserver users.multimediatechnology.at. Wenn Sie einen eigenen Apache Server betreiben, können Sie diese Authentisierungmethode mit verschiedenen Backends verwenden (LDAP, Datenbank, …) - dafür gibt es verschiedene Apache Module.</p>
 
@@ -259,5 +255,12 @@ Allow from 10.
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

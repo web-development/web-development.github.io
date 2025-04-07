@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -63,8 +63,7 @@ das <a href="https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q701
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>JSON Beispiel</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-let o = {
+<pre><code class="language-javascript  linenums">let o = {
   &quot;id&quot;: &quot;Q701554&quot;,
   &quot;labels&quot;: {
     &quot;de&quot;: &quot;Fachhochschule Salzburg&quot;,
@@ -79,7 +78,7 @@ let o = {
     ]
   }
 }
-</pre></div>
+</code></pre></div>
 
 <p>Mit dieser Schreibweise wird ein Objekt mit vier Eigenschaften definiert.
 Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]</code>) gespeichert werden.</p>
@@ -93,8 +92,7 @@ Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>ohne JSON</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-let o = new Object();
+<pre><code class="language-javascript  linenums">let o = new Object();
 o.id = &quot;Q701554;
 o.labels = new Object();
 o.labels.de =  &quot;Fachhochschule Salzburg&quot;;
@@ -105,7 +103,7 @@ o.aliases.de[0] = &quot;Fachhochschule Holztechnikum Kuchl&quot;;
 o.aliases.de[1] = &quot;FH Salzburg&quot;;
 o.aliases.de[2] = &quot;FH Puch&quot;;
 o.aliases.de[3] = &quot;Fachhochschule Urstein;
-</pre></div>
+</code></pre></div>
 
 <p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar.</p>
 
@@ -123,10 +121,9 @@ das nennt man Deserialisierung.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>(De)Serialisierung von JSON</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-string = JSON.stringify( o );
+<pre><code class="language-javascript  linenums">string = JSON.stringify( o );
 o      = JSON.parse(string);
-</pre></div>
+</code></pre></div>
 
 <p>Achtung: nicht alle JavaScript Strukturen lassen sich als JSON String Serialisieren!</p>
 
@@ -141,8 +138,7 @@ und der Eintrag mit Wert <code>undefined</code> nicht serialisiert:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Serialisieren</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-let o = {
+<pre><code class="language-javascript  linenums">let o = {
   &quot;a&quot;: &quot;blabla&quot;,
   &quot;b&quot;: 42,
   &quot;c&quot;: true,
@@ -157,7 +153,7 @@ console.log(s);
 /*
 {&quot;a&quot;:&quot;blabla&quot;,&quot;b&quot;:42,&quot;c&quot;:true,&quot;e&quot;:null,&quot;f&quot;:&quot;2036-01-02T14:04:05.000Z&quot;,&quot;h&quot;:[1,2,3]}
 */
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -169,9 +165,7 @@ eine genaue Kopie des ursprünglichen Objekts, es gibt einige Änderungen:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Deserialisieren</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-let p = JSON.parse(s);
-
+<pre><code class="language-javascript  linenums">let p = JSON.parse(s);
 for(key in o) {
   if (typeof o[key] == typeof p[key]) {
     console.log(`${o[key]} still has type ${typeof o[key]}.` )
@@ -179,20 +173,19 @@ for(key in o) {
     console.log(`${o[key]} had type ${typeof o[key]}, is now type ${typeof p[key]}!` )
   }
 }
-</pre></div>
+</code></pre></div>
 
 <p>Der Output lautet:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-blabla still has type string.
+<pre><code class="language-plain  linenums">blabla still has type string.
 42 still has type number.
 undefined still has type undefined.
 null still has type object.
 Wed Jan 02 2036 15:04:05 had type object, is now type string!
 x =&gt; 2 * x had type function, is now type undefined!
 1,2,3 still has type object.
-</pre></div>
+</code></pre></div>
 
 <p>Aus dem Date-Objekt wurde nur ein String. Es bräuchte einen
 separaten Verarbeitungschritt um daraus wieder ein Date Objekt zu machen:</p>
@@ -210,12 +203,11 @@ als Javascript Code und führt das Programm aus.</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>eval</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
+<pre><code class="language-javascript  linenums">javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
 eval( javascript_string );
 console.log(o);
 console.log( o.f(o.data) );  // 84
-</pre></div>
+</code></pre></div>
 
 <p>In diesem Beispiel kann man aus dem Code klar herauslesen was passieren wird,
 das ist unproblematisch.</p>
@@ -1246,7 +1238,11 @@ nicht geeignet!</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

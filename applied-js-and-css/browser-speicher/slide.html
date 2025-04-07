@@ -5,6 +5,9 @@
     <title>Speichern im Browser - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -101,10 +104,9 @@ mit neuen Variablen:</p>
 Daten permanent und unabhängig von Browser-Fenstern zu speichern.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;name&quot;, &quot;she who must not be named&quot;);
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;name&quot;, &quot;she who must not be named&quot;);
 let n = localStorage.getItem(&quot;name&quot;);
-</pre></div>
+</code></pre></div>
 
 <p>Aber Achtung: <code>localStorage</code> ist ein key-value store, sowohl keys
 als auch values können nur Strings sein!</p>
@@ -118,18 +120,16 @@ als auch values können nur Strings sein!</p>
 kann man sie explizit konvertieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;number&quot;, 42);
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;number&quot;, 42);
 let n = parseInt( localStorage.getItem(&quot;number&quot;) );
-</pre></div>
+</code></pre></div>
 
 <p>oder man verwendet JSON dafür:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-localStorage.setItem(&quot;number&quot;, JSON.stringify(42));
+<pre><code class="language-javascript  linenums">localStorage.setItem(&quot;number&quot;, JSON.stringify(42));
 let n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -140,13 +140,11 @@ let n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
 Storage-Event aus. Auf das kann ich in JavaScript reagieren:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-var n;  // globale Variable, kann unten gesetzt werden
-
+<pre><code class="language-javascript  linenums">var n;  // globale Variable, kann unten gesetzt werden
 addEventListener(&quot;storage&quot;, (event) =&gt; {
   n = JSON.parse( localStorage.getItem(&quot;number&quot;) );
 });
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -218,5 +216,12 @@ addEventListener(&quot;storage&quot;, (event) =&gt; {
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -62,8 +62,7 @@ insbesondere auch die Zugriffsrechte:</p>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten inklusive geheimer Dateien</small></h4>
-<pre class="lang-shell prettyprint linenums">
-$ ls -la
+<pre><code class="language-shell  linenums">$ ls -la
 total 12
 drwxr-xr-x   14 bjelline staff  476 Mär  2 09:29 .
 drwxr-xr-x+ 232 bjelline staff 7888 Mär  2 09:29 ..
@@ -79,7 +78,7 @@ drwx------    2 bjelline staff   68 Mär  1 20:21 Movies
 drwx------    2 bjelline staff   68 Mär  1 20:21 Music
 drwx------    2 bjelline staff   68 Mär  1 20:21 Pictures
 drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
-</pre></div>
+</code></pre></div>
 
 <p>Das erste Zeichen zeigt an ob es sich um eine Datei (“-“) oder einen Ordner (“d”) handelt.
 Hier sind es viele Ordner und drei Dateien. Danach folgen Informationen über Zugriffsrechte, und das Datum der
@@ -128,22 +127,18 @@ oder mit 3 Oktalzahlen.</p>
 <p><code>go+r</code> heisst: der Gruppe und dem Owner gibt das recht zum Schreiben (read).</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ ls -la webspace_mmt/index.html
+<pre><code class="language-shell  linenums">$ ls -la webspace_mmt/index.html
 -rw------- 1 bjelline bjelline 20 Nov  6  2012 webspace_mmt/index.html
-
 $ chmod go+r webspace_mmt/index.html
-
 $ ls -la webspace_mmt/index.html
 -rw-r--r-- 1 bjelline bjelline 20 Nov  6  2012 webspace_mmt/index.html
-</pre></div>
+</code></pre></div>
 
 <p>Die Oktalzahl 664 in die Rechte umzurechner bleibt als Rätsel:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ chmod 644 webspace_mmt/index.html
-</pre></div>
+<pre><code class="language-shell  linenums">$ chmod 644 webspace_mmt/index.html
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -154,9 +149,8 @@ $ chmod 644 webspace_mmt/index.html
 jede neu Datei im Directory automatisch in diese Gruppe eingeordnet:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ chmod g+s img
-</pre></div>
+<pre><code class="language-shell  linenums">$ chmod g+s img
+</code></pre></div>
 
 <p><img src="/images/kommandozeile/better-permissions-explained.png" srcset="/images/kommandozeile/better-permissions-explained.png 1x, /images/kommandozeile/better-permissions-explained@2x.png 2x"  alt="Wie man das Stick bit am Directory setzt und Warum" ></p>
 
@@ -168,19 +162,17 @@ $ chmod g+s img
 <p>Ein Beispiel:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ cp Anna_* ~/Desktop/
+<pre><code class="language-shell  linenums">$ cp Anna_* ~/Desktop/
 cp: Anna_2.docx: Permission denied
-</pre></div>
+</code></pre></div>
 
 <p>Aber die UNIX Zugriffsrechte sind richtig gesetzt und sollten das Kopieren erlauben:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ ls -la Anna*
+<pre><code class="language-shell  linenums">$ ls -la Anna*
 -rw-r--r--@ 1 bjelline  staff  17543 27 Jul 17:05 Anna.docx
 -rw-r--r--@ 1 bjelline  staff  17250 27 Jul 17:02 Anna_2.docx
-</pre></div>
+</code></pre></div>
 
 <p>Im Dateisystem von Mac OS gibt es noch eine zusätzliche Art von Zugriffsrechten
 in den “extended Attributes”. Dass solche Attribute gesetzt sind erkennt man
@@ -189,8 +181,7 @@ am Klammeraffen:</p>
 <p>Mit der Option <code>-@l</code> kann man die Attribute anzeigen:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ ls -@ -la Anna*
+<pre><code class="language-shell  linenums">$ ls -@ -la Anna*
 -rw-r--r--@ 1 bjelline  staff  17543 27 Jul 17:05 Anna.docx
 	com.apple.fileutil.PlaceholderData	  336
 	com.apple.lastuseddate#PS	   16
@@ -203,14 +194,13 @@ $ ls -@ -la Anna*
 	com.apple.lastuseddate#PS	   16
 	com.apple.metadata:com_apple_backup_excludeItem	   61
 	com.microsoft.OneDrive.RecallOnOpen	    0
-</pre></div>
+</code></pre></div>
 
 <p>Mit dem Befehl <code>xattr -l</code> kann man den Inhalt der Attribute anzeigen lassen - das
 wird aber sehr umfangreich.  Hier nur ein Ausschnitt:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ xattr -l Anna*
+<pre><code class="language-shell  linenums">$ xattr -l Anna*
 ...
 Anna_2.docx: com.apple.LaunchServices.OpenWith:
 00000000  62 70 6C 69 73 74 30 30 D2 01 02 03 04 5F 10 10  |bplist00....._..|
@@ -223,7 +213,7 @@ Anna_2.docx: com.apple.LaunchServices.OpenWith:
 00000070  00 00 00 00 00 51                                |.....Q|
 00000076
 ...
-</pre></div>
+</code></pre></div>
 
 <p>Und hier ist auch die Lösung des Problems: Um die Datei Anna_2.docx zu öffnen soll
 man das Programm <code>com.microsoft.OneDrive.DownloadAndGo</code> verwenden.
@@ -243,16 +233,14 @@ Das kann man im Finder mit Rechtsklick aktivieren:</p>
 <p>Und es klappt auf der Kommandozeile mit dem Kopieren:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ cp Anna_* ~/Desktop/
-</pre></div>
+<pre><code class="language-shell  linenums">$ cp Anna_* ~/Desktop/
+</code></pre></div>
 
 <p>Wenn man ein Attribut ganz entfernen will geht das mit <code>xattr -d</code>:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-$ sudo xattr -d com.apple.quarantine Anna_*
-</pre></div>
+<pre><code class="language-shell  linenums">$ sudo xattr -d com.apple.quarantine Anna_*
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1268,7 +1256,11 @@ $ sudo xattr -d com.apple.quarantine Anna_*
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

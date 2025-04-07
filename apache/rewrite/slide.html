@@ -5,6 +5,9 @@
     <title>Rewrite - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -86,11 +89,10 @@
     <div class="slide"><p>Das Apache-Modul mod_rewrite erlaubt das Umschreiben der URL. Normalerweise verweist die URL direkt auf eine Datei im Filesystem. Dabei wird nur die Apache-Konfigurationsanweisung DocumentRoot verwendet um den Hauptordner des Servers festzulegen:</p>
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-&lt;VirtualHost ich.multimediatechnology.at&gt;
+<pre><code class="language-ruby  linenums">&lt;VirtualHost ich.multimediatechnology.at&gt;
   DocumentRoot /home/stud007/public_html/
 &lt;/VirtualHost&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die URL     <code>http://ich.multimediatechnology.at/mini/index.php</code> verweist auf die
 Datei <code>/home/stud007/public_html/mini/index.php</code></p>
@@ -108,10 +110,9 @@ Datei <code>/home/stud007/public_html/mini/index.php</code></p>
 
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-RewriteEngine On
+<pre><code class="language-ruby  linenums">RewriteEngine On
 RewriteRule ^personen$     personen.php  [L]
-</pre></div>
+</code></pre></div>
 
 <p>Diese Datei enthält eine Regel. Jede Regel besteht aus einem Suchmuster und einer neuen Schreibweise für die URL. Die erste Regel verwandelt die URL</p>
 
@@ -123,9 +124,8 @@ RewriteRule ^personen$     personen.php  [L]
 
 
 <div class="example">
-<pre class="lang-ruby prettyprint linenums">
-RewriteRule ^person/(.*)   person.php?pid=$1  [L]
-</pre></div>
+<pre><code class="language-ruby  linenums">RewriteRule ^person/(.*)   person.php?pid=$1  [L]
+</code></pre></div>
 
 <p>Das Suchmuster dieser Regel enthält runde Klammern. Diese dienen dazu einen Teil der URL einzufangen und später als Variable wieder zu verwenden. Damit verwandelt diese Regel die URLs</p>
 
@@ -183,5 +183,12 @@ RewriteRule ^person/(.*)   person.php?pid=$1  [L]
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

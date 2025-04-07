@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -56,15 +56,14 @@
 
 <div class="example">
 <h4 class="caption">Html Code <small>Berechnungen in Javascript, in einem script-Tag</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;h1&gt;Hallo Welt&lt;/h1&gt;
+<pre><code class="language-html  linenums">&lt;h1&gt;Hallo Welt&lt;/h1&gt;
 &lt;script&gt;
       var pi,r,a;
       pi = 3.141;
       r = 2;
       a = r * r * pi;
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Ohne Output merkt man aber gar nichts davon, das dieses Programm läuft.</p>
 
@@ -89,11 +88,10 @@
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Popup-Fenster</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-alert(&quot;peng, du bist tot!&quot;);
+<pre><code class="language-javascript  linenums">alert(&quot;peng, du bist tot!&quot;);
 var ja_nein = confirm(&quot;sollen die daten nicht gelöscht werden?&quot;);
 var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe löscht alles&quot;);
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/formulare/popups.png"  alt="Darstellung der Popup-Fenster in den Browsern Firefox, Chrome, Opera auf Mac" ></p>
 
@@ -107,8 +105,7 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 <p>Mit der Konsole von Firebug können Sie auch Formulare genauer untersuchen. Achtung! Wir geben ab jetzt allen Formular-Eingabefeldern nicht nur einen <code>name</code>, sondern auch eine <code>id</code>, das erleichtert die Handhabung in Javascript!</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form method=&quot;get&quot; action=&quot;mail.php&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form method=&quot;get&quot; action=&quot;mail.php&quot;&gt;
 &lt;label for=&quot;mail&quot;&gt;E-Mail:
    &lt;input type=&quot;text&quot; name=&quot;mail&quot; id=&quot;mail&quot;&gt;
 &lt;/label&gt;
@@ -117,7 +114,7 @@ var antwort = prompt(&quot;welche Daten sollen gelöscht werden. Keine Angabe l�
 &lt;/label&gt;
 &lt;input type=&quot;submit&quot; value=&quot;speichern&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -180,18 +177,16 @@ multipliziert werden und in die rechte Spalte geschrieben werden.</p>
 Eingabefeld und einem span-tag für die Ausgabe.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input value=&quot;0&quot; name=&quot;in&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input value=&quot;0&quot; name=&quot;in&quot;&gt;
 &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Für die Formulierung „Wenn in das Feld in ein neuer Wert eingegeben wird, dann…“  gibt es ein passendes Event in HTML/Javascript: onchange. Die wird als Attribut in den HTML-Code des Eingabefeldes geschrieben:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input value=&quot;0&quot; name=&quot;in&quot;  onchange=&quot;hier Javascript&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input value=&quot;0&quot; name=&quot;in&quot;  onchange=&quot;hier Javascript&quot;&gt;
 &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
@@ -201,11 +196,10 @@ Eingabefeld und einem span-tag für die Ausgabe.</p>
 <p>In das Attribut kann nun Javascript-Code eingefügt werden der die richtige Berechnung vornimmt und das Ergebnis in das richtige Element schreibt:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input value=&quot;0&quot; name=&quot;in&quot;
+<pre><code class="language-html  linenums">&lt;input value=&quot;0&quot; name=&quot;in&quot;
   onchange=&quot;document.getElementById(&#39;out&#39;).innerHTML = this.value * 100&quot;&gt;
 &lt;span id=&quot;out&quot;&gt;&lt;/span&gt;
-</pre></div>
+</code></pre></div>
 
 <p><input value="0" name="in" onchange="document.getElementById('out').innerHTML = this.value * 100" />
 <span id="out"></span></p>
@@ -239,13 +233,10 @@ zurückverwandelt (z.B. “300”).</p>
 <p>Nun wäre es natürlich unpraktisch in das onchange-Attribut ein längeres Javascript-Programm zu schreiben. Dafür kann man in Javascript Funktionen definieren, die dann nur noch aufgerufen werden. Z.B. um die Gesamtsumme im Bestellformular zu berechnen ist eine Funktion praktisch:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;head&gt;
+<pre><code class="language-html  linenums">&lt;head&gt;
 &lt;script&gt;
 function compute() {
-
   document.getElementById(&#39;outtotal&#39;).innerHTML =
-
     document.getElementById(&#39;in1&#39;).value * 100
   + document.getElementById(&#39;in2&#39;).value * 200
   + document.getElementById(&#39;in3&#39;).value * 0
@@ -256,7 +247,7 @@ function compute() {
 &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Bei den einzelnen Berechnungen für die einzelnen Bücher wird jeweils zum Schluss compute() aufgerufen.</p>
 
@@ -271,8 +262,7 @@ aber nicht deklariert. Es kann in einer Variable einmal ein
 String und einmal eine Zahl gespeichert sein:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-  var a,b,c;
+<pre><code class="language-html  linenums">  var a,b,c;
   a = 10;
   console.log(`wie viel ist ${a} plus 20?`);
   console.log(a + 20);
@@ -282,19 +272,18 @@ String und einmal eine Zahl gespeichert sein:</p>
   a = &quot;10&quot;;
   console.log(`wie viel ist ${a} plus 20?`);
   console.log(a + 20);
-</pre></div>
+</code></pre></div>
 
 <p>Hier der Output des Programms:</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-wie viel ist 10 plus 20?
+<pre><code class="language-plain  linenums">wie viel ist 10 plus 20?
 30
 wie viel ist zehn plus 20?
 zehn20 debugger eval code:7:3
 wie viel ist 10 plus 20?
 1020
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
@@ -308,18 +297,16 @@ wie viel ist 10 plus 20?
 <p>Mit der Funktion <code>parseInt()</code> können Sie einen String in eine Integer-Zahl verwandeln bevor Sie eine Addition durchführen.</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-  a = &quot;10&quot;;
+<pre><code class="language-javascript  linenums">  a = &quot;10&quot;;
   console.log(`wie viel ist ${a} plus 20?`);
   console.log(parseInt(a) + 20);
-</pre></div>
+</code></pre></div>
 
 <p>gibt das erwartete Ergebnis</p>
 
 <div class="example">
-<pre class="lang-plain prettyprint linenums">
-  wie viel ist 10 plus 20? 30
-</pre></div>
+<pre><code class="language-plain  linenums">  wie viel ist 10 plus 20? 30
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
@@ -343,11 +330,10 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <p>Dafür gibt es das Event „onsubmit“ im form-Tag.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;form name=&quot;pizzaformular&quot; 
+<pre><code class="language-html  linenums">&lt;form name=&quot;pizzaformular&quot; 
   action=&quot;http://webcode.multimediatechnology.at/code/echo.php&quot;
   onsubmit= &quot;wert=formularok(); return wert;&quot;&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Die Besonderheit dieses Events: wenn am Ende des Events ein falscher-Wert zurück gegeben wird, verhindert der Browser das Senden der Formulardaten.</p>
 
@@ -359,11 +345,9 @@ verhindern, dass das Formular abgesendet werden kann.</p>
 <p>Entsprechend kann man eine Funktion schreiben:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;script&gt;
+<pre><code class="language-html  linenums">&lt;script&gt;
 function formularok() {
   // ... Berechnung der Gesamtsumme ...
-
   if ( total &lt; 100 ) {
     alert(&quot;Die Gesamt-Bestellung muss mindestens 100€ betragen\n&quot;);
     return false;
@@ -372,7 +356,6 @@ function formularok() {
 }
 &lt;/script&gt;
 &lt;/head&gt;
-
 &lt;body&gt;
   &lt;form name     = &quot;pizzaformular&quot;
         action   = &quot;bestellung.php&quot;
@@ -381,7 +364,7 @@ function formularok() {
   &lt;input name=&quot;&quot; type=&quot;submit&quot; /&gt;
   &lt;/form&gt;
 &lt;/body&gt;
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1397,7 +1380,11 @@ function formularok() {
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

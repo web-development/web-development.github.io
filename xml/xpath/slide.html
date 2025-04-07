@@ -5,6 +5,9 @@
     <title>XPath - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -111,8 +114,7 @@ zu einem Bestimmten Bild <a href="http://de.wikipedia.org/w/api.php?action=query
 
 <div class="example">
 <h4 class="caption">Xml Code <small>output der Wikipedia-API: Abfrage von Bild-Information</small></h4>
-<pre class="lang-xml prettyprint linenums">
-&lt;api&gt;
+<pre><code class="language-xml  linenums">&lt;api&gt;
   &lt;query&gt;
     &lt;pages&gt;
       &lt;page ns=&quot;6&quot; title=&quot;Datei:2010-04-29-tulpen-by-RalfR-14.jpg&quot; missing=&quot;&quot; imagerepository=&quot;shared&quot;&gt;
@@ -123,7 +125,7 @@ zu einem Bestimmten Bild <a href="http://de.wikipedia.org/w/api.php?action=query
     &lt;/pages&gt;
   &lt;/query&gt;
 &lt;/api&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -135,16 +137,12 @@ wir XPath verwenden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>XML abfragen mit XPath in PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-$xml_doc = new SimpleXMLElement(&quot;....xml von oben ...&quot;);
-
+<pre><code class="language-php  linenums">$xml_doc = new SimpleXMLElement(&quot;....xml von oben ...&quot;);
 $query_result = $xml_doc-&gt;xpath( &quot;//ii/@thumburl&quot; );
-
 $bild_url = (string) $query_result[0];
-
 echo &quot;&lt;h1&gt;Das Bild&lt;/h1&gt;&quot;;
 echo &quot;&lt;img src=&#39;$bild_url&#39;&gt;&quot;;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -157,14 +155,13 @@ gibt sie in einem Ausgabefeld aus. <a href="/images/js-und-xpath.html">Demo</a><
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>XPath verwenden in HTML</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-iterator = document.evaluate(&#39;//h2&#39;, document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
+<pre><code class="language-javascript  linenums">iterator = document.evaluate(&#39;//h2&#39;, document, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
 thisNode = iterator.iterateNext();
 while (thisNode) {
   document.getElementById(&#39;output&#39;).value += thisNode.innerHTML + &quot;\n&quot;;
   thisNode = iterator.iterateNext();
 } 
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -176,9 +173,7 @@ serverseitig geladen und ins Javascript Eingefügt hat) in
 Javascript geparsed und mit XPath abgefragt.  <a href="/images/js-und-xml-xpath.html">Demo</a></p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">
-var xml_string, parser, doc, iterator, thisNode;
-
+<pre><code class="language-javascript  linenums">var xml_string, parser, doc, iterator, thisNode;
 xml_string = &#39;... &lt;ii thumburl=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2010-04-29-tulpen-by-RalfR-14.jpg/300px-2010-04-29-tulpen-by-RalfR-14.jpg&quot; thumbwidth=&quot;300&quot; thumbheight=&quot;451&quot; /&gt; ....&#39;;
 parser   = new DOMParser();
 doc      = parser.parseFromString(xml_string, &quot;application/xml&quot;);
@@ -188,7 +183,7 @@ thisNode = iterator.iterateNext();
 if (thisNode) {
   document.getElementById(&#39;bild&#39;).src = thisNode.value;
 } 
-</pre></div>
+</code></pre></div>
 
 <p>Siehe <a href="https://developer.mozilla.org/en-US/docs/Introduction_to_using_XPath_in_JavaScript">Introduction to using XPath in JavaScript</a></p>
 
@@ -245,5 +240,12 @@ oder mit CSS Selektoren oder mit einer ID.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

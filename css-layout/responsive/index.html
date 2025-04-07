@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -135,15 +135,14 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS mit Mediaquery</small></h4>
-<pre class="lang-css prettyprint linenums">
-@media screen and (max-width: 480px) {
+<pre><code class="language-css  linenums">@media screen and (max-width: 480px) {
   img {
     width: 100px;
   }
   /* weitere Regeln für kleine Screens */
 }
 /* allgemein gültige Regeln */
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -154,17 +153,15 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS mit Container Query</small></h4>
-<pre class="lang-css prettyprint linenums">
-section {
+<pre><code class="language-css  linenums">section {
   container-type: inline-size;
 }
-
 @container (min-width: 700px) {
   h2 {
     font-size: 28px;
   }
 }
-</pre></div>
+</code></pre></div>
 
 <p><a href="/images/css-layout/container-query.html">Ausführliche Demo</a></p>
 
@@ -196,21 +193,18 @@ section {
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries Beispiel</small></h4>
-<pre class="lang-css prettyprint linenums">
-@media print {
+<pre><code class="language-css  linenums">@media print {
   body { font-size: 10pt; }
 }
-
 @media screen {
 body { font-size: 13px; }
 }
-
 @supports not (display: grid) {
   div {
     float: right;
   }
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -221,40 +215,35 @@ body { font-size: 13px; }
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries für color-scheme</small></h4>
-<pre class="lang-css prettyprint linenums">
-:root {
+<pre><code class="language-css  linenums">:root {
   color-scheme: light dark;
 }
-
 @media (prefers-color-scheme: light) {
   .element {
     color: black;
     background-color: white;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   .element {
     color: white;
     background-color: black;
   }
 }
-</pre></div>
+</code></pre></div>
 
 <p>oder, seit 2024 noch kürzer:</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>light-dark Funktion für Farben</small></h4>
-<pre class="lang-css prettyprint linenums">
-:root {
+<pre><code class="language-css  linenums">:root {
   color-scheme: light dark;
 }
-
 .element {
   color: light-dark(black, white);
   background-color: light-dark(white, black);
 }
-</pre></div>
+</code></pre></div>
 
 <p>siehe auch
 * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features">MDN: media features</a>
@@ -1275,7 +1264,11 @@ body { font-size: 13px; }
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

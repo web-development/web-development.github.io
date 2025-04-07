@@ -5,6 +5,9 @@
     <title>Funktion Aufrufen - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -90,11 +93,10 @@ gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen:
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Funktion r aufrufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  r(&quot;hallo &quot;, 10);
+<pre><code class="language-javascript  linenums">  r(&quot;hallo &quot;, 10);
   r.call(null, &quot;hallo &quot;, 10);
   r.apply(null, [  &quot;hallo &quot;, 10 ]  );
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -105,14 +107,13 @@ gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen:
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>Verschiedene Arten eine Methode aufzurufen</small></h4>
-<pre class="lang-javascript prettyprint linenums">
-  objekt.f(&quot;hallo &quot;, 10);
+<pre><code class="language-javascript  linenums">  objekt.f(&quot;hallo &quot;, 10);
   objekt.f.call(objekt, &quot;hallo &quot;, 10);
   objekt.f.apply(objekt, [  &quot;hallo &quot;, 10 ]  );
   
   objekt.f.call(anderes_objekt, &quot;hallo &quot;, 10);
   objekt.f.apply(anderes_objekt, [  &quot;hallo &quot;, 10 ]  );
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -123,10 +124,10 @@ gibt es noch mehrere zusätzliche Arten eine Funktion aufzurufen:
 und die funktion sonst unverändert lässt:</p>
 
 <div class="example">
-<pre class="lang-javascript prettyprint linenums">  
+<pre><code class="language-javascript  linenums">  
   f2 = objekt.f.bind(anderes_objekt);
   f2.(&quot;hallo &quot;, 10);
-</pre></div>
+</code></pre></div>
 
 </div>
     <div class="slide">
@@ -168,5 +169,12 @@ und die funktion sonst unverändert lässt:</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

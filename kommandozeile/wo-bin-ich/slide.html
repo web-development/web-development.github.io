@@ -5,6 +5,9 @@
     <title>Wo bin ich - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -183,10 +186,9 @@ Sie diese Information mit dem Befehl <strong>ls</strong> ab:</p>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten</small></h4>
-<pre class="lang-shell prettyprint linenums">
-bash-3.2$ ls 
+<pre><code class="language-shell  linenums">bash-3.2$ ls 
 Desktop  Documents  Downloads  Dropbox  Library  Movies  Music  Pictures  Public
-</pre></div>
+</code></pre></div>
 
 <p>In der einfachen Version erhält man wirklich nur die Namen der Dateien und Ordner,
 so wie in dieser Darstellung im Finder:</p>
@@ -199,8 +201,7 @@ Die Option <strong>-l</strong> zum Befehl <strong>ls</strong> führt dazu, dass 
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten mit Details</small></h4>
-<pre class="lang-shell prettyprint linenums">
-bash-3.2$ ls -l
+<pre><code class="language-shell  linenums">bash-3.2$ ls -l
 total 0
 drwx------ 2 bjelline staff 68 Mär  1 20:21 Desktop
 drwx------ 2 bjelline staff 68 Mär  1 20:21 Documents
@@ -211,7 +212,7 @@ drwx------ 2 bjelline staff 68 Mär  1 20:21 Movies
 drwx------ 2 bjelline staff 68 Mär  1 20:21 Music
 drwx------ 2 bjelline staff 68 Mär  1 20:21 Pictures
 drwxr-xr-x 2 bjelline staff 68 Mär  2 09:18 Public
-</pre></div>
+</code></pre></div>
 
 <p>Das erste Zeichen zeigt an ob es sich um eine Datei (“-“) oder einen Ordner (“d”) handelt.
 Hier sind es nur Ordner. Danach folgen Informationen über Zugriffsrechte, und das Datum der
@@ -228,8 +229,7 @@ weitere Dateien angezeigt:</p>
 
 <div class="example">
 <h4 class="caption">Shell Code <small>Dateien und Ordner auflisten inklusive geheimer Dateien</small></h4>
-<pre class="lang-shell prettyprint linenums">
-bash-3.2$ ls -la
+<pre><code class="language-shell  linenums">bash-3.2$ ls -la
 total 12
 drwxr-xr-x   14 bjelline staff  476 Mär  2 09:29 .
 drwxr-xr-x+ 232 bjelline staff 7888 Mär  2 09:29 ..
@@ -245,7 +245,7 @@ drwx------    2 bjelline staff   68 Mär  1 20:21 Movies
 drwx------    2 bjelline staff   68 Mär  1 20:21 Music
 drwx------    2 bjelline staff   68 Mär  1 20:21 Pictures
 drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/shell-ls-la.png"  alt="Abbildung: Dateien und Ordner auflisten mit ls" ></p>
 </div>
@@ -288,5 +288,12 @@ drwxr-xr-x    2 bjelline staff   68 Mär  2 09:18 Public
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

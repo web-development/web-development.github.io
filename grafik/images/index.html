@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -152,8 +152,7 @@ Hier wird <code>w</code> statt <code>px</code> verwendet -  das wären ja CSS-Pi
 Achtung: man muss immer noch mit CSS diese Breite setzen!</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;img src=&quot;japanischer-garten_350px.webp&quot;
+<pre><code class="language-html  linenums">&lt;img src=&quot;japanischer-garten_350px.webp&quot;
   sizes=&quot;350px&quot;
   srcset=&quot;japanischer-garten_350px.webp 350w,
      japanischer-garten_701px.webp 701w,
@@ -161,7 +160,7 @@ Achtung: man muss immer noch mit CSS diese Breite setzen!</p>
      japanischer-garten_2802px.webp 2802w,
      japanischer-garten_4500px.webp 4500w,
      japanischer-garten_6000px.webp 6000w&quot; /&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Nun kann der Browser das geeignete Bild auswählen. z.B. bei einer Pixeldichte von 2 dppx:
 350 * 2 = 700.  Der Browser wählt dann das nächstgrößere Bild aus und stellt es dar, also in diesem
@@ -178,12 +177,11 @@ Beispiel das Bild mit einer Breite von 701.</p>
 dann die Größe die verwendet werden soll.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-sizes=&quot;(min-width: 1200px)) 1200px
+<pre><code class="language-html  linenums">sizes=&quot;(min-width: 1200px)) 1200px
        ((min-width: 800px) and (max-width: 1200px)) 1000px,
        ((min-width: 300px) and (max-width: 800px)) 500px,
         (max-width: 300px) 200px&quot;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -1219,7 +1217,11 @@ machen und automatisieren, siehe <a href="/kommandozeile/bild-und-video/#slide-5
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

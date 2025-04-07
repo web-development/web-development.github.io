@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -61,10 +61,9 @@ können wir sie so verwenden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prepared Statements verhindern SQL Injection</small></h4>
-<pre class="lang-php prettyprint linenums">
-$query = $dbh-&gt;prepare(&#39;SELECT * FROM users WHERE id=?&#39;);
+<pre><code class="language-php  linenums">$query = $dbh-&gt;prepare(&#39;SELECT * FROM users WHERE id=?&#39;);
 $query-&gt;execute(array( $_GET[&#39;pid&#39;] ) );
-</pre></div>
+</code></pre></div>
 
 <p>Mit dem <code>prepare</code> wird das SQL-Statement an die Datenbank geschickt,
 und dort bereits vor-kompiliert. Die Daten,
@@ -82,11 +81,10 @@ werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prepared Statements mit benanntem Parameter</small></h4>
-<pre class="lang-php prettyprint linenums">
-$stm = $dbh-&gt;prepare ( &#39;SELECT * FROM USERS WHERE USERNAME LIKE :name&#39; );
+<pre><code class="language-php  linenums">$stm = $dbh-&gt;prepare ( &#39;SELECT * FROM USERS WHERE USERNAME LIKE :name&#39; );
 $stm-&gt;bindParam(&#39;:name&#39;, $_POST[&#39;name&#39;] );
 $stm-&gt;execute();
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -98,11 +96,10 @@ Wenn man nämlich im String der an prepare übergeben wird Variablen einbettet:<
 
 <div class="example">
 <h4 class="caption">Php Code <small>Prepared Statements falsch gmacht</small></h4>
-<pre class="lang-php prettyprint linenums">
-$stm = $dbh-&gt;prepare ( &quot;UPDATE users SET newsletter = ? WHERE USERNAME = &#39;$name&#39;&quot; );
+<pre><code class="language-php  linenums">$stm = $dbh-&gt;prepare ( &quot;UPDATE users SET newsletter = ? WHERE USERNAME = &#39;$name&#39;&quot; );
 $query-&gt;execute(array( $_GET[&#39;newsletter&#39;] ) );
 $stm-&gt;execute();
-</pre></div>
+</code></pre></div>
 
 <p><img src="/images/security/fire-extinguisher-fire.jpg"  alt="" ></p>
 
@@ -233,9 +230,8 @@ META-Tag in HTML and den Client übermittelt.  Aktuelle Browser halten die Polic
 um dieselbe Policy zu setzen:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-    &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src https:&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">    &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src https:&quot;&gt;
+</code></pre></div>
 
 <p>Diese Policy bewirkt zwei Dinge:</p>
 
@@ -1276,7 +1272,11 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

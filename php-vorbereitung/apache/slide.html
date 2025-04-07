@@ -5,6 +5,9 @@
     <title>Webserver mit PHP oder Apache - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -117,23 +120,21 @@ Angenommen ich habe eine Datei mit Pfad <code>dev/webprog2abgabe/order-mail/inde
 <p>Wenn ich den Webserver im Ordner <code>webprog2abgabe</code> starte:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-cd dev
+<pre><code class="language-shell  linenums">cd dev
 cd webprog2abgabe
 php -S localhost:4000
-</pre></div>
+</code></pre></div>
 
 <p>dann lautet die URL <code>http://localhost:4000/order-mail/index.html</code></p>
 
 <p>Wenn ich den Webserver im Ordner <code>oder-mail</code> starte:</p>
 
 <div class="example">
-<pre class="lang-shell prettyprint linenums">
-cd dev
+<pre><code class="language-shell  linenums">cd dev
 cd webprog2abgabe
 cd order-mail
 php -S localhost:4000
-</pre></div>
+</code></pre></div>
 
 <p>dann lautet die URL nur  <code>http://localhost:4000/index.html</code></p>
 
@@ -227,5 +228,12 @@ bereits installierten Dienste und kann diese starten und anhalten.</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

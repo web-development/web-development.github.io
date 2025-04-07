@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -56,13 +56,12 @@ vom Typ <code>file</code>:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular für den Datei-Upload</small></h4>
-<pre class="lang-html prettyprint linenums">
-&lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+<pre><code class="language-html  linenums">&lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
   Neues Bild zum hochladen in den Ordner &lt;a href=&#39;pix/&#39;&gt;upload&lt;/a&gt;: 
   &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
   &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
 &lt;/form&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -134,31 +133,24 @@ man den Server hacken will!</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>PHP-Programm zur Behandlung von Datei-Upload</small></h4>
-<pre class="lang-php prettyprint linenums">
-&lt;?php
+<pre><code class="language-php  linenums">&lt;?php
 $uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/pix/&quot;;
-
 $filename = basename($_FILES[&#39;bild&#39;][&#39;name&#39;]);
 $ext = substr($filename, -4);
-
 if( $ext != &#39;.jpg&#39; ) {
    die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . $ext );
 }
-
 $uploadfile = $uploaddir . $filename;
-
 if (move_uploaded_file($_FILES[&#39;bild&#39;][&#39;tmp_name&#39;], $uploadfile)) {
   echo &quot;Datei erfolgreich hochgeladen.\n&quot;;
 } else {
   echo &quot;Problem beim Speichern der Datei.\n&quot;;
 }
-
 echo &#39;&lt;pre&gt;debugging info:&#39;;
 print_r($_FILES);
 print &#39;&lt;/pre&gt;&#39;;
-
 ?&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
@@ -1184,7 +1176,11 @@ behandelt.</p>
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

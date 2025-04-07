@@ -12,16 +12,16 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/prettify.css">
-  <style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
     }
     ol.linenums {
         margin-left: 50px !important;
     }
+
   </style>
-  <script type="module" src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.1.0-V83RMQBlYCPK9CvTqQoL/mode=imports/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
 
@@ -56,8 +56,7 @@
 
 <div class="example">
 <h4 class="caption">Css Code <small>Die Datei fh.css</small></h4>
-<pre class="lang-css prettyprint linenums">
-h1,h2 {
+<pre><code class="language-css  linenums">h1,h2 {
   font-family: Arial, Helvetica, sans-serif;
   color: lightblue;
 }
@@ -68,7 +67,7 @@ body {
 p {
   text-align: justify;
 }
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
@@ -93,9 +92,8 @@ p {
 <p>Die Seiten einer gesamten Website haben meist ein einheitliches Aussehen. Dies können Sie erreichen, wenn Sie für jede Webseite dieselbe CSS Datei verwenden. Dazu müssen Sie in jede HTML-Datei die CSS Datei mittels folgender Anweisung einbinden:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;link rel=&quot;stylesheet&quot; href=&quot;mystyle.css&quot;&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;link rel=&quot;stylesheet&quot; href=&quot;mystyle.css&quot;&gt;
+</code></pre></div>
 
 <p>Diese Zeile sollte innerhalb des head Bereiches der HTML-Datei stehen (da sonst die Darstellung der Seite verzögert werden kann). <code>mysyle.css</code> könnte etwa so aussehen wie im vorigen Beispiel.</p>
 
@@ -107,14 +105,13 @@ p {
 <p>Wenn Sie einen Style nur auf einer einzigen Webseite verwenden, können Sie die Style-Angaben direkt in die HTML-Datei schreiben, und zwar innerhalb des head Bereiches.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;style&gt;
+<pre><code class="language-html  linenums">&lt;style&gt;
   h1,h2 {
     font-family: Arial, Helvetica, sans-serif;
     color: lightblue
   }
 &lt;/style&gt;
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
@@ -126,9 +123,8 @@ p {
 <p>Um einen style für einen einzelnen Tag zu definieren, müssen Sie innerhalb des Tags das Attribut style verwenden.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;h1 style=&quot;color:red; text-align:center;&quot;&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;h1 style=&quot;color:red; text-align:center;&quot;&gt;Rote, zentrierte Überschrift&lt;/h1&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
@@ -147,9 +143,8 @@ p {
 <p>Wenn Sie mit den Style-Angaben den p-Tag umformatieren, betrifft das alle p-Tags in der Webseite.</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-p { background-color: #ddd; }
-</pre></div>
+<pre><code class="language-css  linenums">p { background-color: #ddd; }
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
@@ -159,9 +154,8 @@ p { background-color: #ddd; }
 <p>Oft möchten Sie aber ein oder zwei Absätze anders formatieren als die anderen Absätze. Zu diesem Zweck können Sie sich im Stylesheet noch weitere Formatvorlagen - sogenannte “Klassen” - definieren:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.wichtig { color: red; }
-</pre></div>
+<pre><code class="language-css  linenums">.wichtig { color: red; }
+</code></pre></div>
 
 <p>Diesen Klassen können Sie eigene Namen geben (hier „wichtig“), vor dem Klassennamen steht immer ein Punkt.</p>
 
@@ -173,18 +167,16 @@ p { background-color: #ddd; }
 <p>Jedem beliebigen HTML-Tag können Sie nun diese Klasse zuweisen. Dies geschieht mit dem Attribut class.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+<pre><code class="language-html  linenums">&lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
 &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
 &lt;p&gt;Ein ganz normaler Absatz&lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Zur „normalen“ Wirkung des HTML-Tags kommt nun die Formatierung durch die Klasse hinzu: der Text „ganz wichtige“ und „Ein ganz wichtiger Absatz“ ist in diesem Beispiel also rot. Eine Klasse kann also mehrmals in einem Dokument verwendet werden. Ein Tag kann mehrere Klassen erhalten, diese werden durch Leerzeichen getrennt im class-Attribut angeführt.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;p class=&quot;wichtig eilmeldung&quot;&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;p class=&quot;wichtig eilmeldung&quot;&gt;Ein wichtiger Absatz als Eilmeldung&lt;/p&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
@@ -194,18 +186,16 @@ p { background-color: #ddd; }
 <p>Zur eindeutigen Kennzeichnung von Tags wird das Attribut id verwendet:</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
+<pre><code class="language-html  linenums">&lt;p&gt;Eine &lt;b class=&quot;wichtig&quot;&gt;ganz wichtige&lt;/b&gt; Meldung&lt;/p&gt;
 &lt;p class=&quot;wichtig&quot;&gt;Ein ganz wichtiger Absatz&lt;/p&gt;
 &lt;p id=&quot;impressum&quot;&gt;Das einzige Impressum dieser Seite&lt;/p&gt;
-</pre></div>
+</code></pre></div>
 
 <p>Auf diese eindeutigen IDs kann in CSS mit der Raute (englisch: „hash sign“) referenziert werden:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-#impressum { background-color: #DDD; }
-</pre></div>
+<pre><code class="language-css  linenums">#impressum { background-color: #DDD; }
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
@@ -215,16 +205,13 @@ p { background-color: #ddd; }
 <p>Sowohl Klassen als auch IDs können mit Tags kombiniert werden um einen komplexen Selektor zu bilden, aber das macht nur bei Klassen wirklich Sinn:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-.wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
+<pre><code class="language-css  linenums">.wichtig { font-size: 20px; }     /* alle Tags mit der Klasse wichtig     */
 p.wichtig { color: red;    }     /* nur der Tag p mit der Klasse wichtig */
 b.wichtig { color: yellow; }    /* nur der Tag b mit der Klasse wichtig */
-
 #impressum { background-color:#ddd; }  /* nur der Tag mit der id #impressum */
 p#impressum { background-color:#ddd; } /* nur der p-Tag mit der id #impressum */
-
 b#impressum { background-color:#ddd; } /* nix! */
-</pre></div>
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
@@ -234,9 +221,8 @@ b#impressum { background-color:#ddd; } /* nix! */
 <p>Es wird öfter vorkommen, dass Sie einem Bereich eine bestimmte Klasse zuweisen möchten, ohne dass ein passender Tag vorhanden ist. Hier können Sie die beiden Tags &lt;span&gt; und &lt;div&gt; verwenden, die beide selber kaum Eigenschaft aufweisen. &lt;span&gt; eignet sich für die Verwendung in Fließtext, &lt;div&gt; ist ein blockbildender Tag.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Es gibt hier ganz &lt;span class=&quot;wichtig&quot;&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;p&gt;Es gibt hier ganz &lt;span class=&quot;wichtig&quot;&gt;besonders interessante&lt;/span&gt; Meldungen.&lt;/p&gt;
+</code></pre></div>
 
 <p>Die Worte „besonders interessante“ erscheinen rot.</p>
 
@@ -245,9 +231,8 @@ Bedeutung übermitteln will …. für die es schon einen HTML-Tag gibt. Besser w
 die Verwendung des Tags <code>em</code> der für “Betonung” steht.</p>
 
 <div class="example">
-<pre class="lang-html prettyprint linenums">
-&lt;p&gt;Es gibt hier ganz &lt;em class=&quot;wichtig&quot;&gt;besonders interessante&lt;/em&gt; Meldungen.&lt;/p&gt;
-</pre></div>
+<pre><code class="language-html  linenums">&lt;p&gt;Es gibt hier ganz &lt;em class=&quot;wichtig&quot;&gt;besonders interessante&lt;/em&gt; Meldungen.&lt;/p&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
@@ -322,12 +307,10 @@ die Verwendung des Tags <code>em</code> der für “Betonung” steht.</p>
 <p>Für Werte die mehrmals verwendet werden kann man Variablen setzen:</p>
 
 <div class="example">
-<pre class="lang-css prettyprint linenums">
-:root {
+<pre><code class="language-css  linenums">:root {
   --important-color: darkcyan;              /* Variable setzen */
   --text-on-important-color: darkcyan;
 }
-
 h1 {
 color: var(--important-color);              /* Variable verwenden */
 }
@@ -335,7 +318,7 @@ nav {
 background-color: var(--important-color);
 color: var(--text-on-important-color);
 }
-</pre></div>
+</code></pre></div>
 
  <div class="pagination">
   <ul>
@@ -1351,7 +1334,11 @@ color: var(--text-on-important-color);
 
 </div> <!-- class="container" -->
 
-<script src="/assets/js/scripts.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script>hljs.highlightAll();</script>
 <script>
   $(document).ready(function(){
     function save_state(){

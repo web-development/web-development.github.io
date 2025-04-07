@@ -5,6 +5,9 @@
     <title>Transaktionen - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
     <!-- Replace path with correct path to deck.core.css. -->
     <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
     <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
@@ -119,14 +122,13 @@ Die Auswirkungen einer Transaktion müssen im Datenbestand dauerhaft bestehen bl
 
 <div class="example">
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in POSTGRES, die zwei Einfüge-Operationen zusammenfasst</small></h4>
-<pre class="lang-sql prettyprint linenums">
-BEGIN;
+<pre><code class="language-sql  linenums">BEGIN;
 INSERT INTO staff (id, first, last) 
   VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;);
 INSERT INTO salarychange (id, amount, changedate) 
   VALUES (42, 50000, NOW());
 COMMIT;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -135,15 +137,14 @@ COMMIT;
 
 <div class="example">
 <h4 class="caption">Sql Code <small>Beispiel für eine Transaktion in Postgres, die zurück-gerollt wird</small></h4>
-<pre class="lang-sql prettyprint linenums">
-BEGIN;
+<pre><code class="language-sql  linenums">BEGIN;
 INSERT INTO staff (id, first, last) 
   VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;);
 INSERT INTO salarychange (id, amount, changedate) 
   VALUES (42, 50000, NOW());
 ROLLBACK;
 -- nichts ist passiert!
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -153,11 +154,10 @@ ROLLBACK;
 <p>Schlecht:</p>
 
 <div class="example">
-<pre class="lang-sql prettyprint linenums">
-BEGIN;
+<pre><code class="language-sql  linenums">BEGIN;
 -- warte auf input ... beliebig lagen
 COMMIT;
-</pre></div>
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -238,5 +238,12 @@ Werte sind (laut Postgres):</p>
 
     <!-- Initialize the deck. You can put this in an external file if desired. -->
     <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
