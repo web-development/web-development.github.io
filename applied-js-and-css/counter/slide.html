@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Zähler - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Zähler</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css//slide.html">JavaScript - Anwendung im Browser</a> | 
+        <a href="/applied-js-and-css/counter/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/formularpruerung//slide.html">Formulardaten Prüfen</a>
+        
+      </p>
+    </div>
+    <div class="slide"></div>
+<div class="slide">
+
+<h2 id="ein-einfacher-zhler">Ein einfacher Zähler</h2>
+
+<p>An diesem Simplen Beispiel werden wir verschiedene
+Arten Javascript zu schreiben kennen lernen.</p>
+
+<p>Hier ist die Ausgangsversion des Codes:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+&lt;button onclick=&quot;increment()&quot;&gt;Up&lt;/button&gt;
+&lt;button onclick=&quot;decrement()&quot;&gt;Down&lt;/button&gt;
+&lt;script&gt;
+    function increment() {
+        const counter = document.getElementById(&#39;counter&#39;);
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        const counter = document.getElementById(&#39;counter&#39;);
+        counter.value = parseInt(counter.value) - 1;
+    }
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="addeventlistener">addEventListener</h2>
+
+<p>Die Event-Listener sind als <code>onclick</code> Attribute in HTML gesetzt.
+Das kann man auch ganz von JavaScript aus machen, mit <code>addEventListener</code>.
+Dann hat man in HTML nur noch die Aufgabe die verschiednenen Elemente
+mit eindeutigen id’s oder Klassen zu benennen. Alles weitere passiert in Javascript:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+&lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+&lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;script&gt;
+    const counter = document.getElementById(&#39;counter&#39;);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    function increment() {
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        counter.value = parseInt(counter.value) - 1;
+    }
+    upButton.addEventListener(&#39;click&#39;, increment);
+    downButton.addEventListener(&#39;click&#39;, decrement);
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="problemt-mit-der-dom">Problemt mit der DOM</h2>
+
+<p>Achtung: wenn man das Javascript <strong>vor</strong> dem HTML in die
+Seite gibt, hat man ein Problem:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;head&gt;
+    &lt;title&gt;Simple Counter&lt;/title&gt;
+    &lt;script&gt;
+      const counter = document.getElementById(&#39;counter&#39;);
+      const upButton = document.getElementById(&#39;up&#39;);
+      const downButton = document.getElementById(&#39;down&#39;);
+      function increment() {
+          counter.value = parseInt(counter.value) + 1;
+      }
+      function decrement() {
+          counter.value = parseInt(counter.value) - 1;
+      }
+      upButton.addEventListener(&#39;click&#39;, increment);
+      downButton.addEventListener(&#39;click&#39;, decrement);
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+    &lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;/body&gt;
+</code></pre></div>
+
+<p>Der Counter funktioniert nicht mehr, und in der Console sieht man die Fehlermeldung:</p>
+
+<p><strong>Uncaught TypeError: can’t access property “addEventListener”, upButton is null</strong></p>
+
+<p>Das Problem ist, dass der upButton noch gar nicht existiert, wenn der Code
+ausgeführt wird. <code>document.getElementById('up')</code> liefert dann den wert <code>null</code>,
+mit dem wir aber nicht weiter arbeiten können.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="lsung-domcontentloaded">Lösung DOMContentLoaded</h2>
+
+<p>Das Event <code>DOMContentLoaded</code> wird gefeuert, wenn die DOM vollständig
+ist:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+</code></pre></div>
+
+<p>Die Funktion <code>setupCounter</code> müssen wir nur zuerst definieren,
+so sieht also das gesamte Beispiel aus:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">function setupCounter() {
+    const counter = document.getElementById(&#39;counter&#39;);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    function increment() {
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        counter.value = parseInt(counter.value) - 1;
+    }
+    upButton.addEventListener(&#39;click&#39;, increment);
+    downButton.addEventListener(&#39;click&#39;, decrement);
+}
+document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="javascript-klasse">Javascript Klasse</h2>
+
+<p>Bisher ist der Wert des Zählers direkt im DOM-Element gespeichert.
+Bei komplexeren Beispielen wollen wir das sicher nicht mehr, da wollen
+wir Javascript Klassen verwenden.</p>
+
+<p>Wir können also ein Klasse für den Zähler programmieren:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">class Counter {
+    constructor(initialValue = 0) {
+        this.value = initialValue;
+    }
+    increment() {
+        this.value++;
+        this.updateDisplay();
+    }
+    decrement() {
+        this.value--;
+        this.updateDisplay();
+    }
+    updateDisplay() {
+        document.getElementById(&#39;counter&#39;).value = this.value;
+    }
+}
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="erzeugen-des-objekts-und-anbindung-an-die-dom">Erzeugen des Objekts und Anbindung an die DOM</h3>
+
+<p>In der setup-Funktion wird nun ein Objekt dieser Klasse
+erzeugt:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function setupCounter() {
+    const counter = new Counter(0);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    upButton.addEventListener(&#39;click&#39;, counter.increment());
+    downButton.addEventListener(&#39;click&#39;, counter.decrement());
+}
+document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+&lt;/javascript caption=&quot;mit Fehler&quot;&gt;
+Aber Achtung: dieser Code funktioniert nicht!
+### EventListener richtig aufsetzen
+Das Problem sind diese beiden Zeilen:
+&lt;javascript&gt;
+upButton.addEventListener(&#39;click&#39;, counter.increment()); // FALSCH!
+downButton.addEventListener(&#39;click&#39;, counter.decrement()); // FALSCH!
+</code></pre></div>
+
+<p>Wenn <code>addEventListener</code> ausgeführt wird, wird die Methode <code>counter.increment</code>
+einmal aufgerufen.  Sie liefert keinen Rückgabewert, also <code>undefined</code>.
+Damit passiert dann bei jedem klick auf den Button … nichts!</p>
+
+<p>Zweiter Versuch:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, counter.increment); // FALSCH!
+downButton.addEventListener(&#39;click&#39;, counter.decrement); // FALSCH!
+</code></pre></div>
+
+<p>Auch hier gibt es einen Error: <strong>Uncaught TypeError: this.updateDisplay is not a function</strong>.
+Hier funktioniert zwar der Aufruf der Methode, aber die Methode erhält
+als <code>this</code> eine referenz auf den geklickten Button. Diese setzen von <code>this</code>
+bei <code>addEventListener</code> gab es schon, bevor es Klassen gab. Heute ist
+es sehr unpraktisch.</p>
+
+<p>Um das Problem zu umgehen kann man eine Arrow Funkction verwenden,
+dann klappts auch mit dem <code>this</code>:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, () =&gt; counter.increment());
+downButton.addEventListener(&#39;click&#39;, () =&gt; counter.decrement());
+</code></pre></div>
+
+</div>
+    <div class="slide">
+      <h1>Zähler</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/applied-js-and-css//slide.html">JavaScript - Anwendung im Browser</a> | 
+        <a href="/applied-js-and-css/counter/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/applied-js-and-css/formularpruerung//slide.html">Formulardaten Prüfen</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

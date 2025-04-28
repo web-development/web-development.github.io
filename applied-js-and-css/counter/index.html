@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - HTTP</title>
+  <title>Lehrbuch Web-Development - Zähler</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -46,199 +46,228 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        HTTP
+        Zähler
       </h2>
-      <a href="/http/http/slide.html">als Präsentation ▻</a>
+      <a href="/applied-js-and-css/counter/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>HTTP in der aktuell gültigen Version 1.1 ist in <a href="https://www.ietf.org/rfc/rfc2616.txt">RFC 2616</a> definiert. 
-HTTP baut auf TCP auf, d.h. die hier dargestellten Daten werden über eine TCP-Verbindung zwischen Client und Server übertragen. 
-Im <a href="/das-web-und-html/standards/">Kapitel „Drei Standards definieren das Web“</a> 
-wurde HTTP schon einmal grob vorgestellt; nun werden wir HTTP genauer betrachten.</p>
-
-
+     <div id="slide-1" title="Folie Nr. 1"></div>
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="ablauf-im-berblick">Ablauf im Überblick</h2>
-<p>Egal ob der Vorgang durch das Eintippen einer URL oder durch das Anklicken eines Links gestartet wird — das Laden einer Webseite über HTTP funktioniert immer gleich.</p>
+<h2 id="ein-einfacher-zhler">Ein einfacher Zähler</h2>
 
-<ol>
-  <li>Der <strong>Browser</strong> analysiert die <strong>URL</strong>: falls Sie eine IP-Adresse enthält geht’s weiter zum nächsten Schritt. Falls sie einen Domain Namen enthält wird dieser mittels DNS-Lookup in die entsprechende IP-Adresse übersetzt.</li>
-  <li>Der Browser baut eine <strong>TCP-Verbindung</strong> zum Server auf, falls in der URL nicht anders angegeben wird  dabei Port 80 angesteuert.</li>
-  <li>Der Browser sendet über die TCP-Verbindung einen <strong>HTTP-Request</strong>; dieser besteht aus einer ersten Zeile (Request-Line), mehreren Header-Zeilen und manchmal einem Body.</li>
-  <li>Der <strong>Webserver</strong> nimmt den Request entgegen und analysiert ihn. Der Webserver entscheidet, ob er zur Beantwortung der Anfrage nur eine bestimmte Datei aus dem Dateisystem zu liest, oder ein Programm aufruft.</li>
-  <li>Der Webserver schickt über die TCP-Verbindung einen <strong>HTTP-Response</strong> an den Browser, dieser besteht aus einer ersten Zeile (Response-Line) mit Statuscode, z. B. „200 OK\n\n“, mehreren Header-Zeilen und der  angeforderten Ressource.</li>
-  <li>Der Browser nimmt das Dokument in Empfang, <strong>stellt es dar</strong>, und beendet die TCP-Verbindung.</li>
-</ol>
+<p>An diesem Simplen Beispiel werden wir verschiedene
+Arten Javascript zu schreiben kennen lernen.</p>
+
+<p>Hier ist die Ausgangsversion des Codes:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+&lt;button onclick=&quot;increment()&quot;&gt;Up&lt;/button&gt;
+&lt;button onclick=&quot;decrement()&quot;&gt;Down&lt;/button&gt;
+&lt;script&gt;
+    function increment() {
+        const counter = document.getElementById(&#39;counter&#39;);
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        const counter = document.getElementById(&#39;counter&#39;);
+        counter.value = parseInt(counter.value) - 1;
+    }
+&lt;/script&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="addeventlistener">addEventListener</h2>
 
+<p>Die Event-Listener sind als <code>onclick</code> Attribute in HTML gesetzt.
+Das kann man auch ganz von JavaScript aus machen, mit <code>addEventListener</code>.
+Dann hat man in HTML nur noch die Aufgabe die verschiednenen Elemente
+mit eindeutigen id’s oder Klassen zu benennen. Alles weitere passiert in Javascript:</p>
 
-<p><img src="/images/http-sequence-diagram.svg"  alt="zwei http requests" ></p>
-
-<p>Dieser einfache Ablauf kann durch die Verwendung von Proxies und Caches sowie durch das wiederholte Abrufen von Dokumenten vom selben Server komplizierter werden — das ignorieren wir aber erst einmal.</p>
+<div class="example">
+<pre><code class="language-html  linenums">&lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+&lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+&lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;script&gt;
+    const counter = document.getElementById(&#39;counter&#39;);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    function increment() {
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        counter.value = parseInt(counter.value) - 1;
+    }
+    upButton.addEventListener(&#39;click&#39;, increment);
+    downButton.addEventListener(&#39;click&#39;, decrement);
+&lt;/script&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h2 id="aufbau-von-request-und-response">Aufbau von Request und Response</h2>
-<p>Jede Anfrage des Clients und jede Antwort des Servers besteht aus einer ersten Zeile 
-mit besonderer Bedeutung, einem Header und einem Body. 
-Header und Body funktionieren ähnlich wie bei einer E-Mail, es kann viele
-Header-Zeilen geben.  Der Body ist beim Request meist leer.</p>
+<h2 id="problemt-mit-der-dom">Problemt mit der DOM</h2>
+
+<p>Achtung: wenn man das Javascript <strong>vor</strong> dem HTML in die
+Seite gibt, hat man ein Problem:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;head&gt;
+    &lt;title&gt;Simple Counter&lt;/title&gt;
+    &lt;script&gt;
+      const counter = document.getElementById(&#39;counter&#39;);
+      const upButton = document.getElementById(&#39;up&#39;);
+      const downButton = document.getElementById(&#39;down&#39;);
+      function increment() {
+          counter.value = parseInt(counter.value) + 1;
+      }
+      function decrement() {
+          counter.value = parseInt(counter.value) - 1;
+      }
+      upButton.addEventListener(&#39;click&#39;, increment);
+      downButton.addEventListener(&#39;click&#39;, decrement);
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot;&gt;
+    &lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;/body&gt;
+</code></pre></div>
+
+<p>Der Counter funktioniert nicht mehr, und in der Console sieht man die Fehlermeldung:</p>
+
+<p><strong>Uncaught TypeError: can’t access property “addEventListener”, upButton is null</strong></p>
+
+<p>Das Problem ist, dass der upButton noch gar nicht existiert, wenn der Code
+ausgeführt wird. <code>document.getElementById('up')</code> liefert dann den wert <code>null</code>,
+mit dem wir aber nicht weiter arbeiten können.</p>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
+<h2 id="lsung-domcontentloaded">Lösung DOMContentLoaded</h2>
 
+<p>Das Event <code>DOMContentLoaded</code> wird gefeuert, wenn die DOM vollständig
+ist:</p>
 
-<p>Hier ein Beispiel für einen Request:</p>
+<div class="example">
+<pre><code class="language-html  linenums">document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+</code></pre></div>
 
-<pre><code>GET /~bjelline/u2/bestellung.html HTTP/1.1
-Host: users.fh-salzburg.ac.at
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-DNT: 1
-Cookie: _ga=GA1.3.1837452953.1440699405
-</code></pre>
+<p>Die Funktion <code>setupCounter</code> müssen wir nur zuerst definieren,
+so sieht also das gesamte Beispiel aus:</p>
 
-<p>Die erste Zeile besteht aus: Methode, URL-Fragement und HTTP-Versionsnummer. 
-Die meist-verwendete Methode ist GET. Sie erinnern sich:
-bei Web-Formularen muss man die Methode angeben, mit der die Daten an den 
-Server übertragen werden sollen. Das ist diese Methode.</p>
+<div class="example">
+<pre><code class="language-html  linenums">function setupCounter() {
+    const counter = document.getElementById(&#39;counter&#39;);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    function increment() {
+        counter.value = parseInt(counter.value) + 1;
+    }
+    function decrement() {
+        counter.value = parseInt(counter.value) - 1;
+    }
+    upButton.addEventListener(&#39;click&#39;, increment);
+    downButton.addEventListener(&#39;click&#39;, decrement);
+}
+document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
+<h2 id="javascript-klasse">Javascript Klasse</h2>
 
+<p>Bisher ist der Wert des Zählers direkt im DOM-Element gespeichert.
+Bei komplexeren Beispielen wollen wir das sicher nicht mehr, da wollen
+wir Javascript Klassen verwenden.</p>
 
-<p>Hier ein Beispiel für eine Server-Antwort:</p>
+<p>Wir können also ein Klasse für den Zähler programmieren:</p>
 
-<pre><code>HTTP/1.1 200 OK
-Date: Sun, 06 Mar 2016 21:43:16 GMT
-Server: Apache/2.2.15 (Scientific Linux)
-Last-Modified: Sun, 06 Mar 2016 20:47:07 GMT
-Content-Length: 543
-Content-Type: text/html
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset="utf-8"&gt;        
-    &lt;title&gt;Bestellung eines Flugzeugs&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Wieviele Flugzeuge dürfens denn sein?&lt;/h1&gt;
-    &lt;form action="bestellung.php" method="POST"&gt;            
-    &lt;p&gt;Anzahl: &lt;br&gt;&lt;input name="anzahl"&gt;&lt;/p&gt;            
-    &lt;p&gt;Adresse:&lt;br&gt; &lt;textarea name="adresse"&gt;&lt;/textarea&gt;&lt;/p&gt;            
-    &lt;p&gt;Preis: 1.000.000 €&lt;/p&gt;            
-    &lt;p&gt;&lt;input type="submit" value="Bestellung absenden"&gt;&lt;/p&gt;
-    &lt;/form&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-<p>Die erste Zeile der Server-Antwort besteht aus der HTTP-Versionsnummer, dem Statuscode und einem erklärenden Text zum Statuscode, der aber nicht standardisiert ist.</p>
-
-<p>Die wichtigsten Statuscodes sind 200 (ok), 404 (not found), 403 (forbidden).
-Siehe http://httpstatus.es/</p>
+<div class="example">
+<pre><code class="language-javascript  linenums">class Counter {
+    constructor(initialValue = 0) {
+        this.value = initialValue;
+    }
+    increment() {
+        this.value++;
+        this.updateDisplay();
+    }
+    decrement() {
+        this.value--;
+        this.updateDisplay();
+    }
+    updateDisplay() {
+        document.getElementById(&#39;counter&#39;).value = this.value;
+    }
+}
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
-<h2 id="header">Header</h2>
+<h3 id="erzeugen-des-objekts-und-anbindung-an-die-dom">Erzeugen des Objekts und Anbindung an die DOM</h3>
 
-<p>Header-Zeilen gibt es sehr viele; relativ wenige davon werden von Clients und Servern wirklich beachtet.</p>
+<p>In der setup-Funktion wird nun ein Objekt dieser Klasse
+erzeugt:</p>
 
+<div class="example">
+<pre><code class="language-javascript  linenums">function setupCounter() {
+    const counter = new Counter(0);
+    const upButton = document.getElementById(&#39;up&#39;);
+    const downButton = document.getElementById(&#39;down&#39;);
+    upButton.addEventListener(&#39;click&#39;, counter.increment());
+    downButton.addEventListener(&#39;click&#39;, counter.decrement());
+}
+document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+&lt;/javascript caption=&quot;mit Fehler&quot;&gt;
+Aber Achtung: dieser Code funktioniert nicht!
+### EventListener richtig aufsetzen
+Das Problem sind diese beiden Zeilen:
+&lt;javascript&gt;
+upButton.addEventListener(&#39;click&#39;, counter.increment()); // FALSCH!
+downButton.addEventListener(&#39;click&#39;, counter.decrement()); // FALSCH!
+</code></pre></div>
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<p>Wenn <code>addEventListener</code> ausgeführt wird, wird die Methode <code>counter.increment</code>
+einmal aufgerufen.  Sie liefert keinen Rückgabewert, also <code>undefined</code>.
+Damit passiert dann bei jedem klick auf den Button … nichts!</p>
 
-<h3 id="host">Host</h3>
+<p>Zweiter Versuch:</p>
 
-<p>Im Request:</p>
+<div class="example">
+<pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, counter.increment); // FALSCH!
+downButton.addEventListener(&#39;click&#39;, counter.decrement); // FALSCH!
+</code></pre></div>
 
-<pre><code>Host: users.fh-salzburg.ac.at
-</code></pre>
+<p>Auch hier gibt es einen Error: <strong>Uncaught TypeError: this.updateDisplay is not a function</strong>.
+Hier funktioniert zwar der Aufruf der Methode, aber die Methode erhält
+als <code>this</code> eine referenz auf den geklickten Button. Diese setzen von <code>this</code>
+bei <code>addEventListener</code> gab es schon, bevor es Klassen gab. Heute ist
+es sehr unpraktisch.</p>
 
-<p>Wichtig wenn der Server unter mehreren Domain Names (aber nur einer IP-Adresse) 
-erreichbar ist.  Das ist fast immer der Fall, dieser Header ist also fast immer
-notwendig.</p>
+<p>Um das Problem zu umgehen kann man eine Arrow Funkction verwenden,
+dann klappts auch mit dem <code>this</code>:</p>
 
-
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-<h3 id="user-agent">User-Agent</h3>
-
-<p>Im Request:</p>
-
-<pre><code>  User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0
-  User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90)
-</code></pre>
-
-<p>Das ist die Selbstoffenbarung des Clients: welcher Browser, welche Version. Die meisten 
-Clients lügen, und behaupten sie wären Mozilla, erst in der Klammer folgt die richtige Angabe.</p>
-
-<p>(Siehe <a href="http://webaim.org/blog/user-agent-string-history/">History of the browser user-agent string</a>.)</p>
-
-
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h3 id="referer">Referer</h3>
-
-<p>Im Request: <code>Referer: http://my.app.at/form.html</code> Welche Seite hat der Client
-zuvor angezeigt? URL der vorigen Seite — falls von dort ein Link hierher verfolgt 
-wurde oder ein FORM gesendet wurde.</p>
-
-
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
-
-<h3 id="date-server">Date, Server</h3>
-
-<p>Im Response:</p>
-
-<pre><code>Date: Sun, 06 Mar 2016 21:43:16 GMT
-Server: Apache/2.2.15 (Scientific Linux)
-</code></pre>
-
-<p>zeigt Datum und Uhrzeit am Server, bzw. die verwendete
-Webserver-Software.  Wenn Sie Statistiken über den Marktanteil der verschiedenen
-Server sehen, dann basieren diese auf dieser Angabe.</p>
-
-
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-<h3 id="content-type">Content-Type</h3>
-
-<p>Im Response:</p>
-
-<pre><code>Content-Type: text/html
-</code></pre>
-
-<p>MIME-Type des im Body gelieferten Dokuments. Andere Werte die 
-sie hier häufig antreffen sind:</p>
-
-<ul>
-  <li>text/css</li>
-  <li>application/javascript</li>
-  <li>image/png</li>
-  <li>image/jpg</li>
-  <li>image/gif</li>
-  <li>image/svg+xml</li>
-</ul>
+<div class="example">
+<pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, () =&gt; counter.increment());
+downButton.addEventListener(&#39;click&#39;, () =&gt; counter.decrement());
+</code></pre></div>
 
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/http/tcpip-und-dns/">TCP/IP und DNS</a></li>
+      <li><a href="/applied-js-and-css/">JavaScript - Anwendung im Browser</a></li>
       
       
       
-      <li><a href="/http/tools/">Werkzeuge</a></li>
+      <li><a href="/applied-js-and-css/formularpruerung/">Formulardaten Prüfen</a></li>
       
     
   </ul>
@@ -576,7 +605,7 @@ sie hier häufig antreffen sind:</p>
               </ul>
             </li>
           
-          <li class="active "><a href="/http/">Http</a>
+          <li class=" "><a href="/http/">Http</a>
               <ul class="sub">
                 
                   
@@ -588,7 +617,7 @@ sie hier häufig antreffen sind:</p>
                       
                     
                       
-                      <li class="active"><a href="/http/http/">HTTP</a></li>
+                      <li ><a href="/http/http/">HTTP</a></li>
                       
                     
                       
@@ -876,7 +905,7 @@ sie hier häufig antreffen sind:</p>
               </ul>
             </li>
           
-          <li class=" "><a href="/applied-js-and-css/">Applied Js And Css</a>
+          <li class="active "><a href="/applied-js-and-css/">Applied Js And Css</a>
               <ul class="sub">
                 
                   
@@ -884,7 +913,7 @@ sie hier häufig antreffen sind:</p>
                       
                     
                       
-                      <li ><a href="/applied-js-and-css/counter/">Zähler</a></li>
+                      <li class="active"><a href="/applied-js-and-css/counter/">Zähler</a></li>
                       
                     
                       
@@ -1241,7 +1270,7 @@ sie hier häufig antreffen sind:</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/http/http.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/applied-js-and-css/counter.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
