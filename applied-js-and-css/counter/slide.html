@@ -86,13 +86,18 @@
         
       </p>
     </div>
-    <div class="slide"></div>
+    <div class="slide">
+</div>
 <div class="slide">
 
 <h2 id="ein-einfacher-zhler">Ein einfacher Zähler</h2>
 
 <p>An diesem Simplen Beispiel werden wir verschiedene
-Arten Javascript zu schreiben kennen lernen.</p>
+Arten Javascript zu schreiben kennen lernen, Am
+Beispiel eines einfachen Zählers, wie man ihn z.B. für
+ein Brettspiel brauchen könnte:</p>
+
+<p><img src="/images/applied-js-and-css/1counter.png" srcset="/images/applied-js-and-css/1counter.png 1x, /images/applied-js-and-css/1counter@2x.png 2x"  alt="Screenshot 3 Zähler" ></p>
 
 <p>Hier ist die Ausgangsversion des Codes:</p>
 
@@ -115,11 +120,47 @@ Arten Javascript zu schreiben kennen lernen.</p>
 </div>
 <div class="slide">
 
-<h2 id="addeventlistener">addEventListener</h2>
+<h2 id="event-listener">Event Listener</h2>
 
-<p>Die Event-Listener sind als <code>onclick</code> Attribute in HTML gesetzt.
-Das kann man auch ganz von JavaScript aus machen, mit <code>addEventListener</code>.
-Dann hat man in HTML nur noch die Aufgabe die verschiednenen Elemente
+<p>Die Event-Listener sind als <code>onclick</code> Attribute in HTML gesetzt.</p>
+
+<p>Das kann man auch ganz von JavaScript aus machen, mit <code>addEventListener</code>.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="addeventlistener-statt-onclick">addEventListener statt onclick</h3>
+
+<p>Die Methode <code>addEventListener</code> findet man in jeder DOM node und
+einigen weiteren Objekten.  Die Methode nimmt zwei Argumente:</p>
+
+<ul>
+  <li>einen String mit dem Namen des Events</li>
+  <li>eine Funktion die aufgerufen werden soll, wenn das event auftritt</li>
+</ul>
+
+<p>statt</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;button onclick=&quot;increment()&quot;&gt;Up&lt;/button&gt;
+</code></pre></div>
+
+<p>schreibt man dann</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+&lt;script&gt;
+    const upButton = document.getElementById(&#39;up&#39;);
+    upButton.addEventListener(&#39;click&#39;, increment);
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="programm-mit-addeventlistener">Programm mit addEventListener</h3>
+
+<p>Dann hat man in HTML nur noch die Aufgabe die verschiednenen Elemente
 mit eindeutigen id’s oder Klassen zu benennen. Alles weitere passiert in Javascript:</p>
 
 <div class="example">
@@ -144,7 +185,7 @@ mit eindeutigen id’s oder Klassen zu benennen. Alles weitere passiert in Javas
 </div>
 <div class="slide">
 
-<h2 id="problemt-mit-der-dom">Problemt mit der DOM</h2>
+<h2 id="probleme-mit-der-dom">Probleme mit der DOM</h2>
 
 <p>Achtung: wenn man das Javascript <strong>vor</strong> dem HTML in die
 Seite gibt, hat man ein Problem:</p>
@@ -190,14 +231,14 @@ mit dem wir aber nicht weiter arbeiten können.</p>
 ist:</p>
 
 <div class="example">
-<pre><code class="language-html  linenums">document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
+<pre><code class="language-javascript  linenums">document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
 </code></pre></div>
 
 <p>Die Funktion <code>setupCounter</code> müssen wir nur zuerst definieren,
 so sieht also das gesamte Beispiel aus:</p>
 
 <div class="example">
-<pre><code class="language-html  linenums">function setupCounter() {
+<pre><code class="language-javascript  linenums">function setupCounter() {
     const counter = document.getElementById(&#39;counter&#39;);
     const upButton = document.getElementById(&#39;up&#39;);
     const downButton = document.getElementById(&#39;down&#39;);
@@ -252,6 +293,7 @@ wir Javascript Klassen verwenden.</p>
 erzeugt:</p>
 
 <div class="example">
+<h4 class="caption">Javascript Code <small>mit Fehler!</small></h4>
 <pre><code class="language-javascript  linenums">function setupCounter() {
     const counter = new Counter(0);
     const upButton = document.getElementById(&#39;up&#39;);
@@ -260,12 +302,19 @@ erzeugt:</p>
     downButton.addEventListener(&#39;click&#39;, counter.decrement());
 }
 document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter);
-&lt;/javascript caption=&quot;mit Fehler&quot;&gt;
-Aber Achtung: dieser Code funktioniert nicht!
-### EventListener richtig aufsetzen
-Das Problem sind diese beiden Zeilen:
-&lt;javascript&gt;
-upButton.addEventListener(&#39;click&#39;, counter.increment()); // FALSCH!
+</code></pre></div>
+
+<p>Aber Achtung: dieser Code funktioniert nicht!</p>
+
+</div>
+<div class="slide">
+
+<h3 id="eventlistener-richtig-aufsetzen">EventListener richtig aufsetzen</h3>
+
+<p>Das Problem sind diese beiden Zeilen:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, counter.increment()); // FALSCH!
 downButton.addEventListener(&#39;click&#39;, counter.decrement()); // FALSCH!
 </code></pre></div>
 
@@ -293,6 +342,256 @@ dann klappts auch mit dem <code>this</code>:</p>
 <pre><code class="language-javascript  linenums">upButton.addEventListener(&#39;click&#39;, () =&gt; counter.increment());
 downButton.addEventListener(&#39;click&#39;, () =&gt; counter.decrement());
 </code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="mehrere-zhler-auf-einer-seite">Mehrere Zähler auf einer Seite</h2>
+
+<p>Ich möchte gerne drei Zähler in einer Seite anzeigen,
+und jeder soll für sich separat funktionieren.</p>
+
+<p><img src="/images/applied-js-and-css/3counter.png" srcset="/images/applied-js-and-css/3counter.png 1x, /images/applied-js-and-css/3counter@2x.png 2x"  alt="Screenshot 3 Zähler" ></p>
+
+<p>Dafür sind einige Schritte nötig:</p>
+
+</div>
+<div class="slide">
+
+<h3 id="html-mit-id">HTML mit id</h3>
+
+<p>In unserem HTML Code identifizieren wir die einzelnen
+Teile des Counters mit id. Das gibt ein Problem sobald
+wir mehrere Kopien davon verwenden wollen:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;div&gt;Brigitte:
+    &lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot; readonly&gt;
+    &lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;/div&gt;
+&lt;div&gt;Andreas:
+    &lt;input type=&quot;number&quot; id=&quot;counter&quot; value=&quot;0&quot; readonly&gt;
+    &lt;button id=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button id=&quot;down&quot;&gt;Down&lt;/button&gt;
+&lt;/div&gt;
+&lt;/htmlcode caption=&quot;Error: die id ist nicht eindeutig!&quot;&gt;
+Die doppelen id&#39;s führen zwar nicht zu einer Error-Meldung.
+Aber die Methode `document.getElementById(&#39;up&#39;)` findet nur den
+ersten Button.
+### HTML mit Klasse
+Innerhalb des Counters verwenden wir nur Klassen, keine id&#39;s mehr:
+&lt;htmlcode&gt;
+  &lt;div id=&quot;counter_1&quot;&gt;
+    Brigitte
+    &lt;input type=&quot;number&quot; class=&quot;counteroutput&quot; value=&quot;0&quot;&gt;
+    &lt;button class=&quot;up_btn&quot;&gt;Up&lt;/button&gt;
+    &lt;button class=&quot;down_btn&quot;&gt;Down&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;counter_2&quot;&gt;
+    Andreas
+    &lt;input type=&quot;number&quot; class=&quot;counteroutput&quot; value=&quot;0&quot;&gt;
+    &lt;button class=&quot;up_btn&quot;&gt;Up&lt;/button&gt;
+    &lt;button class=&quot;down_btn&quot;&gt;Down&lt;/button&gt;
+  &lt;/div&gt;
+</code></pre></div>
+
+<p>Nun kann man die beiden Buttons eindeutig finden:</p>
+
+<ul>
+  <li><code>document.getElementById('counter_1').querySelector('up_btn')</code></li>
+  <li><code>document.getElementById('counter_2').querySelector('up_btn')</code></li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="objekt-und-dom-nodes-aufsetzen">Objekt und DOM-Nodes aufsetzen</h3>
+
+<p>Für jeden Counter müssen wir die Verbindungen zwischen dem
+Javascript Objekt der Klasse <code>Counter</code>
+und den passenden DOM-Elementen aufbauen.</p>
+
+<p>Da das immer gleich funktioniert geben wir das in eine Funktion.</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">setCounterAndDOM(document.getElementById(&#39;counter_1&#39;));
+setCounterAndDOM(document.getElementById(&#39;counter_2&#39;));
+setCounterAndDOM(document.getElementById(&#39;counter_3&#39;));
+</code></pre></div>
+
+<p>Das Argument ist die oberste DOM-Node für den Zähler.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Fehlerhafter code!</small></h4>
+<pre><code class="language-javascript  linenums">function setCounterAndDOM(parentNode) {
+    let myCounter = new Counter(0);
+    const up_btn = parentNode.querySelector(&#39;.up&#39;);
+    const down_btn = parentNode.querySelector(&#39;.down&#39;);
+    up_btn.addEventListener(&#39;click&#39;, () =&gt; myCounter.increment() )
+    down_btn.addEventListener(&#39;click&#39;, () =&gt; myCounter.decrement() )
+}
+</code></pre></div>
+
+<p>Dieser Code hat aber noch ein Problem</p>
+
+</div>
+<div class="slide">
+
+<h3 id="dependency-injection">Dependency Injection</h3>
+
+<p>Das Problem liegt in der Klasse <code>Counter</code>: egal wie viele
+verschiedene Objekte dieser Klasse es gibt, als Ausgabe-Element
+wird immer die Node mit id <code>counter</code> verwendet:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">class Counter {
+    constructor(initialValue = 0) {
+        this.value = initialValue;
+    }
+    ...
+    updateDisplay() {
+        document.getElementById(&#39;counter&#39;).value = this.value;
+    }
+}
+let myCounter = new Counter(0);
+</code></pre></div>
+
+<p>Welche DOM-Node für die Ausgabe verwendet wird sollte
+für jedes Objekt anders sein. Und die Counter-Klasse sollte
+sich nur um die Logik des zählens kümmern, und möglichst wenig
+über die DOM wissen müssen.</p>
+
+<p>Deswegen übergeben wir die DOM-Node als Argument im Constructor:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">class Counter {
+    constructor(initialValue = 0, displayElement) {
+        this.value = initialValue;
+        this.displayElement = displayElement;
+    }
+    ...
+    updateDisplay() {
+        if (this.displayElement) {
+            this.displayElement.value = this.value;
+        }
+    }
+}
+let myCounter = new Counter(0, document.getElementById(&#39;counter&#39;));
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="dependency-injection-mit-funktion">Dependency Injection mit Funktion</h3>
+
+<p>Auch in dieser Version “weiss” die Counter-Klasse noch etwas
+über die DOM: sie weiss, dass das displayElement eine property <code>value</code>
+hat die gesetzt werden muss.</p>
+
+<p>Noch besser wäre es, wenn sie nur eine Funktion aufruft,
+und alle Details dann in der Funktion versteckt sind:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">class Counter {
+    constructor(initalValue, showValue) {
+        this.n = initalValue;
+        this.showValue = showValue;
+    }
+    increment() {
+        this.n += 1;
+        this.showValue(this.n);
+    }
+    ...
+}
+</code></pre></div>
+
+<p>Dem Konstruktur übergeben wir nun keine DOM-Node mehr,
+sondern eine Funktion. Hier als Arrow Function:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">let myCounter = new Counter(0, (v) =&gt; { outputNode.value = v });
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="endergebnis">Endergebnis</h3>
+
+<p>So sieht nun der neue Code aus:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Three Simple Counters&lt;/title&gt;
+    &lt;script&gt;
+      function setupCounter() {
+        class Counter {
+          constructor(initalValue, showValue) {
+            this.n = initalValue;
+            this.showValue = showValue;
+          }
+          increment() {
+            this.n += 1;
+            this.showValue(this.n);
+          }
+          decrement() {
+            this.n -= 1;
+            this.showValue(this.n);
+          }
+        }
+        function setCounterAndDOM(parentNode) {
+          let outputNode = parentNode.querySelector(&#39;.counteroutput&#39;);
+          let myCounter = new Counter(0, (v) =&gt; outputNode.value = v);
+          const up_btn = parentNode.querySelector(&#39;.up&#39;);
+          const down_btn = parentNode.querySelector(&#39;.down&#39;);
+          up_btn.addEventListener(&#39;click&#39;, () =&gt; myCounter.increment() )
+          down_btn.addEventListener(&#39;click&#39;, () =&gt; myCounter.decrement() )
+        }
+        setCounterAndDOM( document.getElementById(&#39;counter_1&#39;) );
+        setCounterAndDOM( document.getElementById(&#39;counter_2&#39;) );
+        setCounterAndDOM( document.getElementById(&#39;counter_3&#39;) );
+      }
+      document.addEventListener(&#39;DOMContentLoaded&#39;, setupCounter)
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;counter_1&quot;&gt;
+    Brigitte
+    &lt;input type=&quot;number&quot; class=&quot;counteroutput&quot; value=&quot;0&quot;&gt;
+    &lt;button class=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button class=&quot;down&quot;&gt;Down&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;counter_2&quot;&gt;
+    Andreas
+    &lt;input type=&quot;number&quot; class=&quot;counteroutput&quot; value=&quot;0&quot;&gt;
+    &lt;button class=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button class=&quot;down&quot;&gt;Down&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;counter_3&quot;&gt;
+    Tanja
+    &lt;input type=&quot;number&quot; class=&quot;counteroutput&quot; value=&quot;0&quot;&gt;
+    &lt;button class=&quot;up&quot;&gt;Up&lt;/button&gt;
+    &lt;button class=&quot;down&quot;&gt;Down&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="schluss">Schluss</h2>
+
+<p>Wir haben den einfachen Counter mehrmals neu programmiert,
+aber dabei nichts an der Funktionsweise geändert.</p>
+
+<p>Das nennt man “Refactoring”.</p>
+
+<p>Refactoring in der Programmierung ist genau so wichtig
+wie die Überarbeitung eines wichtigen Textes oder mehrere Skizzen
+bis ein Bild entsteht.</p>
 
 </div>
     <div class="slide">
