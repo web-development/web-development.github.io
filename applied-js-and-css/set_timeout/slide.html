@@ -86,7 +86,144 @@
         
       </p>
     </div>
-    <div class="slide"><p>Bei der Vorstellung der asynchronen Funktionen haben wir gelernt:
+    <div class="slide">
+<p>Wie kann man in Javascript mit der Zeit arbeiten? Eine Uhr bauen?
+Die Zeit stoppen?</p>
+
+<p>Dafür lernen wir nun zwei Methoden kennen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="settimeout">setTimeout</h2>
+
+<p>Die Metode <code>setTimeout</code> gehört zum <code>window</code> Objekt im Browser.</p>
+
+<p>Mit dieser Methode kann man einen Funktionsaufruf “in die Zukunft” schicken:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function later () {
+  console.log(&quot;this will happen in 1 second.&quot;);
+}
+setTimeout(later, 1000);
+</code></pre></div>
+
+<p>Das erste Argument ist eine Funktion, die in der Zukunft aufgerufen
+werden soll. Das zweite Argument gibt die Zeit in Millisekunden an.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="mit-arrow-function">mit Arrow Function</h2>
+
+<p>Man kann die Funktion auch als Arrow-Function schreiben:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">setTimeout(() =&gt; {
+  console.log(&quot;this will happen in 1 second.&quot;);
+}, 1000);
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="das-ist-synchron">Das ist synchron</h2>
+
+<p>Mit der <code>setTimout</code> Methode lernen wir die erste
+asynchrone Methode kennen.</p>
+
+<p>Bei allen anderen Funktionen
+war es immer so, dass erst nachdem die Methode ihre
+Arbeit beendet hat der nächste Befehl ausgeführt wird:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function now () {
+  console.log(&quot;2&quot;);
+}
+console.log(&quot;1&quot;);
+now();
+console.log(&quot;3&quot;);
+</code></pre></div>
+
+<p>Deswegen ist der Output hier 1, 2, 3.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="das-ist-asynchron">Das ist asynchron</h2>
+
+<p>Da <code>setTimout</code> asynchron arbeitet, ist die
+Reihenfolge hier anders:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function later () {
+  console.log(&quot;2? will happen in 1 second.&quot;);
+}
+console.log(&quot;1&quot;);
+setTimeout(later, 1000);
+console.log(&quot;3&quot;);
+</code></pre></div>
+
+<p>Der Output ist 1, 3.  Und sehr viel später dann: 2? will happen in 1 second.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="timeout-abbestellen">timeout abbestellen</h2>
+
+<p>Wenn man den timer nicht mehr braucht, kann man ihn
+mit <code>clearTimeout</code> wieder löschen:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function later () {
+  console.log(&quot;will happen in 1 second.&quot;);
+}
+let t = setTimeout(later, 1000);
+clearTimeout(t);
+</code></pre></div>
+
+<p>Hier wird es nie zu dem Output kommen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="intervall">Intervall</h2>
+
+<p>Mit der Methode <code>setInterval</code> können wir eine Funktion
+wiederholt aufrufen lassen:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">function again () {
+  console.log(&quot;another second is over.&quot;);
+}
+setTimeout(again, 1000);
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="interval-abbestellen">interval abbestellen</h2>
+
+<p>Genau wie bei <code>setTimeout</code> und <code>clearTimeout</code>
+gibt es zu <code>setInterval</code> ein <code>clearInterval</code>:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">let counter = 0;
+let i;
+function again () {
+  counter++;
+  console.log(counter, &quot; seconds&quot;);
+  if (counter &gt; 10) clearInterval(i);
+}
+i = setInterval(again, 1000);
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h1 id="vertiefung-asynchron">Vertiefung: Asynchron</h1>
+
+<p>Bei der Vorstellung der asynchronen Funktionen haben wir gelernt:
 Ein laufendes Javascript-Programm wird niemals unterbrochen.
 Erst wenn das aktuelle Programm beendet ist
 wird eine Callback-Funktion aufgerufen.</p>
