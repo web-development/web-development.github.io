@@ -87,15 +87,42 @@
       </p>
     </div>
     <div class="slide"><p>Neben Funktionen und Klassen gibt es noch eine weitere
-Möglichkeit Javascript Code zu strukturieren: Module.</p>
+Möglichkeit Javascript Code zu strukturieren: Module.
+Wozu braucht man sie? Dazu ein Blick zurück in die Geschichte
+von Javascript:</p>
+
+</div>
+<div class="slide">
+
+<h2 id="eine-webseite-viele-skripte">Eine Webseite, viele Skripte</h2>
+
+<p>Häufig werden in einer Webseite Javascript-Programm aus
+verschiedenen Quellen kombiniert.  Die Webseite
+enthält z.B.</p>
+
+<ul>
+  <li>Javascript der Website selbst, zu Prüfung von Formulardaten und für Animationen</li>
+  <li>für Zugriffs-Statistiken, z.B. <a href="https://support.google.com/analytics/answer/9304153?hl=en&amp;ref_topic=14088998&amp;sjid=18275927634933066193-EU#zippy=%2Cweb%2Cadd-the-google-tag-directly-to-your-web-pages">Google Analytics</a></li>
+  <li>für das Teilen von Inhalten aus Sozialen Netzwerkden, z.B. <a href="https://developers.facebook.com/docs/instagram-platform/embed-button/">Instagram Embed</a></li>
+  <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
+  <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
+  <li>für das Einbinden einer Landkarte, z.B. mit <a href="https://maplibre.org/">maplibre.js</a></li>
+</ul>
+
+<p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
+Programme schnell in die eigene Webseite einbauen.</p>
+
+<p>Aber achtung: all diese
+Programme laufen dann im selben Javascript Interpreter ab,
+und benutzen einen gemeinsamen globalen Namensraum.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="javascript-ohne-module">Javascript ohne Module</h2>
 
-<p>Im “klassischen” Javascript kann Code aus verschiedenen
-Datei geladen und zu einem Programm zusammen gesetzt werden.
+<p>Im “klassischen” Javascript kann Code mit dem <code>script</code> Tag aus verschiedenen
+Dateien geladen und zu einem Programm zusammen gesetzt werden.
 Dabei gibt es nur einen Namensraum für den gesamten Code:</p>
 
 <div class="example">

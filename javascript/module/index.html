@@ -51,15 +51,42 @@
       <a href="/javascript/module/slide.html">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Neben Funktionen und Klassen gibt es noch eine weitere
-Möglichkeit Javascript Code zu strukturieren: Module.</p>
+Möglichkeit Javascript Code zu strukturieren: Module.
+Wozu braucht man sie? Dazu ein Blick zurück in die Geschichte
+von Javascript:</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="eine-webseite-viele-skripte">Eine Webseite, viele Skripte</h2>
+
+<p>Häufig werden in einer Webseite Javascript-Programm aus
+verschiedenen Quellen kombiniert.  Die Webseite
+enthält z.B.</p>
+
+<ul>
+  <li>Javascript der Website selbst, zu Prüfung von Formulardaten und für Animationen</li>
+  <li>für Zugriffs-Statistiken, z.B. <a href="https://support.google.com/analytics/answer/9304153?hl=en&amp;ref_topic=14088998&amp;sjid=18275927634933066193-EU#zippy=%2Cweb%2Cadd-the-google-tag-directly-to-your-web-pages">Google Analytics</a></li>
+  <li>für das Teilen von Inhalten aus Sozialen Netzwerkden, z.B. <a href="https://developers.facebook.com/docs/instagram-platform/embed-button/">Instagram Embed</a></li>
+  <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
+  <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
+  <li>für das Einbinden einer Landkarte, z.B. mit <a href="https://maplibre.org/">maplibre.js</a></li>
+</ul>
+
+<p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
+Programme schnell in die eigene Webseite einbauen.</p>
+
+<p>Aber achtung: all diese
+Programme laufen dann im selben Javascript Interpreter ab,
+und benutzen einen gemeinsamen globalen Namensraum.</p>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
 <h2 id="javascript-ohne-module">Javascript ohne Module</h2>
 
-<p>Im “klassischen” Javascript kann Code aus verschiedenen
-Datei geladen und zu einem Programm zusammen gesetzt werden.
+<p>Im “klassischen” Javascript kann Code mit dem <code>script</code> Tag aus verschiedenen
+Dateien geladen und zu einem Programm zusammen gesetzt werden.
 Dabei gibt es nur einen Namensraum für den gesamten Code:</p>
 
 <div class="example">
@@ -84,7 +111,7 @@ console.log(&quot;kann a verändern&quot;, a);
 <p><a href="/images/javascript/no-module.html">Demo</a></p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="probleme-ohne-module">Probleme ohne Module</h3>
 
@@ -94,7 +121,7 @@ aber zufällig die gleichen Variablennamen oder Funktionsnamen
 selber schon verwendet habe.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="javascript-mit-modulen">Javascript mit Modulen</h2>
 
@@ -108,7 +135,7 @@ das Attribut <code>type</code> gesetzt sein:</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="import">import</h2>
 
@@ -126,7 +153,7 @@ dem <code>script</code> Tag, sondern mit einem <code>import</code> Statement:</p
 ich aus der anderen Datei verwenden will.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -146,7 +173,7 @@ ich aus der anderen Datei verwenden will.</p>
 sie verhält sich hier wie eine <code>const</code>.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="export">export</h2>
 
@@ -167,7 +194,7 @@ let c = &#39;super secret&#39;;
 in der HTML-Datei oder in anderen Modulen nicht verwendet werden.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="export-von-funktionen">export von Funktionen</h2>
 
@@ -184,7 +211,7 @@ export function setB( newValue ) {
 Variable <code>b</code> und kann sie verändern.</p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="export-deklarationen-zusammenfassen">export Deklarationen zusammenfassen</h2>
 
@@ -202,7 +229,7 @@ export { b, setB };
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="module-zur-strukturierung">Module zur Strukturierung</h2>
 
@@ -215,7 +242,7 @@ sind, muss man (fast) nichts über das restliche Programm
 wissen, um ein einzelnes Module zu verstehen.</p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
