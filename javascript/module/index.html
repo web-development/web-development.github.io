@@ -50,220 +50,180 @@
       </h2>
       <a href="/javascript/module/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Wie kann man Javascript-Code in größere Einheiten
-organisieren?  Wo doch die Sprache keine Unterstütztung
-für Namespaces oder Kapselung bietet?</p>
-
-<p>Eine Lösung für diese Fragestellung ist der Modul-Pattern,
-hier beschrieben nach <a href="http://shop.oreilly.com/product/9780596806767.do">Stefanov(2010): Javascript Patterns</a>, Kapitel 5.
-Siehe auch <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">Osmani(2012): Learning JavaScript Design Patterns</a>.</p>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Neben Funktionen und Klassen gibt es noch eine weitere
+Möglichkeit Javascript Code zu strukturieren: Module.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="viele-skripte-ein-namensraum">Viele Skripte, ein Namensraum</h2>
+<h2 id="javascript-ohne-module">Javascript ohne Module</h2>
 
-<p>Häuft werden in einer Webseite Javascript-Programm aus
-verschiedenen Quellen kombiniert.  Die Webseite
-enthält z.B.</p>
+<p>Im “klassischen” Javascript kann Code aus verschiedenen
+Datei geladen und zu einem Programm zusammen gesetzt werden.
+Dabei gibt es nur einen Namensraum für den gesamten Code:</p>
 
-<ul>
-  <li>Javascript der Website selbst, zu Prüfung von Formulardaten und für Animationen</li>
-  <li>für Zugriffs-Statistiken, z.B. <a href="http://support.google.com/googleanalytics/bin/answer.py?hl=en&amp;answer=174090">Google Analytics</a></li>
-  <li>für das Teilen von Inhalten auf Sozialen Netzwerkden, z.B. <a href="https://developers.connect.facebook.com/docs/reference/plugins/like/">Facebook-Like-Button</a></li>
-  <li>für Feedback zu Webseite z.B. <a href="http://uservoice.com">UserVoice</a></li>
-  <li>für Kommentare auf der Webseite, z.B.  <a href="http://docs.disqus.com/developers/universal/">Disqus</a></li>
-  <li>für das Einbinden einer Landkarte, z.B. mit <a href="http://leafletjs.com/">Leaflet</a> oder <a href="http://openlayers.org/">Openlayers</a></li>
-</ul>
+<div class="example">
+<pre><code class="language-html  linenums">&lt;h1&gt;Diekt in der HTML Datei&lt;/h1&gt;
+&lt;script&gt;let a = 10;&lt;/script&gt;
+&lt;script src=&quot;meinskript.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+console.log(&quot;kann b sehen&quot;, b);
+b += 10;
+console.log(&quot;kann b verändern&quot;, b);
+&lt;/script&gt;
+</code></pre></div>
 
-<p>Mit ein bisschen Copy-und-Paste kann man die verschiedenen
-Programme schnell in die eigene Webseite einbauen. All diese
-Programme laufen dann im selben Javascript Interpreter ab,
-und benutzen einen gemeinsamen globalen Namensraum.</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>Datei meinskript.js</small></h4>
+<pre><code class="language-javascript  linenums">let b = 2000;
+console.log(&quot;kann a sehen&quot;, a);
+a += 10;
+console.log(&quot;kann a verändern&quot;, a);
+</code></pre></div>
+
+<p><a href="/images/javascript/no-module.html">Demo</a></p>
 
 
 <a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
-<h2 id="namensraum-imitieren">Namensraum imitieren</h2>
+<h3 id="probleme-ohne-module">Probleme ohne Module</h3>
 
-<p>Um einen Namensraum zu imitieren kann man ein Objekt in Javascript verwenden.</p>
-
-<p>Die linke Version erzeugt 5 globale Namen. Oder, um genauer zu sein: sie
-erzeugt 3 Eigenschaften und 2 Methoden des <code>window</code>-Objekts. Würde ein
-anderes Programm ebenfalls ein Funktion <code>f()</code> definieren, so würde
-die spätere Definition erhalten bleiben.</p>
-
-<p>In der rechten Version wird nur ein globaler Name angelegt: <code>APP</code>.
-Alle weiteren Namen sind dann in diesem Objekt versteckt. Würde
-ein anderes Programm in der Webseite auch eine Funktion <code>f()</code> definieren
-dann wäre das kein Problem mehr.</p>
-
-<div class="example twopane">
-<h4 class="caption">Javascript Code <small>Ein globales Namensraum-Objekt statt vieler globalen Variablen</small></h4>
-<pre><code class="language-javascript linenums left">// globale Variabeln 
-var KONSTANTE = 3.141;
-var variable = 3;
-function Ding(){
-  return this;
-}
-function f(x){
-  return 2*x;
-}
-var objekt = new Ding();
-</code></pre><pre><code class="language-javascript linenums right">
-// ein Namensraum-Objekt
-var APP = {}
-APP.KONSTANTE = 3.141;
-APP.variable = 3;
-APP.Ding = function() {
-  return this;
-}
-APP.f = function(x) {
-  return 2*x;
-}
-APP.objekt = new APP.Ding();
-</code></pre><div class="clearfix"></div></div>
+<p>Dieser gemeinsame Namensraum bringt viele Probleme:
+z.B. wenn ich ein fertiges Skript verwenden will,
+aber zufällig die gleichen Variablennamen oder Funktionsnamen
+selber schon verwendet habe.</p>
 
 
 <a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
-<h2 id="nachteile-des-objekts-als-namensraum">Nachteile des Objekts als Namensraum</h2>
+<h2 id="javascript-mit-modulen">Javascript mit Modulen</h2>
 
-<p>Wenn man modernes Javascript (z.B. ES6) oder ES5 mit “use strict” verwendet,
-dann erhält man Fehlermeldungen beim Zugriff auf nicht deklarierte Variablen.</p>
+<p>Um Module im Browser zu verwenden, muss im <code>script</code> Tag
+das Attribut <code>type</code> gesetzt sein:</p>
 
-<p>Das Objekt als Namensraum kann das nicht bieten: ein nicht existierendes Attribut des Objekt
-liefert einfach den Wert <code>undefined</code>, aber keinen Fehler:</p>
-
-<p><img src="/images/js-namensraum.png"  alt="Kein Error im namensraum" ></p>
+<div class="example">
+<pre><code class="language-html  linenums">&lt;script type=&quot;module&quot;&gt;
+  let a = 1;
+&lt;/script&gt;
+</code></pre></div>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-<h2 id="namensrume-anlegen">Namensräume anlegen</h2>
+<h2 id="import">import</h2>
 
-<p>Namensräume können auch verschachtelt werden:</p>
+<p>Das Einbinden von externem Code erfolgt nun nicht mehr mit
+dem <code>script</code> Tag, sondern mit einem <code>import</code> Statement:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Verschachtelte Namensräume</small></h4>
-<pre><code class="language-javascript  linenums">var GAME =  GAME || {};
-GAME.Player = ...
-GAME.Master = ...
+<pre><code class="language-html  linenums">&lt;script type=&quot;module&quot;&gt;
+  let a = 1;
+  import { b, setB } from &#39;./meinmodule.js&#39;;
+&lt;/script&gt;
 </code></pre></div>
+
+<p>Dabei wird genau angegeben, welche Variablen, Funktionen, Klassen
+ich aus der anderen Datei verwenden will.</p>
 
 
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
-<p>Die erste Zeile enthält eine Vorsichtsmaßnahme: Falls
-<code>GAME</code> schon definiert wäre, dann wird die alten Definition
-nicht überschrieben.  Dabei macht man sich die
-<a href="http://de.wikipedia.org/wiki/Kurzschlussauswertung">Kurzschulssauswertung</a>
-des Oder-Operators zu nutze.</p>
+<p>Nur die importierten Dinge sind dann zugänglich:</p>
 
-<p>Folgender Code zeigt eine alternative Schreibweise
-für diese Zuweisung:</p>
+<div class="example">
+<pre><code class="language-html  linenums">&lt;script type=&quot;module&quot;&gt;
+  let a = 1;
+  import { b, setB } from &#39;./meinmodule.js&#39;;
+  console.log(b);  // Variable ist lesbar
+  // b += 10;      // funktioniert nicht, importiert ist wie const
+  setB(42);        // Funktion kann aufgerufen werden
+&lt;/script&gt;
+</code></pre></div>
 
-<div class="example twopane">
-<h4 class="caption">Javascript Code <small>Schreibweisen für Default-Wert</small></h4>
-<pre><code class="language-javascript linenums left">var GAME = GAME || {};
-</code></pre><pre><code class="language-javascript linenums right">
-var GAME;
-if( GAME ) {
-  // GAME = GAME;
-} else {
-  GAME = {};
-}
-</code></pre><div class="clearfix"></div></div>
+<p>Eine Zuweisung auf die Variable <code>b</code> ist aber nicht möglich,
+sie verhält sich hier wie eine <code>const</code>.</p>
 
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
-<h2 id="sofort-ausgewertete-funktionen">Sofort ausgewertete Funktionen</h2>
+<h2 id="export">export</h2>
 
-<p>Eine andere Methode um den globalen Namensraum sauber zu halten
-sind die sogenannten “sofort augewerteten Funktionen” (“immediately invoked funktion” oder “immediate function”).</p>
-
-<p>Dabei wird eine Funktion definiert und sofort - und nur einmal - aufgerufen.
-Nur der Rückgabewert wird ein einer globalen Variable <code>g</code> gespeichert.</p>
-
-<p>Beachten sie dabei die Klammern rund um die Funktions-Definition:</p>
+<p>In der importierten Datei sind vielleicht viele Variablen, Klassen,
+Funktionen vorhanden. Aber nur diejenigen, die eine
+einer <code>export</code> Deklaration haben stehen für einen Import zur Verfügung:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Schreibweise für sofort ausgewertete Funktionen</small></h4>
-<pre><code class="language-javascript  linenums">var g = (function(){
-  return 42;
-})();
+<h4 class="caption">Javascript Code <small>Datei meinmodule.js</small></h4>
+<pre><code class="language-javascript  linenums">export let b = 10;
+let c = &#39;super secret&#39;;
 </code></pre></div>
+
+<p>Die Variable <code>b</code> wird exportiert. Hier ist sie wirklich eine Variable, und kann
+ verändert werden.</p>
+
+<p>Die Variable <code>c</code> wird nicht exportiert, und kann
+in der HTML-Datei oder in anderen Modulen nicht verwendet werden.</p>
 
 
 <a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
-
-
-<p>Hier eine komplexere Version. Die vielen Variablen und Funktionen die innerhalb
-der sofort ausgewertete Funktion definiert sind, bleiben unsichtbar. Sie
-sind “von aussen” nicht zugänglich.</p>
+<h2 id="export-von-funktionen">export von Funktionen</h2>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>sofort ausgwertete Funktion</small></h4>
-<pre><code class="language-javascript  linenums">var g = (function(){
-  var a,b,c;
-  function d(x) {
-    return 2*x;
-  }
-  function Ding(v) {
-    this.value = v;
-  }
-  a = 10;
-  b = d( a );
-  c = new Ding(b);
-  return a;
-})();
+<h4 class="caption">Javascript Code <small>Datei meinmodule.js</small></h4>
+<pre><code class="language-javascript  linenums">export let b = 10;
+let c = &#39;super secret&#39;;
+export function setB( newValue ) {
+  b = newValue;
+}
 </code></pre></div>
+
+<p>Die Funktion <code>setB</code>  wird exportiert. Sie hat Zugriff auf die
+Variable <code>b</code> und kann sie verändern.</p>
 
 
 <a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
-<h2 id="module">Module</h2>
+<h2 id="export-deklarationen-zusammenfassen">export Deklarationen zusammenfassen</h2>
 
-<p>Namensräume und sofort augewertete Funktionen werden verwendet um
-sogenannte Module zu bauen. Das Modul bündelt alle Namen unter
-einem Namensraum und bietet die Möglichkeit von privaten und
-öffentlichen Eigenschaften und Funktionen.</p>
-
-<p>In diesem Beispiel ist das Modul ein Objekt:</p>
+<p>Man könnte die export-Deklarationen am Ende
+des Module zusammenfassen:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>Schreibweise für ein Modul: ein Objekt</small></h4>
-<pre><code class="language-javascript  linenums">var APP = (function(){
-  var a,b,f;      // private 
-  var c,d,g;      // öffentlich
-  f = function() {  
-    // private Funktion
-  };
-  g = function() {  
-    // öffentliche Funktion
-  };
-  return {
-    c: c,
-    d: d,  
-    g: g
-  };
-})();
+<h4 class="caption">Javascript Code <small>Datei meinmodule.js</small></h4>
+<pre><code class="language-javascript  linenums">let b = 10;
+let c = &#39;super secret&#39;;
+function setB( newValue ) {
+  b = newValue;
+}
+export { b, setB };
 </code></pre></div>
 
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
-<h2 id="siehe-auch">Siehe Auch</h2>
+<h2 id="module-zur-strukturierung">Module zur Strukturierung</h2>
+
+<p>Mit diesem einfachen Mechanismus der Module kann man
+nun die Probleme des gemeinsamen Namensraumes vermeiden,
+und größere Programme in Teile zerlegen.</p>
+
+<p>Da in einem Modul alle importe und export explizit angeführt
+sind, muss man (fast) nichts über das restliche Programm
+wissen, um ein einzelnes Module zu verstehen.</p>
+
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
 
 <ul>
-  <li><a href="http://shop.oreilly.com/product/9780596806767.do">Stefanov(2010): Javascript Patterns</a>, Kapitel 5.</li>
-  <li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">Osmani(2012): Learning JavaScript Design Patterns</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">Wikipedia: Immediately-invoked function</a></li>
+  <li><a href="/images/javascript/module.html">Demo</a></li>
+  <li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Modules">Module</a> in der MDN</li>
 </ul>
+
  <div class="pagination">
   <ul>
     
