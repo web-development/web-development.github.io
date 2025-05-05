@@ -152,6 +152,18 @@ dem <code>script</code> Tag, sondern mit einem <code>import</code> Statement:</p
 <p>Dabei wird genau angegeben, welche Variablen, Funktionen, Klassen
 ich aus der anderen Datei verwenden will.</p>
 
+<p>Achtung: schon die HTML-Datei muss eine http oder https URL haben,
+ebenso die geladenen Javascript Dateien.</p>
+
+<p>Mit einer file-URL erhält man eine Fehlermeldung:</p>
+
+<p><img src="/images/javascript/module-error-file-url.png" srcset="/images/javascript/module-error-file-url.png 1x, /images/javascript/module-error-file-url@2x.png 2x"  alt="" ></p>
+
+<blockquote>
+  <p>Quellübergreifende (Cross-Origin) Anfrage blockiert: Die Gleiche-Quelle-Regel verbietet das Lesen der externen Ressource auf file:///…boardgame-counter/counter-7b.js. (Grund: CORS-Anfrage war nicht http).
+A Modul-Quell-URI ist in diesem Dokument nicht erlaubt: “file:///…index-7b.html”.</p>
+</blockquote>
+
 
 <a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
