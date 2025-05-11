@@ -76,7 +76,7 @@
       <h1>fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/js-http/adv-fetch//slide.html">mehr fetch</a> | 
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
         <a href="/js-http/fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >
@@ -106,19 +106,17 @@ verwendet wird: als asynchroner Request.</p>
 
 <h2 id="wozu-fetch">Wozu fetch</h2>
 
-<p>Ein Beispiel für die Verwendung von <code>fetch</code> ist das in der Abbildung unten
-gezeigte Eingabefeld für Tags: schon während des Eintippens eines Suchwortes (hier: “webd”)
-wird eine Anfrage an den Webserver geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Tags.
-Diese Liste wird unterhalb des Eingabefelds angezeigt:</p>
+<p>Ein Beispiel für die Verwendung von <code>fetch</code> ist das Eingabefeld für Tags in der Abbildung unten.
+Schon während man ein Wort eintippt (zum Beispiel die 4 Buchstaben „webd“),
+wird eine Anfrage an den Server geschickt.
+Der Server antwortet mit passenden Vorschlägen.
+Diese werden direkt unter dem Eingabefeld angezeigt.</p>
 
 <p><img src="/images/js-http/autocomplete.png" srcset="/images/js-http/autocomplete.png 1x, /images/js-http/autocomplete@2x.png 2x"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
 
 <p>Mit <code>fetch</code> wird hier eine HTTP-Anfrage gesendet.</p>
 
-<p>Asynchron heisst hier: der Request wird abgesetzt, das Javascript-Programm läuft sofort
-weiter, man kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort
-des Servers vorliegt starte ein
-Javascript-Programm und fügt die Daten in die Seite ein.</p>
+<p><em>Asynchron</em> bedeutet hier: Das JavaScript schickt den Request los und macht dann sofort weiter – es wartet nicht auf die Antwort. Die Webseite bleibt benutzbar. Sobald die Antwort vom Server da ist, wird ein weiteres JavaScript-Programm gestartet, das die Daten in die Seite einfügt.</p>
 
 </div>
 <div class="slide">
@@ -130,36 +128,30 @@ wie in der obigen Abbildung gezeigt. Folgende Abbildung ist ein
 <a href="http://de.wikipedia.org/wiki/Sequenzdiagramm">Sequenz Diagramm</a>, die Zeit
 läuft von oben nach unten.</p>
 
-<p>Zuerst wird die Webseite mit dem Formular geladen: der Browser schickt die
-Anfrage an den Server und erhält eine Antwort. Was immer zuvor im Browser
-angezeigt wurde wird - nach Ankunft des HTTP Response - gelöscht, die neue
-Seite wird im Browser dargestellt. Diese Verhalten des Browsers ist uns
-schon bekannt.</p>
-
-<p>Nun kommt der neue Teil: das Eintippten des ersten Buchstabens ins
-Eingabefeld löst ein Javascript-Programm aus, das einen AJAX-Request absetzt.
-Am Netzwerk ist das ein ganz normaler HTTP Request, für den Server gibt
-es keinen Unterschied zu jedem anderen Request.</p>
-
-<p>Was anders ist, ist das Verhalten des Browsers: Das Absenden des Requests
-bleibt die Webseite bestehen und bleibt interaktiv - das Absenden passiert
-meist von der UserIn unbemerkt.</p>
-
-<p>Wenn die Daten des Response
-einlangen wird <strong>nicht</strong> die Seite gelöscht, sondern es wird eine
-Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
-Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
-die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
-
 <p><img src="/images/js-http/fetch-sequence-diagram.svg"  alt="Ablauf" ></p>
+
+<p>Zuerst tippt ein Mensch die URL ein, daraufhin lädt der Browser die Webseite mit dem Formular:
+Er schickt eine Anfrage an den Server und bekommt eine Antwort. Sobald die Antwort da ist,
+zeigt der Browser die neue Seite an und ersetzt damit den vorherigen Inhalt. Dieses Verhalten kennen wir bereits.</p>
+
+<p>Jetzt kommt der neue Teil: Wenn man den ersten Buchstaben ins Eingabefeld tippt, startet ein JavaScript-Programm.
+Dieses schickt im Hintergrund eine Anfrage an den Server – mit dem <code>fetch</code> Befehl. Technisch ist das ein ganz
+normaler HTTP-Request, der für den Server aussieht wie jeder andere auch.</p>
+
+<p>Der Unterschied liegt beim Verhalten des Browsers: Die Seite bleibt sichtbar und benutzbar.
+Die Anfrage läuft unbemerkt im Hintergrund ab.</p>
+
+<p>Wenn die Antwort vom Server ankommt, wird nicht die ganze Seite neu geladen.
+Stattdessen ruft JavaScript eine Funktion auf, die die Daten verarbeitet.
+Für die Autovervollständigung ist das meist eine Liste von Vorschlägen, die dann direkt unter dem Eingabefeld angezeigt wird.</p>
 
 </div>
 <div class="slide">
 
 <h3 id="simples-javascript-beispiel">Simples Javascript Beispiel</h3>
 
-<p>Im ersten <code>fetch</code> Beispiel wird der Output eines PHP-Counters in eine HTML-Seite
-eingebunden.</p>
+<p>Diese Javascript Beispiel ist noch einfacher: mit einem  <code>fetch</code> Befehl wird der Output eines PHP-Programmes
+in eine HTML-Seite eingebunden.</p>
 
 <p><img src="https://users.ct.fh-salzburg.ac.at/~bjelline/counter/index.html"  alt="Demo" ></p>
 
@@ -214,6 +206,7 @@ werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
 <pre><code class="language-javascript  linenums">function handle_response(response) {
   console.log(&quot;Response wird empfangen&quot;);
   // tu was mit dem response objekt
+  // z.B. Aufruf von response.text() oder response.json() oder response.blob();
 }
 promise.then(handle_response);
 </code></pre></div>
@@ -221,28 +214,17 @@ promise.then(handle_response);
 </div>
 <div class="slide">
 
-<h2 id="response-body">Response Body</h2>
+<h2 id="response">Response</h2>
 
-<p>Bei <code>fetch</code> muss mit dem Ergebnis einer asynchronen Operation
-eine weitere asynchrone Operation aufgerufen werden: Das Laden des
-gesamten Body des HTTP Response kann lange dauern. Deswegen
-erhalten wir nicht sofort den body, sondern wieder eine Promise:</p>
+<p>Die Methoden <code>response.text()</code> und <code>response.json()</code> und <code>response.blob()</code>
+liefern wieder eine Promise:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">promise.then((response) =&gt; {
+<pre><code class="language-javascript  linenums">function handle_text(text) {
   console.log(&quot;Response wird empfangen&quot;);
   let promiseOfText = response.text();
   return promiseOfText;
-});
-</code></pre></div>
-
-<p>Es gibt drei Arten wie der Body ausgelesen werden kann -
-als text, json oder binary blob (z.B. beim Laden eines Bildes).</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">response.text();
-response.json();
-response.blob();
+}
 </code></pre></div>
 
 </div>
@@ -254,23 +236,21 @@ response.blob();
 kann  wieder die Methode <code>then</code> verwendet werden:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">.then((response) =&gt; {
-  console.log(&quot;Response wird empfangen&quot;);
-  let promiseOfText = response.text();
-  return promiseOfText;
-})
-.then((text) =&gt; {
-  console.log(&quot;text wurde aus dem Response herausgelesen&quot;, text);
-  document.getElementById(&#39;output&#39;).innerHTML = text;
-  console.log(&quot;fertig!&quot;);
-});
-console.log(&quot;abgesendet, sofort weiter&quot;);
+<pre><code class="language-javascript  linenums">function handle_response(response) {
+  return response.text();
+}
+function handle_text(text) {
+  let p = document.createElement(&quot;p&quot;);
+  p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
+  document.querySelector(&quot;body&quot;).appendChild(p);
+}
+fetch(&quot;counter.php&quot;).then(handle_response).then(handle_text);
 </code></pre></div>
 
 </div>
 <div class="slide">
 
-<h3 id="kurze-version">Kurze Version</h3>
+<h3 id="schreibweise-mit-arrow-functions">Schreibweise mit Arrow Functions</h3>
 
 <p>Wenn man alle Ausgaben auf die Console weg lässt
 wird der Code sehr kurz:</p>
@@ -278,73 +258,31 @@ wird der Code sehr kurz:</p>
 <div class="example">
 <pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text() )
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
-</code></pre></div>
-
-</div>
-<div class="slide">
-
-<h3 id="fehlerbehandlung">Fehlerbehandlung</h3>
-
-<p>Für die Fehlerbehandlung gibt es die Methode <code>catch</code>:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; response.text())
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
-  .catch(error =&gt; {
-	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-    console.log(error);
+  .then(text =&gt; {
+    let p = document.createElement(&quot;p&quot;);
+    p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
+    document.querySelector(&quot;body&quot;).appendChild(p);
   });
 </code></pre></div>
 
 </div>
 <div class="slide">
 
-<h3 id="fehlerbehandlung-von-http">Fehlerbehandlung von HTTP</h3>
+<h2 id="fehlerbehandlung">Fehlerbehandlung</h2>
 
-<p>Zur Erinnerung: Bei einem HTTP Response wird ein Statuscode
-mitgeliefert, der Erfolg oder Fehler anzeigen kann, siehe auch
-<a href="https://http-status-code.de/">http-status-code.de</a></p>
-
-<p>Achtung: wenn bei einem <code>fetch</code> der HTTP-Response einen Statuscode
-für einen Fehler liefert, z.B. 404 oder 500 , dann
-löst das noch keine Exception aus, die mit <code>catch</code> gefangen werden könnte.</p>
-
-<p>Die Property <code>response.ok</code> zeigt an ob der HTTP Status im
-postivien Bereich (200-299) war.</p>
-
-<p>Das müsste man selbst behandeln:</p>
+<p>Ein normaler <code>try - catch</code> Block funktioniert bei <code>fetch ... then</code> nicht.
+Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhängen:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">button.disabled = true;
-fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.text();
-  })
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
-  .catch(error =&gt; {
-	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-    console.log(error);
-  })
-  .finally {
-    button.disabled = false;
-  };
-</code></pre></div>
-
-</div>
-<div class="slide">
-
-<h3 id="backend">Backend</h3>
-
-<p>Das Backend ist im Fall des Counters sehr simpel - ein PHP-Programm
-das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
-
-<div class="example">
-<pre><code class="language-php  linenums">&lt;?php echo 42; ?&gt;
+<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text() )
+  .then(text =&gt; {
+      let p = document.createElement(&quot;p&quot;);
+      p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
+      document.querySelector(&quot;body&quot;).appendChild(p);
+  }).catch(error =&gt; {
+      console.log(error);
+  });
 </code></pre></div>
 
 </div>
@@ -360,7 +298,7 @@ das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
       <h1>fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/js-http/adv-fetch//slide.html">mehr fetch</a> | 
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
         <a href="/js-http/fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >

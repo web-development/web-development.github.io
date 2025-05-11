@@ -50,17 +50,82 @@
       </h2>
       <a href="/js-http/await/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Sie kennen nun Promises als Art mit Asynchronität umzugehen.</p>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Sie kennen nun Promises und <code>then()</code> als Art mit Asynchronität umzugehen.</p>
 
-<p>Nun lernen wir eine zweite Schreibweise für promises.</p>
+<p>Nun lernen wir eine zweite Schreibweise für Promises.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="await-statt-then">await statt then</h2>
+
+<p>Bei der verwendung von <code>await</code> braucht man keine
+Callback-Funktionen oder Arrow-Funktionen mehr - der Code
+sieht wieder aus wie syncroner Code:</p>
+
+<div class="example">
+<h4 class="caption">Html Code <small>await</small></h4>
+<pre><code class="language-html  linenums">&lt;script type=&quot;module&quot;&gt;
+  const response = await fetch(&quot;counter.php&quot;);
+  const counter = await response.text();
+  let p = document.createElement(&quot;p&quot;);
+  p.innerHTML = `Zugriffe auf diese Seite: &lt;b&gt;${counter}&lt;/b&gt;`;
+  document.querySelector(&quot;body&quot;).appendChild(p);
+&lt;/script&gt;
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h2 id="was-bedeutet-await">Was bedeutet await?</h2>
+
+<p>Das keyword <strong>await</strong> wird auf eine <strong>promise</strong> angewandt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await</small></h4>
+<pre><code class="language-javascript  linenums">  const promise = fetch(&quot;counter_ajax.php&quot;);
+  const response = await promise;
+</code></pre></div>
+
+<p><code>await</code> wartet nicht aktiv auf das Ergebnis. Stattdessen wird die Ausführung der aktuellen Funktion
+an dieser Stelle <strong>pausiert</strong>, und in der Zwischenzeit kann anderer JavaScript-Code ausgeführt werden.</p>
+
+<p>Wenn der andere Code fertig ausgeführt ist, und das Ergebnis der Promise verfügbar ist,
+läuft die pausierte Funktion weiter.</p>
+
+<p>Das bedeutet: Die Aussage: “Ein Javascript Programm wird nie unterbrochen”.
+stimmt so nicht mehr. An jeder Stelle mit <code>await</code> kann die Ausführung unterbrochen werden –
+und in der Zeit kann ein anderes JavaScript-Programm laufen.</p>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="async-await-und-fehlerbehandlung">async await und Fehlerbehandlung.</h2>
+
+<p>Bei Promises mussten wir die <code>.catch</code> Methode
+ans Ende der <code>.then</code> Chain anhängen um einen Fehler abzufangen.</p>
+
+<p>Mit async/await können wir wieder die “normale” <code>try</code> <code>catch</code> Schreibweise verwenden:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>await mit Fehlerbehandlung</small></h4>
+<pre><code class="language-javascript  linenums">try {
+  const response = await fetch(&quot;counter.php&quot;);
+  const counter = await response.text();
+  let p = document.createElement(&quot;p&quot;);
+  p.innerHTML = `Zugriffe auf diese Seite: &lt;b&gt;${counter}&lt;/b&gt;`;
+  document.querySelector(&quot;body&quot;).appendChild(p);
+} catch (error) {
+  console.error(&quot;Fehler beim Laden des Zählers:&quot;, error);
+}
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
 <h2 id="warnhinweis">Warnhinweis</h2>
 
-<p>Die Schreibweise mit await funktioniert im Browser, aber
-nur innerhalb einer Funktion die als <code>async</code> ausgewiesen ist:</p>
+<p>Im Browser kann man <code>await</code> direkt im Hauptteil eines JavaScript-Moduls verwenden. Innerhalb einer Funktion funktioniert <code>await</code> aber nur, wenn die Funktion mit dem Schlüsselwort <code>async</code> markiert ist</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchrone funktion</small></h4>
@@ -85,95 +150,24 @@ const f2 = () =&gt; {
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
-<h2 id="await-statt-then">await statt then</h2>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>await</small></h4>
-<pre><code class="language-javascript  linenums">function f2() {
-  fetch(&quot;counter_ajax.php&quot;)
-  .then(response =&gt; response.text())
-  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text );
-}
-async function f1() {
-  const response = await fetch(&quot;counter_ajax.php&quot;);
-  const text = await response.text();
-  document.getElementById(&#39;output&#39;).innerHTML = text;
-}
-</code></pre></div>
-
-
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
-
-<h2 id="was-bedeutet-await">was bedeutet await?</h2>
-
-<p>Das keyword <strong>await</strong> wird auf eine <strong>promise</strong> angewandt:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>await</small></h4>
-<pre><code class="language-javascript  linenums">  const promise = fetch(&quot;counter_ajax.php&quot;);
-  const response = await promise;
-</code></pre></div>
-
-<p><code>await</code> wartet nicht “aktiv” auf das Ergebnis, sondern die Ausführung
-dieser Funktion wird pausiert, und <strong>anderer</strong> JavaScript Code kann
-derweilen ausgeführt werden.</p>
-
-<p>Wenn der andere Code fertig ausgeführt ist, und die Promise ein
-Ergebnis liefert, dann wird die Ausführung fortgeführt.</p>
-
-
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h2 id="async-await-und-fehlerbehandlung">async await und Fehlerbehandlung.</h2>
-
-<p>Bei Promises mussten wir die <code>.catch</code> methode
-ans Ende der <code>.then</code> Chain anhängen um einen Fehler abzufangen.
-Mit async/await können wir wieder die “normale” <code>try</code> <code>catch</code> Schreibweise verwenden:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>await</small></h4>
-<pre><code class="language-javascript  linenums">function f2() {
-  fetch(&quot;counter_ajax.php&quot;)
-    .then(response =&gt; response.text())
-    .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
-    .catch(error =&gt; {
-      document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-      console.log(error);
-    });
-}
-async function f1() {
-  try {
-    const response = await fetch(&quot;counter_ajax.php&quot;);
-    const text = await response.text();
-    document.getElementById(&#39;output&#39;).innerHTML = text;
-  } catch (error) {
-    document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
-    console.log(error);
-  }
-}
-</code></pre></div>
-
-
 <a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
-<h2 id="tipp">Tipp</h2>
-
-<p>In folgendem Beispiel wird das “load” event verwendet,
-um eine asynchrone Funktion zu starten.</p>
+<h2 id="beispiel-domcontentloaded">Beispiel: DOMContentLoaded</h2>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>load event und async</small></h4>
-<pre><code class="language-javascript  linenums">window.addEventListener(&quot;load&quot;, async () =&gt; {
-  await doTheThing();
-  console.log(&quot;Thing is Done.&quot;);
+<pre><code class="language-javascript  linenums">document.addEventListener(&#39;DOMContentLoaded&#39;, async () =&gt; {
+  const response = await fetch(&quot;counter.php&quot;);
 });
-async function doTheThing() {
-  // ...
-}
 </code></pre></div>
 
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await">MDN: await</a></li>
+</ul>
  <div class="pagination">
   <ul>
     
@@ -883,10 +877,6 @@ async function doTheThing() {
                       
                     
                       
-                      <li ><a href="/js-http/adv-fetch/">mehr fetch</a></li>
-                      
-                    
-                      
                       <li ><a href="/js-http/fetch/">fetch</a></li>
                       
                     
@@ -904,6 +894,10 @@ async function doTheThing() {
                     
                       
                       <li ><a href="/js-http/ajax-irrwege/">AJAX Irrwege</a></li>
+                      
+                    
+                      
+                      <li ><a href="/js-http/adv-fetch/">mehr fetch</a></li>
                       
                     
                   
