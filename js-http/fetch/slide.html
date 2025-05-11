@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>AJAX - als Präsentation</title>
+    <title>fetch - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
@@ -73,11 +73,11 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>AJAX</h1>
+      <h1>fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
-        <a href="/js-http/ajax/"
+        <a href="/js-http/adv-fetch//slide.html">mehr fetch</a> | 
+        <a href="/js-http/fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
@@ -86,137 +86,39 @@
         
       </p>
     </div>
-    <div class="slide"><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>. Bisher
-wurde ein HTTP Request durch eine Handlung der UserIn ausgelöst
-(URL eintippen, Link anklicken), oder um Ressourcen zu laden
-die zu einem HTML-Dokument gehören.</p>
+    <div class="slide"><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>.</p>
 
-<p>Mit AJAX lernen wir nun eine neue Art kennen, wie HTTP-Request
-verwendet werden: Asynchrone Requests.</p>
+<p>Bisher wurde ein HTTP-Request
+meist durch eine Aktion der Benutzerin oder des Benutzers ausgelöst –
+etwa durch das Eintippen einer URL oder das Anklicken eines Links.</p>
 
-</div>
-<div class="slide">
+<p>Der Browser macht dann einen ersten HTTP-Request um das HTML-Dokument zu laden.
+Das Dokument kann dann Verweise auf weitere Ressourcen enthalten, die auch geladen
+werden, wie hier in den Developer Tools gezeigt:</p>
 
-<h2 id="was-ist-ajax">Was ist AJAX?</h2>
+<p><img src="/images/js-http/http-one-webpage.png" srcset="/images/js-http/http-one-webpage.png 1x, /images/js-http/http-one-webpage@2x.png 2x"  alt="" ></p>
 
-<p>AJAX ist die englische Abkürzung für „Asynchrones Javascript und XML“. In
-diesem Kapitel lernen Sie was das genau bedeutet, und dass sich hinter dem X
-zum Schluss auch andere Format verbergen können</p>
+<p>Mit <code>fetch</code> lernen wir nun eine neue Art kennen, wie ein HTTP-Request
+verwendet wird: als asynchroner Request.</p>
 
 </div>
 <div class="slide">
 
-<h3 id="ajax-beispiel-autocomplete">AJAX Beispiel: Autocomplete</h3>
+<h2 id="wozu-fetch">Wozu fetch</h2>
 
-<p>Ein Beispiel für die Verwendung von AJAX ist das in der Abbildung unten
-gezeigte Eingabefeld:
-schon während des Eintippens eines Suchwortes wird eine Anfrage an den Webserver
-geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Namen. Diese Liste
-wird mit Javascript in einer <code>div</code> unterhalb des Eingabefelds angezeigt:</p>
+<p>Ein Beispiel für die Verwendung von <code>fetch</code> ist das in der Abbildung unten
+gezeigte Eingabefeld für Tags: schon während des Eintippens eines Suchwortes (hier: “webd”)
+wird eine Anfrage an den Webserver geschickt. Dieser antwortet mit einer Liste von vorgeschlagenen Tags.
+Diese Liste wird unterhalb des Eingabefelds angezeigt:</p>
 
-<p><img src="/images/image375.png"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
+<p><img src="/images/js-http/autocomplete.png" srcset="/images/js-http/autocomplete.png 1x, /images/js-http/autocomplete@2x.png 2x"  alt="Abbildung 50: Vorschläge für die Eingabe werden über AJAX geladen" ></p>
 
-<p>Mit AJAX wird hier eine HTTP-Anfrage gesendet.</p>
+<p>Mit <code>fetch</code> wird hier eine HTTP-Anfrage gesendet.</p>
 
 <p>Asynchron heisst hier: der Request wird abgesetzt, das Javascript-Programm läuft sofort
-weiter, die UserIn kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort
+weiter, man kann weiterhin mit der Webseite interagieren. Erst wenn die Antwort
 des Servers vorliegt starte ein
 Javascript-Programm und fügt die Daten in die Seite ein.</p>
-
-</div>
-<div class="slide">
-
-<h3 id="im-javascript-programm-synchorn">Im Javascript Programm: synchorn</h3>
-
-<p>Nehmen wir an <code>rechnen1</code>, <code>rechnen2</code>, <code>rechnen3</code>, <code>rechnen4</code>,
-und <code>synchronLaden</code> sind Funktionen, die wir in einem anderne Teile des
-Programmes definiert haben.</p>
-
-<p>Bei jedem Aufruf einer der Funktionen passiert dasselbe:</p>
-
-<ul>
-  <li>erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>,</li>
-  <li>erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>synchronLaden</code>,</li>
-  <li>erst wenn <code>synchronLaden</code> fertig ist geht’s weiter mit <code>rechnen3</code>,</li>
-  <li>erst wenn <code>rechnen3</code> fertig ist geht’s weiter mit <code>rechnen4</code>.</li>
-</ul>
-
-<p>Dieser Ablauf ist “synchron”.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>synchron</small></h4>
-<pre><code class="language-javascript  linenums">rechnen1();
-rechnen2();
-data = synchronLaden(url);
-console.log(&quot;data arrived&quot;, data);
-rechnen3();
-rechnen4();
-</code></pre></div>
-
-<p>Wenn nun die Funktion <code>synchronLaden</code> wirklich Daten von der url
-mittels HTTP lädt, dann kann das sehr lange dauern - vielleicht
-eine ganze Sekunde?</p>
-
-</div>
-<div class="slide">
-
-<h3 id="im-javascript-programm-asynchorn">Im Javascript Programm: asynchorn</h3>
-
-<p>Es gibt nun in Javascript die Möglichkeit Funktionen
-zu schreiben die sich anders verhalten, nämlich asynchron.</p>
-
-<p>Hier ein Beispiel mit mehreren synchronen Funktionen  <code>rechnen1</code>, <code>rechnen2</code>, <code>rechnen3</code>, <code>rechnen4</code>,
-und einer asynchronen Funktion genannt <code>asynchronLaden</code>:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre><code class="language-javascript  linenums">function handleData(data) {
-  console.log(&quot;data arrived&quot;, data);
-}
-rechnen1();
-rechnen2();
-asynchronLaden(url, handleData);
-rechnen3();
-rechnen4();
-</code></pre></div>
-
-<p>Erst wenn <code>rechnen1</code> fertig ist geht’s weiter mit <code>rechnen2</code>. Erst wenn <code>rechnen2</code> fertig ist geht’s weiter mit <code>asynchronLaden</code> - aber dann passiert etwas Besonderes:</p>
-
-<p><code>asynchronLaden</code> will etwas sehr zeitaufwendiges tun - Daten von der URL per HTTP laden.
-Trotzdem scheint es sehr schnell zu gehen, das Programm geht direkt zu <code>rechnen3</code>  weiter, egal ob und wie schnell der Server auf die HTTP-Anfrage antwortet. Wenn
-<code>rechnen3</code> fertig ist wird <code>rechnen4</code> ausgeführt, und das JavaScript Programm endet.</p>
-
-<p>Aber eine Sekunde später passiert was Neues:  Die Daten, die in <code>asynchronLaden</code>
-angefragt wurden sind eingelangt - das ist irgendwie im Hintergrund passiert - und sind
-nun bereit zur Weiterverarbeitung.</p>
-
-<p>Wenn die Daten vom Server schließlich einlangen wird die Funktion <code>handleData</code>
-aufgerufen und die Daten zu verarbeiten.</p>
-
-</div>
-<div class="slide">
-
-<h3 id="synchroner-ablauf-wird-nie-unterbrochen">Synchroner Ablauf wird nie unterbrochen</h3>
-
-<p>Achtung: ein laufendes Javascript Programm wird nie unterbrochen.
-Im letzten Code-Beispiel wird es nie passieren, dass zwischen <code>rechnen3</code>
-und <code>rechnen4</code> etwas anderes (z.B. <code>handleData</code>) passieren!</p>
-
-<p>Erst wenn dieses kleine Programm fertig durchgelaufen ist
-stellt sich die Frage ob das Laden der Daten über HTTP fertig,
-und damit <code>handleData</code> dran ist.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>asynchron</small></h4>
-<pre><code class="language-javascript  linenums">function handleData(data) {
-  console.log(&quot;data arrived&quot;, data);
-}
-rechnen1();
-rechnen2();
-asynchronLaden(url, handleData);
-rechnen3();
-rechnen4();
-</code></pre></div>
 
 </div>
 <div class="slide">
@@ -249,24 +151,17 @@ Javascript-Funktion in der Seite aufgerufen, die die Daten entgegen nimmt.
 Für das Autocomple-Verhalten bestehen die Daten aus einer Liste von Vorschlägen,
 die Javascript-Funktion zeigt diese Vorschläge unterhalb des Eingabefeldes an.</p>
 
-<p><img src="/images/ajax-sequence-diagram.svg"  alt="AJAX Ablauf" ></p>
-
-</div>
-<div class="slide">
-
-<h3 id="datenformate---mehr-als-nur-xml">Datenformate - mehr als nur XML</h3>
-
-<p>Das X am Ende von AJAX steht für XML – das stimmt aber nicht: die Daten vom Server
-können im XML-Format gesendet werden, aber genauso auch als HTML oder reiner
-Text oder JSON. Man könnte das X in AJAX auch als „X-beliebiges Format“ deuten.</p>
+<p><img src="/images/js-http/fetch-sequence-diagram.svg"  alt="Ablauf" ></p>
 
 </div>
 <div class="slide">
 
 <h3 id="simples-javascript-beispiel">Simples Javascript Beispiel</h3>
 
-<p>Im ersten AJAX Beispiel wird der Output eines PHP-Counters in eine HTML-Seite
-eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a>.</p>
+<p>Im ersten <code>fetch</code> Beispiel wird der Output eines PHP-Counters in eine HTML-Seite
+eingebunden.</p>
+
+<p><img src="https://users.ct.fh-salzburg.ac.at/~bjelline/counter/index.html"  alt="Demo" ></p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Counter einbinden mit Javascript</small></h4>
@@ -277,22 +172,16 @@ eingebunden. Für den HTTP Request verwenden wir den Befehl <code>fetch</code><a
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;Webseite&lt;/h1&gt;
-  &lt;div id=&quot;output&quot;&gt;0&lt;/div&gt;
-  &lt;script&gt;
-    fetch(&quot;counter_ajax.php&quot;)
-      .then((response) =&gt; {
-        console.log(&quot;Response wird empfangen&quot;);
-        console.log(response.url);
-        console.log(response.headers.get(&#39;Content-Type&#39;));
-        let promiseOfText = response.text();
-        return promiseOfText;
-      })
-      .then((text) =&gt; {
-        console.log(&quot;text wurde aus dem Response herausgelesen&quot;, text);
-        document.getElementById(&#39;output&#39;).innerHTML = text;
-        console.log(&quot;fertig!&quot;);
-      });
-    console.log(&quot;abgesendet, sofort weiter&quot;);
+  &lt;script type=&quot;module&quot;&gt;
+    function handle_response(response) {
+      return response.text();
+    }
+    function handle_text(text) {
+      let p = document.createElement(&quot;p&quot;);
+      p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
+      document.querySelector(&quot;body&quot;).appendChild(p);
+    }
+    fetch(&quot;counter.php&quot;).then(handle_response).then(handle_text);
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -310,7 +199,7 @@ das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">&lt;script&gt;
-  let promise = fetch(&quot;counter_ajax.php&quot;);
+  let promise = fetch(&quot;counter.php&quot;);
 &lt;/script&gt;
 </code></pre></div>
 
@@ -322,59 +211,17 @@ Future oder deferred Task bekannt, siehe <a href="https://en.wikipedia.org/wiki/
 werden, die aufgerufen wird wenn das Ergebnise vorliegt:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">promise.then((response) =&gt; {
+<pre><code class="language-javascript  linenums">function handle_response(response) {
   console.log(&quot;Response wird empfangen&quot;);
   // tu was mit dem response objekt
-});
+}
+promise.then(handle_response);
 </code></pre></div>
 
 </div>
 <div class="slide">
 
-<h3 id="fetch">fetch</h3>
-
-<p>Die Funktion <code>fetch</code> kann nicht nur für einfache GET Requests eingesetzt werden,
-sondern bietet noch mehr Möglichkeiten:</p>
-
-<p>Sollen Cookies bei diesem Request mitgeschickt werden?</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">&lt;script&gt;
-  let promise = fetch(&quot;api.php&quot;,  {
-      credentials: &#39;same-origin&#39;
-  });
-&lt;/script&gt;
-</code></pre></div>
-
-<p>Beliebige zusätzliche HTTP Header einfügen.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">&lt;script&gt;
-  let promise = fetch(&quot;api.php&quot;,  {
-      headers: {
-        &quot;API-Key&quot;: &quot;xxxxyyyy&quot;,
-      });
-&lt;/script&gt;
-</code></pre></div>
-
-<p>POST Request mit Daten im JSON Format:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">&lt;script&gt;
-  let promise = fetch(&quot;api.php&quot;,  {
-    method: &quot;POST&quot;,
-    headers: {
-      &quot;Content-Type&quot;: &quot;application/json&quot;,
-    },
-    body: JSON.stringify(data),
-  });
-&lt;/script&gt;
-</code></pre></div>
-
-</div>
-<div class="slide">
-
-<h3 id="response-body">Response Body</h3>
+<h2 id="response-body">Response Body</h2>
 
 <p>Bei <code>fetch</code> muss mit dem Ergebnis einer asynchronen Operation
 eine weitere asynchrone Operation aufgerufen werden: Das Laden des
@@ -501,12 +348,20 @@ das eine Zahl ausgibt.  Im einfachsten Fall also:</p>
 </code></pre></div>
 
 </div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a></li>
+</ul>
+</div>
     <div class="slide">
-      <h1>AJAX</h1>
+      <h1>fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
-        <a href="/js-http/ajax/"
+        <a href="/js-http/adv-fetch//slide.html">mehr fetch</a> | 
+        <a href="/js-http/fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          

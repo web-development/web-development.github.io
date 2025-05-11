@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Cordova</title>
+  <title>Lehrbuch Web-Development - mehr fetch</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -46,25 +46,136 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Cordova
+        mehr fetch
       </h2>
-      <a href="/mobile/cordova/slide.html">als Präsentation ▻</a>
+      <a href="/js-http/adv-fetch/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Cordova ist eine open source software, mit der man aus
-Webseiten schnell und einfach mobile apps machen kann.
-Diese können dann in einem App Store veröffentlicht werden.</p>
+     <div id="slide-1" title="Folie Nr. 1"></div>
+<p>Die Funktion <code>fetch</code> kann nicht nur für einfache GET Requests eingesetzt werden,
+sondern bietet noch mehr Möglichkeiten:</p>
 
-<p>TBD</p>
+
+<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="cookies">cookies</h2>
+
+<p>Sollen Cookies bei diesem Request mitgeschickt werden?</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      credentials: &#39;same-origin&#39;
+  });
+&lt;/script&gt;
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h2 id="header">header</h2>
+
+<p>Beliebige zusätzliche HTTP Header einfügen.</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      headers: {
+        &quot;API-Key&quot;: &quot;xxxxyyyy&quot;,
+      });
+&lt;/script&gt;
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="post">post</h2>
+
+<p>POST Request mit Daten im JSON Format:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+    method: &quot;POST&quot;,
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(data),
+  });
+&lt;/script&gt;
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="fehlerbehandlung">Fehlerbehandlung</h2>
+
+<p>Für die Fehlerbehandlung gibt es die Methode <code>catch</code>:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+  .catch(error =&gt; {
+	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  });
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="fehlerbehandlung-von-http">Fehlerbehandlung von HTTP</h2>
+
+<p>Zur Erinnerung: Bei einem HTTP Response wird ein Statuscode
+mitgeliefert, der Erfolg oder Fehler anzeigen kann, siehe auch
+<a href="https://http-status-code.de/">http-status-code.de</a></p>
+
+<p>Achtung: wenn bei einem <code>fetch</code> der HTTP-Response einen Statuscode
+für einen Fehler liefert, z.B. 404 oder 500 , dann
+löst das noch keine Exception aus, die mit <code>catch</code> gefangen werden könnte.</p>
+
+<p>Die Property <code>response.ok</code> zeigt an ob der HTTP Status im
+postivien Bereich (200-299) war.</p>
+
+<p>Das müsste man selbst behandeln:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">button.disabled = true;
+fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+  .catch(error =&gt; {
+	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  })
+  .finally {
+    button.disabled = false;
+  };
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a></li>
+</ul>
  <div class="pagination">
   <ul>
     
       
       
-      <li><a href="/mobile/pwa/">Progressive Web App</a></li>
+      <li><a href="/js-http/">JavaScript und HTTP</a></li>
       
       
       
-      <li><a href="/qualitaet/">Das Web - Qualitätskriterien</a></li>
+      <li><a href="/js-http/fetch/">fetch</a></li>
       
     
   </ul>
@@ -634,7 +745,7 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
                       
                     
                       
-                      <li ><a href="/grafik/cssgrafik/">HTML+CSS für Grafik</a></li>
+                      <li ><a href="/grafik/cssgrafik/">CSS Grafik und Animation</a></li>
                       
                     
                       
@@ -754,7 +865,7 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
               </ul>
             </li>
           
-          <li class=" "><a href="/js-http/">Js Http</a>
+          <li class="active "><a href="/js-http/">Js Http</a>
               <ul class="sub">
                 
                   
@@ -762,7 +873,13 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
                       
                     
                       
-                      <li ><a href="/js-http/ajax/">AJAX</a></li>
+                    
+                      
+                      <li class="active"><a href="/js-http/adv-fetch/">mehr fetch</a></li>
+                      
+                    
+                      
+                      <li ><a href="/js-http/fetch/">fetch</a></li>
                       
                     
                       
@@ -1002,7 +1119,7 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
               </ul>
             </li>
           
-          <li class="active "><a href="/mobile/">Mobile</a>
+          <li class=" "><a href="/mobile/">Mobile</a>
               <ul class="sub">
                 
                   
@@ -1015,10 +1132,6 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
                     
                       
                       <li ><a href="/mobile/pwa/">Progressive Web App</a></li>
-                      
-                    
-                      
-                      <li class="active"><a href="/mobile/cordova/">Cordova</a></li>
                       
                     
                   
@@ -1067,7 +1180,7 @@ Diese können dann in einem App Store veröffentlicht werden.</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/mobile/cordova.md">Kommentar zu dieser Seite</a></p>
+        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/js-http/adv-fetch.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

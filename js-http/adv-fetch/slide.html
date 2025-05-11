@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>Cordova - als Präsentation</title>
+    <title>mehr fetch - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
@@ -73,36 +73,147 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>Cordova</h1>
+      <h1>mehr fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/mobile/pwa//slide.html">Progressive Web App</a> | 
-        <a href="/mobile/cordova/"
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
+        <a href="/js-http/adv-fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/qualitaet//slide.html">Das Web - Qualitätskriterien</a>
+        <a href="/js-http/fetch//slide.html">fetch</a>
         
       </p>
     </div>
-    <div class="slide"><p>Cordova ist eine open source software, mit der man aus
-Webseiten schnell und einfach mobile apps machen kann.
-Diese können dann in einem App Store veröffentlicht werden.</p>
+    <div class="slide">
+<p>Die Funktion <code>fetch</code> kann nicht nur für einfache GET Requests eingesetzt werden,
+sondern bietet noch mehr Möglichkeiten:</p>
 
-<p>TBD</p>
+</div>
+<div class="slide">
+
+<h2 id="cookies">cookies</h2>
+
+<p>Sollen Cookies bei diesem Request mitgeschickt werden?</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      credentials: &#39;same-origin&#39;
+  });
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="header">header</h2>
+
+<p>Beliebige zusätzliche HTTP Header einfügen.</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+      headers: {
+        &quot;API-Key&quot;: &quot;xxxxyyyy&quot;,
+      });
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="post">post</h2>
+
+<p>POST Request mit Daten im JSON Format:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">&lt;script&gt;
+  let promise = fetch(&quot;api.php&quot;,  {
+    method: &quot;POST&quot;,
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify(data),
+  });
+&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="fehlerbehandlung">Fehlerbehandlung</h2>
+
+<p>Für die Fehlerbehandlung gibt es die Methode <code>catch</code>:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; response.text())
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+  .catch(error =&gt; {
+	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  });
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="fehlerbehandlung-von-http">Fehlerbehandlung von HTTP</h2>
+
+<p>Zur Erinnerung: Bei einem HTTP Response wird ein Statuscode
+mitgeliefert, der Erfolg oder Fehler anzeigen kann, siehe auch
+<a href="https://http-status-code.de/">http-status-code.de</a></p>
+
+<p>Achtung: wenn bei einem <code>fetch</code> der HTTP-Response einen Statuscode
+für einen Fehler liefert, z.B. 404 oder 500 , dann
+löst das noch keine Exception aus, die mit <code>catch</code> gefangen werden könnte.</p>
+
+<p>Die Property <code>response.ok</code> zeigt an ob der HTTP Status im
+postivien Bereich (200-299) war.</p>
+
+<p>Das müsste man selbst behandeln:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">button.disabled = true;
+fetch(&quot;counter_ajax.php&quot;)
+  .then(response =&gt; {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(text =&gt; document.getElementById(&#39;output&#39;).innerHTML = text )
+  .catch(error =&gt; {
+	  document.getElementById(&#39;output&#39;).innerHTML = &#39;#&#39;;
+    console.log(error);
+  })
+  .finally {
+    button.disabled = false;
+  };
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a></li>
+</ul>
 </div>
     <div class="slide">
-      <h1>Cordova</h1>
+      <h1>mehr fetch</h1>
       <p>
           vorige Präsentation:
-        <a href="/mobile/pwa//slide.html">Progressive Web App</a> | 
-        <a href="/mobile/cordova/"
+        <a href="/js-http//slide.html">JavaScript und HTTP</a> | 
+        <a href="/js-http/adv-fetch/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/qualitaet//slide.html">Das Web - Qualitätskriterien</a>
+        <a href="/js-http/fetch//slide.html">fetch</a>
         
       </p>
     </div>

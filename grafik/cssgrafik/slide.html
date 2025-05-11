@@ -2,7 +2,7 @@
 <html lang="de" style="background-color: #cff0f1;">
   <head>
     <meta charset="utf-8" />
-    <title>HTML+CSS für Grafik - als Präsentation</title>
+    <title>CSS Grafik und Animation - als Präsentation</title>
     <meta name="viewport" content="width=1024, user-scalable=no" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
@@ -73,7 +73,7 @@
   <body class="deck-container">
     <!-- Create any number of elements with class slide within the container -->
     <div class="slide">
-      <h1>HTML+CSS für Grafik</h1>
+      <h1>CSS Grafik und Animation</h1>
       <p>
           vorige Präsentation:
         <a href="/grafik//slide.html">Grafik im Browser</a> | 
@@ -88,7 +88,7 @@
     </div>
     <div class="slide"><div style="width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; color: red; margin: 10px 0px"></div>
 
-<p>Mit HTML und CSS kann man grafisch arbeiten, sogar in 3d.</p>
+<p>Mit HTML und CSS kann man grafisch arbeiten, sogar in 3d. Und man kann Animationen bauen.</p>
 
 </div>
 <div class="slide">
@@ -101,7 +101,7 @@ alleine reicht schon aus um z.B. eine einfache Balkengrafik zu gestalten.</p>
 <p>Im Artikel <a href="http://alistapart.com/article/accessibledatavisualization">Accessible Data Visualization with Web Standards</a>
 beschreibt Wilson Miner die Entwicklung solch einer Grafik:</p>
 
-<p><img src="/images/balken.png" srcset="/images/balken.png 1x, /images/balken@2x.png 2x"  alt="Screenshot der Balkengrafik" ></p>
+<p><img src="/images/grafik/balken.png" srcset="/images/grafik/balken.png 1x, /images/grafik/balken@2x.png 2x"  alt="Screenshot der Balkengrafik" ></p>
 
 </div>
 <div class="slide">
@@ -113,7 +113,7 @@ Auf der Webseite <a href="https://css-tricks.com/examples/ShapesOfCSS/">CSS Tric
 Chris Coyier wie man mit <code>border-radius</code> und transparenten rahmen
 Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
 
-<p><img src="/images/dreieck.png" srcset="/images/dreieck.png 1x, /images/dreieck@2x.png 2x"  alt="Bild der Dreiecks" ></p>
+<p><img src="/images/grafik/dreieck.png" srcset="/images/grafik/dreieck.png 1x, /images/grafik/dreieck@2x.png 2x"  alt="Bild der Dreiecks" ></p>
 
 <div class="example">
 <pre><code class="language-css  linenums">#triangle-up {
@@ -124,13 +124,105 @@ Kreise, Ellipsen, Dreiecke und so weiter bauen kann:</p>
 }
 </code></pre></div>
 
-<p>An einem Standard für CSS Shapes wird gearbeitet, es gibt aber noch
-keine Implementierungen, siehe <a href="https://drafts.csswg.org/css-shapes/">Draft: CSS Shapes</a>.</p>
+</div>
+<div class="slide">
+
+<h2 id="mit-css-shapes-text-setzen">Mit CSS-Shapes Text setzen</h2>
+
+<p>Seit 2018 ist der Standard für CSS Shapes in allen gängigen Browsern implmentiert:
+<a href="https://www.w3.org/TR/css-shapes/">CSS Shapes</a>.  Damit kann man statt Rechtecken
+auch andere Formen erzeugen, in denen Text gesetzt wird:</p>
+
+<p><img src="/images/grafik/css-shape.png" srcset="/images/grafik/css-shape.png 1x, /images/grafik/css-shape@2x.png 2x"  alt="Text mit CSS Shape als Rand" ></p>
+
+<p>Links sehen wir die Seite im Browser, rechts die Developer Tools von Firefox.
+Der img-Tag, der den Heißluftballon zeigt, ist ausgewählt.
+Bei den CSS-Regeln rechts unten sieht man, dass drei Attribute gesetzt sind:</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">img {
+ float: left;
+  shape-outside: circle(50%);
+  shape-margin: 15px;
+}
+</code></pre></div>
+
+<p>Mit <code>float: left</code> geht das Bild an den linken Rand des umgebenden Blocks. Dieses CSS Attribut
+gibt es schon sehr lange. Früher wurde für das Bild dann immer ein Rechteckiger Bereich frei
+gehalten, und der Text konnte rechts und darunter gesetzt werden.</p>
+
+<p>Mit den neuen Attributen <code>shape-outside</code> und <code>shape-margin</code> wir ein Kreis statt des
+Rechtecks verwenden.  In den Developer Tools erscheint rechts neben dem Wert von  <code>shape-outside</code>  ein
+Icon.  Wenn man auf das klickt wird die shape sichtbar, und man kann sie direkt manipulieren: größer oder
+kleiner ziehen.</p>
 
 </div>
 <div class="slide">
 
-<h2 id="animation">Animation</h2>
+<h2 id="animation-mit-transition">Animation mit transition</h2>
+
+<p>CSS Animationen sind sehr effizient und einfach zu erstellen:</p>
+
+<p><a href="/images/grafik/transition-demo.html">Demo</a></p>
+
+</div>
+<div class="slide">
+
+<h3 id="zwei-zustnde-vorbereiten">Zwei Zustände vorbereiten</h3>
+
+<p>Für das Objekt das animiert werden soll bereiten
+wir zwei CSS Stylings vor: den Ausgangspunkt</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  .box {
+    background-color: black;
+    width: 100px;
+    height: 150px;
+  }
+</code></pre></div>
+
+<p>Und einen Zielpunkt, der durch das Hinzufügen einer Klasse
+erreicht wird.</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  .big.box {
+    background-color: red;
+    width: 300px;
+  }
+</code></pre></div>
+
+<p>Diese Klasse wird aber nicht im HTML gesetzt,
+sondern erst später.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="transition-deklarieren">Transition deklarieren</h3>
+
+<p>Der Übergang zwischen den beiden Zuständen soll nicht plötzlich, sondern
+als Animation erfolgen: über zwei Sekunden wird der Header von Schwarz auf
+Rot umgestellt.</p>
+
+<p>Die effizienteste Art so eine Animation in einer Webseite umzusetzen ist
+mit CSS: der Browser weiss alles über den Ablauf der Animation und kann
+(eventuell) die Grafikkarte benutzen um sie darzustellen.</p>
+
+<p>Wenn man die Animation statt dessen mit Javascript mit <code>setTimeout</code>
+oder <code>requestAnimationFrame</code> selbst ausprogrammiert, kann die Grafikkarte nicht verwendet werden.</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">.box {
+      transition: width 1s, background-color 2s;
+}
+</code></pre></div>
+
+<p>Der wichtigste Teil ist hier die Angabe der Zeit in Sekunden:
+Die Breite soll binnen 1 Sekund geändert werden, die Hintergrundfarbe in 2 Sekunden.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="animation-mit-keyframes">Animation mit Keyframes</h2>
 
 <p>Mit Keyframes kann man Animationen definieren:</p>
 
@@ -212,7 +304,7 @@ für ihr Problem wählen. Bei Grafik kann das ganz oft einfaches HTML + CSS sein
 </ul>
 </div>
     <div class="slide">
-      <h1>HTML+CSS für Grafik</h1>
+      <h1>CSS Grafik und Animation</h1>
       <p>
           vorige Präsentation:
         <a href="/grafik//slide.html">Grafik im Browser</a> | 
