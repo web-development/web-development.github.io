@@ -111,9 +111,9 @@ im Browser nativ dargestellt.</p>
 <div class="example">
 <h4 class="caption">Xml Code <small>Einbindung von SVG in HTML (Inline-SVG)</small></h4>
 <pre><code class="language-xml  linenums">&lt;svg width=&quot;200&quot; height=&quot;200&quot; style=&quot;float:left;&quot;&gt;
-  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;                 
+  &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;80&quot;
           stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#4e9a06&quot; /&gt;
-  &lt;rect x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot; 
+  &lt;rect x=&quot;80&quot;   y=&quot;100&quot; width=&quot;90&quot; height=&quot;90&quot;
         stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;#204a87&quot; /&gt;
 &lt;/svg&gt;
 </code></pre></div>
@@ -167,11 +167,11 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Kreis und Ellipse</small></h4>
-<pre><code class="language-xml  linenums">&lt;circle  cx=&quot;144&quot; cy=&quot;38&quot; r=&quot;18&quot; 
-        stroke=&quot;#4e9a06&quot; stroke-width=&quot;2&quot; 
+<pre><code class="language-xml  linenums">&lt;circle  cx=&quot;144&quot; cy=&quot;38&quot; r=&quot;18&quot;
+        stroke=&quot;#4e9a06&quot; stroke-width=&quot;2&quot;
         fill=&quot;#4e9a06&quot;   fill-opacity=&quot;0.6&quot;  /&gt;
-&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot; 
-        stroke=&quot;#73d216&quot; stroke-width=&quot;2&quot; 
+&lt;ellipse cx=&quot;170&quot; cy=&quot;43&quot; rx=&quot;27&quot; ry=&quot;15&quot;
+        stroke=&quot;#73d216&quot; stroke-width=&quot;2&quot;
         fill=&quot;#73d216&quot; fill-opacity=&quot;0.6&quot; /&gt;
 </code></pre></div>
 
@@ -184,9 +184,9 @@ Kreis über Mittelpunkt und Radius, die Ellipse über Mittelpunkt und zwei Halbr
 
 <div class="example">
 <h4 class="caption">Xml Code <small>Attribute per CSS</small></h4>
-<pre><code class="language-xml  linenums">&lt;circle r=&quot;80px&quot; cx=&quot;150px&quot; cy=&quot;100px&quot; 
+<pre><code class="language-xml  linenums">&lt;circle r=&quot;80px&quot; cx=&quot;150px&quot; cy=&quot;100px&quot;
     style=&quot;stroke: #4e9a06; stroke-width: 2px; fill: #4e9a06; fill-opacity:0.6;&quot; /&gt;
-&lt;ellipse cx=&quot;390&quot; cy=&quot;100&quot; rx=&quot;300&quot; ry=&quot;80&quot; 
+&lt;ellipse cx=&quot;390&quot; cy=&quot;100&quot; rx=&quot;300&quot; ry=&quot;80&quot;
     style=&quot;stroke: #73d216; stroke-width: 2px; fill: #73d216; fill-opacity:0.6;&quot; /&gt;
 </code></pre></div>
 
@@ -219,7 +219,7 @@ Zwischen den Koordinaten kann man Kommas und beliebigen Whitespace einfügen.</p
 absolut interpretier, bei einem Kleinbuchstaben werden sie relativ interpretiert.
 Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
 
-<table>
+<table class="table table-condensed table-bordered" style="width:auto">
   <thead>
     <tr>
       <th style="text-align: center">Buchstabe</th>
@@ -256,7 +256,10 @@ Folgende Befehle erwarten eine fixe Anzahl von Koordinaten:</p>
   </tbody>
 </table>
 
-<p class="table table-condensed table-bordered" style="width:auto">§</p>
+</div>
+<div class="slide">
+
+
 
 <p>Folgende Befehle können mehrere Koordinaten auf einmal erhalten. Wie in der EBNF-Schreibweise
 wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
@@ -272,7 +275,7 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 &lt;path d=&quot;M 270 35 q 25,-50 50,0 25,50 50,0 q 25,-25 50,0 q 25,25 50,0&quot; /&gt;
 </code></pre></div>
 
-<table>
+<table class="table table-condensed table-bordered" style="width:auto">
   <thead>
     <tr>
       <th style="text-align: center">Buchstabe</th>
@@ -306,7 +309,7 @@ wird hier die Wiederholung durch Klammern und ein + dargestellt:</p>
 </div>
 <div class="slide">
 
-<h3 class="table table-condensed table-bordered" style="width:auto" id="farbe">Farbe</h3>
+<h3 id="farbe">Farbe</h3>
 
 <p>Farben werden wie in HTML mit hex-code definiert. Zusätzlich kann für jedes Objekt eine alpha-Transparenz mit <code>opacity</code> gesetzt werden. Bei der ersten Abbildung mit dem kleinen blauen Quadrat war das:</p>
 
@@ -343,7 +346,7 @@ Pfad mit Sonnenstrahlen anwendet:</p>
     C322,35.4,315.5,72.5,302.6,107.8z M-41.8-17.5l-261-94.5c12.8-35.4,31.6-68,55.8-96.9L-34.1-30.8C-37.5-26.8-40.1-22.3-41.8-17.5z
      M41.7-17.7c-1.8-4.8-4.4-9.3-7.8-13.3l212-179.2c24.3,28.8,43.3,61.3,56.3,96.6L41.7-17.7z M-22.2-40.8l-139.6-240
     c32.7-19,68.1-32,105.2-38.6L-8-46.1C-13-45.2-17.8-43.4-22.2-40.8z M22-40.9c-4.4-2.6-9.2-4.3-14.2-5.1l47.1-273.6
-    c37.2,6.4,72.7,19.2,105.4,38L22-40.9z" />  
+    c37.2,6.4,72.7,19.2,105.4,38L22-40.9z" />
   </g>
 </svg>
 
@@ -371,7 +374,7 @@ beliebigen Pfades gesetzt werden.</p>
 <svg width="600" height="200">
   <g transform="scale(0.5,0.5)">
     <defs>
-      <path id="my_path" d="M 100,200 
+      <path id="my_path" d="M 100,200
                C 200,100 300,  0 400,100
                C 500,200 600,300 700,200
                C 800,100 900,100 900,100" />
@@ -452,10 +455,10 @@ animiert:</p>
 <h4 class="caption">Xml Code <small>SVG Animation</small></h4>
 <pre><code class="language-xml  linenums">  &lt;textPath xlink:href=&quot;#my_path&quot; startOffset=&quot;500&quot;&gt;
     Choo, choo, I&#39;m a little train
-    &lt;animate attributeType=&quot;XML&quot; attributeName=&quot;startOffset&quot; 
+    &lt;animate attributeType=&quot;XML&quot; attributeName=&quot;startOffset&quot;
       from=&quot;1000&quot; to=&quot;-600&quot;
       dur=&quot;10s&quot; repeatCount=&quot;indefinite&quot; /&gt;
-  &lt;/textPath&gt;  
+  &lt;/textPath&gt;
 </code></pre></div>
 
 <p>So sieht das Ergebnis aus:</p>
@@ -463,7 +466,7 @@ animiert:</p>
 <svg width="600" height="200">
   <g transform="scale(0.5,0.5)">
     <defs>
-      <path id="my_path" d="M 100,200 
+      <path id="my_path" d="M 100,200
                C 200,100 300,  0 400,100
                C 500,200 600,300 700,200
                C 800,100 900,100 900,100" />
