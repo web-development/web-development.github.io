@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>TypeScript - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>TypeScript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> | 
+        <a href="/advanced-javascript/typescript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/event-und-closure//slide.html">Events und Closures</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>TypeScript ist Javascript mit Typen.  Typescript kann nicht im Browser
+ausgeführt werden, sondern wird nach Javascript übersetzt.</p>
+
+<p>Wie kann man aus einem Javascript-Projekt eine Typescript-Projekt machen?</p>
+
+</div>
+<div class="slide">
+
+<h2 id="installation">Installation</h2>
+
+<p>Um Typescript zu verwenden braucht man <code>node.js</code>:</p>
+
+<p>https://nodejs.org/en/download</p>
+
+<p>Teste ob die Installation geklappt hat auf der Kommandozeile oder im VS Code Terminal:</p>
+
+<pre><code>$ node -v
+v24.0.1
+$ npm -v
+11.3.0
+</code></pre>
+
+<p>Es sollte keine Fehlermeldungen geben, und die Versionsnummern sollten
+(im Mai 2025) nicht kleiner sein als die hier gezeigten.</p>
+
+<p>Damit hat man Javascript auf der Kommandozeile.
+Node hat einen eigenen Package Manager: <code>npm</code>.
+Mit diesem kann man den Typescript compiler installieren:</p>
+
+</div>
+<div class="slide">
+
+<h3 id="typescript-installieren">Typescript installieren</h3>
+
+<p>Bei der Verwendung von node braucht man eine Datei <code>package.json</code>
+im Hauptordner des Projekts.
+Diese erzeugt man mit dem Befehl</p>
+
+<pre><code>$ npm init -y
+</code></pre>
+
+<p>Überprüfe die Datei:</p>
+
+<ul>
+  <li>wurde die Haupt-Javascript-Datei richtig erkannt (Eintrag bei <code>main</code>)</li>
+  <li>gibt es den Eintrag <code>"type": "module"</code></li>
+</ul>
+
+<p>Der package manager <code>npm</code> installiert die packages
+im Ornder <code>node_modules</code>.</p>
+
+<p>Installiere den Typescript Transpiler:</p>
+
+<pre><code>npm install typescript --save-dev
+</code></pre>
+
+<p>Nun existiert eine Datei <code>package-lock.json</code> und ein
+Ordner <code>node_modules</code> mit mehr als 20 Megabyte.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="typescript-konfigurieren">Typescript Konfigurieren</h3>
+
+<p>Eine Konfigurationsdatei tsconfig.json anlegen:</p>
+
+<pre><code>{
+  "compilerOptions": {
+    "target": "ESNext", // Use the latest ECMAScript features
+    "module": "ESNext", // Use ES modules
+    "strict": true,     // Enable all strict type checking options
+    "sourceMap": true   // Generate source maps for debugging
+  },
+  "lib": ["ESNext", "DOM", "DOM.Iterable"], // Include types for current browser features
+  "include": ["script.ts"],                 // Only compile this file
+  "exclude": ["node_modules"]               // Don't compile files in node_modules
+}
+</code></pre>
+
+</div>
+<div class="slide">
+
+<h3 id="die-js-datei-in-ts-umbenennen">die .js Datei in .ts umbenennen</h3>
+
+<p>Benenne alle  javascript-Dateien deines Projekts um, die Endung soll nun <code>.ts</code> sein.</p>
+
+<p>Füge alle Typescript-Dateien zu tsconfig.json im array “include” hinzu.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="den-typescript-transpiler-verwenden">Den Typescript Transpiler verwenden</h3>
+
+<p>Mit dem Kommandozeilen-Befehl <code>npx</code> kann man Programme starten,
+die mit <code>npm</code> installiert wurden. Der Typescript Compiler heisst <code>tsc</code>:</p>
+
+<pre><code>$ npx tsc
+</code></pre>
+
+<p>Dieser Befehl erzeugt nun für jede <code>*.ts</code>  Datei eine  <code>*.js</code> und <code>*.js.map</code> Datei.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="welcher-code-wird-ausgefhrt">Welcher Code wird ausgeführt?</h3>
+
+<p>In der HTML-Datei müssen wir die erzeugte Javascript-Datei importieren,
+nur die kann ausgeführt werden. Typescript kann nicht ausgeführt werden.</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;script type=&quot;module&quot; src=&quot;./script.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="wie-kann-man-typescript-debuggen">Wie kann man Typescript debuggen?</h3>
+
+<p>Wenn im Javascript code im Browser ein Problem auftritt,
+oder wenn man den Debugger verwenden will, dann wird der
+Javascript Code angezeigt.</p>
+
+<p>Falls eine <code>*.js.map</code> Datei existiert kann der Debugger
+statt des Javascript Sourcecode den Typescript sourcecode
+anzeigen und die Zeilennummern in diesem Code verwenden:</p>
+
+<p><img src="/images/advanced-javascript/tsdebug.png" srcset="/images/advanced-javascript/tsdebug.png 1x, /images/advanced-javascript/tsdebug@2x.png 2x"  alt="" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="typen-hinzufgen">Typen hinzufügen</h2>
+
+<p>Nun müssen wir dem Typescript-Programm so viele Typen hinzufügen,
+dass es wieder funktioniert.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="type">Type</h3>
+
+<p>Betrachten wir einen ersten selbst definiertes Typ in Typescript,
+und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
+
+<div class="example twopane">
+<pre><code class="language-typescript linenums left">type Question = {
+  question: string;
+  answers: string[];
+  correct: number;
+}
+const q: Question = {
+  question: &quot;What is 2 + 2?&quot;,
+  answers: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;22&quot;],
+  correct: 1,
+};
+function printQuestion(q: Question) {
+  console.log(q.question, q.answers[q.correct]);
+}
+printQuestion(q);
+</code></pre><pre><code class="language-typescript linenums right">
+&quot;use strict&quot;;
+const q = {
+    question: &quot;What is 2 + 2?&quot;,
+    answers: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;22&quot;],
+    correct: 1,
+};
+function printQuestion(q) {
+    console.log(
+      q.question,
+      q.answers[q.correct]
+    );
+}
+printQuestion(q);
+//# sourceMappingURL=test.js.map
+</code></pre><div class="clearfix"></div></div>
+
+<p>…. To be Continued …</p>
+</div>
+    <div class="slide">
+      <h1>TypeScript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript/call//slide.html">Funktion Aufrufen</a> | 
+        <a href="/advanced-javascript/typescript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/event-und-closure//slide.html">Events und Closures</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
