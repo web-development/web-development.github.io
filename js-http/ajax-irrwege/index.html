@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - AJAX Irrwege</title>
+  <title>Lehrbuch Web-Development - fetch Irrwege</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -46,30 +46,30 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        AJAX Irrwege
+        fetch Irrwege
       </h2>
       <a href="/js-http/ajax-irrwege/slide.html">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Wie im vorigen Kapitel gelernt ist AJAX die englische Abkürzung für „Asynchrones
-Javascript und XML“. Mit AJAX kann man Webseiten verbessern – man kann sie aber
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Wie im vorigen Kapitel gelernt ist fetch die Methode um asynchrone HTTP Requests
+zu machen. Mit fetch kann man Webseiten verbessern – man kann sie aber
 auch verschlechtern.</p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="ajax-statt-links---die-idee">AJAX statt Links - die Idee</h2>
+<h2 id="fetch-statt-links---die-idee">fetch statt Links - die Idee</h2>
 
-<p>Stellen Sie sich vor Sie haben eine Website mit 5 statischen HTML-Seiten, die
+<p>Stellen dir vor du haat eine Website mit 5 statischen HTML-Seiten, die
 durch einfache Links verbunden sind.</p>
 
 <p><a href="/images/ajax-good/">Demo Seite</a></p>
 
-<p>Wenn man AJAX kennen lernt, kommt man vielleicht
-auf die Idee: statt normaler Links lädt man die neue Seite nur noch mit AJAX und ersetzt dann den Inhalt der aktuellen Seite. Was spricht dafür?</p>
+<p>Wenn man fetch kennen lernt, kommt man vielleicht
+auf die Idee: statt normaler Links lädt man die neue Seite nur noch mit fetch und ersetzt dann den Inhalt der aktuellen Seite. Was spricht dafür?</p>
 
 <ul>
   <li>Keine Code-Wiederholung: head, footer muss nur einmal, in der erste Seite, gespeichert werden</li>
-  <li>die einzelnen Seite wir kleiner, das Laden der Seite entsprechend schneller</li>
+  <li>die einzelnen Seite wir kleiner, das Laden der Seite vielleicht schneller</li>
   <li>es entfällt das erneute checken/laden von CSS und Javascript Ressourcen.</li>
 </ul>
 
@@ -81,7 +81,7 @@ auf die Idee: statt normaler Links lädt man die neue Seite nur noch mit AJAX un
 <p>Nun surfen wir durch diese Site und beobachten in den Developer Tools welche http-Requests
 gemacht werden: <a href="/images/ajax-bad/">Demo Seite</a></p>
 
-<p><img src="/images/ajax-bad.png" srcset="/images/ajax-bad.png 1x, /images/ajax-bad@2x.png 2x"  alt="AJAX statt normaler Links - in den developer tools" ></p>
+<p><img src="/images/ajax-bad.png" srcset="/images/ajax-bad.png 1x, /images/ajax-bad@2x.png 2x"  alt="fetch statt normaler Links - in den developer tools" ></p>
 
 <p>Beim Anklicken des „Links“ wird jeweils ein GET
 Request abgesetzt. Aber: die URL in der Adresszeile des Browsers bleibt immer
@@ -101,7 +101,7 @@ gleich. Keine der „Seiten“ hat eine eigene URL.</p>
 </ul>
 
 <p>Vergleicht man Vor- und Nachteile sieht man schnell, dass in diesem Fall die
-Version ohne AJAX (ganz normale Links) besser wäre.</p>
+Version ohne fetch (ganz normale Links) besser wäre.</p>
 
 
 <a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -111,8 +111,8 @@ Version ohne AJAX (ganz normale Links) besser wäre.</p>
 <p>Um das Problem der “fehlendes URLs” zu lösen gibt es in der
 “History API” die Methoden <code>pushState</code> und <code>replaceState</code>.</p>
 
-<p>Damit kann man für die verschiedenen Zustände innerhalb ein und deselben
-HTML Dokuments jeweis eine URL definieren. Damit funktionieren das
+<p>Damit kann man für die verschiedenen Zustände innerhalb eines
+HTML Dokuments jeweils eine URL definieren. Damit funktionieren das
 verlinken, Lesezeichen setzen, u.s.w. wieder.</p>
 
 <p>Webseite die Javascript und pushState in dieser Weise nutzen nennt
@@ -853,7 +853,7 @@ man “Single Page Apps” (SPA).</p>
                       
                     
                       
-                      <li class="active"><a href="/js-http/ajax-irrwege/">AJAX Irrwege</a></li>
+                      <li class="active"><a href="/js-http/ajax-irrwege/">fetch Irrwege</a></li>
                       
                     
                       
