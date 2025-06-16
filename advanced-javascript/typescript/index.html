@@ -53,64 +53,25 @@
      <div id="slide-1" title="Folie Nr. 1"></div><p>TypeScript ist Javascript mit Typen.  Typescript kann nicht im Browser
 ausgeführt werden, sondern wird nach Javascript übersetzt.</p>
 
-<p>Wie kann man aus einem Javascript-Projekt eine Typescript-Projekt machen?</p>
+<p>Die Typen können von einen modernen Editor verwendet werden,
+um Probleme anzuzeigen bevor man das Programm jemals kompiliert oder startet:</p>
+
+<p><img src="/images/advanced-javascript/ts-im-editor.png"  alt="Typescript Error in VS Code" ></p>
 
 
 <a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-<h2 id="installation">Installation</h2>
+<h2 id="von-javascript-zu-typescript">Von Javascript zu Typescript</h2>
 
-<p>Um Typescript zu verwenden braucht man <code>node.js</code>:</p>
+<p>Wie kann man aus einem Javascript-Projekt eine Typescript-Projekt machen?</p>
 
-<p>https://nodejs.org/en/download</p>
-
-<p>Teste ob die Installation geklappt hat auf der Kommandozeile oder im VS Code Terminal:</p>
-
-<pre><code>$ node -v
-v24.0.1
-$ npm -v
-11.3.0
-</code></pre>
-
-<p>Es sollte keine Fehlermeldungen geben, und die Versionsnummern sollten
-(im Mai 2025) nicht kleiner sein als die hier gezeigten.</p>
-
-<p>Damit hat man Javascript auf der Kommandozeile.
-Node hat einen eigenen Package Manager: <code>npm</code>.
-Mit diesem kann man den Typescript compiler installieren:</p>
-
-
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
-<h3 id="typescript-installieren">Typescript installieren</h3>
-
-<p>Bei der Verwendung von node braucht man eine Datei <code>package.json</code>
-im Hauptordner des Projekts.
-Diese erzeugt man mit dem Befehl</p>
-
-<pre><code>$ npm init -y
-</code></pre>
-
-<p>Überprüfe die Datei:</p>
-
-<ul>
-  <li>wurde die Haupt-Javascript-Datei richtig erkannt (Eintrag bei <code>main</code>)</li>
-  <li>gibt es den Eintrag <code>"type": "module"</code></li>
-</ul>
-
-<p>Der package manager <code>npm</code> installiert die packages
-im Ornder <code>node_modules</code>.</p>
-
-<p>Installiere den Typescript Transpiler:</p>
+<p>Als erstes Typescript im Projekt installieren:</p>
 
 <pre><code>npm install typescript --save-dev
 </code></pre>
 
-<p>Nun existiert eine Datei <code>package-lock.json</code> und ein
-Ordner <code>node_modules</code> mit mehr als 20 Megabyte.</p>
 
-
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h3 id="typescript-konfigurieren">Typescript Konfigurieren</h3>
 
@@ -124,13 +85,13 @@ Ordner <code>node_modules</code> mit mehr als 20 Megabyte.</p>
     "sourceMap": true   // Generate source maps for debugging
   },
   "lib": ["ESNext", "DOM", "DOM.Iterable"], // Include types for current browser features
-  "include": ["script.ts"],                 // Only compile this file
+  "include": ["script.ts"],                 // Only compile these files
   "exclude": ["node_modules"]               // Don't compile files in node_modules
 }
 </code></pre>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="die-js-datei-in-ts-umbenennen">die .js Datei in .ts umbenennen</h3>
 
@@ -139,7 +100,7 @@ Ordner <code>node_modules</code> mit mehr als 20 Megabyte.</p>
 <p>Füge alle Typescript-Dateien zu tsconfig.json im array “include” hinzu.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="den-typescript-transpiler-verwenden">Den Typescript Transpiler verwenden</h3>
 
@@ -152,7 +113,7 @@ die mit <code>npm</code> installiert wurden. Der Typescript Compiler heisst <cod
 <p>Dieser Befehl erzeugt nun für jede <code>*.ts</code>  Datei eine  <code>*.js</code> und <code>*.js.map</code> Datei.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="welcher-code-wird-ausgefhrt">Welcher Code wird ausgeführt?</h3>
 
@@ -164,7 +125,7 @@ nur die kann ausgeführt werden. Typescript kann nicht ausgeführt werden.</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="wie-kann-man-typescript-debuggen">Wie kann man Typescript debuggen?</h3>
 
@@ -179,7 +140,7 @@ anzeigen und die Zeilennummern in diesem Code verwenden:</p>
 <p><img src="/images/advanced-javascript/tsdebug.png" srcset="/images/advanced-javascript/tsdebug.png 1x, /images/advanced-javascript/tsdebug@2x.png 2x"  alt="" ></p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="typen-hinzufgen">Typen hinzufügen</h2>
 
@@ -187,9 +148,27 @@ anzeigen und die Zeilennummern in diesem Code verwenden:</p>
 dass es wieder funktioniert.</p>
 
 
+<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+<h3 id="primitive-typen">Primitive Typen</h3>
+
+<p>Typescript übernimmt primitive typen von JavaScript: <code>boolean</code>, <code>number</code>, <code>string</code>, <code>symbol</code>, <code>bigint</code>, <code>null</code> und <code>undefined</code>.</p>
+
+<p>TypeScript erweitert diese Liste um einige weitere, darunter:</p>
+
+<ul>
+  <li><code>any</code> (erlaubt beliebige Werte),</li>
+  <li><code>void</code> (für Funktionen, die <code>undefined</code> zurückgeben oder keinen Rückgabewert haben),</li>
+  <li><code>never</code> (dieser Typ kann nicht auftreten), und</li>
+  <li><code>unknown</code> (erzwingt, dass jemand, der diesen Typ verwendet, den konkreten Typ angibt).</li>
+</ul>
+
+<p>Mit eckigen Klammern wird ein Array gebildet.</p>
+
+
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
-<h3 id="type">Type</h3>
+<h3 id="ein-erster-type-und-javascript">ein erster type und javascript</h3>
 
 <p>Betrachten wir einen ersten selbst definiertes Typ in Typescript,
 und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
@@ -200,18 +179,18 @@ und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
   answers: string[];
   correct: number;
 }
-const q: Question = {
+let q: Question = {
   question: &quot;What is 2 + 2?&quot;,
   answers: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;22&quot;],
   correct: 1,
 };
-function printQuestion(q: Question) {
+function printQuestion(q: Question):void {
   console.log(q.question, q.answers[q.correct]);
 }
 printQuestion(q);
 </code></pre><pre><code class="language-typescript linenums right">
 &quot;use strict&quot;;
-const q = {
+let q = {
     question: &quot;What is 2 + 2?&quot;,
     answers: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;22&quot;],
     correct: 1,
@@ -226,17 +205,168 @@ printQuestion(q);
 //# sourceMappingURL=test.js.map
 </code></pre><div class="clearfix"></div></div>
 
-<p>…. To be Continued …</p>
+<p>Die Typen haben also keine Auswirkung auf das Programm
+zur Laufzeit.</p>
+
+<p>Die Datentypen von Javascript sind immer noch dynamisch -
+ich kann immer noch in der Konsole
+der developer tools die Variable <code>q</code> verändern, neue Keys
+hinzufügen oder löschen.</p>
+
+<p>Die Typen existieren  nur während ich das Programm
+schreibe und editiere. Da sind sie aber hilfreich:</p>
+
+
+<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+
+<h2 id="unions">Unions</h2>
+
+<p>In Typescript kann man einen Typen als Vereinigung (Union)
+erzeugen:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">type WindowStates = &quot;open&quot; | &quot;closed&quot; | &quot;minimized&quot;;
+type LockStates = &quot;locked&quot; | &quot;unlocked&quot;;
+type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+
+<h3 id="unions--enum">Unions != enum</h3>
+
+<p>Achtung: “WindowStates” ist kein Enum in C#</p>
+
+<div class="example">
+<pre><code class="language-csharp  linenums">enum WindowStates { Open, Closed, Minimized }
+</code></pre></div>
+
+<p>in Typescript ist der WindowState ein String, und braucht
+entsprechend seiner Länger mehr oder weniger byte im Speicher.
+In C# wird der Enum intern als <code>int</code> gespeichert, braucht
+also eine fixe anzahl bytes.</p>
+
+<p>Typescript Unions lassen sich nicht zur Laufzeit auflisten, C# enums schon:</p>
+
+<div class="example">
+<pre><code class="language-csharp  linenums">Enum.GetValues(typeof(WindowStates));
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+
+<h3 id="union-verschiedener-formen">Union verschiedener Formen</h3>
+
+<p>Unions können auch direkt für Funktionsparameter verwendet werden.
+Unions können typen vereinigen, die verschiedene Formen im Speicher haben:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">function getLength(obj: string | any[]) {
+  return obj.length;
+}
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+
+<h2 id="welcher-typ-ist-das">Welcher Typ ist das?</h2>
+
+<p>Um den Typ einer Variable heraus zu finden
+verwendet man meist <code>typeof</code> - das funktioniert direkt
+in Javascript:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>Prüf-Ausdruck</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>string</td>
+      <td><code>typeof s === "string"</code></td>
+    </tr>
+    <tr>
+      <td>number</td>
+      <td><code>typeof n === "number"</code></td>
+    </tr>
+    <tr>
+      <td>boolean</td>
+      <td><code>typeof b === "boolean"</code></td>
+    </tr>
+    <tr>
+      <td>undefined</td>
+      <td><code>typeof x === "undefined"</code></td>
+    </tr>
+    <tr>
+      <td>function</td>
+      <td><code>typeof f === "function"</code></td>
+    </tr>
+    <tr>
+      <td>array</td>
+      <td><code>Array.isArray(a)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h2 id="duck-typing">Duck-Typing</h2>
+
+<p>In Typescript gilt: wenn es quakt wie eine Ente und watschelt
+wie ein Ente, dann ist es eine Ente.  Auf Englisch
+nennt man das “duck typing” oder “structural typing”.</p>
+
+<p>Gemeint ist, dass zwei typen die dieselbe Form haben
+in Typescript nicht unterschieden werden:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">type Point = {
+  x: number;
+  y: number;
+}
+function logPoint(p: Point):void {
+  console.log(`${p.x}, ${p.y}`);
+}
+// logs &quot;12, 26&quot;
+const point = { x: 12, y: 26 };
+logPoint(point);
+const rect = { x: 33, y: 3, width: 30, height: 80 };
+logPoint(rect); // logs &quot;33, 3&quot;
+const wurm = { farbe: &quot;grau&quot;, beine: 0 };
+logPoint(wurm); // Typescript Fehler:
+//  Argument of type &#39;{ farbe: string; beine: number; }&#39; is not assignable to parameter of type &#39;Point&#39;.
+//  Type &#39;{ farbe: string; beine: number; }&#39; is missing the following properties from type &#39;Point&#39;: x, y
+</code></pre></div>
+
+<p>Die Konstante <code>rect</code> erfüllt alle Anforderungen
+des types Point, und kann deswegen als Argument
+der Funktion <code>logPoint</code> verwendet werden.  Der wurm tut das nicht.</p>
+
+
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<p>Das war ein erster Einblick in Typescript.</p>
+
+<ul>
+  <li>Typscript <a href="https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html">wenn man C# kennt</a></li>
+  <li>Typescript im Browser ausprobieren mit dem <a href="https://www.typescriptlang.org/play#show-examples">Typescript Playground</a></li>
+</ul>
+
  <div class="pagination">
   <ul>
     
       
       
+      <li><a href="/advanced-javascript/nodejs/">node.js</a></li>
+      
+      
+      
       <li><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
-      
-      
-      
-      <li><a href="/advanced-javascript/event-und-closure/">Events und Closures</a></li>
       
     
   </ul>
@@ -1160,11 +1290,15 @@ printQuestion(q);
                       
                     
                       
-                      <li ><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
+                      <li ><a href="/advanced-javascript/nodejs/">node.js</a></li>
                       
                     
                       
                       <li class="active"><a href="/advanced-javascript/typescript/">TypeScript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/advanced-javascript/call/">Funktion Aufrufen</a></li>
                       
                     
                       

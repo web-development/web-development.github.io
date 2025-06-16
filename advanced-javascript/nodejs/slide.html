@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>node.js - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>node.js</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript//slide.html">Javascript Vertiefung</a> | 
+        <a href="/advanced-javascript/nodejs/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/typescript//slide.html">TypeScript</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p><img src="/images/advanced-javascript/nodejs-logo.svg"  alt="node.js logo" ></p>
+
+<p>Node.js ist ein JavaScript-Interpreter
+mit einer sehr kleinen zusätzlichen C-Bibliothek.</p>
+
+<p>Nach der Lektüre dieses Leitfadens solltest du</p>
+
+<ul>
+  <li>wissen, wie man packages mit npm installiert</li>
+  <li>in der Lage sein ein Programm zu starten, dass in node.js programmiert ist</li>
+</ul>
+
+<hr />
+
+</div>
+<div class="slide">
+
+<h2 id="was-ist-nodejs">Was ist Node.js?</h2>
+
+<p>Node.js wurde ursprünglich 2009 von <a href="https://de.wikipedia.org/wiki/Ryan_Dahl">Ryan Dahl</a> geschrieben
+als Kombination zweier bereits existierender Softwarekomponenten:</p>
+
+<ul>
+  <li>dem Google <a href="https://v8.dev/">JavaScript-Interpreter V8</a> – <a href="https://github.com/v8/v8">Code</a></li>
+  <li>einer Bibliothek für asynchrones Programmieren <a href="https://libuv.org/">libuv</a> – <a href="https://github.com/libuv/libuv">Code</a></li>
+</ul>
+
+<p>Dazu kam eine in JavaScript geschriebene Standardbibliothek.
+2010 wurde mit npm ein Paketmanager für JavaScript-Bibliotheken ergänzt.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="wie-gro-ist-nodejs">Wie groß ist Node.js?</h3>
+
+<p><img src="/images/advanced-javascript/what-is-node.svg"  alt="" ></p>
+
+<p>Laut <a href="https://www.openhub.net/p/node/analyses/latest/languages_summary">OpenHub</a> bestand das Node-Projekt im Jahr 2023 aus:</p>
+
+<ul>
+  <li>der Node-Bibliothek: 1,6 Millionen Zeilen JavaScript</li>
+  <li>den Node-Bindings: 2,5 Millionen Zeilen C</li>
+  <li>V8: 2,3 Millionen Zeilen C++</li>
+  <li>libuv: 100.000 Zeilen C</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="hallo-node">Hallo Node</h3>
+
+<p>Du schreibst dein Programm in JavaScript, speicherst es in einer Datei:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">console.log(&quot;Hello Node&quot;);
+</code></pre></div>
+
+<p>und führst es mit dem <code>node</code>-Befehl aus:</p>
+
+<div class="example">
+<pre><code class="language-shell  linenums">$ node hello.js
+Hello Node
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="pakete">Pakete</h2>
+
+<p>Der npm Paketmanager kann Javascript-Pakete aus
+dem Internet (von https://www.npmjs.com/) herunterladen
+und installieren.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="packagejson">package.json</h3>
+
+<p>Dazu muss man zuerst ein Projekt in einem eigenen Ordner starten
+und dort die Datei <code>package.json</code> anlegen:</p>
+
+<p>Diese erzeugt man mit dem Befehl</p>
+
+<pre><code>$ mkdir mein_projekt
+$ cd mein_projekt
+$ npm init -y
+</code></pre>
+
+<p>Die Datei package.json sieht ungefähr so aus:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">{
+  &quot;name&quot;: &quot;mein_projekt&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;type&quot;: &quot;module&quot;
+}
+</code></pre></div>
+
+<p>Finde den Key <code>type</code> und stell sicher dass als Wert <code>"module"</code> angegeben ist.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="nodemodules">node_modules</h3>
+
+<p>Der Package manager <code>npm</code> installiert die packages
+im Ordner <code>node_modules</code>. Als Beispiel installieren wir
+ein Package namens <code>qrcode-terminal</code></p>
+
+<div class="example">
+<pre><code class="language-shell  linenums">$ npm install qrcode-terminal
+added 1 package, and audited 2 packages in 599ms
+found 0 vulnerabilities
+$ du -h -s *
+160K	node_modules
+4,0K	package-lock.json
+4,0K	package.json
+</code></pre></div>
+
+<p>Es sind drei Dinge passiert:</p>
+
+<ul>
+  <li>in <code>package.json</code> wurde eingetragen dass wir <code>qrcode-terminal</code> verwenden wollen</li>
+  <li><code>package-lock.json</code> wurde erstellt. Hier würden weitere Dependencies eingetragen, die <code>qrcode-terminal</code> braucht</li>
+  <li>im Ordner <code>node_modules</code> wurde ein Unter-Ordner <code>qrcode-terminal</code> erstellt, er enthält das installierte Package</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h3 id="kleine-pakete-grosses-nodemodules">Kleine Pakete, Grosses <code>node_modules</code></h3>
+
+<p>Javascript hat den Ruf besonders viele kleine Pakete zu verwenden,
+und besonders viel Speicherplatz für <code>node_modules</code> zu verbrauchen:</p>
+
+<p><img src="/images/advanced-javascript/node-modules.webp"  alt="Meme über node_modules" ></p>
+
+<p>Quelle <a href="https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/">Reddit r/ProgrammerHumor</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="node-package-execute---npx">Node Package eXecute - npx</h2>
+
+<p>Das Package <code>qrcode-terminal</code> enthält ein ausführbares
+Programm für die Kommandozeile.  Mit “Node Package eXecute”
+kann man es starten und ihm eine URL übergeben:</p>
+
+<pre><code>npx qrcode-terminal https://web-development.github.io/advanced-javascript/nodejs
+</code></pre>
+
+<p>Das Programm gibt einen QR Code der URL aus:</p>
+
+<p><img src="/images/advanced-javascript/qr.png" srcset="/images/advanced-javascript/qr.png 1x, /images/advanced-javascript/qr@2x.png 2x"  alt="QR Code für diese Webseite" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="import">import</h2>
+
+<p>Für javascript-Programm vom typ Module die mit node.js gestartet
+werden gilt:
+Verwende “barewords” für Pakete aus <code>node_modules</code>, und relative Pfade
+für eigene Dateien:</p>
+
+<div class="example">
+<pre><code class="language-javascript  linenums">import * as http from &#39;http&#39;;
+import * as config from &#39;./config/index.js&#39;;
+</code></pre></div>
+
+</div>
+    <div class="slide">
+      <h1>node.js</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/advanced-javascript//slide.html">Javascript Vertiefung</a> | 
+        <a href="/advanced-javascript/nodejs/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/advanced-javascript/typescript//slide.html">TypeScript</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
