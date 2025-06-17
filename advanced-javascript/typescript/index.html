@@ -168,7 +168,7 @@ dass es wieder funktioniert.</p>
 
 <a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
-<h3 id="ein-erster-type-und-javascript">ein erster type und javascript</h3>
+<h3 id="ein-erster-type">ein erster Type</h3>
 
 <p>Betrachten wir einen ersten selbst definiertes Typ in Typescript,
 und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
@@ -242,11 +242,11 @@ type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 </code></pre></div>
 
 <p>in Typescript ist der WindowState ein String, und braucht
-entsprechend seiner Länger mehr oder weniger byte im Speicher.
+entsprechend seiner Länge mehr oder weniger Byte im Speicher.
 In C# wird der Enum intern als <code>int</code> gespeichert, braucht
 also eine fixe anzahl bytes.</p>
 
-<p>Typescript Unions lassen sich nicht zur Laufzeit auflisten, C# enums schon:</p>
+<p>Typescript Unions lassen sich <strong>nicht</strong> zur Laufzeit auflisten, C# enums schon:</p>
 
 <div class="example">
 <pre><code class="language-csharp  linenums">Enum.GetValues(typeof(WindowStates));
@@ -258,7 +258,7 @@ also eine fixe anzahl bytes.</p>
 <h3 id="union-verschiedener-formen">Union verschiedener Formen</h3>
 
 <p>Unions können auch direkt für Funktionsparameter verwendet werden.
-Unions können typen vereinigen, die verschiedene Formen im Speicher haben:</p>
+Unions können Typen vereinigen, die verschiedene Formen im Speicher haben:</p>
 
 <div class="example">
 <pre><code class="language-typescript  linenums">function getLength(obj: string | any[]) {
@@ -313,6 +313,25 @@ in Javascript:</p>
 
 <a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
+<h2 id="typen-fr-die-dom">Typen für die DOM</h2>
+
+<p>Für die DOM und die DOM Manipulation braucht es auch Typen.
+Die bringt Typscript schon mit:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">getElementById(elementId: string): HTMLElement | null;
+</code></pre></div>
+
+<p>Im eigenen Programm kann man diese Typen dann verwenden:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">let myNode: HTMLElement;
+myNode = document.getElementById(&quot;hansi&quot;) as HTMLElement
+</code></pre></div>
+
+
+<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+
 <h2 id="duck-typing">Duck-Typing</h2>
 
 <p>In Typescript gilt: wenn es quakt wie eine Ente und watschelt
@@ -346,7 +365,7 @@ des types Point, und kann deswegen als Argument
 der Funktion <code>logPoint</code> verwendet werden.  Der wurm tut das nicht.</p>
 
 
-<a class="slide_break" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 

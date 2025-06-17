@@ -204,7 +204,7 @@ dass es wieder funktioniert.</p>
 </div>
 <div class="slide">
 
-<h3 id="ein-erster-type-und-javascript">ein erster type und javascript</h3>
+<h3 id="ein-erster-type">ein erster Type</h3>
 
 <p>Betrachten wir einen ersten selbst definiertes Typ in Typescript,
 und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
@@ -278,11 +278,11 @@ type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 </code></pre></div>
 
 <p>in Typescript ist der WindowState ein String, und braucht
-entsprechend seiner Länger mehr oder weniger byte im Speicher.
+entsprechend seiner Länge mehr oder weniger Byte im Speicher.
 In C# wird der Enum intern als <code>int</code> gespeichert, braucht
 also eine fixe anzahl bytes.</p>
 
-<p>Typescript Unions lassen sich nicht zur Laufzeit auflisten, C# enums schon:</p>
+<p>Typescript Unions lassen sich <strong>nicht</strong> zur Laufzeit auflisten, C# enums schon:</p>
 
 <div class="example">
 <pre><code class="language-csharp  linenums">Enum.GetValues(typeof(WindowStates));
@@ -294,7 +294,7 @@ also eine fixe anzahl bytes.</p>
 <h3 id="union-verschiedener-formen">Union verschiedener Formen</h3>
 
 <p>Unions können auch direkt für Funktionsparameter verwendet werden.
-Unions können typen vereinigen, die verschiedene Formen im Speicher haben:</p>
+Unions können Typen vereinigen, die verschiedene Formen im Speicher haben:</p>
 
 <div class="example">
 <pre><code class="language-typescript  linenums">function getLength(obj: string | any[]) {
@@ -345,6 +345,25 @@ in Javascript:</p>
     </tr>
   </tbody>
 </table>
+
+</div>
+<div class="slide">
+
+<h2 id="typen-fr-die-dom">Typen für die DOM</h2>
+
+<p>Für die DOM und die DOM Manipulation braucht es auch Typen.
+Die bringt Typscript schon mit:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">getElementById(elementId: string): HTMLElement | null;
+</code></pre></div>
+
+<p>Im eigenen Programm kann man diese Typen dann verwenden:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">let myNode: HTMLElement;
+myNode = document.getElementById(&quot;hansi&quot;) as HTMLElement
+</code></pre></div>
 
 </div>
 <div class="slide">

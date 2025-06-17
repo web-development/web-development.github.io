@@ -63,7 +63,6 @@ offen ist, dann löst PDO selbst das Rollback aus.</p>
   $dbh-&gt;exec(&quot;INSERT INTO staff (id, first, last) VALUES (42, &#39;Alyssa&#39;, &#39;Hacker&#39;)&quot;);
   $dbh-&gt;exec(&quot;INSERT INTO salarychange (id, amount, changedate) VALUES (42, 50000, NOW())&quot;);
   $dbh-&gt;commit();
-  
 } catch (Exception $e) {
   $dbh-&gt;rollBack();
   echo &quot;Error: &quot; . $e-&gt;getMessage();
