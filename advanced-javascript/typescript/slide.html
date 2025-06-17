@@ -352,17 +352,24 @@ in Javascript:</p>
 <h2 id="typen-fr-die-dom">Typen für die DOM</h2>
 
 <p>Für die DOM und die DOM Manipulation braucht es auch Typen.
-Die bringt Typscript schon mit:</p>
+Die bringt Typscript schon mit, und baut damit genau
+die DOM Spezifikation nach. Die kann man am einfachsten
+in <a href="https://developer.mozilla.org/de/docs/Web/API/HTMLElement">MDN:HTMLElement</a> nachlesen.</p>
 
 <div class="example">
 <pre><code class="language-typescript  linenums">getElementById(elementId: string): HTMLElement | null;
 </code></pre></div>
 
-<p>Im eigenen Programm kann man diese Typen dann verwenden:</p>
+<p>Im eigenen Programm kann man diese Typen dann verwenden.</p>
 
 <div class="example">
-<pre><code class="language-typescript  linenums">let myNode: HTMLElement;
-myNode = document.getElementById(&quot;hansi&quot;) as HTMLElement
+<pre><code class="language-typescript  linenums">const myNode = document.getElementById(&quot;hansi&quot;) as HTMLElement;  // ist sicher nicht null
+const myButton = document.getElementById(&quot;hansi&quot;);
+if (myButton instanceof HTMLButtonElement) {
+  myButton.disabled = true;
+} else {
+  console.warn(&quot;Warning: Button with ID &#39;hansi&#39; was not found in the DOM or is not a button element.&quot;);
+}
 </code></pre></div>
 
 </div>
