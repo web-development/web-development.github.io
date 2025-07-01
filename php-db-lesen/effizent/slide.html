@@ -104,7 +104,7 @@ besonders wenn viele Daten in der Datenbank gespeichert sind:</p>
 $personen = $sth-&gt;fetchAll();
 foreach( $personen as $person ) {
   if ( $person-&gt;profile_visible ) {
-    echo &quot;$person-&gt;firstname $person-&gt;email&lt;/br&gt;\n&quot;;
+    # do something with $person-&gt;firstname
   }
 }
 </code></pre></div>
