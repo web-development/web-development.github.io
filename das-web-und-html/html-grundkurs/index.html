@@ -59,18 +59,6 @@ nachschlagen.</p>
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
-
-
-<p>In den Jahren davor wurde auch XHTML neben HTML verwendet. Das X von XHTML
-steht für die Kompatibilität mit XML  <!-- XE "XML" -->  . Die Dateien haben dabei weiterhin die
-Endung .htm oder .html (nur sehr selten oder .xhtm, .xhtml). Im Unterschied zu HTML war
-XHTML strenger in der Schreibweise. Am Web finden Sie sowohl Tutorials zu HTML als
-auch zu XHTML – lassen Sie sich davon nicht verwirren, sondern lernen
-sie nur aktuelle HTML5.</p>
-
-
-<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
 <h2 id="arbeitsablauf">Arbeitsablauf</h2>
 <p>Der Arbeitsablauf beim Erstellen von HTML ist eine endlose Schleife:</p>
 
@@ -82,14 +70,8 @@ sie nur aktuelle HTML5.</p>
   <li>meistens: nicht zufrieden mit dem Ergebnis sein, zurück zu 1.</li>
 </ol>
 
-<p>Es gibt verschiedene Online-Tools um HTMl auszuprobieren:</p>
 
-<ul>
-  <li><a href="http://toolness.github.com/slowparse/demo/">Slowparse</a> erklärt die Struktur von HTML, hilft Fehler zu finden</li>
-</ul>
-
-
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="zeichensatz">Zeichensatz</h2>
 
@@ -98,20 +80,20 @@ ISO 8859-1 (Latin-1)  oder im Format utf-8. Mit Latin-1 ist man auf das
 lateineische Alphabet mit westeuropäischen Sonderzeichen beschränkt - man kann
 im selben Dokument nicht auch grieschische, hebräische, arabische, japanische
 Zeichen darstellen.  Mit utf-8 hat man den gesamten Zeichensatz der Menschheit
-zur Verfügung. Mein Empfehlung lautet: immer utf-8 verwenden.</p>
+zur Verfügung. Deswegen sollte man immer utf-8 verwenden.</p>
 
 <p><img src="/images/das-web-und-html/vscodeutf8.png"  alt="" ></p>
 
 <p>So sieht das in Visual Studio Code aus wenn alles gut läuft:
 VS Code glaubt dass die Datei als utf-8 speichern soll,
-und der meta-tag sagt das auch.</p>
+und der meta-tag im HTML Code sagt das auch.</p>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="sonderzeichen">Sonderzeichen</h2>
 
-<p>Sonderzeichen in HTML nennt man „character entities  <!-- XE "character entities" -->  “. Sie haben
+<p>Sonderzeichen in HTML nennt man „character entities“. Sie haben
 die From <code>&amp;entityname;</code></p>
 
 <p>Folgende Character Entities müssen Sie verwenden:</p>
@@ -147,8 +129,7 @@ die From <code>&amp;entityname;</code></p>
   </tbody>
 </table>
 
-<p>Folgende Character Entities können Sie vermeiden, indem Sie das Zeichen selbst im Code
-verwenden:</p>
+<p>Folgende Character Entities gibt es zwar, aber man kann auch einfach die Umlaute und das scharfe ß direkt verwenden:</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
   <thead>
@@ -174,27 +155,27 @@ verwenden:</p>
 </table>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="html-tags">HTML-Tags</h2>
 
-<p>Die gewünschte Formatierung des Textes wird mit HTML-Tags  <!-- XE "Tag" -->  angegeben</p>
+<p>Die gewünschte Formatierung des Textes wird mit HTML-Tags   angegeben</p>
 
 <ol>
   <li>Tags sind zwischen spitzen Klammern eingeschlossen (kleiner-gleich und größer-gleich Zeichen).</li>
   <li>Zu (fast) jedem “Anfangs-Tag” gibt es einen “End-Tag”, der sich nur durch
 den Schrägstrich vom Anfangs-Tag unterscheidet.  Z. B. <code>&lt;p&gt;</code>hier der Absatz<code>&lt;/p&gt;</code>.</li>
-  <li>Nur in XHTML müssen “alleinstehende” Tags mit einem Schrägstrich am Ende
-geschrieben werden:  <code>&lt;br /&gt;</code> In HTML5 schreibt man diesen Tag (wieder) als <code>&lt;br&gt;</code></li>
-  <li>In XHTML werden Tags immer klein geschrieben, bei HTML ist  die Groß- oder Kleinschreibung egal.</li>
+  <li>In einer älterne Version von HTML mussten “alleinstehende” Tags mit einem Schrägstrich am Ende
+geschrieben werden:  <code>&lt;br /&gt;</code> Heute schreibt man diesen Tag als <code>&lt;br&gt;</code></li>
+  <li>Bei HTML ist die Groß- oder Kleinschreibung egal.</li>
 </ol>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="whitespace">Whitespace</h2>
 
-<p>Sogenannter “whitespace  <!-- XE "whitespace" -->  “ - das sind mehrere Leerzeichen,
+<p>Sogenannter “whitespace” - das sind mehrere Leerzeichen,
 Tabulatoren und Zeilenumbrüche hintereinander – wird vom Browser völlig ignoriert. Ob Sie
 also in Ihrer HTML-Datei ein Leerzeichen oder 7 Leerzeilen einfügen macht keinen
 Unterschied. (gar kein Leerzeichen oder ein Leerzeichen macht schon einen Unterschied)
@@ -212,7 +193,7 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 </code></pre><div class="clearfix"></div></div>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="zeilenumbruch">Zeilenumbruch</h2>
 
@@ -222,15 +203,19 @@ Die folgenden beiden Dokumente sind also äquivalent:</p>
 durchführt, um den Text im vorhandenen Platz optimal darzustellen.</p>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="attribute">Attribute</h2>
 
 <p>Manche Tags können Attribute enthalten. Ein Beispiel ist der Tag <code>&lt;img&gt;</code> der ein
-Bild  in die Seite einfügt (Englisch: Image). Die wichtigsten Attribute von
+Bild  in die Seite einfügt. Die wichtigsten Attribute von
 <code>&lt;img&gt;</code> sind <code>src</code>   (von Source = Quelle),  <code>alt</code>     (Alternative
-Darstellung, Ersatztext), und <code>loading</code> (<code>eager</code> heisst sofort laden, <code>lazy</code> erst später laden, wenn es
-in den sichtbaren Bereich kommt.).</p>
+Darstellung, Ersatztext), und <code>loading</code>.</p>
+
+<ul>
+  <li><code>loading="eager"</code> - das Bild wird auf jeden Fall sofort geladen</li>
+  <li><code>loading="lazy"</code> - das Bild wird erst geladen, wenn es in den sichtbaren Bereich scrollt</li>
+</ul>
 
 <div class="example">
 <pre><code class="language-html  linenums">&lt;img src=&quot;neu.svg&quot; alt=&quot;Das ist neu!&quot; loading=&quot;lazy&quot;&gt;
@@ -238,39 +223,40 @@ in den sichtbaren Bereich kommt.).</p>
 
 <p>Es ist egal, in welcher Reihenfolge Sie die Attribute schreiben.</p>
 
-<p>Der Wert eines Attributes muß in XHTML immer in Anführungszeichen geschrieben
-werden, in HTML kann man die Anführungszeichen weglasse, dann endet der Wert
-beim nächsten Leerzeichen.</p>
+<p>Der Wert eines Attributes wird in Anführungszeichen geschrieben.
+Wenn man keine Anführungszeichen schreibt, endet der Wert beim nächsten Leerzeichen
+oder beim Ende des Tags:</p>
 
 <div class="example twopane">
 <pre><code class="language-html linenums left">&lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
 </code></pre><pre><code class="language-html linenums right">
 &lt;img
-  alt=&quot;Das ist Neu!&quot;
-  src=&quot;neu.svg&quot;
-  width=50 height=15&gt;
+  src=neu.svg
+  alt=&quot;Das ist Neu!&quot;&gt;
 </code></pre><div class="clearfix"></div></div>
 
 <p>ACHTUNG: ein häufiger Fehler ist es, das zweite Anführungszeichen zu vergessen:</p>
 
 <div class="example">
-<pre><code class="language-html  linenums">  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&quot;&gt;
+<pre><code class="language-html  linenums">  &lt;img alt=&quot;Das ist neu!&quot; src=&quot;neu.svg&gt;
+  Hier wäre noch Text
+  &lt;strong&gt;aber er wird jetzt nicht mehr angezeigt!&lt;/strong&gt;
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="kompatibilitt">Kompatibilität</h2>
 
 <p>Jeder Browser (egal ob Chrome, Firefox, Safari, Microsoft Internet Explorer, Opera,…) kann
-jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Notepade, vim, Dreamweaver, WebStrom, Eclipse,… ) kann jedes HTML-Dokument bearbeitet werden.</p>
+jedes HTML-Dokument darstellen. Mit jedem Editor (egal ob Notepade, vim, WebStrom, VS Code,… ) kann jedes HTML-Dokument bearbeitet werden.</p>
 
 <p>So soll das Web funktionieren.</p>
 
 <p>Probleme mit nicht kompatiblen Seiten kann man auf <a href="https://webcompat.com/">webcompat</a> melden.</p>
 
 
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="unbekannte-attribute">Unbekannte Attribute</h3>
 
@@ -289,7 +275,7 @@ unbekannte Attribute einfach ignoriert.</p>
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="unbekannte-tags">Unbekannte Tags</h3>
 
@@ -310,7 +296,7 @@ Webseite!!!!&lt;/p&gt;
 </code></pre><div class="clearfix"></div></div>
 
 
-<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="text-formatieren">Text formatieren</h2>
 
@@ -346,7 +332,7 @@ Die inline-Tags werden je nach Platzbedarf umgebrochen und auf mehrere Zeilen ve
 Die blockbildenden Tags bleiben immer Rechtecke.</p>
 
 
-<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h3 id="blockbildende-tags-fr-text">Blockbildende Tags für Text</h3>
 
@@ -377,7 +363,7 @@ text. &lt;/p&gt;
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 
 
@@ -422,7 +408,7 @@ schwimmen auf dem See&lt;/blockquote&gt;
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h3 id="nicht-blockbildende-tags-fr-text">Nicht-Blockbildende Tags für Text</h3>
 
@@ -438,12 +424,12 @@ und eine &lt;em&gt;interessante&lt;/em&gt; Sache.         (betont, meist kursiv)
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 
 
-<p>Physische Tags geben die genaue Darstellung vor. Das sind eigentlich „altmodische
-Tags“,  besonders der font-Tag wurde schon um das Jahr 2000 herum durch Stylesheets
+<p>Physische Tags geben die genaue Darstellung vor. Heute sind sie
+durch Stylesheets
 vollständig ersetzt, und sollte möglichst nicht mehr verwendet werden. Sie werden
 diese Tag in „alten“ Dokumenten aber noch finden:</p>
 
@@ -455,15 +441,13 @@ Eine &lt;i&gt;schräge&lt;/i&gt; Sache                    (VERALTET!)
 &lt;font color=&quot;red&quot;&gt;rot&lt;/font&gt;                 (VERALTET!)
 </code></pre></div>
 
-<p>Heute verwendet man CSS im <code>style</code>-Attribut statt dessen.  Das lernen wir später.</p>
 
-
-<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
+<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h2 id="bilder">Bilder</h2>
 
 <p>Bilder werden in separaten Dateien gespeichert, in der HTML-Datei erfolgt nur ein Verweis
-auf die Datei des Bildes.  <!-- XE "Bild" --> Als Attribut src  <!-- XE "src" -->   im img-Tag können Sie eine
+auf die Datei des Bildes.  Als Attribut src   im img-Tag können Sie eine
 absolute oder relative URL angeben:</p>
 
 <div class="example">
@@ -479,7 +463,7 @@ absolute oder relative URL angeben:</p>
 </code></pre></div>
 
 <p>Für Blinde, Suchmaschinen, Browser die keine Bilder darstellen können, u.s.w. gibt man für
-jedes Bild einen Alternativtext  <!-- XE "Alternativtext" -->   (Attribut alt  <!-- XE "alt" -->  ) an. Mit dem Firefox AddOn
+jedes Bild einen Alternativtext  (Attribut alt ) an. Mit dem Firefox AddOn
 „Web Developer“ kann man testen wie die Seite mit ALT statt Bildern aussieht.
 Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberichts.</p>
 
@@ -489,7 +473,7 @@ Abbildung 10 zeigt die Verwendung dieses Features am Beispiel eines Wetterberich
 unterstützt:</p>
 
 
-<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
+<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h3 id="svg">svg</h3>
 
@@ -498,79 +482,55 @@ unterstützt:</p>
 <p>Vektor-Format, das Bild kann beliebig groß oder klein dargestellt werden. Sehr beliebt für Icons, siehe auch <a href="https://iconsear.ch/">iconssear.ch</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
+<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
-<h3 id="gif-and-apng">gif and apng</h3>
+<h3 id="gif">gif</h3>
 
 <p><img src="/images/das-web-und-html/example-gif.gif"  alt="Beispiel für ein gif Bild: Animation" ></p>
 
 <p>(Bild: Internet Meme, Quelle unbekannt)</p>
 
-<p>Palette von 255 Farben plus einer Transparenz-Farbe (kein Alpha). Ein „animiertes
-Gif“ enthält mehrere Bilder, die der Reihe nach angezeigt werden .</p>
+<p>Das gif format ist sehr eingeschränkt: Es kann nur eine
+palette von 255 Farben plus einer Transparenz-Farbe darstellen. Ein „animiertes
+Gif“ enthält mehrere Bilder, die der Reihe nach angezeigt werden.</p>
 
-<p>Wurde früher für Bilder mit klaren Kanten, einfärbigen Flächen, wenigen
-Farben verwendet, z. B. Comics, Logos.  Das macht man heute mit SVG.
-So bleiben nur die animierten gifs als Anwendungfall, und selbst durch
-animierte png oder durch Video ersetzt.</p>
-
-<p><img src="/images/das-web-und-html/example-apng.apng"  alt="Beispiel für ein animiertes png Bild: Animation" ></p>
+<p>Heute werden statt des animierten gifs Videos verwendet, damit erreicht
+man eine kleiner Dateigröße.</p>
 
 
-<a class="slide_break do-not-print" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
+<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
-<h3 id="jpg">jpg</h3>
+<h3 id="jpg-webp-avif">jpg, webp, avif</h3>
 
 <p><img src="/images/das-web-und-html/example-jpg.jpg" srcset="/images/das-web-und-html/example-jpg.jpg 1x, /images/das-web-und-html/example-jpg@2x.jpg 2x"  alt="Beispiel für ein jpg Bild: verschiedene Kompression" ></p>
 
 <p>(Bild von <a href="https://commons.wikimedia.org/wiki/File:Felis_silvestris_silvestris_small_gradual_decrease_of_quality.png">Michael Gäbler und AzaToth</a>, CC-SA)</p>
 
-<p>Millionen von Farben, variable Kompression, keine Transparenz.
+<p>Ein jpeg kann Millionen von Farben darstellen, bietet variable Kompression aber keine Transparenz.
 Besonders geeignet für Bilder mit Farbverläufen, z. B. Photos.</p>
 
 <p>In Wirklichkeit würde man die Kompressionsrate nicht so extrem hoch
 setzen wie im linken Drittel des Bildes.</p>
 
-<p>Die Variante “progressive jpg” macht die Wartezeit beim Laden des Bildes interessanter.</p>
+<p>Heute ist jpeg nicht mehr relevant, statt dessen werden webp oder avif verwenden.
+Sie haben die gleichen Stärken wie jpg, komprimieren aber noch besser
+und können auch alpha Transparenz und Animation.</p>
 
 
-<a class="slide_break do-not-print" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
-
-<h3 id="png">png</h3>
-
-<p><img src="/images/das-web-und-html/example-png.png"  alt="Beispiel für ein PNG Bild: Würfel mit Alpha-Transparnz" ></p>
-
-<p>(Bild von <a href="https://commons.wikimedia.org/wiki/File:PNG_transparency_demonstration_1.png">Ed g2s</a>, CC-SA)
-Weniger Kompression als JPG, aber Alpha-Transparenz.</p>
-
-
-<a class="slide_break do-not-print" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
+<a class="slide_break do-not-print" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
 
 <h3 id="weitere-formate">Weitere Formate</h3>
 
 <p>Es gibt noch viele weitere Bildformate die im Web benutzt werden können - mit etwas Aufwand.
-Aber für den Anfang reichen svg, jpg und png aus. Diese Formate werden sicher von allen
+Aber für den Anfang reichen svg und webp aus. Diese Formate werden sicher von allen
 Browsern unterstützt.</p>
 
 
-<a class="slide_break do-not-print" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
-
-
-
-<p>Ideal wäre, das Format auszuwählen, in dem das Bild nichts an Qualität verliert, und die
-Dateigröße möglichst gering ist.</p>
-
-<p>Weitere Arten Bilder zu erstellen werden wir später genauer betrachten: Mit
-responsive images kann man verschieden große Bilder für verschiedene
-Ausgabegeräte anbieten. Mit dem
-canvas-Tag und Javascript kann man Bilder zeichnen.</p>
-
-
-<a class="slide_break do-not-print" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
+<a class="slide_break do-not-print" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
 
 <h2 id="links">Links</h2>
 
-<p>Als Attribut href  <!-- XE "href" -->   des Link  <!-- XE "Link" -->  können Sie eine absolute oder relative
+<p>Als Attribut href  des Link  können Sie eine absolute oder relative
 URL angeben:</p>
 
 <div class="example">
@@ -582,17 +542,16 @@ Link zu Webseite im selben Ordner (relative URL)
 Link zu E-Mail Adresse
     &lt;a href=&quot;mailto:aa@bb.cc&quot;&gt;Mail&lt;/a&gt;
 Bild als Link
-    &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.svg&quot;alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;seite2.htm&quot;&gt;&lt;img src=&quot;mehr.svg&quot; alt=&quot;zur Seite 2&quot;&gt;&lt;/a&gt;
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
+<a class="slide_break do-not-print" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
 
 <h2 id="gesamt-struktur-einer-webseite">Gesamt-Struktur einer Webseite</h2>
 
-<p>Eine HTML Seite hat ein Grundgerüst.  <!-- XE "Doctype" -->    <!-- XE "head" -->    <!-- XE "body" -->   aus
-<code>DOCTYPE</code>, <code>html</code>, <code>head</code> und <code>body</code>. Der erste Tag ist der <code>DOCTYPE</code>, er gibt die Version von
-HTML an, die verwendet wird. Es folgt der <code>html</code>-Tag. Innerhalb des <code>html</code>-Tags gibt es erst
+<p>Eine HTML Seite hat ein Grundgerüst   aus
+<code>DOCTYPE</code>, <code>html</code>, <code>head</code> und <code>body</code>. Der erste Tag ist der <code>DOCTYPE</code>. Es folgt der <code>html</code>-Tag. Innerhalb des <code>html</code>-Tags gibt es erst
 einen <code>head</code> und dann einen <code>body</code>-Tag – nicht mehr und nicht weniger.
 Hier am Beispiel von HTML5:</p>
 
@@ -610,33 +569,14 @@ Hier am Beispiel von HTML5:</p>
 &lt;/html&gt;
 </code></pre></div>
 
-<p>Bei XHTML ist der DOCTYPE sehr viel komplizierter. Der meta-Tag für die Auswahl des
-Charactersets ist ebenfalls komplizierter.</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Grundgerüst eines XHTML Dokuments</small></h4>
-<pre><code class="language-html  linenums">&lt;!DOCTYPE html
-     PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
-     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-    &lt;title&gt;Eine Webseite&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-     Hier die Tags, die Sie schon kennen.
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></div>
-
 <p>Achtung: es kann nur einen head und einen body geben, keine Wiederholungen!</p>
 
 
-<a class="slide_break do-not-print" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
+<a class="slide_break do-not-print" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
 
 <h2 id="listen">Listen</h2>
 
-<p>Listen  <!-- XE "Liste" -->    <!-- XE "ul" -->    <!-- XE "ol" -->    <!-- XE "li" -->   werden mit zwei verschachtelten Tags
+<p>Listen   werden mit zwei verschachtelten Tags
 gebaut: der li-Tag für den einzelnen Listen-Punkt, und der ol- oder ul-Tag für die gesamte
 Liste.</p>
 
@@ -653,12 +593,12 @@ Liste.</p>
 </code></pre>
 
 
-<a class="slide_break do-not-print" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
+<a class="slide_break do-not-print" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
 
 <h2 id="tabellen">Tabellen</h2>
 
-<p>Um eine Tabelle  <!-- XE "Tabelle" -->    <!-- XE "table" -->    <!-- XE "tr" -->    <!-- XE "td" -->    <!-- XE "th" -->   zu erzeugen
-müssen Sie die Tags ´table´, ´tr´ (Table Row = Tabellenhzeile) und ´td´ (Table Data)
+<p>Um eine Tabelle   zu erzeugen
+müssen Sie die Tags ´table´, ´tr´ (Table Row = Tabellenzeile) und ´td´ (Table Data)
 richtig ineinander verschachteln</p>
 
 <pre><code>&lt;table style="border-collapse:collapse;"&gt;
@@ -681,7 +621,7 @@ sichtbar geschalten.</p>
 <pre><code>&lt;style&gt;td {  border:2px #ddd solid; padding: 5px; }&lt;/style&gt;
 </code></pre>
 
-<p>HTML-Tabellen wurden früher in Webseiten für das Layout  <!-- XE "Layout:mit Tabellen" -->   der
+<p>HTML-Tabellen wurden früher in Webseiten für das Layout   der
 Seite verwendet, diese Tabellenlayouts sind noch auf älteren Webseiten zu
 finden.  Dazu noch ein Literaturhinweis:</p>
 
@@ -691,7 +631,7 @@ finden.  Dazu noch ein Literaturhinweis:</p>
 Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
 
 
-<a class="slide_break do-not-print" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
+<a class="slide_break do-not-print" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
 
 <h2 id="weitere-quellen">Weitere Quellen</h2>
 
@@ -705,7 +645,7 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
     
       
       
-      <li><a href="/das-web-und-html/bnf/">BNF</a></li>
+      <li><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
       
       
       
@@ -740,10 +680,6 @@ Heute verwendet man Tabellen wirklich nur noch zur Darstellung von Tabellen.</p>
                     
                       
                       <li ><a href="/das-web-und-html/standards/">Drei Standards definieren das Web</a></li>
-                      
-                    
-                      
-                      <li ><a href="/das-web-und-html/bnf/">BNF</a></li>
                       
                     
                       

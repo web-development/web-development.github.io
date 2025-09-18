@@ -93,28 +93,27 @@
 
 <h2 id="validator">Validator</h2>
 
-<!-- XE "Validator" -->
-<p>Um Fehler im HTML-Code zu finden reicht ein Webbrowser nicht aus. Wie oben beschrieben 
-sind Webbrowser sehr tolerant, was kaputten Code  <!-- XE "Code" -->   betrifft.
-Für eine strenge Prüfung  <!-- XE "Prüfung:von HTML Code" --> <br />
+<p>Um Fehler im HTML-Code zu finden reicht ein Webbrowser nicht aus. Wie oben beschrieben
+sind Webbrowser sehr tolerant, was kaputten Code   betrifft.
+Für eine strenge Prüfung
 des HTML-Codes kann man den Validator des W3C verwenden:</p>
 
 <p><a href="http://validator.w3.org/">http://validator.w3.org/</a></p>
 
-<p><img src="/images/das-web-und-html/w3-validator.png" srcset="/images/das-web-und-html/w3-validator-error.png 1x, /images/das-web-und-html/w3-validator-ok.png 1x, /images/das-web-und-html/w3-validator.png 1x"  alt="Abbildung 11:  Der HTML-Validator des World Wide Web Consortiums" ></p>
+<p><img src="/images/das-web-und-html/w3-validator-frontpage.png"  alt="Abbildung 11:  Der HTML-Validator des World Wide Web Consortiums" ></p>
 
 </div>
 <div class="slide">
 
 
 
-<p>Die Fehlermeldungen des Validators muss man sorgfältig lesen, von oben nach unten 
-durcharbeiten und reparieren. Mit etwas Glück repariert man das erste Problem und viele 
+<p>Die Fehlermeldungen des Validators muss man sorgfältig lesen, von oben nach unten
+durcharbeiten und reparieren. Mit etwas Glück repariert man das erste Problem und viele
 Folge-Fehler fallen damit auch weg.</p>
 
 <p><img src="/images/das-web-und-html/w3-validator-error.png"  alt="Abbildung 12:  Fehlermeldung des Validators" ></p>
 
-<p>Die Fehlermeldung in Abbildung 12 geht auf einen Tippfehler zurück: der schließende Tag 
+<p>Die Fehlermeldung in Abbildung 12 geht auf einen Tippfehler zurück: der schließende Tag
 wurde falsch geschreiben.</p>
 
 </div>
@@ -122,27 +121,23 @@ wurde falsch geschreiben.</p>
 
 
 
-<p>Wenn der Code dem HTML-Standard entspricht erscheint eine 
+<p>Wenn der Code dem HTML-Standard entspricht erscheint eine
 Erfolgsmeldung:</p>
 
 <p><img src="/images/das-web-und-html/w3-validator-ok.png"  alt="Abbildung 13:   Erfolgsmeldung des Validators" ></p>
-
-<p>Bei der Verwendung von HTML5 erscheint aber immer noch ein Warning, dass
-der Validator experimentell sei. Das kann man ignorieren.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="upload">Upload</h2>
 
-<!-- XE "Upload" -->
-<p>Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH Salzburg steht Ihnen 
-dafür der  Webserver users.multimediatechnology.at zur Verfügung. 
-Um die Daten vom eigenen Computer auf den Webserver zu laden gibt es verschiedene 
-Methoden, die wichtigsten sind FTP,  <!-- XE "FTP" -->   WebDAV,  <!-- XE "WebDAV" -->  SFTP.</p>
+<p>Die fertige Webseite muss auf einem Webserver veröffentlicht werden. In der FH Salzburg steht Ihnen
+dafür der  Webserver users.ct.fh-salzburg.ac.at zur Verfügung.
+Um die Daten vom eigenen Computer auf den Webserver zu laden gibt es verschiedene
+Methoden, die wichtigste ist SFTP.</p>
 
-<p>Bei jeder Upload-Methode brauchen Sie folgende Informationen: den Namen des Servers, Usernamen, 
-Passwort, in welchen Ordner Sie die Daten speichern, unter welcher URL die Daten im Web 
+<p>Man braucht folgende Informationen: den Namen des Servers, Portnummer, Usernamen,
+Passwort, in welchen Ordner Sie die Daten speichern, unter welcher URL die Daten im Web
 sichtbar sind.</p>
 
 </div>
@@ -154,8 +149,8 @@ sichtbar sind.</p>
 Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähnlich:</p>
 
 <ul>
-  <li>Name des SFTP- Servers: meinhoster.at</li>
-  <li>Port für SFTP 4711</li>
+  <li>Name des SFTP-Servers: meinhoster.at</li>
+  <li>Port für SFTP: 4711</li>
   <li>Username + Passwort</li>
   <li>Ordner bei Upload public_html/</li>
   <li>URL http://meinefirma.at</li>
@@ -169,9 +164,10 @@ Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähn
 <p>Ein paar Programme zum Upload:</p>
 
 <ul>
-  <li><a href="https://addons.mozilla.org/en-US/firefox/addon/fireftp/">FireFTP</a>,  <!-- XE "FireFTP" -->    <!-- XE "Firefox AddOn:FireFTP" -->  ein AddOn von Firefox, Windows und Mac.</li>
-  <li><a href="http://winscp.net">Secure File Transfer Client</a>  <!-- XE "Secure File Transfer Client" -->  : nur für SFTP, nur auf Windows.</li>
-  <li><a href="https://www.jetbrains.com/help/phpstorm/2016.2/working-with-web-servers-copying-files.html">PHPStorm</a>  <!-- XE "PHPStorm" -->  :  Upload ist nach der Definition einer „Server Access Configuration“ möglich, auf Windows und Mac.</li>
+  <li><a href="http://winscp.net">Secure File Transfer Client</a> nur auf Windows.</li>
+  <li><a href="https://filezilla-project.org/">FileZilla Client</a> für MacOS, Windows, Linux</li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=liximomo.sftp">Extension sftp von liximono</a> für VS Code</li>
+  <li><a href="https://www.jetbrains.com/academy/student-pack/">Web Editor PHPStorm</a>:  Upload ist nach der Definition einer „Server Access Configuration“ möglich, auf Windows und Mac.</li>
 </ul>
 
 </div>
@@ -179,11 +175,11 @@ Domain meinefirma.at untergebracht. Die Konfiguration ist wahrscheinlich so ähn
 
 
 
-<p>Achten Sie beim Upload darauf, dass die Ordnerstruktur   und die relative 
+<p>Achten Sie beim Upload darauf, dass die Ordnerstruktur   und die relative
 Position der Dateien beibehalten wird; nur dann funktionieren die relativen
 Links!</p>
 
-<p>PHPStorm und FireFTP bieten Hilfe beim Erhalt der Struktur. Sie können
+<p>PHPStorm und FileZilla bieten Hilfe beim Erhalt der Struktur. Sie können
 im linken Teil des Fensters eine Datei auswählen, und durch klicken des
 Buttons mit dem Pfeil nach rechts in den richtigen Ordner hochladen.</p>
 
