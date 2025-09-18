@@ -48,14 +48,14 @@
       <h2 class="title" id="slide-0">
         A3 - Injection + XSS
       </h2>
-      <a href="/security/a3-injection/slide.html">als Präsentation ▻</a>
+      <a href="/security/a3-injection/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Auf <a href="https://owasp.org/Top10/A03_2021-Injection/">Platz 3 der OWASP Top 10 2021: Injection</a></p>
 
 <p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection Schwachstellen sind weit verbreitet, wir haben schon  SQL-Injection und Cross Site Scripting (XSS) kennen gelernt.</p>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="sql-injection">SQL Injection</h2>
 
@@ -76,7 +76,7 @@ die als Input vom User/der Userin kommen werden mit <code>execute</code> an die 
 Daten, nicht mehr als SQL interpretiert werden.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="prepared-statement-mit-benannten-platzhaltern">Prepared Statement mit benannten Platzhaltern</h2>
 
@@ -91,7 +91,7 @@ $stm-&gt;execute();
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="prepared-statement-falsch-verwenden">Prepared Statement falsch verwenden</h2>
 
@@ -108,7 +108,7 @@ $stm-&gt;execute();
 <p><img src="/images/security/fire-extinguisher-fire.jpg"  alt="" ></p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="owasp-empfehlungen">OWASP Empfehlungen</h2>
 
@@ -133,7 +133,7 @@ $stm-&gt;execute();
 </ul>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="weitere-quellen-zu-sql-injection">Weitere Quellen zu SQL Injection</h2>
 
@@ -144,7 +144,7 @@ $stm-&gt;execute();
 </ul>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="cross-site-scripting-xss">Cross Site Scripting (XSS)</h2>
 
@@ -162,7 +162,7 @@ $stm-&gt;execute();
 harmlose Seite.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="vermeidung-von-xss">Vermeidung von XSS</h2>
 
@@ -177,7 +177,7 @@ Das ist ein seltener, aber sehr sicherer Fall.</p>
 </ul>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="eingabe-validieren-in-php">Eingabe validieren in PHP</h2>
 
@@ -187,7 +187,7 @@ also ganz leicht möglich Javascript in einem <code>onmouseover</code> Attribut 
 <p>Statt dessen sollte man einen HTML-Filter wie <a href="http://htmlpurifier.org/">HTML Purifier</a> verwenden.</p>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="richtig-escapen">Richtig Escapen</h2>
 
@@ -203,7 +203,7 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 <p>Es gibt aber noch viele andere Kontexte: XML, PDF, … jedes Format hat seine eigenen Regeln.</p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="wann-escapen">Wann Escapen?</h2>
 
@@ -218,7 +218,7 @@ in der Datenbank.  Bei der Ausgabe kenne ich den Kontext, und kann die
 richtige Escape-Funktion wählen.</p>
 
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="content-security-policy">Content Security Policy</h2>
 
@@ -251,7 +251,7 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
 </code></p>
 
 
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h2 id="mehr-zu-xss">Mehr zu XSS</h2>
 
@@ -262,7 +262,7 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
   <li><a href="https://twig.symfony.com/doc/3.x/filters/escape.html">Escaping im Template System twig für PHP</a></li>
 </ul>
 
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -280,7 +280,7 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -425,11 +425,11 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1283,8 +1283,8 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a3-injection.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a3-injection.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

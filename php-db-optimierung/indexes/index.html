@@ -48,7 +48,7 @@
       <h2 class="title" id="slide-0">
         Indexes
       </h2>
-      <a href="/php-db-optimierung/indexes/slide.html">als Präsentation ▻</a>
+      <a href="/php-db-optimierung/indexes/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Mit <code>\timing</code> kann man in <code>psql</code> einschalten, dass die Zeit für die Abfrage angezeigt wird:</p>
 
@@ -72,7 +72,7 @@ Time: 0.296 ms
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 
 
@@ -100,7 +100,7 @@ Time: 2785.204 ms (00:02.785)
 <p>Warum dauert diese Abfrage so lange?</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="query-planner-und-explain">Query Planner und EXPLAIN</h2>
 
@@ -132,7 +132,7 @@ imperatives Programm, das die Daten wirklich lädt.</p>
 </ul>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 
 
@@ -152,7 +152,7 @@ oder Information über den Datentyp  der Spalten und ihren Platzbedarf (<code>wi
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
@@ -172,7 +172,7 @@ oder Information über den Datentyp  der Spalten und ihren Platzbedarf (<code>wi
 <p>Die angegeben Kosten sind fiktive Zahlen, keine Sekunden oder Millisekunden.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="explain-analyze">EXPLAIN ANALYZE</h2>
 
@@ -197,7 +197,7 @@ lange es wirklich gedauert hat (in Millisekunden) und wie viel Hauptspeicher daf
 <p>Was könnte man tun, um diese Abfrage zu beschleunigen?</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="index-erzeugen">Index erzeugen</h2>
 
@@ -215,7 +215,7 @@ Time: 27368.964 ms (00:27.369)
 ich will dass die Spalte <code>passenger_count</code> irgendwie schneller Abgefragt werden kann.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -242,7 +242,7 @@ Time: 4.103 ms
 <p>Zur Erinnerung: das war ohne Index <code>Time: 2785.204 ms (00:02.785)</code></p>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
@@ -275,7 +275,7 @@ Time: 4.103 ms
 Werte von passenger_count auszulesen.  Wenn wir 10 gefunden haben brechen wir ab.</p>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 
 
@@ -307,7 +307,7 @@ Werte von passenger_count auszulesen.  Wenn wir 10 gefunden haben brechen wir ab
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="die-datenstruktur-hinter-dem-index-b-baum">Die Datenstruktur hinter dem Index: B-Baum</h2>
 
@@ -349,7 +349,7 @@ um einen “covering index” zu erzeugen:</p>
 <p>Siehe <a href="https://blog.crunchydata.com/blog/why-covering-indexes-are-incredibly-helpful">Katz (2018): Why Covering Indexes in Postgres Are Incredibly Helpful</a> und <a href="https://www.postgresql.org/docs/13/sql-createindex.html">Postgres Dokumentation</a>.</p>
 
 
-<a class="slide_break" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="index-fr-volltexsuche">Index für Volltexsuche</h2>
 
@@ -375,7 +375,7 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 
 
@@ -388,7 +388,7 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
 <p>Über diese Datenstruktur lernen Sie mehr in der Lehrveranstaltung “Information Retrieval” im 6.Semester.</p>
 
 
-<a class="slide_break" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 
 
@@ -414,14 +414,14 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
 <ul>
   <li><a href="https://www.postgresql.org/docs/current/gin-intro.html">GIN indexes in der Postgres Doku</a></li>
 </ul>
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -439,7 +439,7 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -584,11 +584,11 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1442,8 +1442,8 @@ Dafür braucht man eigenen eigenen Index für die Volltextsuche.</p>
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-optimierung/indexes.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-db-optimierung/indexes.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

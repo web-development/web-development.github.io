@@ -48,13 +48,13 @@
       <h2 class="title" id="slide-0">
         Beispiele
       </h2>
-      <a href="/http/anwendungsbeispiele/slide.html">als Präsentation ▻</a>
+      <a href="/http/anwendungsbeispiele/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Wie wird HTTP nun von Browsern und Servern verwendet?
 Ein paar Beispiele:</p>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="seite-laden-oder-formulardaten-senden-mit-get">Seite laden oder Formulardaten senden mit GET</h2>
 <p>Die Methode GET wird bei den meisten HTTP-Anfragen verwendet - sowohl bei normalen Links als auch beim Senden von Formulardaten mit GET. Die URL kann dabei ein Fragezeichen gefolgt von Parametern und Werten enthalten.</p>
@@ -83,7 +83,7 @@ Ein paar Beispiele:</p>
 <p>Die Länge der übertragenen Daten aus dem Formular ist hier begrenzt durch die Länge der URL. Für größere Datenmengen (z. B. beim Upload von Dateien) gibt es die Methode Post.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -103,7 +103,7 @@ Ein paar Beispiele:</p>
 <p><img src="/images/image336.png"  alt="Abbildung 133: Homepage von Debian, verschiedene Sprachen bei gleicher URL" ></p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="senden-von-formulardaten-mit-post">Senden von Formulardaten mit Post</h2>
 <p>Bei POST werden die Daten aus dem Formular nicht in der URL, sondern im HTTP-Body der Anfrage übertragen. Die Codierung (kaufmännisches-Und zwischen den namen=wert-Paaren, + statt Leerzeichen, %-Schreibweise für Sonderzeichen) bleibt gleich. Hier gibt es keine Beschränkung der Länge.</p>
@@ -123,7 +123,7 @@ Ein paar Beispiele:</p>
 <p>Die Antwort des Servers unterscheidet sich nicht zwischen GET und POST (außer Sie haben das in PHP absichtlich so programmiert).</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="umleitung-an-neue-url">Umleitung an neue URL</h2>
 <p>Mit dem Statuscode 301 kann der Server anzeigen, dass die Seite an eine neue URL übersiedelt ist. Der Webbrowser schickt dann sofort eine Anfrage an die neue URL, die LeserIn bemerkt so eine Weiterleitung meist gar nicht.</p>
@@ -163,7 +163,7 @@ Ein paar Beispiele:</p>
 <p>und so weiter.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="authentisierung-nach-rfc-2617">Authentisierung nach RFC 2617</h2>
 <p>Der Webserver kann so konfiguriert werden, dass er Dokumente nur nach Eingabe von Username und Passwort liefert. Der Browser zeigt dafür ein Eingabefenster an:</p>
@@ -219,7 +219,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 </code></pre>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="https">HTTPS</h2>
 <p>HTTPS ist HTTP über Secure Socket Layer (SSL) — d.h. auf Ebene der TCP-Verbindung werden alle übertragenen Daten verschlüsselt. Außerdem bietet SSL die Möglichkeit, dass sich der Server und der Client mit einem Zertifikat ausweisen.</p>
@@ -233,7 +233,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 <p>Damit wäre der gesamte Web-Traffic nicht mehr abhörbar.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="proxies">Proxies</h2>
 <p>Das HTTP-Protokoll sieht die Möglichkeit von Proxies vor. Ein Proxie ist eine „Zwischenstation“ die HTTP-Verkehr weitergibt, der Proxy agiert also auf der einen Seite als HTTP-Server, auf der anderen Seite als HTTP-Client. Im Browser kann ein Proxie konfiguriert werden:</p>
@@ -247,7 +247,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 
 <p>Proxies können gleichzeitig als Cache fungieren: Anfragen und Antworten werden gespeichert; erfolgt die gleiche Anfrage noch einmal, kann die gespeicherte Antwort verwendet werden.</p>
 
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -265,7 +265,7 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -410,11 +410,11 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1268,8 +1268,8 @@ Der Browser wird bei allen weiteren Anfragen an diesen Server ebenfalls die Auth
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/http/anwendungsbeispiele.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/http/anwendungsbeispiele.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

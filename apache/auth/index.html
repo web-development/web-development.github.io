@@ -48,13 +48,13 @@
       <h2 class="title" id="slide-0">
         Authentisierung
       </h2>
-      <a href="/apache/auth/slide.html">als Präsentation ▻</a>
+      <a href="/apache/auth/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>In diesem Kapitel lernen Sie die Konfigurationsanweisungen
 für Authentisierung und für  Fehlermeldungen kennen.</p>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="fehlermeldung">Fehlermeldung</h2>
 
@@ -65,7 +65,7 @@ für Authentisierung und für  Fehlermeldungen kennen.</p>
 <p><img src="/images/apache-404.png" srcset="/images/apache-404-doppelt.png 1x, /images/apache-404.png 1x"  alt="apache standard 404" ></p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 
 
@@ -85,7 +85,7 @@ Nun wird bei jedem Zugriff auf eine nicht existierende URL die Fehlermeldung ang
 <p><img src="/images/apache-404-doppelt.png"  alt="apache standard 404" ></p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="zugriffsbeschrnkung">Zugriffsbeschränkung</h2>
 
@@ -100,7 +100,7 @@ Allow from 10.
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 
 
@@ -117,7 +117,7 @@ Allow from 10.
 <p>Der Teil der Konfiguration, der im <code>&lt;Location&gt;</code>-Tag eingeschlossen ist gilt nur für den Ordner <code>/fhintranet</code> im Webspace.</p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
@@ -137,7 +137,7 @@ Allow from 10.
 <p>Das Dollar-Zeichen am Ende des Patterns bedeutet, dass <code>bak</code> am Ende des Dateinamens stehen muß. Eine Datei mit Namen test.bak.txt wäre also nicht betroffen. Vor dem Punkt muß man einen Backslash <code>\</code> schreiben, weil der Punkt alleine als Joker gelten würde. Der Pattern <code>.bak$</code> (ohne Backslash) würde also auch den Dateinamen schlabberdibak oder bik_bak erkennen, weil der Punkt für das i oder den Unterstich stehen könnte.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="http-auth-mit-apache">HTTP Auth mit Apache</h2>
 
@@ -179,7 +179,7 @@ Allow from 10.
 
 <p>Was mit http Auth nicht funktioniert, ist der Zugriff ohne Login auf die gleiche URL. (Bei Authentisierung über Cookies geht das).</p>
 
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -197,7 +197,7 @@ Allow from 10.
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -342,11 +342,11 @@ Allow from 10.
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1200,8 +1200,8 @@ Allow from 10.
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/apache/auth.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/apache/auth.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

@@ -48,7 +48,7 @@
       <h2 class="title" id="slide-0">
         Session und Login
       </h2>
-      <a href="/session/session-und-login/slide.html">als Präsentation ▻</a>
+      <a href="/session/session-und-login/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
 Server kann nicht erkennen ob Requests zusammen gehören.</p>
@@ -56,7 +56,7 @@ Server kann nicht erkennen ob Requests zusammen gehören.</p>
 <p><img src="/images/stateless-http.svg"  alt="HTTP als &quot;stateless protocol&quot;" ></p>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 
 
@@ -69,7 +69,7 @@ vom selben Browser ausgelöst wurden.</p>
 <p>Wir nennen diese Folge von Requests dann eine “Session”.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
@@ -94,7 +94,7 @@ vom selben Browser ausgelöst wurden.</p>
 <p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den <code>username</code> der angemeldeten Person zu speichern.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="struktur-der-applikation-mit-login">Struktur der Applikation mit Login</h3>
 
@@ -139,7 +139,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 </table>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="sessionstart">session_start</h3>
 
@@ -148,7 +148,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <p><img src="/images/session/login-logout.png"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="login">Login</h3>
 
@@ -159,7 +159,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
@@ -175,7 +175,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h3 id="logout">Logout</h3>
 
@@ -188,7 +188,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
@@ -211,7 +211,7 @@ header(&quot;Location: index.php&quot;);
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="redirect--weiterleitung">Redirect / Weiterleitung</h3>
 
@@ -243,7 +243,7 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
 <p><img src="/images/session/login-flow.svg"  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
 
 
-<a class="slide_break" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="neue-php-befehle">Neue PHP Befehle</h3>
 
@@ -255,7 +255,7 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
   <li><code>session_start()</code> <a href="http://www.php.net/manual/de/function.session-start.php">PHP Doku</a></li>
   <li><code>setcookie()</code> <a href="http://www.php.net/manual/de/function.setcookie.php">PHP Doku</a></li>
 </ul>
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -273,7 +273,7 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -418,11 +418,11 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1276,8 +1276,8 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/session/session-und-login.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/session/session-und-login.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 

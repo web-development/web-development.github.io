@@ -48,7 +48,7 @@
       <h2 class="title" id="slide-0">
         fetch
       </h2>
-      <a href="/js-http/fetch/slide.html">als Präsentation ▻</a>
+      <a href="/js-http/fetch/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Wir kennen schon die Funktionsweise von <a href="/http/">HTTP</a>.</p>
 
@@ -66,7 +66,7 @@ werden, wie hier in den Developer Tools gezeigt:</p>
 verwendet wird: als asynchroner Request.</p>
 
 
-<a class="slide_break" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
 <h2 id="wozu-fetch">Wozu fetch</h2>
 
@@ -83,7 +83,7 @@ Diese werden direkt unter dem Eingabefeld angezeigt.</p>
 <p><em>Asynchron</em> bedeutet hier: Das JavaScript schickt den Request los und macht dann sofort weiter – es wartet nicht auf die Antwort. Die Webseite bleibt benutzbar. Sobald die Antwort vom Server da ist, wird ein weiteres JavaScript-Programm gestartet, das die Daten in die Seite einfügt.</p>
 
 
-<a class="slide_break" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h3 id="asynchrone-http-requests">Asynchrone HTTP Requests</h3>
 
@@ -110,7 +110,7 @@ Stattdessen ruft JavaScript eine Funktion auf, die die Daten verarbeitet.
 Für die Autovervollständigung ist das meist eine Liste von Vorschlägen, die dann direkt unter dem Eingabefeld angezeigt wird.</p>
 
 
-<a class="slide_break" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h3 id="simples-javascript-beispiel">Simples Javascript Beispiel</h3>
 
@@ -146,7 +146,7 @@ in eine HTML-Seite eingebunden.</p>
 <p>Diesen Ablauf müssen wir genauer analysieren.</p>
 
 
-<a class="slide_break" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h3 id="promises">Promises</h3>
 
@@ -176,7 +176,7 @@ promise.then(handle_response);
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="response">Response</h2>
 
@@ -192,7 +192,7 @@ liefern wieder eine Promise:</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="chaining">Chaining</h3>
 
@@ -212,7 +212,7 @@ fetch(&quot;counter.php&quot;).then(handle_response).then(handle_text);
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h3 id="schreibweise-mit-arrow-functions">Schreibweise mit Arrow Functions</h3>
 
@@ -230,7 +230,7 @@ wird der Code sehr kurz:</p>
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="fehlerbehandlung">Fehlerbehandlung</h2>
 
@@ -250,14 +250,14 @@ Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhän
 </code></pre></div>
 
 
-<a class="slide_break" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
 <ul>
   <li><code>fetch</code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">mdn</a></li>
 </ul>
- <div class="pagination">
+ <div class="pagination do-not-print">
   <ul>
     
       
@@ -275,7 +275,7 @@ Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhän
   </div>
 
   <!-- sidebar -->
-<div id="sidebar" class="span3 offset1">
+<div id="sidebar" class="span3 offset1 do-not-print">
         <div class="page-header">
         <h2>Kapitel</h2>
         </div>
@@ -420,11 +420,11 @@ Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhän
                       
                     
                       
-                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
+                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
                       
                     
                       
-                      <li ><a href="/formulare/interaktion/">Formular als Interaktion</a></li>
+                      <li ><a href="/formulare/check/">Formularprüfung</a></li>
                       
                     
                       
@@ -1278,8 +1278,8 @@ Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhän
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2024 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p>Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/js-http/fetch.md">Kommentar zu dieser Seite</a></p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/js-http/fetch.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
