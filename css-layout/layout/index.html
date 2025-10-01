@@ -60,6 +60,8 @@
   <li>Grid</li>
 </ul>
 
+<p>Dazu gibt es eine <a href="/images/css-layout/layout-demo/compare.html">Demo Seite</a></p>
+
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
@@ -86,14 +88,10 @@ länger und schmäler, einmal kürzer und breiter.</p>
 
 <h2 id="flexbox">Flexbox</h2>
 
-<p><img src="/images/css-layout/layout-flexbox.svg"  alt="flexbox auf verschiedenene Geräten" ></p>
+<p><img src="/images/css-layout/layout-flexbox.svg" srcset="/images/css-layout/layout-flexbox-wrap.svg 1x, /images/css-layout/layout-flexbox.svg 1x"  alt="flexbox auf verschiedenene Geräten" ></p>
 
-<p>Seit <a href="https://caniuse.com/#search=flex">2014</a> wird Flexbox in allen Browsern unterstützt.</p>
-
-<p>Flexbox wird für kleinere Komponenten
-in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
-
-<p>Mit Flexbox kann man die Kinder eines Tags nebeneinander anordnen.</p>
+<p>Mit Flexbox kann man die Kinder entlang einer Achse anordnen - als nebeneinander wie hier gezeigt,
+oder untereinander.</p>
 
 
 <a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -104,20 +102,20 @@ in der Seite eingesetzt, zum Beispiel für eine Bildergalerie.</p>
 (in einer Spalte = <code>column</code>):</p>
 
 <div class="example twopane">
-<pre><code class="language-html linenums left">&lt;div class=&quot;project&quot;&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-  &lt;div class=&quot;project_partial&quot;&gt;...&lt;/div&gt;
-&lt;/div&gt;
+<pre><code class="language-html linenums left">&lt;main&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;section&gt;...&lt;/section&gt;
+&lt;/main&gt;
 </code></pre><pre><code class="language-html linenums right">
-.project {
+main {
   display: flex;
   flex-direction: row;
 }
-.project_partial {
+section {
   width: 160px;
   height: 275px;
 }
@@ -161,6 +159,8 @@ linksbündig, rechtsbündig, zentriert, mit Platz dazwischen oder Platz rundum.<
 
 <p>Wenn zu viele Elemente für eine Zeile vorhanden sind,
 können sie auf eine nächste Zeile umgebrochen werden:</p>
+
+<p><img src="/images/css-layout/layout-flexbox.svg" srcset="/images/css-layout/layout-flexbox-wrap.svg 1x, /images/css-layout/layout-flexbox.svg 1x"  alt="flexbox mit wrap" ></p>
 
 <div class="example">
 <pre><code class="language-css  linenums">.projects {
