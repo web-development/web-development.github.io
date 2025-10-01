@@ -224,7 +224,7 @@ Der Child Selector ist auf direkte Kinder beschränkt.</p>
 <pre><code class="language-css  linenums">  li &gt; a { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css-layout/selector-child.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css-layout/selector-child.png" srcset="/images/css-layout/selector-child.png 1x, /images/css-layout/selector-child@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
@@ -249,21 +249,27 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 </ul>
 
 <div class="example">
-<pre><code class="language-css  linenums">  li:first-child { color: yellow; }
+<pre><code class="language-css  linenums">  :first-child { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css-layout/selector-firstchild.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css-layout/selector-firstchild.png" srcset="/images/css-layout/selector-firstchild.png 1x, /images/css-layout/selector-firstchild@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
 
 <h2 id="has-pseudo-class">Has Pseudo Class</h2>
 
-<p>Die Pseudo Class <code>:has()</code> ist die Umkehrung des Descendant Selectors:  Mit <code>div:has(a)</code> wird der <code>div</code> Tag selektiert, falls er einen <code>a</code> Tag als Nachkommen hat.</p>
+<p>Die Pseudo Class <code>:has()</code> ist die Umkehrung des Descendant Selectors:  Mit <code>section:has(a)</code> wird der <code>section</code> Tag selektiert, falls er einen <code>a</code> Tag als Nachkommen hat.</p>
 
-<p><img src="/images/css/selector-has.png"  alt="Document Object Model und has psuedo class" ></p>
+<p><img src="/images/css/selector-has.png" srcset="/images/css/selector-has.png 1x, /images/css/selector-has@2x.png 2x"  alt="Document Object Model und has psuedo class" ></p>
 
-<p>In <code>:has(...)</code> kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code>.  Hier wird ein Select-Tag selektiert, falls von seinen optionen diejenige ausgewählt ist, die den Leeren Wert hat. Siehe <a href="/images/css/example-has.html">Demo</a>.</p>
+</div>
+<div class="slide">
+
+
+Innerhalb von has kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code></p>
+
+<p>Hier wird ein Select-Tag selektiert, falls von seinen optionen diejenige ausgewählt ist, die den Leeren Wert hat. Siehe <a href="/images/css/example-has.html">Demo</a></p>
 
 <div class="example">
 <pre><code class="language-html  linenums">&lt;style&gt;
@@ -282,34 +288,17 @@ select:has(option[value=&quot;&quot;]:checked) {
 </div>
 <div class="slide">
 
-<h2 id="adjacent-selector">Adjacent selector</h2>
-
-<p>Dieser Selector wählt das direkte Geschwister-Node aus.</p>
-
-<div class="example">
-<pre><code class="language-css  linenums">  p + h1 { color: yellow; }
-  li + li { color: yellow; }
-</code></pre></div>
-
-<p><img src="/images/css-layout/selector-adj.png"  alt="Document Object Model und Selektor" ></p>
-
-</div>
-<div class="slide">
-
 <h2 id="kombinationen-von-selektoren">Kombinationen von Selektoren</h2>
 
 <p>Wenn man mehrere Selektoren kombiniert hat das Komma die geringste Präzedenz:</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  p, div a { color: yellow; }
+<pre><code class="language-css  linenums">  p, section a { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css-layout/selector-precedence.png"  alt="Document Object Model und Selektor" ></p>
+<p>Diesen Selektor liest mal als: entweder wird der Absatz p selektiert, oder ein a innerhalb einer Section. (und nicht: es wird ein Link selektiert, der entweder in einem Absatz oder einer Section ist)</p>
 
-</div>
-<div class="slide">
-
-<h2 id="neu-2024-has">Neu 2024: <code>has()</code></h2>
+<p><img src="/images/css-layout/selector-precedence.png" srcset="/images/css-layout/selector-precedence.png 1x, /images/css-layout/selector-precedence@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
@@ -317,6 +306,7 @@ select:has(option[value=&quot;&quot;]:checked) {
 <h2 id="css-selektoren-ben">CSS Selektoren Üben</h2>
 
 <ul>
+  <li><a href="/images/css/selectors/vis.html">Selektor Demo</a> - mit dieser Seite wurden die Illustrationen erstellt</li>
   <li><a href="http://flukeout.github.io/">css diner - css üben mit japanischem essen</a></li>
   <li><a href="https://www.w3schools.com/cssref/trysel.asp">try selectors - von w3schools</a></li>
 </ul>

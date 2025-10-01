@@ -89,7 +89,7 @@
     <div class="slide"><p>Um CSS Selektoren zu verstehen muss man das Document Object Betrachten:
 die Darstellung des HTML-Dokuments als Baum:</p>
 
-<p><img src="/images/css/html-und-dom.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/html-und-dom.png" srcset="/images/css/html-und-dom.png 1x, /images/css/html-und-dom@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 <p>Bei der Beschreibung des Baumes verwendet man folgende Fachbegriffe:</p>
 
@@ -110,7 +110,7 @@ die Darstellung des HTML-Dokuments als Baum:</p>
 
 <p>Der Selektor <code>*</code> wählt alle Elemente des Baums aus:</p>
 
-<p><img src="/images/css/selector-universal.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/selector-universal.png" srcset="/images/css/selector-universal.png 1x, /images/css/selector-universal@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
@@ -121,10 +121,10 @@ die Darstellung des HTML-Dokuments als Baum:</p>
 zum Beispiel wählt <code>li</code>  alle Listen-Elemente aus:</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  li { color: red; }
+<pre><code class="language-css  linenums">  li { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css/selector-type.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/selector-type.png" srcset="/images/css/selector-type.png 1x, /images/css/selector-type@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
@@ -136,10 +136,10 @@ Das Komma entspricht einem “Oder”: selektiert werden Tags die entweder <code
 oder <code>h2</code>, oder <code>a</code>:</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  h1,h2,a { color: red; }
+<pre><code class="language-css  linenums">  h1,h2,a { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css/selector-group.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/selector-group.png" srcset="/images/css/selector-group.png 1x, /images/css/selector-group@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 <p>(Achtung Falle: für Links mit dem <code>a</code> Tag gelten noch zusätzliche Regeln,
 siehe weiter Unten.)</p>
@@ -153,46 +153,49 @@ siehe weiter Unten.)</p>
 geschrieben.</p>
 
 <p>Im Beispiel unten werden alle <code>a</code> Tags ausgewählt, die Nachkomme
-eines <code>div</code> sind:</p>
+eines <code>section</code> sind:</p>
 
-<p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
+<p>Achtung: <code>section</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  div a { color: red; }
+<pre><code class="language-css  linenums">  section a { color: yellow; }
 </code></pre></div>
 
-<p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/selector-desc.png" srcset="/images/css/selector-desc.png 1x, /images/css/selector-desc@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 </div>
 <div class="slide">
 
 <h2 id="verschachteltes-css">Verschachteltes CSS</h2>
 
-<p>(Neu in 2023)</p>
-
 <p>Auch hier wird ein Element ausgewählt, das Nachkomme eines anderen Elements ist.</p>
 
-<p>Achtung: <code>div</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
+<p>Achtung: <code>section</code> wird nur zur Auswahl benützt, wird aber selber nicht ausgewählt!</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  div {
+<pre><code class="language-css  linenums">  section {
     &amp; a {
-      color: red;
+      color: yellow;
     }
   }
 </code></pre></div>
 
-<p><img src="/images/css/selector-desc.png"  alt="Document Object Model und Selektor" ></p>
+<p><img src="/images/css/selector-desc.png" srcset="/images/css/selector-desc.png 1x, /images/css/selector-desc@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
-<p>Praktisch: man kann die Deklarationen für <code>div</code> auch mit
+</div>
+<div class="slide">
+
+
+
+<p>Praktisch: man kann die Deklarationen für <code>section</code> auch mit
 rein schreiben:</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  div {
+<pre><code class="language-css  linenums">  section {
     border: 1px gray solid;
     padding: 10px;
     &amp; a {
-      color: red;
+      color: yellow;
     }
   }
 </code></pre></div>
@@ -200,11 +203,11 @@ rein schreiben:</p>
 <p>Und man kann das kaufmännische Und weglassen:</p>
 
 <div class="example">
-<pre><code class="language-css  linenums">  div {
+<pre><code class="language-css  linenums">  section {
     border: 1px gray solid;
     padding: 10px;
     a {
-      color: red;
+      color: yellow;
     }
   }
 </code></pre></div>
@@ -261,7 +264,10 @@ rein schreiben:</p>
 
 <h2 id="und-noch-viel-mehr">Und noch viel mehr</h2>
 
-<p>Im Kapitel <a href="/css-layout/selektoren/">CSS Selektoren im Detail</a> geht es weiter.</p>
+<ul>
+  <li>Im Kapitel <a href="/css-layout/selektoren/">CSS Selektoren im Detail</a> geht es weiter.</li>
+  <li><a href="/images/css/selectors/vis.html">Selektor Demo</a> - mit dieser Seite wurden die Illustrationen erstellt</li>
+</ul>
 </div>
     <div class="slide">
       <h1>CSS Selektoren</h1>
