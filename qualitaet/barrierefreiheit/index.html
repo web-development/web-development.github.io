@@ -139,7 +139,7 @@ Damit kann man sich einen Überblick verschaffen, bevor man <a href="https://www
 <ul>
   <li>Webzugänglichkeistgesetz 2018 - für öffentliche Stellen</li>
   <li>Bundes-Behindertengleichstellungsgesetz - auch privatwirtschaftlicher Bereich</li>
-  <li>Barrierefreiheitsgesetz <a href="https://www.usp.gv.at/gesetzliche-neuerungen/Bundesgesetzblatt/barrierefreiheitsgesetz.html">2023 beschlossen</a></li>
+  <li>Barrierefreiheitsgesetz <a href="https://www.usp.gv.at/aktuelles/gesetzliche-neuerungen/archiv-fuer-gesetzliche-neuerungen/archiv-bgbl-2023/barrierefreiheitsgesetz.html">2025 in Kraft</a></li>
 </ul>
 
 <p>Das Barrierefreiheitsgesetz wird Juni 2025 vollständig gelten und betrifft Alle:</p>
@@ -299,9 +299,9 @@ Rolle explizit mit dem <code>role</code> Attribut definieren:</p>
 
 <h3 id="textformatierung">Textformatierung</h3>
 
-<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2022 verwenden z.B.
-<a href="https://www.smashingmagazine.com/2017/12/building-better-ui-designs-layout-grids/">Smashing Magazin</a>  21px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 20px,
-<a href="http://www.zeldman.com/2016/12/14/font-size-widgets/">Jeffrey Zeldman</a> 21px.</p>
+<p>Die Empfehlung für die Schriftgröße ist mit der immer höheren Auflösung der Ausgabegeräte gewachsen. Im Jahr 2025 verwenden z.B.
+<a href="https://www.smashingmagazine.com/2017/12/building-better-ui-designs-layout-grids/">Smashing Magazin</a> 20px, <a href="https://medium.com/@damianjo/line-spacing-leading-the-way-for-accessibility-d94344b9e26c">Medium</a> 20px,
+<a href="https://zeldman.com/2024/11/30/how-to-join-blue-beanie-day-wear-and-share/">Jeffrey Zeldman</a> 21px.</p>
 
 <p>Ein Zeilenabstand 1.5x (mit <code>line-height</code> festgelegt) erhöht die Lesbarkeit.</p>
 
@@ -358,21 +358,72 @@ um die maximal zulässige Anzahl von Zeichen in einer Zei festzulegen:</p>
 
 <a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
+<h3 id="tab-reihenfolge">Tab-Reihenfolge</h3>
+
+<p>Ohne Maus oder Touchscreen kann man einen Browser auch bedienen:
+Dafür gibt es einen eigenen Cursor, den “Fokus”. Er wird durch
+einen blaue Umrandung angezeigt.</p>
+
+<p>Der Fokus kann auf
+Eingabefeldern oder Links liegen.</p>
+
+<p>Mit der Tabulator-Taste kann
+der Fokus bewegt werden. Mit der Enter-Taste wird das Element auf
+dem der Fokus liegt aktiviert: z.B. ein Link wird aufgerufen, ein Button
+gedrückt, eine Dropdown-Liste geöffnet.</p>
+
+<video controls="" muted="" playsinline="" poster="/images/barrierefreiheit/preview.png">
+  <source src="/images/barrierefreiheit/focus.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h3 id="beschriftungen-fr-formulare">Beschriftungen für Formulare</h3>
+
+<p>Alle Eingabefelder in einem Formular brauchen eine sichtbare Beschriftung
+mit <code>label</code>.  (Nicht nur einen Placeholder oder default Value):</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;p&gt;Schlechtes Beispiel: &lt;input name=&quot;bad&quot; placeholder=&quot;50kg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Gutes Beispiel: &lt;label&gt;Gewicht: &lt;input name=&quot;good&quot; placeholder=&quot;50kg&quot;&gt;&lt;/p&gt;&lt;/label&gt;
+</code></pre></div>
+
+<p>Siehe <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Text_labels_and_names?utm_source=devtools&amp;utm_medium=a11y-panel-checks-text-label#form_elements_must_be_labeled">MDN WCAG Guide: Text labels and names</a></p>
+
+
+<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+
 <h3 id="farben-und-kontraste">Farben und Kontraste</h3>
 
-<p>Farbenblindheit und Fabenfehlsichtigkeit betrifft ca. jede 20. Person.  Männer sind - aus genetischen Gründen
-- häufiger betroffen als Frauen.  Deswegen sollte man vermeiden, eine Information <em>nur</em> mit Farbe zu vermitteln:</p>
+<p>Farbenblindheit und Fabenfehlsichtigkeit betrifft ca. jede 20. Person.  Männer sind - aus genetischen Gründen - häufiger betroffen als Frauen.  Deswegen sollte man vermeiden, eine Information <em>nur</em> mit Farbe zu vermitteln:</p>
 
 <p>Schlechtes Beispiel: 🟢  vs. 🔴</p>
 
 <p>Gutes Beispiel:  ✅  vs.  ❌</p>
+
+<p>Oft weiss man gar nicht, dass man farbenblind ist, siehe <a href="https://www.farbsehschwaeche.de/materialien/tests-farbsehschwaechen-farbenblindheit">Test</a>.</p>
 
 <p>Für die Lesbarkeit von Text ist der Kontrast zwischen Text und Hintergrund wichtig. Die WCAG 1.4.3
 schreibt ein Kontrastverhältnis von mindestens 4,5:1 vor.  Das kann man einfach überprüfen mit dem
 <a href="https://webaim.org/resources/contrastchecker/">Contrast Checker</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+
+<h2 id="developer-tools">Developer Tools</h2>
+
+<p>Mit dem Tab “Barrierefreiheit” in den Firefox Developer Tools
+kann man die eigene Seite Testen und Probleme entdecken:</p>
+
+<p><img src="/images/barrierefreiheit/developertools.png" srcset="/images/barrierefreiheit/developertools.png 1x, /images/barrierefreiheit/developertools@2x.png 2x"  alt="" ></p>
+
+<p>In diesem Beispiel wird ein Problem mit dem Kontrast gefunden,
+und zwei Eingabefelder deren Beschriftung fehlt.</p>
+
+
+<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h2 id="ist-das-alles">Ist das Alles?</h2>
 
@@ -380,9 +431,9 @@ schreibt ein Kontrastverhältnis von mindestens 4,5:1 vor.  Das kann man einfach
 es ist ein guter Start.  Das Web macht - ohne dass wir etwas tun müssen - schon vieles richtig.</p>
 
 
-<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
-<h2 id="testing-und-werkzeuge">Testing und Werkzeuge</h2>
+<h2 id="weitere-werkzeuge">Weitere Werkzeuge</h2>
 
 <ul>
   <li><a href="http://wave.webaim.org/extension/">Wave Tool</a> als AddOn für Firefox und Chrome.</li>
@@ -393,7 +444,7 @@ es ist ein guter Start.  Das Web macht - ohne dass wir etwas tun müssen - schon
 </ul>
 
 
-<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 <h2 id="vertiefung">Vertiefung</h2>
 

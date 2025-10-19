@@ -193,33 +193,70 @@ Der Child Selector ist auf direkte Kinder beschränkt.</p>
 
 <a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="attribute-selector">Attribute Selector</h2>
+
+<p>Mit dem Attribute Selector kann man Attribute und Werte angeben. Entweder Hier selektieren wir einen Link, dessen href-Attribut mit mailto beginnt:</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  a[href^=&quot;mailto&quot;] { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css-layout/attr-selector.png" srcset="/images/css-layout/attr-selector.png 1x, /images/css-layout/attr-selector@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+<p>Es gibt mehrere Varianten dieses Selektors:</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  a[href]                       /* Attribut existiert */
+  a[href=&quot;https://example.com&quot;] /* Attribut hat genau diesen Wert  */
+  a[href^=&quot;mailto&quot;]             /* Wert beginnt mit ... */
+  a[href$=&quot;.svg&quot;]               /* Wert endet mit ... */
+  a[href*=&quot;www&quot;]                /* Wert enthält ... */
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
 <h2 id="pseudo-classes">Pseudo Classes</h2>
 
-<p>Wir haben im Zusammenhang mit Links schon die Pseudo Classes <code>:link</code> und
+<p>Wir haben im Zusammenhang mit Links schon die Pseudo Classes  <code>:any-link</code>, <code>:link</code> und
 <code>:visited</code> kennen gelernt, und im Zusammenhang mit Interaktion <code>:hover</code> und
 <code>:focus</code>.</p>
 
 <p>Es gibt noch eine Hand voll weiterer Pseudo Classes:</p>
 
 <ul>
-  <li><code>:first-child</code> selektiert ein Element nur, wenn es das erste Kind seiner Eltern-Node ist</li>
-  <li><code>:first-letter</code>  selektiert nur den ersten Buchstaben!  Das funktioniert auch,
-wenn der Buchstabe gar keine eigenen Node in der DOM ist!</li>
-  <li><code>:first-word</code>  selektiert das erste Wort.  Das funktioniert auch,
-wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
-  <li><code>::selection</code> der aktuell ausgewählte Bereich, siehe <a href="http://css-tricks.com/examples/DifferentSelectionColors/">css-tricks</a></li>
+  <li><code>::first-child</code> selektiert ein Element nur, wenn es das erste Kind seiner Eltern-Node ist</li>
   <li><code>:nth-child(odd)</code> wählt jedes zweite Element aus - 1,3,5,…</li>
   <li><code>:nth-child(even)</code> wählt jedes zweite Element aus - 2,4,6,…</li>
 </ul>
 
 <div class="example">
-<pre><code class="language-css  linenums">  :first-child { color: yellow; }
+<pre><code class="language-css  linenums">  ::first-child { color: yellow; }
 </code></pre></div>
 
 <p><img src="/images/css-layout/selector-firstchild.png" srcset="/images/css-layout/selector-firstchild.png 1x, /images/css-layout/selector-firstchild@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h2 id="pseudo-classes-ohne-dom-node">Pseudo Classes ohne DOM Node</h2>
+
+<p>Folgende Pseudo Classes selektieren keine DOM Nodes, sondern nur Teile davon:</p>
+
+<ul>
+  <li><code>::first-letter</code>  selektiert nur den ersten Buchstaben</li>
+  <li><code>::first-letter</code>  selektiert die erste Zeile</li>
+  <li><code>::selection</code> der aktuell ausgewählte Bereich, siehe <a href="http://css-tricks.com/examples/DifferentSelectionColors/">css-tricks</a></li>
+</ul>
+
+<div class="example">
+<pre><code class="language-css  linenums">  n::first-line { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css-layout/selector-firstline.png" srcset="/images/css-layout/selector-firstline.png 1x, /images/css-layout/selector-firstline@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="has-pseudo-class">Has Pseudo Class</h2>
 
@@ -228,7 +265,7 @@ wenn das Wort      gar keine eigenen Node in der DOM ist!</li>
 <p><img src="/images/css/selector-has.png" srcset="/images/css/selector-has.png 1x, /images/css/selector-has@2x.png 2x"  alt="Document Object Model und has psuedo class" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 Innerhalb von has kann man auch kompliziertere Selektoren verwenden, zum Beispiel <code>select:has(option[value=""]:checked)</code></p>
@@ -250,7 +287,7 @@ select:has(option[value=&quot;&quot;]:checked) {
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="kombinationen-von-selektoren">Kombinationen von Selektoren</h2>
 
@@ -265,7 +302,7 @@ select:has(option[value=&quot;&quot;]:checked) {
 <p><img src="/images/css-layout/selector-precedence.png" srcset="/images/css-layout/selector-precedence.png 1x, /images/css-layout/selector-precedence@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="css-selektoren-ben">CSS Selektoren Üben</h2>
 
