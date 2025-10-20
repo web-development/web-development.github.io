@@ -95,7 +95,7 @@ of 71 cm (28 inches) results in a reference pixel of 0.26 mm, while a reading di
 results in a reference pixel of 1.3 mm.</p>
 </blockquote>
 
-<p><img src="/images/css-layout/css-pixel-definition.png"  alt="Abbildung aus dem CSS Standard: definition des pixels als Winkel" ></p>
+<p><img src="/images/css-layout/css-pixel-definition.png" srcset="/images/css-layout/css-pixel-definition.png 1x, /images/css-layout/css-pixel-definition@2x.png 2x"  alt="Abbildung aus dem CSS Standard: definition des pixels als Winkel" ></p>
 
 
 <a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -133,6 +133,16 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
+<h3 id="viewport">Viewport</h3>
+
+<p>Voraussetzung für responsive design am Handy: man muss den <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">viewport</a> im meta tag setzen:</p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+</code></pre>
+
+
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
 <h3 id="media-query">Media Query</h3>
 
 <p>Auf einem Ausgabegerät, das mindestens 480 CSS Pixel breit ist, wird die Breite der Bilder auf 100 Pixel gesetzt.</p>
@@ -149,9 +159,17 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="container-query">Container Query</h3>
+
+<p>In folgendem Beispiel enthält eine Section-tag einen h2-Tag:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">  &lt;section&gt;
+    &lt;h2&gt;Überschrift&lt;/h2&gt;
+  &lt;/section&gt;
+</code></pre></div>
 
 <p>Wenn das Section-Element mindestens 700 CSS-Pixel breit ist, wird die Überschrift auf 28px gesetzt.</p>
 
@@ -170,16 +188,6 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 <p><a href="/images/css-layout/container-query.html">Ausführliche Demo</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h3 id="viewport">Viewport</h3>
-
-<p>Voraussetzung für responsive design am Handy: man muss den <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">viewport</a> im meta tag setzen:</p>
-
-<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-</code></pre>
-
-
 <a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="mobile-first">Mobile First</h3>
@@ -193,7 +201,11 @@ für verschiedene Größen angeboten. Der Inhalt und das HTML Dokument bleiben d
 
 <a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
-<h3 id="mediaqueries-and-featurequeries">Mediaqueries and Featurequeries</h3>
+<h3 id="weitere-mediaqueries-and-featurequeries">Weitere Mediaqueries and Featurequeries</h3>
+
+<p>Mediaqueries können auch das Ausgabemedium abfragen, im Beispiel unten: print oder screen?</p>
+
+<p>Mit Featurequeries kann man Abfragen ob der Browser bestimmte Eigenschaften hat, im Beispiel: ob er grid versteht.</p>
 
 <div class="example">
 <h4 class="caption">Css Code <small>CSS Medaqueries Beispiel</small></h4>
