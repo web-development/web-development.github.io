@@ -147,6 +147,70 @@ siehe weiter Unten.)</p>
 </div>
 <div class="slide">
 
+<h2 id="class-selector">Class Selector</h2>
+
+<p>Klassen-Namen können wir als Developer*innen einfach erfinden, und an beliebigen
+html-tags verwenden. Damit kann man verschiedene “Varianten” eines Tags erstelle,
+hier sind z.B. zwei “normale” Absätze und einer der wichtig ist:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">  &lt;h2&gt;Dies und Das&lt;/h2&gt;
+  &lt;p&gt;Dies&lt;/p&gt;
+  &lt;p class=&quot;wichtig&quot;&gt;und&lt;/p&gt;
+  &lt;p&gt;Das&lt;/p&gt;
+</code></pre></div>
+
+<div class="example">
+<pre><code class="language-css  linenums">  .wichtig { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css/selector-class.png" srcset="/images/css/selector-class.png 1x, /images/css/selector-class@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="id-selector">ID Selector</h2>
+
+<p>Auch ID-Attribute können wir als Developer*innen einfach erfinden, und an beliebigen
+html-tags verwenden. Aber: in einem HTML Dokument darf jede ID nur einmal vorkommen.</p>
+
+<p>Jedes ID-Attribut ist gleichzeitig eine “Textmarke” und kann in der URL mit dem Rautezeichen <code>#</code> aufgerufen werden.</p>
+
+<p>Wenn folgendes Dokument unter der URL <code>http://example.com/page.html</code> erreichbar ist:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">  &lt;body&gt;
+    &lt;header&gt;
+      &lt;nav id=&quot;menu&quot;&gt;Navigation...&lt;/nav&gt;
+      &lt;h1&gt;Überschrift&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      ...
+    &lt;/main&gt;
+    &lt;footer id=&quot;c&quot;&gt;
+      copyright (c) ...
+    &lt;/footer&gt;
+  &lt;/body&gt;
+</code></pre></div>
+
+<p>Gibt es zwei Textmarken:</p>
+
+<ul>
+  <li><code>http://example.com/page.html#menu</code></li>
+  <li><code>http://example.com/page.html#c</code></li>
+</ul>
+
+<p>Der Selektor beginnt ebenfalls mit diesem Zeichen:</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  #menu { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css/selector-id.png" srcset="/images/css/selector-id.png 1x, /images/css/selector-id@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+</div>
+<div class="slide">
+
 <h2 id="descendant-combinator">Descendant Combinator</h2>
 
 <p>Hier werden zwei Selektoren mit einem Leerzeichen dazwischen

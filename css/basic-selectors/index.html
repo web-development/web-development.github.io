@@ -111,6 +111,70 @@ siehe weiter Unten.)</p>
 
 <a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
+<h2 id="class-selector">Class Selector</h2>
+
+<p>Klassen-Namen können wir als Developer*innen einfach erfinden, und an beliebigen
+html-tags verwenden. Damit kann man verschiedene “Varianten” eines Tags erstelle,
+hier sind z.B. zwei “normale” Absätze und einer der wichtig ist:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">  &lt;h2&gt;Dies und Das&lt;/h2&gt;
+  &lt;p&gt;Dies&lt;/p&gt;
+  &lt;p class=&quot;wichtig&quot;&gt;und&lt;/p&gt;
+  &lt;p&gt;Das&lt;/p&gt;
+</code></pre></div>
+
+<div class="example">
+<pre><code class="language-css  linenums">  .wichtig { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css/selector-class.png" srcset="/images/css/selector-class.png 1x, /images/css/selector-class@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="id-selector">ID Selector</h2>
+
+<p>Auch ID-Attribute können wir als Developer*innen einfach erfinden, und an beliebigen
+html-tags verwenden. Aber: in einem HTML Dokument darf jede ID nur einmal vorkommen.</p>
+
+<p>Jedes ID-Attribut ist gleichzeitig eine “Textmarke” und kann in der URL mit dem Rautezeichen <code>#</code> aufgerufen werden.</p>
+
+<p>Wenn folgendes Dokument unter der URL <code>http://example.com/page.html</code> erreichbar ist:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">  &lt;body&gt;
+    &lt;header&gt;
+      &lt;nav id=&quot;menu&quot;&gt;Navigation...&lt;/nav&gt;
+      &lt;h1&gt;Überschrift&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      ...
+    &lt;/main&gt;
+    &lt;footer id=&quot;c&quot;&gt;
+      copyright (c) ...
+    &lt;/footer&gt;
+  &lt;/body&gt;
+</code></pre></div>
+
+<p>Gibt es zwei Textmarken:</p>
+
+<ul>
+  <li><code>http://example.com/page.html#menu</code></li>
+  <li><code>http://example.com/page.html#c</code></li>
+</ul>
+
+<p>Der Selektor beginnt ebenfalls mit diesem Zeichen:</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">  #menu { color: yellow; }
+</code></pre></div>
+
+<p><img src="/images/css/selector-id.png" srcset="/images/css/selector-id.png 1x, /images/css/selector-id@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
 <h2 id="descendant-combinator">Descendant Combinator</h2>
 
 <p>Hier werden zwei Selektoren mit einem Leerzeichen dazwischen
@@ -128,7 +192,7 @@ eines <code>section</code> sind:</p>
 <p><img src="/images/css/selector-desc.png" srcset="/images/css/selector-desc.png 1x, /images/css/selector-desc@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="verschachteltes-css">Verschachteltes CSS</h2>
 
@@ -147,7 +211,7 @@ eines <code>section</code> sind:</p>
 <p><img src="/images/css/selector-desc.png" srcset="/images/css/selector-desc.png 1x, /images/css/selector-desc@2x.png 2x"  alt="Document Object Model und Selektor" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 
 
@@ -179,7 +243,7 @@ rein schreiben:</p>
 <p><a href="/images/css/nested.html">Demo: Verschachteltes CSS</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h2 id="links-formatieren">Links formatieren</h2>
 
@@ -194,7 +258,7 @@ rein schreiben:</p>
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 
 
@@ -212,7 +276,7 @@ rein schreiben:</p>
 <p><a href="/images/css/link-icon.html">Demo</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="interaktion">Interaktion</h3>
 
@@ -224,7 +288,7 @@ rein schreiben:</p>
 <p><a href="/images/css/hover-active.html">Demo</a></p>
 
 
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h2 id="und-noch-viel-mehr">Und noch viel mehr</h2>
 
