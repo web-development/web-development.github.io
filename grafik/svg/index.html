@@ -448,10 +448,34 @@ animiert:</p>
 
 <a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
-<h2 id="svg-mit-javascript-erzeugen">SVG mit Javascript erzeugen</h2>
+<h2 id="svg-in-css-verwenden">SVG in CSS verwenden</h2>
+
+<p>SVG kann als <code>mask</code> oder <code>clip-path</code> verwendet werden.</p>
+
+<p>Clip-Path erwartet einen “Basic Shape” als Wert. Hier mann man einen SVG-Path angeben. Mehr auf <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/clip-path">MDN</a>.</p>
+
+<p>Mask erwartet ein Bild als Wert. Mehr auf <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/mask">MDN</a>.</p>
+
+<div class="example">
+<pre><code class="language-css  linenums">clip-path: path(&#39;M20,0H30A10,10 0,0,1 40,10V20A10,10 0,0,0 50,30H90A10,10 0,0,1 100,40V90A10,10 0,0,1 90,100H10A10,10 0,0,1 0,90V20A20,20 0,0,1 20,0Z&#39;);
+mask: url(&quot;mask.svg&quot;);
+</code></pre></div>
+
+<div style="display:flex">
+<div style="box-sizing: border-box;clip-path: path('M20,0H30A10,10 0,0,1 40,10V20A10,10 0,0,0 50,30H90A10,10 0,0,1 100,40V90A10,10 0,0,1 90,100H10A10,10 0,0,1 0,90V20A20,20 0,0,1 20,0Z');width: 100px;background-color:rgb(232, 124, 74);aspect-ratio: 1 / 1;margin: 4px;font-size:8px;">SVG als clip-path. Der Inhalt dieses Tags wird einfach verdeckt, der Text ist also nicht vollständig lesbar. Nochmal: SVG als clip-path. Der Inhalt dieses Tags wird einfach verdeckt, der Text ist also nicht vollständig lesbar.</div>
+
+<div style="box-sizing: border-box;mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M20%2C0H30A10%2C10%200%2C0%2C1%2040%2C10V20A10%2C10%200%2C0%2C0%2050%2C30H90A10%2C10%200%2C0%2C1%20100%2C40V90A10%2C10%200%2C0%2C1%2090%2C100H10A10%2C10%200%2C0%2C1%200%2C90V20A20%2C20%200%2C0%2C1%2020%2C0Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E') no-repeat center / contain;width: 100px;background-color:rgb(232, 124, 74);aspect-ratio: 1 / 1;margin: 4px;font-size:8px;">SVG als mask. Der Inhalt dieses Tags wird einfach verdeckt, der Text ist also nicht vollständig lesbar. Nochmal: SVG als mask. Der Inhalt dieses Tags wird einfach verdeckt, der Text ist also nicht vollständig lesbar.</div>
+</div>
+
+<p>Dieses Beispiel wurde mit dem <a href="https://corner-inverter.douiri.org/">Corner Inverter</a> gebaut.</p>
 
 
 <a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h2 id="svg-mit-javascript-erzeugen">SVG mit Javascript erzeugen</h2>
+
+
+<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h3 id="createelement">createElement</h3>
 
@@ -471,7 +495,7 @@ svg.appendChild( rect );
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
+<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
 
 <h3 id="jquery">jQuery</h3>
 
@@ -491,7 +515,7 @@ $svg.append($circle);
 <p>Code <a href="http://stackoverflow.com/questions/3642035/jquerys-append-not-working-with-svg-element#answer-36305466">von Matthieu Charbonnier</a>.</p>
 
 
-<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
+<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
 
 <h3 id="gsap">GSAP</h3>
 
@@ -505,7 +529,7 @@ definieren und kontrollieren von SVG und CSS Animation von JavaScript aus.</p>
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
+<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
 
 <h2 id="svg-optimieren">SVG Optimieren</h2>
 
@@ -514,7 +538,7 @@ definieren und kontrollieren von SVG und CSS Animation von JavaScript aus.</p>
 <p><img src="images/grafik/svgomg.png"  alt="" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
+<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
 
 <h2 id="quellen-von-svg">Quellen von SVG</h2>
 
@@ -529,7 +553,7 @@ definieren und kontrollieren von SVG und CSS Animation von JavaScript aus.</p>
 </ul>
 
 
-<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
+<a class="slide_break do-not-print" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
 
 <h2 id="mehr">Mehr</h2>
 
