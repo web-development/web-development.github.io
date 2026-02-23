@@ -98,7 +98,7 @@
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
@@ -136,7 +136,7 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
@@ -160,7 +160,7 @@ sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;Wilde Mischung&lt;/h1&gt;
@@ -237,11 +237,10 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
-   
   &lt;?php
     echo &quot;&lt;p&gt;$entfernung km in $h:$min sind $kmh km/h&lt;/p&gt;&quot;;
     if( $kmh &gt; 130 ) {
@@ -255,10 +254,10 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 </div>
 <div class="slide">
 
-<h2 id="includes">Includes</h2>
+<h2 id="require">Require</h2>
 
 <p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die
-Verwendung von <code>include</code> um Duplizierung von Code zu vermeiden.
+Verwendung von <code>require</code> um Duplizierung von Code zu vermeiden.
 PHP-Code, der mehrmals verwendet wird,
 kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden:</p>
 
@@ -292,7 +291,7 @@ den Titel der Seite dynamisch generieren zu können:</p>
 <pre><code class="language-php  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Brigittes totale Web-App: &lt;?php echo $pagetitle ?&gt;&lt;/title&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
 &lt;/head&gt;&lt;body&gt;
@@ -332,19 +331,19 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datei index.php</small></h4>
-<pre><code class="language-php  linenums">&lt;?php   
-  include &quot;phpfunctions.php&quot;;   // kein Output!
+<pre><code class="language-php  linenums">&lt;?php
+  require &quot;phpfunctions.php&quot;;   // kein Output!
   $pagetitle = &quot;Berechnung der Geschwindigkeit&quot;;
   $entfernung = 296;
   $h = 2;
   $min = 40;
   $kmh = calc($entfernung, $h, $min);
-  include &quot;header.php&quot;;    // erster Output von HTML
+  require &quot;header.php&quot;;    // erster Output von HTML
   echo &quot;  &lt;p&gt;$entfernung km in $h:$min sind $kmh km/h&lt;/p&gt;&quot;;
   if( $kmh &gt; 130 ) {
       echo(&quot;  &lt;p&gt;&lt;b&gt;Das ist zu schnell!&lt;/b&gt;&lt;/p&gt;&quot;);
   }
-  include &quot;footer.php&quot; 
+  require &quot;footer.php&quot;
 ?&gt;
 </code></pre></div>
 
@@ -393,7 +392,7 @@ und doppelten Anführungszeichen - ist das “heredoc” Schreibweise<a href="ht
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für heredoc</small></h4>
 <pre><code class="language-php  linenums">echo &lt;&lt;&lt;EOT
-My name is $lastname, $firstname $lastname. 
+My name is $lastname, $firstname $lastname.
 I am printing some $foo-&gt;foo.
 Now, I am printing some {$foo-&gt;bar[1]}.
 I can&#39;t mess up this string
@@ -442,7 +441,7 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
   $foo = $foo + 2;    // $foo is now an integer (2)
   $foo = $foo + 1.3;  // $foo is now a float (3.3)
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
-  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
+  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot;
 ?&gt;
 </code></pre></div>
 
@@ -456,7 +455,7 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 <div class="example">
 <pre><code class="language-php  linenums">&lt;?php
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
-  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
+  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot;
 ?&gt;
 </code></pre></div>
 
@@ -475,10 +474,10 @@ interpretiert seine beiden Operanden als Strings.</p>
 
 
 <p>In Javascript ist es
-genau umgekehrt: da entscheidet der Datentyp<br />
+genau umgekehrt: da entscheidet der Datentyp
 über die Bedeutung des Operators:</p>
 
-<p><img src="/images/php-javascript-plus.png"  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
+<p><img src="/images/php/javascript-plus.png" srcset="/images/php/javascript-plus.png 1x, /images/php/javascript-plus@2x.png 2x"  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
 
 </div>
 <div class="slide">

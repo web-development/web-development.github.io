@@ -11,8 +11,10 @@
   <meta name="generator" content="nanoc 3.8.0">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
-  <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" defer>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
     <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
@@ -28,6 +30,7 @@
   </style>
 </head>
 <body>
+  <!-- script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script -->
 
 <div class="container">
   <header class="row">
@@ -41,7 +44,7 @@
 
 
 <!-- body -->
-<article id="body" class="row">
+<article id="body" class="row row82">
   <div class="span8">
     
     <div class="page-header">
@@ -83,7 +86,7 @@ interpretiert, sondern direkt an den Browser gesandt.</p>
 <p>Der Browser zeigt den PHP-Teil des Code aber nicht an,
 erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
 
-<p><img src="/images/image328.png"  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" ></p>
+<p><img src="/images/php/falsche-endung.png" srcset="/images/php/falsche-endung.png 1x, /images/php/falsche-endung@2x.png 2x"  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" ></p>
 
 
 <a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
@@ -91,10 +94,10 @@ erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 geze
 
 
 <p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver
-betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten.
+betrachten (z.B. http://localhost:4000) kann immer noch ein Fehler im PHP-Programm auftreten.
 Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
-<p><img src="/images/image329.png"  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" ></p>
+<p><img src="/images/php/error-in-php.png" srcset="/images/php/error-in-php.png 1x, /images/php/error-in-php@2x.png 2x"  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" ></p>
 
 
 <a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
@@ -105,7 +108,7 @@ Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildu
 Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 <strong>http://localhost/</strong>, und keine Fehler im Programm:</p>
 
-<p><img src="/images/image330.png"  alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" ></p>
+<p><img src="/images/php/php-runs.png" srcset="/images/php/php-runs.png 1x, /images/php/php-runs@2x.png 2x"  alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" ></p>
 
 <p>Mit Ansicht-&gt;Quelltext kann man nun im Browser nur noch den HTML-Code sehen, niemals aber den PHP-Quellcode!</p>
 
@@ -114,8 +117,8 @@ Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 
 <h2 id="php-versionen">PHP Versionen</h2>
 <p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen
-Sie z.B. dass PHP in der Version 5.0.5 verwendet wird - eine veraltete Version. Im Jahr
-2019 sollten Sie nur mindestens PHP 7 verwenden.</p>
+Sie z.B. dass PHP in der Version 8.5.2 verwendet wird - das ist eine aktuelle Version. Im Jahr
+2026 sollten Sie nur mindestens PHP 8.5 verwenden.</p>
 
 <p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede,
 verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>.
@@ -123,22 +126,12 @@ Wenn ihr Webspace-Vermieter auf eine
 neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
 anpassen!</p>
 
-<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen
-aufgeführt, z.B. bei der Funktion <a href="http://php.net/manual/de/function.ldap-sort.php">ldap_sort</a> ist in der Dokumentation angegeben:</p>
-
-<pre><code>PHP 4 &gt;= 4.2.0, PHP 5, PHP 7
-
-Warnung: Dieses Feature ist seit PHP 7.0.0 DEPRECATED (veraltet). Sich auf diese Funktion zu verlassen ist in keiner Weise empfehlenswert.
-</code></pre>
-
-<p>Die Funktion existiert also seit PHP 4 Version 4.2.0 und wird nach PHP 7 abgeschafft.</p>
-
 
 <a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
-<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen:
+<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version nicht bei Ihnen:
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
 können Sie das nicht ändern!
 Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
@@ -150,20 +143,9 @@ die am Webspace installiert ist.</p>
 <a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 <h2 id="dokumentation">Dokumentation</h2>
-<p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
+<p>Die Dokumentation zu PHP finden Sie auf <a href="http://php.net/manual/de">http://php.net/manual/de</a>.</p>
 
-<p><img src="/images/image331.png"  alt="Abbildung 129: Eine Funktion in der Doku auf php. net nachschlagen" ></p>
-
-
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-
-
-<p>Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation “vergessen” wurden, oder Anwendungsbeispiele:</p>
-
-<p><img src="/images/image332.png"  alt="Abbildung 130: Kommentare von UserInnen in der Doku auf php. Net" ></p>
-
-<p>Die Dokumentation kann man auch herunterladen und lokal installieren, dann enthält sie aber nicht die Kommentare.</p>
+<p><img src="/images/php/php-manual-de.png" srcset="/images/php/php-manual-de.png 1x, /images/php/php-manual-de@2x.png 2x"  alt="Abbildung 129: Eine Funktion in der Doku auf php.net nachschlagen" ></p>
 
  <div class="pagination do-not-print">
   <ul>
@@ -1178,63 +1160,72 @@ die am Webspace installiert ist.</p>
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2026 von <a href="#">Brigitte Jellinek</a>.</p>
         <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php-vorbereitung/erstes-php-programm.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
 </div> <!-- class="container" -->
-<script
-			  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-			  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-			  crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector("ul.nav");
+    const items = nav.querySelectorAll(":scope > li");
+
+    function setItem(li, open) {
+      const sub = li.querySelector(":scope > ul");
+      const icon = li.querySelector(":scope > i");
+      if (sub) sub.style.display = open ? "" : "none";
+      if (icon) { icon.className = open ? "icon-minus" : "icon-plus"; }
+    }
+
+    function setAll(open) {
+      items.forEach(li => setItem(li, open));
+      saveState();
+    }
+
+    function saveState() {
+      localStorage.setItem("nav-state",
+        Array.from(items, li => li.querySelector(":scope > i")?.classList.contains("icon-minus") ? "+" : "-").join("")
+      );
+    }
+
+    items.forEach(li => {
+      const icon = document.createElement("i");
+      icon.className = "icon-plus";
+      li.querySelector(":scope > a")?.before(icon);
+      li.style.listStyle = "none";
+    });
+
+    const stored = localStorage.getItem("nav-state");
+    if (stored) {
+      stored.split("").forEach((ch, i) => { if (items[i]) setItem(items[i], ch === "+"); });
+    } else {
+      setAll(false);
+    }
+    items.forEach(li => { if (li.classList.contains("active")) setItem(li, true); });
+
+    const controls = document.createElement("li");
+    controls.style.listStyle = "none";
+    controls.innerHTML = '<a href="#">open all</a> | <a href="#">close all</a>';
+    nav.prepend(controls);
+    controls.children[0].addEventListener("click", (e) => { e.preventDefault(); setAll(true); });
+    controls.children[1].addEventListener("click", (e) => { e.preventDefault(); setAll(false); });
+
+    nav.addEventListener("click", (e) => {
+      if (e.target.tagName !== "I") return;
+      e.preventDefault();
+      const li = e.target.parentElement;
+      setItem(li, e.target.classList.contains("icon-plus"));
+      saveState();
+    });
+  });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
 <script>hljs.highlightAll();</script>
-<script>
-  $(document).ready(function(){
-    function save_state(){
-      var stored = "";
-      $('ul.nav > li').each(function(i,e){
-        if( $(e).find("i").attr('class') == 'icon-plus' ) {
-          stored += "-";
-        }  else {
-          stored += "+";
-        }
-      });
-      localStorage.setItem('nav-state', stored);
-    }
-    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
-
-    // init state
-    var stored = localStorage.getItem('nav-state');
-    if ( stored ) {
-      var data = stored.split("");
-      $('ul.nav > li').each(function(i,e){
-        if( data[i] == "+" ) {
-          $(e).find(">ul").show();
-          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
-        } else {
-          $(e).find(">ul").hide();
-        }
-      });
-    } else {
-      $('ul.nav ul.sub').hide();
-    }
-    $('ul.nav li.active ul.sub').show();
-    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
-
-    $('ul.nav i').click(function(){
-      $this = $(this);
-      $this.toggleClass('icon-plus').toggleClass('icon-minus');
-      $this.parent().next('ul').toggle();
-      save_state();
-      return false;
-    });
-  });
-</script>
 </body>
 </html>
 

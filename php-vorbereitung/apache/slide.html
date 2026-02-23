@@ -127,7 +127,13 @@ php -S localhost:4000
 
 <p>dann lautet die URL <code>http://localhost:4000/order-mail/index.html</code></p>
 
-<p>Wenn ich den Webserver im Ordner <code>oder-mail</code> starte:</p>
+</div>
+<div class="slide">
+
+
+
+<p>Angenommen ich habe eine Datei mit Pfad <code>dev/webprog2abgabe/order-mail/index.html</code>
+Wenn ich den Webserver im Ordner <code>order-mail</code> starte:</p>
 
 <div class="example">
 <pre><code class="language-shell  linenums">cd dev
@@ -137,6 +143,15 @@ php -S localhost:4000
 </code></pre></div>
 
 <p>dann lautet die URL nur  <code>http://localhost:4000/index.html</code></p>
+
+</div>
+<div class="slide">
+
+<h2 id="besonderer-dateiname-index">Besonderer Dateiname: index</h2>
+
+<p>Die Dateien <code>index.html</code> und <code>index.php</code> haben eine besondere Bedeutung am Webserver:
+Wenn die URL nur auf einen Ordner verweist, z.B. <code>http://localhost:4000/order-mail/</code>
+und dieser Ordner eine Datei <code>index.html</code> enthält, dann wird diese Datei angezeigt:</p>
 
 <p><img src="/images/php-apache/url.png" srcset="/images/php-apache/url.png 1x, /images/php-apache/url@2x.png 2x"  alt="php webserver starten, pfad und url" ></p>
 
@@ -148,7 +163,7 @@ php -S localhost:4000
 <p>Apache ist eine Webserver-Software. Es ist freie Software (free as in freedom,
 not free as in beer). Das Apache-Projekt startete 1995 um statt NCSA Webserver, der schon durch viele Patches verbessert wurde, einen neuen Webserver von Grund auf zu programmieren. Der Name leitet sich aber noch von „a patchy webserver“ ab.</p>
 
-<p>Im Gegensatz zu anderen freien Software Projekten waren in der Apache Group von Anfang an Programmierer aus großen Firmen vertreten, und zwar im offiziellen Auftrag dieser Firme</p>
+<p>Im Gegensatz zu anderen freien Software Projekten waren in der Apache Group von Anfang an Programmierer aus großen Firmen vertreten, und zwar im offiziellen Auftrag dieser Firmen.</p>
 
 <p>Heute betreibt die “Apache Group” neben dem Webserver noch viele weitere
 wichtige Open Source Software Projekte.</p>

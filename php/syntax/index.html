@@ -11,8 +11,10 @@
   <meta name="generator" content="nanoc 3.8.0">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
-  <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" defer>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
     <style>
     li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
         list-style-type: inherit !important;
@@ -28,6 +30,7 @@
   </style>
 </head>
 <body>
+  <!-- script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script -->
 
 <div class="container">
   <header class="row">
@@ -41,7 +44,7 @@
 
 
 <!-- body -->
-<article id="body" class="row">
+<article id="body" class="row row82">
   <div class="span8">
     
     <div class="page-header">
@@ -62,7 +65,7 @@
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
@@ -100,7 +103,7 @@ ein, wo der PHP-Code war; das Ergebnis sieht wie folgt aus:</p>
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
@@ -124,7 +127,7 @@ sogar Kontrollstrukturen in einem anderen Teil fortgesetzt werden:</p>
 <pre><code class="language-html  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;Wilde Mischung&lt;/h1&gt;
@@ -201,11 +204,10 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Beispielseite für ein PHP-Programm&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
   &lt;h1&gt;PHP-Beispiel&lt;/h1&gt;
-   
   &lt;?php
     echo &quot;&lt;p&gt;$entfernung km in $h:$min sind $kmh km/h&lt;/p&gt;&quot;;
     if( $kmh &gt; 130 ) {
@@ -219,10 +221,10 @@ wird ist dabei wieder eine Abwägungsfrage, auf die es keine fixe Antwort gibt.<
 
 <a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
-<h2 id="includes">Includes</h2>
+<h2 id="require">Require</h2>
 
 <p>Bei PHP-Applikationen mit mehr als einer Datei empfiehlt sich die
-Verwendung von <code>include</code> um Duplizierung von Code zu vermeiden.
+Verwendung von <code>require</code> um Duplizierung von Code zu vermeiden.
 PHP-Code, der mehrmals verwendet wird,
 kann z.B. als Funktionen in eine Datei phpfunctions.php ausgelagert werden:</p>
 
@@ -256,7 +258,7 @@ den Titel der Seite dynamisch generieren zu können:</p>
 <pre><code class="language-php  linenums">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
   &lt;title&gt;Brigittes totale Web-App: &lt;?php echo $pagetitle ?&gt;&lt;/title&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
 &lt;/head&gt;&lt;body&gt;
@@ -296,19 +298,19 @@ da hier gar keine Variablen oder PHP-Code verwendet werden:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>Datei index.php</small></h4>
-<pre><code class="language-php  linenums">&lt;?php   
-  include &quot;phpfunctions.php&quot;;   // kein Output!
+<pre><code class="language-php  linenums">&lt;?php
+  require &quot;phpfunctions.php&quot;;   // kein Output!
   $pagetitle = &quot;Berechnung der Geschwindigkeit&quot;;
   $entfernung = 296;
   $h = 2;
   $min = 40;
   $kmh = calc($entfernung, $h, $min);
-  include &quot;header.php&quot;;    // erster Output von HTML
+  require &quot;header.php&quot;;    // erster Output von HTML
   echo &quot;  &lt;p&gt;$entfernung km in $h:$min sind $kmh km/h&lt;/p&gt;&quot;;
   if( $kmh &gt; 130 ) {
       echo(&quot;  &lt;p&gt;&lt;b&gt;Das ist zu schnell!&lt;/b&gt;&lt;/p&gt;&quot;);
   }
-  include &quot;footer.php&quot; 
+  require &quot;footer.php&quot;
 ?&gt;
 </code></pre></div>
 
@@ -357,7 +359,7 @@ und doppelten Anführungszeichen - ist das “heredoc” Schreibweise<a href="ht
 <div class="example">
 <h4 class="caption">Php Code <small>Beispiel für heredoc</small></h4>
 <pre><code class="language-php  linenums">echo &lt;&lt;&lt;EOT
-My name is $lastname, $firstname $lastname. 
+My name is $lastname, $firstname $lastname.
 I am printing some $foo-&gt;foo.
 Now, I am printing some {$foo-&gt;bar[1]}.
 I can&#39;t mess up this string
@@ -406,7 +408,7 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
   $foo = $foo + 2;    // $foo is now an integer (2)
   $foo = $foo + 1.3;  // $foo is now a float (3.3)
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
-  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
+  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot;
 ?&gt;
 </code></pre></div>
 
@@ -420,7 +422,7 @@ einen Datentyp deklarieren, siehe <a href="http://php.net/manual/de/functions.ar
 <div class="example">
 <pre><code class="language-php  linenums">&lt;?php
   $bar = 5 + &quot;10 Little Piggies&quot;; // $bar is an integer (15)
-  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot; 
+  $baz = 5 . &quot;10 Small Pigs&quot;;     // $baz is a longer string &quot;510 ...&quot;
 ?&gt;
 </code></pre></div>
 
@@ -439,10 +441,10 @@ interpretiert seine beiden Operanden als Strings.</p>
 
 
 <p>In Javascript ist es
-genau umgekehrt: da entscheidet der Datentyp<br />
+genau umgekehrt: da entscheidet der Datentyp
 über die Bedeutung des Operators:</p>
 
-<p><img src="/images/php-javascript-plus.png"  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
+<p><img src="/images/php/javascript-plus.png" srcset="/images/php/javascript-plus.png 1x, /images/php/javascript-plus@2x.png 2x"  alt="Abbildung: Bespiel für den Operator + in Javascript (Firebug)" ></p>
 
 
 <a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
@@ -1646,63 +1648,72 @@ werden hier vorgestellt, die anderen werden erst später behandelt.</p>
 
   <div class="row">
     <div class="span12" id="legal">
-        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2025 von <a href="#">Brigitte Jellinek</a>.</p>
+        <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2026 von <a href="#">Brigitte Jellinek</a>.</p>
         <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php/syntax.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
 </div> <!-- class="container" -->
-<script
-			  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-			  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-			  crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector("ul.nav");
+    const items = nav.querySelectorAll(":scope > li");
+
+    function setItem(li, open) {
+      const sub = li.querySelector(":scope > ul");
+      const icon = li.querySelector(":scope > i");
+      if (sub) sub.style.display = open ? "" : "none";
+      if (icon) { icon.className = open ? "icon-minus" : "icon-plus"; }
+    }
+
+    function setAll(open) {
+      items.forEach(li => setItem(li, open));
+      saveState();
+    }
+
+    function saveState() {
+      localStorage.setItem("nav-state",
+        Array.from(items, li => li.querySelector(":scope > i")?.classList.contains("icon-minus") ? "+" : "-").join("")
+      );
+    }
+
+    items.forEach(li => {
+      const icon = document.createElement("i");
+      icon.className = "icon-plus";
+      li.querySelector(":scope > a")?.before(icon);
+      li.style.listStyle = "none";
+    });
+
+    const stored = localStorage.getItem("nav-state");
+    if (stored) {
+      stored.split("").forEach((ch, i) => { if (items[i]) setItem(items[i], ch === "+"); });
+    } else {
+      setAll(false);
+    }
+    items.forEach(li => { if (li.classList.contains("active")) setItem(li, true); });
+
+    const controls = document.createElement("li");
+    controls.style.listStyle = "none";
+    controls.innerHTML = '<a href="#">open all</a> | <a href="#">close all</a>';
+    nav.prepend(controls);
+    controls.children[0].addEventListener("click", (e) => { e.preventDefault(); setAll(true); });
+    controls.children[1].addEventListener("click", (e) => { e.preventDefault(); setAll(false); });
+
+    nav.addEventListener("click", (e) => {
+      if (e.target.tagName !== "I") return;
+      e.preventDefault();
+      const li = e.target.parentElement;
+      setItem(li, e.target.classList.contains("icon-plus"));
+      saveState();
+    });
+  });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
 <script>hljs.highlightAll();</script>
-<script>
-  $(document).ready(function(){
-    function save_state(){
-      var stored = "";
-      $('ul.nav > li').each(function(i,e){
-        if( $(e).find("i").attr('class') == 'icon-plus' ) {
-          stored += "-";
-        }  else {
-          stored += "+";
-        }
-      });
-      localStorage.setItem('nav-state', stored);
-    }
-    $('ul.nav > li > a').prepend("<i class='icon-plus'></i>");
-
-    // init state
-    var stored = localStorage.getItem('nav-state');
-    if ( stored ) {
-      var data = stored.split("");
-      $('ul.nav > li').each(function(i,e){
-        if( data[i] == "+" ) {
-          $(e).find(">ul").show();
-          $(e).find("i").removeClass('icon-plus').addClass('icon-minus');
-        } else {
-          $(e).find(">ul").hide();
-        }
-      });
-    } else {
-      $('ul.nav ul.sub').hide();
-    }
-    $('ul.nav li.active ul.sub').show();
-    $('ul.nav li.active i').removeClass('icon-plus').addClass('icon-minus');
-
-    $('ul.nav i').click(function(){
-      $this = $(this);
-      $this.toggleClass('icon-plus').toggleClass('icon-minus');
-      $this.parent().next('ul').toggle();
-      save_state();
-      return false;
-    });
-  });
-</script>
 </body>
 </html>
 

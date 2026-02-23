@@ -119,7 +119,7 @@ interpretiert, sondern direkt an den Browser gesandt.</p>
 <p>Der Browser zeigt den PHP-Teil des Code aber nicht an,
 erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 gezeigt.</p>
 
-<p><img src="/images/image328.png"  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" ></p>
+<p><img src="/images/php/falsche-endung.png" srcset="/images/php/falsche-endung.png 1x, /images/php/falsche-endung@2x.png 2x"  alt="Abbildung 126: So funktioniert PHP nicht: falsche Dateiendung" ></p>
 
 </div>
 <div class="slide">
@@ -127,10 +127,10 @@ erst mit Ansicht-&gt;Quelltext kann man den Code sehen wie in Abbildung 122 geze
 
 
 <p>Wenn Sie die richtige Dateiendung verwenden (.php) und die Seite über einen Webserver
-betrachten (z.B. http://localhost) kann immer noch ein Fehler im PHP-Programm auftreten.
+betrachten (z.B. http://localhost:4000) kann immer noch ein Fehler im PHP-Programm auftreten.
 Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildung 123 gezeigt.</p>
 
-<p><img src="/images/image329.png"  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" ></p>
+<p><img src="/images/php/error-in-php.png" srcset="/images/php/error-in-php.png 1x, /images/php/error-in-php@2x.png 2x"  alt="Abbildung 127: So funktioniert PHP nicht: Fehler im Programm" ></p>
 
 </div>
 <div class="slide">
@@ -141,7 +141,7 @@ Die Fehlermeldung des Interpreters wird dann im Browser angezeigt wie in Abbildu
 Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 <strong>http://localhost/</strong>, und keine Fehler im Programm:</p>
 
-<p><img src="/images/image330.png"  alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" ></p>
+<p><img src="/images/php/php-runs.png" srcset="/images/php/php-runs.png 1x, /images/php/php-runs@2x.png 2x"  alt="Abbildung 128: So funktioniert PHP: Webserver, richtige Endung, richtiger Programmcode" ></p>
 
 <p>Mit Ansicht-&gt;Quelltext kann man nun im Browser nur noch den HTML-Code sehen, niemals aber den PHP-Quellcode!</p>
 
@@ -150,8 +150,8 @@ Testlauf: richtige Datei-Endung, richtiger Beginn der URL mit
 
 <h2 id="php-versionen">PHP Versionen</h2>
 <p>Der Befehl phpinfo() liefert Informationen zur PHP-Installation. In der letzten Abbildung sehen
-Sie z.B. dass PHP in der Version 5.0.5 verwendet wird - eine veraltete Version. Im Jahr
-2019 sollten Sie nur mindestens PHP 7 verwenden.</p>
+Sie z.B. dass PHP in der Version 8.5.2 verwendet wird - das ist eine aktuelle Version. Im Jahr
+2026 sollten Sie nur mindestens PHP 8.5 verwenden.</p>
 
 <p>Zwischen den verschiedenen PHP-Versionen gibt es eklatante Unterschiede,
 verschiedene PHP-Versionen sind <strong>nicht</strong> <strong>kompatibel</strong>.
@@ -159,22 +159,12 @@ Wenn ihr Webspace-Vermieter auf eine
 neue PHP-Version umstellt, müssen Sie eventuell den Code Ihres Programmes
 anpassen!</p>
 
-<p>In der PHP-Dokumentation sind diese Unterschiede bei den einzelnen Befehlen
-aufgeführt, z.B. bei der Funktion <a href="http://php.net/manual/de/function.ldap-sort.php">ldap_sort</a> ist in der Dokumentation angegeben:</p>
-
-<pre><code>PHP 4 &gt;= 4.2.0, PHP 5, PHP 7
-
-Warnung: Dieses Feature ist seit PHP 7.0.0 DEPRECATED (veraltet). Sich auf diese Funktion zu verlassen ist in keiner Weise empfehlenswert.
-</code></pre>
-
-<p>Die Funktion existiert also seit PHP 4 Version 4.2.0 und wird nach PHP 7 abgeschafft.</p>
-
 </div>
 <div class="slide">
 
 
 
-<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version aber nicht bei Ihnen:
+<p>Wenn Sie Webspace mieten liegt die Entscheidung über die PHP Version nicht bei Ihnen:
 wenn Ihr Webspace-Provider nur einen veraltete PHP-Interpreter anbietet
 können Sie das nicht ändern!
 Das sollten Sie auf jeden Fall klären bevor Sie den Mietvertrag abschließen.</p>
@@ -186,20 +176,9 @@ die am Webspace installiert ist.</p>
 <div class="slide">
 
 <h2 id="dokumentation">Dokumentation</h2>
-<p>Die Dokumentation zu PHP finden Sie auf http://php.net.</p>
+<p>Die Dokumentation zu PHP finden Sie auf <a href="http://php.net/manual/de">http://php.net/manual/de</a>.</p>
 
-<p><img src="/images/image331.png"  alt="Abbildung 129: Eine Funktion in der Doku auf php. net nachschlagen" ></p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Hilfreich sind auch die Kommentare der UserInnen am Ende jeder Doku-Seite. Hier finden Sie oft Erklärungen zu einzelnen Features, die in der Dokumentation “vergessen” wurden, oder Anwendungsbeispiele:</p>
-
-<p><img src="/images/image332.png"  alt="Abbildung 130: Kommentare von UserInnen in der Doku auf php. Net" ></p>
-
-<p>Die Dokumentation kann man auch herunterladen und lokal installieren, dann enthält sie aber nicht die Kommentare.</p>
+<p><img src="/images/php/php-manual-de.png" srcset="/images/php/php-manual-de.png 1x, /images/php/php-manual-de@2x.png 2x"  alt="Abbildung 129: Eine Funktion in der Doku auf php.net nachschlagen" ></p>
 
 </div>
     <div class="slide">

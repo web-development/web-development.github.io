@@ -97,15 +97,15 @@ und das Einfügen fehlschlagen. Wie behandelt man diesen Fall in PHP?</p>
 
 <p>Folgende Beschreibung ist aus dem <a href="http://www.php.net/manual/de/language.exceptions.php">PHP Handbuch</a> übernommen:</p>
 
-<p>PHP 5 hat ein Exceptionmodell ähnlich dem anderer Programmiersprachen. Eine Exception kann in PHP 
-geworfen (<code>throw</code>) und abgefangen (<code>catch</code>) werden. Um das Fangen potentieller Exceptions zu 
+<p>PHP 5 hat ein Exceptionmodell ähnlich dem anderer Programmiersprachen. Eine Exception kann in PHP
+geworfen (<code>throw</code>) und abgefangen (<code>catch</code>) werden. Um das Fangen potentieller Exceptions zu
 ermöglichen, wird der jeweilige Code mit einem <code>try</code>-Block umschlossen.</p>
 
-<p>Die normale Programmausführung (wenn keine Exception innerhalb des <code>try</code>-Blockes geworfen wird) 
-wird nach dem letzten <code>catch</code>-Block fortgesetzt. 
+<p>Die normale Programmausführung (wenn keine Exception innerhalb des <code>try</code>-Blockes geworfen wird)
+wird nach dem letzten <code>catch</code>-Block fortgesetzt.
 Exceptions können innerhalb eines <code>catch</code>-Blockes geworfen (oder weitergeworfen) werden.</p>
 
-<p>Wenn eine Exception geworfen wird, wird der Programmcode der auslösenden Anweisung nicht ausgeführt, 
+<p>Wenn eine Exception geworfen wird, wird der Programmcode der auslösenden Anweisung nicht ausgeführt,
 und PHP versucht, den ersten passenden <code>catch</code>-Block zu finden. Falls eine Exception gar
 nicht abgefangen wird, wird ein fataler Fehler mit einer “Uncaught Exception …“-Nachricht ausgegeben</p>
 
@@ -155,7 +155,7 @@ oder bei einzelnen Abfragen.</p>
 <h4 class="caption">Php Code <small>Datenbank-Abfrage mit Exception Handling als Fehlerbehandlung</small></h4>
 <pre><code class="language-php  linenums">$get_id = $_GET[&#39;id&#39;];
 try{
-  include &quot;config.php&quot;;
+  require &quot;config.php&quot;;
   if( ! $DSN ) {
     throw(new Exception( &quot;DB nicht konfiguriert. config.php anlegen!&quot; ));
   }
@@ -178,11 +178,11 @@ try{
   $sth-&gt;execute(array($get_id));
   $projects = $sth-&gt;fetchAll();
 } catch( Exception $e ) {
-  include &quot;header.php&quot;;
+  require &quot;header.php&quot;;
   echo &quot;&lt;h1&gt;Problem mit der Datenbank&lt;/h1&gt;&quot; ;
   echo &quot;&lt;p&gt;Bitte versuchen Sie es später wieder.&lt;/p&gt;&quot; ;
   echo &quot;&lt;!--&quot; . $e-&gt;getMessage() . &quot;--&gt;&quot;;
-  include &quot;footer.php&quot;;
+  require &quot;footer.php&quot;;
   exit;
 }
 /* hier folgt die normale Ausgabe der Seite */
@@ -199,7 +199,7 @@ tun hat.</p>
 <h2 id="exkurs-exceptions-in-javascript">Exkurs: Exceptions in Javascript</h2>
 
 <p>Die Verwendung und Schreibweise ist in Javascript so ähnlich, dass es sich
-gar nicht lohnt näher darauf einzugehen. Siehe 
+gar nicht lohnt näher darauf einzugehen. Siehe
 <a href="http://www.magjs.de/2012-01/rauschmayer/rauschmayer.html">Rauschmayer(2012): Ausnahmebehandlung in JavaScript in mag.js Nr.1</a></p>
 
 </div>

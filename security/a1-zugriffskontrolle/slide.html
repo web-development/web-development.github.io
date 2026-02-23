@@ -161,7 +161,7 @@ https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd
 <div class="example">
 <h4 class="caption">Php Code <small>Prüfung der Zugriffsrechte am Anfang jeder PHP-Datei</small></h4>
 <pre><code class="language-php  linenums">&lt;?php
-  include &quot;functions.php&quot;;
+  require &quot;functions.php&quot;;
   check_permissions();
   // ....
 </code></pre></div>
@@ -229,7 +229,7 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 <h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
 <pre><code class="language-html  linenums">  &lt;img src=&quot;&lt;?= $_GET[&#39;img&#39;] ?&gt;&quot;&gt;
   &lt;?php
-  include $_GET[&#39;text&#39;];  // nicht so programmieren!!!
+  require $_GET[&#39;text&#39;];  // nicht so programmieren!!!
   ?&gt;
 </code></pre></div>
 

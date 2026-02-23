@@ -172,18 +172,17 @@ Gemeinschafts-Portfolio anzeigen:</p>
 
 
 <p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die
-Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <code>header.php</code> und 
+Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <code>header.php</code> und
 <code>footer.php</code> inkluidert.</p>
 
 <div class="example">
 <pre><code class="language-php  linenums">&lt;?
   $pagetitle = &quot;Titel der Seite&quot;;
-  include &quot;functions.php&quot;;
+  require &quot;functions.php&quot;;
   // hier passiert die eigentliche Arbeit
-  
-  include &quot;header.php&quot;;
+  require &quot;header.php&quot;;
   // und hier die Ausgabe
-  include &quot;footer.php&quot;;
+  require &quot;footer.php&quot;;
 ?&gt;
 </code></pre></div>
 
@@ -214,11 +213,17 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 
 <div class="example">
 <pre><code class="language-html  linenums">&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
-  Suche nach einer Person mit Namen &lt;input name=&quot;suchwort&quot;&gt; 
+  Suche nach einer Person mit Namen &lt;input name=&quot;suchwort&quot;&gt;
   &lt;input type=&quot;submit&quot;&gt;
 &lt;/form&gt;
 </code></pre></div>
 
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<p>Die Rolle der URL in der Web-Architektur: Ahmad Alfy’s <a href="https://alfy.blog/2025/10/31/your-url-is-your-state.html">Your URL Is Your State</a></p>
 </div>
     <div class="slide">
       <h1>Struktur einer Web-Applikation</h1>

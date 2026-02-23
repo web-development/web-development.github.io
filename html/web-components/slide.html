@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Neue Tags und Web Components - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Neue Tags und Web Components</h1>
+      <p>
+        
+        <a href="/html/web-components/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
+    <div class="slide"><p>Wie entstehen neue HTML-Tags?  Und kann man sie auch selbst bauen?</p>
+
+</div>
+<div class="slide">
+
+<h2 id="der-html-standard">Der HTML Standard</h2>
+
+<p>Es klingt ganz einfach: eine Arbeitsgruppe entwickelt HTML weiter, die Browser bauen dann die Tags ein. Die Arbeitsgruppe hat den Namen WHATWG (Web Hypertext Application Technology Working Group). Sie veröffentlichen den HTML Standard auf https://html.spec.whatwg.org/</p>
+
+<p>In der Arbeitsgruppe wird diskutiert, es werden Implementierungen ausprobiert, … diesen Teil der Arbeit kann man teilweise als <a href="https://github.com/whatwg/html/issues">github issues</a> und dann als <a href="https://github.com/whatwg/html/pulls">pull requests</a> mitverfolgen.
+Die Entscheidungen erfolgen im Konsens, die wichtigsten Kriterien sind:</p>
+
+<ul>
+  <li>Ein Vorschlag muss technisch ausgereift sein und die Bedürfnisse von Web-Entwicklern sowie Browser-Herstellern gleichermaßen abdecken.</li>
+  <li>mindestens zwei unabhängige Browser-Engines (z. B. Chromium/Blink und Gecko) signalisieren, dass sie das Feature implementieren wollen oder es bereits experimentell unterstützen.</li>
+  <li>Ein neuer Standard darf niemals dazu führen, dass existierende Webseiten nicht mehr funktionieren. (“Don’t break the Web”)</li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="baseline">Baseline</h2>
+
+<p>Für die Webprogrammierung relevant werden neue HTML Tags, wenn sie in den gängigen Browsern funktionieren. Das kann man im Mozilla Deverloper Network Wiki nachlesen, z.B. hier am Ende der Seite über den &lt;menu&gt; Tag: <a href="https://developer.mozilla.org/de/docs/Web/HTML/Reference/Elements/menu#browser-kompatibilit%C3%A4t">Browser-Kompatibilität</a>. Dieselbe Information findet man auch in <a href="https://caniuse.com/mdn-html_elements_menu">caniuse.com</a>.</p>
+
+<p>Jedes Jahr wird eine Liste von neuen Tags, CSS-Eigenschaften, Javascript-Features zusammen gestellt, die in allen Browsern gelandet sind: die Baseline. Siehe z.B. <a href="https://web.dev/baseline/2025">Baseline 2025</a></p>
+
+</div>
+<div class="slide">
+
+<h2 id="custom-elements">Custom Elements</h2>
+
+<p>Man kann auch eigene HTML-Tags mit JavaScript und CSS programmieren. Diese Tags müssen ein Minus-Zeichen enthalten. In der <a href="/images/html/web-components.html">Demo Seite</a> ist es der Tag &lt;youtube-lite&gt; der verwendet wird.</p>
+
+</div>
+    <div class="slide">
+      <h1>Neue Tags und Web Components</h1>
+      <p>
+        
+        <a href="/html/web-components/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

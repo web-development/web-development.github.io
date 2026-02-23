@@ -94,7 +94,7 @@ Arten Daten aus der Datenbank lesen.</p>
 
 <h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
 <p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
-Mit der SQL-Funktion <code>COUNT()</code> können 
+Mit der SQL-Funktion <code>COUNT()</code> können
 wir die Anzahl der gefundenen Datensätze bestimmen<a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">*</a>:</p>
 
 <div class="example">
@@ -169,8 +169,8 @@ nur sichtbare Profil angezeigt werden.</p>
 
 
 <p>Das eigentliche Lesen der Daten aus der Datenbank geschieht erst nach dem
-<code>query()</code> mit der Methode <code>fetchAll()</code><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">*</a>. 
-Der Rückgabewert von <code>fetchAll()</code> ist ein Array mit Objekten. 
+<code>query()</code> mit der Methode <code>fetchAll()</code><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">*</a>.
+Der Rückgabewert von <code>fetchAll()</code> ist ein Array mit Objekten.
 Hier der Output von <code>print_r($personen)</code>:</p>
 
 <div class="example">
@@ -272,7 +272,7 @@ der Applikation weiter gegeben.</p>
 
 
 <p>Wir haben in personen.php nur sichtbare Profile angezeigt,
-und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor, 
+und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor,
 dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
 
 <p><code>http://meinedomain.at/person.php?id=666</code></p>
@@ -321,9 +321,9 @@ Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.</p>
     $ersie  = &quot;Er&quot;;
 }
 // ====================== Ausgabe ===================
-include &quot;header.php&quot;;
+require &quot;header.php&quot;;
 ?&gt;
-&lt;p&gt; 
+&lt;p&gt;
   &lt;?php echo $anrede ?&gt;
   &lt;?php echo $person-&gt;firstname ?&gt;
   &lt;?php echo $person-&gt;surname ?&gt;
@@ -342,7 +342,7 @@ include &quot;header.php&quot;;
 <div class="example">
 <h4 class="caption">Html Code <small>Such-Formular in psuche.php</small></h4>
 <pre><code class="language-html  linenums">&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
-  Suche nach einer Person mit dem Namen &lt;input name=&quot;suchwort&quot;&gt; 
+  Suche nach einer Person mit dem Namen &lt;input name=&quot;suchwort&quot;&gt;
   &lt;input type=&quot;submit&quot;&gt;
 &lt;/form&gt;
 </code></pre></div>
@@ -350,8 +350,8 @@ include &quot;header.php&quot;;
 <p>Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:</p>
 
 <div class="example">
-<pre><code class="language-sql  linenums">... 
-WHERE profile_visible=1 
+<pre><code class="language-sql  linenums">...
+WHERE profile_visible=1
   AND (surname LIKE &#39;%$suchwort%&#39; OR firstname LIKE &#39;%$suchwort%&#39;)
 </code></pre></div>
 
