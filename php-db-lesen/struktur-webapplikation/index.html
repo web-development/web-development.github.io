@@ -55,14 +55,28 @@
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>An einem Beispiel lernen wir nun den typischen Aufbau einer einfachen Web-Applikation
 kennen. Die fertige Applikation soll Werke und Personen aus einem
-Gemeinschafts-Portfolio anzeigen:</p>
+Portfolio anzeigen:</p>
 
 <p><img src="/images/dbapp-home.png"  alt="Abbildung 144: Homepage der Mini-Applikation" ></p>
 
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="idee-und-erste-skizzen">Idee und erste Skizzen</h2>
 
+<p><img src="https://commons.wikimedia.org/wiki/File:Batch_uploader_for_small_GLAM_projects_-_wireframe_-_03.png"  alt="" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h2 id="wireframes-prototype">Wireframes, Prototype</h2>
+
+<p><img src="https://commons.wikimedia.org/wiki/File:Wolfplex-Wiki-WorkshopsIdeaList-wireframe-20130929-v02.png"  alt="" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h2 id="aufbau-der-applikation">Aufbau der Applikation</h2>
 
 <p>Die folgende Tabelle zeigt alle (geplanten) Seiten der Applikation im Überblick. Zu jeder Seite wird der Titel angeführt (wird auf der Seite angezeigt), der Dateiname der PHP-Datei (wichtig für die Verlinkung), eventuell notwendige Parameter und eine Beschreibung was die Seite anzeigt.</p>
 
@@ -134,27 +148,7 @@ Gemeinschafts-Portfolio anzeigen:</p>
 </table>
 
 
-<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
-
-
-<p>Jede einzelne Seite ist mit Hilfe von includes aufgebaut. Dabei werden immer die
-Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <code>header.php</code> und
-<code>footer.php</code> inkluidert.</p>
-
-<div class="example">
-<pre><code class="language-php  linenums">&lt;?
-  $pagetitle = &quot;Titel der Seite&quot;;
-  require &quot;functions.php&quot;;
-  // hier passiert die eigentliche Arbeit
-  require &quot;header.php&quot;;
-  // und hier die Ausgabe
-  require &quot;footer.php&quot;;
-?&gt;
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="verlinkung">Verlinkung</h2>
 
@@ -173,7 +167,7 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h2 id="datenstze-suchen">Datensätze suchen</h2>
 <p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Vornamen angezeigt:</p>
@@ -186,7 +180,7 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
@@ -196,11 +190,11 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
     
       
       
-      <li><a href="/php-db-lesen/start/">PHP und Datenbank</a></li>
-      
-      
-      
       <li><a href="/php-db-lesen/datenbank-lesen/">Lesen aus der Datenbank</a></li>
+      
+      
+      
+      <li><a href="/php-db-lesen/effizent/">Effizient Arbeiten mit der DB</a></li>
       
     
   </ul>
@@ -650,11 +644,11 @@ Dateien <code>functions.php</code> (mit dem Aufbau der Datenbank-Verbindung), <c
                       
                     
                       
-                      <li class="active"><a href="/php-db-lesen/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
+                      <li ><a href="/php-db-lesen/datenbank-lesen/">Lesen aus der Datenbank</a></li>
                       
                     
                       
-                      <li ><a href="/php-db-lesen/datenbank-lesen/">Lesen aus der Datenbank</a></li>
+                      <li class="active"><a href="/php-db-lesen/struktur-webapplikation/">Struktur einer Web-Applikation</a></li>
                       
                     
                       

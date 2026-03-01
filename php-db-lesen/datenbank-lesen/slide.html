@@ -76,144 +76,85 @@
       <h1>Lesen aus der Datenbank</h1>
       <p>
           vorige Präsentation:
-        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a> | 
+        <a href="/php-db-lesen/start//slide.html">PHP und Datenbank</a> | 
         <a href="/php-db-lesen/datenbank-lesen/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/php-db-lesen/effizent//slide.html">Effizient Arbeiten mit der DB</a>
+        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
         
       </p>
     </div>
-    <div class="slide"><p>Für die Applikation müssen wir nun auf verschiedene
-Arten Daten aus der Datenbank lesen.</p>
-
-</div>
-<div class="slide">
-
-<h2 id="einzelne-daten-aus-der-datenbank-lesen">Einzelne Daten aus der Datenbank lesen</h2>
-<p>Für die Datei <code>index.php</code> müssen wir die Anzahl der Profile und Projekte anzeigen.
-Mit der SQL-Funktion <code>COUNT()</code> können
-wir die Anzahl der gefundenen Datensätze bestimmen<a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">*</a>:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre><code class="language-php  linenums">$sth = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;);
-$result = $sth-&gt;fetch();
-$anz_personen = $result-&gt;anzahl;
-</code></pre></div>
-
-<p>Hier verwenden wir die Methode <code>fetch()</code> des Statement-Handles
-um nur einen Datensatz zu lesen.</p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Man könnte all diese Befehle direkt aneinander-ketten (englisch: “to chain”):</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre><code class="language-php  linenums">$anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;)-&gt;fetch()-&gt;anzahl;
-</code></pre></div>
-
-<p>Damit spart man sich zwei der drei Variablen, macht aber
-die Fehlersuche etwas schwieriger.</p>
+    <div class="slide"><p>In folgenden PHP-Beispielen wird eine Datenbank mit den Tabellen <code>users</code> und <code>projects</code> verwendet.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="viele-datenstze-lesen">Viele Datensätze lesen</h2>
 
-<p>Für die Datei <code>personen.php</code> benötigen wir ein Möglichkeit viele
-Daten aus der Datenbank zu lesen. Das geschieht mit einem einfachen <code>SELECT</code>:</p>
+<p>So kann mein ein einfaches <code>SELECT</code> von PHP aus absetzten. Als Antwort erhält man von der Datenbank eine ganze Tabelle an Werten: mehrere Zeilen (hier: Personen) mit mehreren Spalten (hier: die verscheidenen Eigenschaften der Person)</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage der Datenbank mit SELECT</small></h4>
 <pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
-  &quot;SELECT * FROM person WHERE profile_visible=1 ORDER BY surname LIMIT 500&quot;
+  &quot;SELECT * FROM users WHERE profile_visible ORDER BY surname LIMIT 500&quot;
 );
-$personen = $sth-&gt;fetchAll();
+$users = $sth-&gt;fetchAll();
 </code></pre></div>
 
 <p>Die SQL-Anfrage wird hier als String an die <code>query()</code>-Methode des Datenbankhandler
-übergeben.  Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
-dem Datenbank-Handle).  Zu diesem Zeitpunkt wurden noch keine Daten von der
-Datenbank zu PHP übertragen.</p>
+übergeben.</p>
+
+<p>Der Rückgabewert von query ist ein Statement-Handle <code>$sth</code> (ähnlich
+dem Datenbank-Handle).</p>
+
+<p>Erst beim Aufruf von <code>fetchAll()</code> werden die Daten von der
+Datenbank geladen.</p>
 
 </div>
 <div class="slide">
 
-
-
-<p>Im Beispiel wird LIMIT verwendet:
-<code>LIMIT anzahl</code> bzw.
-<code>LIMIT anzahl OFFSET anfangsposition</code>
-wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
-Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">*</a>.</p>
-
-</div>
-<div class="slide">
-
-
-
-<p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
-<code>profile_visible = false</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
-nur sichtbare Profil angezeigt werden.</p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Das eigentliche Lesen der Daten aus der Datenbank geschieht erst nach dem
-<code>query()</code> mit der Methode <code>fetchAll()</code><a href="http://www.php.net/manual/en/pdostatement.fetchall.php">*</a>.
-Der Rückgabewert von <code>fetchAll()</code> ist ein Array mit Objekten.
-Hier der Output von <code>print_r($personen)</code>:</p>
+<h2 id="datensatz-in-php-verwenden">Datensatz in PHP verwenden</h2>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Output von print_r($personen)</small></h4>
-<pre><code class="language-php  linenums">Array
-(
-  [0] =&gt; stdClass Object
-      (
-          [id] =&gt; 422
-          [firstname] =&gt; Hubert jun.
-          [surname] =&gt; H.
-          [email] =&gt; mail422@nowhere.not
-          [isfemale] =&gt; false
-          [profile_visible] =&gt; true
-      )
-  [1] =&gt; stdClass Object
-      (
-          [id] =&gt; 313
-          [firstname] =&gt; Marcel
-          [surname] =&gt; U
-          [email] =&gt; mail313@nowhere.not
-          [isfemale] =&gt; false
-          [profile_visible] =&gt; true
-      )
-  ...
-)
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM users WHERE profile_visible ORDER BY surname LIMIT 500&quot;
+);
+$users = $sth-&gt;fetchAll();
+echo &quot;Der erste User heisst $users[0][2]&quot;
 </code></pre></div>
 
+<p><code>$users</code> enthält nun ein Array aller Datensätze, jeder
+Datensatz ist wieder ein Array.</p>
+
 </div>
 <div class="slide">
 
+<h2 id="datenstruktur-mit-php-ausgeben">Datenstruktur mit PHP ausgeben</h2>
 
-
-<p>Später werden die Personen dann angezeigt:</p>
+<p>Mit dem Befehl <code>print_r</code> kann man die gesamte Datenstruktur auf einmal ausgeben - das ist nur fürs debuggen geeignet, nicht für Enduser:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Anzeige der Personen</small></h4>
-<pre><code class="language-php  linenums">foreach($personen as $person) {
-  echo &quot;&lt;li&gt;$person-&gt;firstname $person-&gt;surname&lt;/li&gt;\n&quot;;
+<pre><code class="language-php  linenums">&lt;pre&gt;&lt;?php print_r($users) ?&gt;&lt;/pre&gt;
+</code></pre></div>
+
+<p><img src="/images/php-db-lesen/fetchall.png" srcset="/images/php-db-lesen/fetchall.png 1x, /images/php-db-lesen/fetchall@2x.png 2x"  alt="" ></p>
+
+<p>Jeder Datensatz enthält also die Werte zweimal: einmal unter einem numerischen index 0,1,2… und einmal unter dem Namen der Datenbank-Spalte.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="schleife-ber-die-datenstze">Schleife über die Datensätze</h2>
+
+<p>Mit der <code>foreach</code> Schleife kann man ein Array abarbeiten. Nach dem Schlüsselwort <code>as</code> gibt man die Schleifenvariable an, die bei jedem Durchlauf auf eine anderen Eintrag des Arrays gesetzt wird.</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">foreach( $users as $user ) {
+  // gib Vorname und Nachname aus
+  echo &quot;&lt;h2&gt;$user[1] $user[2]&lt;/h2&gt;&quot;;
 }
 </code></pre></div>
-
-<p>Das Array <code>$personen</code> wird hier mit einer <code>foreach</code>-Schleife<a href="http://php.net/manual/de/control-structures.foreach.php">*</a> abgearbeitet.</p>
 
 </div>
 <div class="slide">
@@ -237,149 +178,172 @@ mit <code>$person-&gt;id</code> erhalten!</p>
 </div>
 <div class="slide">
 
+<h2 id="datenstze-anders-darstellen">Datensätze Anders darstellen</h2>
 
-
-<p>Bei der Ausgabe soll für jede Person ein passender Link zu <code>person.php</code> angezeigt werden:</p>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Link mit ID als Parameter erzeugen</small></h4>
-<pre><code class="language-php  linenums">&lt;li&gt;
-  &lt;b&gt;&lt;?php echo $person-&gt;firstname ?&gt; &lt;?php echo $person-&gt;surname?&gt;&lt;/b&gt;
-  &lt;a href=&quot;person.php?id=&lt;?php echo $person-&gt;id ?&gt;&quot;&gt;mehr&lt;/a&gt;
-&lt;/li&gt;
-</code></pre></div>
-
-<p>Der Output sieht dann zum Beispiel so aus:</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Output des letzten PHP-Programmes</small></h4>
-<pre><code class="language-html  linenums">&lt;li&gt;
-  &lt;b&gt;Michael A&lt;/b&gt;
-  &lt;a href=&quot;person.php?id=577&quot;&gt;mehr&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-  &lt;b&gt;Benjamin A&lt;/b&gt;
-  &lt;a href=&quot;person.php?id=579&quot;&gt;mehr&lt;/a&gt;
-&lt;/li&gt;
-</code></pre></div>
-
-<p>Auf diese Weise haben wir den Parameter <code>id</code> an den nächsten Teil
-der Applikation weiter gegeben.</p>
+<p>Bei der “Übersetzung” von Datensätzen zu PHP Datenstrukturen gibt es mehrere Möglichkeiten. Wir können direkt bei fetchAll eine Option angeben.</p>
 
 </div>
 <div class="slide">
 
+<h3 id="array-mit-zahlen-index">Array mit Zahlen-Index</h3>
 
-
-<p>Wir haben in personen.php nur sichtbare Profile angezeigt,
-und auch nur auf sichtbare Profile verlinkt. Das schützt nicht davor,
-dass jemand einfach eine URL mit ganz anderer id „von Hand“ eingibt!</p>
-
-<p><code>http://meinedomain.at/person.php?id=666</code></p>
-
-<p>Der Zugriffsschutz ist also ein eigenes Thema, das auch in <code>person.php</code> wieder
-behandelt werden muss.</p>
+<div class="example">
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM users WHERE profile_visible ORDER BY lastname LIMIT 500&quot;
+);
+$users = $sth-&gt;fetchAll(PDO::FETCH_NUM);
+echo &quot;Der erste User heisst $users[0][2]&quot;
+</code></pre></div>
 
 </div>
 <div class="slide">
 
-<h2 id="einen-bestimmten-datensatz-lesen">Einen bestimmten Datensatz lesen</h2>
-<p>Wenn Sie die Datei <code>person.php</code> mit einem Parameter aufrufen <code>person.php?id=586</code>
-soll eine bestimmte Person aus der Datenbank angezeigt werden. Dafür wird der
-Parameter aus dem <code>$_GET</code> – Array ausgelesen und sicher gestellt, dass es sich
-wirklich um eine Zahl handelt.</p>
+<h3 id="array-mit-string-index">Array mit String-Index</h3>
 
-<p>Das Ergebnis der Abfrage kann also
-sein, dass keine Person gefunden wurde – entweder weil unter diesem Schlüssel
-gar keine gespeichert ist, oder weil <code>profile_visible=false</code> ist. In diesem Fall
-gibt fetch kein Objekt sondern der Wert <code>FALSE</code> zurück.</p>
+<p>Mit der Option <code>PDO::FETCH_ASSOC</code> erhalten wir die Datensätze als Array, aber der Index ist kein Integer, sondern ein String: jeweils der Name der Tabellen-Spalten entsprechen.</p>
+
+<p>Der Zugriff erfolgt mit eckigen Klammern, wie bei jedem Array: <code>$users[0]['firstname'];</code></p>
+
+<p>Bei der Verwendung innerhalb eines Strings gibt es aber Probleme: <code>"Der Vorname ist $users[0]['firstname']"</code> funktioniert nicht. Hier braucht man extra geschwungene Klammern rund um die Variable im String.</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Beispiel aus index.php</small></h4>
-<pre><code class="language-php  linenums">$id = $_GET[&#39;id&#39;];  // SICHERHEITSPROBEM - behandeln wir später noch!
-$stm = $dbh-&gt;query(&quot;SELECT * FROM users WHERE profile_visible AND id=$id&quot;);
-$person = $stm-&gt;fetch();
-if( $person === FALSE ) {
-  die(&quot;&lt;p&gt;Konnte keine passenden Daten aus der Datenbank lesen.&lt;/p&gt;&quot;);
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM users WHERE profile_visible ORDER BY lastname LIMIT 500&quot;
+);
+$users = $sth-&gt;fetchAll(PDO::FETCH_ASSOC);
+foreach( $users as $user ) {
+  echo &quot;&lt;h2&gt;{$user[&#39;firstname&#39;]} {$user[&#39;lastname&#39;]}&lt;/h2&gt;&quot;;
 }
 </code></pre></div>
 
 </div>
 <div class="slide">
 
+<h3 id="objekte">Objekte</h3>
 
-
-<p>Die Darstellung der einzelnen Person ist damit noch nicht fertig programmiert:
-Die Anzahl der Werke der Person oder eine Liste der Werke fehlen noch.</p>
+<p>Mit der Option <code>PDO::FETCH_OBJ</code> erhalten wir die Datensätze als Objekte.
+Die Objekte gehören zur Klasse <code>stdClass</code>, haben keine Methoden und haben genau die Eigenschaften die den Tabellen-Spalten entsprechen.</p>
 
 <div class="example">
-<pre><code class="language-php  linenums">if( $person-&gt;isfemale ) {
-    $anrede = &quot;Frau&quot;;
-    $ersie  = &quot;Sie&quot;;
-} else {
-    $anrede = &quot;Herr&quot;;
-    $ersie  = &quot;Er&quot;;
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM users WHERE profile_visible ORDER BY lastname LIMIT 500&quot;
+);
+$users = $sth-&gt;fetchAll(PDO::FETCH_OBJ);
+foreach( $users as $user ) {
+  echo &quot;&lt;h2&gt;$user-&gt;firstname $user-&gt;lastname&lt;/h2&gt;&quot;;
 }
-// ====================== Ausgabe ===================
-require &quot;header.php&quot;;
-?&gt;
-&lt;p&gt;
-  &lt;?php echo $anrede ?&gt;
-  &lt;?php echo $person-&gt;firstname ?&gt;
-  &lt;?php echo $person-&gt;surname ?&gt;
-  hat insgesamt x Werke in dieser Datenbank.
-  &lt;?php echo $ersie ?&gt; hat die E-Mail Adresse &lt;?php echo $person-&gt;email ?&gt;.
-&lt;/p&gt;
 </code></pre></div>
 
 </div>
 <div class="slide">
 
-<h2 id="datenstze-suchen">Datensätze suchen</h2>
+<h3 id="fetch-option-festlegen">Fetch-Option festlegen</h3>
 
-<p>In der Datei <code>psuche.php</code> wird ein Formular zur Suche nach Namen angezeigt:</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Such-Formular in psuche.php</small></h4>
-<pre><code class="language-html  linenums">&lt;form action=&quot;psuche.php&quot; method=&quot;get&quot;&gt;
-  Suche nach einer Person mit dem Namen &lt;input name=&quot;suchwort&quot;&gt;
-  &lt;input type=&quot;submit&quot;&gt;
-&lt;/form&gt;
-</code></pre></div>
-
-<p>Die eigentliche Suche geschieht über das WHERE-Statement  in SQL:</p>
+<p>Wenn man sich für einen Modus entschieden hat, kann man diesen gleich beim
+Verbindungsaufbau festlegen:</p>
 
 <div class="example">
-<pre><code class="language-sql  linenums">...
-WHERE profile_visible=1
-  AND (surname LIKE &#39;%$suchwort%&#39; OR firstname LIKE &#39;%$suchwort%&#39;)
+<pre><code class="language-php  linenums">$dbh-&gt;setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 </code></pre></div>
 
-<p>Wir werden uns später noch genauer mit der Sicherheitsproblematik von
-SQL-Statements befassen, die teilweise aus User-Input entstehen. Noch ignorieren
-wir die Problematik einfach, und implementieren diese Seite
-ganz ähnlich wie <code>personen.php</code>.</p>
+</div>
+<div class="slide">
+
+<h2 id="einzelne-werte-aus-der-datenbank-lesen">Einzelne Werte aus der Datenbank lesen</h2>
+
+<p>Mit der SQL-Funktion <code>COUNT()</code> können
+wir die Anzahl der gefundenen Datensätze bestimmen<a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">*</a>. Wir wollen also nur einen einzigen Wert aus der Datenbank laden.</p>
+
+<p>Trotzdem brauchen wir mehrere Schritte:</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$sth = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;);
+$result = $sth-&gt;fetchAll(PDO::FETCH_OBJ);
+$anz_personen = $result[0]-&gt;anzahl;
+</code></pre></div>
+
+<p>Hier wurde in SQL mit <code>AS</code> eine neue “Spalte” namens <code>anzahl</code> erzeugt. Diese ist dann in PHP auch unter diesem Namen zugänglich.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="befehle-verketten">Befehle Verketten</h2>
+
+<p>Man könnte all diese Befehle direkt aneinander-ketten (englisch: “to chain”):</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$anz_personen = $dbh-&gt;query(&quot;SELECT COUNT(*) AS anzahl FROM users WHERE profile_visible&quot;)-&gt;fetchAll(PDO::FETCH_OBJ)[0]-&gt;anzahl;
+</code></pre></div>
+
+<p>Damit spart man sich Variablen, macht aber
+die Fehlersuche etwas schwieriger.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="sehr-viele-datenstze-lesen">Sehr viele Datensätze lesen</h2>
+
+<p>Das Laden der Datensätze aus der Datenbank braucht Zeit. Wenn es Millionen von Datensätzen sind kann das zum Problem werden. In dieser SQL Abfrage wird damit schon gut umgegangen:</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$sth =$dbh-&gt;query(
+  &quot;SELECT * FROM person WHERE profile_visible=1 ORDER BY surname LIMIT 500&quot;
+);
+$personen = $sth-&gt;fetchAll();
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h3 id="anzahl-beschrnken">Anzahl Beschränken</h3>
+
+<p>Im Beispiel wird LIMIT verwendet:
+<code>LIMIT anzahl</code> bzw.
+<code>LIMIT anzahl OFFSET anfangsposition</code>
+wählt aus der Antwort eine Anzahl von Datensätzen aus, beginnt dabei bei
+Anfangsposition<a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">*</a>.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="in-der-datenbank-filtern">In der Datenbank filtern</h3>
+
+<p>In der Datenbank sind Personen, deren Profil nicht angezeigt werden soll, mit
+<code>profile_visible = false</code> gekennzeichnet. Im SQL-Statement wird sicher gestellt, dass
+nur sichtbare Profil angezeigt werden.</p>
 
 </div>
 <div class="slide">
 
 <h2 id="zufllige-datenstze-auswhlen">Zufällige Datensätze auswählen</h2>
 
-<p>Auf der Homepage index.php sollen wir 10 zufällig ausgewählte Werke
-anzeigen.  Wie geht das?</p>
+<p>Wie kann man zufällige Datensätze auswählen?</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in Postgres 9.4</small></h4>
+<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in einer großen Tabelle</small></h4>
 <pre><code class="language-php  linenums">$query =$dbh-&gt;query(
-  &quot;SELECT * FROM projects WHERE NOT(draft) AND NOT(blocked) ORDER BY RANDOM() LIMIT 10&quot;
+  &quot;SELECT * FROM users
+    TABLESAMPLE BERNOULLI (1)
+    WHERE profile_visible
+    ORDER BY lastname
+    LIMIT 10;&quot;
 );
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 </code></pre></div>
 
-<p>Ab Version 9.5 gibt es eine effizientere Methode mit
-<code>TABLESAMPLE</code> <a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">*</a>,</p>
+<p>Für sehr kleine Tabellen funktioniert diese Methode besser:</p>
 
-<p>In anderen relationalen Datenbanken gibt es dafür andere Lösungen.</p>
+<div class="example">
+<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in einer großen Tabelle</small></h4>
+<pre><code class="language-php  linenums">$query =$dbh-&gt;query(
+  &quot;SELECT * FROM users
+    TABLESAMPLE BERNOULLI (1)
+    WHERE profile_visible
+    ORDER BY lastname
+    LIMIT 10;&quot;
+);
+$personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -405,13 +369,13 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
       <h1>Lesen aus der Datenbank</h1>
       <p>
           vorige Präsentation:
-        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a> | 
+        <a href="/php-db-lesen/start//slide.html">PHP und Datenbank</a> | 
         <a href="/php-db-lesen/datenbank-lesen/"
           >zurück zum Buch-Kapitel [esc]</a
         >
          
         | Nächste Präsentation
-        <a href="/php-db-lesen/effizent//slide.html">Effizient Arbeiten mit der DB</a>
+        <a href="/php-db-lesen/struktur-webapplikation//slide.html">Struktur einer Web-Applikation</a>
         
       </p>
     </div>
