@@ -287,7 +287,7 @@ nur sichtbare Profil angezeigt werden.</p>
 <p>Wie kann man zufällige Datensätze auswählen?</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in einer großen Tabelle</small></h4>
+<h4 class="caption">Php Code <small>Abfrage von 10 zufälligen Datensätzen in einer großen Tabelle</small></h4>
 <pre><code class="language-php  linenums">$query =$dbh-&gt;query(
   &quot;SELECT * FROM users
     TABLESAMPLE BERNOULLI (1)
@@ -301,13 +301,11 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <p>Für sehr kleine Tabellen funktioniert diese Methode besser:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Abfrage von zufälligen Datensätzen in einer großen Tabelle</small></h4>
+<h4 class="caption">Php Code <small>Abfrage von 3 zufälligen Datensätzen in einer kleinen Tabelle</small></h4>
 <pre><code class="language-php  linenums">$query =$dbh-&gt;query(
   &quot;SELECT * FROM users
-    TABLESAMPLE BERNOULLI (1)
-    WHERE profile_visible
-    ORDER BY lastname
-    LIMIT 10;&quot;
+    ORDER BY RANDOM()
+    LIMIT 3;&quot;
 );
 $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 </code></pre></div>
@@ -329,6 +327,7 @@ $personen = $query-&gt;fetchAll(PDO::FETCH_OBJ);
 <ul>
   <li><a href="http://www.postgresql.org/docs/current/static/functions-aggregate.html">LIMIT anzahl OFFSET anfangsposition</a></li>
   <li><a href="http://www.postgresql.org/docs/8.1/static/queries-limit.html">COUNT(*)</a></li>
+  <li><a href="https://www.postgresql.org/docs/17/functions-math.html#FUNCTIONS-MATH-RANDOM-TABLE">RANDOM()</a></li>
   <li><a href="http://www.postgresql.org/docs/devel/static/sql-select.html#SQL-FROM">TABLESAMPLE</a></li>
 </ul>
  <div class="pagination do-not-print">
