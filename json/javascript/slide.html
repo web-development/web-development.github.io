@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>JSON und JavaScript - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>JSON und JavaScript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/json/syntax//slide.html">JSON Syntax</a> | 
+        <a href="/json/javascript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/json/php//slide.html">JSON und PHP</a>
+        
+      </p>
+    </div>
+    <div class="slide">
+<p>JSON ist ein Teil der Javascript Syntax. JSON erlaubt es Datenstrukturen
+deklarativ zu definieren.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="deklarativ">Deklarativ</h2>
+
+<p>Folgende Beispiel für JSON wurde aus der Wikidata API abgerufen
+und wird hier stark verkürzt dargestellt.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>JSON Beispiel</small></h4>
+<pre><code class="language-javascript  linenums">let o = {
+  &quot;id&quot;: &quot;Q701554&quot;,
+  &quot;labels&quot;: {
+    &quot;de&quot;: &quot;Fachhochschule Salzburg&quot;,
+    &quot;en&quot;: &quot;Salzburg University of Applied Sciences&quot;,
+  },
+  &quot;aliases&quot;: {
+    &quot;de&quot;: [
+      &quot;Fachhochschule Holztechnikum Kuchl&quot;,
+      &quot;FH Salzburg&quot;,
+      &quot;FH Puch&quot;,
+      &quot;Fachhochschule Urstein&quot;
+    ]
+  }
+};
+</code></pre></div>
+
+<p>Mit dieser Schreibweise wird ein Objekt mit vier Eigenschaften definiert.
+Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]</code>) gespeichert werden.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="imperativ">Imperativ</h2>
+
+<p>Man hätte die selbe Datenstruktur auch imperativ aufbauen können:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>ohne JSON</small></h4>
+<pre><code class="language-javascript  linenums">let o = new Object();
+o.id = &quot;Q701554;
+o.labels = new Object();
+o.labels.de =  &quot;Fachhochschule Salzburg&quot;;
+o.labels.en =  &quot;Salzburg University of Applied Sciences&quot;;
+o.aliases = new Object();
+o.aliases.de = new Array();
+o.aliases.de[0] = &quot;Fachhochschule Holztechnikum Kuchl&quot;;
+o.aliases.de[1] = &quot;FH Salzburg&quot;;
+o.aliases.de[2] = &quot;FH Puch&quot;;
+o.aliases.de[3] = &quot;Fachhochschule Urstein;
+</code></pre></div>
+
+<p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="json-und-javascript">JSON und Javascript</h2>
+
+<p>Für die Serialisierung und Deserialisierung verwendet man das JSON Objekt:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>(De)Serialisierung von JSON</small></h4>
+<pre><code class="language-javascript  linenums">string = JSON.stringify( o );
+o      = JSON.parse(string);
+</code></pre></div>
+
+<p>Achtung: nicht alle JavaScript Strukturen lassen sich als JSON String Serialisieren!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="nicht-serialisierbare-datentypen">Nicht serialisierbare Datentypen</h2>
+
+<p>Nicht jeder Datentyp von JavaScript ist serialisierbar.
+Wie man in folgendem Beispiel sieht wird die Funktion
+und der Eintrag mit Wert <code>undefined</code> nicht serialisiert:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Serialisieren</small></h4>
+<pre><code class="language-javascript  linenums">let o = {
+  &quot;a&quot;: &quot;blabla&quot;,
+  &quot;b&quot;: 42,
+  &quot;c&quot;: true,
+  &quot;d&quot;: undefined,
+  &quot;e&quot;: null,
+  &quot;f&quot;: new Date(2036, 0, 2, 15, 4, 5),
+  &quot;g&quot;: x =&gt; 2 * x,
+  &quot;h&quot;: [1, 2, 3]
+}
+let s = JSON.stringify(o);
+console.log(s);
+/*
+{&quot;a&quot;:&quot;blabla&quot;,&quot;b&quot;:42,&quot;c&quot;:true,&quot;e&quot;:null,&quot;f&quot;:&quot;2036-01-02T14:04:05.000Z&quot;,&quot;h&quot;:[1,2,3]}
+*/
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="nicht-deserialisierbare-datentypen">Nicht deserialisierbare Datentypen</h2>
+
+<p>Wenn wir nun den String wieder deserialisieren, ensteht nicht
+eine genaue Kopie des ursprünglichen Objekts, es gibt einige Änderungen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>Deserialisieren</small></h4>
+<pre><code class="language-javascript  linenums">let p = JSON.parse(s);
+for(key in o) {
+  if (typeof o[key] == typeof p[key]) {
+    console.log(`${o[key]} still has type ${typeof o[key]}.` )
+  } else {
+    console.log(`${o[key]} had type ${typeof o[key]}, is now type ${typeof p[key]}!` )
+  }
+}
+</code></pre></div>
+
+<p>Der Output lautet:</p>
+
+<div class="example">
+<pre><code class="language-plain  linenums">blabla still has type string.
+42 still has type number.
+undefined still has type undefined.
+null still has type object.
+Wed Jan 02 2036 15:04:05 had type object, is now type string!
+x =&gt; 2 * x had type function, is now type undefined!
+1,2,3 still has type object.
+</code></pre></div>
+
+<p>Aus dem Date-Objekt wurde nur ein String. Es bräuchte einen
+separaten Verarbeitungschritt um daraus wieder ein Date Objekt zu machen:</p>
+
+<p><code>p.f = new Date(p.f);</code></p>
+
+</div>
+<div class="slide">
+
+
+
+<p>Es gäbe noch eine zweite Art den String in eine Javscript-Datenstruktur
+umzuwandeln: Der Javascript-Befehl <code>eval</code> interpretiert einen String
+als Javascript Code und führt das Programm aus.</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>eval</small></h4>
+<pre><code class="language-javascript  linenums">javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
+eval( javascript_string );
+console.log(o);
+console.log( o.f(o.data) );  // 84
+</code></pre></div>
+
+<p>In diesem Beispiel kann man aus dem Code klar herauslesen was passieren wird,
+das ist unproblematisch.</p>
+
+<p>Für die Behandlung von “fremden” Daten, z.B. Input über ein Web Formular, ist <code>eval</code>
+nicht geeignet!</p>
+
+</div>
+<div class="slide">
+
+<h2 id="referenz">Referenz</h2>
+
+<ul>
+  <li><a href="http://json.org/json-de.html">JSON: Syntax</a></li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>JSON und JavaScript</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/json/syntax//slide.html">JSON Syntax</a> | 
+        <a href="/json/javascript/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/json/php//slide.html">JSON und PHP</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

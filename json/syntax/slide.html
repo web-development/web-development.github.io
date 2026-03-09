@@ -82,28 +82,23 @@
         >
          
         | Nächste Präsentation
-        <a href="/json/php//slide.html">JSON und PHP</a>
+        <a href="/json/javascript//slide.html">JSON und JavaScript</a>
         
       </p>
     </div>
-    <div class="slide"><p>Mit JSON kann man Datenstrukturen aus null, true, false, Zahlen, Strings,
-Arrays und Objekten in Javscript deklarativ anschreiben.</p>
+    <div class="slide"><p>Mit JSON kann man einfache Datenstrukturen einer Text-Datei speichern.
+Viele Programmiersprachen können damit arbeiten.</p>
 
 </div>
 <div class="slide">
 
-
-
-<p>JSON ist ein Teil der Javascript Syntax. JSON erlaubt es Datenstrukturen
-deklarativ zu definieren.</p>
+<h2 id="beispiel">Beispiel</h2>
 
 <p>Folgende Beispiel für JSON wurde aus der Wikidata API abgerufen
-und wird hier stark verkürzt dargestellt,
-das <a href="https://www.wikidata.org/w/rest.php/wikibase/v0/entities/items/Q701554">original</a> ist umfangreicher.</p>
+und wird hier stark verkürzt dargestellt.</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>JSON Beispiel</small></h4>
-<pre><code class="language-javascript  linenums">let o = {
+<pre><code class="language-javascript  linenums">{
   &quot;id&quot;: &quot;Q701554&quot;,
   &quot;labels&quot;: {
     &quot;de&quot;: &quot;Fachhochschule Salzburg&quot;,
@@ -126,134 +121,20 @@ Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]
 </div>
 <div class="slide">
 
-
-
-<p>Man hätte die selbe Datenstruktur auch imperativ aufbauen können:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>ohne JSON</small></h4>
-<pre><code class="language-javascript  linenums">let o = new Object();
-o.id = &quot;Q701554;
-o.labels = new Object();
-o.labels.de =  &quot;Fachhochschule Salzburg&quot;;
-o.labels.en =  &quot;Salzburg University of Applied Sciences&quot;;
-o.aliases = new Object();
-o.aliases.de = new Array();
-o.aliases.de[0] = &quot;Fachhochschule Holztechnikum Kuchl&quot;;
-o.aliases.de[1] = &quot;FH Salzburg&quot;;
-o.aliases.de[2] = &quot;FH Puch&quot;;
-o.aliases.de[3] = &quot;Fachhochschule Urstein;
-</code></pre></div>
-
-<p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar.</p>
-
-</div>
-<div class="slide">
-
-<h2 id="json-und-javascript">JSON und Javascript</h2>
+<h2 id="json-und-programmiersprache">JSON und Programmiersprache</h2>
 
 <p>Für den Datenaustausch über das Netzwerk oder über eine Datei
-wird die JSON-Schreibweise als String gespeichert. Das nennt man
+wird die JSON-Schreibweise als Text gespeichert.</p>
+
+<p>In einer Programmiersprache kann man die Datei laden, und in eine
+Datenstruktur der Programmiersprache umwandeln.
+Das nennt man Deserialisierung.</p>
+
+<p>Umgekehrt kann man aus einer Datenstrkutur der Programmiersprache
+die JSON-Darstellung machen, das nennt man
 “Serialisierung”<a href="http://de.wikipedia.org/wiki/Serialisierung">→</a>.</p>
 
-<p>Am anderen Ende wird dann aus dem String wieder die Datenstruktur,
-das nennt man Deserialisierung.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>(De)Serialisierung von JSON</small></h4>
-<pre><code class="language-javascript  linenums">string = JSON.stringify( o );
-o      = JSON.parse(string);
-</code></pre></div>
-
-<p>Achtung: nicht alle JavaScript Strukturen lassen sich als JSON String Serialisieren!</p>
-
-</div>
-<div class="slide">
-
-<h2 id="nicht-serialisierbare-datentypen">Nicht serialisierbare Datentypen</h2>
-
-<p>Nicht jeder Datentyp von JavaScript ist serialisierbar.
-Wie man in folgendem Beispiel sieht wird die Funktion
-und der Eintrag mit Wert <code>undefined</code> nicht serialisiert:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Serialisieren</small></h4>
-<pre><code class="language-javascript  linenums">let o = {
-  &quot;a&quot;: &quot;blabla&quot;,
-  &quot;b&quot;: 42,
-  &quot;c&quot;: true,
-  &quot;d&quot;: undefined,
-  &quot;e&quot;: null,
-  &quot;f&quot;: new Date(2036, 0, 2, 15, 4, 5),
-  &quot;g&quot;: x =&gt; 2 * x,
-  &quot;h&quot;: [1, 2, 3]
-}
-let s = JSON.stringify(o);
-console.log(s);
-/*
-{&quot;a&quot;:&quot;blabla&quot;,&quot;b&quot;:42,&quot;c&quot;:true,&quot;e&quot;:null,&quot;f&quot;:&quot;2036-01-02T14:04:05.000Z&quot;,&quot;h&quot;:[1,2,3]}
-*/
-</code></pre></div>
-
-</div>
-<div class="slide">
-
-<h2 id="nicht-deserialisierbare-datentypen">Nicht deserialisierbare Datentypen</h2>
-
-<p>Wenn wir nun den String wieder deserialisieren, ensteht nicht
-eine genaue Kopie des ursprünglichen Objekts, es gibt einige Änderungen:</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>Deserialisieren</small></h4>
-<pre><code class="language-javascript  linenums">let p = JSON.parse(s);
-for(key in o) {
-  if (typeof o[key] == typeof p[key]) {
-    console.log(`${o[key]} still has type ${typeof o[key]}.` )
-  } else {
-    console.log(`${o[key]} had type ${typeof o[key]}, is now type ${typeof p[key]}!` )
-  }
-}
-</code></pre></div>
-
-<p>Der Output lautet:</p>
-
-<div class="example">
-<pre><code class="language-plain  linenums">blabla still has type string.
-42 still has type number.
-undefined still has type undefined.
-null still has type object.
-Wed Jan 02 2036 15:04:05 had type object, is now type string!
-x =&gt; 2 * x had type function, is now type undefined!
-1,2,3 still has type object.
-</code></pre></div>
-
-<p>Aus dem Date-Objekt wurde nur ein String. Es bräuchte einen
-separaten Verarbeitungschritt um daraus wieder ein Date Objekt zu machen:</p>
-
-<p><code>p.f = new Date(p.f);</code></p>
-
-</div>
-<div class="slide">
-
-
-
-<p>Es gäbe noch eine zweite Art den String in eine Javscript-Datenstruktur
-umzuwandeln: Der Javascript-Befehl <code>eval</code> interpretiert einen String
-als Javascript Code und führt das Programm aus.</p>
-
-<div class="example">
-<h4 class="caption">Javascript Code <small>eval</small></h4>
-<pre><code class="language-javascript  linenums">javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
-eval( javascript_string );
-console.log(o);
-console.log( o.f(o.data) );  // 84
-</code></pre></div>
-
-<p>In diesem Beispiel kann man aus dem Code klar herauslesen was passieren wird,
-das ist unproblematisch.</p>
-
-<p>Für die Behandlung von “fremden” Daten, z.B. Input über ein Web Formular, ist <code>eval</code>
-nicht geeignet!</p>
+<p>Achtung: nicht alle  Datenstrukturen lassen sich als JSON String serialisieren!</p>
 
 </div>
 <div class="slide">
@@ -275,7 +156,7 @@ nicht geeignet!</p>
         >
          
         | Nächste Präsentation
-        <a href="/json/php//slide.html">JSON und PHP</a>
+        <a href="/json/javascript//slide.html">JSON und JavaScript</a>
         
       </p>
     </div>

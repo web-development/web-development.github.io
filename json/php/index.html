@@ -53,11 +53,18 @@
       </h2>
       <a href="/json/php/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Die PHP Datenstrukturen passen nicht gut zu JSON, deswegen
-gibt es beim Serialisieren zu JSON Probleme.</p>
-
+     <div id="slide-1" title="Folie Nr. 1"></div>
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="serialisierung">Serialisierung</h2>
+
+<p>Der PHP Befehl lautet <code>json_encode</code>.</p>
+
+<p>Welche Datenstrukturen von PHP lassen sich zu JSON serialisieren?</p>
+
+
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
 <h2 id="objekt">Objekt</h2>
 
@@ -73,7 +80,7 @@ echo json_encode( $object );
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
 <h2 id="array">Array</h2>
 
@@ -87,7 +94,7 @@ echo json_encode( $array );
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="assoziatives-array">Assoziatives Array</h2>
 
@@ -101,7 +108,7 @@ echo json_encode( $array );
 // {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
 </code></pre></div>
 
-<p>In JSON gibt es keine entsprechung für das Assoziative Array
+<p>In JSON gibt es keine Entsprechung für das Assoziative Array
 in PHP. Deswegen wird es als Objekt dargestellt.  Wenn man
 dieses Objekt wieder in JSON zurück wandelt erhält man aber
 ein PHP Objekt mit einer Property “0”:</p>
@@ -111,7 +118,7 @@ ein PHP Objekt mit einer Property “0”:</p>
 $string = json_encode( $array );
 // {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
 $o = json_decode( $string );
-print_r( $o );
+var_export( $o );
 //  stdClass Object
 //  (
 //    [foo] =&gt; 10
@@ -124,12 +131,13 @@ echo &quot;Wert von 0: &quot; . $o-&gt;{&#39;0&#39;};
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 
 
 <p>Im zweiten Argument von <code>json_decode</code> kann man angeben ob
-<strong>alle</strong> Objekte als Assoziative Arrays decodiert werden sollen:</p>
+<strong>alle</strong> Objekte als Assoziative Arrays decodiert werden sollen - das
+ist meist die bessere Lösung:</p>
 
 <div class="example">
 <pre><code class="language-php  linenums">$string = &#39;{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}&#39;;
@@ -147,7 +155,36 @@ echo &quot;Wert von 0: &quot; . $o[0];
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h2 id="json-als-rckgabewert">JSON als Rückgabewert</h2>
+
+<p>Normalerweise liefert ein PHP Programm als Output HTML. Wenn man statt dessen JSON ausliefern will muss man den HTTP-Header ‘Content-Type’ und eventuell den HTTP Response Code entsprechend setzen.</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">header(&quot;Content-type: application/json; charset=utf-8&quot;);
+http_response_code(200);
+echo json_encode($data);
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h2 id="deserialierung">Deserialierung</h2>
+
+<p>Mit dem Befehl <code>file_get_contents</code> kann man den gesamten Inhalt einer Datei lesen:</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$string_or_false = file_get_contents(&#39;some_data.json&#39;);
+if($string_or_false == false) {
+  echo &quot;Error reading file&quot;;
+  exit();
+}
+$data = json_decode($string, true);
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="referenz">Referenz</h2>
 
@@ -160,7 +197,7 @@ echo &quot;Wert von 0: &quot; . $o[0];
     
       
       
-      <li><a href="/json/syntax/">JSON Syntax</a></li>
+      <li><a href="/json/javascript/">JSON und JavaScript</a></li>
       
       
       
@@ -745,6 +782,10 @@ echo &quot;Wert von 0: &quot; . $o[0];
                     
                       
                       <li ><a href="/json/syntax/">JSON Syntax</a></li>
+                      
+                    
+                      
+                      <li ><a href="/json/javascript/">JSON und JavaScript</a></li>
                       
                     
                       

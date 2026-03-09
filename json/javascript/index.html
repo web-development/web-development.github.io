@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Regular Expressions</title>
+  <title>Lehrbuch Web-Development - JSON und JavaScript</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -49,518 +49,190 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Regular Expressions
+        JSON und JavaScript
       </h2>
-      <a href="/advanced-javascript/regular-expressions/slide.html" class="do-not-print">als Präsentation ▻</a>
+      <a href="/json/javascript/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div><p>Regular Expressions sind eine kleine “Programmiersprache in der Programmiersprache”,
-eine besondere Schreibweise die es erlaubt in Strings nach Mustern zu suchen
-und Ersetzungen vorzunehmen.</p>
+     <div id="slide-1" title="Folie Nr. 1"></div>
+<p>JSON ist ein Teil der Javascript Syntax. JSON erlaubt es Datenstrukturen
+deklarativ zu definieren.</p>
 
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
 
+<h2 id="deklarativ">Deklarativ</h2>
 
+<p>Folgende Beispiel für JSON wurde aus der Wikidata API abgerufen
+und wird hier stark verkürzt dargestellt.</p>
 
-<p>Mit Regular Expressions kann man die Welt retten:</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>JSON Beispiel</small></h4>
+<pre><code class="language-javascript  linenums">let o = {
+  &quot;id&quot;: &quot;Q701554&quot;,
+  &quot;labels&quot;: {
+    &quot;de&quot;: &quot;Fachhochschule Salzburg&quot;,
+    &quot;en&quot;: &quot;Salzburg University of Applied Sciences&quot;,
+  },
+  &quot;aliases&quot;: {
+    &quot;de&quot;: [
+      &quot;Fachhochschule Holztechnikum Kuchl&quot;,
+      &quot;FH Salzburg&quot;,
+      &quot;FH Puch&quot;,
+      &quot;Fachhochschule Urstein&quot;
+    ]
+  }
+};
+</code></pre></div>
 
-<p><img src="/images/regex-hero.png"  alt="" ></p>
-
-<p>Basierend auf <a href="http://xkcd.com/208/">http://xkcd.com/208/</a> von Randall Munroe - verändert und verwendet unter der <a href="https://creativecommons.org/licenses/by-nc/2.5/">CC-BY-NC</a> Lizenz</p>
+<p>Mit dieser Schreibweise wird ein Objekt mit vier Eigenschaften definiert.
+Als Werte können weitere Objekte (mit <code>{}</code>) und Arrays (mit <code>[]</code>) gespeichert werden.</p>
 
 
 <a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
+<h2 id="imperativ">Imperativ</h2>
 
+<p>Man hätte die selbe Datenstruktur auch imperativ aufbauen können:</p>
 
-<p>Regular Expressions sind keine Besonderheit von Javascript.
-und die meisten Programmiersprachen bieten Regular Expressions an. Egal ob Sie also mit vi, grep, mod_rewrite,
-Javascript, C++ oder Ruby arbeiten, alles was Sie über Regular Expressions lernen
-zahlt sich aus!</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>ohne JSON</small></h4>
+<pre><code class="language-javascript  linenums">let o = new Object();
+o.id = &quot;Q701554;
+o.labels = new Object();
+o.labels.de =  &quot;Fachhochschule Salzburg&quot;;
+o.labels.en =  &quot;Salzburg University of Applied Sciences&quot;;
+o.aliases = new Object();
+o.aliases.de = new Array();
+o.aliases.de[0] = &quot;Fachhochschule Holztechnikum Kuchl&quot;;
+o.aliases.de[1] = &quot;FH Salzburg&quot;;
+o.aliases.de[2] = &quot;FH Puch&quot;;
+o.aliases.de[3] = &quot;Fachhochschule Urstein;
+</code></pre></div>
 
-<p>Auch in Kommandozeilne Befehlen (vi, sed) und Editoren gibt es Regular Expressions, z.B. in Visual Studio Code:</p>
-
-<p><img src="/images/advanced-javascript/vscode.png" srcset="/images/advanced-javascript/vscode.png 1x, /images/advanced-javascript/vscode@2x.png 2x"  alt="" ></p>
-
-<p>Vielleicht kennst Du Regular Expressions also schon? Wie schätzt Du Dich selbst ein? ⭐? 🌧?</p>
+<p>Die deklarative Schreibweise in JSON ist aber einfacher lesbar.</p>
 
 
 <a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
 
+<h2 id="json-und-javascript">JSON und Javascript</h2>
 
+<p>Für die Serialisierung und Deserialisierung verwendet man das JSON Objekt:</p>
 
-<p><a href="http://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck">Reguläre Ausdrücke</a> sind
-ein Konzept aus der Theoretischen Informatik. Diese ursprünglichen regulären Ausdrücke
-bieten nur 3 Operatoren an. Bei der praktischen Umsetzung wurden mehr und mehr Operatoren hinzugefügt.</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>(De)Serialisierung von JSON</small></h4>
+<pre><code class="language-javascript  linenums">string = JSON.stringify( o );
+o      = JSON.parse(string);
+</code></pre></div>
 
-<p>Diese Kapitel beschreibt die praktische Umsetzung, und nicht den Begriff aus der theoretischen Informatik.</p>
+<p>Achtung: nicht alle JavaScript Strukturen lassen sich als JSON String Serialisieren!</p>
 
 
 <a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
+<h2 id="nicht-serialisierbare-datentypen">Nicht serialisierbare Datentypen</h2>
 
+<p>Nicht jeder Datentyp von JavaScript ist serialisierbar.
+Wie man in folgendem Beispiel sieht wird die Funktion
+und der Eintrag mit Wert <code>undefined</code> nicht serialisiert:</p>
 
-<p>Regular Expressions nennt man oft auch Muster (en: patterns), man spricht von
-Mustersuche (en: pattern matching). Wenn ein Muster auf ein Zeichenkette zutrifft
-sagt man auf Halb-Englisch: “der Pattern matched”.</p>
+<div class="example">
+<h4 class="caption">Javascript Code <small>Serialisieren</small></h4>
+<pre><code class="language-javascript  linenums">let o = {
+  &quot;a&quot;: &quot;blabla&quot;,
+  &quot;b&quot;: 42,
+  &quot;c&quot;: true,
+  &quot;d&quot;: undefined,
+  &quot;e&quot;: null,
+  &quot;f&quot;: new Date(2036, 0, 2, 15, 4, 5),
+  &quot;g&quot;: x =&gt; 2 * x,
+  &quot;h&quot;: [1, 2, 3]
+}
+let s = JSON.stringify(o);
+console.log(s);
+/*
+{&quot;a&quot;:&quot;blabla&quot;,&quot;b&quot;:42,&quot;c&quot;:true,&quot;e&quot;:null,&quot;f&quot;:&quot;2036-01-02T14:04:05.000Z&quot;,&quot;h&quot;:[1,2,3]}
+*/
+</code></pre></div>
 
 
 <a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
-<h2 id="verwendung-von-regular-expressions">Verwendung von Regular Expressions</h2>
+<h2 id="nicht-deserialisierbare-datentypen">Nicht deserialisierbare Datentypen</h2>
 
-<p>In Javascript gibt es viele verschiedene Schreibweise für Regular Expressions,
-wir beginnen mit der Methode <code>match</code> des String-Objekts:</p>
+<p>Wenn wir nun den String wieder deserialisieren, ensteht nicht
+eine genaue Kopie des ursprünglichen Objekts, es gibt einige Änderungen:</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>match</small></h4>
-<pre><code class="language-javascript  linenums">var s = &quot;begreifen&quot;;
-if( s.match(/greif/) ) {
-  console.log(&quot;greif gefunden!&quot;);
+<h4 class="caption">Javascript Code <small>Deserialisieren</small></h4>
+<pre><code class="language-javascript  linenums">let p = JSON.parse(s);
+for(key in o) {
+  if (typeof o[key] == typeof p[key]) {
+    console.log(`${o[key]} still has type ${typeof o[key]}.` )
+  } else {
+    console.log(`${o[key]} had type ${typeof o[key]}, is now type ${typeof p[key]}!` )
+  }
 }
 </code></pre></div>
 
-<p>Hier wird im String “begreifen” nach dem String “greif” gesucht.
-Falls er gefunden wird (ja, wird er), gibt die Match-Methoden einen
-Wert zurück, der als wahr gilt.</p>
+<p>Der Output lautet:</p>
+
+<div class="example">
+<pre><code class="language-plain  linenums">blabla still has type string.
+42 still has type number.
+undefined still has type undefined.
+null still has type object.
+Wed Jan 02 2036 15:04:05 had type object, is now type string!
+x =&gt; 2 * x had type function, is now type undefined!
+1,2,3 still has type object.
+</code></pre></div>
+
+<p>Aus dem Date-Objekt wurde nur ein String. Es bräuchte einen
+separaten Verarbeitungschritt um daraus wieder ein Date Objekt zu machen:</p>
+
+<p><code>p.f = new Date(p.f);</code></p>
 
 
 <a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 
 
-<p>Für diesen einfachsten Fall wird man aber nicht eine RegEx verwenden,
-sondern <code>indexOf</code>: diese Methode gibt -1 zurück falls der String
-nicht gefunden wurde, und die Position der Fundstelle anderfalls.</p>
+<p>Es gäbe noch eine zweite Art den String in eine Javscript-Datenstruktur
+umzuwandeln: Der Javascript-Befehl <code>eval</code> interpretiert einen String
+als Javascript Code und führt das Programm aus.</p>
 
 <div class="example">
-<h4 class="caption">Javascript Code <small>match</small></h4>
-<pre><code class="language-javascript  linenums">var s = &quot;begreifen&quot;;
-if( s.indexOf(&#39;greif&#39;) &gt; -1) {
-  console.log(&quot;greif gefunden!&quot;);
-}
+<h4 class="caption">Javascript Code <small>eval</small></h4>
+<pre><code class="language-javascript  linenums">javascript_string = &quot;o = { &#39;data&#39;: 42, f: x =&gt; 2*x };&quot;;
+eval( javascript_string );
+console.log(o);
+console.log( o.f(o.data) );  // 84
 </code></pre></div>
+
+<p>In diesem Beispiel kann man aus dem Code klar herauslesen was passieren wird,
+das ist unproblematisch.</p>
+
+<p>Für die Behandlung von “fremden” Daten, z.B. Input über ein Web Formular, ist <code>eval</code>
+nicht geeignet!</p>
 
 
 <a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
-<h2 id="zeichenkette">Zeichenkette</h2>
-
-<p>Die einfachste Regular Expression besteht aus einer
-Zeichenkette, nach der “wörtlich” gesucht werden soll.
-Falls die Zeichenkette irgendwo im String gefunden wird
-ist die Suche erfolgreich:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/hallo/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=hallo&amp;listname=hallo&amp;list%5B%5D%3D%26list%5B%5D%3Dhallo%26list%5B%5D%3Daber%2Bhallo%21%26list%5B%5D%3Ddie%2Bhallobergrenze%26list%5B%5D%3Dhalo%26list%5B%5D%3DHallo">RegEx Tester: /hallo/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
-
-<h2 id="alternative">Alternative</h2>
-
-<p>Mit dem senkrechten Strich <code>|</code> kann man Alternative definieren, er
-entspricht also einem logischen “oder”;</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/en|sk|zh|us|uk/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=en%7Csk%7Czh%7Cus%7Cuk&amp;listname=L%C3%A4nder&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3Desuu">RegEx Tester: /en|sk|zh|us|uk/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
-
-<h2 id="verankern">Verankern</h2>
-
-<p>Mit den Zeichen Zirkumflex <code>^</code> und Dollar <code>$</code> kann die Suche am
-Anfang bzw. Ende der Strings verankert werden.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/^Am Anfang war/
-/dann leben sie noch heute.$/
-/^Ganzer String$/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%28en%7Csk%7Cus%7Cuk%29%24&amp;listname=countries&amp;list%5B%5D%3D%26list%5B%5D%3Den%26list%5B%5D%3Dsk%26list%5B%5D%3Duk%26list%5B%5D%3Dukulele%26list%5B%5D%3DMaske%26list%5B%5D%3Dschlafen">RegEx Tester: /^(en|sk|us|uk)$/</a></p>
-
-<p>Achtung: der Zirkumflex <code>^</code> hat auch noch andere Bedeutungen (wenn er nicht am Anfang des Patterns steht).</p>
-
-
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
-
-<h2 id="zeichen-klassen">Zeichen-Klassen</h2>
-
-<p>Wenn für ein Zeichen im String mehrere Zeichen zur
-Auswahl stehen fasst man sie in einer “Zeichen-Klasse” (en: “character class”) zusammen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/[aeiou]/
-</code></pre></div>
-
-<p>Achtung! Eine Erwähnung der Zeichenklasse matched genau ein Zeichen im String, nicht mehrere Zeichen!</p>
-
-<p><a href="/images/match.html?pattern=hall%5Boia%5D&amp;listname=hallos&amp;list%5B%5D%3D%26list%5B%5D%3Dhalli%26list%5B%5D%3Dhallo%26list%5B%5D%3Dhalla%26list%5B%5D%3Dhalloi%26list%5B%5D%3Dhall%26list%5B%5D%3Dhall%C3%B6">RegEx Tester: /hall[oia]/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
-
-<h2 id="zeichen-klasse-mit-zeichenbereich">Zeichen-Klasse mit Zeichenbereich</h2>
-
-<p>Mit einem Bindestrich <code>-</code> innerhalb der Klasse kann
-man einen Bereich von Zeichen angeben, die im Zeichensatz hintereinander
-stehen.</p>
-
-<p>Die folgenden beiden pattern sind also gleichbedeutend:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/[abcdef]/
-/[a-f]/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5Ba-z%5D&amp;listname=buchstaben&amp;list%5B%5D%3D%26list%5B%5D%3Da%26list%5B%5D%3Db%26list%5B%5D%3Dc%26list%5B%5D%3Dx%26list%5B%5D%3Dy%26list%5B%5D%3Dz%26list%5B%5D%3DA%26list%5B%5D%3D.%26list%5B%5D%3D%25">RegEx Tester: /[a-z]/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
-
-<h2 id="komplement-der-zeichen-klasse">Komplement der Zeichen-Klasse</h2>
-
-<p>Mit dem Zirkumflex <code>^</code> kann man das Komplement der Zeichen-Klasse bilden,
-es werden dann alle Zeichen gematched die <strong>nicht</strong> in der eckigen
-Klammer erwähnt werden:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/[^aeiou]/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=u%5B%5E1234%5D&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Dusa">RegEx Tester: /u[^1234]/</a></p>
-
-<p>Achtung: das war die zweite Bedeutung des Zirkumflex <code>^</code>, wenn er am Anfang der Klasse steht.</p>
-
-
-<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
-
-<h2 id="abkrzungen-fr-hufig-benutze-zeichenklassen">Abkürzungen für häufig benutze Zeichenklassen</h2>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/\d/       eine Ziffer, entspricht /[0-9]/
-/\D/       keine Ziffer, entspricht /[^0-9]/
-/\w/       Wort-Zeichen, entspricht /[a-zA-Z0-9_]/
-/\W/       kein Wort-Zeichen, entspricht /[^a-zA-Z0-9_]/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=u%5Cd&amp;listname=U-Bahnen&amp;list%5B%5D%3D%26list%5B%5D%3Du1%26list%5B%5D%3Du2%26list%5B%5D%3Du3%26list%5B%5D%3Du4%26list%5B%5D%3Du5%26list%5B%5D%3Du6%26list%5B%5D%3Du9%26list%5B%5D%3Dusa">RegEx Tester: /u\d/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
-
-<h2 id="plus-operator-mindestens-einmal-oder-mehrmals">Plus-Operator: mindestens einmal, oder mehrmals</h2>
-
-<p>Der Plus-Operator erlaubt eine Wiederholung des vorigen Zeichens. Um also <code>"i"</code> und <code>"iiii"</code> und <code>"wir sind die Ritter die ni sagen"</code> zu matchen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/i+/  
-</code></pre></div>
-
-<p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/\d+/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5Cd%2B&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da123">RegEx Tester: /\d+/</a></p>
-
-<p>Wenn man sich den Operator als Schleife vorstellt, kann
-bei jeder “Wiederholung” ein anderes Zeichen aus der Klasse oder eine
-andere Alternative gewählt werden:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/(do|re|mi)+/
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
-
-<h2 id="bung">Übung</h2>
-
-<p>Eine kurze Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-17" href="slide.html#slide-17"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 17">▻</a>
-
-<h2 id="irgend-ein-zeichen">Irgend ein Zeichen</h2>
-
-<p>Der Punkt <code>.</code> steht für <strong>ein</strong> beliebiges Zeichen. Achtung, Verwechslungsgefahr:
-bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/^...$/       genau drei Zeichen
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5E...%24&amp;listname=Studiengang&amp;list%5B%5D%3D%26list%5B%5D%3DNA%26list%5B%5D%3DMMT%26list%5B%5D%3Dmmt%26list%5B%5D%3D%2B%2B%2B%26list%5B%5D%3D___%26list%5B%5D%3DMMT-B">RegEx Tester: /^…$/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-18" href="slide.html#slide-18"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 18">▻</a>
-
-<h2 id="ein-echter-punkt">Ein echter Punkt</h2>
-
-<p>Da der Punkt <code>.</code> eine besondere Bedeutung in einer Regular Expression
-hat stellt sich die Frage: wie erkennt man dann einen echten Punkt?
-Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\</code>.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/\./     ein echter punkt
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd%5C.%5Cd%24&amp;listname=Kapitel-Nummern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D1.1%26list%5B%5D%3D1.2%26list%5B%5D%3D1.3%26list%5B%5D%3D2%26list%5B%5D%3D2.1%26list%5B%5D%3D2.2%26list%5B%5D%3D35%26list%5B%5D%3D35.1">RegEx Tester: /^\d.\d$/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-19" href="slide.html#slide-19"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 19">▻</a>
-
-<h2 id="stern-operator-beliebig-viele">Stern-Operator: beliebig viele</h2>
-
-<p>Wir kennen schon den Plus-Operator. Der Stern-Operator erlaubt auch null Wiederholungen.</p>
-
-<p>Der Stern-Operator dient auch der Vervielfältigung: das davor stehende Zeichen
-kann nullmal, einmal oder mehrmals vorkommen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/i*/  
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-20" href="slide.html#slide-20"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 20">▻</a>
-
-<h2 id="fragezeichen-operator-einmal-oder-keinmal">Fragezeichen-Operator: einmal oder keinmal</h2>
-
-<p>Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/\d?/  
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%5E%5Cd%3F%24&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da1">RegEx Tester: /^\d?$/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-21" href="slide.html#slide-21"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 21">▻</a>
-
-<h2 id="gruppieren-und-merken">Gruppieren und Merken</h2>
-
-<p>Mit runden Klammern kann man Teile der Regular Expression zusammen fassen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/(de|fr)_(DE|CH)/
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=%28de%7Cfr%29_%28DE%7CCH%29&amp;listname=locale&amp;list%5B%5D%3D%26list%5B%5D%3Dde_DE%26list%5B%5D%3Dfr_DE%26list%5B%5D%3Dde_CH%26list%5B%5D%3Dfr_CH%26list%5B%5D%3Dde_AT%26list%5B%5D%3Dit_CH">RegEx Tester: /(de|fr)_(DE|CH)/</a></p>
-
-<p>Ausserdem stehen die von den Klammern gefundenen Teile des
-Strings nach der Auswertung zur Verfügung: die Methode <code>match</code>
-liefert ein Array als Rückgabewert, an der Stelle 0 ist der
-gesamte gefundene String gespeichert, auf 1, 2, 3 der Reihe
-nach die gefundnen Gruppen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">locale = &quot;de_CH&quot;;
-if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
-  console.log(&quot;gesamt:  &quot; + match[0]);
-  console.log(&quot;sprache: &quot; + match[1]);
-  console.log(&quot;land:    &quot; + match[2]);
-}
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-22" href="slide.html#slide-22"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 22">▻</a>
-
-<h2 id="bung-1">Übung</h2>
-
-<p>Eine längere Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-23" href="slide.html#slide-23"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 23">▻</a>
-
-<h2 id="operatoren-sind-gierig">Operatoren sind gierig</h2>
-
-<p>Die Operatoren <code>*</code> und <code>+</code> versuchen immer
-möglichst lange Strings zu erfassen.</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/o.*o/    möglichst viele Zeichen zwischen o und o
-</code></pre></div>
-
-<p>Diese Eigenschaft sieht man sehr gut in folgendem Beispiel:</p>
-
-<p><a href="/images/match.html?pattern=_.%2A_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*</em>/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-24" href="slide.html#slide-24"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 24">▻</a>
-
-
-
-<p>Wie kann man das gierige Verhalten der Operatoren umgehen?</p>
-
-<p>Die “altmodisch” Methode ist eine Komplement-Klasse:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/o[^o]*o/    
-</code></pre></div>
-
-<p>Hier wird ein erstes o gematched, dann kommen (null bis viele) zeichen
-die kein o sind, und dann ein zweites o. Damit ist der Pattern beendet,
-auch wenn es später im String noch weitere o’s geben würde.</p>
-
-<p><a href="/images/match.html?pattern=_%5C%5B%5E_%5C%5D%2A_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>[^</em>]*_/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-25" href="slide.html#slide-25"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 25">▻</a>
-
-
-
-<p>In modernen RegEx Engines gibt es nicht-gierige Varianten der
-Operatoren: ein Fragezeichen wird nachgestellt</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">/o(.*?)o/    
-/o(.+?)o/    
-</code></pre></div>
-
-<p><a href="/images/match.html?pattern=_.%2A%3F_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
-
-
-<a class="slide_break do-not-print" id="slide-26" href="slide.html#slide-26"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 26">▻</a>
-
-<h2 id="mehrmals-suchen">Mehrmals suchen</h2>
-
-<p>Alle bisher geschriebenen Patterns werden mit der Funktion <code>match</code>
-einmal gesucht. Wenn ich in einem string aber mehrere Vorkommen
-finden will, braucht es das global-Flag:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">m = &quot;Nana nana nana nana batman&quot;.match(/na/);
-// findet das erste na
-m = &quot;Nana nana nana nana batman&quot;.match(/na/g);
-// findet alle 7 nax
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-27" href="slide.html#slide-27"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 27">▻</a>
-
-<h2 id="warnhinweis-was-regex-nicht-kann">Warnhinweis: Was RegEx nicht kann</h2>
-
-<p>Mit dem letzten Beispiel könnte man nun in Versuchung kommen
-verschachtelte Ausdrücke wie HTML, XML, mathematische Ausdrücke, Programmiersprachen
-mit Hilfe von RegEx zu parsen.</p>
-
-<p>Das funktioniert aber nicht. Das müssten Sie an dieser Stelle
-einfach mal glauben - den Beweis überlassen wir der “Theoretischen Informatik”.</p>
-
-<p>Die Frage ob das geht kommt immer wieder auf StackOverflow,
-hier ist die <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags#answer-1732454">Standard Antwort</a>.</p>
-
-<p>Wenn Sie also in Javascript oder PHP HTML oder XML parsen wollen, dann
-verwenden Sie dafür einen der vielen fertigen Parser.</p>
-
-<p>Wenn Sie aus einem längeren HTML-Dokument “unverschachtelte” Teile wie
-z.B. <code>&lt;img&gt;</code> Tags herausholen wollen, dann könnsn Sie das mit Regular Expressions machen.
-Aber nichts komplizierteres.</p>
-
-
-<a class="slide_break do-not-print" id="slide-28" href="slide.html#slide-28"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 28">▻</a>
-
-<h2 id="ersetzen-mit-regular-expression-in-javascript">Ersetzen mit Regular Expression in Javascript</h2>
-
-<p>Ein häufiger Anwendungsfall von RegEx ist “Suchen und Ersetzen”</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase&quot;;
-s.replace(/Voldemort/, 
-          &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</code></pre></div>
-
-<p>Es erfolgt nur eine einzige Ersetzung. Mit dem Modifikator <code>g</code> am
-Ende der RegEx kann man alle Ersetzungen durchführen:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase. Voldemort ist verschwunden.&quot;;
-s.replace(/Voldemort/g, 
-          &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</code></pre></div>
-
-<p>Achtung, auch hier kommt man bald an die Grenzen
-von Regular Expressions:</p>
-
-<div class="example">
-<pre><code class="language-javascript  linenums">s = &quot;Harry greift Voldemort an. Voldemorts Zauberstab bricht.&quot;;
-s.replace(/Voldemort/g, 
-          &quot;Er, dessen Name nicht genannt werden darf,&quot;);
-</code></pre></div>
-
-<p>Dass im zweiten Satz ein anderer Fall notwendig wäre,
-und wie man das dann richtige formuliert,
-kann eine Regular Expression nicht erkennen. Dafür gibt es
-eine eigene Wissenschaft: die <a href="https://de.wikipedia.org/wiki/Computerlinguistik">Computer-Linguistik</a> beschäftigt
-sich mit der Analyse, Synthese und Übersetzung von natürlichen Sprachen.</p>
-
-
-<a class="slide_break do-not-print" id="slide-29" href="slide.html#slide-29"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 29">▻</a>
-
-<h2 id="regex-in-php">RegEx in PHP</h2>
-
-<div class="example">
-<h4 class="caption">Php Code <small>RegEx Beispiel-Code aus Wordpress Plugins</small></h4>
-<pre><code class="language-php  linenums"># Beispiel Link Suchen
-if (preg_match(&#39;/^(http)(s?)(:)\/\//&#39;,$linky)){ ...
-# Beispiel Sprache-Code
-if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
-</code></pre></div>
-
-<div class="example">
-<h4 class="caption">Php Code <small>Suchen mit RegEx in PHP</small></h4>
-<pre><code class="language-php  linenums">preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;) 
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-30" href="slide.html#slide-30"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 30">▻</a>
-
-<h2 id="tools">Tools</h2>
+<h2 id="referenz">Referenz</h2>
 
 <ul>
-  <li><a href="https://regexr.com/">regexr.com</a> ein CodePen für Regular Expressions</li>
+  <li><a href="http://json.org/json-de.html">JSON: Syntax</a></li>
 </ul>
 
-
-<a class="slide_break do-not-print" id="slide-31" href="slide.html#slide-31"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 31">▻</a>
-
-<h2 id="vertiefung">Vertiefung</h2>
-
-<ul>
-  <li><a href="http://www.youtube.com/watch?v=EkluES9Rvak">Video: Lea Verou Demystifying Regular Expressions</a></li>
-  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions">Regular Expressions Guide auf MDN</a></li>
-  <li><a href="http://de.wikipedia.org/wiki/Regular_Expression">Wikipedia: Regular Expression</a></li>
-</ul>
-
-
-<a class="slide_break do-not-print" id="slide-32" href="slide.html#slide-32"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 32">▻</a>
-
-<h2 id="merchandize">Merchandize</h2>
-
-<ul>
-  <li><a href="http://store-xkcd-com.myshopify.com/products/i-know-regular-expressions">XKCD T-Shirt</a></li>
-  <li><a href="http://www.spreadshirt.de/to-be-or-not-to-be-that-is-the-question-t-shirts-C4408A14434558/">to be or not to be T-Shirt</a></li>
-</ul>
  <div class="pagination do-not-print">
   <ul>
     
       
       
-      <li><a href="/advanced-javascript/vererbung/">Prototypen + Vererbung</a></li>
+      <li><a href="/json/syntax/">JSON Syntax</a></li>
       
       
       
-      <li><a href="/mobile/">Mobile</a></li>
+      <li><a href="/json/php/">JSON und PHP</a></li>
       
     
   </ul>
@@ -1132,7 +804,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
               </ul>
             </li>
           
-          <li class=" "><a href="/json/">Json</a>
+          <li class="active "><a href="/json/">Json</a>
               <ul class="sub">
                 
                   
@@ -1144,7 +816,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
                       
                     
                       
-                      <li ><a href="/json/javascript/">JSON und JavaScript</a></li>
+                      <li class="active"><a href="/json/javascript/">JSON und JavaScript</a></li>
                       
                     
                       
@@ -1324,7 +996,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
               </ul>
             </li>
           
-          <li class="active "><a href="/advanced-javascript/">Advanced Javascript</a>
+          <li class=" "><a href="/advanced-javascript/">Advanced Javascript</a>
               <ul class="sub">
                 
                   
@@ -1352,7 +1024,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
                       
                     
                       
-                      <li class="active"><a href="/advanced-javascript/regular-expressions/">Regular Expressions</a></li>
+                      <li ><a href="/advanced-javascript/regular-expressions/">Regular Expressions</a></li>
                       
                     
                   
@@ -1541,7 +1213,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2026 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/advanced-javascript/regular-expressions.md">Kommentar zu dieser Seite</a></p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/json/javascript.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
