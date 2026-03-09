@@ -63,6 +63,8 @@
 
 <p>Welche Datenstrukturen von PHP lassen sich zu JSON serialisieren?</p>
 
+<p><img src="/images/json/mapping-php-to-json.svg"  alt="encode" ></p>
+
 
 <a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
 
@@ -72,11 +74,10 @@
 
 <div class="example">
 <pre><code class="language-php  linenums">$object = new stdClass();
-$object-&gt;foo = 10;
-$object-&gt;bar = &quot;zwanzig&quot;;
-$object-&gt;baz = 30;
+$object-&gt;name = &quot;Alice&quot;;
+$object-&gt;foo = 30;
 echo json_encode( $object );
-// {&quot;foo&quot;:10,&quot;bar&quot;:&quot;zwanzig&quot;,&quot;baz&quot;:30}
+// {&quot;foo&quot;:30,&quot;name&quot;:&quot;Alice&quot;}
 </code></pre></div>
 
 
@@ -88,9 +89,9 @@ echo json_encode( $object );
 direkt auf JSON abbilden:</p>
 
 <div class="example">
-<pre><code class="language-php  linenums">$array = array( &quot;a&quot;, &quot;b&quot;, &quot;c&quot; );
+<pre><code class="language-php  linenums">$array = array( &quot;Apple&quot;, &quot;Banana&quot; );
 echo json_encode( $array );
-// [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]
+// [&quot;Apple&quot;,&quot;Banana&quot;]
 </code></pre></div>
 
 
@@ -102,60 +103,67 @@ echo json_encode( $array );
 Ist das der Fall, dann wird es in JSON als Objekt dargestellt:</p>
 
 <div class="example">
-<pre><code class="language-php  linenums">$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30);
-$array[0] = &quot;a&quot;;
+<pre><code class="language-php  linenums">$array = array( &quot;foo&quot; =&gt; 30, &quot;name&quot; =&gt; &quot;Alice&quot;);
 echo json_encode( $array );
-// {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
+// {&quot;foo&quot;:30,&quot;name&quot;:&quot;Alice&quot;}
 </code></pre></div>
 
 <p>In JSON gibt es keine Entsprechung für das Assoziative Array
-in PHP. Deswegen wird es als Objekt dargestellt.  Wenn man
-dieses Objekt wieder in JSON zurück wandelt erhält man aber
-ein PHP Objekt mit einer Property “0”:</p>
-
-<div class="example">
-<pre><code class="language-php  linenums">$array = array( &quot;foo&quot; =&gt; 10, &quot;bar&quot; =&gt; 30, &quot;baz&quot; =&gt; 30, 0 =&gt; &quot;a&quot;);
-$string = json_encode( $array );
-// {&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}
-$o = json_decode( $string );
-var_export( $o );
-//  stdClass Object
-//  (
-//    [foo] =&gt; 10
-//    [bar] =&gt; 30
-//    [baz] =&gt; 30
-//    [0] =&gt; a
-//  )
-echo &quot;Wert von foo: &quot; . $o-&gt;foo;
-echo &quot;Wert von 0: &quot; . $o-&gt;{&#39;0&#39;};
-</code></pre></div>
+in PHP. Deswegen wird es als Objekt dargestellt.</p>
 
 
 <a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
+<h2 id="deserialisierung">Deserialisierung</h2>
+
+<p>Wie sollen nun JSON-Objekt zu PHP übersetzt werden? Als Objekt oder als Assoziatives Array?</p>
+
+<p><img src="/images/json/mapping-json-obj-to-php.svg"  alt="decode" ></p>
+
+<p>Hier gibt es zwei Varianten, die man über das zweite Argumente von <code>json_decode</code> unterscheidet.</p>
 
 
-<p>Im zweiten Argument von <code>json_decode</code> kann man angeben ob
-<strong>alle</strong> Objekte als Assoziative Arrays decodiert werden sollen - das
-ist meist die bessere Lösung:</p>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+<h3 id="decode-false">decode false</h3>
+
+<p><code>false</code> als zweites Argument oder gar kein zweites Argument bewirkt, dass
+alle JSON-Objekte zu PHP-Objekten übersetzt werden</p>
 
 <div class="example">
-<pre><code class="language-php  linenums">$string = &#39;{&quot;foo&quot;:10,&quot;bar&quot;:30,&quot;baz&quot;:30,&quot;0&quot;:&quot;a&quot;}&#39;;
+<pre><code class="language-php  linenums">$string = &#39;{&quot;name&quot;:&quot;Alice&quot;}&#39;;
+$o = json_decode( $string );
+var_export( $o );
+//  stdClass Object
+//  (
+//    [name] =&gt; Alice
+//  )
+echo &quot;Wert von name: &quot; . $o-&gt;name;
+// Alice
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+<h3 id="decode-true">decode true</h3>
+
+<p><code>true</code> als zweites Argument bewirkt, dass
+<strong>alle</strong> Objekte als assoziative Arrays decodiert werden.</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$string = &#39;{&quot;name&quot;:&quot;Alice&quot;}&#39;;
 $o = json_decode( $string, true );
 print_r( $o );
 // Array
 // (
-//   [foo] =&gt; 10
-//   [bar] =&gt; 30
-//   [baz] =&gt; 30
-//   [0] =&gt; a
+//   [name] =&gt; &quot;Alice&quot;
 // )
-echo &quot;Wert von foo: &quot; . $o[&#39;foo&#39;];
-echo &quot;Wert von 0: &quot; . $o[0];
+echo &quot;Wert von name: &quot; . $o[&#39;name&#39;];
+// Alice
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="json-als-rckgabewert">JSON als Rückgabewert</h2>
 
@@ -168,9 +176,9 @@ echo json_encode($data);
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
-<h2 id="deserialierung">Deserialierung</h2>
+<h2 id="aus-einer-json-datei">Aus einer JSON Datei</h2>
 
 <p>Mit dem Befehl <code>file_get_contents</code> kann man den gesamten Inhalt einer Datei lesen:</p>
 
@@ -184,7 +192,7 @@ $data = json_decode($string, true);
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h2 id="referenz">Referenz</h2>
 
@@ -201,7 +209,7 @@ $data = json_decode($string, true);
       
       
       
-      <li><a href="/xml/">XML</a></li>
+      <li><a href="/security/">Web Security</a></li>
       
     
   </ul>
@@ -773,7 +781,7 @@ $data = json_decode($string, true);
               </ul>
             </li>
           
-          <li class="active "><a href="/json/">Json</a>
+          <li class="active separator"><a href="/json/">Json</a>
               <ul class="sub">
                 
                   
@@ -790,46 +798,6 @@ $data = json_decode($string, true);
                     
                       
                       <li class="active"><a href="/json/php/">JSON und PHP</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
-          <li class=" separator"><a href="/xml/">Xml</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/dtd/">DTD</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/xml-und-php/">XML und PHP</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/xpath/">XPath</a></li>
-                      
-                    
-                      
-                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
@@ -1162,6 +1130,46 @@ $data = json_decode($string, true);
                     
                       
                       <li ><a href="/http/php-erzeugt/">PHP erzeugt nicht nur HTML</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/xml/">Xml</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/xml/was-ist-xml/">Was ist XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/wohlgeformtes-xml/">wohlgeformtes XML</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/dtd/">DTD</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-php/">XML und PHP</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xml-und-javascript/">XML und Javascript</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/xpath/">XPath</a></li>
+                      
+                    
+                      
+                      <li ><a href="/xml/rss/">Beispiel RSS</a></li>
                       
                     
                   
