@@ -2,7 +2,7 @@
 <html lang="de" class="no-js web-development">
 <head>
   <meta charset="utf-8">
-  <title>Lehrbuch Web-Development - Datei Upload</title>
+  <title>Lehrbuch Web-Development - A10 - Mishandling of Exceptional Conditions</title>
 
   <meta name="author" content="Brigitte Jellinek">
   <meta name="description" content="Ein Lehrbuch für das Informatik- oder Medieninformatik-Studium.">
@@ -49,136 +49,23 @@
     
     <div class="page-header">
       <h2 class="title" id="slide-0">
-        Datei Upload
+        A10 - Mishandling of Exceptional Conditions
       </h2>
-      <a href="/php/datei-upload/slide.html" class="do-not-print">als Präsentation ▻</a>
+      <a href="/security/a10-mishandling/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
-     <div id="slide-1" title="Folie Nr. 1"></div>
-<a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+     <div id="slide-1" title="Folie Nr. 1"></div><p>Auf <a href="https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/">Platz 10 der OWASP Top 10 2025: Mishandling of Exceptional Conditions</a></p>
 
-<h2 id="frontend">Frontend</h2>
-
-<p>Die einfachste Version des Upload-Formulares verwendet eine input-Tag
-vom Typ <code>file</code>:</p>
-
-<div class="example">
-<h4 class="caption">Html Code <small>Formular für den Datei-Upload</small></h4>
-<pre><code class="language-html  linenums">&lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
-  Neues Bild zum hochladen in den Ordner &lt;a href=&#39;pix/&#39;&gt;upload&lt;/a&gt;: 
-  &lt;input type=&quot;file&quot; name=&quot;bild&quot;&gt;
-  &lt;input type=&quot;submit&quot; value=&quot;hinaufladen&quot;&gt;
-&lt;/form&gt;
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
-
-
-
-<p>Der Input-Tag mit dem Typ „file“ wird vom Browser als Textfeld plus Button dargestellt. Wird der Button gedrückt dann erscheint ein Datei-Auswahl-Dialog, wie in Abbildung 132 gezeigt.</p>
-
-<p><img src="/images/file-input.png"  alt="Webformular mit Datei-Upload" ></p>
-
-
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
-
-<h2 id="backend">Backend</h2>
-
-<p>Zuerst ein paar Überlegung zur Sicherheit von Datei-Uploads. Folgendes Bild
-zeigt den Super-GAU: Über das Formular upload.php kann man nicht nur “harmlose”
-Dateien wie Bilder hochladen, sondern auch eine Datei mit der Endung <code>.php</code>.</p>
-
-<p>Diese Datei wird im Ordner <code>uploads/</code> innerhalb des Webspace gespeichert,
-kann dort über den Webserver aufgerufen werden, und wird vom PHP-Interpreter
-ausgeführt.</p>
-
-<p><img src="/images/upload-security.png"  alt="Security Super-GAU: Upload einer Datei mit Endung php in den Webspace" ></p>
-
-<p>So ein Upload öffnet das Tor für beliebigen PHP Code, der dann mit den
-Rechten des Account <code>apache</code> ausgeführt wird.  Ein guter erster Schritt, wenn
-man den Server hacken will!</p>
-
-
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h3 id="manahmen">Maßnahmen</h3>
-
-<p>Die Mindestanforderungen an ein Upload-Skript lauten also:</p>
-
-<ul>
-  <li><strong>niemals</strong> hochgeladene Daten als Code interpretieren!</li>
-  <li>Vorsicht bei Daten, die im Webspace gespeichert werden!</li>
-  <li>Alle Daten die hochgeladen werden sorgfältige überprüfen: Dateinamen und Inhalt!</li>
-</ul>
-
-
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h3 id="implementierung">Implementierung</h3>
-
-<p>Die Verarbeitung von hochgeladenen Dateien ist wesentlich komplizierter als die Behandlung anderen Requests: Die Dateien werden vom PHP-Interpreter temporär gespeichert. Das PHP-Programm kann die Dateien dann an einen permanenten Speicherort kopieren (falls das die Zugriffsrechte erlauben)</p>
-
-<p>Die Details zu den Hochgeladenen Dateien sind im Array <code>$_FILES</code> gespeichert, in folgendem Beispiel hatte das Eingabefeld den Namen „bild“:</p>
-
-<dl>
-  <dt><code>$_FILES['bild']['name']</code></dt>
-  <dd>Der Originalname der Datei am Client.</dd>
-  <dt><code>$_FILES['bild']['type']</code></dt>
-  <dd>Der „Mime Type“ der Datei – falls der Browser diese Information liefert. Zum Beispiel „image/gif“. Achtung: nicht zuverlässig!</dd>
-  <dt><code>$_FILES['bild']['size']</code></dt>
-  <dd>Größe der hochgeladenen Datei in Byte.</dd>
-  <dt><code>$_FILES['bild']['tmp_name']</code></dt>
-  <dd>Der Pfad und Dateiname der temporären Datei.</dd>
-  <dt><code>$_FILES['bild']['error']</code></dt>
-  <dd>Fehlercode bei Upload, 0 bedeutet dass kein Fehler aufgetreten ist. Siehe <a href="https://www.php.net/manual/de/features.file-upload.errors.php">PHP-Doku</a>.</dd>
-</dl>
-
-
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
-
-<h3 id="beispielcode">Beispielcode</h3>
-
-<div class="example">
-<h4 class="caption">Php Code <small>PHP-Programm zur Behandlung von Datei-Upload</small></h4>
-<pre><code class="language-php  linenums">&lt;?php
-$uploaddir = dirname( $_SERVER[&quot;SCRIPT_FILENAME&quot;] ) . &quot;/pix/&quot;;
-$filename = basename($_FILES[&#39;bild&#39;][&#39;name&#39;]);
-$ext = substr($filename, -4);
-if( $ext != &#39;.jpg&#39; ) {
-   die(&quot;ich darf nur jpg-Dateien hochladen, nicht &quot; . $ext );
-}
-$uploadfile = $uploaddir . $filename;
-if (move_uploaded_file($_FILES[&#39;bild&#39;][&#39;tmp_name&#39;], $uploadfile)) {
-  echo &quot;Datei erfolgreich hochgeladen.\n&quot;;
-} else {
-  echo &quot;Problem beim Speichern der Datei.\n&quot;;
-}
-echo &#39;&lt;pre&gt;debugging info:&#39;;
-print_r($_FILES);
-print &#39;&lt;/pre&gt;&#39;;
-?&gt;
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
-
-<h3 id="zugriffsrechte-am-server">Zugriffsrechte am Server</h3>
-
-<p>Achtung: Sie müssen den Ordner <code>pix</code> erstellen und ihm 
-geeignete Zugriffsrechte zuweisen, damit der Webserver (Account <code>apache</code>) 
-hineinschreiben darf! Die Zugriffsrechte von UNIX werde in einem <a href="/kommandozeile/zugriffsrechte/">eigenem Kapitel</a>
-behandelt.</p>
-
+<p>In diesem Problemfeld ….</p>
  <div class="pagination do-not-print">
   <ul>
     
       
       
-      <li><a href="/php/php-und-parameter/">Daten aus dem Web-Formularen prüfen</a></li>
+      <li><a href="/security/a9-logging-monitoring/">A09 - Security Logging and Alerting Failures</a></li>
       
       
       
-      <li><a href="/php/datei-upload-frontend/">Datei Upload - Frontend</a></li>
+      <li><a href="/security/prompt-injections/">Prompt Injection</a></li>
       
     
   </ul>
@@ -416,7 +303,7 @@ behandelt.</p>
               </ul>
             </li>
           
-          <li class="active "><a href="/php/">Php</a>
+          <li class=" "><a href="/php/">Php</a>
               <ul class="sub">
                 
                   
@@ -444,7 +331,7 @@ behandelt.</p>
                       
                     
                       
-                      <li class="active"><a href="/php/datei-upload/">Datei Upload</a></li>
+                      <li ><a href="/php/datei-upload/">Datei Upload</a></li>
                       
                     
                       
@@ -774,7 +661,7 @@ behandelt.</p>
               </ul>
             </li>
           
-          <li class=" "><a href="/security/">Security</a>
+          <li class="active "><a href="/security/">Security</a>
               <ul class="sub">
                 
                   
@@ -822,7 +709,7 @@ behandelt.</p>
                       
                     
                       
-                      <li ><a href="/security/a10-mishandling/">A10 - Mishandling of Exceptional Conditions</a></li>
+                      <li class="active"><a href="/security/a10-mishandling/">A10 - Mishandling of Exceptional Conditions</a></li>
                       
                     
                       
@@ -1027,7 +914,7 @@ behandelt.</p>
   <div class="row">
     <div class="span12" id="legal">
         <p class="copyright">veröffentlicht unter <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/at/deed.de">creative commons by-nc-sa</a> in den Jahren 2012-2026 von <a href="#">Brigitte Jellinek</a>.</p>
-        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/php/datei-upload.md">Kommentar zu dieser Seite</a></p>
+        <p class="do-not-print">Zum Weiterentwickeln dieser Seite: <a href="https://github.com/web-development/web-development-textbook">Projekt forken</a> oder <a href="https://github.com/web-development/web-development-textbook/blob/master/content/security/a10-mishandling.md">Kommentar zu dieser Seite</a></p>
     </div>
   </div>
 
