@@ -92,7 +92,7 @@ das als Parameter die <code>id</code> der Person erhält, die gelöscht werden s
 <div class="example">
 <h4 class="caption">Php Code <small>Skript person_delete.php mit Sicherheitslücke!</small></h4>
 <pre><code class="language-php  linenums">$id   = $_POST[&#39;id&#39;];
-$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
+$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );
 // Beispielcode mit Sicherheitslücke - NICHT verwenden!
 </code></pre></div>
 
@@ -101,13 +101,13 @@ $dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );
 
 
 
-<p>Dieses Programm ist anfällig für folgende Attacke. Alyssa P. Hacker (eine fiktive Hackerin) 
+<p>Dieses Programm ist anfällig für folgende Attacke. Alyssa P. Hacker (eine fiktive Hackerin)
 benützt nicht das HTML-Formular unserer Applikation, sondern schreibt selbst ein Formular.
 In dem Formular setzt sie den Parameter <code>id</code> auf Wert <code>9 OR 1=1</code>.</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Formular für die Attacke auf das Skript person_delete.php</small></h4>
-<pre><code class="language-html  linenums">&lt;form method=&quot;post&quot; 
+<pre><code class="language-html  linenums">&lt;form method=&quot;post&quot;
       action=&quot;http://somedomain.at/person_delete.php&quot;&gt;
     &lt;input type=&quot;hidden&quot; value=&quot;9 OR 1=1&quot; name=&quot;id&quot;/&gt;
     &lt;input type=&quot;submit&quot; value=&quot;del all&quot;/&gt;
@@ -132,11 +132,20 @@ es gschafft hat ihr SQL hinein zu “injiziert”.</p>
 </div>
 <div class="slide">
 
-<h3 id="sql-injection-verhindern">SQL Injection verhindern</h3>
 
-<p>Dieses Problem kann vermeiden indem man die Eingabe genau überprüft. In diesem
+
+<p><img src="/images/unprepared.svg"  alt="" ></p>
+
+<p>Der Server erhält jeweils fertige SQL Queries, er hat keine Chance zu erkennen, dass etwas verdächtiges passiert.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="sql-injection-verhindern---mit-eingabeprfung">SQL Injection verhindern - mit Eingabeprüfung</h3>
+
+<p>Dieses Problem könnte man vermeiden indem man die Eingabe genau überprüft. In diesem
 Beispiel also: nur wenn es sich bei <code>id</code> um eine ganze Zahl handelt darf diese
-verwendet werde. Das kann man auf verschiedene Arten prüfen, 
+verwendet werde. Das kann man auf verschiedene Arten prüfen,
 z.B. mit der Funktion <code>filter_var</code>:</p>
 
 <div class="example">
@@ -146,7 +155,7 @@ z.B. mit der Funktion <code>filter_var</code>:</p>
   echo(&quot;variable id is false!&quot;);
   exit;
 }
-$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );  
+$dbh-&gt;exec(&quot;DELETE FROM users WHERE id=$id&quot; );
 </code></pre></div>
 
 </div>
@@ -170,27 +179,30 @@ Filter von <code>filter_var</code> gibt - also fast nie.</p>
 </div>
 <div class="slide">
 
+<h3 id="sql-injection-verhindern---mit-prepared-statments">SQL Injection verhindern - mit Prepared Statments</h3>
 
-
-<p>Der zweite Ansatz ist die Verwendung von „Prepared Statements“ in der Datenbank.
+<p>Der zweite, und viel bessers Ansatz, ist die Verwendung von „Prepared Statements“ in der Datenbank.
 Dabei wird der SQL-Interpreter der Datenbank gänzlich umgangen.</p>
 
-<p>Als erster Schritt wird mit <code>prepare</code><a href="http://www.php.net/manual/en/pdo.prepare.php">*</a> 
-ein SQL-Statement mit Fragenzeichen als Platzhalter vorbereitet. Dieses
-SQL-Statement wird vom Datenbank-Server sofort geparset und compiliert.</p>
+<p><img src="/images/prepared.svg"  alt="" ></p>
 
-<p>Mit <code>execute</code><a href="http://www.php.net/manual/en/pdostatement.execute.php">*</a> 
-wird das Statement ausgeführt, dabei werden die Platzhalter durch echte Daten
-ersetzt.  Das Schöne daran: es wird dabei nicht mehr ein SQL-Statement als
-String gebaut, sondern die einzufügenden Daten werden binär an den
-Datenbankserver übertragen. Darin enthaltene SQL-Fragement werden niemals
-als SQL interpretiert, nd können keinen Schaden
-anrichten.</p>
+<p>Als erster Schritt wird
+ein SQL-Statement mit Fragezeichen als Platzhalter an den Datenbank-Server geschickt. Dieses
+SQL-Statement wird vom Datenbank-Server sofort geparset und kompiliert. Dabei stellt der
+Server fest, welche Datentypen er für jeden Platzhalter braucht.</p>
+
+<p>In einem zweiten Schritt werden die fehlenden Daten gesendet.</p>
+
+<p>Das Schöne daran: die einzufügenden Daten werden binär an den
+Datenbankserver übertragen. Nur wenn der Datentyp passt werden sie auch
+akzeptiert und verwendet.</p>
 
 </div>
 <div class="slide">
 
 
+
+<p>Der PHP-Befehl für Schritt 1 heißt <code>prepare</code>, Schritt zwei heißt <code>execute</code>.</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>DELETE mit prepared statement</small></h4>
@@ -200,6 +212,22 @@ $sth-&gt;execute(array($id));
 
 <p><code>execute</code> kann auch mehrfach ausgeführt werden, das ist effektiver als eine
 normale query zu wiederholen.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="trennung-von-code-und-daten">Trennung von Code und Daten</h3>
+
+<p>Prepared Statments ermöglichen die Trennung von Code und Daten: Als
+Programmierer*in schreibe ich den Code und sende ihn mit <code>prepare</code> an die
+Datenbank.</p>
+
+<p>Was immer die User*innen als Input liefern ist nur noch Daten.
+Niemals kann ihr Input als Code missverstanden werden.</p>
+
+<p>Eine solche Trennung wäre in vielen Fällen erstrebenswert: so gibt
+es bei LLMs dieselbe <a href="https://owasp.org/www-community/attacks/PromptInjection">Injection</a> Problematik, aber  keine Möglichkeit
+Code und Daten zu trennen.</p>
 
 </div>
 <div class="slide">
@@ -214,11 +242,11 @@ vorgesehen haben.</p>
 <div class="example">
 <h4 class="caption">Php Code <small>SELECT mit Sicherheitslücke!</small></h4>
 <pre><code class="language-php  linenums">$id   = $_POST[&#39;id&#39;];
-$dbh-&gt;exec(&quot;SELECT * FROM comments WHERE id=$id&quot;);  
+$dbh-&gt;query(&quot;SELECT * FROM comments WHERE id=$id&quot;);
 // Beispielcode mit Sicherheitslücke - NICHT verwenden!
 </code></pre></div>
 
-<p>Die Attacke mit <code>1=1</code> ermöglicht das Lesen von Datensätzen aus derselben Tabelle:</p>
+<p>Die Attacke mit <code>1=1</code> ermöglicht das Lesen aller Datensätze aus der Tabelle:</p>
 
 <div class="example">
 <pre><code class="language-sql  linenums">SELECT * FROM comments WHERE id=9 OR 1=1
@@ -234,8 +262,8 @@ ganz anderen Informationsquellen lesen:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>verwundbarer code</small></h4>
-<pre><code class="language-php  linenums">$query = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
-$dbh-&gt;query($query);
+<pre><code class="language-php  linenums">$sql = &quot;SELECT id, name FROM cities WHERE name = &#39;$name&#39;&quot;;
+$dbh-&gt;query($sql);
 </code></pre></div>
 
 <div class="example">
@@ -246,8 +274,8 @@ $dbh-&gt;query($query);
 <p>Wird hier eine Query zusammen gebaut, die eine zweite Tabelle ausliest:</p>
 
 <div class="example">
-<pre><code class="language-sql  linenums">  SELECT id, name FROM cities WHERE name = &#39;hallo&#39; 
-  UNION 
+<pre><code class="language-sql  linenums">  SELECT id, name FROM cities WHERE name = &#39;hallo&#39;
+  UNION
   SELECT id, password FROM users WHERE &#39;&#39; LIKE &#39;%&#39;
 </code></pre></div>
 
