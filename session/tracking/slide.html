@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tracking - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>Tracking</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/session/cookies//slide.html">Cookies</a> | 
+        <a href="/session/tracking/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/session/session-und-login//slide.html">Session und Login</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Cookies wurden im Jahr 1994 im Browser “Netscape Communicator” implementiert, und danach
+als <a href="https://datatracker.ietf.org/doc/html/rfc2109">RFC 2109</a> standardisiert.</p>
+
+<p>Ein paar Bytes Daten, die ein Browser speichert und an denselben Server zurückschickt,
+von dem sie kamen - da kann nichts Schlimmes passieren?</p>
+
+</div>
+<div class="slide">
+
+<h2 id="eine-webseite">Eine Webseite</h2>
+
+<p>Betrachten wir diese Webseite: Sie besteht aus Text, Bildern, ein paar Videos von YouTube und ein paar Photos von Instagram:</p>
+
+<p><img src="/images/cookies/webpage-with-trackers.svg"  alt="" ></p>
+
+</div>
+<div class="slide">
+
+<h2 id="eine-webseite---viele-cookies">Eine Webseite - viele Cookies</h2>
+
+<p>Wenn ich diese Webseite in meinem Browser lade, werden mehrere HTTP-Requests ausgeführt:</p>
+
+<ul>
+  <li>Der HTTP-Request, mit dem die Banner-Werbung von der Domain <code>adsafeprot.com</code> geladen wird, erhält als Antwort nicht nur die Bilddatei mit dem Werbebanner, sondern auch ein Cookie von (und für) <code>adsafeprot.com</code>.</li>
+  <li>Beim Laden der Video-Datei von <code>youtube.com</code> wird ein Cookie von <code>youtube.com</code> gesetzt.</li>
+  <li>Beim Laden des ersten Photos von <code>instagram.com</code> wird ein Cookie von <code>instagram.com</code> gesetzt.</li>
+</ul>
+
+<p>Diese Cookies werden auch “Third-Party-Cookies” genannt, da sie von einer “dritten Partei” kommen, also nicht von der Webseite, die ich aufgerufen habe.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="surfen-in-einer-welt-mit-third-party-cookies">Surfen in einer Welt mit “Third-Party-Cookies”</h2>
+
+<p>Nun surfe ich weiter im Web, manchmal mit Link zur nächsten Seite, manchmal mit Eintippen einer URL, manchmal mit Aufruf eines Bookmarks: Auf vielen Seiten werde ich wieder Inhalte von Ad Networks, von YouTube/Google, von Insta/Facebook/Meta, … usw. laden:</p>
+
+<p><img src="/images/cookies/tracker-be-tracking.svg"  alt="" ></p>
+
+<p>Beim ersten Mal, wenn ich so einem Tracker begegne, wird ein Cookie mit einer ID gesetzt, und der Tracker weiß noch nichts über mich. Beim zweiten Mal sendet mein Browser automatisch das Cookie wieder an den Tracker, nun weiß er schon zwei Datenpunkte über mich….</p>
+
+<p>Wenn ich zusätzlich noch direkt einen Dienst der Tracker verwende, mich z.B. bei YouTube oder Insta einlogge, dann können die gesammelten Surf-Daten mit meinen bereits bekannten Daten kombiniert werden.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="wie-viele-tracker-tracken-mich">Wie viele Tracker tracken mich?</h2>
+
+<p>Die Statistik von <a href="https://www.ghostery.com/whotracksme/">ghostery</a> 2025 sagt: 75% aller Webseiten enthalten mindestens einen Tracker. Im Durchschnitt sind es 7 Tracker pro Seite. Nur noch 33% der Tracker verwenden Cookies, die anderen verwenden modernere Methoden wie Fingerprinting, die nicht verhindert werden können.</p>
+
+<p>Es gibt auch wissenschaftliche Arbeiten zu dem Thema, z.B. Steven Engelhardt and Arvind Narayanan, “Online Tracking: A 1‑million‑site Measurement and Analysis,” in Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security (CCS ’16), 2016. Engelhardt und Narayanan untersuchten eine Million Webseiten und fanden 123 Tracker, die in mehr als 1% der Seiten vorkamen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="was-kann-ich-tun">Was kann ich tun?</h2>
+
+<p>Als technisch gebildeter Mensch hat man verschiedene Möglichkeiten, sich zu schützen:</p>
+
+<ul>
+  <li>Ad-Blocker wie <a href="https://www.ghostery.com/">ghostery</a>,</li>
+  <li>Browser, die Tracking unterbinden wie <a href="https://www.firefox.com/de/">firefox</a>,  <a href="https://brave.com/de/">brave</a> oder <a href="https://arc.net/">arc</a></li>
+  <li>separate <a href="https://addons.mozilla.org/de/firefox/addon/multi-account-containers/">Container in firefox</a>/<a href="https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas">spaces in arc</a> für verschiedene Dienste</li>
+</ul>
+
+<p>Allen anderen Menschen, die technisch nicht so geschickt sind, hilft nur das Gesetz:
+In Europa ist das die Datenschutz-Grundverordnung (DSGVO) und die ePrivacy-Richtlinie.
+Sie schreiben vor, dass Tracking nur nach Zustimmung erlaubt ist.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="siehe-auch">Siehe auch</h2>
+
+<ul>
+  <li><a href="/qualitaet/datenschutz/">Datenschutz</a></li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>Tracking</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/session/cookies//slide.html">Cookies</a> | 
+        <a href="/session/tracking/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/session/session-und-login//slide.html">Session und Login</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
