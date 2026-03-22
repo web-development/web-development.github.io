@@ -94,10 +94,34 @@ vom selben Browser ausgelöst wurden.</p>
   </li>
 </ul>
 
-<p>Für unsere Applikation werden wir das <code>$_SESSION</code>-Array verwenden, um den <code>username</code> der angemeldeten Person zu speichern.</p>
+<p><code>session_start()</code> muss in jeder Seite der Applikation ausgeführt werden. Da wir in jeder Seite  <code>functions.php</code> Datei mit <code>require</code> einbinden ist das ein guter Ort um <code>session_start()</code> auszuführen.</p>
 
 
 <a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h3 id="was-speichert-man-in-der-session">Was speichert man in der Session?</h3>
+
+<p>In der Session speichert man möglichst wenig. Die meisten Daten liegen in der Datenbank.</p>
+
+<p>Die minimale Version ist: im <code>$_SESSION</code>-Array  nur die <code>user_id</code> der angemeldeten Person speichern.</p>
+
+<p>Alle weiteren Daten holt man dann aus der Datenbank, wo es eine <code>users</code> Tabelle gibt.</p>
+
+<p>Weitere Informationen die eventuell nur in der Session gespeichert sind: Zwischenergebnisse von Mehrseitigen Formularen, Warenkörbe die noch nicht zur Kassa gebracht wurden, Statusmeldungen die auf der nächsten Seite angezeigt werden sollen.s</p>
+
+
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+
+<h3 id="session-und-interface">Session und Interface</h3>
+
+<p>Für die Benutzung der Seite macht die Session einen großen Unterschied: wenn ich eingeloggt bin habe ich mehr Möglichkeiten, das sieht man zum Beispiel in der Navigationsleiste:</p>
+
+<p><img src="/images/session/above_and_below.png" srcset="/images/session/above_and_below.png 1x, /images/session/above_and_below@2x.png 2x"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
+
+<p>Beim Programmieren der Seite bedeutet das: je nach Inhalt der Session zeigen wir verschiedene Elemente an.</p>
+
+
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
 <h3 id="struktur-der-applikation-mit-login">Struktur der Applikation mit Login</h3>
 
@@ -142,16 +166,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 </table>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-<h3 id="sessionstart">session_start</h3>
-
-<p><code>session_start()</code> wird in <code>functions.php</code> ausgeführt, also bei jedem Aufruf einer der Seiten der Applikation. Die Applikation zeigt direkt in der Navigationsleiste die Login/Logout-Möglichkeit  an:</p>
-
-<p><img src="/images/session/login-logout.png"  alt="Abbildung 146: Anzeige des Usernamens und Login/Logout-Möglichkeit" ></p>
-
-
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h3 id="login">Login</h3>
 
@@ -162,7 +177,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 <p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
 
 
@@ -175,10 +190,10 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 }
 </code></pre></div>
 
-<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein. So kann er z.B. in der Navigations-Leiste angezeigt werden.</p>
+<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein.</p>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h3 id="logout">Logout</h3>
 
@@ -191,7 +206,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 
 
@@ -214,7 +229,7 @@ header(&quot;Location: index.php&quot;);
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="redirect--weiterleitung">Redirect / Weiterleitung</h3>
 
@@ -246,7 +261,7 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
 <p><img src="/images/session/login-flow.svg"  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h3 id="neue-php-befehle">Neue PHP Befehle</h3>
 
