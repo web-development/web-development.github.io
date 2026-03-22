@@ -63,7 +63,7 @@ abrufen oder ob eine Person die Seite 10 mal lädt.</p>
 Gegenteil davon wäre „stateful“ (zustandsbehaftet).</p>
 
 <p>Also kann man mit HTTP alleine – wie wir es bisher kennen – kein „Login“
-schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
+schaffen. Um zu wissen, dass der User Bob eingeloggt ist, müsste er ja
 „wiedererkannt“ werden. Genau das macht den „state“ aus.</p>
 
 
@@ -71,7 +71,7 @@ schaffen. Um zu wissen, dass der User Bob eingeloggt ist müsste er ja
 
 <h2 id="cookies">Cookies</h2>
 
-<p>Um das zu ermöglichen wurde das HTTP-Protokoll um die
+<p>Um das zu ermöglichen, wurde das HTTP-Protokoll um die
 sogenannten „Cookies“ erweitert: Ein Cookie besteht aus bis zu 4096 Bytes Daten,
 die der Webbrowser lokal speichert, und bei jedem Zugriff auf den Webserver
 wieder mitsendet.</p>
@@ -87,8 +87,8 @@ verschiedenen Servern speichern (In einem Cookie-Jar).</p>
 
 
 
-<p>An Hand dieses Cookies kann eine Webapplikation einen bestimmten User
-wiedererkennen. Cookies können als Teil des HTTP-Protocols (nur) vom Server
+<p>Anhand dieses Cookies kann eine Webapplikation einen bestimmten User
+wiedererkennen. Cookies können als Teil des HTTP-Protokolls (nur) vom Server
 gesetzt werden. Dabei wird der Name des Cookies angegeben, der Wert der
 gespeichert werden soll, und der Gültigkeitsbereich und Zeitraum:</p>
 
@@ -139,17 +139,17 @@ wurden im Array <code>$_COOKIE</code><a href="http://php.net/manual/en/reserved.
 
 <a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
-<h3 id="cookies-in-javascript">Cookies in Javascript</h3>
+<h3 id="cookies-in-javascript">Cookies in JavaScript</h3>
 
-<p>Im Client können Cookies (ausser <code>HttpOnly</code>) mit Javascript gelesen und geschrieben werden. Dies
+<p>Im Client können Cookies (außer <code>HttpOnly</code>) mit JavaScript gelesen und geschrieben werden. Dies
 funktioniert über eine Zuweisung an die Eigenschaft <code>document.cookie</code>.</p>
 
-<p>Achtung: beim lesenden Zugriff auf diese Eigenschaft enthält man einen String
-mit allen Cookies die gerade gültig sind.</p>
+<p>Achtung: Beim lesenden Zugriff auf diese Eigenschaft erhält man einen String
+mit allen Cookies, die gerade gültig sind.</p>
 
 <p>Zum Setzen von neuen Cookies wird auf die Eigenschaft zugewiesen. Zum Setzen
-mehrere Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluß
-auf den Wert den man aus document.cookie auslesen kann:</p>
+mehrerer Cookies wird wiederholt zugewiesen — das hat aber (noch) keinen Einfluss
+auf den Wert, den man aus <code>document.cookie</code> auslesen kann:</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">alert(document.cookie);  // Zeigt die gültigen Cookies
@@ -158,7 +158,7 @@ document.cookie = &quot;passwort=total super geheimes aber recht langes passwort
 </code></pre></div>
 
 <p>Erst wenn ein neuer Request an den Server erfolgt, werden die neu gesetzten
-Cookies mit gesendet und haben eventuell einen Auswirkung auf das
+Cookies mitgesendet und haben eventuell eine Auswirkung auf das
 Verhalten des Servers.</p>
  <div class="pagination do-not-print">
   <ul>
@@ -487,30 +487,6 @@ Verhalten des Servers.</p>
               </ul>
             </li>
           
-          <li class="active "><a href="/session/">Session</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li class="active"><a href="/session/cookies/">Cookies</a></li>
-                      
-                    
-                      
-                      <li ><a href="/session/tracking/">Tracking</a></li>
-                      
-                    
-                      
-                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
           <li class=" "><a href="/php-db-schreiben/">Php Db Schreiben</a>
               <ul class="sub">
                 
@@ -540,6 +516,30 @@ Verhalten des Servers.</p>
                     
                       
                       <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class="active "><a href="/session/">Session</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li class="active"><a href="/session/cookies/">Cookies</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/tracking/">Tracking</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
                       
                     
                   

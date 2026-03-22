@@ -82,12 +82,12 @@
         >
          
         | Nächste Präsentation
-        <a href="/php-db-schreiben//slide.html">Schreiben in die Datenbank</a>
+        <a href="/php-db-optimierung//slide.html">Änderungen, Constraints und Transaktionen in der DB</a>
         
       </p>
     </div>
-    <div class="slide"><p>HTTP ist “statelesse” - jeder HTTP Request ist ein isoliertes Ereignis, der
-Server kann nicht erkennen ob Requests zusammen gehören.</p>
+    <div class="slide"><p>HTTP ist “stateless” – jeder HTTP-Request ist ein isoliertes Ereignis, der
+Server kann nicht erkennen, ob Requests zusammengehören.</p>
 
 <p><img src="/images/stateless-http.svg"  alt="HTTP als &quot;stateless protocol&quot;" ></p>
 
@@ -97,10 +97,10 @@ Server kann nicht erkennen ob Requests zusammen gehören.</p>
 
 
 <p>Mit der Einführung von Cookies, und damit von state, können
-wir nun erkennen, dass mehrere Requests zusammen gehören,
+wir nun erkennen, dass mehrere Requests zusammengehören,
 vom selben Browser ausgelöst wurden.</p>
 
-<p><img src="/images/stateful-http-with-cookies.svg"  alt="HTTP mit cookies wird &quot;stateful&quot;" ></p>
+<p><img src="/images/stateful-http-with-cookies.svg"  alt="HTTP mit Cookies wird &quot;stateful&quot;" ></p>
 
 <p>Wir nennen diese Folge von Requests dann eine “Session”.</p>
 
@@ -110,7 +110,7 @@ vom selben Browser ausgelöst wurden.</p>
 <h2 id="session">Session</h2>
 <p>PHP hilft beim Erkennen und Verwenden von Sessions:</p>
 
-<p>Mit dem Befehle  <code>session_start()</code><a href="http://www.php.net/manual/de/function.session-start.php">*</a>  wird</p>
+<p>Mit dem Befehl <code>session_start()</code><a href="http://www.php.net/manual/de/function.session-start.php">*</a> wird</p>
 
 <ul>
   <li>…beim ersten Aufruf
@@ -127,7 +127,7 @@ vom selben Browser ausgelöst wurden.</p>
   </li>
 </ul>
 
-<p><code>session_start()</code> muss in jeder Seite der Applikation ausgeführt werden. Da wir in jeder Seite  <code>functions.php</code> Datei mit <code>require</code> einbinden ist das ein guter Ort um <code>session_start()</code> auszuführen.</p>
+<p><code>session_start()</code> muss in jeder Seite der Applikation ausgeführt werden. Da wir in jeder Seite die <code>functions.php</code>-Datei mit <code>require</code> einbinden, ist das ein guter Ort, um <code>session_start()</code> auszuführen.</p>
 
 </div>
 <div class="slide">
@@ -140,7 +140,7 @@ vom selben Browser ausgelöst wurden.</p>
 
 <p>Alle weiteren Daten holt man dann aus der Datenbank, wo es eine <code>users</code> Tabelle gibt.</p>
 
-<p>Weitere Informationen die eventuell nur in der Session gespeichert sind: Zwischenergebnisse von Mehrseitigen Formularen, Warenkörbe die noch nicht zur Kassa gebracht wurden, Statusmeldungen die auf der nächsten Seite angezeigt werden sollen.s</p>
+<p>Weitere Informationen, die eventuell nur in der Session gespeichert sind: Zwischenergebnisse von mehrseitigen Formularen, Warenkörbe, die noch nicht zur Kasse gebracht wurden, Statusmeldungen, die auf der nächsten Seite angezeigt werden sollen.</p>
 
 </div>
 <div class="slide">
@@ -193,7 +193,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
       <td>POST</td>
       <td><code>logout.php</code></td>
       <td> </td>
-      <td>Löschte Session und Session-Cookie, dann Redirect zu index.php</td>
+      <td>Löscht Session und Session-Cookie, dann Redirect zu index.php</td>
     </tr>
   </tbody>
 </table>
@@ -207,7 +207,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 
 <p><img src="/images/session/login-form.png" srcset="/images/session/login-form.png 1x, /images/session/login-form@2x.png 2x"  alt="Abbildung 147: Login-Formular der Applikation" ></p>
 
-<p>Username und Passwort werden überprüft, falls Sie passen wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
+<p>Username und Passwort werden überprüft; falls sie passen, wird der Username in der Session gespeichert. Mit dem Befehl <code>header("Location: index.php")</code> wird der Browser dann automatisch an die Hauptseite weitergeleitet.</p>
 
 </div>
 <div class="slide">
@@ -223,7 +223,7 @@ je nachdem ob es mit GET oder POST aufgerufen wird.</p>
 }
 </code></pre></div>
 
-<p>Nach dem gelungen Login kann man jede beliebige Seite der Applikation aufrufen, immer wird im Array <code>$_SESSION</code> der Username gespeichert sein.</p>
+<p>Nach dem gelungenen Login kann man jede beliebige Seite der Applikation aufrufen; immer wird im Array <code>$_SESSION</code> der Username gespeichert sein.</p>
 
 </div>
 <div class="slide">
@@ -286,17 +286,17 @@ header(&quot;Location: index.php&quot;);
 
 <p>Eine Weiterleitung nach der Behandlung eines POST-Requests ist allgemein sinnvoll.</p>
 
-<p>In diesem Beispiel wird eine funktion <code>check_login</code> aufgerufen die man
-selbst implementieren muss.  So kann man z.B. username und passwort mit Daten
-vergleichen die an verschiedenen Stellen gespeichert sein können:
-in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</p>
+<p>In diesem Beispiel wird eine Funktion <code>check_login</code> aufgerufen, die man
+selbst implementieren muss. So kann man z. B. Username und Passwort mit Daten
+vergleichen, die an verschiedenen Stellen gespeichert sein können:
+in der Datenbank, in der <code>config.php</code>-Datei, in Umgebungsvariablen.</p>
 
 <p><img src="/images/session/login-flow.svg"  alt="Abbildung 148: Login mit einer Weiterleitung" ></p>
 
 </div>
 <div class="slide">
 
-<h3 id="neue-php-befehle">Neue PHP Befehle</h3>
+<h3 id="neue-php-befehle">Neue PHP-Befehle</h3>
 
 <ul>
   <li><code>$_SESSION()</code> <a href="http://php.net/manual/en/reserved.variables.session.php">PHP Doku</a></li>
@@ -317,7 +317,7 @@ in der Datenbank, in der <code>config.php</code> Datei, in Umgebungsvariabeln.</
         >
          
         | Nächste Präsentation
-        <a href="/php-db-schreiben//slide.html">Schreiben in die Datenbank</a>
+        <a href="/php-db-optimierung//slide.html">Änderungen, Constraints und Transaktionen in der DB</a>
         
       </p>
     </div>

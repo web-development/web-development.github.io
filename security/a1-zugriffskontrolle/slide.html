@@ -100,9 +100,9 @@
 <h2 id="nur-was-serverseitig-geprft-wird-ist-sicher">Nur was serverseitig geprüft wird ist sicher</h2>
 
 <p>Bei der Programmierung von Web-Applikationen muss man sich immer bewusst sein,
-dass Alles was im Client passiert, bzw. vom Client geschickt wird, manipuliert werden kann.
-Meine serverseitigen Programme müssen jeden Input den sie bekommen selbst prüfen, und können
-sich nicht darauf verlassen dass so eine Prüfung bereits am Client passiert ist.</p>
+dass alles, was im Client passiert bzw. vom Client geschickt wird, manipuliert werden kann.
+Meine serverseitigen Programme müssen jeden Input, den sie bekommen, selbst prüfen und können
+sich nicht darauf verlassen, dass so eine Prüfung bereits am Client passiert ist.</p>
 
 <p>Gängige Fehleinschätzungen dieser Art sind:</p>
 
@@ -140,7 +140,7 @@ https://www.onlinebank.com/user?acct=6066
 https://www.onlinebank.com/user?acct=6067
 </code></pre>
 
-<p>Ich benutze ein Galerie um Fotos zu betrachten. Die URL für ein bestimmtes Bild ist</p>
+<p>Ich benutze eine Galerie, um Fotos zu betrachten. Die URL für ein bestimmtes Bild ist</p>
 
 <p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
 
@@ -154,7 +154,7 @@ https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=/etc/passwd
 </div>
 <div class="slide">
 
-<h2 id="jede-php-datei-jede-url-ist-ein-einstiegspunkt">Jede PHP-Datei, Jede URL ist ein Einstiegspunkt</h2>
+<h2 id="jede-php-datei-jede-url-ist-ein-einstiegspunkt">Jede PHP-Datei, jede URL ist ein Einstiegspunkt</h2>
 
 <p>Jede PHP-Datei im Webspace ist grundsätzlich direkt über HTTP aufrufbar. Daher empfiehlt es sich, gleich zu Beginn jeder Datei die Zugriffsrechte zu überprüfen.</p>
 
@@ -172,7 +172,7 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 </div>
 <div class="slide">
 
-<h2 id="vermeidung--von-unsichere-direkten-referenzen">Vermeidung  von unsichere direkten Referenzen</h2>
+<h2 id="vermeidung-von-unsicheren-direkten-referenzen">Vermeidung von unsicheren direkten Referenzen</h2>
 
 <ul>
   <li>Nicht die Keys aus der Datenbank preisgeben, sondern durch “slugs” ersetzen</li>
@@ -182,7 +182,7 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 <p>Und in jedem Fall:</p>
 
 <ul>
-  <li>Am Server prüfen ob genau diese UserIn Zugriff auf genau diese Ressource hat.</li>
+  <li>Am Server prüfen, ob genau diese Benutzerin bzw. genau dieser Benutzer Zugriff auf genau diese Ressource hat.</li>
 </ul>
 
 </div>
@@ -191,17 +191,17 @@ Stelle geschaffen, an der alle Zugriffsrechte konfiguriert werden können.</p>
 <h2 id="slugs-statt-keys">Slugs statt Keys</h2>
 
 <p>Slugs sind lesbare Texte, die einen Datensatz eindeutig identifizieren. Sie werden in der URL
-statt IDs verwendet. Sie sind auch unter dem namen “friendly urls” und (z.B. in Wordpress) “permalinks” bekannt.</p>
+statt IDs verwendet. Sie sind auch unter dem Namen „Friendly URLs“ und (z. B. in WordPress) „Permalinks“ bekannt.</p>
 
 <p>Die Verwendung von Slugs hat mehrere Vorteile:</p>
 
 <ol>
-  <li>Das erraten eines weiteren Keys ist nicht so leicht wie bei Zahlen</li>
+  <li>Das Erraten eines weiteren Keys ist nicht so leicht wie bei Zahlen</li>
   <li>URLs werden dadurch leichter lesbar und sind leichter zu erinnern</li>
   <li>Auch Suchmaschinen lesen den Text des Slugs, die Seite kann auch unter den Stichwörtern des Slugs gefunden werden</li>
 </ol>
 
-<p>Mit folgender Konfigurations-Datei <code>.htaccess</code> wir der Apache-Webserver angewiesen
+<p>Mit folgender Konfigurationsdatei <code>.htaccess</code> wird der Apache-Webserver angewiesen,
 beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Programm <code>view_item.php</code> mit dem Parameter
 <code>slug=text-der-slug</code> aufzurufen:</p>
 
@@ -211,7 +211,7 @@ beim Aufruf der URL <code>/item/text-der-slug</code> in Wirklichkeit das PHP-Pro
 RewriteRule ^item/([-a-z]+) view_item.php?slug=\$1
 </code></pre></div>
 
-<p>Die Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
+<p>Der Zugriff auf den Parameter in PHP erfolgt wie gewohnt über <code>$_GET</code>.</p>
 
 </div>
 <div class="slide">
@@ -223,7 +223,7 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
 
 <p><code>https://www.photos.com/show?img=100-0011_IMG.jpg&amp;text=100-0011_IMG.txt</code></p>
 
-<p>Eine denkbar schlechte Implementiereung dieser Galerie wäre:</p>
+<p>Eine denkbar schlechte Implementierung dieser Galerie wäre:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>Beliebiger Zugriff auf Dateien - NICHT SO PROGRAMMIEREN!</small></h4>
@@ -233,14 +233,14 @@ Betrachten wir das schlechte Beispiel von Oben noch einmal:</p>
   ?&gt;
 </code></pre></div>
 
-<p>Mit diesem Programm kann man durch einfaches ändern der URL beliebige
-Dateien am Server “erforschen”.</p>
+<p>Mit diesem Programm kann man durch einfaches Ändern der URL beliebige
+Dateien am Server „erforschen“.</p>
 
 <p>Gegen diese Art von Attacke kann man an mehreren Linien verteidigen:</p>
 
 <ul>
-  <li>Im Betriebssystem: das PHP Programm läuft unter dem User-Account des Webservers. Durch geeignetes Setzen der Zugriffsrechte im Dateisystem kann diesem User der Zugriff zu wichtigen Bereichen untersagt werden</li>
-  <li>In der PHP Konfiguration: Mit <code>open_basedir</code> kann in der Konfiguration festgelegt werden, auf welche Dateien ein PHP-Programm zugreifen darf</li>
+  <li>Im Betriebssystem: Das PHP-Programm läuft unter dem User-Account des Webservers. Durch geeignetes Setzen der Zugriffsrechte im Dateisystem kann diesem User der Zugriff zu wichtigen Bereichen untersagt werden</li>
+  <li>In der PHP-Konfiguration: Mit <code>open_basedir</code> kann in der Konfiguration festgelegt werden, auf welche Dateien ein PHP-Programm zugreifen darf</li>
   <li>In der Applikation selbst: mit einer “Liste der Erlaubten” wird nur der Zugriff auf ausgewählte Dateien erlaubt.</li>
 </ul>
 

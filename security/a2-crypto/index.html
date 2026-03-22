@@ -55,7 +55,7 @@
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div><p>Auf <a href="https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/">Platz 4 der OWASP Top 10 2025: Cryptographic Failures</a>.</p>
 
-<p>Fehler bei der Verschlüsselung oder fehlende Verschlüsselung kann dazu führen
+<p>Fehler bei der Verschlüsselung oder fehlende Verschlüsselung kann dazu führen,
 dass sensible Daten zugänglich werden.</p>
 
 
@@ -65,7 +65,7 @@ dass sensible Daten zugänglich werden.</p>
 
 <ol>
   <li>Klassifizierung der Daten die verarbeitet, gespeichert oder übertragen werden. Welche Daten sind aufgrund von Datenschutzgesetzen, behördlichen Vorschriften oder Geschäftsanforderungen sensibel?</li>
-  <li>Sicherstellen, dass vertrauliche Daten bei der Übertragung (“in transit”) und Speicherung (“at rest”)  durch geeignet Verschlüsselung geschützt werden.</li>
+  <li>Sicherstellen, dass vertrauliche Daten bei der Übertragung („in transit“) und Speicherung („at rest“) durch geeignete Verschlüsselung geschützt werden.</li>
   <li>Kein unnötiges Speichern vertraulicher Daten. Löschung nicht mehr benötigter Daten. Daten, die es nicht gibt, können auch nicht gestohlen werden.</li>
   <li>Sicherstellen, dass starke Algorithmen und Schlüssel verwendet werden.</li>
   <li>Sicherstellen, dass Passwörter mit einem speziell für Passwortschutz entwickelten Algorithmus gespeichert werden.</li>
@@ -83,7 +83,7 @@ dass sensible Daten zugänglich werden.</p>
 
 <h3 id="beispiel-passwort-hash">Beispiel Passwort Hash</h3>
 
-<p>Auch wenn man noch nichts über Kryptographie weis, kann man mit dem Befehl
+<p>Auch wenn man noch nichts über Kryptographie weiß, kann man mit dem Befehl
 <code>password_hash</code> in PHP garantiert einen guten Algorithmus verwenden.</p>
 
 <p>Ein Beispiel aus einem Projekt: hier wurde der Algorithmus <code>sha1</code>
@@ -112,8 +112,8 @@ sind die Passwörter nicht direkt lesbar.</p>
 
 <h3 id="sha1-ist-ein-schwacher-algorithmus">sha1 ist ein schwacher Algorithmus</h3>
 
-<p>Nimmt man den gehashten Passwort String
-des admin-users, und googelt danach, so findet man direkt diese Seite:</p>
+<p>Nimmt man die gehashte Passwort-Zeichenkette
+des Admin-Users und googelt danach, findet man direkt diese Seite:</p>
 
 <p><img src="/images/security/sha1.png" srcset="/images/security/sha1.png 1x, /images/security/sha1@2x.png 2x"  alt="" ></p>
 
@@ -463,30 +463,6 @@ und ein Zertifikat.</p>
               </ul>
             </li>
           
-          <li class=" "><a href="/session/">Session</a>
-              <ul class="sub">
-                
-                  
-                    
-                      
-                    
-                      
-                      <li ><a href="/session/cookies/">Cookies</a></li>
-                      
-                    
-                      
-                      <li ><a href="/session/tracking/">Tracking</a></li>
-                      
-                    
-                      
-                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
-                      
-                    
-                  
-                
-              </ul>
-            </li>
-          
           <li class=" "><a href="/php-db-schreiben/">Php Db Schreiben</a>
               <ul class="sub">
                 
@@ -516,6 +492,30 @@ und ein Zertifikat.</p>
                     
                       
                       <li ><a href="/php-db-schreiben/html-erlauben/">HTML erlauben</a></li>
+                      
+                    
+                  
+                
+              </ul>
+            </li>
+          
+          <li class=" "><a href="/session/">Session</a>
+              <ul class="sub">
+                
+                  
+                    
+                      
+                    
+                      
+                      <li ><a href="/session/cookies/">Cookies</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/tracking/">Tracking</a></li>
+                      
+                    
+                      
+                      <li ><a href="/session/session-und-login/">Session und Login</a></li>
                       
                     
                   

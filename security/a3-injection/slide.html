@@ -88,7 +88,7 @@
     </div>
     <div class="slide"><p>Auf <a href="https://owasp.org/Top10/2025/A05_2025-Injection/">Platz 5 der OWASP Top 10 2025: Injection</a></p>
 
-<p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection Schwachstellen sind weit verbreitet, wir haben schon  SQL-Injection und Cross Site Scripting (XSS) kennen gelernt.</p>
+<p>Injection-Schwachstellen tauchen auf, wenn eine Anwendung nicht vertrauenswürdige Daten an einen Interpreter weiterleitet. Injection-Schwachstellen sind weit verbreitet; wir haben schon SQL-Injection und Cross-Site Scripting (XSS) kennengelernt.</p>
 
 </div>
 <div class="slide">
@@ -107,8 +107,8 @@ $query-&gt;execute(array( $_GET[&#39;pid&#39;] ) );
 
 <p>Mit dem <code>prepare</code> wird das SQL-Statement an die Datenbank geschickt,
 und dort bereits vor-kompiliert. Die Daten,
-die als Input vom User/der Userin kommen werden mit <code>execute</code> an die Datenbank
-übergeben.  In diesem zweiten Schritt können sie aber nur mehr als
+die als Input vom User bzw. von der Userin kommen, werden mit <code>execute</code> an die Datenbank
+übergeben. In diesem zweiten Schritt können sie aber nur noch als
 Daten, nicht mehr als SQL interpretiert werden.</p>
 
 </div>
@@ -116,7 +116,7 @@ Daten, nicht mehr als SQL interpretiert werden.</p>
 
 <h2 id="prepared-statement-mit-benannten-platzhaltern">Prepared Statement mit benannten Platzhaltern</h2>
 
-<p>Eine zweite Schreibweise für prepared Statement ist noch besser lesbar: dabei
+<p>Eine zweite Schreibweise für Prepared Statements ist noch besser lesbar: dabei
 werden statt der Fragezeichen benannte Platzhalter verwendet:</p>
 
 <div class="example">
@@ -131,14 +131,13 @@ $stm-&gt;execute();
 
 <h2 id="prepared-statement-falsch-verwenden">Prepared Statement falsch verwenden</h2>
 
-<p>Man kann auch mit prepared statments noch Code schreiben, der für Injections anfällig ist.
+<p>Man kann auch mit Prepared Statements noch Code schreiben, der für Injections anfällig ist.
 Wenn man nämlich im String der an prepare übergeben wird Variablen einbettet:</p>
 
 <div class="example">
-<h4 class="caption">Php Code <small>Prepared Statements falsch gmacht</small></h4>
+<h4 class="caption">Php Code <small>Prepared Statements falsch gemacht</small></h4>
 <pre><code class="language-php  linenums">$stm = $dbh-&gt;prepare ( &quot;UPDATE users SET newsletter = ? WHERE USERNAME = &#39;$name&#39;&quot; );
-$query-&gt;execute(array( $_GET[&#39;newsletter&#39;] ) );
-$stm-&gt;execute();
+$stm-&gt;execute(array( $_GET[&#39;newsletter&#39;] ) );
 </code></pre></div>
 
 <p><img src="/images/security/fire-extinguisher-fire.jpg"  alt="" ></p>
@@ -152,20 +151,20 @@ $stm-&gt;execute();
 
 <ol>
   <li>Den Interpreter gänzlich vermeiden, oder</li>
-  <li>Eine Schnittstelle benutzen es dem Interpreter erlaubt zwischen Code und Daten zu unterscheiden (z.B., prepared statements, stored procedures in der Datenbank), oder</li>
-  <li>Den Input von der Userin/dem User geeignet escapen bevor er an den Interpreter weiter gegeben wird</li>
+  <li>Eine Schnittstelle benutzen, die es dem Interpreter erlaubt, zwischen Code und Daten zu unterscheiden (z. B. Prepared Statements, Stored Procedures in der Datenbank), oder</li>
+  <li>Den Input von der Userin/dem User geeignet escapen, bevor er an den Interpreter weitergegeben wird</li>
 </ol>
 
 <p>Im dritten und schlechtesten Fall ist weiter zu beachten:</p>
 
 <ul>
-  <li>Bei der Validierung des Inputs immer ein ‘white list’ verwenden, also nur Zeichen erlauben die harmlos sind (auf der “weissen Liste” stehen), alle anderen verwerfen</li>
+  <li>Bei der Validierung des Inputs immer eine ‚White List‘ verwenden, also nur Zeichen erlauben, die harmlos sind (auf der „weißen Liste“ stehen), alle anderen verwerfen</li>
 </ul>
 
-<p>Unabhängig von den oben genannten Punkt gilt noch die Empfehlung:</p>
+<p>Unabhängig von den oben genannten Punkten gilt noch die Empfehlung:</p>
 
 <ul>
-  <li>Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungen Injection minimiert werden.</li>
+  <li>Der Web-Applikation nur minimale Zugriffsrechte zur Datenbank gewähren. Damit kann ein eventueller Schaden durch gelungene Injection minimiert werden.</li>
 </ul>
 
 </div>
@@ -174,7 +173,7 @@ $stm-&gt;execute();
 <h2 id="weitere-quellen-zu-sql-injection">Weitere Quellen zu SQL Injection</h2>
 
 <ul>
-  <li>Wir haben das Problem zuerst besprochen im Kaptiel <a href="https://web-development.github.io/php-db-schreiben/daten-loeschen/">PHP DB Schreiben: Löschen</a></li>
+  <li>Wir haben das Problem zuerst besprochen im Kapitel <a href="https://web-development.github.io/php-db-schreiben/daten-loeschen/">PHP DB Schreiben: Löschen</a></li>
   <li>Siehe auch <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.md">SQL Injection Prevention Cheat Sheet</a></li>
   <li><a href="https://www.websec.ca/kb/sql_injection">SQL Injection Knowledge Base</a></li>
 </ul>
@@ -182,7 +181,7 @@ $stm-&gt;execute();
 </div>
 <div class="slide">
 
-<h2 id="cross-site-scripting-xss">Cross Site Scripting (XSS)</h2>
+<h2 id="cross-site-scripting-xss">Cross-Site Scripting (XSS)</h2>
 
 <p>Diese Attacke haben wir schon im Kapitel <a href="/php-db-schreiben/daten-editieren/#slide-9">Daten Editieren</a> besprochen:</p>
 
@@ -202,13 +201,13 @@ harmlose Seite.</p>
 
 <h2 id="vermeidung-von-xss">Vermeidung von XSS</h2>
 
-<p>Cross Site Scripting kann komplett vermieden werden, wenn man niemals Input von BenutzerInnen auf der Webseite wiedergibt.
+<p>Cross-Site Scripting kann komplett vermieden werden, wenn man niemals Input von Benutzerinnen und Benutzern auf der Webseite wiedergibt.
 Das ist ein seltener, aber sehr sicherer Fall.</p>
 
 <p>XSS vermeiden kann man mit zwei Verteidigungs-Linien:</p>
 
 <ul>
-  <li>Schon bei der Eingabe wird alles Entfernen, was nicht auf einer “Liste der Erlaubten” Zeichen steht</li>
+  <li>Schon bei der Eingabe wird alles entfernt, was nicht auf einer „Liste der Erlaubten“ steht</li>
   <li>Bei der Ausgabe immer ein geeignetes Escaping verwenden.</li>
 </ul>
 
@@ -217,10 +216,10 @@ Das ist ein seltener, aber sehr sicherer Fall.</p>
 
 <h2 id="eingabe-validieren-in-php">Eingabe validieren in PHP</h2>
 
-<p>Achtung: der PHP Befehl <code>strip_tags</code> entfernt keine Attribute aus erlaubten Tags, es ist
-also ganz leicht möglich Javascript in einem <code>onmouseover</code> Attribut einzuschummeln.</p>
+<p>Achtung: Der PHP-Befehl <code>strip_tags</code> entfernt keine Attribute aus erlaubten Tags; es ist
+also ganz leicht möglich, JavaScript in einem <code>onmouseover</code>-Attribut einzuschmuggeln.</p>
 
-<p>Statt dessen sollte man einen HTML-Filter wie <a href="http://htmlpurifier.org/">HTML Purifier</a> verwenden.</p>
+<p>Stattdessen sollte man einen HTML-Filter wie <a href="http://htmlpurifier.org/">HTML Purifier</a> verwenden.</p>
 
 </div>
 <div class="slide">
@@ -233,7 +232,7 @@ Drei Beispiele, und die dafür passenden PHP-Befehle:</p>
 <ol>
   <li>in einer URL - <code>urlencode</code></li>
   <li>in HTML - <code>htmlspecialchars</code></li>
-  <li>in Javascript, als Wert einer Variable - <code>json_encode</code></li>
+  <li>in JavaScript, als Wert einer Variable – <code>json_encode</code></li>
 </ol>
 
 <p>Es gibt aber noch viele andere Kontexte: XML, PDF, … jedes Format hat seine eigenen Regeln.</p>
@@ -258,11 +257,11 @@ richtige Escape-Funktion wählen.</p>
 
 <h2 id="content-security-policy">Content Security Policy</h2>
 
-<p>Die Content Security Policy ist eine moderne Sicherheitsmaßnahme um
+<p>Die Content Security Policy ist eine moderne Sicherheitsmaßnahme, um
 XSS zu verhindern.</p>
 
 <p>Die Content Security Policy wird als Header im HTTP Response oder als
-META-Tag in HTML and den Client übermittelt.  Aktuelle Browser halten die Policy ein.</p>
+META-Tag in HTML an den Client übermittelt. Aktuelle Browser halten die Policy ein.</p>
 
 <p>Ein Beispiel für den HTTP Header: <code>Content-Security-Policy: default-src https:</code></p>
 
@@ -276,11 +275,11 @@ um dieselbe Policy zu setzen:</p>
 <p>Diese Policy bewirkt zwei Dinge:</p>
 
 <ul>
-  <li>explizit: das Laden von weiteren Resourcen für diese Webseite (Bilder, Fonts, Javascript) wird nur über https erfolgen</li>
+  <li>explizit: das Laden von weiteren Ressourcen für diese Webseite (Bilder, Fonts, JavaScript) erfolgt nur über HTTPS</li>
   <li>implizit: script-Tags im HTML und der JavaScript-Befehl <code>eval</code> sind deaktiviert</li>
 </ul>
 
-<p>Falls man script-Tags im HTML zulassen will, kann man die option <code>unsave-inline</code> verwenden:</p>
+<p>Falls man <code>script</code>-Tags im HTML zulassen will, kann man die Option <code>'unsafe-inline'</code> verwenden:</p>
 
 <p><code>
 Content-Security-Policy: default-src https: 'unsafe-inline'
@@ -294,7 +293,7 @@ Content-Security-Policy: default-src https: 'unsafe-inline'
 <ul>
   <li>Siehe <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md">XSS (Cross Site Scripting) Prevention Cheat Sheet</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a></li>
-  <li>Wir haben das Problem zuerst besprochen im Kaptiel <a href="https://web-development.github.io/php-db-schreiben/daten-editieren/">PHP DB Schreiben: Daten Bearbeiten</a></li>
+  <li>Wir haben das Problem zuerst besprochen im Kapitel <a href="https://web-development.github.io/php-db-schreiben/daten-editieren/">PHP DB Schreiben: Daten Bearbeiten</a></li>
   <li><a href="https://twig.symfony.com/doc/3.x/filters/escape.html">Escaping im Template System twig für PHP</a></li>
 </ul>
 

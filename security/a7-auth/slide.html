@@ -93,8 +93,8 @@
 <p>Ein Angriff mittels “Credential Stuffing” ist einfach umzusetzen: ein kleines
 Programm probiert automatisch das Login mit den bekanntesten Passwörtern aus.</p>
 
-<p>Als Benutzer*in des Internet empfiehlt sich auf jeden Fall: neues Passwort für jedes
-neue Login das ich anlege. Mit Hilfe eine <a href="https://prism-break.org/de/all/#password-managers">Passwort-Managers</a>.</p>
+<p>Als Benutzer*in des Internets empfiehlt sich auf jeden Fall: neues Passwort für jedes
+neue Login, das ich anlege. Mit Hilfe eines <a href="https://prism-break.org/de/all/#password-managers">Passwort-Managers</a>.</p>
 
 <p>Hier ein paar Maßnahmen, die man als Entwickler*in auch schon im ersten PHP-Projekt umsetzen kann:</p>
 
@@ -103,7 +103,7 @@ neue Login das ich anlege. Mit Hilfe eine <a href="https://prism-break.org/de/al
 
 <h2 id="keine-information-in-fehlermeldungen-preisgeben">Keine Information in Fehlermeldungen preisgeben</h2>
 
-<p>Authentisierung kann aus vielen Gründen fehl schlagen:</p>
+<p>Authentisierung kann aus vielen Gründen fehlschlagen:</p>
 
 <ul>
   <li>der Username existiert gar nicht</li>
@@ -115,27 +115,27 @@ neue Login das ich anlege. Mit Hilfe eine <a href="https://prism-break.org/de/al
 
 <p>“Login Fehlgeschlagen - Falscher Username oder Falsches Passwort”</p>
 
-<p>Warum? Die Information, ob ein bestimmter Username im System exisitiert ist wertvoll! Es
+<p>Warum? Die Information, ob ein bestimmter Username im System existiert, ist wertvoll! Es
 ist ja bereits die Hälfte der nötigen Information für ein Login. Deswegen soll man die Existenz
 von Usernamen genau so geheim halten wie die Passwörter.</p>
 
 </div>
 <div class="slide">
 
-<h2 id="weg-mit-alten-passwort-regeln">Weg mit alten Passwort Regeln</h2>
+<h2 id="weg-mit-alten-passwortregeln">Weg mit alten Passwortregeln</h2>
 
-<p>Oft werden strenge Passwort Regeln verwendet:</p>
+<p>Oft werden strenge Passwortregeln verwendet:</p>
 
-<p>“Das Passwort muss mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und zwei verscheidene Ziffern enthalten und darf nicht länger als 8 Zeichen sein”</p>
+<p>“Das Passwort muss mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und zwei verschiedene Ziffern enthalten und darf nicht länger als 8 Zeichen sein”</p>
 
-<p>Diese Regeln sind veraltet.  So empfiehlt das amerikanische National  Institute of Standards and Technology seit 2017 in <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret">NIST 800-63 </a>:</p>
+<p>Diese Regeln sind veraltet. So empfiehlt das amerikanische National Institute of Standards and Technology seit 2017 in <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret">NIST 800-63</a>:</p>
 
 <ul>
   <li>Passwörter sollen mindestens 8 oder mehr Zeichen lang sein</li>
   <li>Passwörter sollen bis zu 64 Zeichen lang sein können</li>
   <li>“Bekannte” Passwörter sollen verboten sein. Das kann man z.B. mit <a href="https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange">der haveibeenpwned API</a> implementieren</li>
-  <li>Es soll <strong>keine weiteren  Regeln</strong> für die Zusammensetzung des Passworts geben (z.b. nicht verlangen, dass es verschiedene Zeichentypen enthält, kein Verbot von Zeichen-Wiederholungen)</li>
-  <li>Es soll keinen Zwang geben das Passwort ohne Anlass zu Ändern. Ein guter Anlass ist wenn das Passwort öffentlich wurde.</li>
+  <li>Es soll <strong>keine weiteren Regeln</strong> für die Zusammensetzung des Passworts geben (z. B. nicht verlangen, dass es verschiedene Zeichentypen enthält, kein Verbot von Zeichen-Wiederholungen)</li>
+  <li>Es soll keinen Zwang geben, das Passwort ohne Anlass zu ändern. Ein guter Anlass ist, wenn das Passwort öffentlich wurde.</li>
 </ul>
 
 <p>Siehe auch</p>
@@ -155,15 +155,15 @@ von Usernamen genau so geheim halten wie die Passwörter.</p>
 will,  muss bei jedem Request eine authentifizierende Information, zum Beispiel eine Session-ID,
 mitgeschickt werden. Dies geschieht zum Beispiel in einem Cookie.</p>
 
-<p>Wenn es gelingt diese Information abzuhören und wieder zu verwenden,
-dann erhält man den gleichen Zugang wie die eigentliche UserIn. Diese
-Art der Angriffs nennt man “Replay Attacke” - ein Request wird abgehört und
+<p>Wenn es gelingt, diese Information abzuhören und wieder zu verwenden,
+dann erhält man den gleichen Zugang wie die eigentliche Benutzerin bzw. der eigentliche Benutzer. Diese
+Art der Angriffe nennt man „Replay-Attacke“ – ein Request wird abgehört und
 gleich wieder verwendet.</p>
 
-<p>Um Passwörter ebenso wie Session Ids und Cookies vor dem Abhören zu
-schützen muss man den gesamten HTTP-Request verschlüssen - das ist über SSL/TLS möglich.</p>
+<p>Um Passwörter ebenso wie Session-IDs und Cookies vor dem Abhören zu
+schützen, muss man den gesamten HTTP-Request verschlüsseln – das ist über SSL/TLS möglich.</p>
 
-<p>Ein weiterer Punkt wo diese Informationen eventuell aufscheinen sind Logfiles.
+<p>Ein weiterer Punkt, an dem diese Informationen eventuell auftauchen, sind Logfiles.
 Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschlüsseln:</p>
 
 </div>
@@ -173,8 +173,8 @@ Auch beim Logging sollte man diese Informationen vorher ausfiltern oder verschl�
 
 <p>Es ist sehr schwierig, ein sicheres Authentifizierungs- und Session-Management zu implementieren. Man sollte nicht auf eigene Lösungen setzen - Diese haben dann oft Fehler bei Abmeldung und Passwortmanagement, bei der Wiedererkennung der Benutzer*innen, bei Timeouts, Sicherheitsabfragen usw. Das Auffinden dieser Fehler kann sehr schwierig sein, besonders wenn es sich um individuelle Implementierungen handelt.</p>
 
-<p>PHP liefert nur ein Session-System. Frameworks wie <a href="https://symfony.com/doc/current/security.html#c-encoding-passwords">Symphony</a> oder <a href="https://laravel.com/docs/7.x/authentication">Laravel</a> liefern
-fertige Lösungen für den gesamten Login Prozess.</p>
+<p>PHP liefert nur ein Session-System. Frameworks wie <a href="https://symfony.com/doc/current/security.html#c-encoding-passwords">Symfony</a> oder <a href="https://laravel.com/docs/7.x/authentication">Laravel</a> liefern
+fertige Lösungen für den gesamten Login-Prozess.</p>
 
 </div>
 <div class="slide">
@@ -182,9 +182,9 @@ fertige Lösungen für den gesamten Login Prozess.</p>
 <h2 id="selbst-implementieren-passwrter-speichern">Selbst implementieren: Passwörter speichern</h2>
 
 <p>Passwörter sollten niemals im Klartext in der Datenbank gespeichert werden.
-Statt dessen wir nur ein <strong>Hash</strong> des Passworts gespeichert.</p>
+Stattdessen wird nur ein <strong>Hash</strong> des Passworts gespeichert.</p>
 
-<p>Beim Login wir das eingegebene Passwort dann wieder mit derselben Hash-Funktion
+<p>Beim Login wird das eingegebene Passwort dann wieder mit derselben Hash-Funktion
 behandelt, und mit dem gespeicherten Wert verglichen.</p>
 
 <p>PHP stellt eine geeignete Hash-Funktion zur Verfügung: <a href="https://www.php.net/manual/de/function.password-hash.php">password_hash</a>.  Siehe auch <a href="A2 - Cryptographic Failures">/security/a2-crypto/</a></p>
@@ -223,11 +223,11 @@ Seite aufrufen, und ist schon eingeloggt - als Peter Publikum.</p>
 <p>Komplexere Maßnahmen wären:</p>
 
 <ul>
-  <li>Zwei Faktor Authentisierung</li>
+  <li>Zwei-Faktor-Authentisierung</li>
   <li>Automatische Prüfung der neu eingegebenen Passwörter mit der “Have I Been Pwned” API, z.B. mit <a href="https://packagist.org/packages/icawebdesign/hibp-php">hibp-php</a></li>
 </ul>
 
-<p>Die OWAAS bietet noch mehr Informationen zu diesem Thema an
+<p>Die OWASP bietet noch mehr Informationen zu diesem Thema an
 im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Session_Management_Cheat_Sheet.md">Authentication Cheat Sheet</a>
 und im <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Session_Management_Cheat_Sheet.md">Session Management Cheat Sheet</a>.</p>
 </div>
