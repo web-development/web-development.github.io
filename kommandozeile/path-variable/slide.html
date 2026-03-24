@@ -105,19 +105,21 @@
 /Users/bjelline/.composer/vendor/bin/:/opt/homebrew/opt/postgresql@17/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/share/dotnet:/Users/bjelline/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/Users/bjelline/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/
 </code></p>
 
-<p>Dieses Beispiel von einem Mac Computer enthält viele Pfad-Angaben, getrennt durch Doppelpunkte.</p>
+<p>Dieses Beispiel stammt von einem Mac und enthält viele Pfad-Angaben. Auf Mac und Linux wird der  Doppelpunkt als Trennzeichen verwendet.</p>
 
 <p><code>
-C:\Windows\system32;C:\Windows;C:\Program Files\Git\cmd;;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\php;C:\Users\bjelline\AppData\Local\Programs\Microsoft VS Code\bin
+C:\Windows\system32;C:\Windows;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\php;C:\Users\bjelline\AppData\Local\Programs\Microsoft VS Code\bin
 </code></p>
 
-<p>Dieses Beispiel von einem Windows Computer enthält viele Pfad-Angaben, getrennt durch Semikolons.</p>
+<p>Dieses Beispiel stammt von einem Windows Computer und enthält viele Pfad-Angaben. Auf Windows wird das Semikolon als Trennzeichen verwendet.</p>
 
 <p>Auf beiden Systemen geht die Kommandozeile auf der Suche nach dem Programm <code>createdb</code> gleich vor: sie sucht im ersten angegebenen Ordner nach ausführbaren Dateien mit den Namen <code>createdb</code> (auf Windows auch nach <code>createdb.exe</code> oder <code>createdb.bat</code>). Falls sie im ersten Ordner nichts findet geht die Suche im 2.Ordner weiter.</p>
 
-<p>Falls ein passendes Programm gefunden wird, wird es gestartet.</p>
+<p>Das erste passendes Programm, das gefunden wird, wird es gestartet.</p>
 
-<p>Falls nicht wird eine Fehlermeldung ausgegeben.</p>
+<p>Falls keines gefunden wird, wird eine Fehlermeldung ausgegeben.</p>
+
+<p>Hinweis: Wenn ich zwei verschiedene Programm-Versionen installiert habe entscheidet die Reihenfolge im PATH welches Programm gestartet wird!</p>
 
 </div>
 <div class="slide">
@@ -126,7 +128,7 @@ C:\Windows\system32;C:\Windows;C:\Program Files\Git\cmd;;C:\Program Files\dotnet
 
 <p>Hier ein Beispiel auf Windows 11:</p>
 
-<p><img src="/images/kommandozeile/path-setzen-windows.png"  alt="" ></p>
+<p><img src="/images/kommandozeile/path-setzen-windows.png" srcset="/images/kommandozeile/path-setzen-windows.png 1x, /images/kommandozeile/path-setzen-windows@2x.png 2x"  alt="" ></p>
 
 <ol>
   <li>Schritt: herausfinden, wo das Programm, das ich starten will wirklich gespeichert ist. Dazu wird hier Windows Explorer verwendet. Ich habe die Datei <code>createdb.exe</code> im Ordner <code>bin</code> gefunden.</li>
@@ -143,7 +145,7 @@ C:\Windows\system32;C:\Windows;C:\Program Files\Git\cmd;;C:\Program Files\dotnet
 
 <h2 id="wie-setzt-man-die-path-variable-auf-mac-oder-linux">Wie setzt man die PATH Variable auf Mac oder Linux</h2>
 
-<p>Dazu muss man wissen welche Shell man benutzt. das findet man mit dem Befehl <code>ps</code> heraus, da werden die laufenden Prozesse angezeigt. Auf Mac is die shell wahrscheinlich bash oder zsh, auf linux gibt es noch mehr optionen.</p>
+<p>Dazu muss man wissen welche Shell man benutzt. das findet man mit dem Befehl <code>ps</code> heraus, da werden die laufenden Prozesse angezeigt. Auf Mac ist die Shell wahrscheinlich <code>bash</code> oder <code>zsh</code>, auf linux gibt es noch mehr gängige Optionen.</p>
 
 <p>Jede Shell hat eine eigene Datei mit erstem Buchstaben <code>.</code> und letzten Buchstaben <code>rc</code>. Also z.B. <code>.bashrc</code> oder <code>.zshrc</code> u.s.w.</p>
 
@@ -155,6 +157,72 @@ C:\Windows\system32;C:\Windows;C:\Program Files\Git\cmd;;C:\Program Files\dotnet
   <li>Schritt: eine neue Shell starten, z.B. indem man ein neues Terminal-Fenster öffent. Erst in der neuen Shell wirkt der neue Wert von PATH</li>
 </ol>
 
+</div>
+<div class="slide">
+
+<h2 id="berblick-windows-vs-maclinux">Überblick Windows vs. Mac/Linux</h2>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Windows</th>
+      <th>macOS / Linux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Trennzeichen</td>
+      <td>Semikolon <code>;</code></td>
+      <td>Doppelpunkt <code>:</code></td>
+    </tr>
+    <tr>
+      <td>Variable aufrufen</td>
+      <td><code>%PATH%</code></td>
+      <td><code>$PATH</code></td>
+    </tr>
+    <tr>
+      <td>Variable setzen (permanent)</td>
+      <td>Systemeigenschaften / GUI</td>
+      <td>Shell-Konfigurationsdatei (z.B. <code>.zshrc</code>)</td>
+    </tr>
+    <tr>
+      <td>Variable setzen (temporär)</td>
+      <td><code>set PATH=...</code></td>
+      <td><code>export PATH=...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+<div class="slide">
+
+<h2 id="umgebungsvariablen">Umgebungsvariablen</h2>
+
+<p>Die Variable PATH ist nur ein Beispiel für eine Umgebungsvariable. Diese Variablen kann ich global oder für ein einzelne Session setzen, sie stehen dann den Programmen dich dort gestartet werden zur Verfügung.</p>
+
+<p>Beispiele für Umgebungsvariablen:</p>
+
+<ul>
+  <li>PATH - hier schon ausführlich beschrieben: wo werden ausführbare Programme gesucht</li>
+  <li>LANG - konfiguriert die Sprache und Zeichenkodierung der Ausgabe, z.b. LANG=de_AT.UTF-8</li>
+  <li>PATHEXT - nur Windows: Endungen von ausführbaren Programmen,  z.B.  <code>.COM;.EXE;.BAT;.CMD</code></li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="weiter-anwendungsgebiete">Weiter Anwendungsgebiete</h2>
+
+<p>Du wirst Umgebungsvariablen und PATH in vielen Anwendungfällen brauchen, nicht nur wie hier im Beispiel beim verwenden einer Datenbank.
+Zwei Beispiele:</p>
+
+<ul>
+  <li>Beim builden von C++ Projekten werden Umgebungsvariablen verwendet um die richtigen Libraries einzubinden</li>
+  <li>Beim Betrieb von Web Applikationen werden Umgebungsvariablen für die Konfiguration verwendet</li>
+  <li><a href="https://wiki.ubuntuusers.de/Umgebungsvariable/typische_Anwendungsf%C3%A4lle/">Weitere Beispiele mit Linux</a></li>
+  <li><a href="https://developer.android.com/games/agde/quickstart?hl=de">Umgebungsvariablen im Andriod Game Development</a></li>
+</ul>
 </div>
     <div class="slide">
       <h1>Umgebungsvariable PATH</h1>
