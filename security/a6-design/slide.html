@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>A06 - Insecure design - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>A06 - Insecure design</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a5-injection//slide.html">A05 - Injection</a> | 
+        <a href="/security/a6-design/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a7-auth//slide.html">A07 - Authentication Failures</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Auf Platz 6 der OWASP Top 10 2025 <a href="https://owasp.org/Top10/2025/A06_2025-Insecure_Design/">Insecure Design</a>.</p>
+
+<p>In diese Kategorie fallen Probleme, die schon in der Architektur des Systems oder im Entwurf angelegt
+sind.</p>
+
+<p>Um diese Probleme zu beheben, ist mehr Wissen über Software-Architektur, Testing und den Software-Development-Prozess notwendig.</p>
+
+<ul>
+  <li>OWASP <a href="https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html">Secure Product Design Cheat Sheet</a></li>
+  <li>OWASP <a href="https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html">Threat Modeling Cheat Sheet</a></li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="threat-modeling">Threat Modeling</h2>
+
+<p>Für verschiedene Situationen gibt es verschiedene Threat Models (<a href="https://en.wikipedia.org/wiki/Threat_model">wikipedia</a>),
+wie in diesem <a href="https://twitter.com/hvcco/status/1364104368228859906">tweet</a> von
+Nik gezeigt:</p>
+
+<p><img src="/images/security/threat-model-endoscopy.jpg" srcset="/images/security/threat-model-endoscopy.jpg 1x, /images/security/threat-model-endoscopy@2x.jpg 2x"  alt="Tweet &quot;Your threat model is not my threat model, hospital edition&quot;" ></p>
+
+<p>Die Gefahr, dass der Snack-Automat mit Endoskopie-Geräten attackiert wird, ist
+wohl nur in einem Krankenhaus gegeben, nicht aber in einer Schule oder einem Büro.</p>
+</div>
+    <div class="slide">
+      <h1>A06 - Insecure design</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a5-injection//slide.html">A05 - Injection</a> | 
+        <a href="/security/a6-design/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a7-auth//slide.html">A07 - Authentication Failures</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

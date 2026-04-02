@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>A02 - Fehlkonfiguration - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>A02 - Fehlkonfiguration</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a1-zugriffskontrolle//slide.html">A01 - Zugriffskontrolle</a> | 
+        <a href="/security/a2-fehlkonfiguration/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a3-komponenten//slide.html">A03 - Software Supply Chain Failures</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Auf <a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">Platz 2 der OWASP Top 10 2025: Security Misconfiguration</a>.</p>
+
+<p>Sicherheitsrelevante Fehlkonfiguration kann auf jeder Ebene der Anwendung vorkommen: Betriebssystem, Programmiersprache, Framework, Webserver, Programmcode. Die Zusammenarbeit zwischen Entwickler<em>innen und Administrator</em>innen ist wichtig, um eine sichere Konfiguration aller Ebenen zu gewährleisten.</p>
+
+<p>In größeren Projekten / Firmen ist eine Arbeitsteilung üblich zwischen
+Entwicklung (Development) und Systemadministration (Operations).</p>
+
+</div>
+<div class="slide">
+
+<h2 id="ebenen">Ebenen</h2>
+
+<p>Für eine Web-Applikation muss man dabei mindestens folgende Schichten beachten:</p>
+
+<ul>
+  <li>Physikalische Sicherheit (Wer kann den Server ein- und ausschalten, zerlegen,…)</li>
+  <li>Virtualisierungs-Schicht, z. B. VMware</li>
+  <li>Betriebssystem, z. B. Ubuntu, CentOS, Debian</li>
+  <li>Datenbank, z. B. PostgreSQL, MySQL, MongoDB</li>
+  <li>Programmiersprache/Interpreter, z. B. PHP, Ruby, node.js, Python</li>
+  <li>Webserver, z. B. Apache, nginx, caddy, traefik,…</li>
+  <li>Framework, z. B. Laravel, Symphony, Rails, nest.js, flask, …</li>
+  <li>Fremd-Applikation, z. B. WordPress, Redmine</li>
+  <li>Selbstgeschriebener Code der Applikation</li>
+</ul>
+
+<p>Jede dieser Schichten gilt es, richtig zu konfigurieren
+und Sicherheits-Updates einzuspielen.</p>
+
+<p>Wenn es eine Arbeitsteilung zwischen Development (Leute die Programmieren) und Operations
+(Leute die die Infrastruktur betreiben) gibt,
+muss geklärt sein, wer für welche Schicht zuständig ist.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="hardening">Hardening</h2>
+
+<p><strong>Hardening</strong> bedeutet: eine Software so konfigurieren, dass nur das erlaubt ist, was wirklich gebraucht wird — alles andere wird abgeschaltet. Man verkleinert damit die “Angriffsfläche”.</p>
+
+<p>Zwei Szenarien:</p>
+
+<ul>
+  <li>Entwicklungs-Rechner: möglichst viele Debug-Möglichkeiten, Bequemlichkeit wichtiger als Sicherheit</li>
+  <li>Produktions-Server: Sicherheit wichtiger als Bequemlichkeit, Logging / Monitoring ja, aber nicht öffentlich zugänglich</li>
+</ul>
+
+<p>Dafür gibt es oft schon fertige Konfigurationen, oder Tutorials.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="php-hardening-phpini">PHP Hardening: php.ini</h3>
+
+<p>PHP wird über die Datei <code>php.ini</code> konfiguriert. Viele Einstellungen, die man dort standardmäßig findet,
+sind für die Entwicklung gedacht — auf einem Produktionsserver sind sie ein Sicherheitsrisiko.</p>
+
+<p>Ein typisches Beispiel: Fehlermeldungen. Auf dem Entwicklungsrechner will man Fehler direkt im Browser sehen. Auf dem Produktionsserver würde das Angreifer*innen wertvolle Hinweise geben (Dateinamen, Datenbankstruktur, Bibliotheksversionen):</p>
+
+<div class="example">
+<h4 class="caption">Plain Code <small>php.ini — Entwicklung (unsicher für Produktion)</small></h4>
+<pre><code class="language-plain  linenums">display_errors = On
+error_reporting = E_ALL
+</code></pre></div>
+
+<div class="example">
+<h4 class="caption">Plain Code <small>php.ini — Produktion (sicher)</small></h4>
+<pre><code class="language-plain  linenums">display_errors = Off
+log_errors = On
+error_log = /var/log/php/errors.log
+</code></pre></div>
+
+<p>Weitere wichtige PHP-Einstellungen für den Produktionsserver:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <thead>
+    <tr>
+      <th>Einstellung</th>
+      <th>Entwicklung</th>
+      <th>Produktion</th>
+      <th>Grund</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>display_errors</code></td>
+      <td><code>On</code></td>
+      <td><code>Off</code></td>
+      <td>Fehlermeldungen nicht öffentlich zeigen</td>
+    </tr>
+    <tr>
+      <td><code>expose_php</code></td>
+      <td><code>On</code></td>
+      <td><code>Off</code></td>
+      <td>PHP-Version nicht im HTTP-Header verraten</td>
+    </tr>
+    <tr>
+      <td><code>allow_url_include</code></td>
+      <td><code>On</code></td>
+      <td><code>Off</code></td>
+      <td>Einbinden von Remote-Dateien verbieten</td>
+    </tr>
+    <tr>
+      <td><code>session.cookie_httponly</code></td>
+      <td>—</td>
+      <td><code>1</code></td>
+      <td>Session-Cookie vor JavaScript schützen</td>
+    </tr>
+    <tr>
+      <td><code>session.cookie_secure</code></td>
+      <td>—</td>
+      <td><code>1</code></td>
+      <td>Session-Cookie nur über HTTPS senden</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mit <code>expose_php = Off</code> wird z.B. verhindert, dass der Server in jedem HTTP-Response den Header <code>X-Powered-By: PHP/8.2.1</code> mitschickt — diese Versionsinformation hilft Angreifer*innen dabei, bekannte Sicherheitslücken gezielt auszunutzen.</p>
+
+<ul>
+  <li>OWASP <a href="https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html">PHP Configuration Cheat Sheet</a></li>
+</ul>
+
+</div>
+    <div class="slide">
+      <h1>A02 - Fehlkonfiguration</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a1-zugriffskontrolle//slide.html">A01 - Zugriffskontrolle</a> | 
+        <a href="/security/a2-fehlkonfiguration/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a3-komponenten//slide.html">A03 - Software Supply Chain Failures</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de" style="background-color: #cff0f1;">
+  <head>
+    <meta charset="utf-8" />
+    <title>A04 - Cryptographic Failures - als Präsentation</title>
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+
+    <!-- Replace path with correct path to deck.core.css. -->
+    <link rel="stylesheet" href="/assets/css/deck.core.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/style-theme.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/transition-theme.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/assets/css/deck.goto.css" />
+    <link rel="stylesheet" href="/assets/css/deck.status.css" />
+    <link rel="stylesheet" href="/assets/css/deck.hash.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+      /* google code prettify */
+      li.L0,
+      li.L1,
+      li.L2,
+      li.L3,
+      li.L5,
+      li.L6,
+      li.L7,
+      li.L8 {
+        list-style-type: inherit !important;
+      }
+      li.L1,
+      li.L3,
+      li.L5,
+      li.L7,
+      li.L9 {
+        background: none repeat scroll 0 0 #eefeee;
+      }
+      ol.linenums {
+        margin-left: 80px !important;
+      }
+
+      /* deck */
+      h4.caption {
+        color: #999999;
+      }
+      h4.caption small {
+        color: black;
+      }
+      table.table-bordered {
+        border-collapse: separate;
+      }
+      table.table-bordered td,
+      table.table-bordered th {
+        border: 2px white solid;
+        padding: 2px;
+      }
+
+      .slide img[src$="svg"] {
+        width: 100%;
+      }
+    </style>
+
+    <!-- Any other extension CSS files go here. -->
+
+    <!-- Replace path with correct path to Modernizr file. -->
+    <script src="/assets/js/modernizr.custom.js"></script>
+  </head>
+  <body class="deck-container">
+    <!-- Create any number of elements with class slide within the container -->
+    <div class="slide">
+      <h1>A04 - Cryptographic Failures</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a3-komponenten//slide.html">A03 - Software Supply Chain Failures</a> | 
+        <a href="/security/a4-crypto/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a5-injection//slide.html">A05 - Injection</a>
+        
+      </p>
+    </div>
+    <div class="slide"><p>Auf <a href="https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/">Platz 4 der OWASP Top 10 2025: Cryptographic Failures</a>.</p>
+
+<p>Fehler bei der Verschlüsselung oder fehlende Verschlüsselung kann dazu führen,
+dass sensible Daten zugänglich werden.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="manahmen">Maßnahmen</h2>
+
+<ol>
+  <li>Klassifizierung der Daten die verarbeitet, gespeichert oder übertragen werden. Welche Daten sind aufgrund von Datenschutzgesetzen, behördlichen Vorschriften oder Geschäftsanforderungen sensibel?</li>
+  <li>Sicherstellen, dass vertrauliche Daten bei der Übertragung („in transit“) und Speicherung („at rest“) durch geeignete Verschlüsselung geschützt werden.</li>
+  <li>Kein unnötiges Speichern vertraulicher Daten. Löschung nicht mehr benötigter Daten. Daten, die es nicht gibt, können auch nicht gestohlen werden.</li>
+  <li>Sicherstellen, dass starke Algorithmen und Schlüssel verwendet werden.</li>
+  <li>Sicherstellen, dass Passwörter mit einem speziell für Passwortschutz entwickelten Algorithmus gespeichert werden.</li>
+</ol>
+
+</div>
+<div class="slide">
+
+<h2 id="starke-algorithmen">Starke Algorithmen?</h2>
+
+<p>Was passiert, wenn ich das nicht tue, sondern einen veralteten Algorithmus verwende?</p>
+
+</div>
+<div class="slide">
+
+<h3 id="sha1-ist-ein-schwacher-algorithmus">sha1 ist ein schwacher Algorithmus</h3>
+
+<p>Ein Beispiel aus einem Projekt: hier wurde der Algorithmus <code>sha1</code>
+verwendet um das Passwort zu verschleiern. Wenn sich jemand
+versucht einzuloggen wird das so geprüft:</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$passwordhashed = sha1($password);
+$stmt = $db-&gt;prepare(&#39;SELECT * FROM `users` WHERE username = ? AND password = ?&#39;);
+$stmt-&gt;execute(array($username, $passwordhashed));
+</code></pre></div>
+
+<p>In der Datenbank sehen die Daten so aus:</p>
+
+<div class="example">
+<pre><code class="language-plain  linenums">INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, &#39;student&#39;, &#39;08df1a7479ca768d03481fb6534ebe844cc2a2d5&#39;),
+(2, &#39;admin&#39;, &#39;dd94709528bb1c83d08f3088d4043f4742891f4f&#39;);
+</code></pre></div>
+
+<p>Das sieht ja erst mal gut aus: falls diese Datenbank in falsche Hände gerät
+sind die Passwörter nicht direkt lesbar.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="suche-nach-dem-gehashten-passwort">Suche nach dem gehashten Passwort</h3>
+
+<p>Nimmt man die gehashte Passwort-Zeichenkette
+des Admin-Users und googelt danach, findet man direkt diese Seite:</p>
+
+<p><img src="/images/security/sha1.png" srcset="/images/security/sha1.png 1x, /images/security/sha1@2x.png 2x"  alt="" ></p>
+
+<p><img src="/images/security/sha2.png" srcset="/images/security/sha2.png 1x, /images/security/sha2@2x.png 2x"  alt="" ></p>
+
+<p>Mehr zum Speichern von Passwörtern im <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">OWASP Password Storage Cheat Sheet</a></p>
+
+</div>
+<div class="slide">
+
+<h3 id="beispiel-passwort-hash">Beispiel Passwort Hash</h3>
+
+<p>Auch wenn man noch nichts über Kryptographie weiß, kann man mit dem Befehl
+<code>password_hash</code> in PHP garantiert einen guten Algorithmus verwenden. Als erstes Argument
+pbergibt man das Passwort, als zweites Argument den Namen des Algorithmus:</p>
+
+<p><code>php
+password_hash("asecret", PASSWORD_ARGON2I);
+</code></p>
+
+<p>Der Rückgabewert ist ein String aus mehreren Teilen:</p>
+
+<p><code>$argon2i$v=19$m=65536,t=4,p=1$M3JZTjdOclg3MHRWZ0FSWA$1LPV3a8PHAuERq4JmwU8U0+/IfdkoR/LwfgI/PMuCUk</code></p>
+
+</div>
+<div class="slide">
+
+<h3 id="salt">Salt</h3>
+
+<p>Wenn man die Funktion mehrmals aufruft erhält man jedes Mal einen anderen Rückgabewert:</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">echo password_hash(&quot;asecret&quot;, PASSWORD_ARGON2I);
+echo password_hash(&quot;asecret&quot;, PASSWORD_ARGON2I);
+echo password_hash(&quot;asecret&quot;, PASSWORD_ARGON2I);
+</code></pre></div>
+
+<p>Beispiel-Output:</p>
+
+<p><code>
+$argon2i$v=19$m=65536,t=4,p=1$Vmo0MVVlWldObVouZ01VNA$owNwQm+Ggyk316rRT1g4tgCh0QGGipdD4ynhZm93eYw
+$argon2i$v=19$m=65536,t=4,p=1$MTUvaFVvaGNseGtxenk4Zg$GeVAk7HfgRxxablh4Qg90mFDH+LwKLUPYv30o50XPJ8
+$argon2i$v=19$m=65536,t=4,p=1$MWl2ZmFPa3EvUVE0cXJySA$BzgSMLJtD3rLB2j7oX/EL06QZ+saa8yCyA4WuNu9FxI
+</code></p>
+
+<p>Den Output kann man entlanger der Dollar-Zeichen zerlegen. Dann sieht man, dass der Algorithmus und die Parameter für alle drei Aufrufe gleich sind:</p>
+
+<table class="table table-condensed table-bordered" style="width:auto">
+  <tbody>
+    <tr>
+      <td>Algorithums</td>
+      <td>Parameter</td>
+      <td>Parameter</td>
+      <td>Random Salt</td>
+      <td>Hashed Value</td>
+    </tr>
+    <tr>
+      <td>argon2i</td>
+      <td>v=19</td>
+      <td>m=65536,t=4,p=1</td>
+      <td><code>Vmo0MVVlWldObVouZ01VNA</code></td>
+      <td><code>owNwQm+Ggyk316rRT1g4tgCh0QGGipdD4ynhZm93eYw</code></td>
+    </tr>
+    <tr>
+      <td>argon2i</td>
+      <td>v=19</td>
+      <td>m=65536,t=4,p=1</td>
+      <td><code>MTUvaFVvaGNseGtxenk4Zg</code></td>
+      <td><code>GeVAk7HfgRxxablh4Qg90mFDH+LwKLUPYv30o50XPJ8</code></td>
+    </tr>
+    <tr>
+      <td>argon2i</td>
+      <td>v=19</td>
+      <td>m=65536,t=4,p=1</td>
+      <td><code>MWl2ZmFPa3EvUVE0cXJySA</code></td>
+      <td><code>BzgSMLJtD3rLB2j7oX/EL06QZ+saa8yCyA4WuNu9FxI</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Der Wert “Random Salt” wird bei jedem Aufruf von <code>password_hash</code> zufällig erzeugt, und mit dem Passwort konkatiniert. Das Ergebnise wird dann mit der Hash-Funktion behandelt.</p>
+
+<p>So ist gewährleistet, dass der Output jedes Mal anders aussieht, und es um ein vielfaches teurer wird eine vollständige Tabelle aller möglichen Passwörter und Hash-Werte zu erzeugen.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="passwort-verifizieren">Passwort verifizieren</h3>
+
+<div class="example">
+<pre><code class="language-php  linenums">function check_login($username, $password) {
+    global $dbh;
+    $statement = $dbh-&gt;prepare(&quot;SELECT * FROM users WHERE username=?&quot;);
+    $ok = $statement-&gt;execute([$username]);
+    if(! $ok) return null;
+    $user = $statement-&gt;fetch(PDO::FETCH_OBJ);
+    if(! $user) return null;
+    if (password_verify($password, $user-&gt;hashedpassword)) {
+        return $user;
+    } else {
+        return null;
+    }
+}
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="beispiel-https">Beispiel https</h2>
+
+<p>Um die HTTP Verbindung zu verschlüsseln brauchen wir das Protokoll TLS
+und ein Zertifikat.</p>
+
+<ul>
+  <li><a href="https://letsencrypt.org/">letsencrypt.org</a></li>
+  <li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test</a></li>
+</ul>
+
+<p>Wenn man den Webserver installiert und konfiguriert muss man das wissen und richtig machen.</p>
+
+</div>
+    <div class="slide">
+      <h1>A04 - Cryptographic Failures</h1>
+      <p>
+          vorige Präsentation:
+        <a href="/security/a3-komponenten//slide.html">A03 - Software Supply Chain Failures</a> | 
+        <a href="/security/a4-crypto/"
+          >zurück zum Buch-Kapitel [esc]</a
+        >
+         
+        | Nächste Präsentation
+        <a href="/security/a5-injection//slide.html">A05 - Injection</a>
+        
+      </p>
+    </div>
+
+    <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+    <!-- Update these paths to point to the correct files. -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/deck.core.js"></script>
+    <script src="/assets/js/deck.hash.js"></script>
+    <script src="/assets/js/deck.goto.js"></script>
+    <script src="/assets/js/deck.status.js"></script>
+
+    <!-- Add any other extension JS files here -->
+    <script src="/assets/js/deck.escape.js"></script>
+    <script src="/assets/js/deck.fullscreen.js"></script>
+
+    <!-- Initialize the deck. You can put this in an external file if desired. -->
+    <script src="/assets/js/godeck.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -86,10 +86,123 @@
         
       </p>
     </div>
-    <div class="slide"><p><a href="https://owasp.org/Top10/2025/A08_2025-Software_or_Data_Integrity_Failures/">Platz 8 der OWASP Top 10 2025: Software or Data Integrity Failures</a> bezieht sich auf das automatisierte Einbinden von Plugins, Bibliotheken oder Modulen aus nicht vertrauenswürdigen Quellen.</p>
+    <div class="slide"><p><a href="https://owasp.org/Top10/2025/A08_2025-Software_or_Data_Integrity_Failures/">Platz 8 der OWASP Top 10 2025: Software or Data Integrity Failures</a> bezieht sich die Sicherstellung der Integrität von  Code und Daten.</p>
 
-<p>Die Automatik ist dabei eine „Continuous Integration“-Pipeline (CI).
-Sobald man CI verwendet, muss man sich mit diesen Problemen auseinandersetzen.</p>
+<p>Integrität heisst hier z.B: ich verwende die Library fullcalendar.js von Adam Shaw und weiteren Autoren. Wie sicher bin ich, dass der Code den ich verwende gleich dem Original ist, und nicht von jemand anderem verändert wurde?</p>
+
+<p>Um zu verhindern, dass der Code unbemerkt verändert werden kann gibt es verschiedene Maßnahmen.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="laden-von-javascript-von-einem-externen-server">Laden von Javascript von einem externen Server</h2>
+
+<p>Man kann Javascript-Libraries direkt von externen Servern laden.
+Es gibt mehrere CDNs, die rund um die Welt mehrere Kopien anbieten, so dass die DAtei immer “aus der Nähe” geladen werden. Ein beispiel ist <code>jsdelivr.net</code>.</p>
+
+<p>So könnte die Einbidung aussehen:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+
+<p>Wenn ich diese Einbindung zum ersten Mal mache sehe ich mir den Code an der hier geladen wird.
+Aber wie kann ich sicherstellen, dass auch nach einer Woche, einem Monat, einem Jahr immer noch
+dieselben Daten geladen werden, und nicht eine gehackte Verversion?</p>
+
+<p>Dazu gibt es im Web das Konzept der “Subresource Integrity”:
+Eine kryptographischen Hashfunktion wird auf den gesamten Inhalt der Datei angewendet, und dieser Hash dann als <code>integrity</code>-Attribut des Script-Tags einzufügen:</p>
+
+<div class="example">
+<pre><code class="language-html  linenums">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js&quot; integrity=&quot;sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=&quot;&gt;&lt;/script&gt;
+</code></pre></div>
+
+<p>Jeder Browser prüft dann beim Laden der Javascript-Datei, ob der geladene Inhalt denselben Hash ergibt. Falls nicht wir das Javascript nicht ausgeführt.</p>
+
+<p>Also selbst wenn jemand jsdelivr.net hackt, oder die Quelle von query hackt und so neuen Code einschleust wird meine Webseite und meine User*innen nicht betroffen sein.</p>
+
+<p>Siehe</p>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/de/docs/Web/Security/Defenses/Subresource_Integrity">MDN: Subresource Integrity</a></li>
+  <li><a href="https://www.jsdelivr.com/using-sri-with-dynamic-files">jsdelivr: Using Subresource Integrity (SRI)</a></li>
+</ul>
+
+</div>
+<div class="slide">
+
+<h2 id="laden-einer-php-library-mit-composer">Laden einer PHP Library mit Composer</h2>
+
+<p><a href="https://getcomposer.org/">Composer</a> ist der Standard-Paketmanager für PHP. Man definiert die benötigten Libraries in der Datei <code>composer.json</code>:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>composer.json</small></h4>
+<pre><code class="language-javascript  linenums">{
+    &quot;require&quot;: {
+        &quot;twig/twig&quot;: &quot;^3.0&quot;
+    }
+}
+</code></pre></div>
+
+<p>Der Befehl <code>composer install</code> lädt dann alle Libraries herunter und legt sie im Ordner <code>vendor/</code> ab.</p>
+
+<p>Aber woher weiß Composer, ob der heruntergeladene Code auch wirklich der erwartete Code ist — und nicht von jemandem verändert wurde?</p>
+
+</div>
+<div class="slide">
+
+<h3 id="composerlock">composer.lock</h3>
+
+<p>Beim ersten <code>composer install</code> erstellt Composer automatisch eine Datei namens <code>composer.lock</code>. Diese Datei enthält:</p>
+
+<ul>
+  <li>die <strong>exakten Versionsnummern</strong> aller installierten Pakete — auch der indirekten Abhängigkeiten (d.h. Libraries, die deine Library braucht)</li>
+  <li>einen <strong>kryptographischen Hash</strong> für jedes Paket, mit dem der heruntergeladene Inhalt geprüft wird</li>
+</ul>
+
+<p>Ein Ausschnitt aus einer <code>composer.lock</code> sieht so aus:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>composer.lock (Ausschnitt)</small></h4>
+<pre><code class="language-javascript  linenums">{
+    &quot;packages&quot;: [
+        {
+            &quot;name&quot;: &quot;twig/twig&quot;,
+            &quot;version&quot;: &quot;v3.24.0&quot;,
+            &quot;source&quot;: {
+                &quot;type&quot;: &quot;git&quot;,
+                &quot;url&quot;: &quot;https://github.com/twigphp/Twig.git&quot;,
+                &quot;reference&quot;: &quot;a6769aefb305efef849dc25c9fd1653358c148f0&quot;
+            },
+        }
+    ]
+}
+</code></pre></div>
+
+<p>Der Wert bei <code>reference</code> verweist auf einen bestimmten Commit im Repository auf github.
+Und er name des commit ist wieder ein Hash-Wert aus dem gesamt-Zustand des Codes.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="composerlock-in-git-einchecken">composer.lock in Git einchecken</h3>
+
+<p>Damit diese Sicherheit auf allen Rechnern gilt, muss die <code>composer.lock</code> Datei ins Git-Repository eingecheckt werden. Dann gilt:</p>
+
+<ul>
+  <li><code>composer install</code> — installiert exakt die Versionen aus <code>composer.lock</code>, mit Hash-Prüfung ✔</li>
+  <li><code>composer update</code> — ignoriert <code>composer.lock</code>, holt neue Versionen und schreibt eine neue <code>composer.lock</code></li>
+</ul>
+
+<p>Im Entwicklungsalltag nutzt man fast immer <code>composer install</code>. <code>composer update</code> verwendet man nur bewusst, wenn man Dependencies aktualisieren will — und prüft danach die Änderungen an <code>composer.lock</code> sorgfältig.</p>
+
+<p>Siehe</p>
+
+<ul>
+  <li><a href="https://getcomposer.org/doc/01-basic-usage.md">Composer: Basic usage</a></li>
+  <li><a href="https://git-scm.com/book/de/v2/Git-Interna-Git-Objekte">Git Book: 10.2 Git Interna - Git Objekte</a></li>
+</ul>
+
 </div>
     <div class="slide">
       <h1>A08 - Software or Data Integrity Failures</h1>
