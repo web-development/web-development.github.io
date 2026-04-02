@@ -1048,9 +1048,11 @@ Browser dieses Feature unterstützen. In diesem Fall unter <a href="https://cani
     if (!toc) return;
 
     const headings = Array.from(
-      document.querySelector("#body .span8")?.querySelectorAll("h2[id], h3[id]") ?? []
+      document.querySelector("#body")?.querySelectorAll("h2[id], h3[id]") ?? []
     );
-    if (headings.length < 2) { toc.style.display = "none"; return; }
+    console.log("TOC");
+    console.dir(headings);
+    if (headings.length < 2) { toc.style.visibility = "hidden"; return; }
 
     const h = document.createElement("h3");
     h.textContent = "Auf dieser Seite";

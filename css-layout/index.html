@@ -44,7 +44,9 @@
 
 
 <!-- body -->
-	<article class="row row82">
+	<article class="row row82" id="body">
+
+		<nav id="toc" aria-label="Inhaltsverzeichnis"></nav>
 
 		<div class="span8">
 
@@ -54,7 +56,7 @@
                           </div>
 			
 
-                        <h3>In diesem Kapitel</h3>
+                        <h3 id="in-diesem-kapitel">In diesem Kapitel</h3>
 
                         <p>Nachdem Sie nun einfache Formatierungen im CSS beherrschen lernen Sie, wie sie das Layout der ganzen Seite beeinflussen können.</p>
 
@@ -1068,9 +1070,11 @@
     if (!toc) return;
 
     const headings = Array.from(
-      document.querySelector("#body .span8")?.querySelectorAll("h2[id], h3[id]") ?? []
+      document.querySelector("#body")?.querySelectorAll("h2[id], h3[id]") ?? []
     );
-    if (headings.length < 2) { toc.style.display = "none"; return; }
+    console.log("TOC");
+    console.dir(headings);
+    if (headings.length < 2) { toc.style.visibility = "hidden"; return; }
 
     const h = document.createElement("h3");
     h.textContent = "Auf dieser Seite";
