@@ -63,7 +63,7 @@ auferlegen kann.</p>
 
 
 
-<p>Ein Constraint kennen Sie schon:</p>
+<p>Zwei Constraint kennen Sie schon:</p>
 
 <div class="example">
 <pre><code class="language-sql  linenums">sql&gt; CREATE TABLE departments ( dep_name VARCHAR(20) PRIMARY KEY, … );
@@ -97,69 +97,10 @@ wir die Fehlermeldung:</p>
   Detail: Key (name)=(Marketing) already exists.
 </code></pre></div>
 
-<p>Der Primärschlüssel muss eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
+<p>Der Primärschlüssel muss eindeutig sein.</p>
 
 
 <a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
-
-
-
-<p>Ein  <strong>unique constraint</strong> kann man auf eine beliebige Spalte anwenden:</p>
-
-<div class="example">
-<pre><code class="language-sql  linenums">CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(20) UNIQUE,
-  email VARCHAR(220) UNIQUE
-);
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
-
-
-
-<p>Ein  <strong>unique constraint</strong> kann man auf eine Kombination ovn Spalten anwenden.
-Hier wollen wir, dass ein Artikel nur einmal von einer Pseon reviewed werden kann:</p>
-
-<div class="example">
-<pre><code class="language-sql  linenums">sql&gt; CREATE TABLE review (
-    article_id int NOT NULL,
-    user_id int NOT NULL,
-    UNIQUE (article_id, user_id)
-)
-completed in 23ms
-sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
-INSERT 0 1
-sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
-ERROR:  duplicate key value violates unique constraint &quot;review_article_id_user_id_key&quot;
-DETAIL:  Key (article_id, user_id)=(1, 1) already exists.
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
-
-<h2 id="namen-fr-constraints">Namen für Constraints</h2>
-
-<p>Jedes Constraint hat einen Namen. Wenn wir beim Erzeugen keinen Namen setzen
-wird ein Name automatisch erzeugt. Das war in den bisherigen Beispielen der Fall.</p>
-
-<p>Mit <code>\d</code> kann man in postgres Informationen zu einer Tabelle anzeigen.
-Das sieht dann so aus:</p>
-
-<div class="example">
-<pre><code class="language-plain  linenums">\d review
-                 Table &quot;public.review&quot;
-   Column   |  Type   | Collation | Nullable | Default
-------------+---------+-----------+----------+---------
- article_id | integer |           | not null |
- user_id    | integer |           | not null |
-Indexes:
-    &quot;review_article_id_user_id_key&quot; UNIQUE CONSTRAINT, btree (article_id, user_id)
-</code></pre></div>
-
-
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
 <h2 id="references">References</h2>
 
@@ -181,7 +122,7 @@ INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
 
@@ -210,6 +151,72 @@ CREATE TABLE employees (
 <p>Fremdschlüssel sind auch gute Kanditeten für einen Index: Wenn man
 die Abfrage machen will “Welche Leute arbeiten im Department 7” ist
 es gut einen Index auf <code>dep_id</code> in <code>employees</code>  zu haben.</p>
+
+
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+
+<h2 id="unique-constraint">Unique Constraint</h2>
+
+<p>Dass der Primärschlüssel eindeutig sein muss ist ein Beispiel für  ein <strong>unique constraint</strong>.</p>
+
+
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+
+
+
+<p>Ein  <strong>unique constraint</strong> kann man auf eine beliebige Spalte anwenden:</p>
+
+<div class="example">
+<pre><code class="language-sql  linenums">CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(20) UNIQUE,
+  email VARCHAR(220) UNIQUE
+);
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+
+
+
+<p>Ein  <strong>unique constraint</strong> kann man auf eine Kombination ovn Spalten anwenden.
+Hier wollen wir, dass ein Artikel nur einmal von einer Pseon reviewed werden kann:</p>
+
+<div class="example">
+<pre><code class="language-sql  linenums">sql&gt; CREATE TABLE review (
+    article_id int NOT NULL,
+    user_id int NOT NULL,
+    UNIQUE (article_id, user_id)
+)
+completed in 23ms
+sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
+INSERT 0 1
+sql&gt; INSERT INTO review (article_id, user_id) VALUES (1,1);
+ERROR:  duplicate key value violates unique constraint &quot;review_article_id_user_id_key&quot;
+DETAIL:  Key (article_id, user_id)=(1, 1) already exists.
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+
+<h2 id="namen-fr-constraints">Namen für Constraints</h2>
+
+<p>Jedes Constraint hat einen Namen. Wenn wir beim Erzeugen keinen Namen setzen
+wird ein Name automatisch erzeugt. Das war in den bisherigen Beispielen der Fall.</p>
+
+<p>Mit <code>\d</code> kann man in postgres Informationen zu einer Tabelle anzeigen.
+Das sieht dann so aus:</p>
+
+<div class="example">
+<pre><code class="language-plain  linenums">\d review
+                 Table &quot;public.review&quot;
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ article_id | integer |           | not null |
+ user_id    | integer |           | not null |
+Indexes:
+    &quot;review_article_id_user_id_key&quot; UNIQUE CONSTRAINT, btree (article_id, user_id)
+</code></pre></div>
 
  <div class="pagination do-not-print">
   <ul>

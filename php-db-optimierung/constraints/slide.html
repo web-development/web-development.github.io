@@ -95,7 +95,7 @@ auferlegen kann.</p>
 
 
 
-<p>Ein Constraint kennen Sie schon:</p>
+<p>Zwei Constraint kennen Sie schon:</p>
 
 <div class="example">
 <pre><code class="language-sql  linenums">sql&gt; CREATE TABLE departments ( dep_name VARCHAR(20) PRIMARY KEY, … );
@@ -129,7 +129,67 @@ wir die Fehlermeldung:</p>
   Detail: Key (name)=(Marketing) already exists.
 </code></pre></div>
 
-<p>Der Primärschlüssel muss eindeutig sein.  Das ist ein <strong>unique constraint</strong>.</p>
+<p>Der Primärschlüssel muss eindeutig sein.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="references">References</h2>
+
+<p>Was bedeutet die Fehlermeldung am Ende?</p>
+
+<div class="example">
+<pre><code class="language-sql  linenums">CREATE TABLE departments (
+  dep_id SERIAL PRIMARY KEY,
+  dep_name VARCHAR(20)
+);
+CREATE TABLE employees (
+  name VARCHAR(20),
+  dep_id integer NULL REFERENCES departments(dep_id)
+);
+INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
+[23503] ERROR: insert or update on table &quot;employees&quot;
+  violates foreign key constraint &quot;employees_dep_id_fkey&quot;
+  Detail: Key (dep_id)=(99) is not present in table &quot;departments&quot;.
+</code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
+
+<p>Mit einem <strong>foreign key constraint</strong> kann man die Existenz des Fremdschlüssels
+in der anderen Tabelle sicher stellen.</p>
+
+<p>Hier verweist die Spalte <code>dep_id</code> in der Tabelle <code>employees</code> auf
+die Spalte <code>dep_id</code> in der Tabelle <code>departments</code>.</p>
+
+<p><code>dep_id</code> ist also der Primary Key von <code>departments</code> und ein Foreign Key in <code>employees</code>.</p>
+
+<p>Mit dem Keyword <code>REFERENCES</code> wird diese Beziehung als Constrait festgelegt, es ist
+nicht möglich in <code>employees</code> eine <code>dep_id</code> zu benutzen, die in <code>departments</code> nicht existiert.</p>
+
+<div class="example">
+<pre><code class="language-sql  linenums">CREATE TABLE departments (
+  dep_id SERIAL PRIMARY KEY,
+  dep_name VARCHAR(20)
+);
+CREATE TABLE employees (
+  name VARCHAR(20),
+  dep_id integer NULL REFERENCES departments(dep_id)
+);
+</code></pre></div>
+
+<p>Fremdschlüssel sind auch gute Kanditeten für einen Index: Wenn man
+die Abfrage machen will “Welche Leute arbeiten im Department 7” ist
+es gut einen Index auf <code>dep_id</code> in <code>employees</code>  zu haben.</p>
+
+</div>
+<div class="slide">
+
+<h2 id="unique-constraint">Unique Constraint</h2>
+
+<p>Dass der Primärschlüssel eindeutig sein muss ist ein Beispiel für  ein <strong>unique constraint</strong>.</p>
 
 </div>
 <div class="slide">
@@ -189,59 +249,6 @@ Das sieht dann so aus:</p>
 Indexes:
     &quot;review_article_id_user_id_key&quot; UNIQUE CONSTRAINT, btree (article_id, user_id)
 </code></pre></div>
-
-</div>
-<div class="slide">
-
-<h2 id="references">References</h2>
-
-<p>Was bedeutet die Fehlermeldung am Ende?</p>
-
-<div class="example">
-<pre><code class="language-sql  linenums">CREATE TABLE departments (
-  dep_id SERIAL PRIMARY KEY,
-  dep_name VARCHAR(20)
-);
-CREATE TABLE employees (
-  name VARCHAR(20),
-  dep_id integer NULL REFERENCES departments(dep_id)
-);
-INSERT INTO employees VALUES(&#39;Brigitte Jellinek&#39;, 99)
-[23503] ERROR: insert or update on table &quot;employees&quot;
-  violates foreign key constraint &quot;employees_dep_id_fkey&quot;
-  Detail: Key (dep_id)=(99) is not present in table &quot;departments&quot;.
-</code></pre></div>
-
-</div>
-<div class="slide">
-
-<h2 id="referenzielle-integritt">Referenzielle Integrität</h2>
-
-<p>Mit einem <strong>foreign key constraint</strong> kann man die Existenz des Fremdschlüssels
-in der anderen Tabelle sicher stellen.</p>
-
-<p>Hier verweist die Spalte <code>dep_id</code> in der Tabelle <code>employees</code> auf
-die Spalte <code>dep_id</code> in der Tabelle <code>departments</code>.</p>
-
-<p><code>dep_id</code> ist also der Primary Key von <code>departments</code> und ein Foreign Key in <code>employees</code>.</p>
-
-<p>Mit dem Keyword <code>REFERENCES</code> wird diese Beziehung als Constrait festgelegt, es ist
-nicht möglich in <code>employees</code> eine <code>dep_id</code> zu benutzen, die in <code>departments</code> nicht existiert.</p>
-
-<div class="example">
-<pre><code class="language-sql  linenums">CREATE TABLE departments (
-  dep_id SERIAL PRIMARY KEY,
-  dep_name VARCHAR(20)
-);
-CREATE TABLE employees (
-  name VARCHAR(20),
-  dep_id integer NULL REFERENCES departments(dep_id)
-);
-</code></pre></div>
-
-<p>Fremdschlüssel sind auch gute Kanditeten für einen Index: Wenn man
-die Abfrage machen will “Welche Leute arbeiten im Department 7” ist
-es gut einen Index auf <code>dep_id</code> in <code>employees</code>  zu haben.</p>
 
 </div>
     <div class="slide">
