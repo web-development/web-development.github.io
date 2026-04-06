@@ -88,7 +88,7 @@
     </div>
     <div class="slide"><p>Die Konfiguration des Webservers wird hier am Beispiel von Apache gezeigt.
 Andere Webserver, z.B: Internet Information Server von Microsoft oder nginx
-(ausgesprochen “engine x”) 
+(ausgesprochen “engine x”)
 verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.</p>
 
 </div>
@@ -100,7 +100,7 @@ verfügen auch über diese Fähigkeiten, werden aber anders konfiguriert.</p>
 <p>Ein Link auf die Datei <code>bild.JPG</code> funktioniert unter Windows oder MacOS auch
 dann, wenn er <code>bild.jpg</code> geschreiben wird.</p>
 
-<p>Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr! 
+<p>Liegt die Datei aber dann am (UNIX-)Webserver, so funktioniert der Link nicht mehr!
 <code>bild.jpg</code> und <code>bild.JPG</code> sind zwei unterschiedliche Dateien!</p>
 
 </div>
@@ -110,14 +110,14 @@ dann, wenn er <code>bild.jpg</code> geschreiben wird.</p>
 <p>Im einfachsten Fall wird im Webserver ein Ordner spezifiziert, der als Ausgangspunkt für den Webspace dient.</p>
 
 <ul>
-  <li>URL <code>http://multimediatechnology.at/wp-content/themes/mmt_blog_theme_2007/images/mmtlogo-400.png</code></li>
-  <li>Pfad im Dateisystem <code>/var/www/virthosts/multimediatechnology.at/wp-content/themes/mmt_blog_theme_2007/images/mmtlogo-400.png</code></li>
+  <li>URL <code>http://www.example.com/wp-content/themes/mmt_blog_theme_2007/images/mmtlogo-400.png</code></li>
+  <li>Pfad im Dateisystem <code>/var/www/virthosts/www.example.com/wp-content/themes/mmt_blog_theme_2007/images/mmtlogo-400.png</code></li>
 </ul>
 
 <p>Die Apache-Konfiguration dazu sieht so aus:</p>
 
-<pre><code>&lt;VirtualHost mediacube.at&gt;
-DocumentRoot /var/www/virthosts/multimediatechnology.at/
+<pre><code>&lt;VirtualHost www.example.com&gt;
+DocumentRoot /var/www/virthosts/www.example.com/
 &lt;/VirtualHost&gt;
 </code></pre>
 
@@ -137,12 +137,12 @@ DocumentRoot /var/www/virthosts/multimediatechnology.at/
   </thead>
   <tbody>
     <tr>
-      <td>http://mediacube.at/</td>
-      <td>/var/www/virthosts/mediacube.at/index.html</td>
+      <td>http://www.example.com/</td>
+      <td>/var/www/virthosts/www.example.com/index.html</td>
     </tr>
     <tr>
-      <td>http://mediacube.at/pix/</td>
-      <td>/var/www/virthosts/mediacube.at/pix/index.html</td>
+      <td>http://www.example.com/pix/</td>
+      <td>/var/www/virthosts/www.example.com/pix/index.html</td>
     </tr>
   </tbody>
 </table>
@@ -177,7 +177,7 @@ Options -Indexes
 <p>Auf UNIX-Servern mit vielen Accounts ist es üblich, dass  für jeden Account
 automatisch ein Webspace exsitert. Dieser Webspace befindet sich innerhalb des
 Home-Verzeichnisses des jeweiligen Accounts. Z.B. könnte eine Studentin den
-Username fhs303030 habe und das Home-Verzeichnis <code>/home/store/fhs303030/</code>. Ihr
+Username user303030 habe und das Home-Verzeichnis <code>/home/store/user303030/</code>. Ihr
 Webspace ist im Unter-Ordner <code>public_html</code>:</p>
 
 <table class="table table-condensed table-bordered" style="width:auto">
@@ -189,12 +189,12 @@ Webspace ist im Unter-Ordner <code>public_html</code>:</p>
   </thead>
   <tbody>
     <tr>
-      <td>http://multimediatechnology.at/~fhs303030/test.html</td>
-      <td>/home/store/fhs303030/public_html/test.html</td>
+      <td>http://www.example.com/~user303030/test.html</td>
+      <td>/home/store/user303030/public_html/test.html</td>
     </tr>
     <tr>
-      <td>http://multimediatechnology.at/~fhs111111/test.html</td>
-      <td>/home/store/fhs111111/public_html/test.html</td>
+      <td>http://www.example.com/~user111111/test.html</td>
+      <td>/home/store/user111111/public_html/test.html</td>
     </tr>
   </tbody>
 </table>
@@ -214,16 +214,16 @@ nicht die Position der Dokumente im Dateisystem! Der Ordnername <code>public_htm
 
 <p>Der Link von einem User-Webspace zum nächsten funktioniert also so:</p>
 
-<pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                          +    ../~fhs111111/test   =
-http://multimediatechnology.at/~fhs111111/test
+<pre><code>http://www.example.com/~user303030/test.html
+                          +    ../~user111111/test   =
+http://www.example.com/~user111111/test
 </code></pre>
 
 <p>Oder relative zum Webserver:</p>
 
-<pre><code>http://multimediatechnology.at/~fhs303030/test.html   
-                          +   /~fhs111111/test   =
-http://multimediatechnology.at/~fhs111111/test
+<pre><code>http://www.example.com/~user303030/test.html
+                          +   /~user111111/test   =
+http://www.example.com/~user111111/test
 </code></pre>
 
 </div>

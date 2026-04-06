@@ -295,7 +295,7 @@ Klammer erwähnt werden:</p>
 <p>Der Plus-Operator erlaubt eine Wiederholung des vorigen Zeichens. Um also <code>"i"</code> und <code>"iiii"</code> und <code>"wir sind die Ritter die ni sagen"</code> zu matchen:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">/i+/  
+<pre><code class="language-javascript  linenums">/i+/
 </code></pre></div>
 
 <p>Der Operator kann auch auf Zeichenklassen oder Gruppen angewandt werden.</p>
@@ -319,7 +319,7 @@ andere Alternative gewählt werden:</p>
 
 <h2 id="bung">Übung</h2>
 
-<p>Eine kurze Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
+<p>Eine kurze Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.ct.fh-salzburg.ac.at/snippets/43">Längenangaben finden</a></p>
 
 </div>
 <div class="slide">
@@ -333,7 +333,7 @@ bei Pfadangaben hat das Fragezeichen <code>?</code> diese Funktion!</p>
 <pre><code class="language-javascript  linenums">/^...$/       genau drei Zeichen
 </code></pre></div>
 
-<p><a href="/images/match.html?pattern=%5E...%24&amp;listname=Studiengang&amp;list%5B%5D%3D%26list%5B%5D%3DNA%26list%5B%5D%3DMMT%26list%5B%5D%3Dmmt%26list%5B%5D%3D%2B%2B%2B%26list%5B%5D%3D___%26list%5B%5D%3DMMT-B">RegEx Tester: /^…$/</a></p>
+<p><a href="/images/match.html?pattern=%5E...%24&amp;listname=Studiengang&amp;list%5B%5D%3D%26list%5B%5D%3DNA%26list%5B%5D%3DMMT%26list%5B%5D%3Dmmt%26list%5B%5D%3D%26list%5B%5D%3D___%26list%5B%5D%3DMMT-B">RegEx Tester: /^…$/</a></p>
 
 </div>
 <div class="slide">
@@ -361,7 +361,7 @@ Die Antwort: man escaped die Sonderzeichen von RegEx mit einem Backslash <code>\
 kann nullmal, einmal oder mehrmals vorkommen:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">/i*/  
+<pre><code class="language-javascript  linenums">/i*/
 </code></pre></div>
 
 </div>
@@ -372,7 +372,7 @@ kann nullmal, einmal oder mehrmals vorkommen:</p>
 <p>Der Frage-Operator erlaubt 0 oder 1 vorkommen des Zeichens.</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">/\d?/  
+<pre><code class="language-javascript  linenums">/\d?/
 </code></pre></div>
 
 <p><a href="/images/match.html?pattern=%5E%5Cd%3F%24&amp;listname=Ziffern&amp;list%5B%5D%3D%26list%5B%5D%3D1%26list%5B%5D%3D12%26list%5B%5D%3D123%26list%5B%5D%3D%26list%5B%5D%3D1a%26list%5B%5D%3Da1">RegEx Tester: /^\d?$/</a></p>
@@ -410,7 +410,7 @@ if( match = locale.match(/(de|fr)_(DE|CH)/ ) {
 
 <h2 id="bung-1">Übung</h2>
 
-<p>Eine längere Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.mediacube.at/snippets/43">Längenangaben finden</a></p>
+<p>Eine längere Übung in <a href="https://tddbin.com/">TDDbin</a>: <a href="https://gitlab.ct.fh-salzburg.ac.at/snippets/43">Längenangaben finden</a></p>
 
 </div>
 <div class="slide">
@@ -438,7 +438,7 @@ möglichst lange Strings zu erfassen.</p>
 <p>Die “altmodisch” Methode ist eine Komplement-Klasse:</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">/o[^o]*o/    
+<pre><code class="language-javascript  linenums">/o[^o]*o/
 </code></pre></div>
 
 <p>Hier wird ein erstes o gematched, dann kommen (null bis viele) zeichen
@@ -456,8 +456,8 @@ auch wenn es später im String noch weitere o’s geben würde.</p>
 Operatoren: ein Fragezeichen wird nachgestellt</p>
 
 <div class="example">
-<pre><code class="language-javascript  linenums">/o(.*?)o/    
-/o(.+?)o/    
+<pre><code class="language-javascript  linenums">/o(.*?)o/
+/o(.+?)o/
 </code></pre></div>
 
 <p><a href="/images/match.html?pattern=_.%2A%3F_&amp;listname=BlaBla&amp;list%5B%5D%3D%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%2Bund%2Bzeugs%26list%5B%5D%3D_bla_%2Bund%2Bzeugs%26list%5B%5D%3Dzeugs%2Bund%2B_bla_%26list%5B%5D%3D_bla_%2Bund%2B_bla_%2Bund%2Bnoch%2Bmehr%2B_bla_">RegEx Tester: /<em>.*?</em>/</a></p>
@@ -509,7 +509,7 @@ Aber nichts komplizierteres.</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase&quot;;
-s.replace(/Voldemort/, 
+s.replace(/Voldemort/,
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
 </code></pre></div>
 
@@ -518,7 +518,7 @@ Ende der RegEx kann man alle Ersetzungen durchführen:</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">s = &quot;Voldemort hat keine Nase. Voldemort ist verschwunden.&quot;;
-s.replace(/Voldemort/g, 
+s.replace(/Voldemort/g,
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
 </code></pre></div>
 
@@ -527,7 +527,7 @@ von Regular Expressions:</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">s = &quot;Harry greift Voldemort an. Voldemorts Zauberstab bricht.&quot;;
-s.replace(/Voldemort/g, 
+s.replace(/Voldemort/g,
           &quot;Er, dessen Name nicht genannt werden darf,&quot;);
 </code></pre></div>
 
@@ -552,7 +552,7 @@ if (preg_match ( &quot;/en|sk|zh|us|uk/&quot;, \$locale_code )){ ...
 
 <div class="example">
 <h4 class="caption">Php Code <small>Suchen mit RegEx in PHP</small></h4>
-<pre><code class="language-php  linenums">preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;) 
+<pre><code class="language-php  linenums">preg_match( &quot;/regex/i&quot;, &quot;string in dem ich suche&quot;)
 </code></pre></div>
 
 </div>
