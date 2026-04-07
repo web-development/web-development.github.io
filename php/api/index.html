@@ -132,7 +132,7 @@ Domain eingesetzt wird.</p>
 
 <a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
-<h2 id="beispiel-openweathermap">Beispiel openweathermap</h2>
+<h2 id="beispiel-openweathermap">Beispiel Openweathermap</h2>
 
 <p>Um die API von <a href="http://openweathermap.org/">http://openweathermap.org/</a> zu benutzen
 ist eine Anmeldung und ein API key notwendig. Die Preise für die API
@@ -143,7 +143,7 @@ sind nach Anzahl der Zugriffen gestaffelt, im April 2023 waren die Preise:</p>
 
 <a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
-<h2 id="mit-php-auf-openweathermap-zugreifen">Mit PHP auf openweathermap zugreifen</h2>
+<h2 id="abfrage-von-openweathermap">Abfrage von Openweathermap</h2>
 
 <p>Beim Zugriff auf die API muss jeweils der API-Key als parameter
 mit gesendet werden. Sonst ist es aber wirklich nur ein GET Request
@@ -194,88 +194,164 @@ echo $data[&#39;main&#39;][&#39;temp&#39;];
 
 <a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
-<h2 id="mit-php-einen-post-request-senden">mit PHP einen POST Request senden</h2>
+<h2 id="beispiel-gemini">Beispiel Gemini</h2>
 
 <p>Die API von Gemini ist etwas komplexer: man braucht einen POST-Request und JSON
-im Body des Requests.  Hierfür kann man <code>curl</code> verwenden.  Curl ist eigentlich eine
-C Library, man kann sie direkt als Kommandozeilen-Befehl verwenden, sie ist
-aber auch in PHP eingebaut aber etwas umständlich zu benutzen.</p>
+im Body des Requests.  Dann kann man verschiedene KI-Modelle verwenden, um mit
+Text, Code, Bild, Video und Audio  zu arbeiten (multimodal).</p>
+
+
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+
+<h2 id="post-request-senden">POST Request senden</h2>
+
+<p>Für das Senden von POST Requests braucht man zusätzlich zum Befehl <code>file_get_contents</code> einen <code>stream context</code>.</p>
 
 <p>So kann man einen POST Request machen, der Daten als JSON verschickt, und die
 zurückgegebenen JSON-Daten wieder in PHP Datenstrukturen übersetzt:</p>
 
 <div class="example">
 <h4 class="caption">Php Code <small>POST Request, JSON rein und JSON raus</small></h4>
-<pre><code class="language-php  linenums">function post_request($url, $data) {
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [&#39;Content-Type: application/json&#39;]);
-    $result_string = curl_exec($ch);
-    $error = curl_error($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-    if ($error) {
-        throw new Exception(&#39;cURL error: &#39; . $error . &#39; with http_code:&#39; . $http_code);
+<pre><code class="language-php  linenums">function post_and_decode_json(string $url, array $data): array
+{
+    $options = [
+        &#39;http&#39; =&gt; [
+            &#39;method&#39;  =&gt; &#39;POST&#39;,
+            &#39;header&#39;  =&gt; &quot;Content-Type: application/json\r\n&quot;,
+            &#39;content&#39; =&gt; json_encode($data),
+            &#39;ignore_errors&#39; =&gt; true
+        ]
+    ];
+    $context  = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
+    if ($response === false) {
+        throw new Exception(&quot;Failed to connect to the API.&quot;);
     }
-    if ($http_code !== 200) {
-        throw new Exception(&#39;HTTP error: &#39; . $http_code . &#39;raw_response: &#39;. $result_string);
+    $decoded = json_decode($response, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception(&quot;Failed to decode API response: &quot;
+            . json_last_error_msg()
+        );
     }
-    $result_data = json_decode($result_string, true);
-    if(json_last_error() === JSON_ERROR_NONE){
-        return $result_data;
-    }
-    throw new Exception(&#39;Invalid JSON response from API &#39; . json_last_error_msg(). &#39;raw_response: &#39;. $result_string);
+    return $decoded;
 }
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
-<h2 id="die-gemini-api">die Gemini API</h2>
+<h2 id="mit-gemini-text-generieren">Mit Gemini Text generieren</h2>
 
-<p>Die Gemini API erwartert eine komplexe Datenstruktur als Input und
-liefert eine komplexe Datenstruktur als Output:</p>
+<p>In diesem einfachen Beispiel verwenden wir das Model “gemini-2.5-flash” um Text zu generieren.</p>
 
 <div class="example">
-<pre><code class="language-php  linenums">    $prompt = &quot;Erstelle eine Multiple-Choice-Quizfrage zum Thema {$topic} mit dem Schwierigkeitsgrad {$difficulty}. Verwende die Sprache Deusch, und eine positive Frage, keine Verneinung. Gib vier Antwortmöglichkeiten (a, b, c, d) an und markiere die richtige Antwort. Formatiere die Ausgabe als JSON mit den Schlüsseln &#39;question&#39;, &#39;options&#39; und &#39;answer&#39;.&quot;;
-    $url = &#39;https://generativelanguage.googleapis.com/&#39;
-         . &#39;v1beta/models/gemini-2.0-flash:generateContent?key=&#39; . $GEMINI_API_KEY;
-    $data = [
-        &#39;contents&#39; =&gt; [
-            [
-                &#39;parts&#39; =&gt; [
-                    [&#39;text&#39; =&gt; $prompt]
-                ]
+<pre><code class="language-php  linenums">require &quot;config.php&quot;;
+require &quot;functions.php&quot;;
+$url = &#39;https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=&#39; . $GEMINI_API_KEY;
+$prompt = &quot;Wähle eine europäische Hauptstadt aus, und beschreibe sie in drei Sätzen ohne ihren Namen zu nennen. Gib nur die drei Sätze zurück, ohne weitere Erklärungen oder Einleitungen. Die Antwort soll auf Deutsch sein.&quot;;
+$data = [
+    &#39;contents&#39; =&gt; [
+        [
+            &#39;parts&#39; =&gt; [
+                [&#39;text&#39; =&gt; $prompt]
             ]
         ]
-    ];
-    $result = post_request($url, $data);
-    // echo &quot;&lt;pre&gt;&quot;;
-    // print_r($result);
-    // echo &quot;&lt;/pre&gt;&quot;;
-    if (isset($result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;])) {
-        $api_response = $result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;];
-        $api_response = str_replace(&#39;```json&#39;, &#39;&#39;, $api_response);
-        $api_response = str_replace(&#39;```&#39;, &#39;&#39;, $api_response);
-        // echo &quot;&lt;pre&gt;&quot;;
-        // print_r($api_response);
-        // echo &quot;&lt;/pre&gt;&quot;;
-        // Attempt to parse the expected JSON format. If it fails, return the raw text.
-        $json_data = json_decode($api_response, true);
-        if (json_last_error() === JSON_ERROR_NONE) {
-            return $json_data;
-        } else {
-            throw new Exception(&#39;Invalid JSON response from API &#39; . json_last_error_msg());
-        }
-    } else {
-        throw new Exception(&#39;Unexpected API response format: &#39; . $result);
+    ]
+];
+$result = post_and_decode_json($url, $data);
+echo &quot;Antwort von Gemini:\n&quot;;
+echo &quot;&lt;pre&gt;&quot;;
+print_r($result);
+echo &quot;&lt;/pre&gt;&quot;;
+if (isset($result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;])) {
+    $answer = trim($result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;]);
+    echo &quot;Die Antwort ist $answer&quot;;
+} else {
+    throw new Exception(&#39;Unexpected response format.&#39;);
+}
+</code></pre></div>
+
+<p><a href="https://users.ct.fh-salzburg.ac.at/~bjelline/quiz-backend/testing.php">Demo</a></p>
+
+
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
+
+<h2 id="antwort-von-gemini">Antwort von Gemini</h2>
+
+<p>Die Antwort ist immer eine komplexe JSON-Struktur</p>
+
+<p><img src="/images/php/gemini-good.png" srcset="/images/php/gemini-good.png 1x, /images/php/gemini-good@2x.png 2x"  alt="" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
+
+<h2 id="fehler-von-gemini">Fehler von Gemini</h2>
+
+<p>Nicht immer bekommt man eine antwort</p>
+
+<p><img src="/images/php/gemini-bad.png" srcset="/images/php/gemini-bad.png 1x, /images/php/gemini-bad@2x.png 2x"  alt="" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
+
+<h2 id="mit-gemini-json-generieren">Mit Gemini JSON generieren</h2>
+
+<p>Wenn man strukturierte Daten haben will, kann man ein JSON-Schema vorgeben.
+Gemini antwortet dann dem Schema entwprechend.</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">$schema = [
+    &#39;type&#39; =&gt; &#39;object&#39;,
+    &#39;properties&#39; =&gt; [
+        &#39;question&#39; =&gt; [&#39;type&#39; =&gt; &#39;string&#39;],
+        &#39;options&#39;  =&gt; [
+            &#39;type&#39; =&gt; &#39;array&#39;,
+            &#39;items&#39; =&gt; [&#39;type&#39; =&gt; &#39;string&#39;],
+            &#39;minItems&#39; =&gt; 4,
+            &#39;maxItems&#39; =&gt; 4
+        ],
+        &#39;answer&#39;   =&gt; [&#39;type&#39; =&gt; &#39;string&#39;, &#39;description&#39; =&gt; &#39;The correct option (a, b, c, or d)&#39;]
+    ],
+    &#39;required&#39; =&gt; [&#39;question&#39;, &#39;options&#39;, &#39;answer&#39;]
+];
+// Use the 2.5-flash model (or 3-flash-preview)
+$url = &#39;https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=&#39; . $GEMINI_API_KEY;
+$data = [
+    &#39;contents&#39; =&gt; [
+        [&#39;parts&#39; =&gt; [[&#39;text&#39; =&gt; &quot;Erstelle eine Multiple-Choice-Quizfrage zum Thema {$topic}.&quot;]]]
+    ],
+    &#39;generationConfig&#39; =&gt; [
+        &#39;response_mime_type&#39; =&gt; &#39;application/json&#39;,
+        &#39;response_schema&#39;    =&gt; $schema,
+    ]
+];
+$result = post_and_decode_json($url, $data);
+echo &quot;Antwort von Gemini:\n&lt;pre&gt;&quot;;
+print_r($result);
+echo &quot;&lt;/pre&gt;&quot;;
+if (isset($result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;])) {
+    $json_string = $result[&#39;candidates&#39;][0][&#39;content&#39;][&#39;parts&#39;][0][&#39;text&#39;];
+    $json_data = json_decode($json_string, true);
+    if (json_last_error() === JSON_ERROR_NONE) {
+        echo &quot;Parsed JSON:\n&quot;;
+        echo &quot;&lt;pre&gt;&quot;;
+        print_r($json_data);
+        echo &quot;&lt;/pre&gt;&quot;;
     }
+} else {
+    throw new Exception(&#39;API Failure or Invalid JSON&#39;);
+}
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-15" href="slide.html#slide-15"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 15">▻</a>
+
+<h2 id="antwort-von-gemini-1">Antwort von Gemini</h2>
+
+<p><img src="/images/php/gemini-schema.png" srcset="/images/php/gemini-schema.png 1x, /images/php/gemini-schema@2x.png 2x"  alt="" ></p>
+
+
+<a class="slide_break do-not-print" id="slide-16" href="slide.html#slide-16"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 16">▻</a>
 
 <h2 id="siehe-auch">Siehe auch</h2>
 
