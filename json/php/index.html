@@ -55,8 +55,83 @@
       <a href="/json/php/slide.html" class="do-not-print">als Präsentation ▻</a>
     </div>
      <div id="slide-1" title="Folie Nr. 1"></div>
+<p>Die Befehle <code>json_encode</code> und <code>json_decode</code> sind teil der <code>JSON</code> Extension.</p>
+
+<p>In <code>phpinfo()</code> kann man sehen ob diese Extension aktiviert ist:</p>
+
+<p><img src="/images/json/jsonenabled.png"  alt="" ></p>
+
 
 <a class="slide_break do-not-print" id="slide-2" href="slide.html#slide-2"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 2">▻</a>
+
+<h2 id="json-als-austauschformat">JSON als Austauschformat</h2>
+
+<p>Nicht alles was in JavaScript möglich ist wird in PHP als JSON akzeptiert.</p>
+
+
+<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+
+<h3 id="anfhrungszeichen">Anführungszeichen</h3>
+
+<p>In Javascript müssen attribute nicht in Anführungszeichen stehen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>OK in Javascript, nicht OK in PHP</small></h4>
+<pre><code class="language-javascript  linenums">  {
+    prop1 : &quot;Schokolade&quot;,
+    prop2 : 42,
+  }
+</code></pre></div>
+
+<p>Wenn JSON als Austauschformat zwischen Sprachen verwendet wird, dann müssen
+alle Attribute in Anführungszeichen stehen:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>OK in allen Sprachen</small></h4>
+<pre><code class="language-javascript  linenums">  {
+    &quot;prop1&quot; : &quot;Schokolade&quot;,
+    &quot;prop2&quot; : 42,
+  }
+</code></pre></div>
+
+
+<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+
+<h3 id="keine-funktionen">Keine Funktionen</h3>
+
+<p>In Javascript kann ein Wert in JSON-Schreibweise auch Funktionen enthalten:</p>
+
+<div class="example">
+<h4 class="caption">Javascript Code <small>OK in Javascript, nicht OK in PHP</small></h4>
+<pre><code class="language-javascript  linenums">  {
+    &#39;prop1&#39; : &#39;Schokolade&#39;,
+    &#39;prop2&#39; : 42,
+    &#39;method_1&#39; : function (x) { return x + &#39; ist schlecht&#39; },
+    &#39;method_2&#39; : x =&gt; x + &#39; ist gut&#39;
+  }
+</code></pre></div>
+
+<p>Wenn JSON als Austauschformat zwischen Sprachen verwendet wird darf es keine Funktionen enthalten.</p>
+
+<div class="example">
+<pre><code class="language-php  linenums">  $json_string = &quot;{
+    &#39;prop1&#39; : &#39;Schokolade&#39;,
+    &#39;prop2&#39; : 42,
+    &#39;method_1&#39; : function (x) { return x + &#39; ist schlecht&#39; },
+    &#39;method_2&#39; : x =&gt; x + &#39; ist gut&#39;
+  }&quot;;
+  $data = json_decode($json_string);
+  if( $data == null ) {
+    echo json_last_error_msg();   // Output: &quot;Syntax Error&quot;
+    exit();
+  }
+</code></pre></div>
+
+<p>In PHP wird das gesamte JSON-Objekt verworfen, der Rückgabewert ist <code>null</code>
+und <code>json_last_error_msg()</code>  gibt “Syntax Error” zurück.</p>
+
+
+<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
 
 <h2 id="serialisierung">Serialisierung</h2>
 
@@ -67,9 +142,9 @@
 <p><img src="/images/json/mapping-php-to-json.svg"  alt="encode" ></p>
 
 
-<a class="slide_break do-not-print" id="slide-3" href="slide.html#slide-3"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 3">▻</a>
+<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
 
-<h2 id="objekt">Objekt</h2>
+<h3 id="objekt">Objekt</h3>
 
 <p>Ein PHP Objekt lässt sich als JSON Objekt darstellen:</p>
 
@@ -82,9 +157,9 @@ echo json_encode( $object );
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-4" href="slide.html#slide-4"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 4">▻</a>
+<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
 
-<h2 id="array">Array</h2>
+<h3 id="array">Array</h3>
 
 <p>Ein “normales” Array mit Integer als Index lässt sich
 direkt auf JSON abbilden:</p>
@@ -96,9 +171,9 @@ echo json_encode( $array );
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-5" href="slide.html#slide-5"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 5">▻</a>
+<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
 
-<h2 id="assoziatives-array">Assoziatives Array</h2>
+<h3 id="assoziatives-array">Assoziatives Array</h3>
 
 <p>Jedes Array kann in PHP auch Strings als Index enthalten.
 Ist das der Fall, dann wird es in JSON als Objekt dargestellt:</p>
@@ -113,7 +188,7 @@ echo json_encode( $array );
 in PHP. Deswegen wird es als Objekt dargestellt.</p>
 
 
-<a class="slide_break do-not-print" id="slide-6" href="slide.html#slide-6"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 6">▻</a>
+<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
 
 <h2 id="deserialisierung">Deserialisierung</h2>
 
@@ -124,7 +199,7 @@ in PHP. Deswegen wird es als Objekt dargestellt.</p>
 <p>Hier gibt es zwei Varianten, die man über das zweite Argumente von <code>json_decode</code> unterscheidet.</p>
 
 
-<a class="slide_break do-not-print" id="slide-7" href="slide.html#slide-7"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 7">▻</a>
+<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
 
 <h3 id="decode-false">decode false</h3>
 
@@ -144,7 +219,7 @@ echo &quot;Wert von name: &quot; . $o-&gt;name;
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-8" href="slide.html#slide-8"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 8">▻</a>
+<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
 
 <h3 id="decode-true">decode true</h3>
 
@@ -164,7 +239,7 @@ echo &quot;Wert von name: &quot; . $o[&#39;name&#39;];
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-9" href="slide.html#slide-9"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 9">▻</a>
+<a class="slide_break do-not-print" id="slide-12" href="slide.html#slide-12"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 12">▻</a>
 
 <h2 id="json-als-rckgabewert">JSON als Rückgabewert</h2>
 
@@ -177,7 +252,7 @@ echo json_encode($data);
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-10" href="slide.html#slide-10"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 10">▻</a>
+<a class="slide_break do-not-print" id="slide-13" href="slide.html#slide-13"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 13">▻</a>
 
 <h2 id="aus-einer-json-datei">Aus einer JSON Datei</h2>
 
@@ -193,7 +268,7 @@ $data = json_decode($string, true);
 </code></pre></div>
 
 
-<a class="slide_break do-not-print" id="slide-11" href="slide.html#slide-11"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 11">▻</a>
+<a class="slide_break do-not-print" id="slide-14" href="slide.html#slide-14"  title="Wechsle zur Präsentations-Ansicht, Folie Nr. 14">▻</a>
 
 <h2 id="referenz">Referenz</h2>
 
