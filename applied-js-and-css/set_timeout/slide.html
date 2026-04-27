@@ -271,21 +271,14 @@ console.log(&quot;tock&quot;, Date.now());
 
 <p>Zwei Ergebnisse wären möglich:</p>
 
-<div class="example twopane">
-<pre><code class="language-shell linenums left">Variante A: passiert sofort
-tick
-0 Sekunden später?
-tock
-tick
-tock
-</code></pre><pre><code class="language-shell linenums right">
-Variante B: Programm läuft durch bis zum Ende
-tick
-tock
-tick
-tock
-0 Sekunden später?
-</code></pre><div class="clearfix"></div></div>
+<div class="example">
+<pre><code class="language-shell  linenums">Variante A:          Variante B:
+tick                 tick
+0 Sekunden später?   tock
+tock                 tick
+tick                 tock
+tock                 0 Sekunden später?
+</code></pre></div>
 
 </div>
 <div class="slide">
@@ -293,7 +286,7 @@ tock
 <h2 id="auflsung-settimeout-mit-null-sekunden">Auflösung setTimeout mit null Sekunden</h2>
 
 <p>Die Antwort ist: das Javascript-Programm wird nicht unterbrochen,
-sonder läuft bis zum Ende durch.  Hier nochmal mit mehr Ausgaben:</p>
+sondern läuft bis zum Ende durch.  Hier nochmal mit mehr Ausgaben:</p>
 
 <div class="example">
 <h4 class="caption">Javascript Code <small>asynchron</small></h4>
