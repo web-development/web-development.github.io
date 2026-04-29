@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Comparing Promises and async/await</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    header {
+      padding: 15px;
+    }
+    main {
+      padding: 15px 15px 0 15px;
+    }
+
+    header {
+      color: white;
+      background: rgb(131, 58, 180);
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    }
+
+    textarea {
+      width: 90%;
+      height: 6em;
+      display: block;
+    }
+
+    main {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    main>* {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    #output {
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>fetch: Compaing <a href="fetch-promise.html">Promises</a> to async await.</h1>
+  </header>
+  <main>
+    <section>
+      <p>A Function that is marked with <kbd>async</kbd> may contain
+        the <kbd>await</kbd> keyword. <kbd>await</kbd> means that the
+        current JavaScript thread is paused, and will only resume when
+        the promise it is waiting on resolves. So at every
+        <kbd>await</kbd>, other JavaScript code might be run in the
+        meanwhile.</p>
+      <p>When using <kbd>.then()</kbd> to handle a promise, the
+        current JavaScript thread immediately resumes below the
+        <kbd>.then()</kbd> and <kbd>.catch()</kbd> chain, and in this
+        case, finishes soon. Now other JavaScript code might be run.
+        Later, the function in <kbd>.then()</kbd> will be called.</p>
+      <pre id="code3"></pre>
+    </section>
+    <div>
+      <button onclick="load_and_display_async()">Load with
+        async/await</button>
+      <pre id="code2"></pre>
+      <button onclick="load_and_display_promise()">Load with
+        promises</button>
+      <pre id="code1"></pre>
+    </div>
+    <div>
+      <button
+        onclick="document.getElementById('output').innerHTML='';">Clear</button>
+      <textarea id="output">output will appear here</textarea>
+    </div>
+  </main>
+
+  <script>
+    const output_elem = document.getElementById('output');
+    let output = {
+      log: (string) => {
+        output_elem.innerHTML += "\n" + string;
+        output_elem.scrollTop = output_elem.scrollHeight;
+      }
+    }
+    function load_and_display_promise() {
+      fetch("backend.txt")
+        .then((response) => {
+          output.log("promise point A");
+          return response.text();
+        })
+        .then((text) => {
+          output.log("promise point B");
+          output.log("promise result:" + text);
+        })
+        .catch((error) => {
+          output.log("promise error:" + error);
+        });
+      output.log("promise point C");
+    }
+    async function load_and_display_async() {
+      try {
+        output.log("async/await point A");
+        const response = await fetch("backend.txt");
+        output.log("async/await point B");
+        const text = await response.text();
+        output.log("async/await point C");
+        output.log("async/await result: " + text);
+      } catch (error) {
+        output.log('async/await error' + error);
+        output.log(error);
+      }
+    }
+
+    let counter = 0;
+    let interval;
+    window.addEventListener('load', (e) => {
+      document.getElementById("code1").innerText = "    " + load_and_display_promise.toString();
+      document.getElementById("code2").innerText = "    " + load_and_display_async.toString();
+    })
+  </script>
+</body>
+
+</html>

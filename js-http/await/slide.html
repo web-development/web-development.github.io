@@ -95,9 +95,9 @@
 
 <h2 id="await-statt-then">await statt then</h2>
 
-<p>Bei der verwendung von <code>await</code> braucht man keine
+<p>Bei der Verwendung von <code>await</code> braucht man keine
 Callback-Funktionen oder Arrow-Funktionen mehr - der Code
-sieht wieder aus wie syncroner Code:</p>
+sieht wieder aus wie synchroner Code:</p>
 
 <div class="example">
 <h4 class="caption">Html Code <small>await</small></h4>
@@ -123,11 +123,11 @@ sieht wieder aus wie syncroner Code:</p>
   const response = await promise;
 </code></pre></div>
 
-<p><code>await</code> wartet nicht aktiv auf das Ergebnis. Stattdessen wird die Ausführung der aktuellen Funktion
+<p><code>await</code> wartet nicht aktiv auf das Ergebnis. Stattdessen wird die Ausführung des aktuellen Javascript Programmes
 an dieser Stelle <strong>pausiert</strong>, und in der Zwischenzeit kann anderer JavaScript-Code ausgeführt werden.</p>
 
 <p>Wenn der andere Code fertig ausgeführt ist, und das Ergebnis der Promise verfügbar ist,
-läuft die pausierte Funktion weiter.</p>
+läuft das pausierte Programm weiter und übernimmt den Rückgabewert.</p>
 
 <p>Das bedeutet: Die Aussage: “Ein Javascript Programm wird nie unterbrochen”.
 stimmt so nicht mehr. An jeder Stelle mit <code>await</code> kann die Ausführung unterbrochen werden –
@@ -155,6 +155,16 @@ ans Ende der <code>.then</code> Chain anhängen um einen Fehler abzufangen.</p>
   console.error(&quot;Fehler beim Laden des Zählers:&quot;, error);
 }
 </code></pre></div>
+
+</div>
+<div class="slide">
+
+<h2 id="await-und-reihenfolge">Await und Reihenfolge</h2>
+
+<p>Mit <code>await</code> ist nun die Reihenfolge, in der die Befehle ausgeführt werden,
+wieder wie erwartet</p>
+
+<p><a href="/images/js-http/fetch-await.html">Demo</a></p>
 
 </div>
 <div class="slide">
