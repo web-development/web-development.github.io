@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Demo Seite für AJAX Irrweg</title>
-  <link rel="shortcut icon" href="favicon.svg" type="image/svg">  
+  <title>Demo Seite für fetch Irrweg</title>
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg">
   <style>
     body {
       display: grid;
@@ -22,7 +22,7 @@
     }
     main {
       grid-area: mainArea;
-    }    
+    }
     footer {
       grid-area: footerArea;
     }
@@ -30,7 +30,7 @@
 </head>
 <body>
   <header>
-    <h1>AJAX: Schlechtes Beispiel, no REST</h1>
+    <h1>fetch: Schlechtes Beispiel, no REST</h1>
   </header>
   <nav>
     <ul>
@@ -42,15 +42,10 @@
     </ul>
   </nav>
   <main>
-    <p><b>Ajax</b> 
-      [<span title="Aussprache im Internationalen Phonetischen Alphabet (IPA)">ˈeidʒæks</span>] 
-      (auch <b>AJAX</b>; Akronym von englisch 
-      <i><span lang="en"><u>A</u>synchronous <u>J</u>avaScript <u>a</u>nd <u>X</u>ML</span></i>) 
-      bezeichnet ein Konzept der asynchronen Datenübertragung zwischen einem 
-      Browser und dem Server. 
-      Dieses ermöglicht es, HTTP-Anfragen durchzuführen, 
-      während eine HTML-Seite angezeigt wird, und die Seite zu verändern, 
-      ohne sie komplett neu zu laden.
+    <p> <b>fetch</b>
+      ermöglicht es, von Javascript as HTTP-Anfragen durchzuführen.
+      Die HTML-Seite bleibt dabei bestehen, und man kann - ebenfalls mit Javascript -
+      die Seite zu verändern, sobald die Daten geladen sind.
     </p>
   </main>
   <footer>
@@ -60,7 +55,7 @@
     function ajaxLoad(ev){
       let target = ev.target;
       console.log(`link ${target} geclickt, zeigt auf ${target.href}. Wird ignoriert!`);
-      ev.preventDefault();      
+      ev.preventDefault();
       fetch(target.href).then(function(response) {
         console.log("Response wird empfangen");
         return response.text();

@@ -160,7 +160,7 @@ in eine HTML-Seite eingebunden.</p>
 <pre><code class="language-html  linenums">&lt;html&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;title&gt;AJAX counter&lt;/title&gt;
+  &lt;title&gt;Counter&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;Webseite&lt;/h1&gt;
@@ -169,7 +169,7 @@ in eine HTML-Seite eingebunden.</p>
       return response.text();
     }
     function handle_text(text) {
-      let p = document.createElement(&quot;p&quot;);
+      const p = document.createElement(&quot;p&quot;);
       p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
       document.querySelector(&quot;body&quot;).appendChild(p);
     }
@@ -191,7 +191,7 @@ das den Umgang mit einer asynchrone Operation einfacher machen soll.</p>
 
 <div class="example">
 <pre><code class="language-javascript  linenums">&lt;script&gt;
-  let promise = fetch(&quot;counter.php&quot;);
+  const promise = fetch(&quot;counter.php&quot;);
 &lt;/script&gt;
 </code></pre></div>
 
@@ -222,7 +222,7 @@ liefern wieder eine Promise:</p>
 <div class="example">
 <pre><code class="language-javascript  linenums">function handle_text(text) {
   console.log(&quot;Response wird empfangen&quot;);
-  let promiseOfText = response.text();
+  const promiseOfText = response.text();
   return promiseOfText;
 }
 </code></pre></div>
@@ -240,7 +240,7 @@ kann  wieder die Methode <code>then</code> verwendet werden:</p>
   return response.text();
 }
 function handle_text(text) {
-  let p = document.createElement(&quot;p&quot;);
+  const p = document.createElement(&quot;p&quot;);
   p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
   document.querySelector(&quot;body&quot;).appendChild(p);
 }
@@ -259,7 +259,7 @@ wird der Code sehr kurz:</p>
 <pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text() )
   .then(text =&gt; {
-    let p = document.createElement(&quot;p&quot;);
+    const p = document.createElement(&quot;p&quot;);
     p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
     document.querySelector(&quot;body&quot;).appendChild(p);
   });
@@ -277,7 +277,7 @@ Statt dessen muss macn eine <code>catch</code> methode ans Ende der Chain anhän
 <pre><code class="language-javascript  linenums">fetch(&quot;counter_ajax.php&quot;)
   .then(response =&gt; response.text() )
   .then(text =&gt; {
-      let p = document.createElement(&quot;p&quot;);
+      const p = document.createElement(&quot;p&quot;);
       p.innerHTML = `Zugriffe: &lt;b&gt;${text}&lt;/b&gt;`;
       document.querySelector(&quot;body&quot;).appendChild(p);
   }).catch(error =&gt; {
