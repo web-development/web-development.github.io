@@ -206,8 +206,34 @@ dass es wieder funktioniert.</p>
 
 <h3 id="ein-erster-type">ein erster Type</h3>
 
-<p>Betrachten wir einen ersten selbst definiertes Typ in Typescript,
-und wie das Programm nach der Übersetzung in Javascript aussieht:</p>
+<p>Betrachten wir einen ersten selbst definiertes Typ in Typescript:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">type Question = {
+  question: string;
+  answers: string[];
+  correct: number;
+}
+let q: Question = {
+  question: &quot;What is 2 + 2?&quot;,
+  answers: [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;22&quot;],
+  correct: 1,
+};
+function printQuestion(q: Question):void {
+  console.log(q.question, q.answers[q.correct]);
+}
+printQuestion(q);
+</code></pre></div>
+
+<p>Wir definieren einen Typ <code>Question</code> und verwenden ihn für eine Variable <code>q</code>
+und als Parameter in einer Funktion <code>printQuestion</code>.</p>
+
+</div>
+<div class="slide">
+
+<h3 id="bersetzt-nach-javascript">übersetzt nach Javascript.</h3>
+
+<p>Betrachten wir  wie das Programm nach der Übersetzung in Javascript aussieht:</p>
 
 <div class="example twopane">
 <pre><code class="language-typescript linenums left">type Question = {
@@ -250,7 +276,7 @@ der developer tools die Variable <code>q</code> verändern, neue Keys
 hinzufügen oder löschen.</p>
 
 <p>Die Typen existieren  nur während ich das Programm
-schreibe und editiere. Da sind sie aber hilfreich:</p>
+schreibe und editiere. Da sind sie aber hilfreich.</p>
 
 </div>
 <div class="slide">
@@ -271,7 +297,7 @@ type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 
 <h3 id="unions--enum">Unions != enum</h3>
 
-<p>Achtung: “WindowStates” ist kein Enum in C#</p>
+<p>Achtung: “WindowStates” in Typescript ist kein Enum wie in C#</p>
 
 <div class="example">
 <pre><code class="language-csharp  linenums">enum WindowStates { Open, Closed, Minimized }
@@ -381,7 +407,7 @@ if (myButton instanceof HTMLButtonElement) {
 wie ein Ente, dann ist es eine Ente.  Auf Englisch
 nennt man das “duck typing” oder “structural typing”.</p>
 
-<p>Gemeint ist, dass zwei typen die dieselbe Form haben
+<p>Gemeint ist, dass zwei Typen, die dieselbe Form haben,
 in Typescript nicht unterschieden werden:</p>
 
 <div class="example">
@@ -397,15 +423,22 @@ const point = { x: 12, y: 26 };
 logPoint(point);
 const rect = { x: 33, y: 3, width: 30, height: 80 };
 logPoint(rect); // logs &quot;33, 3&quot;
-const wurm = { farbe: &quot;grau&quot;, beine: 0 };
+</code></pre></div>
+
+<p>Die Konstante <code>rect</code> erfüllt alle Anforderungen
+des types Point, und kann deswegen als Argument
+der Funktion <code>logPoint</code> verwendet werden.</p>
+
+<p>Nur wenn die Form nicht passt, der Typ keine Properties <code>x</code> und <code>y</code> hat gibt es einen Fehler:</p>
+
+<div class="example">
+<pre><code class="language-typescript  linenums">const wurm = { farbe: &quot;grau&quot;, beine: 0 };
 logPoint(wurm); // Typescript Fehler:
 //  Argument of type &#39;{ farbe: string; beine: number; }&#39; is not assignable to parameter of type &#39;Point&#39;.
 //  Type &#39;{ farbe: string; beine: number; }&#39; is missing the following properties from type &#39;Point&#39;: x, y
 </code></pre></div>
 
-<p>Die Konstante <code>rect</code> erfüllt alle Anforderungen
-des types Point, und kann deswegen als Argument
-der Funktion <code>logPoint</code> verwendet werden.  Der wurm tut das nicht.</p>
+<p>Der wurm erfüllt die Anforderungen nicht.</p>
 
 </div>
 <div class="slide">
